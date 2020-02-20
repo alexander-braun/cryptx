@@ -482,7 +482,7 @@ textarea {
     align-items: center;
 
     .modal_header {
-        width: 33.33vw;
+        width: 36vw;
         height: auto;
         background-color: #ff6b71;
         color: white;
@@ -493,7 +493,7 @@ textarea {
     }
 
     .modal_body {
-        width: 33.33vw;
+        width: 36vw;
         padding: 16px;
         background-color: white;
     }
@@ -508,6 +508,7 @@ textarea {
     font-size: 12pt;
     font-weight: 700;
     font-family: 'Source Sans Pro', sans-serif;
+    margin-top: 2em;
 
     ul {
         display: flex;
@@ -561,14 +562,10 @@ textarea {
 }
 
 #visualMatrix {
-
+    padding: 16px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     width: 100%;
     height: fit-content;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 0.25em;
-    margin-bottom: 0em;
 }

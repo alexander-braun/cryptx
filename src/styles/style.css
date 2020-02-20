@@ -602,7 +602,7 @@ textarea:focus {
 }
 
 .modal .modal_header {
-  width: 33.33vw;
+  width: 36vw;
   height: auto;
   background-color: #ff6b71;
   color: white;
@@ -613,7 +613,7 @@ textarea:focus {
 }
 
 .modal .modal_body {
-  width: 33.33vw;
+  width: 36vw;
   padding: 16px;
   background-color: white;
 }
@@ -627,6 +627,7 @@ textarea:focus {
   font-size: 12pt;
   font-weight: 700;
   font-family: 'Source Sans Pro', sans-serif;
+  margin-top: 2em;
 }
 
 .method_category ul {
@@ -699,6 +700,7 @@ textarea:focus {
 }
 
 #visualMatrix {
+  padding: 16px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -712,9 +714,5 @@ textarea:focus {
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 0.25em;
-  margin-bottom: 0em;
 }
 /*# sourceMappingURL=style.css.map */

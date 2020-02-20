@@ -2,7 +2,7 @@ const affine = (() => {
 
     //Setup all variables
     
-    let userInput, alphabet, direction, wordbook, caseFormat, includeChars, alpha, beta
+    let userInput, alphabet, direction, caseFormat, includeChars, alpha, beta
 
     const setUserInput = (input) => {
         userInput = String(input);

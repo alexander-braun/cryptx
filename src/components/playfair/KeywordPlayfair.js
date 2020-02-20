@@ -1,6 +1,6 @@
 import React from 'react'
 
-const KeywordPlayfair = ({keywordPlayfair, encrypt, updateKeywordPlayfair}) => {
+const KeywordPlayfair = ({keyword, updateKeyword}) => {
   
   return (
     <div className="controller">
@@ -8,10 +8,9 @@ const KeywordPlayfair = ({keywordPlayfair, encrypt, updateKeywordPlayfair}) => {
       <div className="settings_operators">
           <textarea 
             id="alphabet" 
-            defaultValue={keywordPlayfair} 
+            defaultValue={keyword} 
             onChange = {(evt) => {
-                updateKeywordPlayfair(evt)
-                encrypt()
+                updateKeyword(evt)
             }}
           />
       </div>

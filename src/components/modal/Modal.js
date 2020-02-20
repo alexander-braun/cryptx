@@ -6,7 +6,7 @@ class Modal extends Component {
         if(this.props.modalVisible) {
             return (
                 <div className="modal" 
-                    onClick = {this.props.closeModal}
+                    onClick = {this.props.switchModal}
                 >
                     <div className="modal_header">Encryption Methods</div>
                     <div className="modal_body">
@@ -19,7 +19,6 @@ class Modal extends Component {
                                         value="caesar"
                                         onClick={(evt) => {
                                             this.props.changeMethod(evt)
-                                            this.props.encrypt()
                                         }}
                                     >
                                         Ceasars Cipher
@@ -31,7 +30,6 @@ class Modal extends Component {
                                         value="affine"
                                         onClick={(evt) => {
                                             this.props.changeMethod(evt)
-                                            this.props.encrypt()
                                         }}
                                     >
                                         Affine Cipher
@@ -43,7 +41,6 @@ class Modal extends Component {
                                         value="vigenere"
                                         onClick={(evt) => {
                                             this.props.changeMethod(evt)
-                                            this.props.encrypt()
                                         }}
                                     >
                                         Vigenère Cipher
@@ -55,10 +52,25 @@ class Modal extends Component {
                                         value="playfair"
                                         onClick={(evt) => {
                                             this.props.changeMethod(evt)
-                                            this.props.encrypt()
                                         }}
                                     >
                                         Playfair Cipher
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                        <div className="method_category">
+                            <span className="modal_category_title">Alphabets</span>
+                            <ul>
+                                <li>
+                                    <button
+                                        className="modal_category_method"
+                                        value="morse"
+                                        onClick={(evt) => {
+                                            this.props.changeMethod(evt)
+                                        }}
+                                    >
+                                        Morse Code
                                     </button>
                                 </li>
                             </ul>

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Alpha = ({setAlpha, setBeta, encrypt}) => {
+const Alpha = ({setAlpha, setBeta}) => {
     return (
         <div className="controller double_content">
             <div className="controllbox">
@@ -11,7 +11,6 @@ const Alpha = ({setAlpha, setBeta, encrypt}) => {
                         className="affine"
                         onChange = {(evt) => {
                             setAlpha(evt)
-                            encrypt()
                         }}
                     >
                         <option value="1">1</option>
@@ -37,7 +36,6 @@ const Alpha = ({setAlpha, setBeta, encrypt}) => {
                         className="affine"
                         onChange = {(evt) => {
                             setBeta(evt)
-                            encrypt()
                         }}
                     >
                         <option value="1">1</option>

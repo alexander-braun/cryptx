@@ -3,10 +3,20 @@ import ReactDOM from 'react-dom';
 import './styles/style.css';
 import * as serviceWorker from './serviceWorker';
 import App from './components/App'
+import {BrowserRouter,Switch, Route} from 'react-router-dom'
+import Alpha from '../src/components/affine/Alpha'
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const Root = () => {
+    return (
+        <BrowserRouter>
+            <Switch>
+                <Route path="/" exact component={App} />
+                <Route path="/fuck" component={Alpha} />
+            </Switch>
+        </BrowserRouter>
+    )
+}
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
+ReactDOM.render(<Root />, document.getElementById('root'));
+
 serviceWorker.unregister();

@@ -3,15 +3,13 @@ import ExplanatoryText from './ExplanatoryText'
 import BlockHead from './BlockHead'
 import BlockBodyInput from './BlockBodyInput'
 
-const BlockElementSettings = ({ minus, 
-                                plus, 
+const BlockElementSettings = ({ plusMinus,
                                 cShift, 
                                 alphabet, 
                                 alphabetUpdate, 
                                 selectCase, 
                                 includeChars, 
-                                encrypt, 
-                                openModal, 
+                                switchModal, 
                                 method, 
                                 methodNameInset, 
                                 changeDirection, 
@@ -19,39 +17,32 @@ const BlockElementSettings = ({ minus,
                                 setAlpha,
                                 setBeta,
                                 updateKeyword,
-                                keywordVigenere,
-                                updateKeywordPlayfair,
-                                keywordPlayfair,
-                                playSquare
+                                keyword,
+                                playSquare,
                                 }) => {
   return (
     <div className="block_settings">
       <div className="block_top_decoration"></div>
       <BlockHead 
-        openModal={openModal} 
+        switchModal={switchModal} 
         methodNameInset={methodNameInset}
         changeDirection={changeDirection}
-        encrypt={encrypt}
       />
       <div className="block_body">
           <div className="block_body_input">
               <BlockBodyInput 
                 direction={direction}
-                minus={minus}
-                plus={plus}
+                plusMinus={plusMinus}
                 cShift={cShift}
                 alphabet={alphabet}
                 alphabetUpdate={alphabetUpdate}
                 selectCase={selectCase}
                 includeChars={includeChars}
-                encrypt={encrypt}
                 method={method}
                 setAlpha={setAlpha}
                 setBeta={setBeta}
                 updateKeyword={updateKeyword}
-                keywordVigenere={keywordVigenere}
-                updateKeywordPlayfair={updateKeywordPlayfair}
-                keywordPlayfair={keywordPlayfair}
+                keyword={keyword}
                 playSquare = {playSquare}
               />
               <ExplanatoryText 

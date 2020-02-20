@@ -35,7 +35,6 @@ class CaseChars extends React.Component {
                             defaultValue = 'maintain' 
                             onChange = {(evt) => {
                                 this.props.selectCase(evt)
-                                this.props.encrypt()
                             }}
                         >
                             <option value="maintain">Maintain Case</option>
@@ -52,7 +51,6 @@ class CaseChars extends React.Component {
                             onClick = {(evt) => {
                                 this.props.includeChars(evt)
                                 this.changeClass(evt)
-                                this.props.encrypt()
                             }} 
                             value="include">
                             Include
@@ -63,7 +61,6 @@ class CaseChars extends React.Component {
                             onClick = {(evt) => {
                                 this.props.includeChars(evt)
                                 this.changeClass(evt)
-                                this.props.encrypt()
                             }} 
                             value="ignore">
                             Ignore

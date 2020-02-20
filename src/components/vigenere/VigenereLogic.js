@@ -2,7 +2,7 @@ const vigenere = (() => {
 
     //Setup all variables
     
-    let userInput, alphabet, direction, wordbook, caseFormat, includeChars, keywordVigenere
+    let userInput, alphabet, direction, caseFormat, includeChars, keywordVigenere
 
     const setUserInput = (input) => {
         userInput = String(input);

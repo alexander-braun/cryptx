@@ -1,6 +1,7 @@
 import React from 'react'
 
-const BlockElementInput = ({updateInput, inputValue, clearTextareaInput, encrypt}) => {
+
+const BlockElementInput = ({updateInput, inputValue, clearTextareaInput}) => {
 
   function autoresize(evt) {
     let el = evt.target;
@@ -28,11 +29,9 @@ const BlockElementInput = ({updateInput, inputValue, clearTextareaInput, encrypt
                 defaultValue={inputValue} 
                 onClick = {(evt) => {
                   updateInput(evt)
-                  clearTextareaInput(evt)
                 }}
                 onChange={(evt) => {
                   updateInput(evt)
-                  encrypt()
                   autoresize(evt)
                 }}
               />

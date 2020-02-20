@@ -11,18 +11,17 @@ import caesar from '../caesar/CaesarLogic'
 import affine from '../affine/AffineLogic'
 import vigenere from '../vigenere/VigenereLogic'
 import playfair from '../playfair/PlayfairLogic'
+import morse from '../morse/Morselogic'
 
 class BlockElementsCollector extends React.Component  {
   constructor(props) {
     super()
     this.state = {
-      modalClassName: '',
       modalVisible: false,
       method: 'caesar',
       methodNameInset: "Caesar's Cipher",
       inputValue: 'Write Something...',
       outputValue: 'Zulwh Vrphwklqj...',
-      inputValueChanged: false,
       direction: 'encrypt',
       caseFormat: 'maintain',
       includeChars: 'include',
@@ -31,47 +30,43 @@ class BlockElementsCollector extends React.Component  {
       wordbook: '',
       affineAlpha: 5,
       affineBeta: 1,
-      keywordVigenere: 'cipher',
-      keywordPlayfair: 'playfair example',
+      keyword: 'cipher',
       playSquare: ''
     }
-    
-    this.minus = this.minus.bind(this)
-    this.plus = this.plus.bind(this)
+
     this.encrypt = this.encrypt.bind(this)
     this.alphabetUpdate = this.alphabetUpdate.bind(this)
     this.selectCase = this.selectCase.bind(this)
     this.includeChars = this.includeChars.bind(this)
     this.updateInput = this.updateInput.bind(this)
-    this.clearTextareaInput = this.clearTextareaInput.bind(this)
     this.changeDirection = this.changeDirection.bind(this)
-    this.openModal = this.openModal.bind(this)
-    this.closeModal = this.closeModal.bind(this)
     this.changeMethod = this.changeMethod.bind(this)
     this.updateKeyword = this.updateKeyword.bind(this)
-    this.updateKeywordPlayfair = this.updateKeywordPlayfair.bind(this)
+    this.plusMinus = this.plusMinus.bind(this)
+    this.switchModal = this.switchModal.bind(this)
   }
 
   //Modal
-
-  openModal() {
-    this.setState({
-        modalVisible: true,
-        modalClassName: 'modal_open'
-    })
-  }
-
-  closeModal() {
+  switchModal() {
+    if(this.state.modalVisible === false) {
       this.setState({
-          modalVisible: false,
-          modalClassName: ''
+        modalVisible: true
       })
+    } else {
+      this.setState({
+        modalVisible: false
+      })
+    }
   }
 
   //General
-
   changeMethod(evt) {
     let val = evt.target.value
+    this.setState({
+      alphabet: 'abcdefghijklmnopqrstuvwxyz',
+      caseFormat: 'maintain',
+      includeChars: 'include'
+    })
     if(val === 'caesar') {
         this.setState({
             methodNameInset: "Caesar's Cipher"
@@ -82,90 +77,101 @@ class BlockElementsCollector extends React.Component  {
         })
     } else if(val === 'vigenere') {
         this.setState({
+            keyword: 'cipher',
             methodNameInset: 'Vigenère Cipher'
         })
     } else if(val === 'playfair') {
         this.setState({
+            keyword: 'playfair example',
             methodNameInset: 'Playfair Cipher'
+        })
+    } else if(val === 'morse') {
+        this.setState({
+          methodNameInset: 'Morse Code'
         })
     }
     this.setState({
           method: val
     })
-}
-
-  clearTextareaInput(evt) {
-    if(this.state.inputValue === 'Write Something...' && this.state.inputValueChanged === false) {
-      this.setState({
-        inputValue: '',
-        inputValueChanged: true
-      })
-      evt.target.value = ''
-    } 
+    this.encrypt()
   }
 
   updateInput(evt) {
-    this.setState({
-      inputValue: evt.target.value
-    })
+    if(this.state.inputValue === 'Write Something...') {
+      this.setState({
+        inputValue: ''
+      })
+      evt.target.value = ''
+    } else {
+      this.setState({
+        inputValue: evt.target.value
+      })      
+    }
+    this.encrypt()
   }
 
   includeChars(evt) {
     this.setState({
         includeChars: evt.target.value,
     })
+    this.encrypt()
   }
-
+  
   selectCase(evt) {
     this.setState({
         caseFormat: evt.target.value
     })
+    this.encrypt()
   }
 
   alphabetUpdate(evt) {
     this.setState({
       alphabet: evt.target.value
     })
+    this.encrypt()
   }
 
   changeDirection(evt) {
       this.setState({
         direction: evt.target.value
       })
+      this.encrypt()
   }
 
   //Caesar
+  plusMinus = (evt) => {
 
-  minus = () => {
-    if(this.state.cShift < 2) {
-      this.setState({
-        cShift: 25
-      })
-    } else {
-      this.setState(prevState => {
-        return {
-          cShift: prevState.cShift - 1
-        }
-      })
-    }
-  }
-  
-  plus = () => {
-    if(this.state.cShift > 24) {
-      this.setState({
-        cShift: 1
-      })
-    } else {
-      this.setState(prevState => {
-        return {
-          cShift: prevState.cShift + 1
-        }
-      })
+    if(evt.target.innerText === '+') {
+      if(this.state.cShift > 24) {
+        this.setState({
+          cShift: 1
+        })
+      } else {
+        this.setState(prevState => {
+          return {
+            cShift: prevState.cShift + 1
+          }
+        })
+      }
+      this.encrypt()
+    } else if(evt.target.innerText === '-') {
+      if(this.state.cShift < 2) {
+        this.setState({
+          cShift: 25
+        })
+      } else {
+        this.setState(prevState => {
+          return {
+            cShift: prevState.cShift - 1
+          }
+        })
+      }
+      this.encrypt()
     }
   }
 
   //Async load the wordbook for caesar crack
-
+  
   async componentDidMount() {
     if(this.state.wordbook === ''){
       const url = 'https://raw.githubusercontent.com/dwyl/english-words/master/words_dictionary.json'
@@ -177,18 +183,11 @@ class BlockElementsCollector extends React.Component  {
     }
   }
 
-  //Vigenere
-
   updateKeyword = (evt) => {
     this.setState({
-        keywordVigenere: evt.target.value  
+        keyword: evt.target.value  
     })
-  }
-
-  updateKeywordPlayfair = (evt) => {
-    this.setState({
-      keywordPlayfair: evt.target.value
-    })
+    this.encrypt()
   }
 
   //Affine
@@ -197,12 +196,14 @@ class BlockElementsCollector extends React.Component  {
     this.setState({
       affineAlpha: evt.target.value
     })
+    this.encrypt()
   }
 
   setBeta = (evt) => {
     this.setState({
       affineBeta: evt.target.value
     })
+    this.encrypt()
   }
 
   //Do the magic!
@@ -244,7 +245,7 @@ class BlockElementsCollector extends React.Component  {
           vigenere.setDirection(prevState.direction)
           vigenere.setForeignChars(prevState.includeChars)
           vigenere.setCase(prevState.caseFormat)
-          vigenere.setKeyword(prevState.keywordVigenere)
+          vigenere.setKeyword(prevState.keyword)
           return {
             outputValue: vigenere.encrypt()
           }
@@ -260,10 +261,29 @@ class BlockElementsCollector extends React.Component  {
           playfair.setDirection(prevState.direction)
           playfair.setForeignChars(prevState.includeChars)
           playfair.setCase(prevState.caseFormat)
-          playfair.setKeyPhrase(prevState.keywordPlayfair)
+          playfair.setKeyPhrase(prevState.keyword)
           return {
             outputValue: playfair.encrypt(),
             playSquare: playfair.getSquare()
+          }
+        } else {
+          return {
+            outputValue: ''
+          }
+        }
+      } else if(prevState.method === 'morse') {
+        if(prevState.direction !== 'crack') {
+          morse.setUserInput(prevState.inputValue)
+          morse.setAlphabet(prevState.alphabet)
+          morse.setDirection(prevState.direction)
+          morse.setForeignChars(prevState.includeChars)
+          morse.setCase(prevState.caseFormat)
+          return {
+            outputValue: morse.encrypt()
+          }
+        } else {
+          return {
+            outputValue: ''
           }
         }
       }
@@ -272,36 +292,30 @@ class BlockElementsCollector extends React.Component  {
 
   render() {
     return (
-      <div className={this.state.modalClassName}>
+      <>
         <Header />
         <div id = "block_container">
           <BlockElementInput 
             inputValue={this.state.inputValue}
             updateInput={this.updateInput}
-            clearTextareaInput={this.clearTextareaInput}
-            encrypt={this.encrypt}
           />
           <BlockConnectorPlus />
           <BlockElementSettings
             updateKeyword={this.updateKeyword}
-            keywordVigenere={this.state.keywordVigenere}
+            keyword = {this.state.keyword}
             changeDirection={this.changeDirection}
             method={this.state.method}
             methodNameInset={this.state.methodNameInset}
-            openModal={this.openModal}
+            switchModal={this.switchModal}
             alphabet={this.state.alphabet} 
             alphabetUpdate = {this.alphabetUpdate}
             cShift = {this.state.cShift}
-            minus = {this.minus}
-            plus = {this.plus}
+            plusMinus = {this.plusMinus}
             selectCase = {this.selectCase}
             includeChars = {this.includeChars}
-            encrypt = {this.encrypt}
             direction = {this.state.direction}
             setAlpha = {this.setAlpha}
             setBeta = {this.setBeta}
-            keywordPlayfair = {this.state.keywordPlayfair}
-            updateKeywordPlayfair = {this.updateKeywordPlayfair}
             playSquare = {this.state.playSquare}
           />
           <BlockConnectorEquals />
@@ -310,15 +324,11 @@ class BlockElementsCollector extends React.Component  {
           />
         </div>
         <Modal 
-          className 
-          method = {this.state.method}
-          modalVisible = {this.state.modalVisible}
-          closeModal = {this.closeModal}
+          switchModal = {this.switchModal}
           changeMethod = {this.changeMethod}
-          encrypt = {this.encrypt}
+          modalVisible = {this.state.modalVisible}
         />
-      </div>
-
+      </>
     )
   }
 }

@@ -1,15 +1,15 @@
 import React from 'react'
 
-const CaesarShift = ({minus, cShift, plus, encrypt}) => {
+const CaesarShift = ({plusMinus, cShift}) => {
   return (
     <div className="controller">
       <div className="settings_name">SHIFT</div>
       <div className="settings_operators">
           <div 
+            value = '-'
             className="settings_operator" 
-            onClick={() => {
-              minus()
-              encrypt()
+            onClick={(evt) => {
+              plusMinus(evt)
             }}
           >
           -
@@ -21,10 +21,10 @@ const CaesarShift = ({minus, cShift, plus, encrypt}) => {
           {cShift}
           </div>
           <div 
+            value="+"
             className="settings_operator" 
-            onClick={() => {
-              plus()
-              encrypt()
+            onClick={(evt) => {
+              plusMinus(evt)
             }}
           >
           +

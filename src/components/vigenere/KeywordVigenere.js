@@ -1,16 +1,15 @@
 import React from 'react'
 
-const KeywordVigenere = ({keywordVigenere, encrypt, updateKeyword}) => {
+const KeywordVigenere = ({keyword, updateKeyword}) => {
   return (
     <div className="controller">
       <div className="settings_name">Keyword</div>
       <div className="settings_operators">
           <textarea 
             id="alphabet" 
-            defaultValue={keywordVigenere} 
+            defaultValue={keyword} 
             onChange = {(evt) => {
                 updateKeyword(evt)
-                encrypt()
             }}
           />
       </div>

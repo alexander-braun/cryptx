@@ -8,23 +8,18 @@ import KeywordPlayfair from '../playfair/KeywordPlayfair'
 import CharOptions from '../playfair/CharOptions'
 import PlayfairSquare from '../playfair/PlayfairSquare'
 
-
-const BlockBodyInput = ({   minus, 
-                            plus, 
+const BlockBodyInput = ({   plusMinus,
                             cShift, 
                             alphabet, 
                             alphabetUpdate, 
                             selectCase, 
                             includeChars, 
-                            encrypt, 
                             method, 
                             direction, 
                             setAlpha, 
                             setBeta, 
-                            updateKeyword, 
-                            keywordVigenere,
-                            updateKeywordPlayfair,
-                            keywordPlayfair,
+                            updateKeyword,
+                            keyword,
                             playSquare }) => {
     let bodyInput;
     let standartBlocks =      
@@ -32,12 +27,10 @@ const BlockBodyInput = ({   minus,
         <Alphabet 
             alphabet = {alphabet} 
             alphabetUpdate = {alphabetUpdate} 
-            encrypt = {encrypt}
         />
         <CaseChars 
             selectCase = {selectCase}
             includeChars = {includeChars}
-            encrypt = {encrypt}
         />
     </div>
     const switchBodyInput = () => {
@@ -46,10 +39,8 @@ const BlockBodyInput = ({   minus,
                 bodyInput = 
                     <div className="block_body_input">
                         <CaesarShift                   
-                            minus = {minus}
-                            plus = {plus}
+                            plusMinus = {plusMinus}
                             cShift = {cShift}
-                            encrypt = {encrypt}
                         />
                     </div>
             } else bodyInput = null
@@ -60,7 +51,6 @@ const BlockBodyInput = ({   minus,
                     <Alpha
                         setAlpha = {setAlpha}
                         setBeta = {setBeta}
-                        encrypt = {encrypt}
                     />
                 </div>
             } else bodyInput = null
@@ -70,8 +60,7 @@ const BlockBodyInput = ({   minus,
                 <div className="block_body_input">
                     <KeywordVigenere
                         updateKeyword={updateKeyword}
-                        keywordVigenere={keywordVigenere}
-                        encrypt = {encrypt}
+                        keyword={keyword}
                     />
                 </div> 
             } else return null
@@ -84,11 +73,14 @@ const BlockBodyInput = ({   minus,
                     />
                     <CharOptions />
                     <KeywordPlayfair
-                        updateKeywordPlayfair={updateKeywordPlayfair}
-                        keywordPlayfair={keywordPlayfair}
-                        encrypt = {encrypt}
+                        updateKeyword={updateKeyword}
+                        keyword={keyword}
                     />
                 </div> 
+            } else return null
+        } else if(method === 'morse') {
+            if(direction !== 'crack') {
+                bodyInput = null
             } else return null
         }
         

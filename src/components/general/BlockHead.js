@@ -1,7 +1,7 @@
 import React from 'react'
 import { ReactComponent as Caret} from './img/caret.svg'
 
-const BlockHead = ({openModal, methodNameInset, changeDirection, encrypt}) => {
+const BlockHead = ({switchModal, methodNameInset, changeDirection}) => {
 
     const switchClassName = (evt) => {
         const buttons = document.getElementsByClassName('block_head_option')
@@ -22,7 +22,6 @@ const BlockHead = ({openModal, methodNameInset, changeDirection, encrypt}) => {
                 onClick={(evt) => {
                     changeDirection(evt)
                     switchClassName(evt)
-                    encrypt()
                 }} 
                 className="block_head_option selected"
             >
@@ -33,7 +32,6 @@ const BlockHead = ({openModal, methodNameInset, changeDirection, encrypt}) => {
                 onClick={(evt) => {
                     changeDirection(evt)
                     switchClassName(evt)
-                    encrypt()
                 }} 
                 className="block_head_option"
             >
@@ -44,7 +42,6 @@ const BlockHead = ({openModal, methodNameInset, changeDirection, encrypt}) => {
                 onClick={(evt) => {
                     changeDirection(evt)
                     switchClassName(evt)
-                    encrypt()
                 }} 
                 className="block_head_option"
             >
@@ -53,8 +50,8 @@ const BlockHead = ({openModal, methodNameInset, changeDirection, encrypt}) => {
             </div>
             <button 
                 className="block_head_text" 
-                onClick={openModal} 
-            >{methodNameInset} <Caret />
+                onClick = {switchModal}
+            >   {methodNameInset} <Caret />
             </button>
         </div>
     )

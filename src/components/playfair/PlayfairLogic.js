@@ -2,7 +2,7 @@ const Playfair = (() => {
 
     //Setup all variables
     
-    let userInput, saltInput, alphabet, direction, wordbook, caseFormat, includeChars, keyphrase
+    let userInput, alphabet, direction, caseFormat, includeChars, keyphrase
     let replaceLetter = 'x'
     let missingLetter = 'j'
     let playSquare
@@ -11,10 +11,6 @@ const Playfair = (() => {
 
     const setUserInput = (input) => {
         userInput = String(input);
-    }
-
-    const setSaltInput = (input) => {
-        saltInput = Number(input);
     }
 
     const setAlphabet = (input) => {
@@ -167,17 +163,10 @@ const Playfair = (() => {
         // check if character is the ommited one. create element with id to visualize table.
         
         const arr = [];
-        let index = 0;
     
         for(let char of key) {
             if(char !== ommited && alphabet.indexOf(char) !== -1) {
                 arr.push(char);
-                /*
-                const id = 'table' + index;
-                const element = document.getElementById(id);
-                element.innerText = char;
-                */
-                index++;
             }
         }
         playSquare = arr;
