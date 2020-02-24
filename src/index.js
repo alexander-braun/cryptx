@@ -6,9 +6,13 @@ import App from './components/App'
 import {BrowserRouter,Switch, Route} from 'react-router-dom'
 import Alpha from '../src/components/affine/Alpha'
 
+
+const repo = `/${window.location.pathname.split('/')[1]}`;
+
+
 const Root = () => {
     return (
-        <BrowserRouter>
+        <BrowserRouter basename={repo}>
             <Switch>
                 <Route path="/" exact component={App} />
                 <Route path="/fuck" component={Alpha} />
