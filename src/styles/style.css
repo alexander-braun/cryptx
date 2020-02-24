@@ -206,6 +206,63 @@ textarea:focus {
   }
 }
 
+@media only screen and (max-width: 1280px) {
+  #block_container {
+    margin: 10rem 2rem;
+  }
+  .site_header #header_links {
+    margin-right: 2rem;
+  }
+  .site_header p {
+    margin-left: 2rem;
+  }
+}
+
+@media only screen and (max-width: 1100px) {
+  #block_container {
+    margin: 10rem 0;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .block_connector {
+    top: 0;
+    width: 100px;
+    height: 50px;
+  }
+  .block {
+    width: 430px;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .site_header {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .site_header #header_links {
+    margin: 8px 0;
+  }
+  .site_header .site_title {
+    margin: 16px 0;
+  }
+}
+
 .block_settings {
   color: #2f1728;
   min-width: 330px;

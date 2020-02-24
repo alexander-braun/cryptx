@@ -3,6 +3,8 @@
 // Vars
 $mainMarginMin1500: 10rem;
 $mainMarginMax1500: 6rem;
+$mainMarginMax1280: 2rem;
+$mainMarginMax1150: .5rem; 
 $transitionMain: 100ms;
 
 
@@ -169,6 +171,51 @@ textarea {
     }
     .site_header p{
         margin-left: $mainMarginMax1500;
+    }
+}
+
+@media only screen and (max-width: 1280px) {
+    #block_container {
+        margin: $mainMarginMin1500 $mainMarginMax1280;
+    }
+    .site_header #header_links {
+        margin-right: $mainMarginMax1280;
+    }
+    .site_header p{
+        margin-left: $mainMarginMax1280;
+    }
+}
+
+@media only screen and (max-width: 1100px) {
+    #block_container {
+        margin: $mainMarginMin1500 0;
+        flex-direction: column;
+        align-items: center;
+    }
+    .block_connector {
+        top: 0;
+        width: 100px;
+        height: 50px;
+    }
+    .block {
+        width: 430px;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .site_header {
+        flex-direction: column;
+        height: fit-content;
+        justify-content: center;
+        align-items: center;
+
+        #header_links {
+            margin: 8px 0;
+        }
+
+        .site_title {
+            margin: 16px 0;
+        }
     }
 }
 
