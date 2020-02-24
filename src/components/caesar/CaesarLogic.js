@@ -1,7 +1,9 @@
+import math from '../math/Math'
+
 const caesar = (() => {
 
     //Setup all variables
-    
+    math.restoreForeignChars()
     let userInput, saltInput, alphabet, direction, wordbook, caseFormat, includeChars
 
     const setUserInput = (input) => {
@@ -50,39 +52,16 @@ const caesar = (() => {
 
     const readChar = () => {
         const decryptedChars = [];
-        for(let char of userInput) {
+
+        let cleanInput = math.cleanInput(userInput, false, false, alphabet)
+
+        for(let char of cleanInput) {
             let charLowerCase = char.toLowerCase();
             let index = charIndex(charLowerCase)
             let decryptedChar = alphabet[index]
-
-            //Some nice spaghetti code to account for case and char options
-
-            if(includeChars === 'ignore') {
-                if(alphabet.includes(charLowerCase)) {
-                    if(caseFormat === 'maintain') {
-                        if(charLowerCase === char) {
-                            decryptedChars.push(decryptedChar)
-                        } else {
-                            decryptedChars.push(decryptedChar.toUpperCase())
-                        }
-                    } else {
-                        decryptedChars.push(decryptedChar)
-                    }
-                } else if(charLowerCase === ' ') decryptedChars.push(' ')
-            } else {
-                if(caseFormat === 'maintain') {
-                    if(alphabet.includes(charLowerCase)) {
-                        if(charLowerCase === char) {
-                            decryptedChars.push(decryptedChar)    
-                        } else decryptedChars.push(decryptedChar.toUpperCase())
-                    } else decryptedChars.push(char)
-                } else {
-                    if(alphabet.includes(charLowerCase)) {
-                        decryptedChars.push(decryptedChar)
-                    } else decryptedChars.push(charLowerCase)
-                }
-            }
+            decryptedChars.push(decryptedChar)
         }
+        
         return decryptedChars.join('')
     }
 
@@ -173,19 +152,28 @@ const caesar = (() => {
     const loadWordbook = () => {
         if(!userInput) return
         else return findWords(wordbook)
+    }   
+
+    const checkIfSigns = () => {
+        return alphabet.length > 26 ? false : true
     }
 
     //Crack or other ? Return the according method
 
     const encrypt = () => {
         if(direction !== 'crack') {
-            return readChar()
-        } else if(direction === 'crack') {
+            let rawOutput = readChar()
+            if(checkIfSigns()) {
+                return math.transformCaseAndChars(userInput, rawOutput, caseFormat, includeChars) 
+            } else return rawOutput
+        }
+        else if(direction === 'crack') {
             return loadWordbook();
         }
     }
 
     return {
+        
         setUserInput: setUserInput,
         setSaltInput: setSaltInput,
         setAlphabet: setAlphabet,

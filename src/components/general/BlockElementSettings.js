@@ -19,6 +19,13 @@ const BlockElementSettings = ({ plusMinus,
                                 updateKeyword,
                                 keyword,
                                 playSquare,
+                                setReplaceLetters,
+                                toReplaceLetter,
+                                replaceLetter,
+                                ringLength,
+                                skytaleLength,
+                                skytaleProjectedValue,
+                                alphabetActive,
                                 }) => {
   return (
     <div className="block_settings">
@@ -31,6 +38,7 @@ const BlockElementSettings = ({ plusMinus,
       <div className="block_body">
           <div className="block_body_input">
               <BlockBodyInput 
+                alphabetActive = {alphabetActive}
                 direction={direction}
                 plusMinus={plusMinus}
                 cShift={cShift}
@@ -44,6 +52,12 @@ const BlockElementSettings = ({ plusMinus,
                 updateKeyword={updateKeyword}
                 keyword={keyword}
                 playSquare = {playSquare}
+                setReplaceLetters = {setReplaceLetters}
+                toReplaceLetter = {toReplaceLetter}
+                replaceLetter = {replaceLetter}
+                ringLength = {ringLength}
+                skytaleLength = {skytaleLength}
+                skytaleProjectedValue = {skytaleProjectedValue}
               />
               <ExplanatoryText 
                 direction={direction}

@@ -29,6 +29,7 @@ const BlockElementInput = ({updateInput, inputValue, clearTextareaInput}) => {
                 defaultValue={inputValue} 
                 onClick = {(evt) => {
                   updateInput(evt)
+                  autoresize(evt)
                 }}
                 onChange={(evt) => {
                   updateInput(evt)

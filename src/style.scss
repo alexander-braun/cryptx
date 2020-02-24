@@ -19,7 +19,10 @@ textarea {
 }
 
 .site_header {
-    height: 96px;
+    position: fixed;
+    z-index: 998;
+    top: 0;
+    height: 80px;
     width: 100%;
     background-color: rgb(17, 24, 32);
     display: flex;
@@ -34,6 +37,7 @@ textarea {
     #header_links {
         transition-duration: $transitionMain;
         margin-right: $mainMarginMin1500;
+        font-weight: 200;
 
         a {
             color: #ffffff;
@@ -169,6 +173,21 @@ textarea {
 }
 
 .block_settings {
+
+    #to_replace_letter, #replacement_letter {
+        resize: none;
+        border: none;
+        overflow: hidden;
+        box-sizing: border-box;
+        width: 100%;
+        height: 2em;
+        padding: 0;
+        line-height: 1.5;
+        font-family: 'Source Sans Pro', sans-serif;
+        font-size: 14pt;
+        font-weight: 300;
+    }
+
     color: #2f1728;
     min-width: 330px;
     max-width: 430px;
@@ -296,6 +315,39 @@ textarea {
         text-transform: uppercase;
         letter-spacing: 1px;
     }
+
+    #caesar_transposition {
+        box-sizing: border-box;
+        width: 100%;
+        padding: 16px 16px 16px 16px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+
+        #alphabet_standart, #alphabet_transpositioned {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-content: center;
+
+            .alphabet_transpos {
+                border-left: 1px solid rgb(255, 255, 255);
+                font-size: 100%;
+                width: 10px;
+                flex-grow: 1;
+                font-weight: 400;
+                text-align: center;
+                text-transform: uppercase;
+                background-color: #ff6b71;
+                color: white;
+                padding: 0;
+                margin: 0;
+                display: flex;
+                flex-direction: column;
+            }
+        }
+    }
+
+
 
     .settings_operators {
         font-size: 25pt;
@@ -482,7 +534,7 @@ textarea {
     align-items: center;
 
     .modal_header {
-        width: 36vw;
+        width: 27vw;
         height: auto;
         background-color: #ff6b71;
         color: white;
@@ -493,7 +545,7 @@ textarea {
     }
 
     .modal_body {
-        width: 36vw;
+        width: 27vw;
         padding: 16px;
         background-color: white;
     }
@@ -514,14 +566,15 @@ textarea {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        justify-content: space-between;
-        align-items: stretch;
+        justify-content: start;
+        align-items: center;
         margin: 0;
         padding: 0;
     }
 
     li {
         list-style: none;
+        padding: .25em;
 
         button {
             border: 0;
@@ -539,11 +592,15 @@ textarea {
         color: black;
         width: fit-content;
         padding: 10px;
-        box-shadow: 0 1px 2px 0 rgba(0,0,0,0.1), 0 3px 1px -2px rgba(0,0,0,0.08), 0 1px 5px 0 rgba(0,0,0,0.16);
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1), 0 1px 3px 1px rgba(0, 0, 0, 0.08), 0 1px 2px 0 rgba(0, 0, 0, 0.16);
         border-radius: 2px;
         background: #fff;
-        margin-top: 16px;
+        transition-duration: 200ms;
+        &:hover {
+            box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.1), 0 2px 4px 2px rgba(0, 0, 0, 0.08), 0 2px 4px 0 rgba(0, 0, 0, 0.16);
+        }
     }
+
 }
 
 .playfairTable {
@@ -569,3 +626,74 @@ textarea {
     width: 100%;
     height: fit-content;
 }
+
+#ring_container {
+    width: 100%;
+    height: auto;
+    -webkit-perspective: 2000; /* For compatibility with iPhone 3.0, we leave off the units here */
+    -webkit-perspective-origin: 50% 225px;
+    padding: 16px;
+}
+  
+.shape {
+    position: relative;
+    margin: 0 auto;
+    height: 25px;
+    width: 27px;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+}
+  
+.plane {
+    position: absolute;
+    height: 27px;
+    width: 30px;
+    border: 1px solid white;
+    border-width: 2px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    text-align: center;
+    font-family: Times, serif;
+    font-size: 10pt;
+    color: black;
+    background-color: #ff6b71;
+    color: white;
+    font-size: 13pt;
+    font-weight: 400;
+    font-family: 'Source Sans Pro', sans-serif;
+    -webkit-transition: -webkit-transform 2s, opacity 2s;
+    transition: -webkit-transform 2s, opacity 2s;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+  
+#turntable {
+    position: relative;
+    margin: 0 auto;
+    height: auto;
+    width: 100px;
+    padding-bottom: 16px;
+    padding-top: 16px;
+
+    transform-style: preserve-3d;
+
+    -webkit-animation: spin 10s infinite linear;
+    animation: spin 10s infinite linear;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+ 
+@-webkit-keyframes spin {
+    from { -webkit-transform: rotateY(0); }
+    to   { -webkit-transform: rotateY(-360deg); }
+}
+
+@keyframes spin {
+    from { -webkit-transform: rotateY(0); }
+    to   { -webkit-transform: rotateY(-360deg); }
+}
+ 
+

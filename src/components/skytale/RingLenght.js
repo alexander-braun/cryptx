@@ -1,14 +1,14 @@
 import React from 'react'
 
-const CaesarShift = ({plusMinus, cShift}) => {
+const RingLength = ({plusMinus, ringLength}) => {
   return (
     <div className="controller">
-      <div className="settings_name">SHIFT</div>
+      <div className="settings_name">RING SEGMENTS</div>
       <div className="settings_operators">
           <div 
             value = '-'
-            id="minus_caesar"
             className="settings_operator" 
+            id="minus_ring"
             onClick={(evt) => {
               plusMinus(evt)
             }}
@@ -19,11 +19,11 @@ const CaesarShift = ({plusMinus, cShift}) => {
             className="settings_operator" 
             id="caesar_shift_value"
           >
-          {cShift}
+          {ringLength}
           </div>
           <div 
             value="+"
-            id="plus_caesar"
+            id="plus_ring"
             className="settings_operator" 
             onClick={(evt) => {
               plusMinus(evt)
@@ -36,4 +36,4 @@ const CaesarShift = ({plusMinus, cShift}) => {
   )
 }
 
-export default CaesarShift
+export default RingLength

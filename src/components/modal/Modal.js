@@ -27,6 +27,17 @@ class Modal extends Component {
                                 <li>
                                     <button 
                                         className="modal_category_method" 
+                                        value="skytale"
+                                        onClick={(evt) => {
+                                            this.props.changeMethod(evt)
+                                        }}
+                                    >
+                                        Skytale
+                                    </button>
+                                </li>
+                                <li>
+                                    <button 
+                                        className="modal_category_method" 
                                         value="affine"
                                         onClick={(evt) => {
                                             this.props.changeMethod(evt)
@@ -71,6 +82,22 @@ class Modal extends Component {
                                         }}
                                     >
                                         Morse Code
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                        <div className="method_category">
+                            <span className="modal_category_title">Text Transformations</span>
+                            <ul>
+                                <li>
+                                    <button
+                                        className="modal_category_method"
+                                        value="replace"
+                                        onClick={(evt) => {
+                                            this.props.changeMethod(evt)
+                                        }}
+                                    >
+                                        Replace
                                     </button>
                                 </li>
                             </ul>

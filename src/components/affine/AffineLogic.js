@@ -1,11 +1,20 @@
+import math from '../math/Math'
+
 const affine = (() => {
 
     //Setup all variables
     
-    let userInput, alphabet, direction, caseFormat, includeChars, alpha, beta
+    let userInput, alphabet, direction, caseFormat, includeChars, alpha, beta, correctedInput
 
     const setUserInput = (input) => {
         userInput = String(input);
+        let temp = []
+        for(let char of userInput) {
+            if(alphabet.indexOf(char.toLowerCase()) !== -1) {
+                temp.push(char)
+            }
+        }
+        correctedInput = temp.join('')
     }
 
     const setAlpha = (input) => {
@@ -110,6 +119,11 @@ const affine = (() => {
     }
 
     const transformText = () => {
+        let rawOutput
+        direction === 'encrypt' ? rawOutput = encrypt(correctedInput, alpha, beta) : rawOutput = decrypt(correctedInput, alpha, beta)
+        return math.transformCaseAndChars(userInput, rawOutput, caseFormat, includeChars)
+        
+        /*
         if(direction === 'encrypt') {
             if(caseFormat === 'maintain') {
                 if(includeChars === 'include') {
@@ -132,6 +146,7 @@ const affine = (() => {
                 } else return removeChars(decrypt(userInput, alpha, beta))
             }
         }
+        */
     } 
 
 

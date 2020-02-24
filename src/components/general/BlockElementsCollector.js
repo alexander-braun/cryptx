@@ -12,6 +12,8 @@ import affine from '../affine/AffineLogic'
 import vigenere from '../vigenere/VigenereLogic'
 import playfair from '../playfair/PlayfairLogic'
 import morse from '../morse/Morselogic'
+import replace from '../replace/ReplaceLogic'
+import skytale from '../skytale/SkytaleLogic'
 
 class BlockElementsCollector extends React.Component  {
   constructor(props) {
@@ -20,8 +22,8 @@ class BlockElementsCollector extends React.Component  {
       modalVisible: false,
       method: 'caesar',
       methodNameInset: "Caesar's Cipher",
-      inputValue: 'Write Something...',
-      outputValue: 'Zulwh Vrphwklqj...',
+      inputValue: 'The quick brown fox jumps over the lazy dog.',
+      outputValue: 'Wkh txlfn eurzq ira mxpsv ryhu wkh odcb grj.',
       direction: 'encrypt',
       caseFormat: 'maintain',
       includeChars: 'include',
@@ -31,7 +33,13 @@ class BlockElementsCollector extends React.Component  {
       affineAlpha: 5,
       affineBeta: 1,
       keyword: 'cipher',
-      playSquare: ''
+      playSquare: '',
+      toReplaceLetter: 'quick',
+      replaceLetter: 'mean',
+      ringLength: 8,
+      skytaleLength: 1,
+      skytaleProjectedValue: '',
+      alphabetActive: true,
     }
 
     this.encrypt = this.encrypt.bind(this)
@@ -44,6 +52,7 @@ class BlockElementsCollector extends React.Component  {
     this.updateKeyword = this.updateKeyword.bind(this)
     this.plusMinus = this.plusMinus.bind(this)
     this.switchModal = this.switchModal.bind(this)
+    this.setReplaceLetters = this.setReplaceLetters.bind(this)
   }
 
   //Modal
@@ -65,39 +74,53 @@ class BlockElementsCollector extends React.Component  {
     this.setState({
       alphabet: 'abcdefghijklmnopqrstuvwxyz',
       caseFormat: 'maintain',
-      includeChars: 'include'
+      includeChars: 'include',
+      method: val
     })
+
     if(val === 'caesar') {
         this.setState({
-            methodNameInset: "Caesar's Cipher"
+          alphabetActive: true,
+          methodNameInset: "Caesar's Cipher"
         })
     } else if(val === 'affine') {
         this.setState({
-            methodNameInset: 'Affine Cipher'
+          alphabetActive: false,
+          methodNameInset: 'Affine Cipher'
         })
     } else if(val === 'vigenere') {
         this.setState({
-            keyword: 'cipher',
-            methodNameInset: 'Vigenère Cipher'
+          keyword: 'cipher',
+          alphabetActive: false,
+          methodNameInset: 'Vigenère Cipher'
         })
     } else if(val === 'playfair') {
         this.setState({
-            keyword: 'playfair example',
-            methodNameInset: 'Playfair Cipher'
+          keyword: 'chonky boii',
+          alphabetActive: false,
+          methodNameInset: 'Playfair Cipher'
         })
     } else if(val === 'morse') {
         this.setState({
+          alphabetActive: false,
           methodNameInset: 'Morse Code'
         })
+    } else if(val === 'replace') {
+        this.setState({
+          alphabetActive: false,
+          methodNameInset: 'Replace'
+        })
+    } else if(val === 'skytale') {
+        this.setState({
+          alphabetActive: false,
+          methodNameInset: 'Skytale'
+        })
     }
-    this.setState({
-          method: val
-    })
     this.encrypt()
   }
 
   updateInput(evt) {
-    if(this.state.inputValue === 'Write Something...') {
+    if(this.state.inputValue === 'The quick brown fox jumps over the lazy dog.') {
       this.setState({
         inputValue: ''
       })
@@ -138,40 +161,79 @@ class BlockElementsCollector extends React.Component  {
       this.encrypt()
   }
 
-  //Caesar
-  plusMinus = (evt) => {
-
-    if(evt.target.innerText === '+') {
-      if(this.state.cShift > 24) {
-        this.setState({
-          cShift: 1
-        })
-      } else {
-        this.setState(prevState => {
-          return {
-            cShift: prevState.cShift + 1
-          }
-        })
-      }
-      this.encrypt()
-    } else if(evt.target.innerText === '-') {
-      if(this.state.cShift < 2) {
-        this.setState({
-          cShift: 25
-        })
-      } else {
-        this.setState(prevState => {
-          return {
-            cShift: prevState.cShift - 1
-          }
-        })
-      }
-      this.encrypt()
-    }
+  updateKeyword = (evt) => {
+    let keyword = evt.target.value.toLowerCase()
+    this.setState({
+        keyword: keyword
+    })
+    this.encrypt()
   }
 
-  //Async load the wordbook for caesar crack
-  
+  //Caesar
+  plusMinus = (evt) => {
+    if(evt.target.innerText === '+') {
+      if(evt.target.id === 'plus_ring') {
+        if(this.state.ringLength > 19) {
+          this.setState({
+            ringLength: 3
+          })
+        } 
+        else {
+          this.setState(prevState => {
+            return {
+              ringLength: prevState.ringLength + 1
+            }
+          })
+        }
+      } 
+      else if(evt.target.id === 'plus_caesar'){
+        if(this.state.cShift > 24) {
+          this.setState({
+            cShift: 0
+          })
+        }
+        else {
+          this.setState(prevState => {
+            return {
+              cShift: prevState.cShift + 1
+            }
+          })
+        }
+      }
+    } 
+    else if(evt.target.innerText === '-') {
+      if(evt.target.id === 'minus_ring') {
+        if(this.state.ringLength < 4) {
+          this.setState({
+            ringLength: 20
+          })
+        } 
+        else {
+          this.setState(prevState => {
+            return {
+              ringLength: prevState.ringLength - 1
+            }
+          })
+        }
+      } 
+      else if(evt.target.id === 'minus_caesar') {
+        if(this.state.cShift < 1) {
+          this.setState({
+            cShift: 25
+          })
+        } 
+        else {
+          this.setState(prevState => {
+            return {
+              cShift: prevState.cShift - 1
+            }
+          })
+        }  
+      }
+    }
+    this.encrypt()
+  }
+
   async componentDidMount() {
     if(this.state.wordbook === ''){
       const url = 'https://raw.githubusercontent.com/dwyl/english-words/master/words_dictionary.json'
@@ -183,15 +245,7 @@ class BlockElementsCollector extends React.Component  {
     }
   }
 
-  updateKeyword = (evt) => {
-    this.setState({
-        keyword: evt.target.value  
-    })
-    this.encrypt()
-  }
-
   //Affine
-
   setAlpha = (evt) => {
     this.setState({
       affineAlpha: evt.target.value
@@ -206,8 +260,28 @@ class BlockElementsCollector extends React.Component  {
     this.encrypt()
   }
 
-  //Do the magic!
+  // Replace
+  setReplaceLetters = (evt) => {
+    if(evt.target.id === 'to_replace_letter') {
+      this.setState({
+        toReplaceLetter: evt.target.value
+      })
+    } else {
+        this.setState({
+          replaceLetter: evt.target.value
+      })  
+    }
+    this.encrypt()
+  }
+  
+  // Skytale
+  setSkytaleRing(evt) {
+    this.setState({
+      ringLength: evt.target.value
+    })
+  }
 
+  //Do the magic!
   encrypt = () => {
     this.setState(prevState => {
       if(prevState.method === 'caesar') {
@@ -221,24 +295,27 @@ class BlockElementsCollector extends React.Component  {
         return {
           outputValue: caesar.encrypt()
         }
-      } else if (prevState.method === 'affine') {
+      } 
+      else if (prevState.method === 'affine') {
         if(prevState.direction !== 'crack') {
+          affine.setAlphabet(prevState.alphabet)
           affine.setUserInput(prevState.inputValue)
           affine.setAlpha(prevState.affineAlpha)
           affine.setBeta(prevState.affineBeta)
-          affine.setAlphabet(prevState.alphabet)
           affine.setDirection(prevState.direction)
           affine.setForeignChars(prevState.includeChars)
           affine.setCase(prevState.caseFormat)
           return {
             outputValue: affine.encrypt()
           }
-        } else {
+        } 
+        else {
           return {
             outputValue: ''
           }
         }
-      } else if (prevState.method === 'vigenere') {
+      } 
+      else if (prevState.method === 'vigenere') {
         if(prevState.direction !== 'crack') {
           vigenere.setUserInput(prevState.inputValue)
           vigenere.setAlphabet(prevState.alphabet)
@@ -249,12 +326,14 @@ class BlockElementsCollector extends React.Component  {
           return {
             outputValue: vigenere.encrypt()
           }
-        } else {
-            return {
+        } 
+        else {
+          return {
               outputValue: ''
-            }
+          }
         }
-      } else if (prevState.method === 'playfair') {
+      } 
+      else if (prevState.method === 'playfair') {
         if(prevState.direction !== 'crack') {
           playfair.setUserInput(prevState.inputValue)
           playfair.setAlphabet(prevState.alphabet)
@@ -266,12 +345,14 @@ class BlockElementsCollector extends React.Component  {
             outputValue: playfair.encrypt(),
             playSquare: playfair.getSquare()
           }
-        } else {
+        } 
+        else {
           return {
             outputValue: ''
           }
         }
-      } else if(prevState.method === 'morse') {
+      } 
+      else if(prevState.method === 'morse') {
         if(prevState.direction !== 'crack') {
           morse.setUserInput(prevState.inputValue)
           morse.setAlphabet(prevState.alphabet)
@@ -281,7 +362,42 @@ class BlockElementsCollector extends React.Component  {
           return {
             outputValue: morse.encrypt()
           }
-        } else {
+        } 
+        else {
+          return {
+            outputValue: ''
+          }
+        }
+      } 
+      else if(prevState.method === 'replace') {
+          if(prevState.direction !== 'crack') {
+            replace.setUserInput(prevState.inputValue)
+            replace.setCase(prevState.caseFormat)
+            replace.setToReplaceLetter(prevState.toReplaceLetter)
+            replace.setReplaceLetter(prevState.replaceLetter)
+            return {
+              outputValue: replace.encrypt()
+            }
+          } 
+          else {
+            return {
+              outputValue: ''
+            }
+          }
+      } 
+      else if(prevState.method === 'skytale') {
+        if(prevState.direction !== 'crack') {
+          skytale.setDirection(prevState.direction)
+          skytale.setCase(prevState.caseFormat)
+          skytale.setUserInput(prevState.inputValue)
+          skytale.setRingLength(prevState.ringLength)
+          return {
+            outputValue: skytale.encrypt()[0],
+            skytaleLength: skytale.encrypt()[1],
+            skytaleProjectedValue: skytale.getProjectedValue()
+          } 
+        }
+        else {
           return {
             outputValue: ''
           }
@@ -317,6 +433,13 @@ class BlockElementsCollector extends React.Component  {
             setAlpha = {this.setAlpha}
             setBeta = {this.setBeta}
             playSquare = {this.state.playSquare}
+            setReplaceLetters = {this.setReplaceLetters}
+            toReplaceLetter = {this.state.toReplaceLetter}
+            replaceLetter = {this.state.replaceLetter}
+            ringLength = {this.state.ringLength}
+            skytaleLength = {this.state.skytaleLength}
+            skytaleProjectedValue = {this.state.skytaleProjectedValue}
+            alphabetActive = {this.state.alphabetActive}
           />
           <BlockConnectorEquals />
           <BlockElementOutput 

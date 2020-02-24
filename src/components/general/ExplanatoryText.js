@@ -27,7 +27,9 @@ const ExplanatoryText = ({direction, method}) => {
         expText =     
         <div className="controller explanation">
           <p id="block_method_explanation">
-            This cracking function uses a brute force attack with the english dictionary. 
+            <b style={{fontSize: '1.25em'}}>Use this functionality on encrypted texts!</b><br></br><br></br>
+
+            This method uses a brute force attack with the english dictionary. 
             It gave better results for shorter phrases and words then frequency analysis.
             If you want to decode longer texts it might be a bit slower though ;)
           </p>
@@ -143,8 +145,50 @@ const ExplanatoryText = ({direction, method}) => {
           <a href="https://en.wikipedia.org/wiki/Morse_code" target="blank">Morse Code Wikipedia</a>
         </div>
       } 
+  } else if(method === 'replace') {
+      if(direction === 'crack') {
+        expText = 
+        <div className="controller explanation">
+          <p id="block_method_explanation">
+            No Crack function yet  :(
+          </p>
+        </div>
+      } else {
+        expText =     
+        <div className="controller explanation">
+          <p id="block_method_explanation">
+            This function will replace any given letter/sign in a text with another character.
+          </p>
+        </div>
+      } 
+  } else if(method === 'skytale') {
+    if(direction === 'crack') {
+      expText = 
+      <div className="controller explanation">
+        <p id="block_method_explanation">
+          No Crack function yet  :(
+        </p>
+        <a href="https://en.wikipedia.org/wiki/Scytale" target="blank">Skytale Wikipedia</a>
+      </div>
+    } else {
+      expText =     
+      <div className="controller explanation">
+        <p id="block_method_explanation">
+          In cryptography, a scytale is a tool used to perform a transposition cipher, consisting of a 
+          cylinder with a strip of parchment wound around it on which is written a message. The ancient 
+          Greeks, and the Spartans in particular, are said to have used this cipher to communicate during 
+          military campaigns.
+
+          The recipient uses a rod of the same diameter on which the parchment is wrapped to read the message. 
+          It has the advantage of being fast and not prone to mistakes—a necessary property when on the 
+          battlefield. It can, however, be easily broken. Since the strip of parchment hints strongly at the 
+          method, the ciphertext would have to be transferred to something less suggestive, somewhat reducing 
+          the advantage noted.
+        </p>
+        <a href="https://en.wikipedia.org/wiki/Scytale" target="blank">Skytale Wikipedia</a>
+      </div>
+    } 
   }
-  
   return expText;
 }
 

@@ -12,7 +12,10 @@ textarea:focus {
 }
 
 .site_header {
-  height: 96px;
+  position: fixed;
+  z-index: 998;
+  top: 0;
+  height: 80px;
   width: 100%;
   background-color: #111820;
   display: -webkit-box;
@@ -39,6 +42,7 @@ textarea:focus {
   -webkit-transition-duration: 100ms;
           transition-duration: 100ms;
   margin-right: 10rem;
+  font-weight: 200;
 }
 
 .site_header #header_links a {
@@ -214,6 +218,21 @@ textarea:focus {
   overflow: hidden;
 }
 
+.block_settings #to_replace_letter, .block_settings #replacement_letter {
+  resize: none;
+  border: none;
+  overflow: hidden;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 100%;
+  height: 2em;
+  padding: 0;
+  line-height: 1.5;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 14pt;
+  font-weight: 300;
+}
+
 .block_settings .block_top_decoration {
   height: 4px;
   background-color: white;
@@ -358,6 +377,53 @@ textarea:focus {
   line-height: 10px;
   text-transform: uppercase;
   letter-spacing: 1px;
+}
+
+.controller #caesar_transposition {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 100%;
+  padding: 16px 16px 16px 16px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.controller #caesar_transposition #alphabet_standart, .controller #caesar_transposition #alphabet_transpositioned {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+}
+
+.controller #caesar_transposition #alphabet_standart .alphabet_transpos, .controller #caesar_transposition #alphabet_transpositioned .alphabet_transpos {
+  border-left: 1px solid white;
+  font-size: 100%;
+  width: 10px;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  font-weight: 400;
+  text-align: center;
+  text-transform: uppercase;
+  background-color: #ff6b71;
+  color: white;
+  padding: 0;
+  margin: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .controller .settings_operators {
@@ -602,7 +668,7 @@ textarea:focus {
 }
 
 .modal .modal_header {
-  width: 36vw;
+  width: 27vw;
   height: auto;
   background-color: #ff6b71;
   color: white;
@@ -613,7 +679,7 @@ textarea:focus {
 }
 
 .modal .modal_body {
-  width: 36vw;
+  width: 27vw;
   padding: 16px;
   background-color: white;
 }
@@ -640,18 +706,19 @@ textarea:focus {
           flex-direction: row;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: stretch;
-      -ms-flex-align: stretch;
-          align-items: stretch;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   margin: 0;
   padding: 0;
 }
 
 .method_category li {
   list-style: none;
+  padding: .25em;
 }
 
 .method_category li button {
@@ -671,11 +738,17 @@ textarea:focus {
   width: -moz-fit-content;
   width: fit-content;
   padding: 10px;
-  -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1), 0 3px 1px -2px rgba(0, 0, 0, 0.08), 0 1px 5px 0 rgba(0, 0, 0, 0.16);
-          box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1), 0 3px 1px -2px rgba(0, 0, 0, 0.08), 0 1px 5px 0 rgba(0, 0, 0, 0.16);
+  -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1), 0 1px 3px 1px rgba(0, 0, 0, 0.08), 0 1px 2px 0 rgba(0, 0, 0, 0.16);
+          box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1), 0 1px 3px 1px rgba(0, 0, 0, 0.08), 0 1px 2px 0 rgba(0, 0, 0, 0.16);
   border-radius: 2px;
   background: #fff;
-  margin-top: 16px;
+  -webkit-transition-duration: 200ms;
+          transition-duration: 200ms;
+}
+
+.method_category .modal_category_method:hover {
+  -webkit-box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.1), 0 2px 4px 2px rgba(0, 0, 0, 0.08), 0 2px 4px 0 rgba(0, 0, 0, 0.16);
+          box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.1), 0 2px 4px 2px rgba(0, 0, 0, 0.08), 0 2px 4px 0 rgba(0, 0, 0, 0.16);
 }
 
 .playfairTable {
@@ -714,5 +787,90 @@ textarea:focus {
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
+}
+
+#ring_container {
+  width: 100%;
+  height: auto;
+  -webkit-perspective: 2000;
+  /* For compatibility with iPhone 3.0, we leave off the units here */
+  -webkit-perspective-origin: 50% 225px;
+  padding: 16px;
+}
+
+.shape {
+  position: relative;
+  margin: 0 auto;
+  height: 25px;
+  width: 27px;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+
+.plane {
+  position: absolute;
+  height: 27px;
+  width: 30px;
+  border: 1px solid white;
+  border-width: 2px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  text-align: center;
+  font-family: Times, serif;
+  font-size: 10pt;
+  color: black;
+  background-color: #ff6b71;
+  color: white;
+  font-size: 13pt;
+  font-weight: 400;
+  font-family: 'Source Sans Pro', sans-serif;
+  -webkit-transition: -webkit-transform 2s, opacity 2s;
+  transition: -webkit-transform 2s, opacity 2s;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+#turntable {
+  position: relative;
+  margin: 0 auto;
+  height: auto;
+  width: 100px;
+  padding-bottom: 16px;
+  padding-top: 16px;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-animation: spin 10s infinite linear;
+  animation: spin 10s infinite linear;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+@-webkit-keyframes spin {
+  from {
+    -webkit-transform: rotateY(0);
+  }
+  to {
+    -webkit-transform: rotateY(-360deg);
+  }
+}
+
+@keyframes spin {
+  from {
+    -webkit-transform: rotateY(0);
+  }
+  to {
+    -webkit-transform: rotateY(-360deg);
+  }
 }
 /*# sourceMappingURL=style.css.map */
