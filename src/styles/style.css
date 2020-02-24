@@ -824,8 +824,8 @@ textarea:focus {
   font-size: 13pt;
   font-weight: 400;
   font-family: 'Source Sans Pro', sans-serif;
-  -webkit-transition: -webkit-transform 2s, opacity 2s;
-  transition: -webkit-transform 2s, opacity 2s;
+  -webkit-transition: -webkit-transform 500ms, opacity 500ms;
+  transition: -webkit-transform 500ms, opacity 500ms;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }
