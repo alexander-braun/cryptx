@@ -2,6 +2,7 @@ import React from 'react'
 
 const Header = () => {
   return (
+    <>
     <div className="site_header">
       <p className="site_title">strngcrypt</p>
       <div id="header_links">
@@ -10,6 +11,9 @@ const Header = () => {
           <a href="#" id="about">About</a>
       </div>
     </div>
+    <div id="header_margin"></div>
+    </>
+
   )
 }
 

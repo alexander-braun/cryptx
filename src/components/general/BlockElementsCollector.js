@@ -14,6 +14,7 @@ import playfair from '../playfair/PlayfairLogic'
 import morse from '../morse/Morselogic'
 import replace from '../replace/ReplaceLogic'
 import skytale from '../skytale/SkytaleLogic'
+import Timeline from '../../components/timeline/Timeline'
 
 class BlockElementsCollector extends React.Component  {
   constructor(props) {
@@ -410,6 +411,7 @@ class BlockElementsCollector extends React.Component  {
     return (
       <>
         <Header />
+        <Timeline />
         <div id = "block_container">
           <BlockElementInput 
             inputValue={this.state.inputValue}

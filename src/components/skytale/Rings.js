@@ -22,6 +22,7 @@ class Rings extends React.Component {
 
         let ringStyles =    { 
                                 WebkitTransform: `rotateY(${rotateValue}deg) translateZ(${d}px)`,
+
                                 backgroundColor: firstCharacterStyle !== '' ? firstCharacterStyle : transparencyValue
                             }
         return ringStyles
