@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700&display=swap');
 
 // Vars
-$mainMarginMin1500: 10rem;
-$mainMarginMax1500: 6rem;
+$mainMarginMin1500: 5rem;
+$mainMarginMax1500: 3rem;
 $mainMarginMax1280: 2rem;
 $mainMarginMax1150: .5rem; 
 $transitionMain: 100ms;
@@ -716,6 +716,93 @@ textarea {
     }
 }
 
+.slick-prev:before, .slick-next:before {
+    color: #ff6b71 !important;
+}
+
+.history_element {
+    font-weight: 400;
+    font-family: 'Source Sans Pro', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 10pt;
+
+    &:focus { 
+        outline: none; 
+    } 
+
+    div {
+        font-size: 15pt;
+        width: 100%;
+        border-top: 1px solid #ff6b71;
+        text-align: center;
+        padding-top: 9px;
+        font-weight: 700;
+    }
+
+    .dot {
+        border: none;
+        width: 10px;
+        height: 10px;
+        position: fixed;
+        background-color: #ff6b71;
+        padding: 0;
+        margin: 2px;
+        border-radius: 50%;
+    }
+
+    h3 {
+        font-size: 10pt;
+        font-weight: 400;
+        margin: 10px;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+.slick-prev:before, .slick-next:before {
+    font-size: 20pt !important;
+}
+
+#timeline {
+    color: white;
+    margin: 0 auto;
+    margin-top: 4rem;
+    min-width: 330px;
+    max-width: 65vw;
+
+    .slick-next {
+        right: -25px;
+        top: 40px;
+        width: fit-content;
+        height: fit-content;
+    }
+    .slick-prev {
+        left : -25px;
+        top: 40px;
+        width: fit-content;
+        height: fit-content;
+    }
+    
+
+    .slick-track {
+
+        &:focus { 
+            outline: none; 
+        }
+    }
+
+    h3 {
+        text-align: center;
+    }
+}
+
+
+
+// MEDIA RULES
+
 @media only screen and (max-width: 1100px) {
     #block_container {
         margin: $mainMarginMin1500 0;
@@ -740,7 +827,7 @@ textarea {
     #header_margin {
         display: none;
     }
-    
+
     .site_header {
         position: relative;
         flex-direction: column;

@@ -45,7 +45,7 @@ textarea:focus {
 .site_header #header_links {
   -webkit-transition-duration: 100ms;
           transition-duration: 100ms;
-  margin-right: 10rem;
+  margin-right: 5rem;
   font-weight: 200;
 }
 
@@ -67,7 +67,7 @@ textarea:focus {
   -webkit-transition-duration: 100ms;
           transition-duration: 100ms;
   font-size: 30pt;
-  margin-left: 10rem;
+  margin-left: 5rem;
 }
 
 .block {
@@ -165,7 +165,7 @@ textarea:focus {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
-  margin: 10rem;
+  margin: 5rem;
   -webkit-transition-duration: 100ms;
           transition-duration: 100ms;
 }
@@ -200,13 +200,13 @@ textarea:focus {
 
 @media only screen and (max-width: 1500px) {
   #block_container {
-    margin: 10rem 6rem;
+    margin: 5rem 3rem;
   }
   .site_header #header_links {
-    margin-right: 6rem;
+    margin-right: 3rem;
   }
   .site_header p {
-    margin-left: 6rem;
+    margin-left: 3rem;
   }
 }
 
@@ -880,7 +880,7 @@ textarea:focus {
 
 @media only screen and (max-width: 1280px) {
   #block_container {
-    margin: 10rem 2rem;
+    margin: 5rem 2rem;
   }
   .site_header #header_links {
     margin-right: 2rem;
@@ -890,9 +890,106 @@ textarea:focus {
   }
 }
 
+.slick-prev:before, .slick-next:before {
+  color: #ff6b71 !important;
+}
+
+.history_element {
+  font-weight: 400;
+  font-family: 'Source Sans Pro', sans-serif;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 10pt;
+}
+
+.history_element:focus {
+  outline: none;
+}
+
+.history_element div {
+  font-size: 15pt;
+  width: 100%;
+  border-top: 1px solid #ff6b71;
+  text-align: center;
+  padding-top: 9px;
+  font-weight: 700;
+}
+
+.history_element .dot {
+  border: none;
+  width: 10px;
+  height: 10px;
+  position: fixed;
+  background-color: #ff6b71;
+  padding: 0;
+  margin: 2px;
+  border-radius: 50%;
+}
+
+.history_element h3 {
+  font-size: 10pt;
+  font-weight: 400;
+  margin: 10px;
+  width: 100%;
+  text-align: center;
+}
+
+.slick-prev:before, .slick-next:before {
+  font-size: 20pt !important;
+}
+
+#timeline {
+  color: white;
+  margin: 0 auto;
+  margin-top: 4rem;
+  min-width: 330px;
+  max-width: 65vw;
+}
+
+#timeline .slick-next {
+  right: -25px;
+  top: 40px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+#timeline .slick-prev {
+  left: -25px;
+  top: 40px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+#timeline .slick-track:focus {
+  outline: none;
+}
+
+#timeline h3 {
+  text-align: center;
+}
+
 @media only screen and (max-width: 1100px) {
   #block_container {
-    margin: 10rem 0;
+    margin: 5rem 0;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
