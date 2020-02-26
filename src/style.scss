@@ -727,14 +727,14 @@ textarea {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-size: 10pt;
+    font-size: 8pt;
 
     &:focus { 
         outline: none; 
     } 
 
     div {
-        font-size: 15pt;
+        font-size: 12pt;
         width: 100%;
         border-top: 1px solid #ff6b71;
         text-align: center;
@@ -754,7 +754,7 @@ textarea {
     }
 
     h3 {
-        font-size: 10pt;
+        font-size: 8pt;
         font-weight: 400;
         margin: 10px;
         width: 100%;
@@ -762,8 +762,16 @@ textarea {
     }
 }
 
+.slick-current {
+    .dot {
+        background-color: white;
+        width: 14px;
+        height: 14px;
+    }
+}
+
 .slick-prev:before, .slick-next:before {
-    font-size: 20pt !important;
+    font-size: 18pt !important;
 }
 
 #timeline {
@@ -771,17 +779,17 @@ textarea {
     margin: 0 auto;
     margin-top: 4rem;
     min-width: 330px;
-    max-width: 65vw;
+    max-width: 45vw;
 
     .slick-next {
-        right: -25px;
-        top: 40px;
+        right: -22px;
+        top: 35px;
         width: fit-content;
         height: fit-content;
     }
     .slick-prev {
-        left : -25px;
-        top: 40px;
+        left : -22px;
+        top: 35px;
         width: fit-content;
         height: fit-content;
     }
