@@ -54,7 +54,6 @@ class BlockElementsCollector extends React.Component  {
     this.plusMinus = this.plusMinus.bind(this)
     this.switchModal = this.switchModal.bind(this)
     this.setReplaceLetters = this.setReplaceLetters.bind(this)
-    this.changeMethodTimeline = this.changeMethodTimeline.bind(this)
   }
 
   //Modal
