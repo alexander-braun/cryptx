@@ -21,10 +21,10 @@ class BlockElementsCollector extends React.Component  {
     super()
     this.state = {
       modalVisible: false,
-      method: 'caesar',
-      methodNameInset: "Caesar's Cipher",
+      method: 'skytale',
+      methodNameInset: "Skytale",
       inputValue: 'The quick brown fox jumps over the lazy dog.',
-      outputValue: 'Wkh txlfn eurzq ira mxpsv ryhu wkh odcb grj.',
+      outputValue: 'Tbjrdhrutoeomhgqwpe.unslifoacovzkxey',
       direction: 'encrypt',
       caseFormat: 'maintain',
       includeChars: 'include',
@@ -54,6 +54,7 @@ class BlockElementsCollector extends React.Component  {
     this.plusMinus = this.plusMinus.bind(this)
     this.switchModal = this.switchModal.bind(this)
     this.setReplaceLetters = this.setReplaceLetters.bind(this)
+    this.changeMethodTimeline = this.changeMethodTimeline.bind(this)
   }
 
   //Modal
@@ -70,8 +71,20 @@ class BlockElementsCollector extends React.Component  {
   }
 
   //General
+  changeMethodTimeline() {
+    let elements = document.getElementsByClassName('slick-slide')
+    
+  }
+
   changeMethod(evt) {
-    let val = evt.target.value
+    let val
+    const methods = ['caesar', 'skytale', 'affine', 'vigenere', 'playfair', 'morse', 'replace']
+    if(methods.indexOf(evt) !== -1) {
+      val = evt
+    } else {
+      val = evt.target.value || evt.target.getAttribute('value')
+    }
+
     this.setState({
       alphabet: 'abcdefghijklmnopqrstuvwxyz',
       caseFormat: 'maintain',
@@ -242,8 +255,12 @@ class BlockElementsCollector extends React.Component  {
       const data = await response.json()
       this.setState({
         wordbook: data
-      })  
+      }) 
     }
+  }
+
+  componentWillMount() {
+    this.encrypt()
   }
 
   //Affine
@@ -411,7 +428,10 @@ class BlockElementsCollector extends React.Component  {
     return (
       <>
         <Header />
-        <Timeline />
+        <Timeline 
+          changeMethod={this.changeMethod} 
+          changeMethodTimeline={this.changeMethodTimeline}
+        />
         <div id = "block_container">
           <BlockElementInput 
             inputValue={this.state.inputValue}
