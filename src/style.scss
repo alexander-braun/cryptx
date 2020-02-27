@@ -6,10 +6,18 @@ $mainMarginMax1500: 3rem;
 $mainMarginMax1280: 2rem;
 $mainMarginMax1150: .5rem; 
 $transitionMain: 100ms;
+$yellowish: #ffce2c;
+$reddish: #ff565d;
+$darkreddish: #b35155;
+$darkreddish: #d6373c;
+
+$blueish: #2f445e;
+$blueish: #406491;
+$greyish: #585858;
 
 
 body {
-    background-color: rgb(52, 72, 97);
+    background-color: $blueish;
     margin: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -169,11 +177,11 @@ textarea {
 }
 
 .block_connector {
-    flex-grow: 0.35;
+    flex-grow: 0.25;
     min-width: 40px;
     height: 65px;
     top: 70px;
-    background-color: rgb(179, 81, 85);
+    background-color: $darkreddish;
     position: relative;
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 35pt;
@@ -366,7 +374,7 @@ textarea {
                 font-weight: 400;
                 text-align: center;
                 text-transform: uppercase;
-                background-color: #ff6b71;
+                background-color: $reddish;
                 color: white;
                 padding: 0;
                 margin: 0;
@@ -556,16 +564,28 @@ textarea {
     top: 0;
     overflow: hidden;
     background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0,0.4);
+    background-color: rgba(0,0,0,0.5);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
+
+    .inner_modal {
+        border-radius: 4px;
+        overflow: hidden;
+    }
+
+    .block_top_decoration {
+        width:calc(27vw + 32px);
+        height: 3px;
+        background-color: white;
+    }
 
     .modal_header {
         width: 27vw;
         height: auto;
-        background-color: #ff6b71;
+        background-color: $reddish;
         color: white;
         font-size: 20pt;
         font-weight: 700;
@@ -685,7 +705,7 @@ textarea {
     font-family: Times, serif;
     font-size: 10pt;
     color: black;
-    background-color: #ff6b71;
+    background-color: $reddish;
     color: white;
     font-size: 13pt;
     font-weight: 400;
@@ -739,7 +759,7 @@ textarea {
 }
 
 .slick-prev:before, .slick-next:before {
-    color: #f5b539 !important;
+    color: $yellowish !important;
 }
 
 div {
@@ -750,7 +770,7 @@ div {
 
 .history_element {
     z-index: 998;
-    font-weight: 300;
+    font-weight: 400;
     font-family: 'Source Sans Pro', sans-serif;
     display: flex;
     flex-direction: column;
@@ -778,14 +798,14 @@ div {
         width: 10px;
         height: 10px;
         position: fixed;
-        background-color: #f5b539;
+        background-color: $yellowish;
         padding: 0;
         border-radius: 50%;
         top: 29px;
     }
 
     h3 {
-        font-weight: 300;
+        font-weight: 400;
         font-size: 8pt;
         margin: 10px;
         width: 100%;
@@ -798,16 +818,16 @@ div {
     transition-duration: .4s;
 }
 .dot {
-    transition-duration: .1s;
+    transition-duration: .2s;
     transition-delay: .2s;
 }
 
 .slick-current {
     .dot {
-        background-color: white;
-        width: 12px;
-        height: 12px;
-        top: 28px;
+        background-color: $yellowish;
+        width: 14px;
+        height: 14px;
+        top: 27px;
     }
     .timeline_description {
         font-weight: 600;
@@ -841,7 +861,7 @@ div {
         height: 0px;
         position: sticky;
         top: 35px;
-        border-bottom: 1px dotted #f5b539;
+        border-bottom: 1px dotted $yellowish;
     }
 
     div {

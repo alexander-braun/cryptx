@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700&display=swap");
 body {
-  background-color: #344861;
+  background-color: #406491;
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -194,13 +194,13 @@ textarea:focus {
 }
 
 .block_connector {
-  -webkit-box-flex: 0.35;
-      -ms-flex-positive: 0.35;
-          flex-grow: 0.35;
+  -webkit-box-flex: 0.25;
+      -ms-flex-positive: 0.25;
+          flex-grow: 0.25;
   min-width: 40px;
   height: 65px;
   top: 70px;
-  background-color: #b35155;
+  background-color: #d6373c;
   position: relative;
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 35pt;
@@ -444,7 +444,7 @@ textarea:focus {
   font-weight: 400;
   text-align: center;
   text-transform: uppercase;
-  background-color: #ff6b71;
+  background-color: #ff565d;
   color: white;
   padding: 0;
   margin: 0;
@@ -682,7 +682,7 @@ textarea:focus {
   top: 0;
   overflow: hidden;
   background-color: black;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.5);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -696,12 +696,24 @@ textarea:focus {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  overflow: hidden;
+}
+
+.modal .inner_modal {
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.modal .block_top_decoration {
+  width: calc(27vw + 32px);
+  height: 3px;
+  background-color: white;
 }
 
 .modal .modal_header {
   width: 27vw;
   height: auto;
-  background-color: #ff6b71;
+  background-color: #ff565d;
   color: white;
   font-size: 20pt;
   font-weight: 700;
@@ -850,7 +862,7 @@ textarea:focus {
   font-family: Times, serif;
   font-size: 10pt;
   color: black;
-  background-color: #ff6b71;
+  background-color: #ff565d;
   color: white;
   font-size: 13pt;
   font-weight: 400;
@@ -918,7 +930,7 @@ textarea:focus {
 }
 
 .slick-prev:before, .slick-next:before {
-  color: #f5b539 !important;
+  color: #ffce2c !important;
 }
 
 div:focus {
@@ -927,7 +939,7 @@ div:focus {
 
 .history_element {
   z-index: 998;
-  font-weight: 300;
+  font-weight: 400;
   font-family: 'Source Sans Pro', sans-serif;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -965,14 +977,14 @@ div:focus {
   width: 10px;
   height: 10px;
   position: fixed;
-  background-color: #f5b539;
+  background-color: #ffce2c;
   padding: 0;
   border-radius: 50%;
   top: 29px;
 }
 
 .history_element h3 {
-  font-weight: 300;
+  font-weight: 400;
   font-size: 8pt;
   margin: 10px;
   width: 100%;
@@ -988,17 +1000,17 @@ div:focus {
 }
 
 .dot {
-  -webkit-transition-duration: .1s;
-          transition-duration: .1s;
+  -webkit-transition-duration: .2s;
+          transition-duration: .2s;
   -webkit-transition-delay: .2s;
           transition-delay: .2s;
 }
 
 .slick-current .dot {
-  background-color: white;
-  width: 12px;
-  height: 12px;
-  top: 28px;
+  background-color: #ffce2c;
+  width: 14px;
+  height: 14px;
+  top: 27px;
 }
 
 .slick-current .timeline_description {
@@ -1033,7 +1045,7 @@ div:focus {
   position: -webkit-sticky;
   position: sticky;
   top: 35px;
-  border-bottom: 1px dotted #f5b539;
+  border-bottom: 1px dotted #ffce2c;
 }
 
 #timeline div:focus {

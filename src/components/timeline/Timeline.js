@@ -138,7 +138,7 @@ class Timeline extends React.Component {
                         <div value='caesar' className="history_element">
                             <h3 value='caesar'>100 B.C. – 44 B.C.</h3>
                             <div value='caesar' className="dot"></div>
-                            <div value='caesar' className="timeline_description">Caesar Cipher</div>
+                            <div value='caesar' className="timeline_description">Caesar's Cipher</div>
                         </div>
                     </div>
                     <div    value='affine' 
