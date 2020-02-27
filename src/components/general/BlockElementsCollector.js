@@ -71,10 +71,6 @@ class BlockElementsCollector extends React.Component  {
   }
 
   //General
-  changeMethodTimeline() {
-    let elements = document.getElementsByClassName('slick-slide')
-    
-  }
 
   changeMethod(evt) {
     let val
