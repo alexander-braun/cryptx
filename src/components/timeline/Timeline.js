@@ -69,23 +69,23 @@ class Timeline extends React.Component {
             }
         }
 
-        if(prevState.activeSlide2 !== this.state.activeSlide2) {
-            if(this.state.activeSlide2 === 0) {
+        if(prevState.activeSlide !== this.state.activeSlide) {
+            if(this.state.activeSlide === 0) {
                 return this.props.changeMethod('skytale')
             }
-            else if(this.state.activeSlide2 === 1) {
+            else if(this.state.activeSlide === 1) {
                 return this.props.changeMethod('caesar')
             }    
-            else if(this.state.activeSlide2 === 2) {
+            else if(this.state.activeSlide === 2) {
                 return this.props.changeMethod('affine')
             }
-            else if(this.state.activeSlide2 === 3) {
+            else if(this.state.activeSlide === 3) {
                 return this.props.changeMethod('vigenere')
             }
-            else if(this.state.activeSlide2 === 4) {
+            else if(this.state.activeSlide === 4) {
                 return this.props.changeMethod('morse')
             }
-            else if(this.state.activeSlide2 === 5) {
+            else if(this.state.activeSlide === 5) {
                 return this.props.changeMethod('playfair')
             }
         }

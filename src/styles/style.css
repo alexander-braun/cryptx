@@ -173,9 +173,9 @@ textarea:focus {
 }
 
 .block_connector {
-  -webkit-box-flex: 0.25;
-      -ms-flex-positive: 0.25;
-          flex-grow: 0.25;
+  -webkit-box-flex: 0.35;
+      -ms-flex-positive: 0.35;
+          flex-grow: 0.35;
   min-width: 40px;
   height: 65px;
   top: 70px;
