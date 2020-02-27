@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700&display=swap");
 body {
   background-color: #344861;
   margin: 0;
@@ -56,20 +56,41 @@ textarea:focus {
 }
 
 .site_header #header_links #login {
+  -webkit-transition-duration: .2s;
+          transition-duration: .2s;
   margin-right: 2rem;
 }
 
 .site_header #header_links #signup {
+  -webkit-transition-duration: .2s;
+          transition-duration: .2s;
   margin-right: 2rem;
+}
+
+.site_header #header_links #about {
+  -webkit-transition-duration: .2s;
+          transition-duration: .2s;
 }
 
 .site_header p {
   -webkit-transition-duration: 100ms;
           transition-duration: 100ms;
   font-size: 30pt;
+  margin-top: 0;
+  margin-bottom: 0;
   margin-left: 5rem;
   line-height: 1;
   outline: none;
+}
+
+.site_header #header_links #login, .site_header #header_links #signup, .site_header #header_links #about {
+  -webkit-box-shadow: 0px 0px black;
+          box-shadow: 0px 0px black;
+}
+
+.site_header #header_links #login:hover, .site_header #header_links #signup:hover, .site_header #header_links #about:hover {
+  -webkit-box-shadow: 0px 4px white;
+          box-shadow: 0px 4px white;
 }
 
 .block {
@@ -183,7 +204,7 @@ textarea:focus {
   position: relative;
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 35pt;
-  font-weight: 700;
+  font-weight: 400;
   color: #ffffff;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -897,7 +918,7 @@ textarea:focus {
 }
 
 .slick-prev:before, .slick-next:before {
-  color: #ff6b71 !important;
+  color: #f5b539 !important;
 }
 
 div:focus {
@@ -906,7 +927,7 @@ div:focus {
 
 .history_element {
   z-index: 998;
-  font-weight: 400;
+  font-weight: 300;
   font-family: 'Source Sans Pro', sans-serif;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -933,12 +954,10 @@ div:focus {
 }
 
 .history_element div {
-  font-size: 12pt;
+  font-size: 13pt;
   width: 100%;
-  border-top: 1px solid #ff6b71;
   text-align: center;
   padding-top: 9px;
-  font-weight: 700;
 }
 
 .history_element .dot {
@@ -946,17 +965,15 @@ div:focus {
   width: 10px;
   height: 10px;
   position: fixed;
-  background-color: #ff6b71;
+  background-color: #f5b539;
   padding: 0;
   border-radius: 50%;
-  -webkit-transition-duration: .7s;
-          transition-duration: .7s;
-  top: 28.5px;
+  top: 29px;
 }
 
 .history_element h3 {
+  font-weight: 300;
   font-size: 8pt;
-  font-weight: 400;
   margin: 10px;
   width: 100%;
   text-align: center;
@@ -965,26 +982,58 @@ div:focus {
   width: fit-content;
 }
 
+.timeline_description, .dot, h3 {
+  -webkit-transition-duration: .4s;
+          transition-duration: .4s;
+}
+
+.dot {
+  -webkit-transition-duration: .1s;
+          transition-duration: .1s;
+  -webkit-transition-delay: .2s;
+          transition-delay: .2s;
+}
+
 .slick-current .dot {
   background-color: white;
-  width: 14px;
-  height: 14px;
-  margin: 2px;
-  top: 25px;
+  width: 12px;
+  height: 12px;
+  top: 28px;
+}
+
+.slick-current .timeline_description {
+  font-weight: 600;
+  letter-spacing: .5px;
+}
+
+.slick-current h3 {
+  font-weight: 600;
+  letter-spacing: 3px;
 }
 
 .slick-prev:before, .slick-next:before {
-  font-size: 18pt !important;
+  font-size: 20pt !important;
 }
 
 #timeline {
   color: white;
-  padding: 10px;
+  padding: 25px;
   margin: 0 auto;
   margin-top: 4rem;
   margin-bottom: 0rem;
   min-width: 330px;
   max-width: 45vw;
+  overflow: hidden;
+}
+
+#timeline .timeline_border {
+  min-width: 100%;
+  max-width: 45vw;
+  height: 0px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 35px;
+  border-bottom: 1px dotted #f5b539;
 }
 
 #timeline div:focus {
@@ -992,8 +1041,8 @@ div:focus {
 }
 
 #timeline .slick-next {
-  right: -22px;
-  top: 35px;
+  right: -25px;
+  top: 37px;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -1003,8 +1052,8 @@ div:focus {
 }
 
 #timeline .slick-prev {
-  left: -22px;
-  top: 35px;
+  left: -25px;
+  top: 37px;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -1074,10 +1123,6 @@ div:focus {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-  }
-  .site_header #header_links #login, .site_header #header_links #signup, .site_header #header_links #about {
-    margin: 1rem;
-    font-size: 12pt;
   }
   .site_header #header_links {
     margin: 2px 0;

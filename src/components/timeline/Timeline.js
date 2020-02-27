@@ -112,6 +112,7 @@ class Timeline extends React.Component {
 
         return (
             <div id="timeline">
+                <div className="timeline_border"></div>
                 <Slider ref={c => (this.slider = c)} {...settings}>
                     <div    value='skytale' 
                             key={1} 
@@ -122,8 +123,8 @@ class Timeline extends React.Component {
                     >
                         <div value='skytale' className="history_element">
                             <h3 value='skytale'>300 B.C.</h3>
-                            <div value='skytale' class="dot"></div>
-                            <div value='skytale'>Skytale</div>
+                            <div value='skytale' className="dot"></div>
+                            <div value='skytale' className="timeline_description">Skytale</div>
                         </div>
                     </div>
 
@@ -136,8 +137,8 @@ class Timeline extends React.Component {
                     >
                         <div value='caesar' className="history_element">
                             <h3 value='caesar'>100 B.C. – 44 B.C.</h3>
-                            <div value='caesar' class="dot"></div>
-                            <div value='caesar'>Caesar Cipher</div>
+                            <div value='caesar' className="dot"></div>
+                            <div value='caesar' className="timeline_description">Caesar Cipher</div>
                         </div>
                     </div>
                     <div    value='affine' 
@@ -149,8 +150,8 @@ class Timeline extends React.Component {
                     >
                         <div value='affine' className="history_element">
                             <h3 value='affine'>100 B.C. – 44 B.C.</h3>
-                            <div value='affine' class="dot"></div>
-                            <div value='affine'>Affine Cipher</div>
+                            <div value='affine' className="dot"></div>
+                            <div value='affine' className="timeline_description">Affine Cipher</div>
                         </div>
                     </div>
                     <div    value='vigenere' 
@@ -162,8 +163,8 @@ class Timeline extends React.Component {
                     >
                         <div value='vigenere' className="history_element">
                             <h3 value='vigenere'>1553</h3>
-                            <div value='vigenere' class="dot"></div>
-                            <div value='vigenere'>Vigenère Cipher</div>
+                            <div value='vigenere' className="dot"></div>
+                            <div value='vigenere' className="timeline_description">Vigenère Cipher</div>
                         </div>
                     </div>
                     <div    value='morse' 
@@ -175,8 +176,8 @@ class Timeline extends React.Component {
                     >
                         <div value='morse' className="history_element">
                             <h3 value='morse'>1837</h3>
-                            <div value='morse' class="dot"></div>
-                            <div value='morse'>Morse Code</div>
+                            <div value='morse' className="dot"></div>
+                            <div value='morse' className="timeline_description">Morse Code</div>
                         </div>
                     </div>
                     <div    value='playfair' 
@@ -188,8 +189,8 @@ class Timeline extends React.Component {
                     >
                         <div value='playfair' className="history_element">
                             <h3 value='playfair'>1854</h3>
-                            <div value='playfair' class="dot"></div>
-                            <div value='playfair'>Playfair Cipher</div>
+                            <div value='playfair' className="dot"></div>
+                            <div value='playfair' className="timeline_description">Playfair Cipher</div>
                         </div>
                     </div>             
                 </Slider>

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700&display=swap');
 
 // Vars
 $mainMarginMin1500: 5rem;
@@ -49,24 +49,42 @@ textarea {
             color: #ffffff;
             text-decoration: none;
             font-size: 15pt;
+
         }
 
         #login {
+            transition-duration: .2s;
             margin-right: 2rem;
         }
 
         #signup {
+            transition-duration: .2s;
             margin-right: 2rem;
+        }
+
+        #about {
+            transition-duration: .2s;
         }
     }
 
     p {
         transition-duration: $transitionMain;
         font-size: 30pt;
+        margin-top: 0;
+        margin-bottom: 0;
         margin-left: $mainMarginMin1500;
         line-height: 1;
         outline: none;
     }
+}
+
+.site_header #header_links {
+    #login, #signup, #about {
+        box-shadow: 0px 0px black;
+        &:hover{
+            box-shadow: 0px 4px white;
+        }
+    }    
 }
 
 
@@ -159,7 +177,7 @@ textarea {
     position: relative;
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 35pt;
-    font-weight: 700;
+    font-weight: 400;
     color: #ffffff;
     display: flex;
     flex-direction: row;
@@ -721,7 +739,7 @@ textarea {
 }
 
 .slick-prev:before, .slick-next:before {
-    color: #ff6b71 !important;
+    color: #f5b539 !important;
 }
 
 div {
@@ -732,7 +750,7 @@ div {
 
 .history_element {
     z-index: 998;
-    font-weight: 400;
+    font-weight: 300;
     font-family: 'Source Sans Pro', sans-serif;
     display: flex;
     flex-direction: column;
@@ -749,12 +767,10 @@ div {
     }
 
     div {
-        font-size: 12pt;
+        font-size: 13pt;
         width: 100%;
-        border-top: 1px solid #ff6b71;
         text-align: center;
         padding-top: 9px;
-        font-weight: 700;
     }
 
     .dot {
@@ -762,16 +778,15 @@ div {
         width: 10px;
         height: 10px;
         position: fixed;
-        background-color: #ff6b71;
+        background-color: #f5b539;
         padding: 0;
         border-radius: 50%;
-        transition-duration: .7s;
-        top: 28.5px;
+        top: 29px;
     }
 
     h3 {
+        font-weight: 300;
         font-size: 8pt;
-        font-weight: 400;
         margin: 10px;
         width: 100%;
         text-align: center;
@@ -779,28 +794,55 @@ div {
     }
 }
 
+.timeline_description, .dot, h3 {
+    transition-duration: .4s;
+}
+.dot {
+    transition-duration: .1s;
+    transition-delay: .2s;
+}
+
 .slick-current {
     .dot {
         background-color: white;
-        width: 14px;
-        height: 14px;
-        margin: 2px;
-        top: 25px;
+        width: 12px;
+        height: 12px;
+        top: 28px;
+    }
+    .timeline_description {
+        font-weight: 600;
+        letter-spacing: .5px;
+    }
+    h3 {
+        font-weight: 600;
+        letter-spacing: 3px;
     }
 }
 
 .slick-prev:before, .slick-next:before {
-    font-size: 18pt !important;
+    font-size: 20pt !important;
 }
+
+
 
 #timeline {
     color: white;
-    padding: 10px;
+    padding: 25px;
     margin: 0 auto;
     margin-top: 4rem;
     margin-bottom: 0rem;
     min-width: 330px;
     max-width: 45vw;
+    overflow: hidden;
+
+    .timeline_border {
+        min-width: 100%;
+        max-width: 45vw;
+        height: 0px;
+        position: sticky;
+        top: 35px;
+        border-bottom: 1px dotted #f5b539;
+    }
 
     div {
         &:focus {
@@ -809,14 +851,14 @@ div {
     }
 
     .slick-next {
-        right: -22px;
-        top: 35px;
+        right: -25px;
+        top: 37px;
         width: fit-content;
         height: fit-content;
     }
     .slick-prev {
-        left : -22px;
-        top: 35px;
+        left : -25px;
+        top: 37px;
         width: fit-content;
         height: fit-content;
     }
@@ -888,14 +930,6 @@ div {
         height: fit-content;
         justify-content: center;
         align-items: center;
-
-        #header_links {
-
-            #login, #signup, #about {
-                margin: 1rem;
-                font-size: 12pt;
-            }    
-        }
 
         #header_links {
             margin: 2px 0;
