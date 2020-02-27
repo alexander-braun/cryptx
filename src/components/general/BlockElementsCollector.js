@@ -424,8 +424,7 @@ class BlockElementsCollector extends React.Component  {
       <>
         <Header />
         <Timeline 
-          changeMethod={this.changeMethod} 
-          changeMethodTimeline={this.changeMethodTimeline}
+          changeMethod={this.changeMethod}
         />
         <div id = "block_container">
           <BlockElementInput 
