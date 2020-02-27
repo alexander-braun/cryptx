@@ -64,6 +64,8 @@ textarea {
         transition-duration: $transitionMain;
         font-size: 30pt;
         margin-left: $mainMarginMin1500;
+        line-height: 0;
+        outline: none;
     }
 }
 
@@ -762,9 +764,9 @@ div {
         position: fixed;
         background-color: #ff6b71;
         padding: 0;
-        margin: 2px;
         border-radius: 50%;
         transition-duration: .7s;
+        top: 28.5px;
     }
 
     h3 {

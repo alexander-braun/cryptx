@@ -4,7 +4,7 @@ const Header = () => {
   return (
     <>
     <div className="site_header">
-      <p className="site_title">strngcrypt</p>
+      <p className="site_title">cryptx</p>
       <div id="header_links">
           <a href="#" id="login">Login</a>
           <a href="#" id="signup">Sign up</a>

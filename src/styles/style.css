@@ -68,6 +68,8 @@ textarea:focus {
           transition-duration: 100ms;
   font-size: 30pt;
   margin-left: 5rem;
+  line-height: 0;
+  outline: none;
 }
 
 .block {
@@ -946,10 +948,10 @@ div:focus {
   position: fixed;
   background-color: #ff6b71;
   padding: 0;
-  margin: 2px;
   border-radius: 50%;
   -webkit-transition-duration: .7s;
           transition-duration: .7s;
+  top: 28.5px;
 }
 
 .history_element h3 {
