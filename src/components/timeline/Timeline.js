@@ -39,30 +39,54 @@ class Timeline extends React.Component {
     }
 
     viewportWidth = () => {
-            if(this.vw < 700) {
+            if(this.vw < 1100) {
                 return 1
             } else return 3
     }
 
     componentDidUpdate(prevProps, prevState) {
+        if(prevProps.method !== this.props.method) {
+            if(this.props.method === 'skytale') {
+                return this.slider.slickGoTo(0)
+            }
+            else if(this.props.method === 'caesar') {
+                return this.slider.slickGoTo(1)
+            }
+            else if(this.props.method === 'affine') {
+                return this.slider.slickGoTo(2)
+            }
+            else if(this.props.method === 'vigenere') {
+                return this.slider.slickGoTo(3)
+            }
+            else if(this.props.method === 'morse') {
+                return this.slider.slickGoTo(4)
+            }
+            else if(this.props.method === 'playfair') {
+                return this.slider.slickGoTo(5)
+            } else {
+                let current = document.getElementsByClassName('slick-current')[0]
+                current.classList.remove('slick-current')
+            }
+        }
+
         if(prevState.activeSlide2 !== this.state.activeSlide2) {
             if(this.state.activeSlide2 === 0) {
-                this.props.changeMethod('skytale')
+                return this.props.changeMethod('skytale')
             }
             else if(this.state.activeSlide2 === 1) {
-                this.props.changeMethod('caesar')
+                return this.props.changeMethod('caesar')
             }    
             else if(this.state.activeSlide2 === 2) {
-                this.props.changeMethod('affine')
+                return this.props.changeMethod('affine')
             }
             else if(this.state.activeSlide2 === 3) {
-                this.props.changeMethod('vigenere')
+                return this.props.changeMethod('vigenere')
             }
             else if(this.state.activeSlide2 === 4) {
-                this.props.changeMethod('morse')
+                return this.props.changeMethod('morse')
             }
             else if(this.state.activeSlide2 === 5) {
-                this.props.changeMethod('playfair')
+                return this.props.changeMethod('playfair')
             }
         }
     }

@@ -68,7 +68,7 @@ textarea:focus {
           transition-duration: 100ms;
   font-size: 30pt;
   margin-left: 5rem;
-  line-height: 0;
+  line-height: 1;
   outline: none;
 }
 
@@ -88,7 +88,7 @@ textarea:focus {
 }
 
 .block .block_head {
-  height: 67px;
+  height: 100px;
   background-color: #ff6b71;
   color: white;
   font-family: 'Source Sans Pro', sans-serif;
@@ -173,11 +173,11 @@ textarea:focus {
 }
 
 .block_connector {
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
+  -webkit-box-flex: 0.25;
+      -ms-flex-positive: 0.25;
+          flex-grow: 0.25;
   min-width: 40px;
-  height: 90px;
+  height: 65px;
   top: 70px;
   background-color: #b35155;
   position: relative;
@@ -245,7 +245,7 @@ textarea:focus {
 }
 
 .block_settings .block_head {
-  height: 115px;
+  height: 100px;
   background-color: #ff6b71;
   color: white;
   font-family: 'Source Sans Pro', sans-serif;
@@ -981,8 +981,8 @@ div:focus {
   color: white;
   padding: 10px;
   margin: 0 auto;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  margin-top: 4rem;
+  margin-bottom: 0rem;
   min-width: 330px;
   max-width: 45vw;
 }
@@ -1115,6 +1115,7 @@ div:focus {
             box-sizing: border-box;
     max-width: 80%;
     padding: 20px;
+    margin-top: 0rem;
   }
   #timeline .slick-slide.slick-active.slick-current .dot {
     top: 24px;

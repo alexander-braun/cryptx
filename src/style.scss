@@ -64,7 +64,7 @@ textarea {
         transition-duration: $transitionMain;
         font-size: 30pt;
         margin-left: $mainMarginMin1500;
-        line-height: 0;
+        line-height: 1;
         outline: none;
     }
 }
@@ -83,7 +83,7 @@ textarea {
     }
 
     .block_head {
-        height: 67px;
+        height: 100px;
         background-color: rgb(255, 107, 113);
         color: rgb(255, 255, 255);
         font-family: 'Source Sans Pro', sans-serif;
@@ -151,9 +151,9 @@ textarea {
 }
 
 .block_connector {
-    flex-grow: 1;
+    flex-grow: 0.25;
     min-width: 40px;
-    height: 90px;
+    height: 65px;
     top: 70px;
     background-color: rgb(179, 81, 85);
     position: relative;
@@ -211,7 +211,7 @@ textarea {
     }
 
     .block_head {
-        height: 115px;
+        height: 100px;
         background-color: rgb(255, 107, 113);
         color: rgb(255, 255, 255);
         font-family: 'Source Sans Pro', sans-serif;
@@ -794,14 +794,11 @@ div {
 }
 
 #timeline {
-
-
-
     color: white;
     padding: 10px;
     margin: 0 auto;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
+    margin-top: 4rem;
+    margin-bottom: 0rem;
     min-width: 330px;
     max-width: 45vw;
 
@@ -948,7 +945,7 @@ div {
         box-sizing: border-box;
         max-width: 80%;
         padding: 20px;
-
+        margin-top: 0rem;
         .slick-slide.slick-active.slick-current{
             .dot {
                 top: 24px;
