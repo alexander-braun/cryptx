@@ -56,9 +56,12 @@ class Timeline extends React.Component {
                 this.props.changeMethod('affine')
             }
             else if(this.state.activeSlide2 === 3) {
-                this.props.changeMethod('morse')
+                this.props.changeMethod('vigenere')
             }
             else if(this.state.activeSlide2 === 4) {
+                this.props.changeMethod('morse')
+            }
+            else if(this.state.activeSlide2 === 5) {
                 this.props.changeMethod('playfair')
             }
         }
