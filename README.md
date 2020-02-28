@@ -16,7 +16,5 @@ This project is meant to be a fun introduction into the field
 of cryptography.
 
 <br>
-<br>
-<br>
 
 https://alexander-braun.github.io/strngcrypt/
