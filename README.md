@@ -14,3 +14,9 @@ the overall experience to be more pleasant then your average
 black-box encryption app.
 This project is meant to be a fun introduction into the field
 of cryptography.
+
+<br>
+<br>
+<br>
+
+https://alexander-braun.github.io/strngcrypt/
