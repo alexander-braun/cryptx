@@ -11,4 +11,6 @@ their message. By providing a visualization of key mappings,
 interactive displays of middle steps, short explanatory 
 helper texts and links to further reading material, I believe 
 the overall experience to be more pleasant then your average
-black-box encryption app. 
+black-box encryption app.
+This project is meant to be a fun introduction into the field
+of cryptography.
