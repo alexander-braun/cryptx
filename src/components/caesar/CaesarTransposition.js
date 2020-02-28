@@ -44,7 +44,6 @@ class CaesarTransposition extends React.Component {
             let temp = alphabet.shift()
             alphabet.push(temp)
         }
-        console.log(alphabet)
         let output = []
         for(let i = 0; i < alphabet.length; i++) {
             output.push(

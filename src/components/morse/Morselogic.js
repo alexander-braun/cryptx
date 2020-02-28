@@ -112,7 +112,9 @@ const morse = (() => {
             } else if(values.indexOf(char) !== -1) {
                 outputArray.push(Object.keys(characters).find(key => characters[key] === char));
             } else {
-                return ['Invalid Characters or not valid Morse Code'];
+                if(char) {
+                    return ['Invalid Characters or not valid Morse Code'];
+                }
             }
         }
 

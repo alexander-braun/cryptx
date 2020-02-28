@@ -2,11 +2,34 @@ import React from 'react'
 
 const ExplanatoryText = ({direction, method}) => {
   let expText
+  if(method === 'atbash') {
+    if(direction !== 'crack') {
+      expText = 
+        <div className="controller explanation">
+          <p className="block_method_explanation">
+            Atbash (Hebrew: אתבש‎; also transliterated Atbaš) is a monoalphabetic 
+            substitution cipher originally used to encrypt the Hebrew alphabet. 
+            It can be modified for use with any known writing system with a standard 
+            collating order.
+          </p>
+          <a href="https://en.wikipedia.org/wiki/Atbash" target="blank">Atbash Cipher Wikipedia</a>
+        </div>
+    } 
+    else {
+      expText = 
+        <div className="controller explanation">
+          <p className="block_method_explanation">
+            No Crack function yet  :(
+          </p>
+          <a href="https://en.wikipedia.org/wiki/Atbash" target="blank">Atbash Cipher Wikipedia</a>
+        </div>
+    }
+  }
   if(method === 'caesar') {
     if(direction !== 'crack') {
       expText =     
       <div className="controller explanation">
-        <p id="block_method_explanation">
+        <p className="block_method_explanation">
             In cryptography, a Caesar cipher, also known as Caesar's cipher, the shift 
             cipher, Caesar's code or Caesar shift, is one of the simplest and most 
             widely known encryption techniques. It is a type of substitution cipher 
@@ -26,7 +49,7 @@ const ExplanatoryText = ({direction, method}) => {
     } else {
         expText =     
         <div className="controller explanation">
-          <p id="block_method_explanation">
+          <p className="block_method_explanation">
             <b style={{fontSize: '1.25em'}}>Use this functionality on encrypted texts!</b><br></br><br></br>
 
             This method uses a brute force attack with the english dictionary. 
@@ -39,16 +62,16 @@ const ExplanatoryText = ({direction, method}) => {
   } else if(method === 'affine') {
       if(direction === 'crack') {
         expText = 
-        <div className="controller explanation">
-          <p id="block_method_explanation">
-            No Crack function yet  :(
-          </p>
-          <a href="https://en.wikipedia.org/wiki/Affine_cipher" target="blank">Affine cipher Wikipedia</a>
-        </div>
+          <div className="controller explanation">
+            <p className="block_method_explanation">
+              No Crack function yet  :(
+            </p>
+            <a href="https://en.wikipedia.org/wiki/Affine_cipher" target="blank">Affine cipher Wikipedia</a>
+          </div>
       } else {
         expText =     
         <div className="controller explanation">
-          <p id="block_method_explanation">
+          <p className="block_method_explanation">
           The affine is a type of monoalphabetic substitution cipher, where each letter in an alphabet 
           is mapped to its numeric equivalent, encrypted using a simple mathematical function, and 
           converted back to a letter. The formula used means that each letter encrypts to one other 
@@ -64,7 +87,7 @@ const ExplanatoryText = ({direction, method}) => {
       if(direction === 'crack') {
         expText = 
         <div className="controller explanation">
-          <p id="block_method_explanation">
+          <p className="block_method_explanation">
             No Crack function yet  :(
           </p>
           <a href="https://en.wikipedia.org/wiki/Vigen%C3%A8re_cipher" target="blank">Vigenere Cipher Wikipedia</a>
@@ -72,7 +95,7 @@ const ExplanatoryText = ({direction, method}) => {
       } else {
         expText =     
         <div className="controller explanation">
-          <p id="block_method_explanation">
+          <p className="block_method_explanation">
           The Vigenère cipher is a method of encrypting alphabetic text 
           by using a series of interwoven Caesar ciphers, based on the letters of a keyword. It employs a 
           form of polyalphabetic substitution.
@@ -93,7 +116,7 @@ const ExplanatoryText = ({direction, method}) => {
       if(direction === 'crack') {
         expText = 
         <div className="controller explanation">
-          <p id="block_method_explanation">
+          <p className="block_method_explanation">
             No Crack function yet  :(
           </p>
           <a href="https://en.wikipedia.org/wiki/Playfair_cipher" target="blank">Playfair Cipher Wikipedia</a>
@@ -101,7 +124,7 @@ const ExplanatoryText = ({direction, method}) => {
       } else {
         expText =     
         <div className="controller explanation">
-          <p id="block_method_explanation">
+          <p className="block_method_explanation">
             The Playfair cipher or Playfair square or Wheatstone-Playfair cipher is a manual symmetric encryption 
             technique and was the first literal digram substitution cipher. The scheme was invented in 1854 by 
             Charles Wheatstone, but bears the name of Lord Playfair for promoting its use.
@@ -120,7 +143,7 @@ const ExplanatoryText = ({direction, method}) => {
       if(direction === 'crack') {
         expText = 
         <div className="controller explanation">
-          <p id="block_method_explanation">
+          <p className="block_method_explanation">
             No Crack function yet  :(
           </p>
           <a href="https://en.wikipedia.org/wiki/Morse_code" target="blank">Morse Code Wikipedia</a>
@@ -128,7 +151,7 @@ const ExplanatoryText = ({direction, method}) => {
       } else {
         expText =     
         <div className="controller explanation">
-          <p id="block_method_explanation">
+          <p className="block_method_explanation">
             The International Morse Code encodes the 26 English letters A through Z, some non-English letters, the Arabic 
             numerals and a small set of punctuation and procedural signals (prosigns). There is no distinction between upper
             and lower case letters. Each Morse code symbol is formed by a sequence of dots and dashes. The dot duration 
@@ -149,14 +172,14 @@ const ExplanatoryText = ({direction, method}) => {
       if(direction === 'crack') {
         expText = 
         <div className="controller explanation">
-          <p id="block_method_explanation">
+          <p className="block_method_explanation">
             No Crack function yet  :(
           </p>
         </div>
       } else {
         expText =     
         <div className="controller explanation">
-          <p id="block_method_explanation">
+          <p className="block_method_explanation">
             This function will replace any given letter/sign in a text with another character.
           </p>
         </div>
@@ -165,7 +188,7 @@ const ExplanatoryText = ({direction, method}) => {
     if(direction === 'crack') {
       expText = 
       <div className="controller explanation">
-        <p id="block_method_explanation">
+        <p className="block_method_explanation">
           No Crack function yet  :(
         </p>
         <a href="https://en.wikipedia.org/wiki/Scytale" target="blank">Skytale Wikipedia</a>
@@ -173,7 +196,7 @@ const ExplanatoryText = ({direction, method}) => {
     } else {
       expText =     
       <div className="controller explanation">
-        <p id="block_method_explanation">
+        <p className="block_method_explanation">
           In cryptography, a scytale is a tool used to perform a transposition cipher, consisting of a 
           cylinder with a strip of parchment wound around it on which is written a message. The ancient 
           Greeks, and the Spartans in particular, are said to have used this cipher to communicate during 

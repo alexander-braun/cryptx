@@ -1170,12 +1170,13 @@ div:focus {
   #timeline {
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
-    max-width: 80%;
-    padding: 20px;
-    margin-top: 0rem;
+    max-width: 100%;
+    padding: 30px;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
   }
   #timeline .slick-slide.slick-active.slick-current .dot {
-    top: 24px;
+    top: 27px;
   }
 }
 /*# sourceMappingURL=style.css.map */

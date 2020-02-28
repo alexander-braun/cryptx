@@ -997,12 +997,13 @@ div {
 
     #timeline {
         box-sizing: border-box;
-        max-width: 80%;
-        padding: 20px;
-        margin-top: 0rem;
+        max-width: 100%;
+        padding: 30px;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
         .slick-slide.slick-active.slick-current{
             .dot {
-                top: 24px;
+                top: 27px;
             }    
         } 
     }

@@ -23,7 +23,6 @@ const replace = (() => {
     };
 
     const transformText = () => {
-        console.log(replaceAll(toReplaceLetter, replaceLetter, true))
         return replaceAll(toReplaceLetter, replaceLetter, true);
     }
 

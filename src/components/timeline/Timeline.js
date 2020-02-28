@@ -46,53 +46,46 @@ class Timeline extends React.Component {
 
     componentDidUpdate(prevProps, prevState) {
         if(prevProps.method !== this.props.method) {
-            if(this.props.method === 'skytale') {
-                return this.slider.slickGoTo(0)
+            const listMethods = ['atbash', 'skytale', 'caesar', 'affine', 'vigenere', 'morse', 'playfair']
+            let changed = false;
+            for(let listMethod of listMethods) {
+                if(this.props.method === listMethod) {
+                    changed = true;
+                    return this.slider.slickGoTo(listMethods.indexOf(listMethod))
+                }
             }
-            else if(this.props.method === 'caesar') {
-                return this.slider.slickGoTo(1)
-            }
-            else if(this.props.method === 'affine') {
-                return this.slider.slickGoTo(2)
-            }
-            else if(this.props.method === 'vigenere') {
-                return this.slider.slickGoTo(3)
-            }
-            else if(this.props.method === 'morse') {
-                return this.slider.slickGoTo(4)
-            }
-            else if(this.props.method === 'playfair') {
-                return this.slider.slickGoTo(5)
-            } else {
+            if(!changed) {
                 let current = document.getElementsByClassName('slick-current')[0]
-                current.classList.remove('slick-current')
+                current.classList.remove('slick-current')    
             }
         }
 
         if(prevState.activeSlide !== this.state.activeSlide) {
             if(this.state.activeSlide === 0) {
+                return this.props.changeMethod('atbash')
+            }
+            else if(this.state.activeSlide === 1){
                 return this.props.changeMethod('skytale')
             }
-            else if(this.state.activeSlide === 1) {
+            else if(this.state.activeSlide === 2) {
                 return this.props.changeMethod('caesar')
             }    
-            else if(this.state.activeSlide === 2) {
+            else if(this.state.activeSlide === 3) {
                 return this.props.changeMethod('affine')
             }
-            else if(this.state.activeSlide === 3) {
+            else if(this.state.activeSlide === 4) {
                 return this.props.changeMethod('vigenere')
             }
-            else if(this.state.activeSlide === 4) {
+            else if(this.state.activeSlide === 5) {
                 return this.props.changeMethod('morse')
             }
-            else if(this.state.activeSlide === 5) {
+            else if(this.state.activeSlide === 6) {
                 return this.props.changeMethod('playfair')
             }
         }
     }
     
     render() {
-
         const settings = {
             infinite: true,
             speed: 500,
@@ -109,16 +102,29 @@ class Timeline extends React.Component {
                     activeSlide2: current 
                 })
         }
-
         return (
             <div id="timeline">
                 <div className="timeline_border"></div>
                 <Slider ref={c => (this.slider = c)} {...settings}>
+                    <div    value='atbash' 
+                            key={0} 
+                            onClick={(evt) => {
+                                this.props.changeMethod(evt)
+                                this.slider.slickGoTo(0)
+                            }}
+                    >
+                        <div value='atbash' className="history_element">
+                            <h3 value='atbash'>600 B.C.</h3>
+                            <div value='atbash' className="dot"></div>
+                            <div value='atbash' className="timeline_description">Atbash</div>
+                        </div>
+                    </div>
+
                     <div    value='skytale' 
                             key={1} 
                             onClick={(evt) => {
                                 this.props.changeMethod(evt)
-                                this.slider.slickGoTo(0)
+                                this.slider.slickGoTo(1)
                             }}
                     >
                         <div value='skytale' className="history_element">
@@ -132,7 +138,7 @@ class Timeline extends React.Component {
                             key={2} 
                             onClick={(evt) => {
                                 this.props.changeMethod(evt)
-                                this.slider.slickGoTo(1)
+                                this.slider.slickGoTo(2)
                             }}
                     >
                         <div value='caesar' className="history_element">
@@ -145,7 +151,7 @@ class Timeline extends React.Component {
                             key={3} 
                             onClick={(evt) => {
                                 this.props.changeMethod(evt)
-                                this.slider.slickGoTo(2)
+                                this.slider.slickGoTo(3)
                             }}
                     >
                         <div value='affine' className="history_element">
@@ -158,7 +164,7 @@ class Timeline extends React.Component {
                             key={4} 
                             onClick={(evt) => {
                                 this.props.changeMethod(evt)
-                                this.slider.slickGoTo(3)
+                                this.slider.slickGoTo(4)
                             }}
                     >
                         <div value='vigenere' className="history_element">
@@ -171,7 +177,7 @@ class Timeline extends React.Component {
                             key={5} 
                             onClick={(evt) => {
                                 this.props.changeMethod(evt)
-                                this.slider.slickGoTo(4)
+                                this.slider.slickGoTo(5)
                             }}
                     >
                         <div value='morse' className="history_element">
@@ -184,7 +190,7 @@ class Timeline extends React.Component {
                             key={6} 
                             onClick={(evt) => {
                                 this.props.changeMethod(evt)
-                                this.slider.slickGoTo(5)
+                                this.slider.slickGoTo(6)
                             }}
                     >
                         <div value='playfair' className="history_element">

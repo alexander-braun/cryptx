@@ -11,6 +11,7 @@ import ReplaceKeys from '../replace/ReplaceKeys'
 import RingLength from '../skytale/RingLenght'
 import Rings from '../skytale/Rings'
 import CaesarTransposition from '../caesar/CaesarTransposition'
+import AtbashTransposition from '../atbash/AtbashTransposition'
 
 
 const BlockBodyInput = ({   plusMinus,
@@ -48,7 +49,18 @@ const BlockBodyInput = ({   plusMinus,
             />
         </div>
     const switchBodyInput = () => {
-        if(method === 'caesar') {
+        if(method === 'atbash') {
+            if(direction !== 'crack') {
+                bodyInput =
+                    <div className="block_body_input">
+                        <AtbashTransposition 
+                            direction = {direction}
+                            alphabet = {alphabet}
+                        />
+                    </div>
+            }
+        }
+        else if(method === 'caesar') {
             if(direction !== 'crack'){
                 bodyInput = 
                     <div className="block_body_input">

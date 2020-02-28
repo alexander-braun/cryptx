@@ -18,12 +18,23 @@ class Modal extends Component {
                                     <li>
                                         <button 
                                             className="modal_category_method" 
+                                            value="atbash"
+                                            onClick={(evt) => {
+                                                this.props.changeMethod(evt)
+                                            }}
+                                        >
+                                        Atbash Cipher
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <button 
+                                            className="modal_category_method" 
                                             value="caesar"
                                             onClick={(evt) => {
                                                 this.props.changeMethod(evt)
                                             }}
                                         >
-                                            Ceasars Cipher
+                                        Ceasars Cipher
                                         </button>
                                     </li>
                                     <li>
@@ -34,7 +45,7 @@ class Modal extends Component {
                                                 this.props.changeMethod(evt)
                                             }}
                                         >
-                                            Skytale
+                                        Skytale
                                         </button>
                                     </li>
                                     <li>
@@ -45,7 +56,7 @@ class Modal extends Component {
                                                 this.props.changeMethod(evt)
                                             }}
                                         >
-                                            Affine Cipher
+                                        Affine Cipher
                                         </button>
                                     </li>
                                     <li>
@@ -56,7 +67,7 @@ class Modal extends Component {
                                                 this.props.changeMethod(evt)
                                             }}
                                         >
-                                            Vigenère Cipher
+                                        Vigenère Cipher
                                         </button>
                                     </li>
                                     <li>
@@ -67,7 +78,7 @@ class Modal extends Component {
                                                 this.props.changeMethod(evt)
                                             }}
                                         >
-                                            Playfair Cipher
+                                        Playfair Cipher
                                         </button>
                                     </li>
                                 </ul>
@@ -83,7 +94,7 @@ class Modal extends Component {
                                                 this.props.changeMethod(evt)
                                             }}
                                         >
-                                            Morse Code
+                                        Morse Code
                                         </button>
                                     </li>
                                 </ul>
@@ -99,7 +110,7 @@ class Modal extends Component {
                                                 this.props.changeMethod(evt)
                                             }}
                                         >
-                                            Replace
+                                        Replace
                                         </button>
                                     </li>
                                 </ul>
