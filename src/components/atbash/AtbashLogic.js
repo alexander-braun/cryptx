@@ -43,12 +43,10 @@ const atbash = (() => {
     //Crack or other ? Return the according method
 
     const encrypt = () => {
-        if(direction !== 'crack') {
-            let rawOutput = readChar()
-            if(checkIfSigns()) {
-                return math.transformCaseAndChars(userInput, rawOutput, caseFormat, includeChars) 
-            } else return rawOutput
-        }
+        let rawOutput = readChar()
+        if(checkIfSigns()) {
+            return math.transformCaseAndChars(userInput, rawOutput, caseFormat, includeChars) 
+        } else return rawOutput
     }
 
     return {
