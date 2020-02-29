@@ -480,6 +480,7 @@ class BlockElementsCollector extends React.Component  {
             skytaleLength = {this.state.skytaleLength}
             skytaleProjectedValue = {this.state.skytaleProjectedValue}
             alphabetActive = {this.state.alphabetActive}
+            inputValue = {this.state.inputValue}
           />
           <BlockConnectorEquals />
           <BlockElementOutput 

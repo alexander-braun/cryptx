@@ -2,6 +2,7 @@ import React from 'react'
 import ExplanatoryText from './ExplanatoryText'
 import BlockHead from './BlockHead'
 import BlockBodyInput from './BlockBodyInput'
+import ChartImporter from '../freqencyAnalysis/ChartImporter'
 
 const BlockElementSettings = ({ plusMinus,
                                 cShift, 
@@ -26,6 +27,7 @@ const BlockElementSettings = ({ plusMinus,
                                 skytaleLength,
                                 skytaleProjectedValue,
                                 alphabetActive,
+                                inputValue
                                 }) => {
   return (
     <div className="block_settings">
@@ -59,6 +61,8 @@ const BlockElementSettings = ({ plusMinus,
                 skytaleLength = {skytaleLength}
                 skytaleProjectedValue = {skytaleProjectedValue}
               />
+              <ChartImporter inputValue={inputValue}/>
+              
               <ExplanatoryText 
                 direction={direction}
                 method={method}

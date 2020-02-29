@@ -1,6 +1,5 @@
 import React from 'react'
 
-
 const BlockElementInput = ({updateInput, inputValue, clearTextareaInput}) => {
 
   function autoresize(evt) {
@@ -37,6 +36,7 @@ const BlockElementInput = ({updateInput, inputValue, clearTextareaInput}) => {
                 }}
               />
           </div>
+          
       </div>
     </div>
   )

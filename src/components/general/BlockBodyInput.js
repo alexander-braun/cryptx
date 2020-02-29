@@ -36,18 +36,7 @@ const BlockBodyInput = ({   plusMinus,
                             alphabetActive,
                         }) => {
     let bodyInput;
-    let standartBlocks =      
-        <div>
-            <Alphabet 
-                alphabet = {alphabet} 
-                alphabetUpdate = {alphabetUpdate} 
-                alphabetActive = {alphabetActive}
-            />
-            <CaseChars 
-                selectCase = {selectCase}
-                includeChars = {includeChars}
-            />
-        </div>
+
     const switchBodyInput = () => {
         if(method === 'atbash') {
             if(direction !== 'crack') {
@@ -56,6 +45,15 @@ const BlockBodyInput = ({   plusMinus,
                         <AtbashTransposition 
                             direction = {direction}
                             alphabet = {alphabet}
+                        />
+                        <Alphabet 
+                            alphabet = {alphabet} 
+                            alphabetUpdate = {alphabetUpdate} 
+                            alphabetActive = {alphabetActive}
+                        />
+                        <CaseChars 
+                            selectCase = {selectCase}
+                            includeChars = {includeChars}
                         />
                     </div>
             }
@@ -73,6 +71,15 @@ const BlockBodyInput = ({   plusMinus,
                             direction = {direction}
                             alphabet = {alphabet}
                         />
+                        <Alphabet 
+                            alphabet = {alphabet} 
+                            alphabetUpdate = {alphabetUpdate} 
+                            alphabetActive = {alphabetActive}
+                        />
+                        <CaseChars 
+                            selectCase = {selectCase}
+                            includeChars = {includeChars}
+                        />
                     </div>
             } else bodyInput = null
         } else if(method === 'affine') {
@@ -83,6 +90,15 @@ const BlockBodyInput = ({   plusMinus,
                             setAlpha = {setAlpha}
                             setBeta = {setBeta}
                         />
+                        <Alphabet 
+                            alphabet = {alphabet} 
+                            alphabetUpdate = {alphabetUpdate} 
+                            alphabetActive = {alphabetActive}
+                        />
+                        <CaseChars 
+                            selectCase = {selectCase}
+                            includeChars = {includeChars}
+                        />
                     </div>
             } else bodyInput = null
         } else if(method === 'vigenere') {
@@ -92,6 +108,15 @@ const BlockBodyInput = ({   plusMinus,
                         <KeywordVigenere
                             updateKeyword={updateKeyword}
                             keyword={keyword}
+                        />
+                        <Alphabet 
+                            alphabet = {alphabet} 
+                            alphabetUpdate = {alphabetUpdate} 
+                            alphabetActive = {alphabetActive}
+                        />
+                        <CaseChars 
+                            selectCase = {selectCase}
+                            includeChars = {includeChars}
                         />
                     </div> 
             } else return null
@@ -106,6 +131,15 @@ const BlockBodyInput = ({   plusMinus,
                         <KeywordPlayfair
                             updateKeyword={updateKeyword}
                             keyword={keyword}
+                        />
+                        <Alphabet 
+                            alphabet = {alphabet} 
+                            alphabetUpdate = {alphabetUpdate} 
+                            alphabetActive = {alphabetActive}
+                        />
+                        <CaseChars 
+                            selectCase = {selectCase}
+                            includeChars = {includeChars}
                         />
                     </div> 
             } else return null
@@ -135,6 +169,15 @@ const BlockBodyInput = ({   plusMinus,
                             skytaleLength = {skytaleLength}
                             outputValue = {skytaleProjectedValue}
                         />
+                        <Alphabet 
+                            alphabet = {alphabet} 
+                            alphabetUpdate = {alphabetUpdate} 
+                            alphabetActive = {alphabetActive}
+                        />
+                        <CaseChars 
+                            selectCase = {selectCase}
+                            includeChars = {includeChars}
+                        />
                     </div>
             }
         }
@@ -144,7 +187,6 @@ const BlockBodyInput = ({   plusMinus,
     return (
         <>
             {switchBodyInput()}
-            {direction !== 'crack' ? standartBlocks : null}
         </>
     )
 }

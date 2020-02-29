@@ -853,6 +853,35 @@ div {
     font-size: 20pt !important;
 }
 
+#freq {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    .svgWrapper {
+        width: 85%;
+    }
+    svg {
+        width: 100%;
+        height: 100%;
+        overflow: visible;
+    }
+}
+
+/*
+    svg {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        overflow: visible;
+        width: fit-content;
+        margin-left: auto;
+        margin-right: auto;
+    }*/
+
 
 
 #timeline {

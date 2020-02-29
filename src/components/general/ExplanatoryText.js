@@ -21,7 +21,7 @@ const ExplanatoryText = ({direction, method}) => {
           <p className="block_method_explanation">
             The cracking function does exactly the same as the encryption- and decryption algorithm.
             There is only one possibility for an encrypted letter to go to. F.e. the letter 'A' will
-            always be mapped to 'Z' and 'Z' will always be mapped back to 'A'
+            always be mapped to 'Z' and 'Z' will always be mapped back to 'A'.
           </p>
           <a href="https://en.wikipedia.org/wiki/Atbash" target="blank">Atbash Cipher Wikipedia</a>
         </div>
