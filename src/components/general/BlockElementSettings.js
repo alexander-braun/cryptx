@@ -61,7 +61,6 @@ const BlockElementSettings = ({ plusMinus,
                 skytaleLength = {skytaleLength}
                 skytaleProjectedValue = {skytaleProjectedValue}
               />
-              <ChartImporter inputValue={inputValue}/>
               
               <ExplanatoryText 
                 direction={direction}
