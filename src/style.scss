@@ -18,11 +18,14 @@ $blueish: #2f445e;
 $blueish: #a8d0e6;
 $greyish: #585858;
 
-$slickarrow: black;
-$dotborder: black;
+$slickarrow: #24305e;
+$dotborder: #24305e;
 $currentdot: white;
 $inactivedot: #ffffff;
 $colorHeader: white;
+
+$border_grey: rgb(212, 212, 212);
+$greyed_text: #bbbbbb;
 
 body {
     background-color: $blueish;
@@ -108,7 +111,7 @@ textarea {
 .block {
 
     #chartcontainer {
-        border-top: 1px solid #bcbcbc;
+        border-top: 1px solid $border_grey;
     }
 
     min-width: 330px;
@@ -360,11 +363,11 @@ textarea {
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
-    border-bottom: 1px solid rgb(188, 188, 188);
+    border-bottom: 1px solid $border_grey;
 
     .settings_name {
-        border-right: 1px solid rgb(188, 188, 188);
-        color: rgb(137, 137, 137);
+        border-right: 1px solid $border_grey;
+        color: $greyed_text;
         padding: 1em 1em 0em 16px;
         font-family: 'Source Sans Pro', sans-serif;
         font-size: 10pt;
@@ -489,7 +492,7 @@ textarea {
     line-height: 1.5;
     display: flex;
     flex-direction: row;
-    border-bottom: 1px solid rgb(188, 188, 188);
+    border-bottom: 1px solid $border_grey;
 
     .controllbox {
         width: 50%;
@@ -498,7 +501,7 @@ textarea {
         flex-direction: column;
         justify-content: space-between;
         align-content: flex-start;
-        border-right: 1px solid rgb(188, 188, 188);
+        border-right: 1px solid $border_grey;
 
         .settings_name {
             border-right: none;
@@ -781,6 +784,7 @@ textarea {
 
 .slick-prev:before, .slick-next:before {
     color: $slickarrow !important;
+    opacity: .9;
 }
 
 div {

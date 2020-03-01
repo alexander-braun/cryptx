@@ -106,7 +106,7 @@ textarea:focus {
 }
 
 .block #chartcontainer {
-  border-top: 1px solid #bcbcbc;
+  border-top: 1px solid #d4d4d4;
 }
 
 .block .block_top_decoration {
@@ -412,12 +412,12 @@ textarea:focus {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
-  border-bottom: 1px solid #bcbcbc;
+  border-bottom: 1px solid #d4d4d4;
 }
 
 .controller .settings_name {
-  border-right: 1px solid #bcbcbc;
-  color: #898989;
+  border-right: 1px solid #d4d4d4;
+  color: #bbbbbb;
   padding: 1em 1em 0em 16px;
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 10pt;
@@ -585,7 +585,7 @@ textarea:focus {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  border-bottom: 1px solid #bcbcbc;
+  border-bottom: 1px solid #d4d4d4;
 }
 
 .double_content.controller .controllbox {
@@ -603,7 +603,7 @@ textarea:focus {
           justify-content: space-between;
   -ms-flex-line-pack: start;
       align-content: flex-start;
-  border-right: 1px solid #bcbcbc;
+  border-right: 1px solid #d4d4d4;
 }
 
 .double_content.controller .controllbox .settings_name {
@@ -947,7 +947,8 @@ textarea:focus {
 }
 
 .slick-prev:before, .slick-next:before {
-  color: black !important;
+  color: #24305e !important;
+  opacity: .9;
 }
 
 div:focus {
@@ -1004,7 +1005,7 @@ div:focus {
   background-color: #ffffff;
   padding: 0;
   border-radius: 50%;
-  border: 1px solid black;
+  border: 1px solid #24305e;
 }
 
 .history_element h3 {
@@ -1032,7 +1033,7 @@ div:focus {
   background-color: #f76c6c;
   width: 14px;
   height: 14px;
-  border: 2px solid black;
+  border: 2px solid #24305e;
   background-color: white;
 }
 
