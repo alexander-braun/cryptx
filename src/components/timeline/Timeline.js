@@ -41,12 +41,12 @@ class Timeline extends React.Component {
     viewportWidth = () => {
             if(this.vw < 1100) {
                 return 1
-            } else return 3
+            } else return 1
     }
 
     componentDidUpdate(prevProps, prevState) {
+        const listMethods = ['atbash', 'skytale', 'caesar', 'vigenere', 'morse', 'playfair']
         if(prevProps.method !== this.props.method) {
-            const listMethods = ['atbash', 'skytale', 'caesar', 'vigenere', 'morse', 'playfair']
             let changed = false;
             for(let listMethod of listMethods) {
                 if(this.props.method === listMethod) {
@@ -56,29 +56,14 @@ class Timeline extends React.Component {
             }
             if(!changed) {
                 let current = document.getElementsByClassName('slick-current')[0]
-                current.classList.remove('slick-current')    
+                if(current) {
+                    current.classList.remove('slick-current')     
+                } 
             }
         }
 
         if(prevState.activeSlide !== this.state.activeSlide) {
-            if(this.state.activeSlide === 0) {
-                return this.props.changeMethod('atbash')
-            }
-            else if(this.state.activeSlide === 1){
-                return this.props.changeMethod('skytale')
-            }
-            else if(this.state.activeSlide === 2) {
-                return this.props.changeMethod('caesar')
-            }
-            else if(this.state.activeSlide === 3) {
-                return this.props.changeMethod('vigenere')
-            }
-            else if(this.state.activeSlide === 4) {
-                return this.props.changeMethod('morse')
-            }
-            else if(this.state.activeSlide === 5) {
-                return this.props.changeMethod('playfair')
-            }
+            return this.props.changeMethod(listMethods[this.state.activeSlide])
         }
     }
     

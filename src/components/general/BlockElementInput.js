@@ -39,7 +39,7 @@ const BlockElementInput = ({updateInput, inputValue, clearTextareaInput}) => {
             </div>
         </div>
           <div id="chartcontainer" style={{width: '100%'}}>
-            <ChartImporter inputValue={inputValue}/>
+            <ChartImporter inputValue={inputValue} menue={'input'}/>
           </div>
       </div>
   )

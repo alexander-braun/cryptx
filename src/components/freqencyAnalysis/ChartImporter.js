@@ -1,30 +1,41 @@
 import React, { useState } from 'react'
 import Barchart from './Barchart'
 import freq from './data'
+import ExpandMenueOutput from './ExpandMenueOutput'
+import ExpandMenueInput from './ExpandMenueInput'
 
-function App({inputValue}) {
+function App({inputValue, menue}) {
     const [data, setData] = useState([...freq])
     const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('')
 
+    const expandmenue = menue === 'input' ? ExpandMenueInput : ExpandMenueOutput
+    console.log(expandmenue)
     return (
+        
+
         <div className="controller">
-            <div className="settings_name">FREQUENCY ANALYSIS</div>
-            <div id="freq">
-                <React.Fragment>
-                    <Barchart 
-                        data={data} 
-                        alphabet={alphabet} 
-                        inputValue={inputValue}
-                    />
-                </React.Fragment>
-            </div>    
-            <div id="freq_explanatory_text">
-                <p style={{fontSize: '10pt', padding: '0 16px 16px 16px', fontStyle: 'italic', fontWeight: '400', margin: '0', maxWidth: '350px'}}> 
-                    This is a chart of how the frequency of letters in the english language compares to your textinput. The longer the
-                    input, the more accurate the result becomes. The black <b>dots</b> represent your input. The red <b>bars </b>
-                    represent the standart distributon of letters in the english language.
-                </p>
-            </div>    
+                {menue === 'input' ? <ExpandMenueInput /> : <ExpandMenueOutput />}
+            <div className="expand_menue">
+                <div className="collector_freq_button">
+                    
+                </div>
+                <div id="freq">
+                    <React.Fragment>
+                        <Barchart 
+                            data={data} 
+                            alphabet={alphabet} 
+                            inputValue={inputValue}
+                        />
+                    </React.Fragment>
+                </div>    
+                <div id="freq_explanatory_text">
+                    <p style={{marginLeft: 'auto', marginRight: 'auto', fontSize: '10pt', padding: '0 16px 16px 16px', fontStyle: 'italic', fontWeight: '400', width: '80%'}}> 
+                        This is a chart of how the frequency of letters in the english language compares to your textinput. The longer the
+                        input, the more accurate the result becomes. The black <b>dots</b> represent your input. The red <b>bars </b>
+                        represent the standart distributon of letters in the english language.
+                    </p>
+                </div>    
+            </div>
         </div> 
     )
 }

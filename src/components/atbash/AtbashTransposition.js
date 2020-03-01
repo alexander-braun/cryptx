@@ -49,7 +49,8 @@ class AtbashTransposition extends React.Component {
                     <p style={{fontSize: '10pt', padding: '0 16px 16px 16px', fontStyle: 'italic', fontWeight: '400', margin: '0'}}> 
                         This is a visualization of the character mapping. For the Atbash Cipher this mapping looks like a mirror.
                         It is incredibly easy to break as the letter mapping always stays the same. The encryption- decryption- and 
-                        cracking algorithm are exactly the same.
+                        cracking algorithm are exactly the same. Have a look at the output- and inputchart of the letter frequencies
+                        and notice the mirrored graph.
                     </p>
                 </div>    
             </div> 

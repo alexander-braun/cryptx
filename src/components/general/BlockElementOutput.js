@@ -1,4 +1,5 @@
 import React from 'react'
+import ChartImporter from '../freqencyAnalysis/ChartImporter'
 
 class BlockElementOutput extends React.Component {
 
@@ -41,6 +42,9 @@ class BlockElementOutput extends React.Component {
                   </textarea>
               </div>
           </div>
+            <div id="chartcontainer" style={{width: '100%'}}>
+              <ChartImporter inputValue={this.props.outputValue} menue = {'output'}/>
+            </div>
         </div>
     )
   }

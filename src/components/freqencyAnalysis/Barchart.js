@@ -24,21 +24,21 @@ function BarChart({ data, alphabet, inputValue }) {
   const svgRef = useRef();
   const wrapperRef = useRef();
   const dimensions = useResizeObserver(wrapperRef);
-
-  const letterFrequency = () => {
-    let map = new Array(26).fill(0)
-    
-    for(let element of inputValue) {
-        let index = alphabet.indexOf(element)
-        if(index !== -1) map[index] += 1
-    }
-    return map
-  }
   
 
   
   // will be called initially and on every data change
   useEffect(() => {
+    const letterFrequency = () => {
+      let map = new Array(26).fill(0)
+      
+      for(let element of inputValue) {
+          let index = alphabet.indexOf(element.toLowerCase())
+          if(index !== -1) map[index] += 1
+      }
+      return map
+    }
+
     const frequency = () => {
         let arr = letterFrequency()
         let totalLetters = arr.reduce((a, b) => a + b, 0)
@@ -126,7 +126,7 @@ function BarChart({ data, alphabet, inputValue }) {
       .attr('cx', (value, index) => xScale(alphabet[index]) + 3.5)
       .attr('cy', value =>  -dimensions.height + dimensions.height - yScale(value))
 
-  }, [data, dimensions, alphabet, letterFrequency]);
+  }, [data, dimensions, alphabet, inputValue]);
 
   return (
     <div ref={wrapperRef} className="svgWrapper" style={{ marginBottom: "2rem"}}>
