@@ -8,7 +8,7 @@ function App({inputValue}) {
 
     return (
         <div className="controller">
-            <div className="settings_name">Atbash Cipher Transposition</div>
+            <div className="settings_name">FREQUENCY ANALYSIS</div>
             <div id="freq">
                 <React.Fragment>
                     <Barchart 
@@ -20,8 +20,9 @@ function App({inputValue}) {
             </div>    
             <div id="caesar_explanatory_text">
                 <p style={{fontSize: '10pt', padding: '0 16px 16px 16px', fontStyle: 'italic', fontWeight: '400', margin: '0'}}> 
-                    Chart of how the frequency of letters in the english language compares to your textinput. The longer the
-                    input, the more accurate the result becomes.
+                    This is a chart of how the frequency of letters in the english language compares to your textinput. The longer the
+                    input, the more accurate the result becomes. The black <b>dots</b> represent your input. The red <b>bars </b>
+                    represent the standart distributon of letters in the english language.
                 </p>
             </div>    
         </div> 

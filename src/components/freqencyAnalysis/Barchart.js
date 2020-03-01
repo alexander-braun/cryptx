@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState } from "react";
-import { select, axisBottom, axisRight, axisLeft, scaleLinear, scaleBand } from "d3";
+import { select, axisBottom, axisLeft, scaleLinear, scaleBand } from "d3";
 import ResizeObserver from "resize-observer-polyfill";
+import * as d3 from 'd3'
 
 const useResizeObserver = ref => {
   const [dimensions, setDimensions] = useState(null);
@@ -25,14 +26,34 @@ function BarChart({ data, alphabet, inputValue }) {
   const dimensions = useResizeObserver(wrapperRef);
 
   const letterFrequency = () => {
-    let result, map = {}
-    inputValue.split("").forEach(e => map[e] = (map[e] || 0)+1);
-    console.log(map)
+    let map = new Array(26).fill(0)
+    
+    for(let element of inputValue) {
+        let index = alphabet.indexOf(element)
+        if(index !== -1) map[index] += 1
+    }
+    return map
   }
-  letterFrequency()
+  
 
+  
   // will be called initially and on every data change
   useEffect(() => {
+    const frequency = () => {
+        let arr = letterFrequency()
+        let totalLetters = arr.reduce((a, b) => a + b, 0)
+        let freq = new Array(26).fill(0)
+
+        let index = 0;
+        for(let char of arr) {
+            if(char !== 0) freq[index] = char / totalLetters * 100
+            index++
+        }
+        return freq
+    }  
+
+    frequency()
+
     const svg = select(svgRef.current);
 
     if (!dimensions) return;
@@ -43,8 +64,11 @@ function BarChart({ data, alphabet, inputValue }) {
       .range([0, dimensions.width]) // change
       .padding(0.5);
 
+    let frequencyMax;
+    d3.max(frequency()) > 15 ? frequencyMax = d3.max(frequency()) : frequencyMax = 15
+
     const yScale = scaleLinear()
-      .domain([0, 15]) // todo
+      .domain([0, frequencyMax]) // todo
       .range([dimensions.height, 0]); // change
 
     const colorScale = scaleLinear()
@@ -94,15 +118,15 @@ function BarChart({ data, alphabet, inputValue }) {
       .attr("height", value => dimensions.height - yScale(value));
     svg
       .selectAll('.circle')
-      .data(data)
+      .data(frequency())
       .join('circle')
       .attr('class', 'circle')
       .style('transform', 'scale(1, -1)')
-      .attr('r', 3.5)
+      .attr('r', 2)
       .attr('cx', (value, index) => xScale(alphabet[index]) + 3.5)
       .attr('cy', value =>  -dimensions.height + dimensions.height - yScale(value))
 
-  }, [data, dimensions, alphabet]);
+  }, [data, dimensions, alphabet, letterFrequency]);
 
   return (
     <div ref={wrapperRef} className="svgWrapper" style={{ marginBottom: "2rem"}}>

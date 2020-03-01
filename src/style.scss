@@ -20,7 +20,7 @@ $greyish: #585858;
 
 $slickarrow: black;
 $dotborder: black;
-$currentdot: #a8d0e6;
+$currentdot: white;
 $inactivedot: #ffffff;
 $colorHeader: white;
 
@@ -861,7 +861,7 @@ div {
 }
 
 .slick-prev:before, .slick-next:before {
-    font-size: 20pt !important;
+    
 }
 
 #freq {
@@ -896,7 +896,7 @@ div {
 
 
 #timeline {
-    color: white;
+    color: black;
     padding: 25px;
     margin: 0 auto;
     margin-top: 2rem;
@@ -922,13 +922,11 @@ div {
 
     .slick-next {
         right: -19px;
-        top: 36px;
-        line-height: 1;
+        top: 37px;
     }
     .slick-prev {
-        left : -19px;
-        top: 36px;
-        line-height: 1;
+        left: -19px;
+        top: 37px;
     }
     
 

@@ -1024,7 +1024,7 @@ div:focus {
   width: 14px;
   height: 14px;
   border: 2px solid black;
-  background-color: #a8d0e6;
+  background-color: white;
 }
 
 .slick-current .timeline_description {
@@ -1037,10 +1037,6 @@ div:focus {
 .slick-current h3 {
   font-weight: 900;
   letter-spacing: 3px;
-}
-
-.slick-prev:before, .slick-next:before {
-  font-size: 20pt !important;
 }
 
 #freq {
@@ -1082,7 +1078,7 @@ div:focus {
         margin-right: auto;
     }*/
 #timeline {
-  color: white;
+  color: black;
   padding: 25px;
   margin: 0 auto;
   margin-top: 2rem;
@@ -1108,14 +1104,12 @@ div:focus {
 
 #timeline .slick-next {
   right: -19px;
-  top: 36px;
-  line-height: 1;
+  top: 37px;
 }
 
 #timeline .slick-prev {
   left: -19px;
-  top: 36px;
-  line-height: 1;
+  top: 37px;
 }
 
 #timeline .slick-track:focus {

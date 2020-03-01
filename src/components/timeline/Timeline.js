@@ -46,7 +46,7 @@ class Timeline extends React.Component {
 
     componentDidUpdate(prevProps, prevState) {
         if(prevProps.method !== this.props.method) {
-            const listMethods = ['atbash', 'skytale', 'caesar', 'affine', 'vigenere', 'morse', 'playfair']
+            const listMethods = ['atbash', 'skytale', 'caesar', 'vigenere', 'morse', 'playfair']
             let changed = false;
             for(let listMethod of listMethods) {
                 if(this.props.method === listMethod) {
@@ -69,17 +69,14 @@ class Timeline extends React.Component {
             }
             else if(this.state.activeSlide === 2) {
                 return this.props.changeMethod('caesar')
-            }    
-            else if(this.state.activeSlide === 3) {
-                return this.props.changeMethod('affine')
             }
-            else if(this.state.activeSlide === 4) {
+            else if(this.state.activeSlide === 3) {
                 return this.props.changeMethod('vigenere')
             }
-            else if(this.state.activeSlide === 5) {
+            else if(this.state.activeSlide === 4) {
                 return this.props.changeMethod('morse')
             }
-            else if(this.state.activeSlide === 6) {
+            else if(this.state.activeSlide === 5) {
                 return this.props.changeMethod('playfair')
             }
         }
@@ -147,24 +144,11 @@ class Timeline extends React.Component {
                             <div value='caesar' className="timeline_description">Caesar's Cipher</div>
                         </div>
                     </div>
-                    <div    value='affine' 
+                    <div    value='vigenere' 
                             key={3} 
                             onClick={(evt) => {
                                 this.props.changeMethod(evt)
                                 this.slider.slickGoTo(3)
-                            }}
-                    >
-                        <div value='affine' className="history_element">
-                            <h3 value='affine'>100 B.C. – 44 B.C.</h3>
-                            <div value='affine' className="dot"></div>
-                            <div value='affine' className="timeline_description">Affine Cipher</div>
-                        </div>
-                    </div>
-                    <div    value='vigenere' 
-                            key={4} 
-                            onClick={(evt) => {
-                                this.props.changeMethod(evt)
-                                this.slider.slickGoTo(4)
                             }}
                     >
                         <div value='vigenere' className="history_element">
@@ -174,10 +158,10 @@ class Timeline extends React.Component {
                         </div>
                     </div>
                     <div    value='morse' 
-                            key={5} 
+                            key={4} 
                             onClick={(evt) => {
                                 this.props.changeMethod(evt)
-                                this.slider.slickGoTo(5)
+                                this.slider.slickGoTo(4)
                             }}
                     >
                         <div value='morse' className="history_element">
@@ -187,10 +171,10 @@ class Timeline extends React.Component {
                         </div>
                     </div>
                     <div    value='playfair' 
-                            key={6} 
+                            key={5} 
                             onClick={(evt) => {
                                 this.props.changeMethod(evt)
-                                this.slider.slickGoTo(6)
+                                this.slider.slickGoTo(5)
                             }}
                     >
                         <div value='playfair' className="history_element">
