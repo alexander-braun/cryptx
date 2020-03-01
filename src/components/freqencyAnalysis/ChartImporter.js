@@ -7,12 +7,8 @@ import ExpandMenueInput from './ExpandMenueInput'
 function App({inputValue, menue}) {
     const [data, setData] = useState([...freq])
     const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('')
-
-    const expandmenue = menue === 'input' ? ExpandMenueInput : ExpandMenueOutput
-    console.log(expandmenue)
+    
     return (
-        
-
         <div className="controller">
                 {menue === 'input' ? <ExpandMenueInput /> : <ExpandMenueOutput />}
             <div className="expand_menue">

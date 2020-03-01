@@ -24,11 +24,10 @@ function BarChart({ data, alphabet, inputValue }) {
   const svgRef = useRef();
   const wrapperRef = useRef();
   const dimensions = useResizeObserver(wrapperRef);
-  
 
-  
   // will be called initially and on every data change
   useEffect(() => {
+    if(!inputValue) return undefined
     const letterFrequency = () => {
       let map = new Array(26).fill(0)
       
