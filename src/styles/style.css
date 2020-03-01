@@ -1103,8 +1103,8 @@ div:focus {
   height: 0px;
   position: -webkit-sticky;
   position: sticky;
-  top: 37px;
-  border-bottom: 1px dotted black;
+  top: 38px;
+  border-bottom: 4px dotted white;
 }
 
 #timeline div:focus {
