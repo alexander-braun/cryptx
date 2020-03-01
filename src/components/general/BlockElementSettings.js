@@ -2,7 +2,6 @@ import React from 'react'
 import ExplanatoryText from './ExplanatoryText'
 import BlockHead from './BlockHead'
 import BlockBodyInput from './BlockBodyInput'
-import ChartImporter from '../freqencyAnalysis/ChartImporter'
 
 const BlockElementSettings = ({ plusMinus,
                                 cShift, 

@@ -41,7 +41,7 @@ class BlockElementsCollector extends React.Component  {
       ringLength: 8,
       skytaleLength: 1,
       skytaleProjectedValue: '',
-      alphabetActive: true,
+      alphabetActive: false,
     }
 
     this.encrypt = this.encrypt.bind(this)

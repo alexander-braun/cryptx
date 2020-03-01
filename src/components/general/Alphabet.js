@@ -1,7 +1,6 @@
 import React from 'react'
 
 const Alphabet = ({alphabet, alphabetUpdate, alphabetActive}) => {
-  
   return (
     <div className="controller">
       <div className="settings_name">ALPHABET</div>

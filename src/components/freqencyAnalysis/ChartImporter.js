@@ -19,7 +19,7 @@ function App({inputValue}) {
                 </React.Fragment>
             </div>    
             <div id="freq_explanatory_text">
-                <p style={{fontSize: '10pt', padding: '0 16px 16px 16px', fontStyle: 'italic', fontWeight: '400', margin: '0', maxWidth: '430px'}}> 
+                <p style={{fontSize: '10pt', padding: '0 16px 16px 16px', fontStyle: 'italic', fontWeight: '400', margin: '0', maxWidth: '350px'}}> 
                     This is a chart of how the frequency of letters in the english language compares to your textinput. The longer the
                     input, the more accurate the result becomes. The black <b>dots</b> represent your input. The red <b>bars </b>
                     represent the standart distributon of letters in the english language.

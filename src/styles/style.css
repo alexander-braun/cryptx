@@ -38,14 +38,14 @@ textarea:focus {
   color: white;
   font-family: 'Source Sans Pro', sans-serif;
   font-weight: 700;
-  -webkit-box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
-          box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+          box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
 }
 
 .site_header #header_links {
   -webkit-transition-duration: 100ms;
           transition-duration: 100ms;
-  margin-right: 7rem;
+  margin-right: 15rem;
   font-weight: 200;
 }
 
@@ -78,7 +78,7 @@ textarea:focus {
   font-size: 30pt;
   margin-top: 0;
   margin-bottom: 0;
-  margin-left: 7rem;
+  margin-left: 15rem;
   line-height: 1;
   outline: none;
 }
@@ -90,19 +90,18 @@ textarea:focus {
 
 .site_header #header_links #login:hover, .site_header #header_links #signup:hover, .site_header #header_links #about:hover {
   border-bottom: 3px solid #f76c6c;
-  border-top: 3px solid white;
 }
 
 .block {
   min-width: 330px;
-  -webkit-box-flex: .3;
-      -ms-flex-positive: .3;
-          flex-grow: .3;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
   background-color: white;
   border-radius: 0px;
   overflow: hidden;
-  -webkit-box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
-          box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+          box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
 }
 
 .block #chartcontainer {
@@ -115,11 +114,11 @@ textarea:focus {
 }
 
 .block .block_head {
-  height: 100px;
-  background-color: #f76c6c;
-  color: white;
+  height: 90px;
+  background-color: #ececec;
+  color: #3f3f3f;
   font-family: 'Source Sans Pro', sans-serif;
-  font-size: 20pt;
+  font-size: 18pt;
   font-weight: 700;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -181,9 +180,9 @@ textarea:focus {
 }
 
 #user_input {
-  -webkit-box-flex: 0;
-      -ms-flex-positive: 0;
-          flex-grow: 0;
+  -webkit-box-flex: 0.5;
+      -ms-flex-positive: 0.5;
+          flex-grow: 0.5;
 }
 
 #block_container {
@@ -200,7 +199,7 @@ textarea:focus {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
-  margin: 2rem 7rem;
+  margin: 2rem 15rem;
   -webkit-transition-duration: 100ms;
           transition-duration: 100ms;
 }
@@ -211,8 +210,8 @@ textarea:focus {
           flex-grow: 0;
   min-width: 65px;
   height: 65px;
-  top: 66px;
-  background-color: #ececec;
+  top: 57px;
+  background-color: #f76c6c;
   position: relative;
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 35pt;
@@ -231,14 +230,14 @@ textarea:focus {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
-          box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+          box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
   z-index: -1;
 }
 
 @media only screen and (max-width: 1500px) {
   #block_container {
-    margin: 2rem 2rem;
+    margin: 5rem 2rem;
   }
   .site_header #header_links {
     margin-right: 3rem;
@@ -249,14 +248,14 @@ textarea:focus {
 }
 
 .block_settings {
-  -webkit-box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
-          box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+          box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
   color: #2f1728;
   min-width: 330px;
-  max-width: 430px;
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
+  max-width: 450px;
+  -webkit-box-flex: 2;
+      -ms-flex-positive: 2;
+          flex-grow: 2;
   background-color: white;
   border-radius: 0px;
   overflow: hidden;
@@ -283,11 +282,11 @@ textarea:focus {
 }
 
 .block_settings .block_head {
-  height: 100px;
-  background-color: #f76c6c;
-  color: white;
+  height: 90px;
+  background-color: #ececec;
+  color: #3f3f3f;
   font-family: 'Source Sans Pro', sans-serif;
-  font-size: 20pt;
+  font-size: 18pt;
   font-weight: 700;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -311,10 +310,10 @@ textarea:focus {
 }
 
 .block_settings .block_head .block_head_options .block_head_option {
-  font-size: 11pt;
+  font-size: 10pt;
   margin: 3px;
   margin-right: 1em;
-  color: #2f1728;
+  color: grey;
   font-weight: 700;
   -webkit-transition-duration: .2s;
           transition-duration: .2s;
@@ -327,7 +326,7 @@ textarea:focus {
 }
 
 .block_settings .block_head .block_head_options .block_head_option.selected {
-  color: white;
+  color: #3f3f3f;
 }
 
 .block_settings .block_head button {
@@ -346,10 +345,10 @@ textarea:focus {
   display: inline-block;
   -ms-flex-item-align: start;
       align-self: flex-start;
-  color: white;
+  color: #3f3f3f;
   border: none;
   background-color: transparent;
-  font-size: 20pt;
+  font-size: 18pt;
   font-weight: 700;
   margin: 0;
   padding: 0;
@@ -357,7 +356,7 @@ textarea:focus {
 
 .block_settings .block_head .block_head_text #caret {
   width: .75em;
-  fill: white;
+  fill: #3f3f3f;
 }
 
 .block_settings .block_head .block_head_text:hover {
@@ -458,9 +457,9 @@ textarea:focus {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
-  font-weight: 400;
+  font-weight: 600;
   text-align: center;
-  text-transform: uppercase;
+  text-transform: lowercase;
   background-color: #f76c6c;
   color: white;
   padding: 0;
@@ -732,7 +731,7 @@ textarea:focus {
   height: auto;
   background-color: #f76c6c;
   color: white;
-  font-size: 20pt;
+  font-size: 18pt;
   font-weight: 700;
   font-family: 'Source Sans Pro', sans-serif;
   padding: 16px;
@@ -936,7 +935,7 @@ textarea:focus {
 
 @media only screen and (max-width: 1280px) {
   #block_container {
-    margin: 2rem 2rem;
+    margin: 5rem 2rem;
   }
   .site_header #header_links {
     margin-right: 2rem;
@@ -947,7 +946,7 @@ textarea:focus {
 }
 
 .slick-prev:before, .slick-next:before {
-  color: #24305e !important;
+  color: white !important;
   opacity: .9;
 }
 
@@ -992,7 +991,7 @@ div:focus {
 
 .history_element div {
   font-size: 12pt;
-  font-weight: 600;
+  font-weight: 400;
   width: 100%;
   text-align: center;
   line-height: 1.5;
@@ -1002,10 +1001,10 @@ div:focus {
   border: none;
   width: 10px;
   height: 10px;
-  background-color: #ffffff;
+  background-color: #f76c6c;
   padding: 0;
   border-radius: 50%;
-  border: 1px solid #24305e;
+  border: 2px solid white;
 }
 
 .history_element h3 {
@@ -1033,8 +1032,8 @@ div:focus {
   background-color: #f76c6c;
   width: 14px;
   height: 14px;
-  border: 2px solid #24305e;
-  background-color: white;
+  border: 3px solid white;
+  background-color: #f76c6c;
 }
 
 .slick-current .timeline_description {
@@ -1047,6 +1046,10 @@ div:focus {
 .slick-current h3 {
   font-weight: 900;
   letter-spacing: 3px;
+}
+
+.slick-prev:before, .slick-next:before {
+  font-size: 25pt !important;
 }
 
 #freq {
@@ -1069,7 +1072,7 @@ div:focus {
 }
 
 #freq .svgWrapper {
-  width: 85%;
+  width: 70%;
 }
 
 #freq svg {
@@ -1088,8 +1091,8 @@ div:focus {
         margin-right: auto;
     }*/
 #timeline {
-  color: black;
-  padding: 25px;
+  color: #000000;
+  padding: 35px;
   margin: 0 auto;
   margin-top: 2rem;
   margin-bottom: 0rem;
@@ -1105,7 +1108,7 @@ div:focus {
   position: -webkit-sticky;
   position: sticky;
   top: 38px;
-  border-bottom: 4px dotted white;
+  border-bottom: 4px solid white;
 }
 
 #timeline div:focus {
@@ -1113,13 +1116,13 @@ div:focus {
 }
 
 #timeline .slick-next {
-  right: -19px;
-  top: 37px;
+  right: -18px;
+  top: 31px;
 }
 
 #timeline .slick-prev {
-  left: -19px;
-  top: 37px;
+  left: -30px;
+  top: 31px;
 }
 
 #timeline .slick-track:focus {
