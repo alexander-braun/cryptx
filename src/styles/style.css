@@ -19,9 +19,9 @@ textarea:focus {
   position: fixed;
   z-index: 998;
   top: 0;
-  height: 80px;
+  height: 60px;
   width: 100%;
-  background-color: #404040;
+  background-color: black;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -229,7 +229,7 @@ textarea:focus {
 
 @media only screen and (max-width: 1500px) {
   #block_container {
-    margin: 5rem 3rem;
+    margin: 2rem 2rem;
   }
   .site_header #header_links {
     margin-right: 3rem;
@@ -927,7 +927,7 @@ textarea:focus {
 
 @media only screen and (max-width: 1280px) {
   #block_container {
-    margin: 5rem 2rem;
+    margin: 2rem 2rem;
   }
   .site_header #header_links {
     margin-right: 2rem;
@@ -992,7 +992,7 @@ div:focus {
   border: none;
   width: 10px;
   height: 10px;
-  background-color: #f3d250;
+  background-color: #ffffff;
   padding: 0;
   border-radius: 50%;
   border: 1px solid black;
@@ -1107,23 +1107,15 @@ div:focus {
 }
 
 #timeline .slick-next {
-  right: -25px;
-  top: 26px;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
+  right: -19px;
+  top: 36px;
   line-height: 1;
-  height: 0;
 }
 
 #timeline .slick-prev {
-  left: -25px;
-  top: 26px;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
+  left: -19px;
+  top: 36px;
   line-height: 1;
-  height: 0;
 }
 
 #timeline .slick-track:focus {
@@ -1154,7 +1146,10 @@ div:focus {
     height: 50px;
   }
   .block {
-    width: 430px;
+    width: 530px;
+  }
+  .block_settings {
+    max-width: 530px;
   }
 }
 

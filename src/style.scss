@@ -21,8 +21,8 @@ $greyish: #585858;
 $slickarrow: black;
 $dotborder: black;
 $currentdot: #a8d0e6;
-$inactivedot: #f3d250;
-
+$inactivedot: #ffffff;
+$colorHeader: white;
 
 body {
     background-color: $blueish;
@@ -44,14 +44,14 @@ textarea {
     position: fixed;
     z-index: 998;
     top: 0;
-    height: 80px;
+    height: 60px;
     width: 100%;
-    background-color: #404040;
+    background-color: black;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    color: white;
+    color: $colorHeader;
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 700;
     box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.3);
@@ -62,7 +62,7 @@ textarea {
         font-weight: 200;
 
         a {
-            color: white;
+            color: $colorHeader;
             text-decoration: none;
             font-size: 15pt;
 
@@ -210,7 +210,7 @@ textarea {
 
 @media only screen and (max-width: 1500px) {
     #block_container {
-        margin: $mainMarginMin1500 $mainMarginMax1500;
+        margin: 2rem 2rem;
     }
     .site_header #header_links {
         margin-right: $mainMarginMax1500;
@@ -761,7 +761,7 @@ textarea {
 
 @media only screen and (max-width: 1280px) {
     #block_container {
-        margin: $mainMarginMin1500 $mainMarginMax1280;
+        margin: 2rem 2rem;
     }
     .site_header #header_links {
         margin-right: $mainMarginMax1280;
@@ -921,18 +921,14 @@ div {
     }
 
     .slick-next {
-        right: -25px;
-        top: 26px;
-        width: fit-content;
+        right: -19px;
+        top: 36px;
         line-height: 1;
-        height: 0;
     }
     .slick-prev {
-        left : -25px;
-        top: 26px;
-        width: fit-content;
+        left : -19px;
+        top: 36px;
         line-height: 1;
-        height: 0;
     }
     
 
@@ -971,7 +967,10 @@ div {
         height: 50px;
     }
     .block {
-        width: 430px;
+        width: 530px;
+    }
+    .block_settings {
+        max-width: 530px;
     }
 }
 
