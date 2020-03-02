@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/strngcrypt/static/css/main.f80dcda7.chunk.css",
+    "main.css": "/strngcrypt/static/css/main.4756d9aa.chunk.css",
     "main.js": "/strngcrypt/static/js/main.517286b8.chunk.js",
     "main.js.map": "/strngcrypt/static/js/main.517286b8.chunk.js.map",
     "runtime-main.js": "/strngcrypt/static/js/runtime-main.b46013db.js",
@@ -9,10 +9,10 @@
     "static/js/2.6662454d.chunk.js": "/strngcrypt/static/js/2.6662454d.chunk.js",
     "static/js/2.6662454d.chunk.js.map": "/strngcrypt/static/js/2.6662454d.chunk.js.map",
     "index.html": "/strngcrypt/index.html",
-    "precache-manifest.769c6fb67aeef5db229a5f11a13eff2e.js": "/strngcrypt/precache-manifest.769c6fb67aeef5db229a5f11a13eff2e.js",
+    "precache-manifest.13e6b684d8ca76c612bbbf6a93978ba8.js": "/strngcrypt/precache-manifest.13e6b684d8ca76c612bbbf6a93978ba8.js",
     "service-worker.js": "/strngcrypt/service-worker.js",
     "static/css/2.36ab2c59.chunk.css.map": "/strngcrypt/static/css/2.36ab2c59.chunk.css.map",
-    "static/css/main.f80dcda7.chunk.css.map": "/strngcrypt/static/css/main.f80dcda7.chunk.css.map",
+    "static/css/main.4756d9aa.chunk.css.map": "/strngcrypt/static/css/main.4756d9aa.chunk.css.map",
     "static/js/2.6662454d.chunk.js.LICENSE.txt": "/strngcrypt/static/js/2.6662454d.chunk.js.LICENSE.txt",
     "static/media/caret.2961acbb.svg": "/strngcrypt/static/media/caret.2961acbb.svg",
     "static/media/slick-theme.css": "/strngcrypt/static/media/slick.f97e3bbf.svg"
@@ -21,7 +21,7 @@
     "static/js/runtime-main.b46013db.js",
     "static/css/2.36ab2c59.chunk.css",
     "static/js/2.6662454d.chunk.js",
-    "static/css/main.f80dcda7.chunk.css",
+    "static/css/main.4756d9aa.chunk.css",
     "static/js/main.517286b8.chunk.js"
   ]
 }
