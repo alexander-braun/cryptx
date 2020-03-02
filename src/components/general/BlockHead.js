@@ -50,6 +50,7 @@ const BlockHead = ({switchModal, methodNameInset, changeDirection}) => {
             </div>
             <button 
                 className="block_head_text" 
+                id="block_head_modal"
                 onClick = {switchModal}
             >   {methodNameInset} <Caret />
             </button>

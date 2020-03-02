@@ -1,8 +1,23 @@
-@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400,400italic,600,700&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,600i,700,700i,800,800i&display=swap");
 html {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialised;
   font-weight: 400;
+}
+
+@-moz-document url-prefix() {}#root {
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 body {
@@ -10,7 +25,7 @@ body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: "Source Sans Pro";
 }
 
 textarea:focus {
@@ -42,7 +57,7 @@ textarea:focus {
       -ms-flex-align: center;
           align-items: center;
   color: white;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: "Source Sans Pro";
   font-weight: 700;
   -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
           box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
@@ -51,7 +66,7 @@ textarea:focus {
 .site_header #header_links {
   -webkit-transition-duration: 100ms;
           transition-duration: 100ms;
-  margin-right: 4vw;
+  margin-right: 9vw;
   font-weight: 200;
 }
 
@@ -84,7 +99,7 @@ textarea:focus {
   font-size: 30pt;
   margin-top: 0;
   margin-bottom: 0;
-  margin-left: 4vw;
+  margin-left: 9vw;
   line-height: 1;
   outline: none;
 }
@@ -95,16 +110,17 @@ textarea:focus {
 }
 
 .site_header #header_links #login:hover, .site_header #header_links #signup:hover, .site_header #header_links #about:hover {
-  border-bottom: 3px solid #f76c6c;
+  border-bottom: 3px solid #f54444;
 }
 
 .block {
   width: 30vw;
+  position: relative;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
   background-color: white;
-  border-radius: 2px;
+  border-radius: 6px;
   overflow: hidden;
   -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
           box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
@@ -122,22 +138,30 @@ textarea:focus {
 .block .block_head {
   height: 90px;
   background-color: #ececec;
-  color: #3f3f3f;
-  font-family: 'Source Sans Pro', sans-serif;
-  font-size: 18pt;
-  font-weight: 700;
+  color: black;
+  font-family: "Source Sans Pro";
+  font-size: 16pt;
+  font-weight: 600;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  padding: 16px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  padding: 16px;
 }
 
 .block .block_head .block_head_text {
   display: inline-block;
   -ms-flex-item-align: end;
       align-self: flex-end;
+  color: #3f3f3f;
 }
 
 .block .block_body .block_body_input, .block .block_body .block_body_output {
@@ -165,7 +189,7 @@ textarea:focus {
   height: 200px;
   padding: 16px;
   line-height: 1.5;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: "Source Sans Pro";
   font-size: 14pt;
   font-weight: 300;
 }
@@ -180,7 +204,7 @@ textarea:focus {
   height: 200px;
   padding: 16px;
   line-height: 1.5;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: "Source Sans Pro";
   font-size: 14pt;
   font-weight: 300;
 }
@@ -199,7 +223,7 @@ textarea:focus {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
-  margin: 0rem 4vw;
+  margin: 0rem 9vw;
   -webkit-transition-duration: 100ms;
           transition-duration: 100ms;
 }
@@ -208,14 +232,14 @@ textarea:focus {
   -webkit-box-flex: 0;
       -ms-flex-positive: 0;
           flex-grow: 0;
-  min-width: 35px;
-  height: 65px;
-  top: 57px;
-  background-color: #f76c6c;
+  min-width: 40px;
+  height: 70px;
+  top: 10px;
+  background-color: #f54444;
   position: relative;
-  font-family: 'Source Sans Pro', sans-serif;
-  font-size: 35pt;
-  font-weight: 900;
+  font-family: "Source Sans Pro";
+  font-size: 20pt;
+  font-weight: 400;
   color: white;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -237,13 +261,13 @@ textarea:focus {
 
 @media only screen and (max-width: 1500px) {
   #block_container {
-    margin: 0rem 4vw;
+    margin: 0rem 9vw;
   }
   .site_header #header_links {
-    margin-right: 4vw;
+    margin-right: 9vw;
   }
   .site_header p {
-    margin-left: 4vw;
+    margin-left: 9vw;
   }
 }
 
@@ -251,12 +275,12 @@ textarea:focus {
   -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
           box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
   color: #2f1728;
-  max-width: 400px;
+  max-width: 450px;
   -webkit-box-flex: 0;
       -ms-flex-positive: 0;
           flex-grow: 0;
   background-color: white;
-  border-radius: 2px;
+  border-radius: 6px;
   overflow: hidden;
 }
 
@@ -270,7 +294,7 @@ textarea:focus {
   height: 2em;
   padding: 0;
   line-height: 1.5;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: "Source Sans Pro";
   font-size: 14pt;
   font-weight: 300;
 }
@@ -284,9 +308,9 @@ textarea:focus {
   height: 90px;
   background-color: #ececec;
   color: #3f3f3f;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: "Source Sans Pro";
   font-size: 18pt;
-  font-weight: 700;
+  font-weight: 400;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   padding: 16px;
@@ -309,7 +333,7 @@ textarea:focus {
 }
 
 .block_settings .block_head .block_head_options button {
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: "Source Sans Pro";
   font-size: 18pt;
   font-weight: 400;
 }
@@ -321,18 +345,19 @@ textarea:focus {
   color: grey;
   -webkit-transition-duration: .2s;
           transition-duration: .2s;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: "Source Sans Pro";
   font-weight: 600;
+  letter-spacing: 1px;
 }
 
 .block_settings .block_head .block_head_options .block_head_option:hover {
   cursor: pointer;
-  -webkit-box-shadow: 0px 3px #f76c6c;
-          box-shadow: 0px 3px #f76c6c;
+  -webkit-box-shadow: 0px 3px #f54444;
+          box-shadow: 0px 3px #f54444;
 }
 
 .block_settings .block_head .block_head_options .block_head_option.selected {
-  color: #3f3f3f;
+  color: black;
 }
 
 .block_settings .block_head button {
@@ -354,8 +379,8 @@ textarea:focus {
   color: #3f3f3f;
   border: none;
   background-color: transparent;
-  font-size: 18pt;
-  font-weight: 700;
+  font-size: 16pt;
+  font-weight: 600;
   margin: 0;
   padding: 0;
 }
@@ -392,7 +417,7 @@ textarea:focus {
   height: 200px;
   padding: 16px;
   line-height: 1.5;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: "Source Sans Pro";
   font-size: 14pt;
   font-weight: 300;
 }
@@ -424,7 +449,7 @@ textarea:focus {
   border-right: 1px solid #d4d4d4;
   color: #bbbbbb;
   padding: 1em 1em 0em 16px;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: "Source Sans Pro";
   font-size: 10pt;
   font-weight: 700;
   line-height: 10px;
@@ -463,10 +488,10 @@ textarea:focus {
   -webkit-box-flex: 2;
       -ms-flex-positive: 2;
           flex-grow: 2;
-  font-weight: 600;
+  font-weight: 400;
   text-align: center;
   text-transform: lowercase;
-  background-color: #f76c6c;
+  background-color: #f54444;
   color: white;
   padding: 0;
   margin: 0;
@@ -482,7 +507,7 @@ textarea:focus {
 .controller .settings_operators {
   font-size: 25pt;
   font-weight: 700;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: "Source Sans Pro";
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -531,6 +556,14 @@ textarea:focus {
 
 .controller .settings_operators #caesar_shift_value {
   cursor: context-menu;
+}
+
+.feature_text {
+  font-size: 10pt;
+  padding: 0 16px 16px 16px;
+  font-style: italic;
+  font-weight: 400;
+  margin: 0;
 }
 
 .controller.explanation {
@@ -627,7 +660,7 @@ textarea:focus {
 .double_content.controller .controllbox .settings_operators select.affine {
   font-size: 12pt;
   font-weight: 700;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: "Source Sans Pro";
   width: 3em;
 }
 
@@ -643,7 +676,7 @@ textarea:focus {
   color: #898989;
   font-size: 12pt;
   font-weight: 700;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: "Source Sans Pro";
   padding-left: 0;
 }
 
@@ -662,7 +695,7 @@ textarea:focus {
   color: #898989;
   font-size: 12pt;
   font-weight: 700;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: "Source Sans Pro";
 }
 
 .double_content.controller .controllbox .settings_operators #ignoreChars.active {
@@ -678,7 +711,7 @@ textarea:focus {
   border: none;
   font-size: 12pt;
   font-weight: 700;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: "Source Sans Pro";
   padding: 0;
   width: -webkit-fit-content;
   width: -moz-fit-content;
@@ -690,7 +723,7 @@ textarea:focus {
 .double_content.controller .controllbox select option {
   font-size: 12pt;
   font-weight: 700;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: "Source Sans Pro";
   padding: 0;
 }
 
@@ -739,7 +772,7 @@ textarea:focus {
   color: #3f3f3f;
   font-size: 18pt;
   font-weight: 700;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: "Source Sans Pro";
   padding: 16px;
 }
 
@@ -757,7 +790,7 @@ textarea:focus {
   color: #898989;
   font-size: 12pt;
   font-weight: 700;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: "Source Sans Pro";
   margin-top: 2em;
 }
 
@@ -790,7 +823,7 @@ textarea:focus {
   border: 0;
   font-weight: 400;
   font-size: 12pt;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: "Source Sans Pro";
 }
 
 .method_category li button:hover {
@@ -822,8 +855,8 @@ textarea:focus {
   margin: 1px;
   position: relative;
   -webkit-box-flex: 1;
-      -ms-flex: 1 1 19%;
-          flex: 1 1 19%;
+      -ms-flex: 1 1 18%;
+          flex: 1 1 18%;
   text-align: center;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
@@ -884,11 +917,11 @@ textarea:focus {
   font-family: Times, serif;
   font-size: 10pt;
   color: black;
-  background-color: #f76c6c;
+  background-color: #f54444;
   color: white;
   font-size: 13pt;
   font-weight: 400;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: "Source Sans Pro";
   -webkit-transition: -webkit-transform 500ms, opacity 500ms;
   transition: -webkit-transform 500ms, opacity 500ms;
   -webkit-backface-visibility: hidden;
@@ -941,13 +974,13 @@ textarea:focus {
 
 @media only screen and (max-width: 1280px) {
   #block_container {
-    margin: 0rem 4vw;
+    margin: 0rem 9vw;
   }
   .site_header #header_links {
-    margin-right: 4vw;
+    margin-right: 9vw;
   }
   .site_header p {
-    margin-left: 4vw;
+    margin-left: 9vw;
   }
 }
 
@@ -963,7 +996,7 @@ div:focus {
 .history_element {
   z-index: 998;
   font-weight: 400;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: "Source Sans Pro";
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1109,7 +1142,7 @@ div:focus {
 .collector_freq_button {
   -webkit-transform: rotate(0deg);
           transform: rotate(0deg);
-  font-family: Roboto,Helvetica Neue,sans-serif;
+  font-family: "Source Sans Pro";
   font-size: 15px;
   font-weight: 400;
   color: rgba(0, 0, 0, 0.87);
@@ -1129,15 +1162,16 @@ div:focus {
   -ms-flex-line-pack: justify;
       align-content: space-between;
   width: 100%;
-  line-height: 1;
+  line-height: 1.5;
   border-right: 1px solid #d4d4d4;
   color: #bbbbbb;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: "Source Sans Pro";
   font-size: 10pt;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
-  height: 30px;
+  height: 35px;
+  cursor: pointer;
 }
 
 .expandbutton_name {
@@ -1198,6 +1232,41 @@ div:focus {
 
 #timeline h3 {
   text-align: center;
+}
+
+.site_footer {
+  background-color: #272727;
+  width: 100%;
+  color: white;
+  height: 100px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 5em;
+}
+
+#footer_links {
+  margin-left: 9vw;
+  font-family: "Source Sans Pro";
+  font-size: 16pt;
+  font-weight: 200;
+}
+
+#footer_login, #footer_signup, #footer_about {
+  font-size: 16pt;
+  color: white;
+  margin: 0 1em;
+  text-decoration: none;
 }
 
 @media only screen and (max-width: 1100px) {
@@ -1296,6 +1365,30 @@ div:focus {
   }
   #timeline .slick-slide.slick-active.slick-current .dot {
     top: 27px;
+  }
+}
+
+@-moz-document url-prefix() {
+  .history_element h3 {
+    font-weight: 400;
+  }
+  .feature_text {
+    font-style: italic;
+    font-weight: 200;
+    letter-spacing: .7px;
+    font-size: 9.5pt;
+  }
+  .controller.explanation p {
+    font-weight: 300;
+  }
+  .block_method_explanation {
+    font-weight: 300;
+  }
+  .block_head_text {
+    font-weight: 400;
+  }
+  #block_head_modal {
+    font-weight: 400;
   }
 }
 /*# sourceMappingURL=style.css.map */

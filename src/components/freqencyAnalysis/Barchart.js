@@ -61,7 +61,7 @@ function BarChart({ data, alphabet, inputValue }) {
     const xScale = scaleBand()
       .domain(alphabet.map((value, index) => value))
       .range([0, dimensions.width]) // change
-      .padding(0.5);
+      .padding(0.2);
 
     let frequencyMax;
     d3.max(frequency()) > 15 ? frequencyMax = d3.max(frequency()) : frequencyMax = 15
@@ -72,7 +72,7 @@ function BarChart({ data, alphabet, inputValue }) {
 
     const colorScale = scaleLinear()
       .domain([0, 20])
-      .range(["#ffbdbf", "#fd000a"])
+      .range(["#ffbdbf", "#ff0000"])
       .clamp(true);
 
     // create x-axis
@@ -121,8 +121,8 @@ function BarChart({ data, alphabet, inputValue }) {
       .join('circle')
       .attr('class', 'circle')
       .style('transform', 'scale(1, -1)')
-      .attr('r', 2)
-      .attr('cx', (value, index) => xScale(alphabet[index]) + 3.5)
+      .attr('r', xScale.bandwidth() / 5)
+      .attr('cx', (value, index) => xScale(alphabet[index]) + xScale.bandwidth() / 2)
       .attr('cy', value =>  -dimensions.height + dimensions.height - yScale(value))
 
   }, [data, dimensions, alphabet, inputValue]);

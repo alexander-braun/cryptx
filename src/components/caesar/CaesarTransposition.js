@@ -68,7 +68,7 @@ class CaesarTransposition extends React.Component {
                     <div id="alphabet_transpositioned">{this.genShifted(this.props.cShift)}</div>
                 </div>    
                 <div id="caesar_explanatory_text">
-                    <p style={{fontSize: '10pt', padding: '0 16px 16px 16px', fontStyle: 'italic', fontWeight: '400', margin: '0'}}> 
+                    <p className="feature_text"> 
                         Here you can see a visualization of the character mapping on <b>shift</b> changes.
                         Try adding and removing letters/signs to see what happens! If you add special signs 
                         like a dot to the alphabet, the output <b>won't be formatted.</b> If you remove letters wich 

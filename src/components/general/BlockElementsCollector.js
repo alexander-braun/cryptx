@@ -16,6 +16,7 @@ import Replace from '../replace/ReplaceLogic'
 import Skytale from '../skytale/SkytaleLogic'
 import Atbash from '../atbash/AtbashLogic'
 import Timeline from '../../components/timeline/Timeline'
+import Footer from './Footer'
 
 class BlockElementsCollector extends React.Component  {
   constructor(props) {
@@ -487,6 +488,7 @@ class BlockElementsCollector extends React.Component  {
             outputValue={this.state.outputValue}
           />
         </div>
+        <Footer />
         <Modal 
           switchModal = {this.switchModal}
           changeMethod = {this.changeMethod}
