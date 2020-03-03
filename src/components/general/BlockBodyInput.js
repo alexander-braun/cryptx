@@ -12,6 +12,7 @@ import RingLength from '../skytale/RingLenght'
 import Rings from '../skytale/Rings'
 import CaesarTransposition from '../caesar/CaesarTransposition'
 import AtbashTransposition from '../atbash/AtbashTransposition'
+import OtpGenerate from '../onetimepad/otpGenerate'
 
 
 const BlockBodyInput = ({   plusMinus,
@@ -34,6 +35,8 @@ const BlockBodyInput = ({   plusMinus,
                             skytaleLength,
                             skytaleProjectedValue,
                             alphabetActive,
+                            updateOtpKey,
+                            userInput
                         }) => {
     let bodyInput;
 
@@ -82,7 +85,8 @@ const BlockBodyInput = ({   plusMinus,
                         />
                     </div>
             } else bodyInput = null
-        } else if(method === 'affine') {
+        } 
+        else if(method === 'affine') {
             if(direction !== 'crack') {
                 bodyInput = 
                     <div className="block_body_input">
@@ -101,7 +105,8 @@ const BlockBodyInput = ({   plusMinus,
                         />
                     </div>
             } else bodyInput = null
-        } else if(method === 'vigenere') {
+        } 
+        else if(method === 'vigenere') {
             if(direction !== 'crack') {
                 bodyInput = 
                     <div className="block_body_input">
@@ -120,7 +125,8 @@ const BlockBodyInput = ({   plusMinus,
                         />
                     </div> 
             } else return null
-        } else if(method === 'playfair') {
+        } 
+        else if(method === 'playfair') {
             if(direction !== 'crack') {
                 bodyInput = 
                     <div className="block_body_input">
@@ -143,11 +149,13 @@ const BlockBodyInput = ({   plusMinus,
                         />
                     </div> 
             } else return null
-        } else if(method === 'morse') {
+        } 
+        else if(method === 'morse') {
             if(direction !== 'crack') {
                 bodyInput = null
             } else return null
-        } else if(method === 'replace') {
+        } 
+        else if(method === 'replace') {
             if(direction !== 'crack') {
                 bodyInput = 
                     <ReplaceKeys 
@@ -156,7 +164,8 @@ const BlockBodyInput = ({   plusMinus,
                         replaceLetter = {replaceLetter}
                     />
             }
-        } else if(method === 'skytale') {
+        } 
+        else if(method === 'skytale') {
             if(direction !== 'crack') {
                 bodyInput = 
                     <div>
@@ -177,6 +186,18 @@ const BlockBodyInput = ({   plusMinus,
                         <CaseChars 
                             selectCase = {selectCase}
                             includeChars = {includeChars}
+                        />
+                    </div>
+            }
+        }
+        else if(method === 'otp') {
+            if(direction !== 'crack') {
+                bodyInput = 
+                    <div>
+                        <OtpGenerate 
+                            updateOtpKey = {updateOtpKey}
+                            userInput = {userInput}
+                            alphabet = {alphabet}
                         />
                     </div>
             }

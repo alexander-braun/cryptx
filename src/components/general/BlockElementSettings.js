@@ -26,7 +26,8 @@ const BlockElementSettings = ({ plusMinus,
                                 skytaleLength,
                                 skytaleProjectedValue,
                                 alphabetActive,
-                                inputValue
+                                updateOtpKey,
+                                userInput
                                 }) => {
   return (
     <div className="block_settings">
@@ -59,6 +60,8 @@ const BlockElementSettings = ({ plusMinus,
                 ringLength = {ringLength}
                 skytaleLength = {skytaleLength}
                 skytaleProjectedValue = {skytaleProjectedValue}
+                updateOtpKey = {updateOtpKey}
+                userInput = {userInput}
               />
               
               <ExplanatoryText 

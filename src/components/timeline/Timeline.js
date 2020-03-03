@@ -45,7 +45,7 @@ class Timeline extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        const listMethods = ['atbash', 'skytale', 'caesar', 'vigenere', 'morse', 'playfair']
+        const listMethods = ['atbash', 'skytale', 'caesar', 'vigenere', 'morse', 'playfair', 'otp']
         if(prevProps.method !== this.props.method) {
             let changed = false;
             for(let listMethod of listMethods) {
@@ -167,7 +167,20 @@ class Timeline extends React.Component {
                             <div value='playfair' className="dot"></div>
                             <div value='playfair' className="timeline_description">Playfair Cipher</div>
                         </div>
-                    </div>             
+                    </div>       
+                    <div    value='otp' 
+                            key={6} 
+                            onClick={(evt) => {
+                                this.props.changeMethod(evt)
+                                this.slider.slickGoTo(6)
+                            }}
+                    >
+                        <div value='otp' className="history_element">
+                            <h3 value='otp'>1882</h3>
+                            <div value='otp' className="dot"></div>
+                            <div value='otp' className="timeline_description">One Time Pad</div>
+                        </div>
+                    </div>              
                 </Slider>
             </div>
         );

@@ -17,6 +17,7 @@ import Skytale from '../skytale/SkytaleLogic'
 import Atbash from '../atbash/AtbashLogic'
 import Timeline from '../../components/timeline/Timeline'
 import Footer from './Footer'
+import Otp from '../onetimepad/otp'
 
 class BlockElementsCollector extends React.Component  {
   constructor(props) {
@@ -43,6 +44,7 @@ class BlockElementsCollector extends React.Component  {
       skytaleLength: 1,
       skytaleProjectedValue: '',
       alphabetActive: false,
+      otpKey: ''
     }
 
     this.encrypt = this.encrypt.bind(this)
@@ -56,6 +58,7 @@ class BlockElementsCollector extends React.Component  {
     this.plusMinus = this.plusMinus.bind(this)
     this.switchModal = this.switchModal.bind(this)
     this.setReplaceLetters = this.setReplaceLetters.bind(this)
+    this.updateOtpKey = this.updateOtpKey.bind(this)
   }
 
   //Modal
@@ -75,7 +78,7 @@ class BlockElementsCollector extends React.Component  {
 
   changeMethod(evt) {
     let val
-    const methods = ['caesar', 'skytale', 'affine', 'vigenere', 'playfair', 'morse', 'replace', 'atbash']
+    const methods = ['caesar', 'skytale', 'affine', 'vigenere', 'playfair', 'morse', 'replace', 'atbash', 'otp']
     if(methods.indexOf(evt) !== -1) {
       val = evt
     } else {
@@ -95,6 +98,12 @@ class BlockElementsCollector extends React.Component  {
         methodNameInset: "Caesar's Cipher"
       })
     } 
+    else if(val === 'otp') {
+      this.setState({
+        alphabetActive: false,
+        methodNameInset: 'One Time Pad'
+      })
+    }
     else if(val === 'atbash') {
       this.setState({
         alphabetActive: false,
@@ -156,6 +165,12 @@ class BlockElementsCollector extends React.Component  {
     this.encrypt()
   }
 
+  updateOtpKey(val) {
+    this.setState({
+      otpKey: val
+    })
+  }
+
   includeChars(evt) {
     this.setState({
         includeChars: evt.target.value,
@@ -192,7 +207,7 @@ class BlockElementsCollector extends React.Component  {
     this.encrypt()
   }
 
-  //Caesar
+  //Caesar + skytale ?????? Auseinanderziehen seperation of concerns!
   plusMinus = (evt) => {
     if(evt.target.innerText === '+') {
       if(evt.target.id === 'plus_ring') {
@@ -323,6 +338,16 @@ class BlockElementsCollector extends React.Component  {
           outputValue: Caesar.encrypt()
         }
       } 
+      else if(prevState.method === 'otp') {
+        Otp.setUserInput(prevState.inputValue)
+        Otp.setCase(prevState.caseFormat)
+        Otp.setForeignChars(prevState.includeChars)
+        Otp.setDirection(prevState.direction)
+        Otp.setKey(prevState.otpKey)
+        return {
+          outputValue: Otp.encrypt()
+        }
+      }
       else if(prevState.method === 'atbash') {
         if(prevState.direction !== 'crack') {
           Atbash.setUserInput(prevState.inputValue)
@@ -482,6 +507,8 @@ class BlockElementsCollector extends React.Component  {
             skytaleProjectedValue = {this.state.skytaleProjectedValue}
             alphabetActive = {this.state.alphabetActive}
             inputValue = {this.state.inputValue}
+            updateOtpKey = {this.updateOtpKey}
+            userInput = {this.state.inputValue}
           />
           <BlockConnectorEquals />
           <BlockElementOutput 

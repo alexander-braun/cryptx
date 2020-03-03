@@ -81,6 +81,17 @@ class Modal extends Component {
                                         Playfair Cipher
                                         </button>
                                     </li>
+                                    <li>
+                                        <button 
+                                            className="modal_category_method" 
+                                            value="otp"
+                                            onClick={(evt) => {
+                                                this.props.changeMethod(evt)
+                                            }}
+                                        >
+                                        One Time Pad
+                                        </button>
+                                    </li>
                                 </ul>
                             </div>
                             <div className="method_category">
