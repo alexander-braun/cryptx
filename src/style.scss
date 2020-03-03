@@ -1208,7 +1208,66 @@ div {
     }
 }
 
+#genRandomTab {
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    justify-content: space-between;
+    align-content: space-between;
+    box-sizing: border-box;
 
+    padding: 16px 16px 16px 16px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    
+
+    button {
+        font-size: 12pt;
+        width: fit-content;
+        align-self: center;
+        border-radius: 2px;
+        border: none;
+        background-color: $reddish;
+        color: white;
+        font-weight: 600;
+        font-family: $font;
+        margin-top: 1em;
+
+        -webkit-transition: .3s ease-out;
+        transition: .3s ease-out;
+
+        -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+        box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+
+        &:hover {
+            -webkit-box-shadow: 0 3px 3px 0 rgba(0,0,0,0.14), 0 1px 7px 0 rgba(0,0,0,0.12), 0 3px 1px -1px rgba(0,0,0,0.2);
+            box-shadow: 0 3px 3px 0 rgba(0,0,0,0.14), 0 1px 7px 0 rgba(0,0,0,0.12), 0 3px 1px -1px rgba(0,0,0,0.2);
+        }
+
+        text-decoration: none;
+        color: #fff;
+        text-align: center;
+        letter-spacing: .5px;
+
+        &:focus {
+            outline: none;
+        }
+    }
+    #otpKey {
+        font-size: 12pt;
+        word-break: break-all;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        cursor: text;
+        -webkit-user-select: auto; 
+        -moz-user-select: auto; 
+        -ms-user-select: auto;     
+        user-select: auto;           
+    }
+    #generate {
+        text-transform: uppercase;
+    }
+}
 
 
 ///// IMPORTANTE

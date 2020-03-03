@@ -2,7 +2,7 @@ import React from 'react'
 
 const Otp = ({updateOtpKey, userInput, alphabet}) => {
 
-    const randomKey = () => {
+    const genRandomKey = () => {
         let userInputLength = userInput.length;
         let randomArr = []
         let letters = alphabet.split('')
@@ -11,26 +11,29 @@ const Otp = ({updateOtpKey, userInput, alphabet}) => {
         }
         return randomArr.join('')
     }
+    let randomKey = genRandomKey()
 
     return (
         <div className="controller">
             <div className="settings_name">GENERATE RANDOM KEY</div>
-            <div className="settings_operators">
-                <div 
-                    value = '-'
-                    id="generate"
-                    className="settings_operator" 
-                    onClick={(evt) => {
-                        updateOtpKey(randomKey())
-                    }}
-                >
-                    Generate new random key
-                </div>
+            <div className="settings_operators" id="genRandomTab">
                 <div 
                     className="settings_operator" 
                     id="otpKey"
                 >
-            </div>
+                    {randomKey}
+                </div>
+                <button 
+                    value = '-'
+                    id="generate"
+                    className="settings_operator" 
+                    onClick={(evt) => {
+                        randomKey = genRandomKey()
+                        updateOtpKey(randomKey)
+                    }}
+                >
+                    Generate new random key
+                </button>
             </div>
         </div>
   )
