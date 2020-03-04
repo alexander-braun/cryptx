@@ -58,7 +58,7 @@ class BlockElementsCollector extends React.Component  {
     this.plusMinus = this.plusMinus.bind(this)
     this.switchModal = this.switchModal.bind(this)
     this.setReplaceLetters = this.setReplaceLetters.bind(this)
-    this.updateOtpKey = this.updateOtpKey.bind(this)
+    this.genRandomKey = this.genRandomKey.bind(this)
   }
 
   //Modal
@@ -99,6 +99,7 @@ class BlockElementsCollector extends React.Component  {
       })
     } 
     else if(val === 'otp') {
+      this.genRandomKey()
       this.setState({
         alphabetActive: false,
         methodNameInset: 'One Time Pad'
@@ -163,12 +164,6 @@ class BlockElementsCollector extends React.Component  {
       })      
     }
     this.encrypt()
-  }
-
-  updateOtpKey(val) {
-    this.setState({
-      otpKey: val
-    })
   }
 
   includeChars(evt) {
@@ -287,6 +282,7 @@ class BlockElementsCollector extends React.Component  {
     this.encrypt()
   }
 
+
   //Affine
   setAlpha = (evt) => {
     this.setState({
@@ -323,6 +319,31 @@ class BlockElementsCollector extends React.Component  {
     })
   }
 
+  // otp 
+  genRandomKey = () => {
+    let randomArr = []
+    let letters = this.state.alphabet.split('')
+
+    let input = []
+    for(let i = 0; i < this.state.inputValue.length; i++) {
+        if(this.state.alphabet.indexOf(this.state.inputValue[i] !== -1)) {
+            input.push(this.state.inputValue[i])
+        }
+    }
+
+    let userInputLength = input.length;
+
+    for(let i = 0; i < userInputLength; i++) {
+        randomArr.push(letters[Math.floor(Math.random() * 26)])
+    }
+
+    this.setState({
+      otpKey: randomArr.join('')
+    })
+
+    this.encrypt()  
+  }
+
   //Do the magic!
   encrypt = () => {
     this.setState(prevState => {
@@ -344,6 +365,7 @@ class BlockElementsCollector extends React.Component  {
         Otp.setForeignChars(prevState.includeChars)
         Otp.setDirection(prevState.direction)
         Otp.setKey(prevState.otpKey)
+        Otp.setAlphabet(prevState.alphabet)
         return {
           outputValue: Otp.encrypt()
         }
@@ -507,8 +529,9 @@ class BlockElementsCollector extends React.Component  {
             skytaleProjectedValue = {this.state.skytaleProjectedValue}
             alphabetActive = {this.state.alphabetActive}
             inputValue = {this.state.inputValue}
-            updateOtpKey = {this.updateOtpKey}
             userInput = {this.state.inputValue}
+            genRandomKey = {this.genRandomKey}
+            otpKey = {this.state.otpKey}
           />
           <BlockConnectorEquals />
           <BlockElementOutput 

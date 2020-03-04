@@ -2,9 +2,8 @@ import math from '../math/Math'
 
 const otp = (() => {
 
-    //Setup all variables
     math.restoreForeignChars()
-    let userInput, direction, caseFormat, includeChars, key
+    let userInput, direction, caseFormat, includeChars, key, alphabet
 
     const setUserInput = (input) => {
         userInput = String(input);
@@ -12,6 +11,10 @@ const otp = (() => {
 
     const setForeignChars = (input) => {
         includeChars = input
+    }
+
+    const setAlphabet = (input) => {
+        alphabet = input
     }
 
     const setCase = (input) => {
@@ -26,12 +29,37 @@ const otp = (() => {
         key = input
     }
 
+    const modulo = (a, b) => {
+        return(a % b + b) % b;
+    }
 
+    const transformText = () => {
+        let ind = 0;
+        let input = []
+        for(let i = 0; i < userInput.length; i++) {
+            if(alphabet.indexOf(userInput[i].toLowerCase()) !== -1) {
+                input.push(userInput[i].toLowerCase())
+            }
+        }
+
+        let output = input.map((char) => {
+            let encryptedKey
+            if(key[ind] && input && alphabet && alphabet.indexOf(char) !== -1) {
+                let indexChar = alphabet.indexOf(char)
+                let indexKey = alphabet.indexOf(key[ind].toLowerCase())
+                let resultIndex = direction === 'encrypt' ? indexChar + indexKey : indexChar - indexKey
+                encryptedKey = direction === 'encrypt' ? alphabet[resultIndex % 26] : alphabet[modulo(indexChar - indexKey, 26)]
+                ind++
+            }
+            return encryptedKey
+        })
+        return output.join('')
+    }
 
     const encrypt = () => {
         if(direction !== 'crack') {
-            let rawOutput = '1' //readChar()
-            return 'aldjksfasdf' //math.transformCaseAndChars(userInput, rawOutput, caseFormat, includeChars) 
+            let rawOutput = transformText()
+            return math.transformCaseAndChars(userInput, rawOutput, caseFormat, includeChars) 
         }
     }
 
@@ -40,6 +68,7 @@ const otp = (() => {
         setDirection: setDirection,
         setForeignChars: setForeignChars,
         setCase: setCase,
+        setAlphabet: setAlphabet,
         setKey: setKey,
         encrypt: encrypt
     }

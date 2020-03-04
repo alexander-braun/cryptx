@@ -1,17 +1,6 @@
 import React from 'react'
 
-const Otp = ({updateOtpKey, userInput, alphabet}) => {
-
-    const genRandomKey = () => {
-        let userInputLength = userInput.length;
-        let randomArr = []
-        let letters = alphabet.split('')
-        for(let i = 0; i < userInputLength; i++) {
-            randomArr.push(letters[Math.floor(Math.random() * 26)])
-        }
-        return randomArr.join('')
-    }
-    let randomKey = genRandomKey()
+const Otp = ({genRandomKey, otpKey}) => {
 
     return (
         <div className="controller">
@@ -21,19 +10,23 @@ const Otp = ({updateOtpKey, userInput, alphabet}) => {
                     className="settings_operator" 
                     id="otpKey"
                 >
-                    {randomKey}
+                    {otpKey}
                 </div>
                 <button 
-                    value = '-'
                     id="generate"
                     className="settings_operator" 
-                    onClick={(evt) => {
-                        randomKey = genRandomKey()
-                        updateOtpKey(randomKey)
+                    onClick={() => {
+                        genRandomKey()
                     }}
                 >
                     Generate new random key
                 </button>
+                <div id="caesar_explanatory_text">
+                    <p className="feature_text"> 
+                        For the purpose of trying out de- and encryption with the same key, the key will not
+                        update when your input message updates.
+                    </p>
+                </div>    
             </div>
         </div>
   )

@@ -36,7 +36,9 @@ const BlockBodyInput = ({   plusMinus,
                             skytaleProjectedValue,
                             alphabetActive,
                             updateOtpKey,
-                            userInput
+                            userInput,
+                            otpKey,
+                            genRandomKey
                         }) => {
     let bodyInput;
 
@@ -195,9 +197,17 @@ const BlockBodyInput = ({   plusMinus,
                 bodyInput = 
                     <div>
                         <OtpGenerate 
-                            updateOtpKey = {updateOtpKey}
-                            userInput = {userInput}
-                            alphabet = {alphabet}
+                            genRandomKey = {genRandomKey}
+                            otpKey = {otpKey}
+                        />
+                        <CaseChars 
+                            selectCase = {selectCase}
+                            includeChars = {includeChars}
+                        />
+                        <Alphabet 
+                            alphabet = {alphabet} 
+                            alphabetUpdate = {alphabetUpdate} 
+                            alphabetActive = {alphabetActive}
                         />
                     </div>
             }

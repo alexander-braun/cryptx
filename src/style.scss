@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400,400italic,600,700&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,600i,700,700i,800,800i&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i&display=swap');
+
+
 
 html {
     -moz-osx-font-smoothing: grayscale;
@@ -7,15 +9,8 @@ html {
     font-weight: 400;
 }
 
-@-moz-document url-prefix() {
-    body, p, div, button, h3, textarea {
-      
-    }
-}
 
-
-
-$font: 'Source Sans Pro',;
+$font: 'Roboto', sans-serif;
 
 // Vars
 $mainMarginMin1500: 5rem;
@@ -25,12 +20,12 @@ $mainMarginMax1150: .5rem;
 $transitionMain: 100ms;
 
 $maxStandart: 0rem 9vw;
-$max1500: 0rem 9vw;
-$max1280: 0rem 9vw;
+$max1500: 0rem 5vw;
+$max1280: 0rem 5vw;
 
 $maxleft1500: 9vw;
-$maxleft1280: 9vw;
-$maxleftu128: 9vw;
+$maxleft1280: 5vw;
+$maxleftu128: 5vw;
 
 $margin-big: 12rem;
 
@@ -51,7 +46,7 @@ $dotbordercurrent: white;
 $currentdot: #f76c6c;
 $inactivedot: #f76c6c;
 $colorHeader: white;
-$timeline_font_color: #000000;
+$timeline_font_color: white;
 
 $border_grey: rgb(212, 212, 212);
 $greyed_text: #bbbbbb;
@@ -176,8 +171,8 @@ textarea {
         background-color: #ececec;
         color: black;
         font-family: $font;
-        font-size: 16pt;
-        font-weight: 600;
+        font-size: 21px;
+        font-weight: normal;
         box-sizing: border-box;
         display: flex;
         flex-direction: row;
@@ -277,6 +272,12 @@ textarea {
 
 .block_settings {
     box-shadow: $shadow_blocks;
+    color: #2f1728;
+    max-width: 400px;
+    flex-grow: 0;
+    background-color: rgb(255, 255, 255);
+    border-radius: $border_blocks;
+    overflow: hidden;
 
     #to_replace_letter, #replacement_letter {
         resize: none;
@@ -292,12 +293,7 @@ textarea {
         font-weight: 300;
     }
 
-    color: #2f1728;
-    max-width: 450px;
-    flex-grow: 0;
-    background-color: rgb(255, 255, 255);
-    border-radius: $border_blocks;
-    overflow: hidden;
+    
 
     .block_top_decoration {
         height: 0px;
@@ -310,7 +306,7 @@ textarea {
         color: $blockco;
         font-family: $font;
         font-size: 18pt;
-        font-weight: 400;
+        font-weight: normal;
         box-sizing: border-box;
         padding: 16px;
         display: flex;
@@ -323,7 +319,7 @@ textarea {
             button {
                 font-family: $font;
                 font-size: 18pt;
-                font-weight: 400;
+                font-weight: normal;
             }
         
             .block_head_option {
@@ -334,7 +330,6 @@ textarea {
                 transition-duration: .2s;
                 font-family: $font;
                 font-weight: 600;
-                letter-spacing: 1px;
                 
                 &:hover {
                     cursor: pointer;
@@ -362,8 +357,8 @@ textarea {
             color: $blockco;
             border: none;
             background-color: transparent;
-            font-size: 16pt;
-            font-weight: 600;
+            font-size: 21px;
+            font-weight: normal;
             margin: 0;
             padding: 0;
 
@@ -1222,19 +1217,24 @@ div {
     
 
     button {
-        font-size: 12pt;
+        font-size: 14px;
         width: fit-content;
         align-self: center;
         border-radius: 2px;
         border: none;
         background-color: $reddish;
         color: white;
-        font-weight: 600;
+        font-weight: 500;
         font-family: $font;
         margin-top: 1em;
+        padding-left: 16px;
+        padding-right: 16px;
 
         -webkit-transition: .3s ease-out;
         transition: .3s ease-out;
+        text-decoration: none;
+        color: #fff;
+        text-align: center;
 
         -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
         box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
@@ -1244,17 +1244,13 @@ div {
             box-shadow: 0 3px 3px 0 rgba(0,0,0,0.14), 0 1px 7px 0 rgba(0,0,0,0.12), 0 3px 1px -1px rgba(0,0,0,0.2);
         }
 
-        text-decoration: none;
-        color: #fff;
-        text-align: center;
-        letter-spacing: .5px;
-
         &:focus {
             outline: none;
         }
     }
+
     #otpKey {
-        font-size: 12pt;
+        font-size: 12px;
         word-break: break-all;
         letter-spacing: 1px;
         text-transform: uppercase;
@@ -1266,6 +1262,7 @@ div {
     }
     #generate {
         text-transform: uppercase;
+        margin-bottom: 1em;
     }
 }
 
@@ -1293,7 +1290,7 @@ div {
         font-weight: 300;
     }
     .block_head_text {
-        font-weight: 400;
+        font-weight: normal;
     }
     #block_head_modal {
         font-weight: 400;
