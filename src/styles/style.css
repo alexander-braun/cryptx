@@ -21,11 +21,11 @@ html {
 }
 
 body {
-  background-color: #a8d0e6;
+  background-color: #77b5d8;
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-family: "Roboto", sans-serif;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
 }
 
 textarea:focus {
@@ -57,10 +57,10 @@ textarea:focus {
       -ms-flex-align: center;
           align-items: center;
   color: white;
-  font-family: "Roboto", sans-serif;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   font-weight: 700;
-  -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
-          box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+          box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
 }
 
 .site_header #header_links {
@@ -114,20 +114,25 @@ textarea:focus {
 }
 
 .block {
-  width: 30vw;
+  width: 28vw;
   position: relative;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
   background-color: white;
-  border-radius: 6px;
+  border-radius: 3px;
   overflow: hidden;
-  -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
-          box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+          box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
 }
 
-.block #chartcontainer {
+.block .chartcontainer {
   border-top: 1px solid #d4d4d4;
+}
+
+.block .chartcontainer .controller {
+  border-bottom: none;
+  padding: 0 16px 0 16px;
 }
 
 .block .block_top_decoration {
@@ -139,7 +144,7 @@ textarea:focus {
   height: 90px;
   background-color: #ececec;
   color: black;
-  font-family: "Roboto", sans-serif;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   font-size: 21px;
   font-weight: normal;
   -webkit-box-sizing: border-box;
@@ -189,7 +194,7 @@ textarea:focus {
   height: 200px;
   padding: 16px;
   line-height: 1.5;
-  font-family: "Roboto", sans-serif;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   font-size: 14pt;
   font-weight: 300;
 }
@@ -204,7 +209,7 @@ textarea:focus {
   height: 200px;
   padding: 16px;
   line-height: 1.5;
-  font-family: "Roboto", sans-serif;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   font-size: 14pt;
   font-weight: 300;
 }
@@ -237,7 +242,7 @@ textarea:focus {
   top: 10px;
   background-color: #f54444;
   position: relative;
-  font-family: "Roboto", sans-serif;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   font-size: 20pt;
   font-weight: 400;
   color: white;
@@ -272,15 +277,15 @@ textarea:focus {
 }
 
 .block_settings {
-  -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
-          box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+          box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
   color: #2f1728;
   max-width: 400px;
   -webkit-box-flex: 0;
       -ms-flex-positive: 0;
           flex-grow: 0;
   background-color: white;
-  border-radius: 6px;
+  border-radius: 3px;
   overflow: hidden;
 }
 
@@ -294,7 +299,7 @@ textarea:focus {
   height: 2em;
   padding: 0;
   line-height: 1.5;
-  font-family: "Roboto", sans-serif;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   font-size: 14pt;
   font-weight: 300;
 }
@@ -308,7 +313,7 @@ textarea:focus {
   height: 90px;
   background-color: #ececec;
   color: #3f3f3f;
-  font-family: "Roboto", sans-serif;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   font-size: 18pt;
   font-weight: normal;
   -webkit-box-sizing: border-box;
@@ -333,7 +338,7 @@ textarea:focus {
 }
 
 .block_settings .block_head .block_head_options button {
-  font-family: "Roboto", sans-serif;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   font-size: 18pt;
   font-weight: normal;
 }
@@ -345,8 +350,8 @@ textarea:focus {
   color: grey;
   -webkit-transition-duration: .2s;
           transition-duration: .2s;
-  font-family: "Roboto", sans-serif;
-  font-weight: 600;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 500;
 }
 
 .block_settings .block_head .block_head_options .block_head_option:hover {
@@ -372,7 +377,19 @@ textarea:focus {
 }
 
 .block_settings .block_head .block_head_text {
-  display: inline-block;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   -ms-flex-item-align: start;
       align-self: flex-start;
   color: #3f3f3f;
@@ -416,7 +433,7 @@ textarea:focus {
   height: 200px;
   padding: 16px;
   line-height: 1.5;
-  font-family: "Roboto", sans-serif;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   font-size: 14pt;
   font-weight: 300;
 }
@@ -448,12 +465,12 @@ textarea:focus {
   border-right: 1px solid #d4d4d4;
   color: #bbbbbb;
   padding: 1em 1em 0em 16px;
-  font-family: "Roboto", sans-serif;
+  font-family: "Source Sans Pro", "Roboto", "Helvetica", "Arial", sans-serif;
   font-size: 10pt;
   font-weight: 700;
   line-height: 10px;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
 }
 
 .controller #caesar_transposition {
@@ -506,7 +523,7 @@ textarea:focus {
 .controller .settings_operators {
   font-size: 25pt;
   font-weight: 700;
-  font-family: "Roboto", sans-serif;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -659,7 +676,7 @@ textarea:focus {
 .double_content.controller .controllbox .settings_operators select.affine {
   font-size: 12pt;
   font-weight: 700;
-  font-family: "Roboto", sans-serif;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   width: 3em;
 }
 
@@ -675,7 +692,7 @@ textarea:focus {
   color: #898989;
   font-size: 12pt;
   font-weight: 700;
-  font-family: "Roboto", sans-serif;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   padding-left: 0;
 }
 
@@ -694,7 +711,7 @@ textarea:focus {
   color: #898989;
   font-size: 12pt;
   font-weight: 700;
-  font-family: "Roboto", sans-serif;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
 }
 
 .double_content.controller .controllbox .settings_operators #ignoreChars.active {
@@ -710,7 +727,7 @@ textarea:focus {
   border: none;
   font-size: 12pt;
   font-weight: 700;
-  font-family: "Roboto", sans-serif;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   padding: 0;
   width: -webkit-fit-content;
   width: -moz-fit-content;
@@ -722,7 +739,7 @@ textarea:focus {
 .double_content.controller .controllbox select option {
   font-size: 12pt;
   font-weight: 700;
-  font-family: "Roboto", sans-serif;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   padding: 0;
 }
 
@@ -771,7 +788,7 @@ textarea:focus {
   color: #3f3f3f;
   font-size: 18pt;
   font-weight: 700;
-  font-family: "Roboto", sans-serif;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   padding: 16px;
 }
 
@@ -789,7 +806,7 @@ textarea:focus {
   color: #898989;
   font-size: 12pt;
   font-weight: 700;
-  font-family: "Roboto", sans-serif;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   margin-top: 2em;
 }
 
@@ -822,7 +839,7 @@ textarea:focus {
   border: 0;
   font-weight: 400;
   font-size: 12pt;
-  font-family: "Roboto", sans-serif;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
 }
 
 .method_category li button:hover {
@@ -920,7 +937,7 @@ textarea:focus {
   color: white;
   font-size: 13pt;
   font-weight: 400;
-  font-family: "Roboto", sans-serif;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   -webkit-transition: -webkit-transform 500ms, opacity 500ms;
   transition: -webkit-transform 500ms, opacity 500ms;
   -webkit-backface-visibility: hidden;
@@ -995,7 +1012,7 @@ div:focus {
 .history_element {
   z-index: 998;
   font-weight: 400;
-  font-family: "Roboto", sans-serif;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1082,7 +1099,7 @@ div:focus {
 }
 
 .slick-current h3 {
-  font-weight: 900;
+  font-weight: 600;
   letter-spacing: 3px;
 }
 
@@ -1119,6 +1136,12 @@ div:focus {
   overflow: visible;
 }
 
+svg {
+  font-size: 15px;
+  padding-left: 10px;
+  padding-bottom: 2px;
+}
+
 .button_menue {
   width: 10px;
   height: 100%;
@@ -1141,7 +1164,7 @@ div:focus {
 .collector_freq_button {
   -webkit-transform: rotate(0deg);
           transform: rotate(0deg);
-  font-family: "Roboto", sans-serif;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   font-size: 15px;
   font-weight: 400;
   color: rgba(0, 0, 0, 0.87);
@@ -1161,23 +1184,18 @@ div:focus {
   -ms-flex-line-pack: justify;
       align-content: space-between;
   width: 100%;
-  line-height: 1.5;
-  border-right: 1px solid #d4d4d4;
-  color: #bbbbbb;
-  font-family: "Roboto", sans-serif;
-  font-size: 10pt;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  height: 35px;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   cursor: pointer;
+  color: rgba(0, 0, 0, 0.87);
 }
 
 .expandbutton_name {
-  padding: .75em 1em .5em 16px;
+  margin: 12px 0;
+  font-weight: 400;
+  line-height: 1.43;
 }
 
-.expand_menue {
+.expand_menue, .coincidence_menue {
   max-height: 0;
   -webkit-transition: max-height .2s ease-out;
   transition: max-height .2s ease-out;
@@ -1256,7 +1274,7 @@ div:focus {
 
 #footer_links {
   margin-left: 9vw;
-  font-family: "Roboto", sans-serif;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   font-size: 16pt;
   font-weight: 200;
 }
@@ -1403,7 +1421,7 @@ div:focus {
   background-color: #f54444;
   color: white;
   font-weight: 500;
-  font-family: "Roboto", sans-serif;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   margin-top: 1em;
   padding-left: 16px;
   padding-right: 16px;

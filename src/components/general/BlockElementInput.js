@@ -1,7 +1,8 @@
 import React from 'react'
 import ChartImporter from '../freqencyAnalysis/ChartImporter'
+import IndexOfCoincidence from '../indexOfCoincidence/IndexOfCoincidence'
 
-const BlockElementInput = ({updateInput, inputValue, clearTextareaInput}) => {
+const BlockElementInput = ({updateInput, inputValue, clearTextareaInput, ioc}) => {
 
   function autoresize(evt) {
     let el = evt.target;
@@ -38,8 +39,11 @@ const BlockElementInput = ({updateInput, inputValue, clearTextareaInput}) => {
                 />
             </div>
         </div>
-          <div id="chartcontainer" style={{width: '100%'}}>
+          <div className="chartcontainer" style={{width: '100%'}}>
             <ChartImporter inputValue={inputValue} menue={'input'}/>
+          </div>
+          <div className="chartcontainer" style={{width: '100%'}}>
+            <IndexOfCoincidence ioc = {ioc} menue={'input'}/>
           </div>
       </div>
   )

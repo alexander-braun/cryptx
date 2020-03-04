@@ -44,7 +44,8 @@ class BlockElementsCollector extends React.Component  {
       skytaleLength: 1,
       skytaleProjectedValue: '',
       alphabetActive: false,
-      otpKey: ''
+      otpKey: '',
+      ioc: 0
     }
 
     this.encrypt = this.encrypt.bind(this)
@@ -59,6 +60,7 @@ class BlockElementsCollector extends React.Component  {
     this.switchModal = this.switchModal.bind(this)
     this.setReplaceLetters = this.setReplaceLetters.bind(this)
     this.genRandomKey = this.genRandomKey.bind(this)
+    this.calcIndexOfCoincidence = this.calcIndexOfCoincidence.bind(this)
   }
 
   //Modal
@@ -278,10 +280,11 @@ class BlockElementsCollector extends React.Component  {
     }
   }
 
-  componentWillMount() {
-    this.encrypt()
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if(prevState.inputValue !== this.state.inputValue) {
+      this.calcIndexOfCoincidence()
+    }
   }
-
 
   //Affine
   setAlpha = (evt) => {
@@ -342,6 +345,35 @@ class BlockElementsCollector extends React.Component  {
     })
 
     this.encrypt()  
+  }
+
+  //ioc
+
+  calcIndexOfCoincidence = () => {
+
+    if(this.state.inputValue.length === 0) return
+
+    let cleanedInput = this.state.inputValue.split('').filter(character => {
+        return this.state.alphabet.indexOf(character.toLowerCase()) !== -1
+    })
+
+    let arrCounts = new Array(26).fill(0)
+    for(let character of cleanedInput) {
+        let indexOfCharacter = this.state.alphabet.indexOf(character.toLowerCase())
+        arrCounts[indexOfCharacter]++
+    }
+
+    let arrCountsCleaned = arrCounts.filter(element => element > 1)
+    
+    let countCi = arrCountsCleaned.map(count => {
+        return count * (count - 1)
+    }).reduce((a, b) => a + b, 0)
+    
+    console.log(countCi, cleanedInput.length)
+    let ioc = countCi / (cleanedInput.length * (cleanedInput.length - 1))
+    this.setState({
+      ioc: ioc
+    })
   }
 
   //Do the magic!
@@ -502,6 +534,7 @@ class BlockElementsCollector extends React.Component  {
           <BlockElementInput 
             inputValue={this.state.inputValue}
             updateInput={this.updateInput}
+            ioc = {this.state.ioc}
           />
           <BlockConnectorPlus />
           <BlockElementSettings
@@ -536,6 +569,7 @@ class BlockElementsCollector extends React.Component  {
           <BlockConnectorEquals />
           <BlockElementOutput 
             outputValue={this.state.outputValue}
+            ioc = {this.state.ioc}
           />
         </div>
         <Footer />

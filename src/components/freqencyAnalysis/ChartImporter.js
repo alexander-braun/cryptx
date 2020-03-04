@@ -4,13 +4,13 @@ import freq from './data'
 import ExpandMenueOutput from './ExpandMenueOutput'
 import ExpandMenueInput from './ExpandMenueInput'
 
-function App({inputValue, menue}) {
+function ChartImporter({inputValue, menue}) {
     const [data, setData] = useState([...freq])
     const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('')
     
     return (
         <div className="controller">
-                {menue === 'input' ? <ExpandMenueInput /> : <ExpandMenueOutput />}
+                {menue === 'input' ? <ExpandMenueInput method = 'Frequency Analysis'/> : <ExpandMenueOutput method = 'Frequency Analysis'/>}
             <div className="expand_menue">
                 <div className="collector_freq_button">
                     
@@ -36,4 +36,4 @@ function App({inputValue, menue}) {
     )
 }
 
-export default App
+export default ChartImporter
