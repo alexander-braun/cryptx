@@ -45,7 +45,8 @@ class BlockElementsCollector extends React.Component  {
       skytaleProjectedValue: '',
       alphabetActive: false,
       otpKey: '',
-      ioc: 0
+      iocInput: 0,
+      iocOutput: 0
     }
 
     this.encrypt = this.encrypt.bind(this)
@@ -60,7 +61,7 @@ class BlockElementsCollector extends React.Component  {
     this.switchModal = this.switchModal.bind(this)
     this.setReplaceLetters = this.setReplaceLetters.bind(this)
     this.genRandomKey = this.genRandomKey.bind(this)
-    this.calcIndexOfCoincidence = this.calcIndexOfCoincidence.bind(this)
+    this.indexOfCoincidenceInputOutput = this.indexOfCoincidenceInputOutput.bind(this)
   }
 
   //Modal
@@ -270,6 +271,9 @@ class BlockElementsCollector extends React.Component  {
   }
 
   async componentDidMount() {
+    this.indexOfCoincidenceInputOutput()
+    this.encrypt()
+
     if(this.state.wordbook === ''){
       const url = 'https://raw.githubusercontent.com/dwyl/english-words/master/words_dictionary.json'
       const response = await fetch(url)
@@ -281,8 +285,8 @@ class BlockElementsCollector extends React.Component  {
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
-    if(prevState.inputValue !== this.state.inputValue) {
-      this.calcIndexOfCoincidence()
+    if(prevState.outputValue !== this.state.outputValue) {
+      this.indexOfCoincidenceInputOutput()
     }
   }
 
@@ -349,30 +353,48 @@ class BlockElementsCollector extends React.Component  {
 
   //ioc
 
-  calcIndexOfCoincidence = () => {
+  calcIndexOfCoincidence = (input) => {
 
-    if(this.state.inputValue.length === 0) return
+    //calc for input or output -> true = input, false = output
+    let inputValue = input ? this.state.inputValue : this.state.outputValue
 
-    let cleanedInput = this.state.inputValue.split('').filter(character => {
+    //Return if no input
+    if(inputValue.length === 0) return
+
+    //don't use foreign chars
+    let cleanedInput = inputValue.split('').filter(character => {
         return this.state.alphabet.indexOf(character.toLowerCase()) !== -1
     })
 
+    //Return if only signs
+    if(cleanedInput.length === 0) return
+
+    // count all the occurences of every letter in the input
     let arrCounts = new Array(26).fill(0)
     for(let character of cleanedInput) {
         let indexOfCharacter = this.state.alphabet.indexOf(character.toLowerCase())
         arrCounts[indexOfCharacter]++
     }
 
+    // don't use letters that have a count of one as 1 * (1 - 1) === 0
     let arrCountsCleaned = arrCounts.filter(element => element > 1)
     
+    // calculate count ( count - 1 ) and sum all the results up
     let countCi = arrCountsCleaned.map(count => {
         return count * (count - 1)
     }).reduce((a, b) => a + b, 0)
     
-    console.log(countCi, cleanedInput.length)
+    //final calculation with countsum and inputlength
     let ioc = countCi / (cleanedInput.length * (cleanedInput.length - 1))
+
+    return ioc
+  }
+
+  indexOfCoincidenceInputOutput = () => {
     this.setState({
-      ioc: ioc
+          iocInput: this.calcIndexOfCoincidence(true),
+          iocOutput: this.calcIndexOfCoincidence(false)  
+        
     })
   }
 
@@ -534,7 +556,7 @@ class BlockElementsCollector extends React.Component  {
           <BlockElementInput 
             inputValue={this.state.inputValue}
             updateInput={this.updateInput}
-            ioc = {this.state.ioc}
+            ioc = {this.state.iocInput}
           />
           <BlockConnectorPlus />
           <BlockElementSettings
@@ -569,7 +591,7 @@ class BlockElementsCollector extends React.Component  {
           <BlockConnectorEquals />
           <BlockElementOutput 
             outputValue={this.state.outputValue}
-            ioc = {this.state.ioc}
+            ioc = {this.state.iocOutput}
           />
         </div>
         <Footer />

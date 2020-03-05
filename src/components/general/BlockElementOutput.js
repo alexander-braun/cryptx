@@ -1,5 +1,6 @@
 import React from 'react'
 import ChartImporter from '../freqencyAnalysis/ChartImporter'
+import IndexOfCoincidence from '../indexOfCoincidence/IndexOfCoincidence'
 
 class BlockElementOutput extends React.Component {
 
@@ -44,6 +45,9 @@ class BlockElementOutput extends React.Component {
           </div>
             <div className="chartcontainer" style={{width: '100%'}}>
               <ChartImporter inputValue={this.props.outputValue} menue = {'output'}/>
+            </div>
+            <div className="chartcontainer" style={{width: '100%'}}>
+              <IndexOfCoincidence ioc = {this.props.ioc} menue={'output'}/>
             </div>
         </div>
     )

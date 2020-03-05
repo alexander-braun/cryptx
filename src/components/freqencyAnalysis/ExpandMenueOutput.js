@@ -1,8 +1,18 @@
 import React from 'react'
 
-function ExpandMenueOutput() {
-    let expMenue = document.getElementsByClassName('expand_menue')[1]
+function ExpandMenueOutput({method}) {
 
+    let expMenue
+    switch(method) {
+        case 'Frequency Analysis':
+            expMenue = document.getElementsByClassName('expand_menue')[1]
+            break
+        case 'Index of Coincidence':
+            expMenue = document.getElementsByClassName('coincidence_menue')[1]
+            break
+        default: 
+            return
+    }
     return (
         <div class="expandbutton_field" onClick={() => {
             if(expMenue) {
@@ -13,7 +23,7 @@ function ExpandMenueOutput() {
                   } 
             }
         }}>
-            <div className="expandbutton_name">Frequency Analysis</div>
+            <div className="expandbutton_name">{method}</div>
             <div className="button_menue">
 
             </div> 
