@@ -35,8 +35,6 @@ const BlockBodyInput = ({   plusMinus,
                             skytaleLength,
                             skytaleProjectedValue,
                             alphabetActive,
-                            updateOtpKey,
-                            userInput,
                             otpKey,
                             genRandomKey
                         }) => {

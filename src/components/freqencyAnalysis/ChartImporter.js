@@ -24,8 +24,8 @@ function ChartImporter({inputValue, menue}) {
                         />
                     </React.Fragment>
                 </div>    
-                <div id="freq_explanatory_text">
-                    <p style={{marginLeft: 'auto', marginRight: 'auto', fontSize: '10pt', padding: '0 16px 16px 16px', fontStyle: 'italic', fontWeight: '400', width: '80%'}}> 
+                <div>
+                    <p id="freq_explanatory_text"> 
                         This is a chart of how the frequency of letters in the english language compares to your textinput. The longer the
                         input, the more accurate the result becomes. The black <b>dots</b> represent your input. The red <b>bars </b>
                         represent the standart distributon of letters in the english language.

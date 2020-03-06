@@ -359,6 +359,7 @@ class BlockElementsCollector extends React.Component  {
     let inputValue = input ? this.state.inputValue : this.state.outputValue
 
     //Return if no input
+    if(!inputValue) return
     if(inputValue.length === 0) return
 
     //don't use foreign chars
@@ -387,7 +388,7 @@ class BlockElementsCollector extends React.Component  {
     //final calculation with countsum and inputlength
     let ioc = countCi / (cleanedInput.length * (cleanedInput.length - 1))
 
-    return ioc
+    return !isNaN(ioc) ? ioc : '0'
   }
 
   indexOfCoincidenceInputOutput = () => {

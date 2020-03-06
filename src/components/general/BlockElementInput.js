@@ -2,7 +2,7 @@ import React from 'react'
 import ChartImporter from '../freqencyAnalysis/ChartImporter'
 import IndexOfCoincidence from '../indexOfCoincidence/IndexOfCoincidence'
 
-const BlockElementInput = ({updateInput, inputValue, clearTextareaInput, ioc}) => {
+const BlockElementInput = ({updateInput, inputValue, ioc}) => {
 
   function autoresize(evt) {
     let el = evt.target;

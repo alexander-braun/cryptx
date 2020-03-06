@@ -16,7 +16,6 @@ function ExpandMenueInput({method}) {
     return (
         <div className="expandbutton_field" onClick={() => {
             if(expMenue) {
-                console.log(expMenue)
                 if (expMenue.style.maxHeight){
                     expMenue.style.maxHeight = null;
                   } else {

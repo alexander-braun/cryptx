@@ -1,6 +1,6 @@
 import React from 'react'
 import ExplanatoryText from './ExplanatoryText'
-import BlockHead from './BlockHead'
+import BlockHeadSettings from './BlockHeadSettings'
 import BlockBodyInput from './BlockBodyInput'
 
 const BlockElementSettings = ({ plusMinus,
@@ -34,7 +34,7 @@ const BlockElementSettings = ({ plusMinus,
   return (
     <div className="block_settings">
       <div className="block_top_decoration"></div>
-      <BlockHead 
+      <BlockHeadSettings 
         switchModal={switchModal} 
         methodNameInset={methodNameInset}
         changeDirection={changeDirection}

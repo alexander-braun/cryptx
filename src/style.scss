@@ -51,14 +51,15 @@ $colorHeader: white;
 $timeline_font_color: white;
 
 $border_grey: rgb(212, 212, 212);
-$greyed_text: #bbbbbb;
+$greyed_text: rgb(148, 148, 148);
 
 $blockbg: #ececec;
-$blockco: #3f3f3f;
+$blockco: #101010;
 $blockcoinactive: grey;
 $blockcoactitive: black;
 $blockconnectorbg: #f54444;
-$border_blocks: 3px;
+$blockconnectortransparent: 'transparent';
+$border_blocks: 0px;
 
 $shadow_blocks: 0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12);
 
@@ -178,7 +179,7 @@ textarea {
         background-color: #ececec;
         color: black;
         font-family: $font;
-        font-size: 21px;
+        font-size: 22px;
         font-weight: normal;
         box-sizing: border-box;
         display: flex;
@@ -249,7 +250,7 @@ textarea {
     min-width: 40px;
     height: 70px;
     top: 10px;
-    background-color: $blockconnectorbg;
+    background-color: $reddish;
     position: relative;
     font-family: $font;
     font-size: 20pt;
@@ -259,8 +260,10 @@ textarea {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: none;
     z-index: -1;
+    color: white;
+    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
     
 }
 
@@ -330,7 +333,7 @@ textarea {
             }
         
             .block_head_option {
-                font-size: 10pt;
+                font-size: 14px;
                 margin: 3px;
                 margin-right: 1em;
                 color: $blockcoinactive;
@@ -367,7 +370,7 @@ textarea {
             color: #3f3f3f;
             border: none;
             background-color: transparent;
-            font-size: 21px;
+            font-size: 22px;
             font-weight: normal;
             margin: 0;
             padding: 0;
@@ -423,6 +426,7 @@ textarea {
     border-bottom: 1px solid $border_grey;
 
     .settings_name {
+        /*
         border-right: 1px solid $border_grey;
         color: $greyed_text;
         padding: 1em 1em 0em 16px;
@@ -432,20 +436,33 @@ textarea {
         line-height: 10px;
         text-transform: uppercase;
         letter-spacing: 0.5px;
+        border-right: 1px solid #d4d4d4;
+        */
+
+        border-right: 1px solid #d4d4d4;
+        color: $greyed_text;
+        padding: 1em 1em 0 16px;
+        font-family: "Source Sans Pro","Roboto","Helvetica","Arial",sans-serif;
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 10px;
+        text-transform: uppercase;
+        letter-spacing: .2px;
     }
 
     #caesar_transposition {
         box-sizing: border-box;
         width: 100%;
-        padding: 16px 16px 16px 16px;
-        margin-top: 5px;
-        margin-bottom: 5px;
+        padding: 16px 16px 0px 16px;
 
         #alphabet_standart, #alphabet_transpositioned {
             display: flex;
             flex-direction: row;
             justify-content: center;
             align-content: center;
+            background: rgb(2,0,36);
+            background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(245,68,68,1) 0%, rgba(119,181,216,1) 100%);
+            //background: $reddish;
 
             .alphabet_transpos {
                 border-left: 1px solid rgb(255, 255, 255);
@@ -455,12 +472,13 @@ textarea {
                 font-weight: 400;
                 text-align: center;
                 text-transform: lowercase;
-                background-color: $reddish;
+                //background-color: $reddish;
                 color: white;
                 padding: 0;
                 margin: 0;
                 display: flex;
                 flex-direction: column;
+                font-size: 14px;
             }
         }
     }
@@ -468,7 +486,7 @@ textarea {
 
 
     .settings_operators {
-        font-size: 25pt;
+        font-size: 14px;
         font-weight: 700;
         font-family: $font;
         width: 100%;
@@ -493,7 +511,7 @@ textarea {
             border: 1px solid #ccc;
             overflow-x: hidden;
             overflow-y: auto;
-            font-size: 12pt;
+            font-size: 14px;
             font-weight: 600;
             border: none;
             padding: 1rem .5rem 0 16px;
@@ -508,15 +526,20 @@ textarea {
         #caesar_shift_value {
             cursor: context-menu;
         }
+
+        #minus_caesar, #caesar_shift_value, #plus_caesar, #plus_ring, #minus_ring {
+            font-size: 30px;
+        }
     }
 }
 
 .feature_text {
-    font-size: 10pt;
-    padding: 0 16px 16px 16px;
-    font-style: italic;
+    font-size: 14px;
+    padding: 16px 16px 16px 16px;
     font-weight: 400;
     margin: 0;
+    color: rgba(0, 0, 0, 1);
+    letter-spacing: .2px;
 }
 
 
@@ -533,12 +556,11 @@ textarea {
     justify-content: center;
 
     p {
-        width: 100%;
-        font-size: 11pt;
-        line-height: 1.5;
-        margin: 0;
-        align-self: center;
+        font-size: 14px;
         font-weight: 400;
+        margin: 0;
+        color: rgba(0, 0, 0, 1);
+        letter-spacing: .2px;
     }
 
     a {
@@ -548,6 +570,8 @@ textarea {
         padding-top: 20px;
         font-weight: 500;
         width: fit-content;
+        font-size: 12px;
+        letter-spacing: .5px;
     }
 }
 
@@ -563,7 +587,7 @@ textarea {
 
     .controllbox {
         width: 50%;
-        height: 5em;
+        height: 4em;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -595,7 +619,7 @@ textarea {
                 padding-right: 1em;
                 cursor: pointer;
                 color: rgb(137, 137, 137);
-                font-size: 12pt;
+                font-size: 14px;
                 font-weight: 700;
                 font-family: $font;
                 padding-left: 0;
@@ -612,8 +636,8 @@ textarea {
                 background: transparent;
                 cursor: pointer;
                 color: rgb(137, 137, 137);
-                font-size: 12pt;
-                font-weight: 700;
+                font-size: 14px;
+                font-weight: 500;
                 font-family: $font;
 
                 &.active {
@@ -627,7 +651,7 @@ textarea {
         select {
             background: transparent;
             border: none;
-            font-size: 12pt;
+            font-size: 14px;
             font-weight: 700;
             font-family: $font;
             padding: 0;
@@ -746,12 +770,14 @@ textarea {
 .playfairTable {
     height: 50px; 
     border: 0.5px solid #00000044;
+    border-radius: 6px;
     margin: 1px;
     position: relative; 
     flex: 1 1 18%; 
     text-align: center; 
     justify-content: center;  
     align-items: center;
+    font-size: 30px;
 }
 
 #visualMatrix.controller {
@@ -817,8 +843,8 @@ textarea {
 
     transform-style: preserve-3d;
 
-    -webkit-animation: spin 10s infinite linear;
-    animation: spin 10s infinite linear;
+    -webkit-animation: spin 20s infinite linear;
+    animation: spin 20s infinite linear;
     
     display: flex;
     flex-direction: column;
@@ -952,14 +978,24 @@ div {
     align-content: center;
     margin-top: 1.5rem;
     margin-bottom: 0rem;
+    box-sizing: border-box;
     .svgWrapper {
-        width: 80%;
+        width: 95%;
     }
     svg {
         width: 100%;
         height: 100%;
         overflow: visible;
     }
+}
+
+#freq_explanatory_text {
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 14px;
+    padding: 0 0 16px 0;
+    font-weight: 400;
+    width: 100%
 }
 
 svg {
@@ -1014,20 +1050,15 @@ svg {
 .expand_menue, .coincidence_menue {
     max-height: 0;
     transition: max-height .2s ease-out;
+    word-break: break-all;
+    width: 100%;
+
+    h1 {
+        width: 100%;
+        text-align: center;
+        font-size: 20px;
+    }
 }
-
-
-
-/*
-    svg {
-        margin-top: 20px;
-        margin-bottom: 20px;
-        overflow: visible;
-        width: fit-content;
-        margin-left: auto;
-        margin-right: auto;
-    }*/
-
 
 
 #timeline {
@@ -1035,7 +1066,7 @@ svg {
     padding: 35px;
     margin: 0 auto;
     min-width: 330px;
-    max-width: 21vw;
+    max-width: 18vw;
     overflow: hidden;
 
     .timeline_border {
@@ -1054,7 +1085,7 @@ svg {
     }
 
     .slick-next {
-        right: -18px;
+        right: -17px;
         top: 31px;
     }
     .slick-prev {
@@ -1119,9 +1150,11 @@ svg {
         align-items: center;
     }
     .block_connector {
+        color: white;
         top: 0;
-        width: 100px;
-        height: 50px;
+        width: 100%;
+        height: 40px;
+        background-color: $reddish;
     }
     .block {
         width: 530px;
@@ -1144,8 +1177,13 @@ svg {
     }
 
     .block_connector {
-        width: 40px;
-        height: 40px;
+        width: 100%;
+        height: 30px;
+        background-color: $reddish;
+    }
+
+    .site_footer {
+        margin-top: 0;
     }
 
     #header_margin {
@@ -1220,12 +1258,9 @@ svg {
     flex-direction: column;
     height: fit-content;
     justify-content: space-between;
-    align-content: space-between;
+    align-content: center;
     box-sizing: border-box;
-
-    padding: 16px 16px 16px 16px;
-    margin-top: 5px;
-    margin-bottom: 5px;
+    padding-top: 16px;
     
 
     button {
@@ -1270,7 +1305,9 @@ svg {
         -webkit-user-select: auto; 
         -moz-user-select: auto; 
         -ms-user-select: auto;     
-        user-select: auto;           
+        user-select: auto;      
+        width: 80%;     
+        align-self: center;
     }
     #generate {
         text-transform: uppercase;
@@ -1290,7 +1327,6 @@ svg {
         }
     }
     .feature_text {
-        font-style: italic;
         font-weight: 200;
         letter-spacing: .7px;
         font-size: 9.5pt;
