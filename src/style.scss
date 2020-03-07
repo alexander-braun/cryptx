@@ -59,7 +59,7 @@ $blockcoinactive: grey;
 $blockcoactitive: black;
 $blockconnectorbg: #f54444;
 $blockconnectortransparent: 'transparent';
-$border_blocks: 0px;
+$border_blocks: 3px;
 
 $shadow_blocks: 0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12);
 
@@ -70,13 +70,14 @@ $shadow_blocks: 0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.1
     justify-content: space-between;
 }
 
-
 body {
     background-color: $blueish;
     margin: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-family: $font;
+    background: rgb(119,181,216);
+    background: linear-gradient(180deg, rgba(119,181,216,1) 0%, rgb(178, 226, 253) 100%);
 }
 
 textarea {
@@ -152,6 +153,11 @@ textarea {
 
 
 .block {
+    transition-duration: .3s;
+    transition-timing-function: linear;
+    &:hover {
+        box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    }
     .chartcontainer {
         border-top: 1px solid $border_grey;
 
@@ -163,7 +169,7 @@ textarea {
 
     width: 28vw;
     position: relative;
-    flex-grow: 1;
+    flex-grow: 0;
     background-color: rgb(255, 255, 255);
     border-radius: $border_blocks;
     overflow: hidden;
@@ -281,6 +287,11 @@ textarea {
 }
 
 .block_settings {
+    transition-duration: .3s;
+    transition-timing-function: linear;
+    &:hover {
+        box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    }
     box-shadow: $shadow_blocks;
     color: #2f1728;
     max-width: 400px;
@@ -461,7 +472,7 @@ textarea {
             justify-content: center;
             align-content: center;
             background: rgb(2,0,36);
-            background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(245,68,68,1) 0%, rgba(119,181,216,1) 100%);
+            background: linear-gradient(90deg, #f54444 20%, #77b5d8 100%);
             //background: $reddish;
 
             .alphabet_transpos {
@@ -656,7 +667,7 @@ textarea {
             font-family: $font;
             padding: 0;
             width: fit-content;
-            text-align: start;
+            text-align: left;
             cursor: pointer;
 
             option {
@@ -730,7 +741,7 @@ textarea {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        justify-content: start;
+        justify-content: flex-start;
         align-items: center;
         margin: 0;
         padding: 0;
@@ -797,7 +808,9 @@ textarea {
     width: 100%;
     height: auto;
     -webkit-perspective: 2000; /* For compatibility with iPhone 3.0, we leave off the units here */
+    perspective: 2000;
     -webkit-perspective-origin: 50% 225px;
+    perspective-origin: 50% 225px;
     padding: 16px;
 }
   
@@ -1020,6 +1033,31 @@ svg {
         color: black;
     }
 }
+
+.helpme {
+    display: flex;
+    align-items: center;
+    height:100%;
+}
+
+.informational_modal {
+    font-size: 14px;
+    font-weight: 900; 
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+}
+
+.MuiButton-root {
+    min-width: 20px !important;
+}
+
+.controll_handles {
+    display: flex;
+    flex-direction: row;
+}
+
 .collector_freq_button {
 
     transform: rotate(0deg);
@@ -1050,13 +1088,23 @@ svg {
 .expand_menue, .coincidence_menue {
     max-height: 0;
     transition: max-height .2s ease-out;
-    word-break: break-all;
+    word-break: break-word;
     width: 100%;
 
     h1 {
         width: 100%;
         text-align: center;
         font-size: 20px;
+    }
+
+    p {
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 14px;
+        padding: 0 0 16px 0;
+        font-weight: 400;
+        width: 100%;
+        margin-bottom: 1em;
     }
 }
 
@@ -1153,7 +1201,7 @@ svg {
         color: white;
         top: 0;
         width: 100%;
-        height: 40px;
+        height: 50px;
         background-color: $reddish;
     }
     .block {
@@ -1178,7 +1226,7 @@ svg {
 
     .block_connector {
         width: 100%;
-        height: 30px;
+        height: 50px;
         background-color: $reddish;
     }
 
@@ -1298,7 +1346,7 @@ svg {
 
     #otpKey {
         font-size: 12px;
-        word-break: break-all;
+        word-break: break-word;
         letter-spacing: 1px;
         text-transform: uppercase;
         cursor: text;
@@ -1348,3 +1396,4 @@ svg {
 ///// IMPORTANTE
 ///// IMPORTANTE
 ///// IMPORTANTE
+

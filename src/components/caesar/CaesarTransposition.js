@@ -69,10 +69,7 @@ class CaesarTransposition extends React.Component {
                 </div>    
                 <div id="caesar_explanatory_text">
                     <p className="feature_text"> 
-                        Here you can see a visualization of the character mapping on <b>shift</b> changes.
-                        Try adding and removing letters/signs to see what happens! If you add special signs 
-                        like a dot to the alphabet, the output <b>won't be formatted.</b> If you remove letters wich 
-                        are part of your original message, the ouput will obviously not be correct.
+                        Visualization of the character mapping on <b>shift</b> changes.
                     </p>
                 </div>    
             </div> 

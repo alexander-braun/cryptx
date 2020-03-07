@@ -1,20 +1,9 @@
 import React from 'react'
 import ChartImporter from '../freqencyAnalysis/ChartImporter'
 import IndexOfCoincidence from '../indexOfCoincidence/IndexOfCoincidence'
+import math from '../general/Math'
 
 const BlockElementInput = ({updateInput, inputValue, ioc}) => {
-
-  function autoresize(evt) {
-    let el = evt.target;
-    el.style.height = 'inherit'
-    let computed = window.getComputedStyle(el)
-    let height = parseInt(computed.getPropertyValue('border-top-width'), 10)
-    + parseInt(computed.getPropertyValue('padding-top'), 10)
-    + el.scrollHeight
-    + parseInt(computed.getPropertyValue('padding-bottom'), 10)
-    + parseInt(computed.getPropertyValue('border-bottom-width'), 10);
-    el.style.height = height + 'px'
-  }
 
   return (
       <div className="block" id="user_input">
@@ -30,11 +19,11 @@ const BlockElementInput = ({updateInput, inputValue, ioc}) => {
                   defaultValue={inputValue} 
                   onClick = {(evt) => {
                     updateInput(evt)
-                    autoresize(evt)
+                    math.autoresize(evt)
                   }}
                   onChange={(evt) => {
                     updateInput(evt)
-                    autoresize(evt)
+                    math.autoresize(evt)
                   }}
                 />
             </div>

@@ -100,53 +100,10 @@ const affine = (() => {
         return arr.join('');
     }
 
-    const caseTransform = (textinput, textoutput) => {
-        let output = [];
-        for(let i = 0; i < textinput.length; i++){
-            textinput[i].toUpperCase() === textinput[i] ? output.push(textoutput[i].toUpperCase()) : output.push(textoutput[i]);
-        }
-        return output.join('');
-    }
-
-    const removeChars = (input) => {
-        let arr = []
-        for(let i = 0; i < input.length; i++) {
-            if(alphabet.indexOf(input[i].toLowerCase()) !== -1 || input[i] === ' ') {
-                arr.push(input[i])
-            }
-        }
-        return arr.join('')
-    }
-
     const transformText = () => {
         let rawOutput
         direction === 'encrypt' ? rawOutput = encrypt(correctedInput, alpha, beta) : rawOutput = decrypt(correctedInput, alpha, beta)
         return math.transformCaseAndChars(userInput, rawOutput, caseFormat, includeChars)
-        
-        /*
-        if(direction === 'encrypt') {
-            if(caseFormat === 'maintain') {
-                if(includeChars === 'include') {
-                    return caseTransform(userInput, encrypt(userInput, alpha, beta))    
-                }
-                else return removeChars(caseTransform(userInput, encrypt(userInput, alpha, beta)))
-            } else {
-                if(includeChars === 'include') {
-                    return encrypt(userInput, alpha, beta)
-                } else return removeChars(encrypt(userInput, alpha, beta))
-            }
-        } else {
-            if(caseFormat === 'maintain') {
-                if(includeChars === 'include') {
-                    return caseTransform(userInput, decrypt(userInput, alpha, beta))
-                } else return removeChars(caseTransform(userInput, decrypt(userInput, alpha, beta)))
-            } else {
-                if(includeChars === 'include') {
-                    return  decrypt(userInput, alpha, beta);
-                } else return removeChars(decrypt(userInput, alpha, beta))
-            }
-        }
-        */
     } 
 
 

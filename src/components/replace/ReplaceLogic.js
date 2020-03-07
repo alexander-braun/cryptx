@@ -1,13 +1,9 @@
 const replace = (() => {
 
-    let userInput, caseFormat, includeChars, toReplaceLetter, replaceLetter
+    let userInput, toReplaceLetter, replaceLetter
 
     const setUserInput = (value) => {
         userInput = value
-    }
-
-    const setCase = (value) => {
-        caseFormat = value
     }
 
     const setToReplaceLetter = (value) => {
@@ -30,7 +26,6 @@ const replace = (() => {
     return {
         encrypt: transformText,
         setUserInput: setUserInput,
-        setCase: setCase,
         setToReplaceLetter: setToReplaceLetter,
         setReplaceLetter: setReplaceLetter
     }

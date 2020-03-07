@@ -80,12 +80,11 @@ class Rings extends React.Component {
                     </div>
                     <div id="skytale_explanatory_text">
                         <p className="feature_text"> 
-                            You can only see a readable alignment of letters (top to bottom) if you are <b>encrypting
-                            a cleartext</b> or <b>decrypting an encrypted text</b>. The ring-segments count needs to stay
+                            You can only see a readable alignment of letters (top to bottom, left to right) if you are <b>encrypting
+                            a cleartext</b> or <b>decrypting an encrypted text</b>. The ring-segment-count needs to stay
                             exactly the same for both directions. The first letter of your message is marked in a darker 
-                            <p style={{ backgroundColor: 'rgb(199, 30, 37)', 
+                            <span style={{ backgroundColor: 'rgb(199, 30, 37)', 
                                         display: 'inline-block', 
-                                        margin: '0px 4px', 
                                         padding: '0px 3px', 
                                         color: 'white', 
                                         fontWeight: 'bold',
@@ -93,7 +92,7 @@ class Rings extends React.Component {
                                         lineHeight: '1.2'}}
                             >
                             red
-                            </p>
+                            </span>
                         </p>
                     </div>    
                 </div>

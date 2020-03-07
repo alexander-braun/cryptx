@@ -1,7 +1,7 @@
 import React from 'react'
 import ExplanatoryText from './ExplanatoryText'
 import BlockHeadSettings from './BlockHeadSettings'
-import BlockBodyInput from './BlockBodyInput'
+import BlockBodyInput from './settings'
 
 const BlockElementSettings = ({ plusMinus,
                                 cShift, 

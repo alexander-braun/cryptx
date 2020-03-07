@@ -2,7 +2,7 @@ const Playfair = (() => {
 
     //Setup all variables
     
-    let userInput, alphabet, direction, caseFormat, includeChars, keyphrase
+    let userInput, alphabet, direction, keyphrase
     let replaceLetter = 'x'
     let missingLetter = 'j'
     let playSquare
@@ -15,14 +15,6 @@ const Playfair = (() => {
 
     const setAlphabet = (input) => {
         alphabet = input.split('')
-    }
-
-    const setForeignChars = (input) => {
-        includeChars = input
-    }
-
-    const setCase = (input) => {
-        caseFormat = input
     }
 
     const setDirection = (input) => {
@@ -233,8 +225,6 @@ const Playfair = (() => {
         setUserInput: setUserInput,
         setAlphabet: setAlphabet,
         setDirection: setDirection,
-        setForeignChars: setForeignChars,
-        setCase: setCase,
         setKeyPhrase: setKeyPhrase,
         getSquare: getSquare,
         encrypt: transformText

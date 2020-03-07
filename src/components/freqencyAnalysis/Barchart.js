@@ -124,6 +124,21 @@ function BarChart({ data, alphabet, inputValue }) {
       .attr('r', xScale.bandwidth() / 5)
       .attr('cx', (value, index) => xScale(alphabet[index]) + xScale.bandwidth() / 2)
       .attr('cy', value =>  -dimensions.height + dimensions.height - yScale(value))
+      .attr("fill", '#00a3ff')
+      .style('stroke', '#006dab')
+      .on("mouseenter", (value, index) => {
+        svg
+          .selectAll(".tooltip")
+          .data([value.toFixed(2)])
+          .join(enter => enter.append("text").attr("y", yScale(value) - 4))
+          .attr("class", "tooltip")
+          .text(value.toFixed(2))
+          .attr("x", xScale(alphabet[index]) + xScale.bandwidth() / 2)
+          .attr("text-anchor", "middle")
+          .transition()
+          .attr("y", yScale(value) - 8)
+          .attr("opacity", 1);
+      })
 
   }, [data, dimensions, alphabet, inputValue]);
 

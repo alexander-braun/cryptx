@@ -42,7 +42,7 @@ class CaseChars extends React.Component {
                         </select>
                     </div>
                 </div>
-                <div className="controllbox">
+                <div className="controllbox" style={{borderRight: 'none'}}>
                     <div className="settings_name">FOREIGN CHARS</div>
                     <div className="settings_operators">
                         <button 

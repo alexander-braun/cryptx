@@ -1,6 +1,6 @@
 import React from 'react'
 
-import BlockElementInput from './BlockElementInput'
+import BlockElementInput from '../input/BlockElementInput'
 import BlockElementOutput from './BlockElementOutput'
 import BlockConnectorEquals from './BlockConnectorEquals'
 import BlockConnectorPlus from './BlockConnectorPlus'
@@ -477,8 +477,6 @@ class BlockElementsCollector extends React.Component  {
           Playfair.setUserInput(prevState.inputValue)
           Playfair.setAlphabet(prevState.alphabet)
           Playfair.setDirection(prevState.direction)
-          Playfair.setForeignChars(prevState.includeChars)
-          Playfair.setCase(prevState.caseFormat)
           Playfair.setKeyPhrase(prevState.keyword)
           return {
             outputValue: Playfair.encrypt(),
@@ -494,10 +492,7 @@ class BlockElementsCollector extends React.Component  {
       else if(prevState.method === 'morse') {
         if(prevState.direction !== 'crack') {
           Morse.setUserInput(prevState.inputValue)
-          Morse.setAlphabet(prevState.alphabet)
           Morse.setDirection(prevState.direction)
-          Morse.setForeignChars(prevState.includeChars)
-          Morse.setCase(prevState.caseFormat)
           return {
             outputValue: Morse.encrypt()
           }

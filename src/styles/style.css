@@ -26,6 +26,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  background: #77b5d8;
+  background: -webkit-gradient(linear, left top, left bottom, from(#77b5d8), to(#b2e2fd));
+  background: linear-gradient(180deg, #77b5d8 0%, #b2e2fd 100%);
 }
 
 textarea:focus {
@@ -114,16 +117,25 @@ textarea:focus {
 }
 
 .block {
+  -webkit-transition-duration: .3s;
+          transition-duration: .3s;
+  -webkit-transition-timing-function: linear;
+          transition-timing-function: linear;
   width: 28vw;
   position: relative;
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
+  -webkit-box-flex: 0;
+      -ms-flex-positive: 0;
+          flex-grow: 0;
   background-color: white;
-  border-radius: 0px;
+  border-radius: 3px;
   overflow: hidden;
   -webkit-box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
           box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+}
+
+.block:hover {
+  -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
 
 .block .chartcontainer {
@@ -280,6 +292,10 @@ textarea:focus {
 }
 
 .block_settings {
+  -webkit-transition-duration: .3s;
+          transition-duration: .3s;
+  -webkit-transition-timing-function: linear;
+          transition-timing-function: linear;
   -webkit-box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
           box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
   color: #2f1728;
@@ -288,8 +304,13 @@ textarea:focus {
       -ms-flex-positive: 0;
           flex-grow: 0;
   background-color: white;
-  border-radius: 0px;
+  border-radius: 3px;
   overflow: hidden;
+}
+
+.block_settings:hover {
+  -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
 
 .block_settings #to_replace_letter, .block_settings #replacement_letter {
@@ -509,8 +530,8 @@ textarea:focus {
   -ms-flex-line-pack: center;
       align-content: center;
   background: #020024;
-  background: -webkit-gradient(linear, left top, right top, from(#020024), color-stop(0%, #f54444), to(#77b5d8));
-  background: linear-gradient(90deg, #020024 0%, #f54444 0%, #77b5d8 100%);
+  background: -webkit-gradient(linear, left top, right top, color-stop(20%, #f54444), to(#77b5d8));
+  background: linear-gradient(90deg, #f54444 20%, #77b5d8 100%);
 }
 
 .controller #caesar_transposition #alphabet_standart .alphabet_transpos, .controller #caesar_transposition #alphabet_transpositioned .alphabet_transpos {
@@ -752,7 +773,7 @@ textarea:focus {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  text-align: start;
+  text-align: left;
   cursor: pointer;
 }
 
@@ -842,7 +863,7 @@ textarea:focus {
       flex-wrap: wrap;
   -webkit-box-pack: start;
       -ms-flex-pack: start;
-          justify-content: start;
+          justify-content: flex-start;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -930,7 +951,9 @@ textarea:focus {
   height: auto;
   -webkit-perspective: 2000;
   /* For compatibility with iPhone 3.0, we leave off the units here */
+  perspective: 2000;
   -webkit-perspective-origin: 50% 225px;
+  perspective-origin: 50% 225px;
   padding: 16px;
 }
 
@@ -1194,6 +1217,47 @@ svg {
   color: black;
 }
 
+.helpme {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100%;
+}
+
+.informational_modal {
+  font-size: 14px;
+  font-weight: 900;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.MuiButton-root {
+  min-width: 20px !important;
+}
+
+.controll_handles {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
 .collector_freq_button {
   -webkit-transform: rotate(0deg);
           transform: rotate(0deg);
@@ -1232,7 +1296,7 @@ svg {
   max-height: 0;
   -webkit-transition: max-height .2s ease-out;
   transition: max-height .2s ease-out;
-  word-break: break-all;
+  word-break: break-word;
   width: 100%;
 }
 
@@ -1240,6 +1304,16 @@ svg {
   width: 100%;
   text-align: center;
   font-size: 20px;
+}
+
+.expand_menue p, .coincidence_menue p {
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 14px;
+  padding: 0 0 16px 0;
+  font-weight: 400;
+  width: 100%;
+  margin-bottom: 1em;
 }
 
 #timeline {
@@ -1336,7 +1410,7 @@ svg {
     color: white;
     top: 0;
     width: 100%;
-    height: 40px;
+    height: 50px;
     background-color: #f54444;
   }
   .block {
@@ -1356,7 +1430,7 @@ svg {
   }
   .block_connector {
     width: 100%;
-    height: 30px;
+    height: 50px;
     background-color: #f54444;
   }
   .site_footer {
@@ -1481,7 +1555,7 @@ svg {
 
 #genRandomTab #otpKey {
   font-size: 12px;
-  word-break: break-all;
+  word-break: break-word;
   letter-spacing: 1px;
   text-transform: uppercase;
   cursor: text;

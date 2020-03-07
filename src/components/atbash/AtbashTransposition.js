@@ -20,7 +20,7 @@ class AtbashTransposition extends React.Component {
 
         for(let element of alphabet) {
             output.push(
-                <div    class="alphabet_transpos" 
+                <div    className="alphabet_transpos" 
                         key={keys[counter]} 
                         style={element.toLowerCase() === 'a' ? style : {color: 'white'}}
                 >

@@ -1,7 +1,5 @@
-import math from '../math/Math'
-
 const skytale = (() => {
-    let userInput, caseFormat, ringLength, direction, includeChars
+    let userInput, caseFormat, ringLength, direction
 
     const setUserInput = (value) => {
         value = value.split(' ').join('')
@@ -10,10 +8,6 @@ const skytale = (() => {
 
     const setCase = (value) => {
         caseFormat = value
-    }
-
-    const setForeignChars = (input) => {
-        includeChars = input
     }
 
     const setDirection = (value) => {
@@ -131,7 +125,6 @@ const skytale = (() => {
         setUserInput: setUserInput,
         setRingLength: setRingLength,
         setCase: setCase,
-        setForeignChars: setForeignChars,
         setDirection: setDirection,
         getProjectedValue: getProjectedValue
     }

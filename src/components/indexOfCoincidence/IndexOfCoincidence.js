@@ -1,12 +1,10 @@
 import React from 'react'
-import ExpandMenueOutput from '../freqencyAnalysis/ExpandMenueOutput'
-import ExpandMenueInput from '../freqencyAnalysis/ExpandMenueInput'
-
+import ExpandMenueInput from '../general/ExpandMenueInput'
 function IndexOfCoincidence({ioc, menue}) {
     
     return (
         <div className="controller">
-                {menue === 'input' ? <ExpandMenueInput method = 'Index of Coincidence'/> : <ExpandMenueOutput method = 'Index of Coincidence'/>}
+                {menue === 'input' ? <ExpandMenueInput menue = {menue} method = 'Index of Coincidence'/> : <ExpandMenueInput menue = {menue} method = 'Index of Coincidence'/>}
             <div className="coincidence_menue">
                 <h1>{ioc}</h1>
             </div>

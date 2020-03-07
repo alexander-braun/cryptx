@@ -8,7 +8,7 @@ class Modal extends Component {
                 <div className="modal" 
                     onClick = {this.props.switchModal}
                 >
-                    <div class="inner_modal">
+                    <div className="inner_modal">
                         <div className="block_top_decoration"></div>
                         <div className="modal_header">Encryption Methods</div>
                         <div className="modal_body">

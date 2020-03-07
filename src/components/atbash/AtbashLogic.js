@@ -3,7 +3,7 @@ import math from '../math/Math'
 const atbash = (() => {
 
     //Setup all variables
-    let userInput, direction, caseFormat, includeChars
+    let userInput,  caseFormat, includeChars
 
     let alphabet = 'abcdefghijklmnopqrstuvwxyz'
     alphabet = alphabet.split('')

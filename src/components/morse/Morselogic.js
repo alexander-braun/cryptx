@@ -2,22 +2,9 @@ const morse = (() => {
 
     //Setup all variables
     
-    let userInput, alphabet, direction, caseFormat, includeChars, keyphrase
-
+    let userInput, direction
     const setUserInput = (input) => {
         userInput = String(input);
-    }
-
-    const setAlphabet = (input) => {
-        alphabet = input.split('')
-    }
-
-    const setForeignChars = (input) => {
-        includeChars = input
-    }
-
-    const setCase = (input) => {
-        caseFormat = input
     }
 
     const setDirection = (input) => {
@@ -135,10 +122,7 @@ const morse = (() => {
 
     return {
         setUserInput: setUserInput,
-        setAlphabet: setAlphabet,
         setDirection: setDirection,
-        setForeignChars: setForeignChars,
-        setCase: setCase,
         encrypt: transformText
     }
 })();

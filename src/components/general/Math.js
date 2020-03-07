@@ -59,11 +59,25 @@ const math = (() => {
         return caseCorrected.join('')
     }
 
+    const autoresize = (evt) => {
+        let el = evt.target;
+        el.style.height = 'inherit'
+        let computed = window.getComputedStyle(el)
+        let height = parseInt(computed.getPropertyValue('border-top-width'), 10)
+        + parseInt(computed.getPropertyValue('padding-top'), 10)
+        + el.scrollHeight
+        + parseInt(computed.getPropertyValue('padding-bottom'), 10)
+        + parseInt(computed.getPropertyValue('border-bottom-width'), 10);
+        el.style.height = height + 'px'
+      }
+    
+
     return {
         removeSigns: removeSigns,
         addSpaces: addSpaces,
         addSigns: addSigns,
-        correctCase: correctCase
+        correctCase: correctCase,
+        autoresize: autoresize
     }
 })();
 
