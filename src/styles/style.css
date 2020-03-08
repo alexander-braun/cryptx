@@ -1251,7 +1251,7 @@ svg {
   display: -ms-flexbox;
   display: flex;
   margin-right: auto;
-  margin-left: 10px;
+  margin-left: 0px;
   padding-left: 10px;
 }
 
@@ -1259,13 +1259,13 @@ svg {
   min-width: 25px !important;
   height: 25px !important;
   font-weight: 600 !important;
-  background: #ececec !important;
+  background: #ffffff !important;
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
   border-radius: 20px !important;
   line-height: 1 !important;
-  color: #818181 !important;
+  color: #f544448c !important;
 }
 
 .MuiButton-label {
@@ -1330,6 +1330,7 @@ svg {
   width: 100%;
   text-align: left;
   font-size: 20px;
+  margin-bottom: 2em;
 }
 
 .expand_menue p, .coincidence_menue p {

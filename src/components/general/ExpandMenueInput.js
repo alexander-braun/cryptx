@@ -3,6 +3,7 @@ import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
+import InfoIcon from '@material-ui/icons/Info';
 
 function ExpandMenueInput({method, menue}) {
 
@@ -56,7 +57,7 @@ function ExpandMenueInput({method, menue}) {
             </React.Fragment>
             }
         >
-            <Button>i</Button>
+            <Button><InfoIcon></InfoIcon></Button>
         </StyledTooltip>
     )
 
