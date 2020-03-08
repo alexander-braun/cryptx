@@ -27,7 +27,7 @@ function ExpandMenueInput({method, menue}) {
             expMenue = document.getElementsByClassName('coincidence_menue')[index]
             helperText = (
                 `Is an indicator for the frequency of wich letters appears in a text.
-                Different languages and encryption algorithms have different IC's. This makes the IC a good tool
+                Different languages and encryption algorithms have distinguishable IC's. This makes the IC a good tool
                 to analyse how a given text is encrypted. F.e. the skytale method isn't transforming a letter, just it's
                 placement. The IC stays exactly the same. A One time pad algorithm is equalizing the distribution 
                 of letters and has an equal chance for every given letter to appear. The IC will be 0.037 - 0.038 (1/26).`
@@ -56,7 +56,7 @@ function ExpandMenueInput({method, menue}) {
             </React.Fragment>
             }
         >
-            <Button>?</Button>
+            <Button>i</Button>
         </StyledTooltip>
     )
 
@@ -72,12 +72,10 @@ function ExpandMenueInput({method, menue}) {
             }
         }}>
             <div className="expandbutton_name">{method}</div>
-            
+            <div className="informational_modal">{icTooltip}</div>
             <div className="controll_handles">
                 <div className="button_menue"></div> 
-                <div className="informational_modal">{icTooltip}</div>
             </div>
-           
         </div>
         
     )

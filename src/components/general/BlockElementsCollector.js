@@ -129,7 +129,7 @@ class BlockElementsCollector extends React.Component  {
     } 
     else if(val === 'playfair') {
       this.setState({
-        keyword: 'chonky boii',
+        keyword: 'cipher',
         alphabetActive: false,
         methodNameInset: 'Playfair Cipher'
       })

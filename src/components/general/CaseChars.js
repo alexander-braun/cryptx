@@ -29,7 +29,7 @@ class CaseChars extends React.Component {
             <div className="controller double_content">
                 <div className="controllbox">
                     <div className="settings_name">CASE</div>
-                    <div className="settings_operators" style={{padding: '.5rem .5rem .5rem 13px'}}>
+                    <div className="settings_operators" style={{padding: '0.5rem 0.5rem 0.5rem 20px'}}>
                         <select 
                             id="selectCase" 
                             defaultValue = 'maintain' 
