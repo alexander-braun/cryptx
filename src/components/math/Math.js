@@ -3,6 +3,14 @@ const math = (() => {
 
     //Get rid of everything besides pure characters
     //Return lowercase string
+    const modInverse = (a, b) => {
+        a %= b;
+        for (var x = 1; x < b; x++) {
+            if ((a * x) % b === 1) {
+                return x;
+            }
+        }
+    }
 
     const cleanInput = (input, blankSpaces, caseSensitive, alphab) => {
         const inputArr = input.toLowerCase().split('')
@@ -110,7 +118,8 @@ const math = (() => {
         transformCaseAndChars: transformCaseAndChars,
         cleanInput: cleanInput,
         restoreCase: restoreCase,
-        restoreForeignChars: restoreForeignChars
+        restoreForeignChars: restoreForeignChars,
+        modInverse: modInverse
     }
 })();
 

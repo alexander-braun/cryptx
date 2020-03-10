@@ -27,9 +27,18 @@ const BlockElementSettings = ({ plusMinus,
                                 skytaleProjectedValue,
                                 alphabetActive,
                                 updateOtpKey,
-                                userInput,
                                 genRandomKey,
-                                otpKey
+                                otpKey,
+                                inputValue,
+                                setPrimeOne,
+                                setPrimeTwo,
+                                setE,
+                                e,
+                                prime_one,
+                                prime_two,
+                                phi,
+                                n,
+                                d
                                 }) => {
   return (
     <div className="block_settings">
@@ -63,9 +72,18 @@ const BlockElementSettings = ({ plusMinus,
                 skytaleLength = {skytaleLength}
                 skytaleProjectedValue = {skytaleProjectedValue}
                 updateOtpKey = {updateOtpKey}
-                userInput = {userInput}
+                inputValue = {inputValue}
                 genRandomKey = {genRandomKey}
                 otpKey = {otpKey}
+                setPrimeOne = {setPrimeOne}
+                setPrimeTwo = {setPrimeTwo}
+                setE = {setE}
+                e = {e}
+                prime_one = {prime_one}
+                prime_two = {prime_two}
+                phi = {phi}
+                n = {n}
+                d = {d}
               />
               
               <ExplanatoryText 

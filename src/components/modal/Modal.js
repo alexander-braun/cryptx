@@ -111,6 +111,22 @@ class Modal extends Component {
                                 </ul>
                             </div>
                             <div className="method_category">
+                                <span className="modal_category_title">Public Key Encryption</span>
+                                <ul>
+                                    <li>
+                                        <button
+                                            className="modal_category_method"
+                                            value="rsa"
+                                            onClick={(evt) => {
+                                                this.props.changeMethod(evt)
+                                            }}
+                                        >
+                                        RSA
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div className="method_category">
                                 <span className="modal_category_title">Text Transformations</span>
                                 <ul>
                                     <li>

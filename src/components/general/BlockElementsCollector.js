@@ -18,6 +18,11 @@ import Atbash from '../atbash/AtbashLogic'
 import Timeline from '../../components/timeline/Timeline'
 import Footer from './Footer'
 import Otp from '../onetimepad/otp'
+import Rsa from '../rsa/RSALogic'
+
+
+const bigintModArith = require('bigint-mod-arith');
+/* global BigInt */
 
 class BlockElementsCollector extends React.Component  {
   constructor(props) {
@@ -46,7 +51,13 @@ class BlockElementsCollector extends React.Component  {
       alphabetActive: false,
       otpKey: '',
       iocInput: 0,
-      iocOutput: 0
+      iocOutput: 0,
+      prime_one: 61,
+      prime_two: 53,
+      e: 17,
+      phi: 0,
+      d: 0,
+      n: 0
     }
 
     this.encrypt = this.encrypt.bind(this)
@@ -62,6 +73,9 @@ class BlockElementsCollector extends React.Component  {
     this.setReplaceLetters = this.setReplaceLetters.bind(this)
     this.genRandomKey = this.genRandomKey.bind(this)
     this.indexOfCoincidenceInputOutput = this.indexOfCoincidenceInputOutput.bind(this)
+    this.setE = this.setE.bind(this)
+    this.setPrimeTwo = this.setPrimeTwo.bind(this)
+    this.setPrimeOne = this.setPrimeOne.bind(this)
   }
 
   //Modal
@@ -81,7 +95,7 @@ class BlockElementsCollector extends React.Component  {
 
   changeMethod(evt) {
     let val
-    const methods = ['caesar', 'skytale', 'affine', 'vigenere', 'playfair', 'morse', 'replace', 'atbash', 'otp']
+    const methods = ['caesar', 'skytale', 'affine', 'vigenere', 'playfair', 'morse', 'replace', 'atbash', 'otp', 'rsa']
     if(methods.indexOf(evt) !== -1) {
       val = evt
     } else {
@@ -150,6 +164,12 @@ class BlockElementsCollector extends React.Component  {
       this.setState({
         alphabetActive: false,
         methodNameInset: 'Skytale'
+      })
+    }
+    else if(val === 'rsa') {
+      this.setState({
+        methodNameInset: 'RSA',
+        alphabetActive: false
       })
     }
     this.encrypt()
@@ -399,6 +419,44 @@ class BlockElementsCollector extends React.Component  {
     })
   }
 
+  //rsa
+
+  setPrimeOne(val) {
+    let primeOneVal = val.target.value
+    if(!isNaN(val.target.value)) {
+        this.setState({
+            prime_one: primeOneVal
+        })
+    }
+    this.encrypt()
+  }
+
+  setPrimeTwo(val) {
+    let primeTwoVal = val.target.value
+    if(!isNaN(val.target.value)) {
+        this.setState(prevState => {
+            return {
+                prime_two: primeTwoVal
+            }
+        })
+    }
+    this.encrypt()
+  }
+
+  setE(val) {
+    let eVal = val.target.value
+    if(!isNaN(val.target.value) && val.target.value !== null) {
+        this.setState(prevState => {
+            return {
+                e: eVal
+            }
+        })
+    }
+    this.encrypt()
+  }
+
+  
+
   //Do the magic!
   encrypt = () => {
     this.setState(prevState => {
@@ -414,6 +472,16 @@ class BlockElementsCollector extends React.Component  {
           outputValue: Caesar.encrypt()
         }
       } 
+      else if(prevState.method === 'rsa') {
+        Rsa.setPrimeOne(prevState.prime_one)
+        Rsa.setPrimeTwo(prevState.prime_two)
+        Rsa.setE(prevState.e)
+        return {
+          n: Rsa.calcN(),
+          phi: Rsa.calcPhi(),
+          d: Rsa.calcD()
+        }
+      }
       else if(prevState.method === 'otp') {
         Otp.setUserInput(prevState.inputValue)
         Otp.setCase(prevState.caseFormat)
@@ -506,7 +574,6 @@ class BlockElementsCollector extends React.Component  {
       else if(prevState.method === 'replace') {
           if(prevState.direction !== 'crack') {
             Replace.setUserInput(prevState.inputValue)
-            Replace.setCase(prevState.caseFormat)
             Replace.setToReplaceLetter(prevState.toReplaceLetter)
             Replace.setReplaceLetter(prevState.replaceLetter)
             return {
@@ -580,9 +647,17 @@ class BlockElementsCollector extends React.Component  {
             skytaleProjectedValue = {this.state.skytaleProjectedValue}
             alphabetActive = {this.state.alphabetActive}
             inputValue = {this.state.inputValue}
-            userInput = {this.state.inputValue}
             genRandomKey = {this.genRandomKey}
             otpKey = {this.state.otpKey}
+            setPrimeOne = {this.setPrimeOne}
+            setPrimeTwo = {this.setPrimeTwo}
+            setE = {this.setE}
+            e = {this.state.e}
+            prime_one = {this.state.prime_one}
+            prime_two = {this.state.prime_two}
+            phi = {this.state.phi}
+            n = {this.state.n}
+            d = {this.state.d}
           />
           <BlockConnectorEquals />
           <BlockElementOutput 

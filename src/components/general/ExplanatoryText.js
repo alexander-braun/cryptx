@@ -358,8 +358,43 @@ const ExplanatoryText = ({direction, method}) => {
           </ExpansionPanelDetails>
         </ExpansionPanel>   
     } 
+  } else if(method === 'rsa') {
+    if(direction === 'crack') {
+      expText = 
+      <div className="controller explanation">
+        <p className="block_method_explanation">
+          No Crack function yet  :(
+        </p>
+        <a href="https://en.wikipedia.org/wiki/One-time_pad" target="blank">One Time Pad</a>
+      </div>
+    } else {
+      expText =    
+        <ExpansionPanel>
+          <ExpansionPanelSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel2a-content"
+            id="panel2a-header"
+          >
+            <Typography className={classes.heading}>More Details</Typography>
+          </ExpansionPanelSummary>
+          <ExpansionPanelDetails>
+            <Typography className={classes.body}>
+              <p>
+              RSA (Rivest–Shamir–Adleman) is one of the first public-key cryptosystems and is widely used for secure data 
+              transmission. In such a cryptosystem, the encryption key is public and distinct from the decryption key which 
+              is kept secret (private). In RSA, this asymmetry is based on the practical difficulty of factoring the product 
+              of two large prime numbers, the "factoring problem". The acronym RSA is the initial letters of the surnames of 
+              Ron Rivest, Adi Shamir, and Leonard Adleman, who publicly described the algorithm in 1977. Clifford Cocks, an 
+              English mathematician working for the British intelligence agency Government Communications Headquarters (GCHQ), 
+              had developed an equivalent system in 1973, which was not declassified until 1997.
+              </p>
+              <a href="https://en.wikipedia.org/wiki/One-time_pad" target="blank">One Time Pad</a>
+            </Typography>
+          </ExpansionPanelDetails>
+        </ExpansionPanel>   
+    } 
   }
-  return expText;
+  return expText ? expText : null;
 }
 
 export default ExplanatoryText

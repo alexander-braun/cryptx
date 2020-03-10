@@ -13,6 +13,7 @@ import Rings from '../skytale/Rings'
 import CaesarTransposition from '../caesar/CaesarTransposition'
 import AtbashTransposition from '../atbash/AtbashTransposition'
 import OtpGenerate from '../onetimepad/otpGenerate'
+import Primes from '../rsa/Primes'
 
 
 const BlockBodyInput = ({   plusMinus,
@@ -36,7 +37,17 @@ const BlockBodyInput = ({   plusMinus,
                             skytaleProjectedValue,
                             alphabetActive,
                             otpKey,
-                            genRandomKey
+                            genRandomKey,
+                            inputValue,
+                            setPrimeOne,
+                            setPrimeTwo,
+                            setE,
+                            e,
+                            prime_one,
+                            prime_two,
+                            phi,
+                            n,
+                            d
                         }) => {
     let bodyInput;
 
@@ -59,6 +70,23 @@ const BlockBodyInput = ({   plusMinus,
                             includeChars = {includeChars}
                         />
                     </div>
+            }
+        }
+        else if(method === 'rsa') {
+            if(direction !== 'crack') {
+                bodyInput = 
+                        <Primes 
+                            inputValue={inputValue}
+                            setPrimeOne = {setPrimeOne}
+                            setPrimeTwo = {setPrimeTwo}
+                            setE = {setE}
+                            e = {e}
+                            prime_one = {prime_one}
+                            prime_two = {prime_two}
+                            phi = {phi}
+                            n = {n}
+                            d = {d}
+                        />
             }
         }
         else if(method === 'caesar') {

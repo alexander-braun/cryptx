@@ -61,6 +61,8 @@ $blockconnectorbg: #f54444;
 $blockconnectortransparent: 'transparent';
 $border_blocks: 3px;
 
+$border: #d4d4d4;
+
 $shadow_blocks: 0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12);
 
 #root {
@@ -457,7 +459,7 @@ textarea {
         border-right: 1px solid #d4d4d4;
         */
 
-        border-right: 1px solid #d4d4d4;
+        border-right: 1px solid $border;
         color: $greyed_text;
         padding: 1em 1em 0 24px;
         font-family: "Source Sans Pro","Roboto","Helvetica","Arial",sans-serif;
@@ -592,6 +594,7 @@ textarea {
         letter-spacing: .5px;
     }
 }
+
 
 .double_content.controller {
     width: 100%;
@@ -786,7 +789,7 @@ textarea {
 }
 
 .playfairTable {
-    height: 50px; 
+    height: 40px; 
     margin: 2px;
     position: relative; 
     text-align: center; 
@@ -804,6 +807,7 @@ textarea {
     padding: 5px;
     font-weight: 900;
     cursor: default;
+    box-shadow: 2px 2px 0px black;
 }
 
 #visualMatrix.controller {
@@ -823,7 +827,7 @@ textarea {
     width: 100%;
     height: auto;
     -webkit-perspective: 2000; /* For compatibility with iPhone 3.0, we leave off the units here */
-    perspective: 2000;
+    perspective: 2000px;
     -webkit-perspective-origin: 50% 225px;
     perspective-origin: 50% 225px;
     padding: 24px;
@@ -1233,11 +1237,11 @@ svg {
         background-color: $reddish;
     }
     .block {
-        max-width: 530px;
-        width: 530px;
+        max-width: 70vw;
+        width: 70vw;
     }
     .block_settings {
-        max-width: 530px;
+        max-width: 70vw;
     }
 }
 
@@ -1427,7 +1431,32 @@ svg {
 ///// IMPORTANTE
 ///// IMPORTANTE
 
+.controller.double_content.prime {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 
+    .controllbox {
+        height: auto;
+        flex: 1 1 40%;
+        border-bottom: 1px solid $border;
+    }
+
+    textarea {
+        height: 4em;
+        width: 100%;
+        word-break: break-all;
+        padding: 0;
+        font-size: 14px;
+    }
+    .phi {
+        justify-self: center;
+        align-self: center;
+    }
+    .settings_name{
+        text-transform: none;
+    }
+}
 
 
 

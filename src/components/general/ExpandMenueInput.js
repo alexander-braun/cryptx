@@ -73,7 +73,7 @@ function ExpandMenueInput({method, menue}) {
             }
         }}>
             <div className="expandbutton_name">{method}</div>
-            <div className="informational_modal">{icTooltip}</div>
+            {/*<div className="informational_modal">{icTooltip}</div>*/}
             <div className="controll_handles">
                 <div className="button_menue"></div> 
             </div>
