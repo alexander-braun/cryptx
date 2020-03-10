@@ -1653,11 +1653,11 @@ svg {
 }
 
 .controller.double_content.prime textarea {
-  height: 4em;
   width: 100%;
   word-break: break-all;
   padding: 0;
   font-size: 14px;
+  overflow: auto;
 }
 
 .controller.double_content.prime .phi {

@@ -374,7 +374,6 @@ class BlockElementsCollector extends React.Component  {
   //ioc
 
   calcIndexOfCoincidence = (input) => {
-    console.log(typeof this.state.inputValue, this.state.inputValue, typeof this.state.outputValue, this.state.outputValue)
     //calc for input or output -> true = input, false = output
     let inputValue = input ? this.state.inputValue.toString() : this.state.outputValue.toString()
 
@@ -493,7 +492,7 @@ class BlockElementsCollector extends React.Component  {
             n: prevState.n,
             phi: prevState.phi,
             d: prevState.d,
-            outputValue: Rsa.decrypt() || 'fuck'
+            outputValue: Rsa.decrypt() 
           }
         }
       }

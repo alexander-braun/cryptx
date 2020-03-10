@@ -1449,11 +1449,11 @@ svg {
     }
 
     textarea {
-        height: 4em;
         width: 100%;
         word-break: break-all;
         padding: 0;
         font-size: 14px;
+        overflow: auto;
     }
     .phi {
         justify-self: center;

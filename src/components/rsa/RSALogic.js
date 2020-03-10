@@ -87,13 +87,33 @@ const rsa = (() => {
     }
 
     const decrypt = () => {
-        console.log(typeof userInput)
         if('abcdefghijklmnopqrstuvwxyz'.indexOf(userInput[0]) !== -1) return
-        console.log('hey')
         let decryptedDEZ = bigintModArith.modPow(userInput, d, n).toString()
+        let decryptedArr = []
+        let i = 0;
+        while(decryptedDEZ.length > 0) {
+            if(Number(String(decryptedDEZ[i]) + String(decryptedDEZ[i + 1]) + String(decryptedDEZ[i + 2])) <= 255) {
+                decryptedArr.push(Number(String(decryptedDEZ[i]) + String(decryptedDEZ[i + 1]) + String(decryptedDEZ[i + 2])))
+                decryptedDEZ = decryptedDEZ.slice(3)
+            }
+            else if(Number(String(decryptedDEZ[i]) + String(decryptedDEZ[i + 1])) <= 255) {
+                decryptedArr.push(Number(String(decryptedDEZ[i]) + String(decryptedDEZ[i + 1])))
+                decryptedDEZ = decryptedDEZ.slice(2)
+            }
+            else {
+                console.log(String(decryptedDEZ[i]) + String(decryptedDEZ[i + 1]))
+                console.log(decryptedArr)
+                return
+            }
+        }
         
+        let decryptedLetters = []
+        for(let i = 0; i < decryptedArr.length; i++) {
+            let char = String.fromCharCode(decryptedArr[i])
+            decryptedLetters.push(char)
+        }
         
-        return decryptedDEZ
+        return decryptedLetters.join('')
     }
 
     const calcPhi = () => {
