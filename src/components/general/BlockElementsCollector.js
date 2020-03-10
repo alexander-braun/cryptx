@@ -52,8 +52,8 @@ class BlockElementsCollector extends React.Component  {
       otpKey: '',
       iocInput: 0,
       iocOutput: 0,
-      prime_one: 61,
-      prime_two: 53,
+      prime_one: '3490529510847650949147849619903898133417764638493387843990820577',
+      prime_two: '32769132993266709549961988190834461413177642967992942539798288533',
       e: 17,
       phi: 0,
       d: 0,
@@ -374,9 +374,9 @@ class BlockElementsCollector extends React.Component  {
   //ioc
 
   calcIndexOfCoincidence = (input) => {
-
+    console.log(typeof this.state.inputValue, this.state.inputValue, typeof this.state.outputValue, this.state.outputValue)
     //calc for input or output -> true = input, false = output
-    let inputValue = input ? this.state.inputValue : this.state.outputValue
+    let inputValue = input ? this.state.inputValue.toString() : this.state.outputValue.toString()
 
     //Return if no input
     if(!inputValue) return
@@ -473,13 +473,28 @@ class BlockElementsCollector extends React.Component  {
         }
       } 
       else if(prevState.method === 'rsa') {
+        if(!prevState.prime_one || !prevState.prime_two || !prevState.e || !prevState.inputValue) return
+        Rsa.setUserInput(prevState.inputValue)
         Rsa.setPrimeOne(prevState.prime_one)
         Rsa.setPrimeTwo(prevState.prime_two)
         Rsa.setE(prevState.e)
-        return {
-          n: Rsa.calcN(),
-          phi: Rsa.calcPhi(),
-          d: Rsa.calcD()
+        
+
+        if(prevState.direction === 'encrypt') {
+          return {
+            n: Rsa.calcN(),
+            phi: Rsa.calcPhi(),
+            d: Rsa.calcD(),
+            outputValue: Rsa.encrypt()
+          }
+        }
+        else if(prevState.direction === 'decrypt') {
+          return {
+            n: prevState.n,
+            phi: prevState.phi,
+            d: prevState.d,
+            outputValue: Rsa.decrypt() || 'fuck'
+          }
         }
       }
       else if(prevState.method === 'otp') {

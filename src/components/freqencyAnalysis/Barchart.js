@@ -31,7 +31,7 @@ function BarChart({ data, alphabet, inputValue }) {
     const letterFrequency = () => {
       let map = new Array(26).fill(0)
       
-      for(let element of inputValue) {
+      for(let element of inputValue.toString()) {
           let index = alphabet.indexOf(element.toLowerCase())
           if(index !== -1) map[index] += 1
       }

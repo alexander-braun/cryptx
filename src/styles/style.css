@@ -27,8 +27,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   background: #77b5d8;
-  background: -webkit-gradient(linear, left top, left bottom, from(#77b5d8), to(#b2e2fd));
-  background: linear-gradient(180deg, #77b5d8 0%, #b2e2fd 100%);
+  background: -webkit-gradient(linear, left top, left bottom, from(#4597c7), to(#89c1e2));
+  background: linear-gradient(180deg, #4597c7 0%, #89c1e2 100%);
 }
 
 p {
@@ -190,6 +190,8 @@ textarea:focus {
   -ms-flex-item-align: end;
       align-self: flex-end;
   color: #101010;
+  font-weight: 500;
+  font-size: 24px;
 }
 
 .block .block_body .block_body_input, .block .block_body .block_body_output {
@@ -430,10 +432,11 @@ textarea:focus {
   color: #3f3f3f;
   border: none;
   background-color: transparent;
-  font-size: 22px;
-  font-weight: normal;
+  font-size: 24px;
+  font-weight: 500;
   margin: 0;
   padding: 0;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
 }
 
 .block_settings .block_head .block_head_text #caret {
@@ -1624,7 +1627,7 @@ svg {
     font-weight: normal;
   }
   #block_head_modal {
-    font-weight: 400;
+    font: 500 24px "Roboto", "Helvetica", "Arial", sans-serif !important;
   }
 }
 
@@ -1638,6 +1641,7 @@ svg {
           flex-direction: row;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  border-bottom: 0;
 }
 
 .controller.double_content.prime .controllbox {

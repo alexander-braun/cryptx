@@ -79,7 +79,7 @@ body {
     -moz-osx-font-smoothing: grayscale;
     font-family: $font;
     background: rgb(119,181,216);
-    background: linear-gradient(180deg, rgba(119,181,216,1) 0%, rgb(178, 226, 253) 100%);
+    background: linear-gradient(180deg, rgb(69, 151, 199) 0%, rgb(137, 193, 226) 100%);
 }
 
 p {
@@ -206,6 +206,8 @@ textarea {
             display: inline-block;
             align-self: flex-end;
             color: $blockco;
+            font-weight: 500;
+            font-size: 24px;
         }
     }
 
@@ -390,10 +392,11 @@ textarea {
             color: #3f3f3f;
             border: none;
             background-color: transparent;
-            font-size: 22px;
-            font-weight: normal;
+            font-size: 24px;
+            font-weight: 500;
             margin: 0;
             padding: 0;
+            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
 
             #caret {
                 width: .75em;
@@ -1423,9 +1426,11 @@ svg {
         font-weight: normal;
     }
     #block_head_modal {
-        font-weight: 400;
+        font: 500 24px "Roboto", "Helvetica", "Arial", sans-serif !important;
     }
 }
+
+
 
 ///// IMPORTANTE
 ///// IMPORTANTE
@@ -1435,6 +1440,7 @@ svg {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    border-bottom: 0;
 
     .controllbox {
         height: auto;
