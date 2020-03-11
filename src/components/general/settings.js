@@ -47,7 +47,8 @@ const BlockBodyInput = ({   plusMinus,
                             prime_two,
                             phi,
                             n,
-                            d
+                            d,
+                            timeToCalculate
                         }) => {
     let bodyInput;
 
@@ -86,6 +87,7 @@ const BlockBodyInput = ({   plusMinus,
                             phi = {phi}
                             n = {n}
                             d = {d}
+                            timeToCalculate = {timeToCalculate}
                         />
             }
         }

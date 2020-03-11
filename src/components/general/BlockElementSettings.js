@@ -38,7 +38,8 @@ const BlockElementSettings = ({ plusMinus,
                                 prime_two,
                                 phi,
                                 n,
-                                d
+                                d,
+                                timeToCalculate
                                 }) => {
   return (
     <div className="block_settings">
@@ -84,6 +85,7 @@ const BlockElementSettings = ({ plusMinus,
                 phi = {phi}
                 n = {n}
                 d = {d}
+                timeToCalculate = {timeToCalculate}
               />
               
               <ExplanatoryText 

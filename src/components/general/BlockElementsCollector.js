@@ -57,7 +57,9 @@ class BlockElementsCollector extends React.Component  {
       e: 17,
       phi: 0,
       d: 0,
-      n: 0
+      n: 0,
+      timeToCalculate: '0s'
+
     }
 
     this.encrypt = this.encrypt.bind(this)
@@ -430,21 +432,19 @@ class BlockElementsCollector extends React.Component  {
   //rsa
 
   setPrimeOne(val) {
-    let primeOneVal = val.target.value
-    if(!isNaN(val.target.value)) {
+    if(!isNaN(val)) {
         this.setState({
-            prime_one: primeOneVal
+            prime_one: val
         })
     }
     this.encrypt()
   }
 
   setPrimeTwo(val) {
-    let primeTwoVal = val.target.value
-    if(!isNaN(val.target.value)) {
+    if(!isNaN(val)) {
         this.setState(prevState => {
             return {
-                prime_two: primeTwoVal
+                prime_two: val
             }
         })
     }
@@ -493,7 +493,8 @@ class BlockElementsCollector extends React.Component  {
             n: Rsa.calcN(),
             phi: Rsa.calcPhi(),
             d: Rsa.calcD(),
-            outputValue: Rsa.encrypt()
+            outputValue: Rsa.encrypt()[0],
+            timeToCalculate: Rsa.encrypt()[1]
           }
         }
         else if(prevState.direction === 'decrypt') {
@@ -501,7 +502,8 @@ class BlockElementsCollector extends React.Component  {
             n: prevState.n,
             phi: prevState.phi,
             d: prevState.d,
-            outputValue: Rsa.decrypt() 
+            outputValue: Rsa.decrypt()[0],
+            timeToCalculate: Rsa.decrypt()[1]
           }
         }
       }
@@ -681,6 +683,7 @@ class BlockElementsCollector extends React.Component  {
             phi = {this.state.phi}
             n = {this.state.n}
             d = {this.state.d}
+            timeToCalculate = {this.state.timeToCalculate}
           />
           <BlockConnectorEquals />
           <BlockElementOutput 

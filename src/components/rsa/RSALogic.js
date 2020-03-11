@@ -72,9 +72,11 @@ const rsa = (() => {
     }
 
     const encrypt = () => {
+        var t0 = performance.now();
 
+        //First check if phi and e are coprime otherwise this is a waste of time.
         let gcd = bigintModArith.gcd(BigInt(phi), BigInt(e))
-        if (gcd !== BigInt(1)) return 'phi and e are not coprime - gcd of φ(n) is' + gcd
+        if (gcd !== BigInt(1)) return '!!! φ(n) and e are not coprime - gcd of φ(n) and e is ' + gcd + ' Please check that you have two prime numbers and an appropriate e !!!'
 
         if(!userInput || !e || !n) return
         //Convert Input to Dezimal to get an encryptable number
@@ -89,12 +91,21 @@ const rsa = (() => {
 
 
         //let encryptedHEX = encryptedDEZ.toString(16)
+        var t1 = performance.now();
 
-        return encryptedDEZ.toString()
+        return [encryptedDEZ.toString(), ((t1 - t0) / 1000).toString() + 's']
     }
 
     const decrypt = () => {
-        if('abcdefghijklmnopqrstuvwxyz'.indexOf(userInput[0]) !== -1) return
+        var t0 = performance.now();
+
+        //Check if we are trying to decrypt a number
+        let alphabet = 'abcdefghijklmnopqrstuvwxyz'
+
+        for(let i = 0; i < userInput.length; i++) {
+            if(alphabet.indexOf(userInput[i]) !== -1) return `Please don't enter anything but a big number into the input field when you decrypt something.`
+        }
+
         let decryptedDEZ = bigintModArith.modPow(userInput, d, n).toString()
         let decryptedArr = []
         let i = 0;
@@ -118,8 +129,10 @@ const rsa = (() => {
             let char = String.fromCharCode(decryptedArr[i])
             decryptedLetters.push(char)
         }
-        
-        return decryptedLetters.join('')
+
+        var t1 = performance.now();
+
+        return [decryptedLetters.join(''), ((t1 - t0) / 1000).toString() + 's']
     }
 
     const calcPhi = () => {

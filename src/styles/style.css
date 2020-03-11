@@ -636,6 +636,17 @@ textarea:focus {
   margin: 0;
   color: black;
   letter-spacing: .2px;
+  line-height: 1.5;
+}
+
+.primes .underline {
+  text-decoration: underline;
+}
+
+.primes code {
+  color: black;
+  border: 1px solid #d4d4d4;
+  padding: 7px;
 }
 
 .controller.explanation {
@@ -1658,6 +1669,7 @@ svg {
   padding: 0;
   font-size: 14px;
   overflow: auto;
+  height: 100px;
 }
 
 .controller.double_content.prime .phi {
