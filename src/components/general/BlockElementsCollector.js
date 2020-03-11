@@ -52,8 +52,8 @@ class BlockElementsCollector extends React.Component  {
       otpKey: '',
       iocInput: 0,
       iocOutput: 0,
-      prime_one: '3490529510847650949147849619903898133417764638493387843990820577',
-      prime_two: '32769132993266709549961988190834461413177642967992942539798288533',
+      prime_one: '250556952327646214427246777488032351712139094643988394726193347352092526616305469220133287929222242315761834129196430398011844978805263868522770723615504744438638381670321613949280530254014602887707960375752016807510602846590492724216092721283154099469988532068424757856392563537802339735359978831013',
+      prime_two: '290245329165570025116016487217740287508837913295571609463914348778319654489118435855243301969001872061575755804802874062021927719647357060447135321577028929269578574760547268310055056867386875959045119093967972205124270441648450825188877095173754196346551952542599226295413057787340278528252358809329',
       e: 17,
       phi: 0,
       d: 0,
@@ -374,12 +374,21 @@ class BlockElementsCollector extends React.Component  {
   //ioc
 
   calcIndexOfCoincidence = (input) => {
+
+
+    if(input) {
+      if(!this.state.inputValue) return
+      if(this.state.inputValue.length === 0) return  
+    }
+    if(!input) {
+      if(!this.state.outputValue) return
+      if(this.state.outputValue.length === 0) return  
+    }
+    
+
     //calc for input or output -> true = input, false = output
     let inputValue = input ? this.state.inputValue.toString() : this.state.outputValue.toString()
 
-    //Return if no input
-    if(!inputValue) return
-    if(inputValue.length === 0) return
 
     //don't use foreign chars
     let cleanedInput = inputValue.split('').filter(character => {

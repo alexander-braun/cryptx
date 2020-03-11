@@ -3,6 +3,12 @@ import Alphabet from '../general/Alphabet';
 const bigintModArith = require('bigint-mod-arith');
 /* global BigInt */
 
+//reading
+//https://www.di-mgt.com.au/rsa_alg.html
+//https://www.thedigitalcatonline.com/blog/2018/04/25/rsa-keys/
+//https://primes.utm.edu/lists/small/small.html
+
+
 const rsa = (() => {
 
     let prime_one, prime_two, e, phi, userInput, n, d
@@ -66,6 +72,10 @@ const rsa = (() => {
     }
 
     const encrypt = () => {
+
+        let gcd = bigintModArith.gcd(BigInt(phi), BigInt(e))
+        if (gcd !== BigInt(1)) return 'phi and e are not coprime - gcd of φ(n) is' + gcd
+
         if(!userInput || !e || !n) return
         //Convert Input to Dezimal to get an encryptable number
         let inputArr = userInput.split('')
@@ -76,13 +86,10 @@ const rsa = (() => {
         let longNumber = dezArr.join('')
         //Encrypt the Number
         let encryptedDEZ = bigintModArith.modPow(longNumber, e, n)
-        let encryptedHEX = encryptedDEZ.toString(16)
-        let decryptedDEZ = bigintModArith.modPow(encryptedDEZ, d, n)
-        /*
-        let gcd = bigintModArith.gcd(phi, e)
-        console.log(encryptedDEZ)
-        console.log(decryptedDEZ)
-        */
+
+
+        //let encryptedHEX = encryptedDEZ.toString(16)
+
         return encryptedDEZ.toString()
     }
 
@@ -101,10 +108,9 @@ const rsa = (() => {
                 decryptedDEZ = decryptedDEZ.slice(2)
             }
             else {
-                console.log(String(decryptedDEZ[i]) + String(decryptedDEZ[i + 1]))
-                console.log(decryptedArr)
+                console.log(decryptedDEZ)
                 return
-            }
+            } 
         }
         
         let decryptedLetters = []
@@ -125,6 +131,10 @@ const rsa = (() => {
       }
     
     const calcD = () => {
+
+        if(!e || !phi || e === null || phi === null) return
+        if(bigintModArith.modInv(e, phi) === null) return
+
         d = BigInt(bigintModArith.modInv(e, phi)).toString()
         return d
     }

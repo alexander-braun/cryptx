@@ -38,7 +38,7 @@ const Primes = (props) => {
                 </div>
             </div>
             <div className="controllbox">
-                <div className="settings_name">e</div>
+                <div className="settings_name">e = PUBLIC KEY</div>
                 <div className="settings_operators">
                     <textarea 
                         defaultValue={props.e} 
@@ -53,7 +53,7 @@ const Primes = (props) => {
                 </div>
             </div>
             <div className="controllbox">
-                <div className="settings_name">n <i> = Prime1 * Prime2</i></div>
+                <div className="settings_name">n <i> = Prime1 * Prime2</i> = PUBLIC KEY</div>
                 <div className="settings_operators">
                     <textarea defaultValue={props.n} type="text" id="prime_2" name="tentacles"></textarea>
                 </div>
