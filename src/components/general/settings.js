@@ -16,8 +16,9 @@ import OtpGenerate from '../onetimepad/otpGenerate'
 import Primes from '../rsa/Primes'
 
 
-const BlockBodyInput = ({   plusMinus,
-                            cShift, 
+const BlockBodyInput = ({   cShift, 
+                            caesarPlusMinus,
+                            skytalePlusMinus,
                             alphabet, 
                             alphabetUpdate, 
                             selectCase, 
@@ -50,11 +51,11 @@ const BlockBodyInput = ({   plusMinus,
                             d,
                             timeToCalculate
                         }) => {
-    let bodyInput;
-
+    let bodyInput
     const switchBodyInput = () => {
-        if(method === 'atbash') {
-            if(direction !== 'crack') {
+        if (direction === 'crack') return null
+        switch (method) {
+            case 'atbash':
                 bodyInput =
                     <div className="block_body_input">
                         <AtbashTransposition 
@@ -71,32 +72,28 @@ const BlockBodyInput = ({   plusMinus,
                             includeChars = {includeChars}
                         />
                     </div>
-            }
-        }
-        else if(method === 'rsa') {
-            if(direction !== 'crack') {
+                break
+            case 'rsa': 
                 bodyInput = 
-                        <Primes 
-                            inputValue={inputValue}
-                            setPrimeOne = {setPrimeOne}
-                            setPrimeTwo = {setPrimeTwo}
-                            setE = {setE}
-                            e = {e}
-                            prime_one = {prime_one}
-                            prime_two = {prime_two}
-                            phi = {phi}
-                            n = {n}
-                            d = {d}
-                            timeToCalculate = {timeToCalculate}
-                        />
-            }
-        }
-        else if(method === 'caesar') {
-            if(direction !== 'crack'){
+                    <Primes 
+                        inputValue={inputValue}
+                        setPrimeOne = {setPrimeOne}
+                        setPrimeTwo = {setPrimeTwo}
+                        setE = {setE}
+                        e = {e}
+                        prime_one = {prime_one}
+                        prime_two = {prime_two}
+                        phi = {phi}
+                        n = {n}
+                        d = {d}
+                        timeToCalculate = {timeToCalculate}
+                    />
+                break
+            case 'caesar':
                 bodyInput = 
                     <div className="block_body_input">
                         <CaesarShift                   
-                            plusMinus = {plusMinus}
+                            plusMinus = {caesarPlusMinus}
                             cShift = {cShift}
                         />
                         <CaesarTransposition 
@@ -114,10 +111,8 @@ const BlockBodyInput = ({   plusMinus,
                             includeChars = {includeChars}
                         />
                     </div>
-            } else bodyInput = null
-        } 
-        else if(method === 'affine') {
-            if(direction !== 'crack') {
+                break
+            case 'affine':
                 bodyInput = 
                     <div className="block_body_input">
                         <Alpha
@@ -134,10 +129,8 @@ const BlockBodyInput = ({   plusMinus,
                             includeChars = {includeChars}
                         />
                     </div>
-            } else bodyInput = null
-        } 
-        else if(method === 'vigenere') {
-            if(direction !== 'crack') {
+                break
+            case 'vigenere':
                 bodyInput = 
                     <div className="block_body_input">
                         <KeywordVigenere
@@ -154,10 +147,8 @@ const BlockBodyInput = ({   plusMinus,
                             includeChars = {includeChars}
                         />
                     </div> 
-            } else return null
-        } 
-        else if(method === 'playfair') {
-            if(direction !== 'crack') {
+                break
+            case 'playfair':
                 bodyInput = 
                     <div className="block_body_input">
                         <PlayfairSquare 
@@ -178,30 +169,24 @@ const BlockBodyInput = ({   plusMinus,
                             includeChars = {includeChars}
                         />
                     </div> 
-            } else return null
-        } 
-        else if(method === 'morse') {
-            if(direction !== 'crack') {
+                break
+            case 'morse':
                 bodyInput = null
-            } else return null
-        } 
-        else if(method === 'replace') {
-            if(direction !== 'crack') {
+                break
+            case 'replace':
                 bodyInput = 
                     <ReplaceKeys 
                         setReplaceLetters = {setReplaceLetters}
                         toReplaceLetter = {toReplaceLetter}
                         replaceLetter = {replaceLetter}
                     />
-            }
-        } 
-        else if(method === 'skytale') {
-            if(direction !== 'crack') {
+                break
+            case 'skytale':
                 bodyInput = 
                     <div>
                         <RingLength 
                             ringLength = {ringLength}
-                            plusMinus = {plusMinus}
+                            plusMinus = {skytalePlusMinus}
                         />
                         <Rings 
                             ringLength = {ringLength}
@@ -218,10 +203,8 @@ const BlockBodyInput = ({   plusMinus,
                             includeChars = {includeChars}
                         />
                     </div>
-            }
-        }
-        else if(method === 'otp') {
-            if(direction !== 'crack') {
+                break
+            case 'otp':
                 bodyInput = 
                     <div>
                         <OtpGenerate 
@@ -238,7 +221,8 @@ const BlockBodyInput = ({   plusMinus,
                             alphabetActive = {alphabetActive}
                         />
                     </div>
-            }
+                break
+            default: return null
         }
         return bodyInput;
     }

@@ -19,7 +19,7 @@ class CaesarTransposition extends React.Component {
         let counter = 0;
         for(let element of alphabet) {
             output.push(
-                <div class="alphabet_transpos" key={keys[counter]} style={element.toLowerCase() === 'a' ? style : {color: 'white'}}>
+                <div className="alphabet_transpos" key={keys[counter]} style={element.toLowerCase() === 'a' ? style : {color: 'white'}}>
                 <div>{element}</div><div>↓</div></div>
             )
             counter++
@@ -47,7 +47,7 @@ class CaesarTransposition extends React.Component {
         let output = []
         for(let i = 0; i < alphabet.length; i++) {
             output.push(
-                <div    class="alphabet_transpos" 
+                <div    className="alphabet_transpos" 
                         key={keys[i]} 
                         style={alphabet[i].toLowerCase() === 'a' ? style : {color: 'white'}}
                 >

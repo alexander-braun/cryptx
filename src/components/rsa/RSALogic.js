@@ -76,7 +76,7 @@ const rsa = (() => {
 
         //First check if phi and e are coprime otherwise this is a waste of time.
         let gcd = bigintModArith.gcd(BigInt(phi), BigInt(e))
-        if (gcd !== BigInt(1)) return '!!! φ(n) and e are not coprime - gcd of φ(n) and e is ' + gcd + ' Please check that you have two prime numbers and an appropriate e !!!'
+        if (gcd !== BigInt(1)) return '!!! φ(n) and e are not coprime - gcd of φ(n) and e is ' + gcd + ' Please check that you have two prime numbers and an appropriate e without a common gcd!!!'
 
         if(!userInput || !e || !n) return
         //Convert Input to Dezimal to get an encryptable number

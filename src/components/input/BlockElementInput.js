@@ -7,7 +7,6 @@ const BlockElementInput = ({updateInput, inputValue, ioc}) => {
 
   return (
       <div className="block" id="user_input">
-        <div className="block_top_decoration"></div>
         <div className="block_head">
             <div className="block_head_text">Input</div>
         </div>

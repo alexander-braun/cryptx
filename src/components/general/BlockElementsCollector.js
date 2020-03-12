@@ -1,5 +1,4 @@
 import React from 'react'
-
 import BlockElementInput from '../input/BlockElementInput'
 import BlockElementOutput from './BlockElementOutput'
 import BlockConnectorEquals from './BlockConnectorEquals'
@@ -20,9 +19,6 @@ import Footer from './Footer'
 import Otp from '../onetimepad/otp'
 import Rsa from '../rsa/RSALogic'
 
-
-const bigintModArith = require('bigint-mod-arith');
-/* global BigInt */
 
 class BlockElementsCollector extends React.Component  {
   constructor(props) {
@@ -59,7 +55,6 @@ class BlockElementsCollector extends React.Component  {
       d: 0,
       n: 0,
       timeToCalculate: '0s'
-
     }
 
     this.encrypt = this.encrypt.bind(this)
@@ -70,7 +65,8 @@ class BlockElementsCollector extends React.Component  {
     this.changeDirection = this.changeDirection.bind(this)
     this.changeMethod = this.changeMethod.bind(this)
     this.updateKeyword = this.updateKeyword.bind(this)
-    this.plusMinus = this.plusMinus.bind(this)
+    this.caesarPlusMinus = this.caesarPlusMinus.bind(this)
+    this.skytalePlusMinus = this.skytalePlusMinus.bind(this)
     this.switchModal = this.switchModal.bind(this)
     this.setReplaceLetters = this.setReplaceLetters.bind(this)
     this.genRandomKey = this.genRandomKey.bind(this)
@@ -81,8 +77,8 @@ class BlockElementsCollector extends React.Component  {
   }
 
   //Modal
-  switchModal() {
-    if(this.state.modalVisible === false) {
+  switchModal () {
+    if (!this.state.modalVisible) {
       this.setState({
         modalVisible: true
       })
@@ -94,16 +90,15 @@ class BlockElementsCollector extends React.Component  {
   }
 
   //General
-
-  changeMethod(evt) {
+  changeMethod (evt) {
     let val
     const methods = ['caesar', 'skytale', 'affine', 'vigenere', 'playfair', 'morse', 'replace', 'atbash', 'otp', 'rsa']
-    if(methods.indexOf(evt) !== -1) {
+    if (methods.indexOf(evt) !== -1) {
       val = evt
     } else {
       val = evt.target.value || evt.target.getAttribute('value')
     }
-
+  
     this.setState({
       alphabet: 'abcdefghijklmnopqrstuvwxyz',
       caseFormat: 'maintain',
@@ -111,74 +106,79 @@ class BlockElementsCollector extends React.Component  {
       method: val
     })
 
-    if(val === 'caesar') {
-      this.setState({
-        alphabetActive: true,
-        methodNameInset: "Caesar's Cipher"
-      })
-    } 
-    else if(val === 'otp') {
-      this.genRandomKey()
-      this.setState({
-        alphabetActive: false,
-        methodNameInset: 'One Time Pad'
-      })
+    switch(val) {
+      case 'caesar':
+        this.setState({
+          alphabetActive: true,
+          methodNameInset: "Caesar's Cipher"
+        })
+        break
+      case 'otp':
+        this.genRandomKey()
+        this.setState({
+          alphabetActive: false,
+          methodNameInset: 'One Time Pad'
+        })
+        break
+      case 'atbash':
+        this.setState({
+          alphabetActive: false,
+          methodNameInset: 'Atbash Cipher'
+        })
+        break
+      case 'affine':
+        this.setState({
+          alphabetActive: false,
+          methodNameInset: 'Atbash Cipher'
+        })
+        break
+      case 'vigenere':
+        this.setState({
+          keyword: 'cipher',
+          alphabetActive: false,
+          methodNameInset: 'Vigenère Cipher'
+        })
+        break
+      case 'playfair':
+        this.setState({
+          keyword: 'cipher',
+          alphabetActive: false,
+          methodNameInset: 'Playfair Cipher'
+        })
+        break
+      case 'morse':
+        this.setState({
+          alphabetActive: false,
+          methodNameInset: 'Morse Code'
+        })
+        break
+      case 'replace':
+        this.setState({
+          alphabetActive: false,
+          methodNameInset: 'Replace'
+        })
+        break
+      case 'skytale':
+        this.setState({
+          alphabetActive: false,
+          methodNameInset: 'Skytale'
+        })
+        break
+      case 'rsa':
+        this.setState({
+          methodNameInset: 'RSA',
+          alphabetActive: false
+        })
+        break
+      default:
+         return null
     }
-    else if(val === 'atbash') {
-      this.setState({
-        alphabetActive: false,
-        methodNameInset: 'Atbash Cipher'
-      })
-    }
-    else if(val === 'affine') {
-      this.setState({
-        alphabetActive: false,
-        methodNameInset: 'Affine Cipher'
-      })
-    } 
-    else if(val === 'vigenere') {
-      this.setState({
-        keyword: 'cipher',
-        alphabetActive: false,
-        methodNameInset: 'Vigenère Cipher'
-      })
-    } 
-    else if(val === 'playfair') {
-      this.setState({
-        keyword: 'cipher',
-        alphabetActive: false,
-        methodNameInset: 'Playfair Cipher'
-      })
-    } 
-    else if(val === 'morse') {
-      this.setState({
-        alphabetActive: false,
-        methodNameInset: 'Morse Code'
-      })
-    } 
-    else if(val === 'replace') {
-      this.setState({
-        alphabetActive: false,
-        methodNameInset: 'Replace'
-      })
-    } 
-    else if(val === 'skytale') {
-      this.setState({
-        alphabetActive: false,
-        methodNameInset: 'Skytale'
-      })
-    }
-    else if(val === 'rsa') {
-      this.setState({
-        methodNameInset: 'RSA',
-        alphabetActive: false
-      })
-    }
+
     this.encrypt()
   }
-
-  updateInput(evt) {
-    if(this.state.inputValue === 'The quick brown fox jumps over the lazy dog.') {
+  
+  async updateInput(evt) {
+    if (this.state.inputValue === 'The quick brown fox jumps over the lazy dog.') {
       this.setState({
         inputValue: ''
       })
@@ -186,132 +186,121 @@ class BlockElementsCollector extends React.Component  {
     } else {
       this.setState({
         inputValue: evt.target.value
-      })      
+      })
     }
     this.encrypt()
   }
-
+  
   includeChars(evt) {
     this.setState({
-        includeChars: evt.target.value,
+      includeChars: evt.target.value,
     })
     this.encrypt()
   }
   
   selectCase(evt) {
     this.setState({
-        caseFormat: evt.target.value
+      caseFormat: evt.target.value
     })
     this.encrypt()
   }
-
+  
   alphabetUpdate(evt) {
     this.setState({
       alphabet: evt.target.value
     })
     this.encrypt()
   }
-
+  
   changeDirection(evt) {
-      this.setState({
-        direction: evt.target.value
-      })
-      this.encrypt()
+    this.setState({
+      direction: evt.target.value
+    })
+    this.encrypt()
   }
-
+  
   updateKeyword = (evt) => {
     let keyword = evt.target.value.toLowerCase()
     this.setState({
-        keyword: keyword
+      keyword: keyword
     })
     this.encrypt()
   }
 
-  //Caesar + skytale ?????? Auseinanderziehen seperation of concerns!
-  plusMinus = (evt) => {
-    if(evt.target.innerText === '+') {
-      if(evt.target.id === 'plus_ring') {
-        if(this.state.ringLength > 19) {
-          this.setState({
-            ringLength: 3
-          })
-        } 
-        else {
-          this.setState(prevState => {
-            return {
-              ringLength: prevState.ringLength + 1
-            }
-          })
-        }
-      } 
-      else if(evt.target.id === 'plus_caesar'){
-        if(this.state.cShift > 24) {
-          this.setState({
-            cShift: 0
-          })
-        }
-        else {
-          this.setState(prevState => {
-            return {
-              cShift: prevState.cShift + 1
-            }
-          })
-        }
+  caesarPlusMinus = (evt) => {
+    if (evt.target.innerText === '+') {
+      if (this.state.cShift > 24) {
+        this.setState({
+          cShift: 0
+        })
+      } else {
+        this.setState(prevState => {
+          return {
+            cShift: prevState.cShift + 1
+          }
+        })
       }
-    } 
-    else if(evt.target.innerText === '-') {
-      if(evt.target.id === 'minus_ring') {
-        if(this.state.ringLength < 4) {
-          this.setState({
-            ringLength: 20
-          })
-        } 
-        else {
-          this.setState(prevState => {
-            return {
-              ringLength: prevState.ringLength - 1
-            }
-          })
-        }
-      } 
-      else if(evt.target.id === 'minus_caesar') {
-        if(this.state.cShift < 1) {
-          this.setState({
-            cShift: 25
-          })
-        } 
-        else {
-          this.setState(prevState => {
-            return {
-              cShift: prevState.cShift - 1
-            }
-          })
-        }  
+    } else {
+      if (this.state.cShift < 1) {
+        this.setState({
+          cShift: 25
+        })
+      } else {
+        this.setState(prevState => {
+          return {
+            cShift: prevState.cShift - 1
+          }
+        })
+      }
+    }
+  }
+
+  skytalePlusMinus = (evt) => {
+    if (evt.target.innerText === '+') {
+      if (this.state.ringLength > 19) {
+        this.setState({
+          ringLength: 3
+        })
+      } else {
+        this.setState(prevState => {
+          return {
+            ringLength: prevState.ringLength + 1
+          }
+        })
+      }
+    } else if (evt.target.innerText === '-') {
+      if (this.state.ringLength < 4) {
+        this.setState({
+          ringLength: 20
+        })
+      } else {
+        this.setState(prevState => {
+          return {
+            ringLength: prevState.ringLength - 1
+          }
+        })
       }
     }
     this.encrypt()
   }
 
   async componentDidMount() {
-    this.indexOfCoincidenceInputOutput()
-    this.encrypt()
-
-    if(this.state.wordbook === ''){
+    if (this.state.wordbook === '') {
       const url = 'https://raw.githubusercontent.com/dwyl/english-words/master/words_dictionary.json'
       const response = await fetch(url)
       const data = await response.json()
       this.setState({
         wordbook: data
-      }) 
+      })
     }
   }
-
-  componentDidUpdate(prevProps, prevState, snapshot) {
-    if(prevState.outputValue !== this.state.outputValue) {
+  
+  async componentDidUpdate(prevProps, prevState, snapshot) {
+    if (prevState.outputValue !== this.state.outputValue) {
       this.indexOfCoincidenceInputOutput()
     }
   }
-
+  
   //Affine
   setAlpha = (evt) => {
     this.setState({
@@ -319,24 +308,24 @@ class BlockElementsCollector extends React.Component  {
     })
     this.encrypt()
   }
-
+  
   setBeta = (evt) => {
     this.setState({
       affineBeta: evt.target.value
     })
     this.encrypt()
   }
-
+  
   // Replace
   setReplaceLetters = (evt) => {
-    if(evt.target.id === 'to_replace_letter') {
+    if (evt.target.id === 'to_replace_letter') {
       this.setState({
         toReplaceLetter: evt.target.value
       })
     } else {
-        this.setState({
-          replaceLetter: evt.target.value
-      })  
+      this.setState({
+        replaceLetter: evt.target.value
+      })
     }
     this.encrypt()
   }
@@ -347,290 +336,255 @@ class BlockElementsCollector extends React.Component  {
       ringLength: evt.target.value
     })
   }
-
+  
   // otp 
   genRandomKey = () => {
     let randomArr = []
     let letters = this.state.alphabet.split('')
-
+  
     let input = []
-    for(let i = 0; i < this.state.inputValue.length; i++) {
-        if(this.state.alphabet.indexOf(this.state.inputValue[i] !== -1)) {
-            input.push(this.state.inputValue[i])
-        }
+    for (let i = 0; i < this.state.inputValue.length; i++) {
+      if (this.state.alphabet.indexOf(this.state.inputValue[i] !== -1)) {
+        input.push(this.state.inputValue[i])
+      }
     }
-
+  
     let userInputLength = input.length;
-
-    for(let i = 0; i < userInputLength; i++) {
-        randomArr.push(letters[Math.floor(Math.random() * 26)])
+  
+    for (let i = 0; i < userInputLength; i++) {
+      randomArr.push(letters[Math.floor(Math.random() * 26)])
     }
-
+  
     this.setState({
       otpKey: randomArr.join('')
     })
-
-    this.encrypt()  
+  
+    this.encrypt()
   }
 
   //ioc
-
   calcIndexOfCoincidence = (input) => {
-
-
-    if(input) {
-      if(!this.state.inputValue) return
-      if(this.state.inputValue.length === 0) return  
+    if (input) {
+      if (!this.state.inputValue) return
+      if (this.state.inputValue.length === 0) return
     }
-    if(!input) {
-      if(!this.state.outputValue) return
-      if(this.state.outputValue.length === 0) return  
+    if (!input) {
+      if (!this.state.outputValue) return
+      if (this.state.outputValue.length === 0) return
     }
-    
-
+  
     //calc for input or output -> true = input, false = output
     let inputValue = input ? this.state.inputValue.toString() : this.state.outputValue.toString()
-
-
+  
+  
     //don't use foreign chars
     let cleanedInput = inputValue.split('').filter(character => {
-        return this.state.alphabet.indexOf(character.toLowerCase()) !== -1
+      return this.state.alphabet.indexOf(character.toLowerCase()) !== -1
     })
-
+  
     //Return if only signs
-    if(cleanedInput.length === 0) return
-
+    if (cleanedInput.length === 0) return
+  
     // count all the occurences of every letter in the input
     let arrCounts = new Array(26).fill(0)
-    for(let character of cleanedInput) {
-        let indexOfCharacter = this.state.alphabet.indexOf(character.toLowerCase())
-        arrCounts[indexOfCharacter]++
+    for (let character of cleanedInput) {
+      let indexOfCharacter = this.state.alphabet.indexOf(character.toLowerCase())
+      arrCounts[indexOfCharacter]++
     }
-
+  
     // don't use letters that have a count of one as 1 * (1 - 1) === 0
     let arrCountsCleaned = arrCounts.filter(element => element > 1)
-    
+  
     // calculate count ( count - 1 ) and sum all the results up
     let countCi = arrCountsCleaned.map(count => {
-        return count * (count - 1)
+      return count * (count - 1)
     }).reduce((a, b) => a + b, 0)
-    
+  
     //final calculation with countsum and inputlength
     let ioc = countCi / (cleanedInput.length * (cleanedInput.length - 1))
-
+  
     return !isNaN(ioc) ? ioc : '0'
   }
-
+  
   indexOfCoincidenceInputOutput = () => {
     this.setState({
-          iocInput: this.calcIndexOfCoincidence(true),
-          iocOutput: this.calcIndexOfCoincidence(false)  
-        
+      iocInput: this.calcIndexOfCoincidence(true),
+      iocOutput: this.calcIndexOfCoincidence(false)
     })
   }
-
-  //rsa
-
-  setPrimeOne(val) {
-    if(!isNaN(val)) {
-        this.setState({
-            prime_one: val
-        })
-    }
-    this.encrypt()
-  }
-
-  setPrimeTwo(val) {
-    if(!isNaN(val)) {
-        this.setState(prevState => {
-            return {
-                prime_two: val
-            }
-        })
-    }
-    this.encrypt()
-  }
-
-  setE(val) {
-    let eVal = val.target.value
-    if(!isNaN(val.target.value) && val.target.value !== null) {
-        this.setState(prevState => {
-            return {
-                e: eVal
-            }
-        })
-    }
-    this.encrypt()
-  }
-
   
+  //rsa
+  setPrimeOne(val) {
+    if (!isNaN(val)) {
+      this.setState({
+        prime_one: val
+      })
+    }
+    this.encrypt()
+  }
+  
+  setPrimeTwo(val) {
+    if (!isNaN(val)) {
+      this.setState(prevState => {
+        return {
+          prime_two: val
+        }
+      })
+    }
+    this.encrypt()
+  }
+  
+  setE(val) {
+    let tVal = val.target.value
+    if (!isNaN(tVal) && tVal !== null) {
+      this.setState(prevState => {
+        return {
+          e: tVal
+        }
+      })
+    }
+    this.encrypt()
+  }
 
-  //Do the magic!
-  encrypt = () => {
+  async encrypt () {
     this.setState(prevState => {
-      if(prevState.method === 'caesar') {
-        Caesar.setUserInput(prevState.inputValue)
-        Caesar.setAlphabet(prevState.alphabet)
-        Caesar.setSaltInput(prevState.cShift)
-        Caesar.setDirection(prevState.direction)
-        Caesar.setWordbook(prevState.wordbook)
-        Caesar.setCase(prevState.caseFormat)
-        Caesar.setForeignChars(prevState.includeChars)
-        return {
-          outputValue: Caesar.encrypt()
-        }
-      } 
-      else if(prevState.method === 'rsa') {
-        if(!prevState.prime_one || !prevState.prime_two || !prevState.e || !prevState.inputValue) return
-        Rsa.setUserInput(prevState.inputValue)
-        Rsa.setPrimeOne(prevState.prime_one)
-        Rsa.setPrimeTwo(prevState.prime_two)
-        Rsa.setE(prevState.e)
-        
-
-        if(prevState.direction === 'encrypt') {
+      let input = prevState.inputValue
+      let alphabet = prevState.alphabet
+      let direction = prevState.direction
+      let caseFormat = prevState.caseFormat
+      let foreignChars = prevState.includeChars
+      let method = prevState.method
+      
+      if (direction === 'crack') {
+        if(method === 'caesar') {
           return {
-            n: Rsa.calcN(),
-            phi: Rsa.calcPhi(),
-            d: Rsa.calcD(),
-            outputValue: Rsa.encrypt()[0],
-            timeToCalculate: Rsa.encrypt()[1]
+            outputValue: Caesar.encrypt()
           }
         }
-        else if(prevState.direction === 'decrypt') {
-          return {
-            n: prevState.n,
-            phi: prevState.phi,
-            d: prevState.d,
-            outputValue: Rsa.decrypt()[0],
-            timeToCalculate: Rsa.decrypt()[1]
-          }
-        }
-      }
-      else if(prevState.method === 'otp') {
-        Otp.setUserInput(prevState.inputValue)
-        Otp.setCase(prevState.caseFormat)
-        Otp.setForeignChars(prevState.includeChars)
-        Otp.setDirection(prevState.direction)
-        Otp.setKey(prevState.otpKey)
-        Otp.setAlphabet(prevState.alphabet)
-        return {
-          outputValue: Otp.encrypt()
-        }
-      }
-      else if(prevState.method === 'atbash') {
-        if(prevState.direction !== 'crack') {
-          Atbash.setUserInput(prevState.inputValue)
-          Atbash.setCase(prevState.caseFormat)
-          Atbash.setForeignChars(prevState.includeChars)
+        else if (method === 'atbash') {
           return {
             outputValue: Atbash.encrypt()
           }
         }
-      }
-      else if (prevState.method === 'affine') {
-        if(prevState.direction !== 'crack') {
-          Affine.setAlphabet(prevState.alphabet)
-          Affine.setUserInput(prevState.inputValue)
-          Affine.setAlpha(prevState.affineAlpha)
-          Affine.setBeta(prevState.affineBeta)
-          Affine.setDirection(prevState.direction)
-          Affine.setForeignChars(prevState.includeChars)
-          Affine.setCase(prevState.caseFormat)
-          return {
-            outputValue: Affine.encrypt()
-          }
-        } 
         else {
           return {
             outputValue: ''
           }
         }
-      } 
-      else if (prevState.method === 'vigenere') {
-        if(prevState.direction !== 'crack') {
-          Vigenere.setUserInput(prevState.inputValue)
-          Vigenere.setAlphabet(prevState.alphabet)
-          Vigenere.setDirection(prevState.direction)
-          Vigenere.setForeignChars(prevState.includeChars)
-          Vigenere.setCase(prevState.caseFormat)
+      }
+
+      switch (method) {
+        case 'caesar':
+          Caesar.setUserInput(input)
+          Caesar.setAlphabet(alphabet)
+          Caesar.setSaltInput(prevState.cShift)
+          Caesar.setDirection(direction)
+          Caesar.setWordbook(prevState.wordbook)
+          Caesar.setCase(caseFormat)
+          Caesar.setForeignChars(foreignChars)
+          console.log(input, alphabet, direction, caseFormat, foreignChars)
+          return {
+            outputValue: Caesar.encrypt()
+          }
+        case 'rsa':
+          if (!prevState.prime_one || !prevState.prime_two || !prevState.e || !input) return
+      
+          Rsa.setUserInput(input)
+          Rsa.setPrimeOne(prevState.prime_one)
+          Rsa.setPrimeTwo(prevState.prime_two)
+          Rsa.setE(prevState.e)
+      
+          if (direction === 'encrypt') {
+            return {
+              n: Rsa.calcN(),
+              phi: Rsa.calcPhi(),
+              d: Rsa.calcD(),
+              outputValue: Rsa.encrypt()[0] !== '!' ? Rsa.encrypt()[0] : Rsa.encrypt(),
+              timeToCalculate: Rsa.encrypt()[1] !== '!' ? Rsa.encrypt() : 'something went wrong here'
+            }
+          } else if (direction === 'decrypt') {
+            let decrypted = Rsa.decrypt()
+            return {
+              outputValue: decrypted[0],
+              timeToCalculate: decrypted[1]
+            }
+          }
+          break
+        case 'otp':
+          Otp.setUserInput(input)
+          Otp.setCase(caseFormat)
+          Otp.setForeignChars(foreignChars)
+          Otp.setDirection(direction)
+          Otp.setKey(prevState.otpKey)
+          Otp.setAlphabet(alphabet)
+          return {
+            outputValue: Otp.encrypt()
+          }
+        case 'atbash':
+          Atbash.setUserInput(input)
+          Atbash.setCase(caseFormat)
+          Atbash.setForeignChars(foreignChars)
+          return {
+            outputValue: Atbash.encrypt()
+          }
+        case 'affine':
+          Affine.setAlphabet(alphabet)
+          Affine.setUserInput(input)
+          Affine.setAlpha(prevState.affineAlpha)
+          Affine.setBeta(prevState.affineBeta)
+          Affine.setDirection(direction)
+          Affine.setForeignChars(foreignChars)
+          Affine.setCase(caseFormat)
+          return {
+            outputValue: Affine.encrypt()
+          }
+        case 'vigenere':
+          Vigenere.setUserInput(input)
+          Vigenere.setAlphabet(alphabet)
+          Vigenere.setDirection(direction)
+          Vigenere.setForeignChars(foreignChars)
+          Vigenere.setCase(caseFormat)
           Vigenere.setKeyword(prevState.keyword)
           return {
             outputValue: Vigenere.encrypt()
           }
-        } 
-        else {
-          return {
-              outputValue: ''
-          }
-        }
-      } 
-      else if (prevState.method === 'playfair') {
-        if(prevState.direction !== 'crack') {
-          Playfair.setUserInput(prevState.inputValue)
-          Playfair.setAlphabet(prevState.alphabet)
-          Playfair.setDirection(prevState.direction)
+        case 'playfair':
+          Playfair.setUserInput(input)
+          Playfair.setAlphabet(alphabet)
+          Playfair.setDirection(direction)
           Playfair.setKeyPhrase(prevState.keyword)
           return {
             outputValue: Playfair.encrypt(),
             playSquare: Playfair.getSquare()
           }
-        } 
-        else {
-          return {
-            outputValue: ''
-          }
-        }
-      } 
-      else if(prevState.method === 'morse') {
-        if(prevState.direction !== 'crack') {
-          Morse.setUserInput(prevState.inputValue)
-          Morse.setDirection(prevState.direction)
+        case 'morse':
+          Morse.setUserInput(input)
+          Morse.setDirection(direction)
           return {
             outputValue: Morse.encrypt()
           }
-        } 
-        else {
+        case 'replace':
+          Replace.setUserInput(input)
+          Replace.setToReplaceLetter(prevState.toReplaceLetter)
+          Replace.setReplaceLetter(prevState.replaceLetter)
           return {
-            outputValue: ''
+            outputValue: Replace.encrypt()
           }
-        }
-      } 
-      else if(prevState.method === 'replace') {
-          if(prevState.direction !== 'crack') {
-            Replace.setUserInput(prevState.inputValue)
-            Replace.setToReplaceLetter(prevState.toReplaceLetter)
-            Replace.setReplaceLetter(prevState.replaceLetter)
-            return {
-              outputValue: Replace.encrypt()
-            }
-          } 
-          else {
-            return {
-              outputValue: ''
-            }
-          }
-      } 
-      else if(prevState.method === 'skytale') {
-        if(prevState.direction !== 'crack') {
-          Skytale.setDirection(prevState.direction)
-          Skytale.setCase(prevState.caseFormat)
-          Skytale.setUserInput(prevState.inputValue)
+        case 'skytale':
+          Skytale.setDirection(direction)
+          Skytale.setCase(caseFormat)
+          Skytale.setUserInput(input)
           Skytale.setRingLength(prevState.ringLength)
           return {
             outputValue: Skytale.encrypt()[0],
             skytaleLength: Skytale.encrypt()[1],
             skytaleProjectedValue: Skytale.getProjectedValue()
-          } 
-        }
-        else {
-          return {
-            outputValue: ''
           }
-        }
+        default:
+          return null
       }
     })
-  };
+  }
 
   render() {
     return (
@@ -657,7 +611,6 @@ class BlockElementsCollector extends React.Component  {
             alphabet={this.state.alphabet} 
             alphabetUpdate = {this.alphabetUpdate}
             cShift = {this.state.cShift}
-            plusMinus = {this.plusMinus}
             selectCase = {this.selectCase}
             includeChars = {this.includeChars}
             direction = {this.state.direction}
@@ -684,6 +637,8 @@ class BlockElementsCollector extends React.Component  {
             n = {this.state.n}
             d = {this.state.d}
             timeToCalculate = {this.state.timeToCalculate}
+            caesarPlusMinus = {this.caesarPlusMinus}
+            skytalePlusMinus = {this.skytalePlusMinus}
           />
           <BlockConnectorEquals />
           <BlockElementOutput 

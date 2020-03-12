@@ -67,9 +67,6 @@ $shadow_blocks: 0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.1
 
 #root {
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
 }
 
 body {
@@ -183,11 +180,6 @@ textarea {
     border-radius: $border_blocks;
     overflow: hidden;
     box-shadow: $shadow_blocks;
-
-    .block_top_decoration {
-        height: 0px;
-        background-color: rgb(255, 255, 255);
-    }
 
     .block_head {
         height: 90px;
@@ -323,13 +315,6 @@ textarea {
         font-family: $font;
         font-size: 14pt;
         font-weight: 300;
-    }
-
-    
-
-    .block_top_decoration {
-        height: 0px;
-        background-color: rgb(255, 255, 255);
     }
 
     .block_head {
@@ -575,7 +560,6 @@ textarea {
         border: 1px solid $border_grey;
         padding: 7px;
     }
-    
 }
 
 .controller.explanation {
@@ -724,12 +708,6 @@ textarea {
     .inner_modal {
         border-radius: 0px;
         overflow: hidden;
-    }
-
-    .block_top_decoration {
-        width:calc(27vw + 32px);
-        height: 0px;
-        background-color: white;
     }
 
     .modal_header {
@@ -1205,12 +1183,13 @@ svg {
     background-color: #272727;
     width: 100%;
     color: white;
-    height: 100px;
-    display: flex;
+    height: 50px;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    margin-top: 5em;
+    position: fixed;
+    display: flex;
+    bottom: 0;
 }
 
 #footer_links {
@@ -1309,10 +1288,6 @@ svg {
             height: 70px;
         }
 
-        .block_top_decoration {
-            height: 0px;
-            display: none;
-        }
         .block_body {
             .block_body_output {
                 textarea {
@@ -1331,10 +1306,6 @@ svg {
         width: 100vw;
         border-radius: 0px;
         max-width: 100vw;
-
-        .block_top_decoration {
-            display: none;
-        }
     }
 
     #timeline {

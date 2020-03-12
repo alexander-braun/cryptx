@@ -1,10 +1,11 @@
 import React from 'react'
 import ExplanatoryText from './ExplanatoryText'
 import BlockHeadSettings from './BlockHeadSettings'
-import BlockBodyInput from './settings'
+import Settings from './settings'
 
-const BlockElementSettings = ({ plusMinus,
-                                cShift, 
+const BlockElementSettings = ({ cShift, 
+                                caesarPlusMinus,
+                                skytalePlusMinus,
                                 alphabet, 
                                 alphabetUpdate, 
                                 selectCase, 
@@ -43,7 +44,6 @@ const BlockElementSettings = ({ plusMinus,
                                 }) => {
   return (
     <div className="block_settings">
-      <div className="block_top_decoration"></div>
       <BlockHeadSettings 
         switchModal={switchModal} 
         methodNameInset={methodNameInset}
@@ -51,10 +51,9 @@ const BlockElementSettings = ({ plusMinus,
       />
       <div className="block_body">
           <div className="block_body_input">
-              <BlockBodyInput 
+              <Settings 
                 alphabetActive = {alphabetActive}
                 direction={direction}
-                plusMinus={plusMinus}
                 cShift={cShift}
                 alphabet={alphabet}
                 alphabetUpdate={alphabetUpdate}
@@ -86,6 +85,8 @@ const BlockElementSettings = ({ plusMinus,
                 n = {n}
                 d = {d}
                 timeToCalculate = {timeToCalculate}
+                caesarPlusMinus = {caesarPlusMinus}
+                skytalePlusMinus = {skytalePlusMinus}
               />
               
               <ExplanatoryText 

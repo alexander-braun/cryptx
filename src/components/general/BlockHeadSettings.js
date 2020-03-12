@@ -25,7 +25,7 @@ const BlockHeadSettings = ({switchModal, methodNameInset, changeDirection}) => {
                     }} 
                     className="block_head_option selected"
                 >
-                Encrypt
+                    Encrypt
                 </button>
                     <button 
                     value='decrypt' 
@@ -35,7 +35,7 @@ const BlockHeadSettings = ({switchModal, methodNameInset, changeDirection}) => {
                     }} 
                     className="block_head_option"
                 >
-                Decrypt
+                    Decrypt
                 </button>
                 <button 
                     value='crack' 
@@ -45,7 +45,7 @@ const BlockHeadSettings = ({switchModal, methodNameInset, changeDirection}) => {
                     }} 
                     className="block_head_option"
                 >
-                Crack
+                    Crack
                 </button>
             </div>
             <button 
