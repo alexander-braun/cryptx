@@ -219,7 +219,7 @@ class BlockElementsCollector extends React.Component  {
     this.encrypt()
   }
   
-  updateKeyword = (evt) => {
+  updateKeyword (evt) {
     let keyword = evt.target.value.toLowerCase()
     this.setState({
       keyword: keyword
@@ -227,7 +227,7 @@ class BlockElementsCollector extends React.Component  {
     this.encrypt()
   }
 
-  caesarPlusMinus = (evt) => {
+  caesarPlusMinus (evt) {
     if (evt.target.innerText === '+') {
       if (this.state.cShift > 24) {
         this.setState({
@@ -253,9 +253,10 @@ class BlockElementsCollector extends React.Component  {
         })
       }
     }
+    this.encrypt()
   }
 
-  skytalePlusMinus = (evt) => {
+  skytalePlusMinus (evt) {
     if (evt.target.innerText === '+') {
       if (this.state.ringLength > 19) {
         this.setState({
@@ -295,21 +296,21 @@ class BlockElementsCollector extends React.Component  {
     }
   }
   
-  async componentDidUpdate(prevProps, prevState, snapshot) {
+  componentDidUpdate(prevProps, prevState, snapshot) {
     if (prevState.outputValue !== this.state.outputValue) {
       this.indexOfCoincidenceInputOutput()
     }
   }
   
   //Affine
-  setAlpha = (evt) => {
+  setAlpha (evt) {
     this.setState({
       affineAlpha: evt.target.value
     })
     this.encrypt()
   }
   
-  setBeta = (evt) => {
+  setBeta (evt) {
     this.setState({
       affineBeta: evt.target.value
     })
@@ -317,7 +318,7 @@ class BlockElementsCollector extends React.Component  {
   }
   
   // Replace
-  setReplaceLetters = (evt) => {
+  setReplaceLetters (evt) {
     if (evt.target.id === 'to_replace_letter') {
       this.setState({
         toReplaceLetter: evt.target.value
@@ -338,7 +339,7 @@ class BlockElementsCollector extends React.Component  {
   }
   
   // otp 
-  genRandomKey = () => {
+  genRandomKey() {
     let randomArr = []
     let letters = this.state.alphabet.split('')
   
@@ -363,7 +364,7 @@ class BlockElementsCollector extends React.Component  {
   }
 
   //ioc
-  calcIndexOfCoincidence = (input) => {
+  calcIndexOfCoincidence (input) {
     if (input) {
       if (!this.state.inputValue) return
       if (this.state.inputValue.length === 0) return
@@ -406,7 +407,7 @@ class BlockElementsCollector extends React.Component  {
     return !isNaN(ioc) ? ioc : '0'
   }
   
-  indexOfCoincidenceInputOutput = () => {
+  async indexOfCoincidenceInputOutput () {
     this.setState({
       iocInput: this.calcIndexOfCoincidence(true),
       iocOutput: this.calcIndexOfCoincidence(false)
