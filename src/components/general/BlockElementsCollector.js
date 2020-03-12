@@ -500,7 +500,7 @@ class BlockElementsCollector extends React.Component  {
               phi: Rsa.calcPhi(),
               d: Rsa.calcD(),
               outputValue: Rsa.encrypt()[0] !== '!' ? Rsa.encrypt()[0] : Rsa.encrypt(),
-              timeToCalculate: Rsa.encrypt()[1] !== '!' ? Rsa.encrypt() : 'something went wrong here'
+              timeToCalculate: Rsa.encrypt()[1] !== '!' ? Rsa.encrypt()[1] : 'something went wrong here'
             }
           } else if (direction === 'decrypt') {
             let decrypted = Rsa.decrypt()

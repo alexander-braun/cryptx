@@ -241,6 +241,7 @@ textarea:focus {
   margin: 0rem 9vw;
   -webkit-transition-duration: 100ms;
           transition-duration: 100ms;
+  margin-bottom: 5em;
 }
 
 .block_connector {
@@ -1340,6 +1341,7 @@ svg {
   min-width: 330px;
   max-width: 18vw;
   overflow: hidden;
+  margin-top: 5em;
 }
 
 #timeline .timeline_border {
@@ -1416,6 +1418,7 @@ svg {
   }
   #block_container {
     margin: 0 auto;
+    margin-bottom: 5em;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
@@ -1446,6 +1449,7 @@ svg {
   }
   #block_container {
     margin: 0px;
+    margin-bottom: 5em;
   }
   .block_connector {
     width: 100%;

@@ -252,6 +252,7 @@ textarea {
     align-items: flex-start;
     margin: $maxStandart;
     transition-duration: $transitionMain;
+    margin-bottom: 5em;
 }
 
 .block_connector {
@@ -1140,6 +1141,7 @@ svg {
     min-width: 330px;
     max-width: 18vw;
     overflow: hidden;
+    margin-top: 5em;
 
     .timeline_border {
         min-width: 100%;
@@ -1219,6 +1221,7 @@ svg {
 
     #block_container {
         margin: 0 auto;
+        margin-bottom: 5em;
         flex-direction: column;
         align-items: center;
     }
@@ -1248,6 +1251,7 @@ svg {
 
     #block_container {
         margin: 0px;
+        margin-bottom: 5em;
     }
 
     .block_connector {
