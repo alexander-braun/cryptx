@@ -69,15 +69,43 @@ $shadow_blocks: 0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.1
 
 }
 
+body::-webkit-scrollbar {
+    width: 1em;
+  }
+   
+body::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: $reddish;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 10px;
+}
+
+
+
+html {
+    height: 100%;
+}
+
 body {
-    min-height: 100vh;
-    background-color: $blueish;
     margin: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-family: $font;
-    background: rgb(119,181,216);
-    background: linear-gradient(180deg, rgb(69, 151, 199) 0%, rgb(137, 193, 226) 100%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background: -webkit-gradient(linear, left top, left bottom, from(rgb(69, 151, 199)), to(rgb(137, 193, 226))) fixed;
 }
 
 p {
