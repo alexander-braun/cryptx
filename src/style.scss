@@ -94,6 +94,7 @@ html {
 }
 
 body {
+    overflow-x: hidden; // hide horizontal
     margin: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
