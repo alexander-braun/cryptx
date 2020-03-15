@@ -300,9 +300,6 @@ class BlockElementsCollector extends React.Component  {
     if (prevState.outputValue !== this.state.outputValue) {
       this.indexOfCoincidenceInputOutput()
     }
-    if (prevState.prime_one !== this.state.prime_one || prevState.prime_two !== this.state.prime_two) {
-      this.encrypt()
-    }
   }
   
   //Affine
@@ -424,6 +421,9 @@ class BlockElementsCollector extends React.Component  {
         prime_one: val
       })
     }
+    if(val !== '1') {
+      this.encrypt()  
+    }
   }
   
   setPrimeTwo(val) {
@@ -433,6 +433,9 @@ class BlockElementsCollector extends React.Component  {
           prime_two: val
         }
       })
+    }
+    if(val !== '1') {
+      this.encrypt()  
     }
   }
   
@@ -445,7 +448,7 @@ class BlockElementsCollector extends React.Component  {
         }
       })
     }
-    this.encrypt()
+    this.encrypt()  
   }
 
 
@@ -490,9 +493,7 @@ class BlockElementsCollector extends React.Component  {
             outputValue: Caesar.encrypt()
           }
         case 'rsa':
-          console.log(this.state.prime_one, this.state.prime_two, this.state.n, this.state.d)
-          if (!prevState.prime_one || !prevState.prime_two || !prevState.e || !input) return
-      
+          if (!prevState.prime_one || !prevState.prime_two || !prevState.e || !input || prevState.prime_one === 1 || prevState.prime_two === 1) return null
           Rsa.setUserInput(input)
           Rsa.setPrimeOne(prevState.prime_one)
           Rsa.setPrimeTwo(prevState.prime_two)
