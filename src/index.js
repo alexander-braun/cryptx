@@ -2,11 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './styles/style.css';
 import * as serviceWorker from './serviceWorker';
-import BlockElementsCollector from './components/general/BlockElementsCollector'
+import App from './components/App';
 
-ReactDOM.render(
-        <BlockElementsCollector />
-    , 
-    document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('root'));
 
 serviceWorker.unregister();
