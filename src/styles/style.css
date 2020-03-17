@@ -41,6 +41,10 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background: -webkit-gradient(linear, left top, left bottom, from(#4597c7), to(#89c1e2)) fixed;
+  background-color: #4597c7;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 1600 800'%3E%3Cg %3E%3Cpolygon fill='%23539fcc' points='1600 160 0 460 0 350 1600 50'/%3E%3Cpolygon fill='%2360a8d2' points='1600 260 0 560 0 450 1600 150'/%3E%3Cpolygon fill='%236eb0d7' points='1600 360 0 660 0 550 1600 250'/%3E%3Cpolygon fill='%237bb9dd' points='1600 460 0 760 0 650 1600 350'/%3E%3Cpolygon fill='%2389c1e2' points='1600 800 0 800 0 750 1600 450'/%3E%3C/g%3E%3C/svg%3E");
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 p {
@@ -64,7 +68,7 @@ textarea:focus {
 
 .site_header {
   position: fixed;
-  z-index: 998;
+  z-index: 1;
   top: 0;
   height: 60px;
   width: 100%;
@@ -103,20 +107,20 @@ textarea:focus {
 }
 
 .site_header #header_links #login {
-  -webkit-transition-duration: .1s;
-          transition-duration: .1s;
+  -webkit-transition-duration: 0.1s;
+          transition-duration: 0.1s;
   margin-right: 2rem;
 }
 
 .site_header #header_links #signup {
-  -webkit-transition-duration: .1s;
-          transition-duration: .1s;
+  -webkit-transition-duration: 0.1s;
+          transition-duration: 0.1s;
   margin-right: 2rem;
 }
 
 .site_header #header_links #about {
-  -webkit-transition-duration: .1s;
-          transition-duration: .1s;
+  -webkit-transition-duration: 0.1s;
+          transition-duration: 0.1s;
 }
 
 .site_header p {
@@ -130,12 +134,16 @@ textarea:focus {
   outline: none;
 }
 
-.site_header #header_links #login, .site_header #header_links #signup, .site_header #header_links #about {
+.site_header #header_links #login,
+.site_header #header_links #signup,
+.site_header #header_links #about {
   -webkit-box-shadow: 0px 0px black;
           box-shadow: 0px 0px black;
 }
 
-.site_header #header_links #login:hover, .site_header #header_links #signup:hover, .site_header #header_links #about:hover {
+.site_header #header_links #login:hover,
+.site_header #header_links #signup:hover,
+.site_header #header_links #about:hover {
   border-bottom: 3px solid #f54444;
 }
 
@@ -144,8 +152,8 @@ textarea:focus {
   transition: -webkit-box-shadow;
   transition: box-shadow;
   transition: box-shadow, -webkit-box-shadow;
-  -webkit-transition-duration: .3s;
-          transition-duration: .3s;
+  -webkit-transition-duration: 0.3s;
+          transition-duration: 0.3s;
   -webkit-transition-timing-function: linear;
           transition-timing-function: linear;
   max-width: 28vw;
@@ -154,7 +162,7 @@ textarea:focus {
       -ms-flex-positive: 0;
           flex-grow: 0;
   background-color: white;
-  border-radius: 3px;
+  border-radius: 0px;
   overflow: hidden;
   -webkit-box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
           box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
@@ -205,7 +213,8 @@ textarea:focus {
   font-size: 24px;
 }
 
-.block .block_body .block_body_input, .block .block_body .block_body_output {
+.block .block_body .block_body_input,
+.block .block_body .block_body_output {
   width: 100%;
   height: 100%;
   line-height: 0;
@@ -220,7 +229,8 @@ textarea:focus {
           flex-direction: column;
 }
 
-.block .block_body .block_body_input textarea, .block .block_body .block_body_output textarea {
+.block .block_body .block_body_input textarea,
+.block .block_body .block_body_output textarea {
   resize: none;
   border: none;
   overflow: hidden;
@@ -235,7 +245,8 @@ textarea:focus {
   font-weight: 300;
 }
 
-.block .block_body .block_body_input div, .block .block_body .block_body_output div {
+.block .block_body .block_body_input div,
+.block .block_body .block_body_output div {
   resize: none;
   border: none;
   overflow: hidden;
@@ -322,19 +333,20 @@ textarea:focus {
   transition: -webkit-box-shadow;
   transition: box-shadow;
   transition: box-shadow, -webkit-box-shadow;
-  -webkit-transition-duration: .3s;
-          transition-duration: .3s;
+  -webkit-transition-duration: 0.3s;
+          transition-duration: 0.3s;
   -webkit-transition-timing-function: linear;
           transition-timing-function: linear;
   -webkit-box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
           box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
   color: #2f1728;
   max-width: 400px;
+  min-width: 350px;
   -webkit-box-flex: 0;
       -ms-flex-positive: 0;
           flex-grow: 0;
   background-color: white;
-  border-radius: 3px;
+  border-radius: 0px;
   overflow: hidden;
 }
 
@@ -343,7 +355,8 @@ textarea:focus {
           box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
 
-.block_settings #to_replace_letter, .block_settings #replacement_letter {
+.block_settings #to_replace_letter,
+.block_settings #replacement_letter {
   resize: none;
   border: none;
   overflow: hidden;
@@ -397,8 +410,8 @@ textarea:focus {
   margin: 3px;
   margin-right: 1em;
   color: grey;
-  -webkit-transition-duration: .2s;
-          transition-duration: .2s;
+  -webkit-transition-duration: 0.2s;
+          transition-duration: 0.2s;
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   font-weight: 500;
 }
@@ -448,11 +461,11 @@ textarea:focus {
   font-weight: 500;
   margin: 0;
   padding: 0;
-  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
 }
 
 .block_settings .block_head .block_head_text #caret {
-  width: .75em;
+  width: 0.75em;
   fill: #101010;
 }
 
@@ -464,7 +477,8 @@ textarea:focus {
   height: auto;
 }
 
-.block_settings .block_body .block_body_input, .block_settings .block_body .block_body_output {
+.block_settings .block_body .block_body_input,
+.block_settings .block_body .block_body_output {
   width: 100%;
   height: 100%;
   line-height: 0;
@@ -473,7 +487,8 @@ textarea:focus {
   display: block;
 }
 
-.block_settings .block_body .block_body_input textarea, .block_settings .block_body .block_body_output textarea {
+.block_settings .block_body .block_body_input textarea,
+.block_settings .block_body .block_body_output textarea {
   resize: none;
   border: none;
   overflow: hidden;
@@ -527,12 +542,12 @@ textarea:focus {
   border-right: 1px solid #d4d4d4;
   color: #949494;
   padding: 1em 1em 0 24px;
-  font-family: "Source Sans Pro","Roboto","Helvetica","Arial",sans-serif;
+  font-family: 'Source Sans Pro', 'Roboto', 'Helvetica', 'Arial', sans-serif;
   font-size: 12px;
   font-weight: 500;
   line-height: 10px;
   text-transform: uppercase;
-  letter-spacing: .2px;
+  letter-spacing: 0.2px;
 }
 
 .controller #caesar_transposition {
@@ -542,7 +557,8 @@ textarea:focus {
   padding: 24px 24px 0px 24px;
 }
 
-.controller #caesar_transposition #alphabet_standart, .controller #caesar_transposition #alphabet_transpositioned {
+.controller #caesar_transposition #alphabet_standart,
+.controller #caesar_transposition #alphabet_transpositioned {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -560,7 +576,8 @@ textarea:focus {
   background: linear-gradient(90deg, #f54444 20%, #77b5d8 100%);
 }
 
-.controller #caesar_transposition #alphabet_standart .alphabet_transpos, .controller #caesar_transposition #alphabet_transpositioned .alphabet_transpos {
+.controller #caesar_transposition #alphabet_standart .alphabet_transpos,
+.controller #caesar_transposition #alphabet_transpositioned .alphabet_transpos {
   border-left: 1px solid white;
   font-size: 100%;
   width: 10px;
@@ -621,7 +638,7 @@ textarea:focus {
   font-size: 14px;
   font-weight: 600;
   border: none;
-  padding: 1rem .5rem 0 24px;
+  padding: 1rem 0.5rem 0 24px;
 }
 
 .controller .settings_operators .settings_operator {
@@ -629,7 +646,7 @@ textarea:focus {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  padding: .5rem 24px .5rem 24px;
+  padding: 0.5rem 24px 0.5rem 24px;
   cursor: pointer;
 }
 
@@ -637,7 +654,11 @@ textarea:focus {
   cursor: context-menu;
 }
 
-.controller .settings_operators #minus_caesar, .controller .settings_operators #caesar_shift_value, .controller .settings_operators #plus_caesar, .controller .settings_operators #plus_ring, .controller .settings_operators #minus_ring {
+.controller .settings_operators #minus_caesar,
+.controller .settings_operators #caesar_shift_value,
+.controller .settings_operators #plus_caesar,
+.controller .settings_operators #plus_ring,
+.controller .settings_operators #minus_ring {
   font-size: 30px;
 }
 
@@ -647,7 +668,7 @@ textarea:focus {
   font-weight: 400;
   margin: 0;
   color: black;
-  letter-spacing: .2px;
+  letter-spacing: 0.2px;
   line-height: 1.5;
 }
 
@@ -686,7 +707,7 @@ textarea:focus {
   font-weight: 400;
   margin: 0;
   color: black;
-  letter-spacing: .2px;
+  letter-spacing: 0.2px;
 }
 
 .controller.explanation a {
@@ -700,7 +721,7 @@ textarea:focus {
   width: -moz-fit-content;
   width: fit-content;
   font-size: 12px;
-  letter-spacing: .5px;
+  letter-spacing: 0.5px;
 }
 
 .double_content.controller {
@@ -746,7 +767,7 @@ textarea:focus {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  padding: .5rem .5rem .5rem 24px;
+  padding: 0.5rem 0.5rem 0.5rem 24px;
   justify-self: flex-start;
   font-size: 12pt;
 }
@@ -826,7 +847,7 @@ textarea:focus {
   width: 100vw;
   height: 100vh;
   position: fixed;
-  z-index: 999;
+  z-index: 2;
   left: 0;
   top: 0;
   overflow: hidden;
@@ -882,6 +903,10 @@ textarea:focus {
   margin-top: 2em;
 }
 
+.method_category span {
+  padding-left: 0.25em;
+}
+
 .method_category ul {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -904,7 +929,7 @@ textarea:focus {
 
 .method_category li {
   list-style: none;
-  padding: .25em;
+  padding: 0.25em;
 }
 
 .method_category li button {
@@ -1087,9 +1112,10 @@ textarea:focus {
   }
 }
 
-.slick-prev:before, .slick-next:before {
+.slick-prev:before,
+.slick-next:before {
   color: white !important;
-  opacity: .9;
+  opacity: 0.9;
 }
 
 div:focus {
@@ -1097,7 +1123,6 @@ div:focus {
 }
 
 .history_element {
-  z-index: 998;
   font-weight: 400;
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   display: -webkit-box;
@@ -1160,14 +1185,16 @@ div:focus {
   width: fit-content;
 }
 
-.timeline_description, .dot, h3 {
-  -webkit-transition-duration: .2s;
-          transition-duration: .2s;
+.timeline_description,
+.dot,
+h3 {
+  -webkit-transition-duration: 0.2s;
+          transition-duration: 0.2s;
 }
 
 .dot {
-  -webkit-transition-duration: .2s;
-          transition-duration: .2s;
+  -webkit-transition-duration: 0.2s;
+          transition-duration: 0.2s;
 }
 
 .slick-current .dot {
@@ -1180,7 +1207,7 @@ div:focus {
 
 .slick-current .timeline_description {
   font-weight: 600;
-  letter-spacing: .5px;
+  letter-spacing: 0.5px;
   font-size: 13pt;
   line-height: 1.3;
 }
@@ -1190,7 +1217,8 @@ div:focus {
   letter-spacing: 3px;
 }
 
-.slick-prev:before, .slick-next:before {
+.slick-prev:before,
+.slick-next:before {
   font-size: 25pt !important;
 }
 
@@ -1247,7 +1275,7 @@ svg {
 .button_menue:after {
   border-style: solid;
   border-width: 0 2px 2px 0;
-  content: "";
+  content: '';
   display: inline-block;
   padding: 3px;
   -webkit-transform: rotate(45deg);
@@ -1330,7 +1358,7 @@ svg {
       -ms-flex-pack: justify;
           justify-content: space-between;
   width: 100%;
-  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
   cursor: pointer;
   color: rgba(0, 0, 0, 0.87);
 }
@@ -1341,22 +1369,25 @@ svg {
   line-height: 1.43;
 }
 
-.expand_menue, .coincidence_menue {
+.expand_menue,
+.coincidence_menue {
   max-height: 0;
-  -webkit-transition: max-height .2s ease-out;
-  transition: max-height .2s ease-out;
+  -webkit-transition: max-height 0.2s ease-out;
+  transition: max-height 0.2s ease-out;
   word-break: break-word;
   width: 100%;
 }
 
-.expand_menue h1, .coincidence_menue h1 {
+.expand_menue h1,
+.coincidence_menue h1 {
   width: 100%;
   text-align: left;
   font-size: 20px;
   margin-bottom: 2em;
 }
 
-.expand_menue p, .coincidence_menue p {
+.expand_menue p,
+.coincidence_menue p {
   margin-left: 0;
   margin-right: auto;
   font-size: 14px;
@@ -1437,7 +1468,9 @@ svg {
   font-weight: 200;
 }
 
-#footer_login, #footer_signup, #footer_about {
+#footer_login,
+#footer_signup,
+#footer_about {
   font-size: 16pt;
   color: white;
   margin: 0 1em;
@@ -1445,7 +1478,8 @@ svg {
 }
 
 @media only screen and (max-width: 1100px) {
-  .modal .modal_header, .modal .modal_body {
+  .modal .modal_header,
+  .modal .modal_body {
     width: 50vw;
   }
   #block_container {
@@ -1480,7 +1514,8 @@ svg {
 }
 
 @media only screen and (max-width: 700px) {
-  .modal .modal_header, .modal .modal_body {
+  .modal .modal_header,
+  .modal .modal_body {
     width: 80vw;
   }
   #block_container {
@@ -1590,10 +1625,10 @@ svg {
   margin-top: 1em;
   padding-left: 24px;
   padding-right: 24px;
-  -webkit-transition: -webkit-box-shadow .3s ease-out;
-  transition: -webkit-box-shadow .3s ease-out;
-  transition: box-shadow .3s ease-out;
-  transition: box-shadow .3s ease-out, -webkit-box-shadow .3s ease-out;
+  -webkit-transition: -webkit-box-shadow 0.3s ease-out;
+  transition: -webkit-box-shadow 0.3s ease-out;
+  transition: box-shadow 0.3s ease-out;
+  transition: box-shadow 0.3s ease-out, -webkit-box-shadow 0.3s ease-out;
   text-decoration: none;
   color: #fff;
   text-align: center;
@@ -1637,7 +1672,7 @@ svg {
   }
   .feature_text {
     font-weight: 200;
-    letter-spacing: .7px;
+    letter-spacing: 0.7px;
     font-size: 9.5pt;
   }
   .controller.explanation p {
@@ -1650,7 +1685,7 @@ svg {
     font-weight: normal;
   }
   #block_head_modal {
-    font: 500 24px "Roboto", "Helvetica", "Arial", sans-serif !important;
+    font: 500 24px 'Roboto', 'Helvetica', 'Arial', sans-serif !important;
   }
 }
 

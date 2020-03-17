@@ -92,7 +92,7 @@ class BlockElementsCollector extends React.Component  {
   //General
   changeMethod (evt) {
     let val
-    const methods = ['caesar', 'skytale', 'affine', 'vigenere', 'playfair', 'morse', 'replace', 'atbash', 'otp', 'rsa']
+    const methods = ['caesar', 'skytale', 'affine', 'vigenere', 'playfair', 'morse', 'replace', 'atbash', 'otp', 'rsa', 'rot13']
     if (methods.indexOf(evt) !== -1) {
       val = evt
     } else {
@@ -146,6 +146,12 @@ class BlockElementsCollector extends React.Component  {
           methodNameInset: 'Playfair Cipher'
         })
         break
+      case 'rot13':
+        this.setState({
+          alphabetActive: false,
+          methodNameInset: 'ROT13'
+        })
+        break
       case 'morse':
         this.setState({
           alphabetActive: false,
@@ -166,8 +172,7 @@ class BlockElementsCollector extends React.Component  {
         break
       case 'rsa':
         this.setState({
-          methodNameInset: 'RSA',
-          alphabetActive: false
+          methodNameInset: 'RSA'
         })
         break
       default:
@@ -460,6 +465,7 @@ class BlockElementsCollector extends React.Component  {
       let caseFormat = prevState.caseFormat
       let foreignChars = prevState.includeChars
       let method = prevState.method
+      if(input.length === 0) return null
       
       if (direction === 'crack') {
         if(method === 'caesar') {
@@ -472,6 +478,17 @@ class BlockElementsCollector extends React.Component  {
             outputValue: Atbash.encrypt()
           }
         }
+        else if(method === 'rot13') {
+          Caesar.setUserInput(input)
+          Caesar.setAlphabet(alphabet)
+          Caesar.setSaltInput(13)
+          Caesar.setDirection('decrypt')
+          Caesar.setCase(caseFormat)
+          Caesar.setForeignChars(foreignChars)
+          return {
+            outputValue: Caesar.encrypt()
+          }
+        }
         else {
           return {
             outputValue: ''
@@ -480,6 +497,16 @@ class BlockElementsCollector extends React.Component  {
       }
 
       switch (method) {
+        case 'rot13': 
+          Caesar.setUserInput(input)
+          Caesar.setAlphabet(alphabet)
+          Caesar.setSaltInput(13)
+          Caesar.setDirection(direction)
+          Caesar.setCase(caseFormat)
+          Caesar.setForeignChars(foreignChars)
+          return {
+            outputValue: Caesar.encrypt()
+          }
         case 'caesar':
           Caesar.setUserInput(input)
           Caesar.setAlphabet(alphabet)
@@ -488,7 +515,6 @@ class BlockElementsCollector extends React.Component  {
           Caesar.setWordbook(prevState.wordbook)
           Caesar.setCase(caseFormat)
           Caesar.setForeignChars(foreignChars)
-          console.log(input, alphabet, direction, caseFormat, foreignChars)
           return {
             outputValue: Caesar.encrypt()
           }

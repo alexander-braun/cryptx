@@ -89,6 +89,20 @@ const BlockBodyInput = ({   cShift,
                         timeToCalculate = {timeToCalculate}
                     />
                 break
+            case 'rot13':
+                bodyInput = 
+                    <div className="block_body_input">
+                        <Alphabet 
+                            alphabet = {alphabet} 
+                            alphabetUpdate = {alphabetUpdate} 
+                            alphabetActive = {alphabetActive}
+                        />
+                        <CaseChars 
+                            selectCase = {selectCase}
+                            includeChars = {includeChars}
+                        />
+                    </div> 
+                break
             case 'caesar':
                 bodyInput = 
                     <div className="block_body_input">

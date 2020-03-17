@@ -23,6 +23,7 @@ const atbash = (() => {
     //Encryption Method
     const readChar = () => {
         let cleanInput = math.cleanInput(userInput, false, false, alphabet)
+        if(cleanInput === null) return null
         
         let alphabetReverse = [...alphabet].reverse()
 

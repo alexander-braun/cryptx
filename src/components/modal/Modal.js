@@ -92,6 +92,17 @@ class Modal extends Component {
                                         One Time Pad
                                         </button>
                                     </li>
+                                    <li>
+                                        <button 
+                                            className="modal_category_method" 
+                                            value="rot13"
+                                            onClick={(evt) => {
+                                                this.props.changeMethod(evt)
+                                            }}
+                                        >
+                                        ROT13
+                                        </button>
+                                    </li>
                                 </ul>
                             </div>
                             <div className="method_category">

@@ -13,6 +13,7 @@ const math = (() => {
     }
 
     const cleanInput = (input, blankSpaces, caseSensitive, alphab) => {
+        if(input.length === 0) return null
         const inputArr = input.toLowerCase().split('')
         
         if(!alphab) alphab = alphabet;
