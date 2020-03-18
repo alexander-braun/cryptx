@@ -50,7 +50,7 @@ $inactivedot: #f76c6c;
 $colorHeader: white;
 $timeline_font_color: white;
 
-$border_grey: rgb(212, 212, 212);
+$border_grey: rgb(68, 68, 68);
 $greyed_text: rgb(148, 148, 148);
 
 $blockbg: #ececec;
@@ -66,33 +66,24 @@ $border: #d4d4d4;
 $shadow_blocks: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
   0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
 
-#root {
-}
-
-/*
-body::-webkit-scrollbar {
-  width: 1em;
-}
-
-body::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-}
-
-body::-webkit-scrollbar-thumb {
-  background-color: $reddish;
-  border-radius: 10px;
-}
-
-::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px white;
-  border-radius: 10px;
-  background-color: black;
-}
-*/
-
 html {
   height: 100%;
 }
+
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,1); 
+}
+
 
 body {
   overflow-x: hidden; // hide horizontal
@@ -100,7 +91,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: $font;
-  background-repeat: no-repeat;
   background-attachment: fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -120,14 +110,27 @@ body {
 #hero {
   height: calc(100vh - 60px - 50px);
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: center;
   /*
   background-image: url('../components/general/img/bg.jpg');
   background-size: cover;
   */
-
+  background-attachment: fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background: -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      from(rgb(1, 9, 14)),
+      to(rgb(30, 77, 107))
+    )
+    fixed;
 
   h1 {
     text-align: center;
@@ -140,21 +143,70 @@ body {
     font-style: normal;
     line-height: 1.25em;
     text-rendering: optimizeLegibility;
+    margin-bottom: 0em;
+  }
+
+  h3 {
+    text-align: center;
+    color: white;
+    font-family: $fontKhula;
+    font-weight: 400;
+    font-size: 1,65vw;
+    letter-spacing: 0.05em;
+    width: 42vw;
+    font-style: normal;
+    line-height: 1.25em;
+    text-rendering: optimizeLegibility;
+
+    .hero_link {
+      display: inline-block;
+      border-bottom: 3px solid #f54444;
+    }
+    
+    a {
+      color: white;
+      text-decoration: none;
+      line-height: 1.25em;
+    }
   }
 }
 
-#seperatorHeader {
-  position: absolute;
-  bottom: 50px;
+#hero_text {
+  justify-self: center;
+  align-self: center;
+  width: auto;
+  margin-top: 30vh;
+}
+
+#seperatorHeader1 {
   width: 100%;
   height: 15vw;
   padding-left: 0;
   padding-bottom: 0;
 }
 
+.svg_container {
+  width: 100%;
+  height: 15vw;
+  justify-self: flex-end;
+  align-self: flex-end;
+}
+
+#hero {
+  svg {
+    padding: 0;
+  }
+}
+
+
+
+#signup_form {
+  height: 70vh;
+  background: #327ca7;
+}
+
 #converter {
   background-color: #4597c7;
-  background-color: rgb(20, 20, 20);
   /*
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 1600 800'%3E%3Cg %3E%3Cpolygon fill='%23539fcc' points='1600 160 0 460 0 350 1600 50'/%3E%3Cpolygon fill='%2360a8d2' points='1600 260 0 560 0 450 1600 150'/%3E%3Cpolygon fill='%236eb0d7' points='1600 360 0 660 0 550 1600 250'/%3E%3Cpolygon fill='%237bb9dd' points='1600 460 0 760 0 650 1600 350'/%3E%3Cpolygon fill='%2389c1e2' points='1600 800 0 800 0 750 1600 450'/%3E%3C/g%3E%3C/svg%3E");
   */
@@ -166,6 +218,10 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background: -webkit-gradient(linear, left top, left bottom, from(#01090e), to(#2f3b42)) fixed;
 }
 
 p {
@@ -176,6 +232,8 @@ p {
 }
 
 textarea {
+  background-color: #2e2e2e;
+  color: #dadada;
   &:focus {
     outline: none;
   }
@@ -288,13 +346,14 @@ textarea {
   position: relative;
   flex-grow: 0;
   background-color: rgb(255, 255, 255);
+  background-color: #121212;
   border-radius: $border_blocks;
   overflow: hidden;
   box-shadow: $shadow_blocks;
 
   .block_head {
-    height: 90px;
-    background-color: #ececec;
+    height: 70px;
+    background-color: #202020;
     color: black;
     font-family: $font;
     font-size: 22px;
@@ -307,10 +366,12 @@ textarea {
 
     .block_head_text {
       display: inline-block;
-      align-self: flex-end;
+      align-self: center;
       color: $blockco;
       font-weight: 500;
-      font-size: 24px;
+      font-size: 22px;
+      color: #e1e1e1;
+      letter-spacing: 0.05em;
     }
   }
 
@@ -334,7 +395,7 @@ textarea {
         padding: 24px;
         line-height: 1.5;
         font-family: $font;
-        font-size: 14pt;
+        font-size: 12pt;
         font-weight: 300;
       }
 
@@ -355,6 +416,16 @@ textarea {
   }
 }
 
+.outer_box {
+  background-color: #2a2a2a;
+  width: 100%;
+  padding: 0 24px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-content: center;
+}
+
 #block_container {
   display: flex;
   flex-direction: row;
@@ -367,10 +438,10 @@ textarea {
 
 .block_connector {
   flex-grow: 0;
-  min-width: 40px;
-  height: 70px;
-  top: 10px;
-  background-color: $reddish;
+  min-width: 50px;
+  height: 60px;
+  top: 5px;
+  background-color: rgb(22, 22, 22);
   position: relative;
   font-family: $font;
   font-size: 20pt;
@@ -412,7 +483,7 @@ textarea {
   max-width: 400px;
   min-width: 350px;
   flex-grow: 0;
-  background-color: rgb(255, 255, 255);
+  background-color: #2e2e2e;
   border-radius: $border_blocks;
   overflow: hidden;
 
@@ -432,35 +503,39 @@ textarea {
   }
 
   .block_head {
-    height: 90px;
-    background-color: $blockbg;
-    color: $blockco;
+    height: 70px;
+    background-color: #202020;
+    color: white;
     font-family: $font;
     font-size: 18pt;
     font-weight: normal;
     box-sizing: border-box;
     padding: 16px 24px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: space-between;
 
     .block_head_options {
       display: flex;
+      justify-content: center;
+      align-items: center;
 
       button {
         font-family: $font;
         font-size: 18pt;
         font-weight: normal;
+        line-height: 1;
       }
 
       .block_head_option {
         font-size: 14px;
-        margin: 3px;
-        margin-right: 1em;
+        margin-right: 10px;
         color: $blockcoinactive;
         transition-duration: 0.2s;
         font-family: $font;
         font-weight: 500;
+        letter-spacing: 0.05em;
+        height: 20px;
 
         &:hover {
           cursor: pointer;
@@ -469,7 +544,7 @@ textarea {
       }
 
       .block_head_option.selected {
-        color: $blockcoactitive;
+        color: #ff586e;
       }
     }
 
@@ -489,19 +564,20 @@ textarea {
       align-items: center;
       justify-content: center;
       flex-direction: row;
-      align-self: flex-start;
-      color: #3f3f3f;
+      align-self: center;
+      color: #e1e1e1;
       border: none;
       background-color: transparent;
-      font-size: 24px;
+      font-size: 22px;
       font-weight: 500;
       margin: 0;
       padding: 0;
       font-family: $font;
+      letter-spacing: 0.05em;
 
       #caret {
         width: 0.75em;
-        fill: $blockco;
+        fill: white;
       }
 
       &:hover {
@@ -533,9 +609,22 @@ textarea {
         font-family: $font;
         font-size: 14pt;
         font-weight: 300;
+        background-color: #2e2e2e;
+        color: #dadada;
       }
     }
   }
+}
+
+.chartcontainer {
+  .controller {
+    background-color: #363636;
+  }
+}
+
+select {
+  color: #dadada;
+  background-color: black;
 }
 
 .controller {
@@ -564,7 +653,7 @@ textarea {
         border-right: 1px solid #d4d4d4;
         */
 
-    border-right: 1px solid $border;
+    border-right: 1px solid $border_grey;
     color: $greyed_text;
     padding: 1em 1em 0 24px;
     font-family: $font-secondary;
@@ -587,11 +676,11 @@ textarea {
       justify-content: center;
       align-content: center;
       background: rgb(2, 0, 36);
-      background: linear-gradient(90deg, #f54444 20%, #77b5d8 100%);
+      background: linear-gradient(90deg, #494949 20%, #1f1f1f 100%);
       //background: $reddish;
 
       .alphabet_transpos {
-        border-left: 1px solid rgb(255, 255, 255);
+        border-left: 1px dashed rgba(255, 255, 255, 0.24);
         font-size: 100%;
         width: 10px;
         flex-grow: 2;
@@ -599,7 +688,7 @@ textarea {
         text-align: center;
         text-transform: lowercase;
         //background-color: $reddish;
-        color: white;
+        color: #ffffffd5;
         padding: 0;
         margin: 0;
         display: flex;
@@ -607,6 +696,14 @@ textarea {
         font-size: 14px;
       }
     }
+  }
+
+  #alphabet_row_collect {
+    box-shadow: 0px 0px 20px rgba(17, 17, 17, 0.4);
+  }
+
+  .arrow {
+    color: rgba(255, 255, 255, 0.199);
   }
 
   .settings_operators {
@@ -617,6 +714,8 @@ textarea {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    color: #dadada;
+    letter-spacing: 0.1em;
 
     #selectCase {
       &:focus {
@@ -669,7 +768,7 @@ textarea {
   padding: 24px 24px 24px 24px;
   font-weight: 400;
   margin: 0;
-  color: rgba(0, 0, 0, 1);
+  color: #dadada;
   letter-spacing: 0.2px;
   line-height: 1.5;
 }
@@ -684,6 +783,8 @@ textarea {
     padding: 7px;
   }
 }
+
+
 
 .controller.explanation {
   width: 100%;
@@ -761,14 +862,14 @@ textarea {
         background: transparent;
         padding-right: 1em;
         cursor: pointer;
-        color: rgb(137, 137, 137);
+        color: #dadada;
         font-size: 14px;
         font-weight: 700;
         font-family: $font;
         padding-left: 0;
 
         &.active {
-          color: black;
+          color: #dadada;
         }
 
         &:focus {
@@ -971,7 +1072,8 @@ textarea {
   position: absolute;
   height: 27px;
   width: 30px;
-  border: 1px solid white;
+  
+  border: 1px solid #2e2e2e;
   border-width: 2px;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -979,7 +1081,7 @@ textarea {
   font-family: Times, serif;
   font-size: 10pt;
   color: black;
-  background-color: $reddish;
+  background-color: #ff304b;
   color: white;
   font-size: 13pt;
   font-weight: 400;
@@ -1115,8 +1217,8 @@ div {
     background-color: $yellowish;
     width: 14px;
     height: 14px;
-    border: 3px solid $dotbordercurrent;
-    background-color: $currentdot;
+    border: 4px solid $dotbordercurrent;
+    background-color: #ff586e;
   }
   .timeline_description {
     font-weight: 600;
@@ -1145,6 +1247,7 @@ div {
   margin-top: 1.5rem;
   margin-bottom: 0rem;
   box-sizing: border-box;
+  color: #dadada;
   .svgWrapper {
     width: 95%;
   }
@@ -1162,6 +1265,7 @@ div {
   padding: 0 0 24px 0;
   font-weight: 400;
   width: 100%;
+  color: #dadada;
 }
 
 svg {
@@ -1181,7 +1285,7 @@ svg {
     transform: rotate(45deg);
     vertical-align: middle;
     cursor: pointer;
-    color: black;
+    color: #dadada;
   }
 }
 
@@ -1209,6 +1313,24 @@ svg {
   border-radius: 20px !important;
   line-height: 1 !important;
   color: #f544448c !important;
+}
+
+.MuiButtonBase-root {
+  color: rgba(255, 255, 255, 0.87) !important;
+}
+
+.MuiPaper-root {
+  background-color: #363636 !important;
+  color: #dadada !important;
+  a {
+    color: #dadada !important;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+  }
+}
+
+.MuiExpansionPanel-root.Mui-expanded {
+  margin: 0 !important;
 }
 
 .MuiButton-label {
@@ -1239,7 +1361,7 @@ svg {
   width: 100%;
   font-family: $font;
   cursor: pointer;
-  color: rgba(0, 0, 0, 0.87);
+  color: rgba(255, 255, 255, 0.87);
 }
 
 .expandbutton_name {
@@ -1254,6 +1376,7 @@ svg {
   transition: max-height 0.2s ease-out;
   word-break: break-word;
   width: 100%;
+  color: white;
 
   h1 {
     width: 100%;
@@ -1364,7 +1487,7 @@ svg {
     align-items: center;
   }
   .block_connector {
-    color: white;
+    color: #dadada;
     top: 0;
     height: 50px;
     background-color: $reddish;
@@ -1581,9 +1704,10 @@ svg {
     width: 100%;
     word-break: break-all;
     padding: 0;
-    font-size: 14px;
+    font-size: 12px;
     overflow: auto;
     height: 100px;
+    padding-right: 5px;
   }
   .phi {
     justify-self: center;

@@ -72,7 +72,7 @@ function BarChart({ data, alphabet, inputValue }) {
 
     const colorScale = scaleLinear()
       .domain([0, 20])
-      .range(["#ffbdbf", "#ff0000"])
+      .range(["#ffadb7", "#ff0022"])
       .clamp(true);
 
     // create x-axis
@@ -109,7 +109,8 @@ function BarChart({ data, alphabet, inputValue }) {
           .attr("text-anchor", "middle")
           .transition()
           .attr("y", yScale(value) - 8)
-          .attr("opacity", 1);
+          .attr("opacity", 1)
+          .attr('fill', 'white')
       })
       .on("mouseleave", () => svg.select(".tooltip").remove())
       .transition()
@@ -124,8 +125,8 @@ function BarChart({ data, alphabet, inputValue }) {
       .attr('r', xScale.bandwidth() / 5)
       .attr('cx', (value, index) => xScale(alphabet[index]) + xScale.bandwidth() / 2)
       .attr('cy', value =>  -dimensions.height + dimensions.height - yScale(value))
-      .attr("fill", '#00a3ff')
-      .style('stroke', '#006dab')
+      .attr("fill", 'black')
+      .style('stroke', '#327ca7')
       .on("mouseenter", (value, index) => {
         svg
           .selectAll(".tooltip")
@@ -137,7 +138,8 @@ function BarChart({ data, alphabet, inputValue }) {
           .attr("text-anchor", "middle")
           .transition()
           .attr("y", yScale(value) - 8)
-          .attr("opacity", 1);
+          .attr("opacity", 1)
+          .attr('fill', 'white')
       })
 
   }, [data, dimensions, alphabet, inputValue]);

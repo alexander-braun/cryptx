@@ -5,7 +5,7 @@ class AtbashTransposition extends React.Component {
     genAlphabet = (reverse) => {
         if(this.props.alphabet.length === 0) return
 
-        let style = {color: 'black'}
+        let style = {color: '#ffffff'}
         let keys = ['iBk','DB5','JyV','1Ts','FUf','rMk','TVa',
                     '9b3','Dk8','byB','Lo8','ayb','8Cx','lv5',
                     '6z4','5nD','yUs','2er','8QH','BHv','TJV',
@@ -22,12 +22,12 @@ class AtbashTransposition extends React.Component {
             output.push(
                 <div    className="alphabet_transpos" 
                         key={keys[counter]} 
-                        style={element.toLowerCase() === 'a' ? style : {color: 'white'}}
+                        style={element.toLowerCase() === 'a' || element.toLowerCase() === 'z' ? style : {color: '#ffffffa0'}}
                 >
-                    <div>
+                    <div className={reverse ? "arrow" : ''}>
                         {reverse ? '↑' : element}
                     </div>
-                    <div>
+                    <div className={reverse ? "" : 'arrow'}>
                         {reverse ? element : '↓'}
                     </div>
                 </div>
@@ -42,8 +42,10 @@ class AtbashTransposition extends React.Component {
             <div className="controller">
                 <div className="settings_name">Atbash Cipher Transposition</div>
                 <div id="caesar_transposition">
-                    <div id="alphabet_standart">{this.genAlphabet(false)}</div>
-                    <div id="alphabet_transpositioned">{this.genAlphabet(true)}</div>
+                    <div id="alphabet_row_collect">
+                        <div id="alphabet_standart">{this.genAlphabet(false)}</div>
+                        <div id="alphabet_transpositioned">{this.genAlphabet(true)}</div>
+                    </div>
                 </div>    
                 <div id="caesar_explanatory_text">
                     <p className="feature_text"> 

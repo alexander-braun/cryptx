@@ -125,40 +125,40 @@ class BlockElementsCollector extends React.Component {
       case 'caesar':
         this.setState({
           alphabetActive: true,
-          methodNameInset: "Caesar's Cipher"
+          methodNameInset: "Caesar's"
         });
         break;
       case 'otp':
         this.genRandomKey();
         this.setState({
           alphabetActive: false,
-          methodNameInset: 'One Time Pad'
+          methodNameInset: 'OTP'
         });
         break;
       case 'atbash':
         this.setState({
           alphabetActive: false,
-          methodNameInset: 'Atbash Cipher'
+          methodNameInset: 'Atbash'
         });
         break;
       case 'affine':
         this.setState({
           alphabetActive: false,
-          methodNameInset: 'Atbash Cipher'
+          methodNameInset: 'Atbash'
         });
         break;
       case 'vigenere':
         this.setState({
           keyword: 'cipher',
           alphabetActive: false,
-          methodNameInset: 'Vigenère Cipher'
+          methodNameInset: 'Vigenère'
         });
         break;
       case 'playfair':
         this.setState({
           keyword: 'cipher',
           alphabetActive: false,
-          methodNameInset: 'Playfair Cipher'
+          methodNameInset: 'Playfair'
         });
         break;
       case 'rot13':
@@ -170,7 +170,7 @@ class BlockElementsCollector extends React.Component {
       case 'morse':
         this.setState({
           alphabetActive: false,
-          methodNameInset: 'Morse Code'
+          methodNameInset: 'Morse'
         });
         break;
       case 'replace':

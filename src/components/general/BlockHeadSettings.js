@@ -16,6 +16,13 @@ const BlockHeadSettings = ({switchModal, methodNameInset, changeDirection}) => {
 
     return (
         <div className="block_head">
+            <button 
+                className="block_head_text" 
+                id="block_head_modal"
+                onClick = {switchModal}
+            >  
+                {methodNameInset} <Caret />
+            </button>
             <div className="block_head_options">
                 <button 
                     value='encrypt' 
@@ -48,12 +55,7 @@ const BlockHeadSettings = ({switchModal, methodNameInset, changeDirection}) => {
                     Crack
                 </button>
             </div>
-            <button 
-                className="block_head_text" 
-                id="block_head_modal"
-                onClick = {switchModal}
-            >   {methodNameInset} <Caret />
-            </button>
+
         </div>
     )
 }

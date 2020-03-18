@@ -37,8 +37,8 @@ class CaseChars extends React.Component {
                                 this.props.selectCase(evt)
                             }}
                         >
-                            <option value="maintain">Maintain Case</option>
-                            <option value="ignore">Ignore Case</option>
+                            <option value="maintain" style={{color: 'black', fontSize: '14px'}}>Maintain Case</option>
+                            <option value="ignore" style={{color: 'black', fontSize: '14px'}}>Ignore Case</option>
                         </select>
                     </div>
                 </div>
