@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "bd74f23ec73e7a928ca6b31890e2d153",
+    "revision": "4851d1ecf919aacdcc68fa40620510a2",
     "url": "/strngcrypt/index.html"
   },
   {
-    "revision": "842b4027172b7ec7a690",
+    "revision": "44acc4ba3c8fe727df63",
     "url": "/strngcrypt/static/css/2.36ab2c59.chunk.css"
   },
   {
-    "revision": "d61f9d32c62f863f738e",
-    "url": "/strngcrypt/static/css/main.c6935f9e.chunk.css"
+    "revision": "743dd2da5b964aec7750",
+    "url": "/strngcrypt/static/css/main.988bc18f.chunk.css"
   },
   {
-    "revision": "842b4027172b7ec7a690",
-    "url": "/strngcrypt/static/js/2.5f6322ff.chunk.js"
+    "revision": "44acc4ba3c8fe727df63",
+    "url": "/strngcrypt/static/js/2.a16f4872.chunk.js"
   },
   {
     "revision": "1fedcf5c84e2f9b04a7e15ecdecddbbe",
-    "url": "/strngcrypt/static/js/2.5f6322ff.chunk.js.LICENSE.txt"
+    "url": "/strngcrypt/static/js/2.a16f4872.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "d61f9d32c62f863f738e",
-    "url": "/strngcrypt/static/js/main.2da99b4d.chunk.js"
+    "revision": "743dd2da5b964aec7750",
+    "url": "/strngcrypt/static/js/main.15effbda.chunk.js"
   },
   {
     "revision": "9cb06f7a0491ad476fde",
@@ -30,6 +30,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "2961acbb4ea3d72f6699a6ccf6e03a66",
     "url": "/strngcrypt/static/media/caret.2961acbb.svg"
+  },
+  {
+    "revision": "577e6e3cd7dd5a0adb64f13c0a312a34",
+    "url": "/strngcrypt/static/media/key.577e6e3c.png"
   },
   {
     "revision": "b7c9e1e479de3b53f1e4e30ebac2403a",
