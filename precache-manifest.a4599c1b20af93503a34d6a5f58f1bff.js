@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "a00a6b117244916f5f76941896b796f7",
+    "revision": "7ee80e82410dbc4874f278c443cb29aa",
     "url": "/strngcrypt/index.html"
   },
   {
