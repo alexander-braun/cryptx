@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "d7b832343863fee6b3681c02949ce377",
+    "revision": "eb9e66ca1e99894939b4f01d53c5a1b9",
     "url": "/strngcrypt/index.html"
   },
   {
@@ -8,8 +8,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/strngcrypt/static/css/2.36ab2c59.chunk.css"
   },
   {
-    "revision": "7932956c89b2c1b8a7eb",
-    "url": "/strngcrypt/static/css/main.996cd085.chunk.css"
+    "revision": "4eb3c2fe56952620620c",
+    "url": "/strngcrypt/static/css/main.d89de8c2.chunk.css"
   },
   {
     "revision": "44acc4ba3c8fe727df63",
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/strngcrypt/static/js/2.a16f4872.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "7932956c89b2c1b8a7eb",
-    "url": "/strngcrypt/static/js/main.6da0637f.chunk.js"
+    "revision": "4eb3c2fe56952620620c",
+    "url": "/strngcrypt/static/js/main.fe0dd292.chunk.js"
   },
   {
     "revision": "9cb06f7a0491ad476fde",
@@ -32,8 +32,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/strngcrypt/static/media/caret.2961acbb.svg"
   },
   {
-    "revision": "36e347e43e200701b1200aeda7378cbf",
-    "url": "/strngcrypt/static/media/key.36e347e4.png"
+    "revision": "1822e9f2941809c26a81959ead2f45e6",
+    "url": "/strngcrypt/static/media/key.1822e9f2.png"
   },
   {
     "revision": "b7c9e1e479de3b53f1e4e30ebac2403a",
