@@ -4,7 +4,6 @@ import BlockElementOutput from './BlockElementOutput';
 import BlockConnectorEquals from './BlockConnectorEquals';
 import BlockConnectorPlus from './BlockConnectorPlus';
 import BlockElementSettings from './BlockElementSettings';
-import Header from '../general/Header';
 import Modal from '../modal/Modal';
 import Caesar from '../caesar/CaesarLogic';
 import Affine from '../affine/AffineLogic';
@@ -24,8 +23,8 @@ class BlockElementsCollector extends React.Component {
     super();
     this.state = {
       modalVisible: false,
-      method: 'atbash',
-      methodNameInset: 'Atbash',
+      method: 'skytale',
+      methodNameInset: 'Skytale',
       inputValue: 'The quick brown fox jumps over the lazy dog.',
       outputValue: 'Gsv jfrxp yildm ulc qfnkh levi gsv ozab wlt.',
       direction: 'encrypt',
@@ -55,7 +54,9 @@ class BlockElementsCollector extends React.Component {
       phi: 0,
       d: 0,
       n: 0,
-      timeToCalculate: '0s'
+      timeToCalculate: '0s',
+      xPos: 0,
+      yPos: 0
     };
 
     this.encrypt = this.encrypt.bind(this);
@@ -113,7 +114,6 @@ class BlockElementsCollector extends React.Component {
     } else {
       val = evt.target.value || evt.target.getAttribute('value');
     }
-
     this.setState({
       alphabet: 'abcdefghijklmnopqrstuvwxyz',
       caseFormat: 'maintain',
@@ -308,6 +308,7 @@ class BlockElementsCollector extends React.Component {
   }
 
   async componentDidMount() {
+    this.encrypt()
     if (this.state.wordbook === '') {
       const url =
         'https://raw.githubusercontent.com/dwyl/english-words/master/words_dictionary.json';
@@ -648,9 +649,34 @@ class BlockElementsCollector extends React.Component {
     });
   }
 
+
+  /*
+  _onMouseMoveConverter(e) {
+    this.setState({ xPos: e.clientX})
+    this.setState({ yPos: e.clientY})
+    console.log(this.state.yPos)
+  }
+  returnCNumber = () => {
+    let windowWidth = window.innerWidth
+    let windowHeight = window.innerHeight
+    let adjustedNumber = Math.round(this.state.xPos / windowWidth * 50)
+    let adjustedHeight = Math.round(this.state.yPos / windowHeight * 100)
+    let da = 'M0 0 C' + adjustedNumber + ' ' + adjustedHeight + ' 80 100 100 0 Z'
+    console.log(da)
+    return da
+     onMouseMove={this._onMouseMoveConverter.bind(this)}
+
+     PROBLEM IST WEG WENN UNTEN MEHR PLATZ IST BITTESCHÖN DESSHALB FOOTER EVTL AM BOTTOM UND DAZU EIN ELEMENT WAS AUCH IMMER! !!!!!!
+  }
+  */
+
   render() {
     return (
       <div id='converter'>
+      {/*
+        <svg id="curveUpColor" xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="15vh" viewBox="0 0 100 100" preserveAspectRatio="none">
+          <path d='M0 0 C20 50 80 50 100 0 Z' fill="url(#grad3)"></path>
+        </svg>*/}
         <Timeline changeMethod={this.changeMethod} method={this.state.method} />
         <div id='block_container'>
           <BlockElementInput

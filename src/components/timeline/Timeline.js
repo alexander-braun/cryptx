@@ -74,7 +74,7 @@ class Timeline extends React.Component {
             slidesToShow: this.viewportWidth(),
             slidesToScroll: 1,
             arrows: true,
-            initialSlide: 0,
+            initialSlide: 1,
             beforeChange: (current, next) =>
                 this.setState({ 
                     oldSlide: current, 

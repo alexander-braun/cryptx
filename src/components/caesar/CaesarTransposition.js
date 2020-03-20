@@ -6,7 +6,7 @@ class CaesarTransposition extends React.Component {
     genAlphabet = () => {
         if(this.props.alphabet.length === 0) return
 
-        let style = {color: 'black'}
+        let style = {color: '#3daae9'}
         let keys = ['iBka','DB5u','JyVA','1TJs','FUAf','rM2k','TVla',
                     '9b3r','Dk8g','byB9','LoZ8','ayjb','8Cbx','lv5i',
                     '6z4q','5nDP','yUsd','2egr','8QXH','pBHv','TJBV',
@@ -19,8 +19,8 @@ class CaesarTransposition extends React.Component {
         let counter = 0;
         for(let element of alphabet) {
             output.push(
-                <div className="alphabet_transpos" key={keys[counter]} style={element.toLowerCase() === 'a' ? style : {color: 'white'}}>
-                <div>{element}</div><div>↓</div></div>
+                <div className="alphabet_transpos" key={keys[counter]} style={element.toLowerCase() === 'a' ? style : {color: 'rgba(255, 255, 255, 0.627)'}}>
+                <div>{element}</div><div className= {element.toLowerCase() === 'a' ? '' : 'arrow'}>↓</div></div>
             )
             counter++
         }
@@ -31,7 +31,7 @@ class CaesarTransposition extends React.Component {
 
         if(this.props.alphabet.length === 0) return
 
-        let style = {color: 'black'}
+        let style = {color: '#3daae9'}
         let keys = ['iBtka','DB5uD','JyVDA','1lTJs','FU7Af','rnM2k','TVlka',
                     '96b3r','DkU8g','byBW9','LoLZ8','cayjb','8CTbx','lhv5i',
                     '6zT4q','5nDWP','yUsXd','2regr','8MQXH','pIBHv','T7JBV',
@@ -49,9 +49,9 @@ class CaesarTransposition extends React.Component {
             output.push(
                 <div    className="alphabet_transpos" 
                         key={keys[i]} 
-                        style={alphabet[i].toLowerCase() === 'a' ? style : {color: 'white'}}
+                        style={alphabet[i].toLowerCase() === 'a' ? style : {color: 'rgba(255, 255, 255, 0.627)'}}
                 >
-                <div>↑</div><div>{alphabet[i]}</div>
+                <div  className= {alphabet[i].toLowerCase() === 'a' ? '' : 'arrow'}>↑</div><div>{alphabet[i]}</div>
                 </div>    
             )
         }
@@ -64,8 +64,10 @@ class CaesarTransposition extends React.Component {
             <div className="controller">
                 <div className="settings_name">Caesar Cipher Transposition</div>
                 <div id="caesar_transposition">
-                    <div id="alphabet_standart">{this.genAlphabet()}</div>
-                    <div id="alphabet_transpositioned">{this.genShifted(this.props.cShift)}</div>
+                    <div className="alphabet_row_collect">
+                        <div id="alphabet_standart">{this.genAlphabet()}</div>
+                        <div id="alphabet_transpositioned">{this.genShifted(this.props.cShift)}</div>
+                    </div>
                 </div>    
                 <div id="caesar_explanatory_text">
                     <p className="feature_text"> 

@@ -4,7 +4,7 @@ const Alpha = ({setAlpha, setBeta}) => {
     return (
         <div className="controller double_content">
             <div className="controllbox">
-                <div className="settings_name">α</div>
+                <div className="settings_name" style={{textTransform: 'none'}}>α</div>
                 <div className="settings_operators">
                     <select 
                         defaultValue="5" 
@@ -29,7 +29,7 @@ const Alpha = ({setAlpha, setBeta}) => {
                 </div>
             </div>
             <div className="controllbox">
-                <div className="settings_name">β</div>
+                <div className="settings_name" style={{textTransform: 'none'}}>β</div>
                 <div className="settings_operators">
                     <select 
                         defaultValue="1" 

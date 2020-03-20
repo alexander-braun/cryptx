@@ -42,7 +42,7 @@ class AtbashTransposition extends React.Component {
             <div className="controller">
                 <div className="settings_name">Atbash Cipher Transposition</div>
                 <div id="caesar_transposition">
-                    <div id="alphabet_row_collect">
+                    <div className="alphabet_row_collect">
                         <div id="alphabet_standart">{this.genAlphabet(false)}</div>
                         <div id="alphabet_transpositioned">{this.genAlphabet(true)}</div>
                     </div>

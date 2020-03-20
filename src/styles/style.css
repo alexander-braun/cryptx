@@ -5,6 +5,7 @@ html {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialised;
   font-weight: 400;
+  scroll-behavior: smooth;
 }
 
 html {
@@ -16,13 +17,13 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: inset 0 0 6px #696969;
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
   border-radius: 10px;
-  -webkit-box-shadow: inset 0 0 6px black;
+  -webkit-box-shadow: inset 0 0 6px #3daae9;
 }
 
 body {
@@ -75,6 +76,12 @@ body {
   margin-bottom: 0em;
 }
 
+#hero div {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
 #hero h3 {
   text-align: center;
   color: white;
@@ -91,12 +98,74 @@ body {
 #hero h3 .hero_link {
   display: inline-block;
   border-bottom: 3px solid #f54444;
+  position: relative;
+}
+
+#hero h3 .hero_link a {
+  position: absolute;
+  vertical-align: top;
+  border-bottom: 3px solid #f54444;
+  bottom: -14px;
+  -webkit-transition-duration: .2s;
+          transition-duration: .2s;
+  -webkit-transition-timing-function: ease-in-out;
+          transition-timing-function: ease-in-out;
+}
+
+#hero h3 .hero_link a:hover {
+  bottom: -18px;
+  border-bottom: 7px solid #f54444;
 }
 
 #hero h3 a {
   color: white;
   text-decoration: none;
   line-height: 1.25em;
+}
+
+.circle1 {
+  opacity: 1;
+  -webkit-transition-duration: .2s;
+          transition-duration: .2s;
+}
+
+.eye-anim {
+  -webkit-animation-name: example;
+          animation-name: example;
+  -webkit-animation-duration: .15s;
+          animation-duration: .15s;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
+  -webkit-animation-timing-function: ease-in-out;
+          animation-timing-function: ease-in-out;
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate;
+  -webkit-animation-delay: 250ms;
+          animation-delay: 250ms;
+}
+
+@-webkit-keyframes example {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes example {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 #hero_text {
@@ -128,9 +197,103 @@ body {
   padding: 0;
 }
 
+.svg_seperator {
+  height: 100px;
+  background-color: #1772a7;
+}
+
 #signup_form {
-  height: 70vh;
-  background: #327ca7;
+  display: -ms-grid;
+  display: grid;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 15vw;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#signup_section {
+  min-height: calc(100vh - 60px - 50px);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background: -webkit-gradient(linear, left top, left bottom, from(#01090e), to(#20303a)) fixed;
+}
+
+#signup_section .MuiOutlinedInput-input {
+  background-color: #292929;
+}
+
+#signup_section .MuiCheckbox-root {
+  color: #e1e1e1;
+}
+
+#signup_section .MuiFormLabel-root {
+  color: #e1e1e1;
+}
+
+#signup_section .MuiOutlinedInput-notchedOutline {
+  border-color: #444444;
+}
+
+#signup_section .MuiTypography-colorTextSecondary {
+  color: #e1e1e1;
+}
+
+#signup_section .MuiTypography-colorPrimary {
+  color: #e1e1e136;
+}
+
+.separator__svg {
+  -webkit-transform: translateY(1px);
+          transform: translateY(1px);
+}
+
+#signin_mainpage, #signup_mainpage {
+  background-color: #2e2e2e;
+  height: 600px;
+  -webkit-box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);
+}
+
+#scrolldown {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  margin-bottom: 15vh;
+  cursor: pointer;
+  transition: all 200ms;
+  -webkit-transition: all 200ms;
+  -webkit-transition-timing-function: ease-in-out;
+          transition-timing-function: ease-in-out;
+}
+
+#scrolldown:hover {
+  transition: all 200ms;
+  -webkit-transition: all 200ms;
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5);
 }
 
 #converter {
@@ -140,7 +303,7 @@ body {
   */
   background-attachment: fixed;
   background-size: cover;
-  min-height: calc(100vh - 50px - 60px);
+  min-height: calc(100vh - 60px);
   padding-bottom: 50px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -159,6 +322,8 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background: -webkit-gradient(linear, left top, left bottom, from(#01090e), to(#2f3b42)) fixed;
+  background: -webkit-gradient(linear, left top, left bottom, from(#01090e), to(#272727)) fixed;
+  background: -webkit-gradient(linear, left top, left bottom, from(#01090e), to(#1e4d6b)) fixed;
 }
 
 p {
@@ -208,8 +373,8 @@ textarea:focus {
   color: white;
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   font-weight: 700;
-  -webkit-box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
-          box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+  -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+          box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
 }
 
 .site_header .site_title {
@@ -312,13 +477,13 @@ textarea:focus {
   background-color: #121212;
   border-radius: 0px;
   overflow: hidden;
-  -webkit-box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
-          box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+  -webkit-box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);
 }
 
 .block:hover {
-  -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  -webkit-box-shadow: 0 24px 38px 3px rgba(0, 0, 0, 0.14), 0 9px 46px 8px rgba(0, 0, 0, 0.12), 0 11px 15px -7px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 24px 38px 3px rgba(0, 0, 0, 0.14), 0 9px 46px 8px rgba(0, 0, 0, 0.12), 0 11px 15px -7px rgba(0, 0, 0, 0.2);
 }
 
 .block .chartcontainer {
@@ -447,7 +612,7 @@ textarea:focus {
   margin: 0rem 9vw;
   -webkit-transition-duration: 100ms;
           transition-duration: 100ms;
-  margin-bottom: 5em;
+  margin-bottom: 3em;
 }
 
 .block_connector {
@@ -486,7 +651,7 @@ textarea:focus {
 @media only screen and (max-width: 1500px) {
   #block_container {
     margin: 0rem 5vw;
-    margin-bottom: 5em;
+    margin-bottom: 3em;
   }
   .site_header #header_links {
     margin-right: 5vw;
@@ -506,8 +671,8 @@ textarea:focus {
           transition-duration: 0.3s;
   -webkit-transition-timing-function: linear;
           transition-timing-function: linear;
-  -webkit-box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
-          box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+  -webkit-box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);
   color: #2f1728;
   max-width: 400px;
   min-width: 350px;
@@ -520,8 +685,8 @@ textarea:focus {
 }
 
 .block_settings:hover {
-  -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  -webkit-box-shadow: 0 24px 38px 3px rgba(0, 0, 0, 0.14), 0 9px 46px 8px rgba(0, 0, 0, 0.12), 0 11px 15px -7px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 24px 38px 3px rgba(0, 0, 0, 0.14), 0 9px 46px 8px rgba(0, 0, 0, 0.12), 0 11px 15px -7px rgba(0, 0, 0, 0.2);
 }
 
 .block_settings #to_replace_letter,
@@ -643,7 +808,7 @@ textarea:focus {
 }
 
 .block_settings .block_head .block_head_text #caret {
-  width: 0.75em;
+  width: 1.5em;
   fill: white;
 }
 
@@ -681,6 +846,7 @@ textarea:focus {
   font-weight: 300;
   background-color: #2e2e2e;
   color: #dadada;
+  margin: 0;
 }
 
 .chartcontainer .controller {
@@ -789,7 +955,7 @@ select {
   font-size: 14px;
 }
 
-.controller #alphabet_row_collect {
+.controller .alphabet_row_collect {
   -webkit-box-shadow: 0px 0px 20px rgba(17, 17, 17, 0.4);
           box-shadow: 0px 0px 20px rgba(17, 17, 17, 0.4);
 }
@@ -870,6 +1036,10 @@ select {
   color: #dadada;
   letter-spacing: 0.2px;
   line-height: 1.5;
+}
+
+.feature_text a {
+  color: white;
 }
 
 .primes .underline {
@@ -957,6 +1127,7 @@ select {
   -ms-flex-line-pack: start;
       align-content: flex-start;
   border-right: 1px solid #444444;
+  padding-bottom: 0.5rem;
 }
 
 .double_content.controller .controllbox .settings_name {
@@ -972,11 +1143,20 @@ select {
   font-size: 12pt;
 }
 
+.double_content.controller .controllbox .settings_operators select option {
+  color: black;
+}
+
+.double_content.controller .controllbox .settings_operators select:invalid {
+  color: #dadada;
+}
+
 .double_content.controller .controllbox .settings_operators select.affine {
   font-size: 12pt;
   font-weight: 700;
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   width: 3em;
+  color: #dadada;
 }
 
 .double_content.controller .controllbox .settings_operators select.affine:focus {
@@ -988,7 +1168,7 @@ select {
   background: transparent;
   padding-right: 1em;
   cursor: pointer;
-  color: #dadada;
+  color: #898989;
   font-size: 14px;
   font-weight: 700;
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
@@ -1014,7 +1194,7 @@ select {
 }
 
 .double_content.controller .controllbox .settings_operators #ignoreChars.active {
-  color: black;
+  color: #dadada;
 }
 
 .double_content.controller .controllbox .settings_operators #ignoreChars:focus {
@@ -1180,15 +1360,15 @@ select {
       -ms-flex: 1 1 15%;
           flex: 1 1 15%;
   display: inline-block;
-  color: white;
+  color: #dadada;
   text-decoration: none;
   font-size: 30px;
-  background-color: #f54444;
+  background-color: #327ca7;
   padding: 5px;
   font-weight: 900;
   cursor: default;
-  -webkit-box-shadow: 2px 2px 0px black;
-          box-shadow: 2px 2px 0px black;
+  -webkit-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.486);
+          box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.486);
 }
 
 #visualMatrix.controller {
@@ -1244,7 +1424,7 @@ select {
   font-family: Times, serif;
   font-size: 10pt;
   color: black;
-  background-color: #ff304b;
+  background-color: #3889b7;
   color: white;
   font-size: 13pt;
   font-weight: 400;
@@ -1302,7 +1482,7 @@ select {
 @media only screen and (max-width: 1280px) {
   #block_container {
     margin: 0rem 5vw;
-    margin-bottom: 5em;
+    margin-bottom: 3em;
   }
   .site_header #header_links {
     margin-right: 5vw;
@@ -1371,7 +1551,8 @@ div:focus {
   background-color: #f76c6c;
   padding: 0;
   border-radius: 50%;
-  border: 2px solid white;
+  border: 1px solid white;
+  margin-top: 4px;
 }
 
 .history_element h3 {
@@ -1398,10 +1579,11 @@ div:focus {
 
 .slick-current .dot {
   background-color: #f76c6c;
-  width: 14px;
-  height: 14px;
-  border: 4px solid white;
+  width: 15px;
+  height: 15px;
+  border: 3px solid white;
   background-color: #ff586e;
+  margin-top: 3px;
 }
 
 .slick-current .timeline_description {
@@ -1463,12 +1645,6 @@ div:focus {
   color: #dadada;
 }
 
-svg {
-  font-size: 15px;
-  padding-left: 10px;
-  padding-bottom: 2px;
-}
-
 .button_menue {
   padding: 0.5em 1em 0em 24px;
 }
@@ -1507,7 +1683,26 @@ svg {
   padding-left: 10px;
 }
 
-.MuiButton-root {
+#signup_form .MuiContainer-root {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+#signup_form .MuiButton-containedPrimary {
+  background-color: #ff586e !important;
+}
+
+#signup_form .makeStyles-avatar-2 {
+  background-color: #ff586e;
+}
+
+#converter svg {
+  font-size: 15px;
+  padding-left: 10px;
+  padding-bottom: 2px;
+}
+
+#converter .MuiButton-root {
   min-width: 25px !important;
   height: 25px !important;
   font-weight: 600 !important;
@@ -1520,30 +1715,30 @@ svg {
   color: #f544448c !important;
 }
 
-.MuiButtonBase-root {
+#converter .MuiButtonBase-root {
   color: rgba(255, 255, 255, 0.87) !important;
 }
 
-.MuiPaper-root {
+#converter .MuiPaper-root {
   background-color: #363636 !important;
   color: #dadada !important;
 }
 
-.MuiPaper-root a {
+#converter .MuiPaper-root a {
   color: #dadada !important;
   letter-spacing: 0.05em;
   font-weight: 600;
 }
 
-.MuiExpansionPanel-root.Mui-expanded {
+#converter .MuiExpansionPanel-root.Mui-expanded {
   margin: 0 !important;
 }
 
-.MuiButton-label {
+#converter .MuiButton-label {
   text-transform: none;
 }
 
-.MuiButton-text {
+#converter .MuiButton-text {
   padding: 0 !important;
 }
 
@@ -1625,7 +1820,8 @@ svg {
   min-width: 330px;
   max-width: 18vw;
   overflow: hidden;
-  margin-top: 2em;
+  margin-top: 0;
+  margin-bottom: 5vh;
 }
 
 #timeline .timeline_border {
@@ -1706,7 +1902,7 @@ svg {
   }
   #block_container {
     margin: 0 auto;
-    margin-bottom: 5em;
+    margin-bottom: 3em;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
@@ -1742,7 +1938,7 @@ svg {
   }
   #block_container {
     margin: 0px;
-    margin-bottom: 5em;
+    margin-bottom: 0em;
   }
   .block_connector {
     width: 100%;
@@ -1840,7 +2036,7 @@ svg {
       align-self: center;
   border-radius: 2px;
   border: none;
-  background-color: #f54444;
+  background-color: #327ca7;
   color: white;
   font-weight: 500;
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;

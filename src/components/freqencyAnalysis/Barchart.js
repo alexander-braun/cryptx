@@ -125,7 +125,7 @@ function BarChart({ data, alphabet, inputValue }) {
       .attr('r', xScale.bandwidth() / 5)
       .attr('cx', (value, index) => xScale(alphabet[index]) + xScale.bandwidth() / 2)
       .attr('cy', value =>  -dimensions.height + dimensions.height - yScale(value))
-      .attr("fill", 'black')
+      .attr("fill", '#ffffff20')
       .style('stroke', '#327ca7')
       .on("mouseenter", (value, index) => {
         svg

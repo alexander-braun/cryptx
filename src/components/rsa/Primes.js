@@ -103,7 +103,7 @@ const Primes = (props) => {
                         stuck for some seconds, that's because it's calculating.
                     </p>
                     <p>
-                        This site is using a <strong className="underline">pure </strong>version of RSA. 
+                        This site is using a <strong className="underline">pure</strong> version of RSA. 
                         First every character is encoded to it's character-code equivalent. Then all character 
                         codes are joined together into a big number and the actual encryption takes place.
                     </p>

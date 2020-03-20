@@ -4,15 +4,15 @@ import Hero from './hero';
 import Header from './general/Header';
 import Signup from './signup'
 
-function App() {
-  return (
+function App () {
+    return (
     <>
       <Header />
       <Hero />
-      <Signup />
       <BlockElementCollector />
     </>
-  );
-}
+  )
+}  
+
 
 export default App;
