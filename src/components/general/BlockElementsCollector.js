@@ -492,6 +492,13 @@ class BlockElementsCollector extends React.Component {
 
       if (direction === 'crack') {
         if (method === 'caesar') {
+          Caesar.setWordbook(prevState.wordbook);
+          Caesar.setUserInput(input);
+          Caesar.setAlphabet(alphabet);
+          Caesar.setSaltInput(prevState.cShift);
+          Caesar.setDirection(direction);
+          Caesar.setCase(caseFormat);
+          Caesar.setForeignChars(foreignChars);
           return {
             outputValue: Caesar.encrypt()
           };
@@ -532,7 +539,6 @@ class BlockElementsCollector extends React.Component {
           Caesar.setAlphabet(alphabet);
           Caesar.setSaltInput(prevState.cShift);
           Caesar.setDirection(direction);
-          Caesar.setWordbook(prevState.wordbook);
           Caesar.setCase(caseFormat);
           Caesar.setForeignChars(foreignChars);
           return {

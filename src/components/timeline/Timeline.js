@@ -11,7 +11,7 @@ class Timeline extends React.Component {
         this.previous = this.previous.bind(this)
         this.state = {
             oldSlide: 0,
-            activeSlide: 0,
+            activeSlide: 1,
             activeSlide2: 0
         }
         this.vw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);

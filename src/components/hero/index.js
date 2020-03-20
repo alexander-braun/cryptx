@@ -4,25 +4,41 @@ import React from 'react';
 function Hero() {
 
   const scrollToSignup = (e) => {
-    e.target.hash = '#timeline'
-    let navbarheight = 50
-    let scrollHeight = document.querySelector(e.target.hash).offsetTop - navbarheight;
-    window.scroll(0,scrollHeight);
-    window.location.hash = e.target.hash;
-    e.preventDefault();
+    setTimeout(() => {
+      window.location.hash = '#timeline';  
+      let navbar = document.getElementsByClassName('site_header')[0]
+      let navbarHeight = navbar.clientHeight;
+      console.log(navbarHeight)
+      let scrollHeight = document.querySelector('#timeline').offsetTop - navbarHeight;
+      window.scroll(0,scrollHeight);
+      e.preventDefault();
+    }, 400)
+    setTimeout(() => {
+      let svg = document.getElementById('scrolldown')
+      if(svg.classList.contains('rollaway')) {
+        svg.classList.remove('rollaway')
+      }  
+    }, 1000)
   }
 
-  const twinkle = () => {
-    let eye = document.getElementById('circle1')
-    if(eye) {
-      eye.classList.add('eye-anim')  
+  const removeBounce = () => {
+    let svg = document.getElementById('scrolldown')
+    if(svg) {
+      svg.classList.remove('bounce') 
     }
   }
 
-  const removeClass = () => {
-    let eye = document.getElementById('circle1')
-    if(eye !== null && eye.classList.contains('eye-anim')) {
-      eye.classList.remove('eye-anim')  
+  const addClass = () => {
+    let svg = document.getElementById('scrolldown')
+    if(!svg.classList.contains('rollaway')) {
+      svg.classList.add('bounce')
+    }
+  }
+
+  const addRollawayAnim = () => {
+    let svg = document.getElementById('scrolldown')
+    if(!svg.classList.contains('rollaway') && !svg.classList.contains('bounce')) {
+      svg.classList.add('rollaway')
     }
   }
 
@@ -36,8 +52,17 @@ function Hero() {
             </div>
           </h3>
         </div>
-        <div href="#timeline" className="hero_a_container" onClick={e => {scrollToSignup(e)}}>
-          <svg id="scrolldown" xmlns="http://www.w3.org/2000/svg" height="64" viewBox="0 0 24 24" width="64" onMouseOut={removeClass} onMouseMove={twinkle}>
+        <div className="hero_a_container" onClick={e => {scrollToSignup(e)}}>
+          <svg  id="scrolldown" 
+                xmlns="http://www.w3.org/2000/svg" 
+                height="64" 
+                viewBox="0 0 24 24" 
+                width="64" 
+                className="bounce" 
+                onMouseOut={addClass} 
+                onMouseMove={removeBounce}
+                onClick={addRollawayAnim}
+                >
             <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="0%">
               <stop offset="0%" style={{stopColor:'#f54444', stopOpacity:'1'}} />
               <stop offset="100%" style={{stopColor:'#3daae9', stopOpacity:'1'}} />

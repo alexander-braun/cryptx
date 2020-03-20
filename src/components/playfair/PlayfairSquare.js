@@ -32,7 +32,7 @@ class PlayfaireSquare extends React.Component {
                 </div>
                 <div id="skytale_explanatory_text">
                     <p className="feature_text"> 
-                        This method is a bit shaky encoding forth and back. One letter is
+                        This method is a bit shaky encrypting forth and back. One letter is
                         left out and substituted with another letter - either not use this letter or
                         at least be aware that there might be inconsistencies. A substitution letter will 
                         be added if two of the same letters occure directly after each other (if the first letter 
