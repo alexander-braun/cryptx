@@ -75,7 +75,6 @@ const caesar = (() => {
 
   const setWordbook = words => {
     wordbook = words;
-    console.log(words)
   };
 
   const readCharCrack = (textinput, salt) => {

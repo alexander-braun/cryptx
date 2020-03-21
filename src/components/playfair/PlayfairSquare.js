@@ -18,14 +18,14 @@ class PlayfaireSquare extends React.Component {
             )
         }
         parent.push(
-            <div id="visualMatrix" className="controller">{children}</div>
+            <div id="visualMatrix" style={{boxShadow:'none'}} className="controller">{children}</div>
         )
         return parent
     }
 
     render() {
         return (
-            <div className="controller">
+            <div className="controller" style={{boxShadow: 'inset 0 10px 10px -10px #0000005b'}}>
                 <div className="settings_name">PLAYFAIR SQUARE</div>
                 <div className="settings_operators">
                     {this.createVisualMatrix()}

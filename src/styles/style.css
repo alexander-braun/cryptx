@@ -35,7 +35,6 @@ body {
   background-attachment: fixed;
   background-size: cover;
   background-repeat: no-repeat;
-  background: -webkit-gradient(linear, left top, left bottom, from(#0d171d), to(#0c344d)) fixed;
 }
 
 #hero {
@@ -59,7 +58,8 @@ body {
   background-attachment: fixed;
   background-size: cover;
   background-repeat: no-repeat;
-  background: -webkit-gradient(linear, left top, left bottom, from(#01090e), to(#1e4d6b)) fixed;
+  background: -webkit-gradient(linear, left top, left bottom, from(#0e0e0e), to(#1d3850)) fixed;
+  background: #181818;
 }
 
 #hero h1 {
@@ -291,9 +291,8 @@ body {
   background-attachment: fixed;
   background-size: cover;
   background-repeat: no-repeat;
-  background: -webkit-gradient(linear, left top, left bottom, from(#01090e), to(#2f3b42)) fixed;
-  background: -webkit-gradient(linear, left top, left bottom, from(#01090e), to(#272727)) fixed;
-  background: -webkit-gradient(linear, left top, left bottom, from(#01090e), to(#1e4d6b)) fixed;
+  background: -webkit-gradient(linear, left top, left bottom, from(#212121), to(#333f49)) fixed;
+  background: #181818;
 }
 
 p {
@@ -308,8 +307,12 @@ p {
 }
 
 textarea {
-  background-color: #2e2e2e;
+  background-color: #252525;
   color: #dadada;
+  margin-top: 0;
+  margin-bottom: 0;
+  -webkit-box-shadow: inset 0px 11px 8px -10px #00000050, inset 0px -11px 8px -10px #00000050;
+          box-shadow: inset 0px 11px 8px -10px #00000050, inset 0px -11px 8px -10px #00000050;
 }
 
 textarea:focus {
@@ -377,7 +380,7 @@ textarea:focus {
 .site_header #header_links {
   -webkit-transition-duration: 100ms;
           transition-duration: 100ms;
-  margin-right: 9vw;
+  margin-right: 11vw;
   font-weight: 200;
 }
 
@@ -410,7 +413,7 @@ textarea:focus {
   font-size: 30pt;
   margin-top: 0;
   margin-bottom: 0;
-  margin-left: 9vw;
+  margin-left: 11vw;
   line-height: 1;
   outline: none;
 }
@@ -447,8 +450,8 @@ textarea:focus {
   background-color: #121212;
   border-radius: 0px;
   overflow: hidden;
-  -webkit-box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);
-          box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.035), 0 3px 14px 2px rgba(0, 0, 0, 0.03), 0 5px 5px -3px rgba(0, 0, 0, 0.05);
+          box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.035), 0 3px 14px 2px rgba(0, 0, 0, 0.03), 0 5px 5px -3px rgba(0, 0, 0, 0.05);
 }
 
 .block:hover {
@@ -467,7 +470,7 @@ textarea:focus {
 
 .block .block_head {
   height: 70px;
-  background-color: #202020;
+  background-color: rgba(59, 59, 59, 0.92);
   color: black;
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   font-size: 22px;
@@ -499,8 +502,8 @@ textarea:focus {
   letter-spacing: 0.05em;
 }
 
-.block .block_body .block_body_input,
-.block .block_body .block_body_output {
+.block .block_body_input,
+.block .block_body_output {
   width: 100%;
   height: 100%;
   line-height: 0;
@@ -515,8 +518,8 @@ textarea:focus {
           flex-direction: column;
 }
 
-.block .block_body .block_body_input textarea,
-.block .block_body .block_body_output textarea {
+.block .block_body_input textarea,
+.block .block_body_output textarea {
   resize: none;
   border: none;
   overflow: hidden;
@@ -531,8 +534,8 @@ textarea:focus {
   font-weight: 300;
 }
 
-.block .block_body .block_body_input div,
-.block .block_body .block_body_output div {
+.block .block_body_input div,
+.block .block_body_output div {
   resize: none;
   border: none;
   overflow: hidden;
@@ -545,6 +548,11 @@ textarea:focus {
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   font-size: 14pt;
   font-weight: 300;
+}
+
+.block_body_input div.controller:first-child {
+  -webkit-box-shadow: inset 0 10px 10px -10px #00000050;
+          box-shadow: inset 0 10px 10px -10px #00000050;
 }
 
 .outer_box {
@@ -579,7 +587,7 @@ textarea:focus {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
-  margin: 0rem 9vw;
+  margin: 0rem 11vw;
   -webkit-transition-duration: 100ms;
           transition-duration: 100ms;
   margin-bottom: 3em;
@@ -592,12 +600,11 @@ textarea:focus {
   min-width: 50px;
   height: 60px;
   top: 5px;
-  background-color: #161616;
+  background-color: #252525;
   position: relative;
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   font-size: 20pt;
   font-weight: 400;
-  color: white;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -611,11 +618,9 @@ textarea:focus {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-shadow: none;
-          box-shadow: none;
   color: white;
-  -webkit-box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
-          box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+  -webkit-box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.035), 0 3px 14px 2px rgba(0, 0, 0, 0.03), 0 5px 5px -3px rgba(0, 0, 0, 0.05);
+          box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.035), 0 3px 14px 2px rgba(0, 0, 0, 0.03), 0 5px 5px -3px rgba(0, 0, 0, 0.05);
 }
 
 @media only screen and (max-width: 1500px) {
@@ -641,15 +646,15 @@ textarea:focus {
           transition-duration: 0.3s;
   -webkit-transition-timing-function: linear;
           transition-timing-function: linear;
-  -webkit-box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);
-          box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.035), 0 3px 14px 2px rgba(0, 0, 0, 0.03), 0 5px 5px -3px rgba(0, 0, 0, 0.05);
+          box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.035), 0 3px 14px 2px rgba(0, 0, 0, 0.03), 0 5px 5px -3px rgba(0, 0, 0, 0.05);
   color: #2f1728;
-  max-width: 400px;
-  min-width: 350px;
+  max-width: 450px;
+  min-width: 400px;
   -webkit-box-flex: 0;
       -ms-flex-positive: 0;
           flex-grow: 0;
-  background-color: #2e2e2e;
+  background-color: #252525;
   border-radius: 0px;
   overflow: hidden;
 }
@@ -677,7 +682,7 @@ textarea:focus {
 
 .block_settings .block_head {
   height: 70px;
-  background-color: #202020;
+  background-color: rgba(59, 59, 59, 0.92);
   color: white;
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   font-size: 18pt;
@@ -736,6 +741,7 @@ textarea:focus {
 
 .block_settings .block_head .block_head_options .block_head_option.selected {
   color: #ff586e;
+  font-weight: 900;
 }
 
 .block_settings .block_head button {
@@ -814,7 +820,7 @@ textarea:focus {
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   font-size: 14pt;
   font-weight: 300;
-  background-color: #2e2e2e;
+  background-color: #252525;
   color: #dadada;
   margin: 0;
 }
@@ -833,8 +839,8 @@ select {
   animation-name: roll;
   -webkit-transform-origin: center center;
   transform-origin: center center;
-  -webkit-animation-duration: 1s;
-  animation-duration: 1s;
+  -webkit-animation-duration: 2s;
+  animation-duration: 2s;
   -webkit-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
   -webkit-animation-iteration-count: 1;
@@ -940,8 +946,8 @@ select {
   -ms-flex-line-pack: center;
       align-content: center;
   background: #020024;
-  background: -webkit-gradient(linear, left top, right top, color-stop(20%, #494949), to(#1f1f1f));
-  background: linear-gradient(90deg, #494949 20%, #1f1f1f 100%);
+  background: -webkit-gradient(linear, left top, right top, color-stop(20%, #2c2c2c), to(#1f1f1f));
+  background: linear-gradient(90deg, #2c2c2c 20%, #1f1f1f 100%);
 }
 
 .controller #caesar_transposition #alphabet_standart .alphabet_transpos,
@@ -1429,7 +1435,7 @@ select {
   position: absolute;
   height: 27px;
   width: 30px;
-  border: 1px solid #2e2e2e;
+  border: 1px solid #252525;
   border-width: 2px;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -1898,7 +1904,7 @@ div:focus {
 }
 
 #footer_links {
-  margin-left: 9vw;
+  margin-left: 11vw;
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   font-size: 16pt;
   font-weight: 200;
@@ -2161,7 +2167,7 @@ div:focus {
   -webkit-box-flex: 1;
       -ms-flex: 1 1 40%;
           flex: 1 1 40%;
-  border-bottom: 1px solid #d4d4d4;
+  border-bottom: 1px solid #444444;
 }
 
 .controller.double_content.prime textarea {

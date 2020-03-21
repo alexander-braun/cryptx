@@ -82,7 +82,7 @@ class Rings extends React.Component {
                         <p className="feature_text"> 
                             You can only see a readable alignment of letters (top to bottom, left to right) if you are <b>encrypting
                             a cleartext</b> or <b>decrypting an encrypted text</b>. The ring-segment-count needs to stay
-                            exactly the same for both directions. The first letter of your message is marked in 
+                            exactly the same for both directions. The first letter of your message is marked in&nbsp;
                             <span style={{ backgroundColor: '#ff586e', 
                                         display: 'inline-block', 
                                         padding: '0px 3px', 

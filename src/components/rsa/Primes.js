@@ -32,6 +32,7 @@ const Primes = (props) => {
                             type="text" 
                             id="prime_1" 
                             name="tentacles"
+                            style={{boxShadow: 'none'}}
                             defaultValue={props.prime_one} 
                             onChange = {(e) => {
                                 let input = cleanPrime(e.target.value)
@@ -41,13 +42,14 @@ const Primes = (props) => {
                         </textarea>
                     </div>
                 </div>
-                <div className="controllbox">
+                <div className="controllbox" style={{borderRight: 'none'}}>
                     <div className="settings_name">Prime 2</div>
                     <div className="settings_operators">
                         <textarea 
                             type="text" 
                             id="prime_2" 
                             name="tentacles"
+                            style={{boxShadow: 'none'}}
                             defaultValue={props.prime_two} 
                             onChange = {(e) => {
                                 let input = cleanPrime(e.target.value)
@@ -64,6 +66,7 @@ const Primes = (props) => {
                             type="text"
                             id="exponent" 
                             name="tentacles"
+                            style={{boxShadow: 'none'}}
                             onChange = {(e) => {
                                 props.setE(e)
                             }}
@@ -71,25 +74,25 @@ const Primes = (props) => {
                         </textarea>
                     </div>
                 </div>
-                <div className="controllbox">
+                <div className="controllbox" style={{borderRight: 'none'}}>
                     <div className="settings_name">n = PUBLIC KEY</div>
                     <div className="settings_operators">
-                        <textarea defaultValue={props.n} type="text" id="prime_2" name="tentacles"></textarea>
+                        <textarea style={{boxShadow: 'none'}} defaultValue={props.n} type="text" id="prime_2" name="tentacles"></textarea>
                     </div>
                 </div>
                 <div className="controllbox phi">
                     <div className="settings_name">φ <i> = (Prime1 - 1) * (Prime2 - 1)</i></div>
                     <div className="settings_operators">
-                        <textarea defaultValue={props.phi} type="text" id="phi_number" name="tentacles"></textarea>
+                        <textarea style={{boxShadow: 'none'}} defaultValue={props.phi} type="text" id="phi_number" name="tentacles"></textarea>
                     </div>
                 </div>
-                <div className="controllbox">
+                <div className="controllbox" style={{borderRight: 'none'}}>
                     <div className="settings_name">d <i> = (e ^ −1) mod ϕ</i></div>
                     <div className="settings_operators">
-                        <textarea defaultValue={props.d} type="text" id="d_calculated" name="tentacles"></textarea>
+                        <textarea style={{boxShadow: 'none'}} defaultValue={props.d} type="text" id="d_calculated" name="tentacles"></textarea>
                     </div>
                 </div>
-                <div className="controllbox">
+                <div className="controllbox" style={{border: 'none', borderBottom: '1px solid #444444'}}>
                     <div className="settings_name">Time to calculate</div>
                     <div className="settings_operators">{props.timeToCalculate}</div>
                 </div>

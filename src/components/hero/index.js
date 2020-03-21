@@ -8,17 +8,16 @@ function Hero() {
       window.location.hash = '#timeline';  
       let navbar = document.getElementsByClassName('site_header')[0]
       let navbarHeight = navbar.clientHeight;
-      console.log(navbarHeight)
       let scrollHeight = document.querySelector('#timeline').offsetTop - navbarHeight;
       window.scroll(0,scrollHeight);
       e.preventDefault();
-    }, 400)
+    }, 200)
     setTimeout(() => {
       let svg = document.getElementById('scrolldown')
       if(svg.classList.contains('rollaway')) {
         svg.classList.remove('rollaway')
       }  
-    }, 1000)
+    }, 700)
   }
 
   const removeBounce = () => {
@@ -37,7 +36,7 @@ function Hero() {
 
   const addRollawayAnim = () => {
     let svg = document.getElementById('scrolldown')
-    if(!svg.classList.contains('rollaway') && !svg.classList.contains('bounce')) {
+    if(!svg.classList.contains('rollaway')) {
       svg.classList.add('rollaway')
     }
   }

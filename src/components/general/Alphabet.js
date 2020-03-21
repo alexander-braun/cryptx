@@ -5,7 +5,7 @@ const Alphabet = ({alphabet, alphabetUpdate, alphabetActive}) => {
     <div className="controller">
       <div className="settings_name">Alphabet</div>
       <div className="settings_operators">
-          <textarea 
+          <textarea style={{boxShadow: 'none'}}
             id="alphabet" 
             value={alphabet}
             readOnly = {!alphabetActive}

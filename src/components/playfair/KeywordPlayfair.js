@@ -12,6 +12,7 @@ const KeywordPlayfair = ({keyword, updateKeyword}) => {
             onChange = {(evt) => {
                 updateKeyword(evt)
             }}
+            style={{boxShadow:'none'}}
           />
       </div>
       <div id="matrix"></div>

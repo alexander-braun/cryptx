@@ -21,11 +21,11 @@ $mainMarginMax1280: 2rem;
 $mainMarginMax1150: 0.5rem;
 $transitionMain: 100ms;
 
-$maxStandart: 0rem 9vw;
+$maxStandart: 0rem 11vw;
 $max1500: 0rem 5vw;
 $max1280: 0rem 5vw;
 
-$maxleft1500: 9vw;
+$maxleft1500: 11vw;
 $maxleft1280: 5vw;
 $maxleftu128: 5vw;
 
@@ -62,7 +62,7 @@ $blockconnectorbg: #f54444;
 $blockconnectortransparent: 'transparent';
 $border_blocks: 0px;
 
-$border: #d4d4d4;
+$border: #444444;
 
 $shadow_blocks: 0 8px 17px 2px rgba(0,0,0,0.14), 0 3px 14px 2px rgba(0,0,0,0.12), 0 5px 5px -3px rgba(0,0,0,0.2);
 
@@ -98,14 +98,6 @@ body {
   -o-background-size: cover;
   background-size: cover;
   background-repeat: no-repeat;
-  background: -webkit-gradient(
-      linear,
-      left top,
-      left bottom,
-      from(rgb(13, 23, 29)),
-      to(rgb(12, 52, 77))
-    )
-    fixed;
 }
 
 #hero {
@@ -124,14 +116,8 @@ body {
   -o-background-size: cover;
   background-size: cover;
   background-repeat: no-repeat;
-  background: -webkit-gradient(
-      linear,
-      left top,
-      left bottom,
-      from(rgb(1, 9, 14)),
-      to(rgb(30, 77, 107))
-    )
-    fixed;
+  background: -webkit-gradient(linear, left top, left bottom, from(#0e0e0e), to(#1d3850)) fixed;
+  background: #181818;
 
   h1 {
     text-align: center;
@@ -334,9 +320,8 @@ body {
   background-attachment: fixed;
   background-size: cover;
   background-repeat: no-repeat;
-  background: -webkit-gradient(linear, left top, left bottom, from(#01090e), to(#2f3b42)) fixed;
-  background: -webkit-gradient(linear, left top, left bottom, from(#01090e), to(#272727)) fixed;
-  background: -webkit-gradient(linear, left top, left bottom, from(#01090e), to(#1e4d6b)) fixed;
+  background: -webkit-gradient(linear,left top,left bottom,from(#212121),to(#333f49)) fixed;
+  background: #181818;
 }
 
 p {
@@ -347,8 +332,12 @@ p {
 }
 
 textarea {
-  background-color: #2e2e2e;
+  background-color: #252525;
   color: #dadada;
+  margin-top: 0;
+  margin-bottom: 0;
+  box-shadow: inset 0px 11px 8px -10px #00000050, inset 0px -11px 8px -10px #00000050;
+
   &:focus {
     outline: none;
   }
@@ -464,11 +453,11 @@ textarea {
   background-color: #121212;
   border-radius: $border_blocks;
   overflow: hidden;
-  box-shadow: $shadow_blocks;
+  box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.035), 0 3px 14px 2px rgba(0, 0, 0, 0.03), 0 5px 5px -3px rgba(0, 0, 0, 0.05);
 
   .block_head {
     height: 70px;
-    background-color: #202020;
+    background-color: rgba(59,59,59,.92);
     color: black;
     font-family: $font;
     font-size: 22px;
@@ -489,8 +478,7 @@ textarea {
       letter-spacing: 0.05em;
     }
   }
-
-  .block_body {
+    
     .block_body_input,
     .block_body_output {
       width: 100%;
@@ -499,6 +487,7 @@ textarea {
       box-sizing: border-box;
       display: flex;
       flex-direction: column;
+
 
       textarea {
         resize: none;
@@ -529,6 +518,9 @@ textarea {
       }
     }
   }
+
+.block_body_input div.controller:first-child {
+    box-shadow: inset 0 10px 10px -10px #00000050;
 }
 
 .outer_box {
@@ -556,20 +548,17 @@ textarea {
   min-width: 50px;
   height: 60px;
   top: 5px;
-  background-color: rgb(22, 22, 22);
+  background-color: #252525;
   position: relative;
   font-family: $font;
   font-size: 20pt;
   font-weight: 400;
-  color: white;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  box-shadow: none;
   color: white;
-  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
-    0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.035), 0 3px 14px 2px rgba(0, 0, 0, 0.03), 0 5px 5px -3px rgba(0, 0, 0, 0.05);
 }
 
 @media only screen and (max-width: 1500px) {
@@ -593,12 +582,12 @@ textarea {
   &:hover {
     box-shadow: 0 24px 38px 3px rgba(0,0,0,0.14), 0 9px 46px 8px rgba(0,0,0,0.12), 0 11px 15px -7px rgba(0,0,0,0.2);
   }
-  box-shadow: $shadow_blocks;
+  box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.035), 0 3px 14px 2px rgba(0, 0, 0, 0.03), 0 5px 5px -3px rgba(0, 0, 0, 0.05);
   color: #2f1728;
-  max-width: 400px;
-  min-width: 350px;
+  max-width: 450px;
+  min-width: 400px;
   flex-grow: 0;
-  background-color: #2e2e2e;
+  background-color: #252525;
   border-radius: $border_blocks;
   overflow: hidden;
 
@@ -619,7 +608,7 @@ textarea {
 
   .block_head {
     height: 70px;
-    background-color: #202020;
+    background-color: rgba(59,59,59,.92);
     color: white;
     font-family: $font;
     font-size: 18pt;
@@ -660,6 +649,7 @@ textarea {
 
       .block_head_option.selected {
         color: #ff586e;
+        font-weight: 900;
       }
     }
 
@@ -724,7 +714,7 @@ textarea {
         font-family: $font;
         font-size: 14pt;
         font-weight: 300;
-        background-color: #2e2e2e;
+        background-color: #252525;
         color: #dadada;
         margin: 0;
       }
@@ -749,8 +739,8 @@ select {
   -webkit-transform-origin: center center;
   -ms-transform-origin: center center;
   transform-origin: center center;
-  -webkit-animation-duration: 1s;
-  animation-duration: 1s;
+  -webkit-animation-duration: 2s;
+  animation-duration: 2s;
   -webkit-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
   animation-iteration-count: 1;
@@ -819,7 +809,7 @@ select {
       justify-content: center;
       align-content: center;
       background: rgb(2, 0, 36);
-      background: linear-gradient(90deg, #494949 20%, #1f1f1f 100%);
+      background: linear-gradient(90deg, #2c2c2c 20%, #1f1f1f 100%);
 
       .alphabet_transpos {
         border-left: 1px dashed rgba(255, 255, 255, 0.24);
@@ -1224,7 +1214,7 @@ select {
   height: 27px;
   width: 30px;
   
-  border: 1px solid #2e2e2e;
+  border: 1px solid #252525;
   border-width: 2px;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
