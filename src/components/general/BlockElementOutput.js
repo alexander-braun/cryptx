@@ -36,13 +36,13 @@ class BlockElementOutput extends React.Component {
                     value={this.props.outputValue}
                     onChange={(evt) => {
                       this.value = this.props.outputValue
-                      this.autoresize(evt)
+                      this.autoresize()
                     }}
                   >
                   </textarea>
               </div>
           </div>
-            <div className="chartcontainer" style={{width: '100%'}}>
+            <div className="chartcontainer" style={{width: '100%', borderTop: 'none'}}>
               <ChartImporter inputValue={this.props.outputValue} menue = {'output'}/>
             </div>
             <div className="chartcontainer" style={{width: '100%'}}>

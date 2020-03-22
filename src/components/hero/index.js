@@ -45,7 +45,7 @@ function Hero() {
     <>
       <div id='hero'>
         <div id="hero_text">
-          <h1>A Cryptographic Playground for Everybody.</h1>
+          <h1>A Cryptographic Playground<br></br>for Everybody.</h1>
           <h3>Unlock Free Access to all Features&nbsp; 
             <div className="hero_link"><a href="#timeline">now</a>
             </div>

@@ -1,4 +1,4 @@
-Hello there! 
+Hello! 
 
 This app is a sideproject to learn about cryptography and 
 javascript. I realized that sites like cryptii.com don't really 

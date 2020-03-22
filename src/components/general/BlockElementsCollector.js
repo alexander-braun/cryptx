@@ -436,7 +436,7 @@ class BlockElementsCollector extends React.Component {
     return !isNaN(ioc) ? ioc : '0';
   }
 
-  async indexOfCoincidenceInputOutput() {
+  indexOfCoincidenceInputOutput() {
     this.setState({
       iocInput: this.calcIndexOfCoincidence(true),
       iocOutput: this.calcIndexOfCoincidence(false)

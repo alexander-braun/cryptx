@@ -25,7 +25,7 @@ class PlayfaireSquare extends React.Component {
 
     render() {
         return (
-            <div className="controller" style={{boxShadow: 'inset 0 10px 10px -10px #0000005b'}}>
+            <div className="controller" style={{boxShadow: 'inset 0 10px 10px -10px #00000030'}}>
                 <div className="settings_name">PLAYFAIR SQUARE</div>
                 <div className="settings_operators">
                     {this.createVisualMatrix()}

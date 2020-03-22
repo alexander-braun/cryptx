@@ -119,7 +119,7 @@ const Primes = (props) => {
                         encrytion algorithms like AES - it's a misconception, that the actual message is encrypted
                         using RSA. There is also a padding scheme (OAEP) involved to obscure
                         potentially insecure messages and make them harder to break. RSA is incredibly
-                        slow when used with longer messages/prime numbers. <strong className="underline">The longer the message that 
+                        slow when used with longer messages/bigger prime numbers. <strong className="underline">The longer the message that 
                         you want to encrypt, the more digits your prime numbers needs to have for the algorithm to work.</strong>        
                     </p>
                     

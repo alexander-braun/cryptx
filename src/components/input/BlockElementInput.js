@@ -27,7 +27,7 @@ const BlockElementInput = ({updateInput, inputValue, ioc}) => {
                 />
             </div>
         </div>
-          <div className="chartcontainer" style={{width: '100%'}}>
+          <div className="chartcontainer" style={{width: '100%', borderTop: 'none'}}>
             <ChartImporter inputValue={inputValue} menue={'input'}/>
           </div>
           <div className="chartcontainer" style={{width: '100%'}}>

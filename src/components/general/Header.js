@@ -7,7 +7,7 @@ const Header = () => {
       <div className="site_header">
         <div className='site_title'>
           <p>cryptx</p>
-          <img src={logo} id="keyimage"></img>
+          <img src={logo} id="keyimage" alt="logo"></img>
         </div>
         <div id="header_links">
           <a href="login.html" id="login">Login</a>

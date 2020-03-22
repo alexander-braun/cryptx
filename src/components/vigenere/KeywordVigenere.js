@@ -4,7 +4,6 @@ const KeywordVigenere = ({keyword, updateKeyword}) => {
   return (
     <div className="controller">
       <div className="settings_name"
-      style={{boxShadow: 'inset 0 10px 10px -10px #0000005b'}}
       >
       Keyword
       </div>
