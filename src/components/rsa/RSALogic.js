@@ -1,15 +1,6 @@
-import math from '../math/Math'
-import Alphabet from '../general/Alphabet';
-const bigintModArith = require('bigint-mod-arith');
-/* global BigInt */
-
-//reading
-//https://www.di-mgt.com.au/rsa_alg.html
-//https://www.thedigitalcatonline.com/blog/2018/04/25/rsa-keys/
-//https://primes.utm.edu/lists/small/small.html
-
-
-const rsa = (() => {
+const Rsa = (() => {
+    /* global BigInt */
+    const bigintModArith = require('bigint-mod-arith');
 
     let prime_one, prime_two, e, phi, userInput, n, d
 
@@ -52,15 +43,6 @@ const rsa = (() => {
         for(let element of input) {
             hexArr.push(element.toString(16))
         }
-    }
-
-    const hexToText = (hex) => {
-        let textArr = []
-        for(let i = 0; i < hex.length; i++) {
-            let text = String.fromCharCode(parseInt(hex[i], 16))
-            textArr.push(text)
-        }
-        return textArr.join('')
     }
 
     const bigToNumber = (arr) => {
@@ -174,4 +156,4 @@ const rsa = (() => {
     }
 })()
 
-export default rsa
+export default Rsa

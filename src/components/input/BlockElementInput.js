@@ -4,7 +4,6 @@ import IndexOfCoincidence from '../indexOfCoincidence/IndexOfCoincidence'
 import math from '../general/Math'
 
 const BlockElementInput = ({updateInput, inputValue, ioc}) => {
-
   return (
       <div className="block" id="user_input">
         <div className="block_head">
@@ -27,8 +26,10 @@ const BlockElementInput = ({updateInput, inputValue, ioc}) => {
                 />
             </div>
         </div>
-          <div className="chartcontainer" style={{width: '100%', borderTop: 'none'}}>
-            <ChartImporter inputValue={inputValue} menue={'input'}/>
+          <div className="chartcontainer"  style={{width: '100%', borderTop: 'none'}}>
+            <div className="clickSurface">
+              <ChartImporter inputValue={inputValue} menue={'input'} />
+            </div>
           </div>
           <div className="chartcontainer" style={{width: '100%'}}>
             <IndexOfCoincidence ioc = {ioc} menue={'input'}/>

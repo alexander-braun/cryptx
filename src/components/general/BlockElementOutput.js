@@ -3,7 +3,6 @@ import ChartImporter from '../freqencyAnalysis/ChartImporter'
 import IndexOfCoincidence from '../indexOfCoincidence/IndexOfCoincidence'
 
 class BlockElementOutput extends React.Component {
-
   componentDidUpdate(prevProps) {
     if (prevProps.outputValue !== this.props.outputValue) {
       this.autoresize()

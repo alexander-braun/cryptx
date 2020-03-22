@@ -69,6 +69,7 @@ $shadow_blocks: 0 8px 17px 2px rgba(0,0,0,0.14), 0 3px 14px 2px rgba(0,0,0,0.12)
 
 html {
   height: 100%;
+  width: 100vw;
 }
 
 ::-webkit-scrollbar {
@@ -98,6 +99,7 @@ body {
   -o-background-size: cover;
   background-size: cover;
   background-repeat: no-repeat;
+  width: 100vw;
 }
 
 #hero {
@@ -118,6 +120,7 @@ body {
   background-repeat: no-repeat;
   background: -webkit-gradient(linear, left top, left bottom, from(#0e0e0e), to(#1d3850)) fixed;
   background: #191919;
+  background-color: #191919;
 
   h1 {
     text-align: center;
@@ -435,7 +438,7 @@ textarea {
     box-shadow: 0 24px 38px 3px rgba(0,0,0,0.14), 0 9px 46px 8px rgba(0,0,0,0.12), 0 11px 15px -7px rgba(0,0,0,0.2);
   }
   .chartcontainer {
-    border-top: 1px solid $border_grey;
+    border-top: 1px solid #797979;
 
     .controller {
       border-bottom: none;
@@ -444,6 +447,7 @@ textarea {
   }
 
   max-width: 28vw;
+  min-width:23vw;
   position: relative;
   flex-grow: 0;
   background-color: rgb(255, 255, 255);
@@ -453,7 +457,7 @@ textarea {
   box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.035), 0 3px 14px 2px rgba(0, 0, 0, 0.03), 0 5px 5px -3px rgba(0, 0, 0, 0.05);
 
   .block_head {
-    height: 70px;
+    height: 60px;
     background-color: rgba(59,59,59,.92);
     color: black;
     font-family: $font;
@@ -464,6 +468,7 @@ textarea {
     flex-direction: row;
     justify-content: flex-start;
     padding: 16px 24px;
+    border-bottom: 1px solid #272727;
 
     .block_head_text {
       display: inline-block;
@@ -543,7 +548,7 @@ textarea {
 .block_connector {
   flex-grow: 0;
   min-width: 50px;
-  height: 60px;
+  height: 50px;
   top: 5px;
   background-color: #252525;
   position: relative;
@@ -604,7 +609,7 @@ textarea {
   }
 
   .block_head {
-    height: 70px;
+    height: 60px;
     background-color: rgba(59,59,59,.92);
     color: white;
     font-family: $font;
@@ -615,6 +620,7 @@ textarea {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    border-bottom: 1px solid #272727;
 
     .block_head_options {
       display: flex;
@@ -1331,7 +1337,7 @@ div {
     background-color: white;
     padding: 0;
     border-radius: 50%;
-    border: 1px solid #ed484a;
+    border: 1px solid #a33839;
     margin-top: 4px;
   }
 
@@ -1358,7 +1364,7 @@ div {
     background-color: $yellowish;
     width: 15px;
     height: 15px;
-    border: 3px solid #ed484a;
+    border: 3px solid #a33839;
     background-color: white;
     margin-top: 3px;
   }
@@ -1379,9 +1385,9 @@ div {
   font-size: 25pt !important;
 }
 
-#freq {
+.freq {
   width: 100%;
-  height: 100%;
+  height: auto;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -1400,7 +1406,7 @@ div {
   }
 }
 
-#freq_explanatory_text {
+.freq_explanatory_text {
   margin-left: auto;
   margin-right: auto;
   font-size: 14px;
@@ -1437,7 +1443,6 @@ div {
   display: flex;
   margin-right: auto;
   margin-left: 0px;
-  padding-left: 10px;
 }
 
 #signup_form {
@@ -1587,7 +1592,7 @@ div {
     height: 0px;
     position: sticky;
     top: 38px;
-    border-bottom: 4px solid #ed484a;
+    border-bottom: 4px solid #ed484aa6;
   }
 
   div {

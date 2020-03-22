@@ -56,9 +56,12 @@ class BlockElementsCollector extends React.PureComponent {
       n: 0,
       timeToCalculate: '0s',
       xPos: 0,
-      yPos: 0
+      yPos: 0,
+      freqAnal1Open: false,
+      freqAnal2Open: false
     };
 
+  
     this.encrypt = this.encrypt.bind(this);
     this.alphabetUpdate = this.alphabetUpdate.bind(this);
     this.selectCase = this.selectCase.bind(this);

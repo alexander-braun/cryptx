@@ -1,12 +1,4 @@
 import React from 'react'
-import math from '../math/Math'
-import rsa from './RSALogic'
-import { makeStyles } from '@material-ui/core/styles';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
 
 
 const Primes = (props) => {
@@ -66,11 +58,12 @@ const Primes = (props) => {
                             type="text"
                             id="exponent" 
                             name="tentacles"
+                            defaultValue={props.e}
                             style={{boxShadow: 'none'}}
                             onChange = {(e) => {
                                 props.setE(e)
                             }}
-                        >{props.e}
+                        >
                         </textarea>
                     </div>
                 </div>

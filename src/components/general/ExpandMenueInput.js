@@ -1,5 +1,5 @@
 import React from 'react'
-import { withStyles, makeStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
@@ -21,7 +21,6 @@ function ExpandMenueInput({method, menue}) {
                 distinguished pattern changes in the graph and make the frequency analysis a good tool to solve classic
                 ciphertexts.`
             )
-
             break
         case 'Index of Coincidence':
             index = menue === 'output' ? 1 : 0
@@ -60,16 +59,15 @@ function ExpandMenueInput({method, menue}) {
             <Button><InfoIcon></InfoIcon></Button>
         </StyledTooltip>
     )
-
-
+    
     return (
         <div className="expandbutton_field" onClick={() => {
             if(expMenue) {
                 if (expMenue.style.maxHeight){
                     expMenue.style.maxHeight = null
-                  } else {
-                    expMenue.style.maxHeight = expMenue.scrollHeight + "px";
-                  } 
+                } else {
+                    expMenue.style.maxHeight = expMenue.scrollHeight + 200 + "px";
+                } 
             }
         }}>
             <div className="expandbutton_name">{method}</div>

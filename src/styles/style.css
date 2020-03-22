@@ -10,6 +10,7 @@ html {
 
 html {
   height: 100%;
+  width: 100vw;
 }
 
 ::-webkit-scrollbar {
@@ -35,6 +36,7 @@ body {
   background-attachment: fixed;
   background-size: cover;
   background-repeat: no-repeat;
+  width: 100vw;
 }
 
 #hero {
@@ -60,6 +62,7 @@ body {
   background-repeat: no-repeat;
   background: -webkit-gradient(linear, left top, left bottom, from(#0e0e0e), to(#1d3850)) fixed;
   background: #191919;
+  background-color: #191919;
 }
 
 #hero h1 {
@@ -439,6 +442,7 @@ textarea:focus {
           transition-timing-function: linear;
   z-index: 1;
   max-width: 28vw;
+  min-width: 23vw;
   position: relative;
   -webkit-box-flex: 0;
       -ms-flex-positive: 0;
@@ -457,7 +461,7 @@ textarea:focus {
 }
 
 .block .chartcontainer {
-  border-top: 1px solid #444444;
+  border-top: 1px solid #797979;
 }
 
 .block .chartcontainer .controller {
@@ -466,7 +470,7 @@ textarea:focus {
 }
 
 .block .block_head {
-  height: 70px;
+  height: 60px;
   background-color: rgba(59, 59, 59, 0.92);
   color: black;
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
@@ -485,6 +489,7 @@ textarea:focus {
       -ms-flex-pack: start;
           justify-content: flex-start;
   padding: 16px 24px;
+  border-bottom: 1px solid #272727;
 }
 
 .block .block_head .block_head_text {
@@ -595,7 +600,7 @@ textarea:focus {
       -ms-flex-positive: 0;
           flex-grow: 0;
   min-width: 50px;
-  height: 60px;
+  height: 50px;
   top: 5px;
   background-color: #252525;
   position: relative;
@@ -678,7 +683,7 @@ textarea:focus {
 }
 
 .block_settings .block_head {
-  height: 70px;
+  height: 60px;
   background-color: rgba(59, 59, 59, 0.92);
   color: white;
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
@@ -697,6 +702,7 @@ textarea:focus {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  border-bottom: 1px solid #272727;
 }
 
 .block_settings .block_head .block_head_options {
@@ -1552,7 +1558,7 @@ div:focus {
   background-color: white;
   padding: 0;
   border-radius: 50%;
-  border: 1px solid #ed484a;
+  border: 1px solid #a33839;
   margin-top: 4px;
 }
 
@@ -1582,7 +1588,7 @@ div:focus {
   background-color: #f76c6c;
   width: 15px;
   height: 15px;
-  border: 3px solid #ed484a;
+  border: 3px solid #a33839;
   background-color: white;
   margin-top: 3px;
 }
@@ -1604,9 +1610,9 @@ div:focus {
   font-size: 25pt !important;
 }
 
-#freq {
+.freq {
   width: 100%;
-  height: 100%;
+  height: auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1626,17 +1632,17 @@ div:focus {
   color: #dadada;
 }
 
-#freq .svgWrapper {
+.freq .svgWrapper {
   width: 95%;
 }
 
-#freq svg {
+.freq svg {
   width: 100%;
   height: 100%;
   overflow: visible;
 }
 
-#freq_explanatory_text {
+.freq_explanatory_text {
   margin-left: auto;
   margin-right: auto;
   font-size: 14px;
@@ -1681,7 +1687,6 @@ div:focus {
   display: flex;
   margin-right: auto;
   margin-left: 0px;
-  padding-left: 10px;
 }
 
 #signup_form .MuiContainer-root {
@@ -1842,7 +1847,7 @@ div:focus {
   position: -webkit-sticky;
   position: sticky;
   top: 38px;
-  border-bottom: 4px solid #ed484a;
+  border-bottom: 4px solid #ed484aa6;
 }
 
 #timeline div:focus {
