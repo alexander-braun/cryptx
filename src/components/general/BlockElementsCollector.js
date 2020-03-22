@@ -18,7 +18,7 @@ import Footer from './Footer';
 import Otp from '../onetimepad/otp';
 import Rsa from '../rsa/RSALogic';
 
-class BlockElementsCollector extends React.Component {
+class BlockElementsCollector extends React.PureComponent {
   constructor(props) {
     super();
     this.state = {

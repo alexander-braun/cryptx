@@ -4,7 +4,7 @@ import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
 import Slider from "react-slick";
 
-class Timeline extends React.Component {
+class Timeline extends React.PureComponent {
     constructor(props) {
         super(props)
         this.next = this.next.bind(this)

@@ -59,7 +59,7 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background: -webkit-gradient(linear, left top, left bottom, from(#0e0e0e), to(#1d3850)) fixed;
-  background: #101010;
+  background: #191919;
 }
 
 #hero h1 {
@@ -289,7 +289,7 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background: -webkit-gradient(linear, left top, left bottom, from(#212121), to(#333f49)) fixed;
-  background: #101010;
+  background: #191919;
 }
 
 p {

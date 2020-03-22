@@ -1,6 +1,6 @@
 import React from 'react'
 
-class CaseChars extends React.Component {
+class CaseChars extends React.PureComponent {
     constructor () {
         super()
         this.state = {

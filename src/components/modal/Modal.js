@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 
-class Modal extends Component {
+class Modal extends React.PureComponent {
 
     render() {
         if(this.props.modalVisible) {

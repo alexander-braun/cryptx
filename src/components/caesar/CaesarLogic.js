@@ -78,7 +78,6 @@ const caesar = (() => {
   };
 
   const readCharCrack = (textinput, salt) => {
-    console.log(textinput)
     const decryptedChars = [];
     for (let char of textinput) {
       let charLower = char.toLowerCase();

@@ -28,6 +28,7 @@ function BarChart({ data, alphabet, inputValue }) {
   // will be called initially and on every data change
   useEffect(() => {
     if(!inputValue) return undefined
+    //if(container[0].clientHeight <= 46) return undefined
     const letterFrequency = () => {
       let map = new Array(26).fill(0)
       

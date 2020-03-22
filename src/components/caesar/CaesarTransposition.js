@@ -1,7 +1,7 @@
 import React from 'react'
 
 
-class CaesarTransposition extends React.Component {
+class CaesarTransposition extends React.PureComponent {
 
     genAlphabet = () => {
         if(this.props.alphabet.length === 0) return

@@ -1,7 +1,7 @@
 import React from 'react'
 
 
-class Rings extends React.Component {
+class Rings extends React.PureComponent {
 
     generateRingStyles(planeNumber, character, ringNumber) {
         

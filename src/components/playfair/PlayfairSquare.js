@@ -1,7 +1,7 @@
 import React from 'react'
 
 
-class PlayfaireSquare extends React.Component {
+class PlayfaireSquare extends React.PureComponent {
 
     createVisualMatrix = () => {
         let parent = []
