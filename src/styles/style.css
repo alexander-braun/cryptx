@@ -328,8 +328,8 @@ textarea:focus {
   z-index: 2;
   top: 0;
   height: 60px;
-  width: 100%;
-  background-color: #373737;
+  width: 100vw;
+  background-color: #3889b7;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -387,7 +387,10 @@ textarea:focus {
 .site_header #header_links a {
   color: white;
   text-decoration: none;
-  font-size: 15pt;
+  font-size: 13pt;
+  font-weight: 200;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  letter-spacing: .03em;
 }
 
 .site_header #header_links #login {
@@ -428,7 +431,7 @@ textarea:focus {
 .site_header #header_links #login:hover,
 .site_header #header_links #signup:hover,
 .site_header #header_links #about:hover {
-  border-bottom: 3px solid #f54444;
+  border-bottom: 4px solid rgba(255, 255, 255, 0.8);
 }
 
 .block {

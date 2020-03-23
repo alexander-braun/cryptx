@@ -352,8 +352,8 @@ textarea {
   z-index: 2;
   top: 0;
   height: 60px;
-  width: 100%;
-  background-color: #373737;
+  width: 100vw;
+  background-color: #3889b7;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -389,7 +389,10 @@ textarea {
     a {
       color: $colorHeader;
       text-decoration: none;
-      font-size: 15pt;
+      font-size: 13pt;
+      font-weight: 200;
+      font-family: $font;
+      letter-spacing: .03em;
     }
 
     #login {
@@ -424,7 +427,7 @@ textarea {
   #about {
     box-shadow: 0px 0px black;
     &:hover {
-      border-bottom: 3px solid $reddish;
+      border-bottom: 4px solid rgba(255, 255, 255, 0.8);
     }
   }
 }
