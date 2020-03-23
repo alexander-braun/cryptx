@@ -1,24 +1,15 @@
 import React from 'react'
 import ChartImporter from '../freqencyAnalysis/ChartImporter'
 import IndexOfCoincidence from '../indexOfCoincidence/IndexOfCoincidence'
+import math from '../general/Math'
+
 
 class BlockElementOutput extends React.Component {
   componentDidUpdate(prevProps) {
     if (prevProps.outputValue !== this.props.outputValue) {
-      this.autoresize()
+      let textareaOutput = document.getElementById('output')
+      math.autoresize(textareaOutput)
     }
-  }
-
-  autoresize = () => {
-    let el = document.getElementById('output')
-    el.style.height = 'inherit'
-    let computed = window.getComputedStyle(el)
-    let height = parseInt(computed.getPropertyValue('border-top-width'), 10)
-    + parseInt(computed.getPropertyValue('padding-top'), 10)
-    + el.scrollHeight
-    + parseInt(computed.getPropertyValue('padding-bottom'), 10)
-    + parseInt(computed.getPropertyValue('border-bottom-width'), 10);
-    el.style.height = height + 'px'
   }
 
   render() {
@@ -35,7 +26,7 @@ class BlockElementOutput extends React.Component {
                     value={this.props.outputValue}
                     onChange={(evt) => {
                       this.value = this.props.outputValue
-                      this.autoresize()
+                      math.autoresize(evt)
                     }}
                   >
                   </textarea>

@@ -60,7 +60,7 @@ const math = (() => {
     }
 
     const autoresize = (evt) => {
-        let el = evt.target;
+        let el = evt.target || evt;
         el.style.height = 'inherit'
         let computed = window.getComputedStyle(el)
         let height = parseInt(computed.getPropertyValue('border-top-width'), 10)

@@ -60,7 +60,7 @@ function ChartImporter({inputValue}) {
     const [panelStatus, changePanelStatus] = useState(false)
 
     return (
-        <ExpansionPanel square={true} onChange={function(event, expanded) {changePanelStatus(!panelStatus)}}>
+        <ExpansionPanel square={true} onChange={() => changePanelStatus(!panelStatus)}>
             <ExpansionPanelSummary
                 expandIcon={<ExpandMoreIcon />}
                 aria-controls="panel2a-content"

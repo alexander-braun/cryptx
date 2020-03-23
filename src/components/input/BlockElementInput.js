@@ -1,9 +1,15 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import ChartImporter from '../freqencyAnalysis/ChartImporter'
 import IndexOfCoincidence from '../indexOfCoincidence/IndexOfCoincidence'
 import math from '../general/Math'
 
 const BlockElementInput = ({updateInput, inputValue, ioc}) => {
+
+  useEffect(() => {
+      let textareaOutput = document.getElementById('userinput')
+      math.autoresize(textareaOutput)
+  });
+
   return (
       <div className="block" id="user_input">
         <div className="block_head">
