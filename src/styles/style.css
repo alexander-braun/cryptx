@@ -1875,7 +1875,7 @@ div:focus {
 
 .site_footer {
   background-color: #272727;
-  width: 100%;
+  width: 100vw;
   color: white;
   height: 50px;
   -webkit-box-orient: horizontal;

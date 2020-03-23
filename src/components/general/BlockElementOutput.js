@@ -4,7 +4,8 @@ import IndexOfCoincidence from '../indexOfCoincidence/IndexOfCoincidence'
 import math from '../general/Math'
 
 
-class BlockElementOutput extends React.Component {
+class BlockElementOutput extends React.PureComponent {
+
   componentDidUpdate(prevProps) {
     if (prevProps.outputValue !== this.props.outputValue) {
       let textareaOutput = document.getElementById('output')
@@ -23,7 +24,7 @@ class BlockElementOutput extends React.Component {
                   <textarea
                     name="output" 
                     id="output" 
-                    value={this.props.outputValue}
+                    value={this.props.outputValue ? this.props.outputValue : ''}
                     onChange={(evt) => {
                       this.value = this.props.outputValue
                       math.autoresize(evt)

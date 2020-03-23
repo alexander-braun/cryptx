@@ -55,9 +55,8 @@ const BlockHeadSettings = ({switchModal, methodNameInset, changeDirection}) => {
                     Crack
                 </button>
             </div>
-
         </div>
     )
 }
 
-export default BlockHeadSettings
+export default React.memo(BlockHeadSettings)

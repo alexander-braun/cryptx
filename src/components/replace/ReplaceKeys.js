@@ -7,6 +7,7 @@ const Replace = ({setReplaceLetters, toReplaceLetter, replaceLetter}) => {
                 <div className="settings_name">REPLACE</div>
                 <div className="settings_operators">
                     <textarea 
+                        style={{boxShadow: 'none'}}
                         defaultValue={toReplaceLetter}
                         onChange={(evt) => {
                             setReplaceLetters(evt)
@@ -19,6 +20,7 @@ const Replace = ({setReplaceLetters, toReplaceLetter, replaceLetter}) => {
                 <div className="settings_name">REPLACE WITH</div>
                 <div className="settings_operators">
                     <textarea 
+                        style={{boxShadow: 'none'}}
                         defaultValue={replaceLetter}
                         onChange={(evt) => {
                             setReplaceLetters(evt)

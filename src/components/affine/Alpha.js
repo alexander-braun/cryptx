@@ -28,7 +28,7 @@ const Alpha = ({setAlpha, setBeta}) => {
                     </select>
                 </div>
             </div>
-            <div className="controllbox">
+            <div className="controllbox" style={{borderRight: 'none'}}>
                 <div className="settings_name" style={{textTransform: 'none'}}>β</div>
                 <div className="settings_operators">
                     <select 

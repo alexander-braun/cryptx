@@ -21,18 +21,19 @@ const useResizeObserver = ref => {
 };
 
 function BarChart({ data, alphabet, inputValue }) {
+  const input = inputValue ? inputValue : ' '
   const svgRef = useRef();
   const wrapperRef = useRef();
   const dimensions = useResizeObserver(wrapperRef);
 
   // will be called initially and on every data change
   useEffect(() => {
-    if(!inputValue) return undefined
+    if(!input) return undefined
     //if(container[0].clientHeight <= 46) return undefined
     const letterFrequency = () => {
       let map = new Array(26).fill(0)
       
-      for(let element of inputValue.toString()) {
+      for(let element of input.toString()) {
           let index = alphabet.indexOf(element.toLowerCase())
           if(index !== -1) map[index] += 1
       }
@@ -143,7 +144,7 @@ function BarChart({ data, alphabet, inputValue }) {
           .attr('fill', 'white')
       })
 
-  }, [data, dimensions, alphabet, inputValue]);
+  }, [data, dimensions, alphabet, input]);
 
   return (
     <div ref={wrapperRef} className="svgWrapper" style={{ marginBottom: "2rem"}}>

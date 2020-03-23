@@ -1,6 +1,6 @@
 import React from 'react'
 
-const KeywordPlayfair = ({keyword, updateKeyword}) => {
+const KeywordPlayfair = ({keyword, updateKeyword, removeSubstLetter}) => {
   
   return (
     <div className="controller">

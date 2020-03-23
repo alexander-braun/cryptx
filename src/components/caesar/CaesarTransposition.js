@@ -1,7 +1,13 @@
 import React from 'react'
 
 
-class CaesarTransposition extends React.PureComponent {
+class CaesarTransposition extends React.Component {
+
+    shouldComponentUpdate(nextProps, nextState) {
+        if(nextProps.alphabet !== this.props.alphabet || nextProps.cShift !== this.props.cShift) {
+            return true
+        } else return false
+    }
 
     genAlphabet = () => {
         if(this.props.alphabet.length === 0) return

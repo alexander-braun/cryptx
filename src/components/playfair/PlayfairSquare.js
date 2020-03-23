@@ -3,13 +3,26 @@ import React from 'react'
 
 class PlayfaireSquare extends React.PureComponent {
 
+    shouldComponentUpdate(nextProps, nextState) {
+        for(let i = 0; i < nextProps.playSquare.length; i++) {
+            if(nextProps.playSquare[i] !== this.props.playSquare[i]) {
+                return true
+            }  
+        } return false
+    }
+
+    keys = ['iBkh','DBd5','JyyV','1Tks','FUdf','rMka','TVsa',
+    '9b3','Dkl8','bkyB','Ljo8','ahyb','8gCx','ldv5',
+    '6z4','5nD','yUs','2er','8QH','BHv','TJV',
+    'wJn','DmX','JXz','bKq','coo']
+
     createVisualMatrix = () => {
         let parent = []
         let children = []
         for(let i = 0; i < 25; i++) {
             let ID = 'table' + i;
             children.push(
-                <div    key={ID} 
+                <div    key={this.keys[i]} 
                         id={ID} 
                         className="playfairTable"
                     >
@@ -18,7 +31,7 @@ class PlayfaireSquare extends React.PureComponent {
             )
         }
         parent.push(
-            <div id="visualMatrix" style={{boxShadow:'none'}} className="controller">{children}</div>
+            <div id="visualMatrix" key='playKey' style={{boxShadow:'none'}} className="controller">{children}</div>
         )
         return parent
     }

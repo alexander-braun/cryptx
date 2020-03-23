@@ -196,7 +196,6 @@ class BlockElementsCollector extends React.PureComponent {
       default:
         return null;
     }
-
     this.encrypt();
   }
 
@@ -491,7 +490,8 @@ class BlockElementsCollector extends React.PureComponent {
       let caseFormat = prevState.caseFormat;
       let foreignChars = prevState.includeChars;
       let method = prevState.method;
-      if (input.length === 0) return null;
+
+      if(input === '') input = ' '
 
       if (direction === 'crack') {
         if (method === 'caesar') {
@@ -548,6 +548,7 @@ class BlockElementsCollector extends React.PureComponent {
             outputValue: Caesar.encrypt()
           };
         case 'rsa':
+          if(input === ' ') input = ''
           if (
             !prevState.prime_one ||
             !prevState.prime_two ||

@@ -29,7 +29,7 @@ const useStyles = makeStyles(theme => ({
       fontWeight: theme.typography.fontWeightRegular,
     },
     body: {
-      fontSize: '18px'
+      fontSize: '14px'
     }
   
 }));
@@ -55,6 +55,11 @@ let icTooltip = (
 function IndexOfCoincidence({ioc, menue}) {
     const [expandedStatus, changeExpandedStatus] = useState(false)
     const classes = useStyles();
+    
+    const isThereIoc = () => {
+        if(!ioc) return 'no input'
+        else return ioc
+    }
 
     return (
         <ExpansionPanel square={true} onChange={function(event, expanded) {changeExpandedStatus(!expandedStatus)}}>
@@ -69,8 +74,7 @@ function IndexOfCoincidence({ioc, menue}) {
             <ExpansionPanelDetails className={classes.body}>
                 {
                     expandedStatus ? 
-                    ioc :
-                    ''
+                    isThereIoc() : ''
                 }
             </ExpansionPanelDetails>
         </ExpansionPanel> 

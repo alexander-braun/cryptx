@@ -1,7 +1,14 @@
 import React from 'react'
 
 
-class AtbashTransposition extends React.PureComponent {
+class AtbashTransposition extends React.Component {
+
+    shouldComponentUpdate(nextProps, nextState) {
+        if(nextProps.alphabet !== this.props.alphabet) {
+            return true
+        } else return false
+    }
+
     genAlphabet = (reverse) => {
         if(this.props.alphabet.length === 0) return
 
