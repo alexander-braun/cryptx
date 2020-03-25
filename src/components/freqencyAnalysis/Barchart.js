@@ -147,7 +147,7 @@ function BarChart({ data, alphabet, inputValue }) {
   }, [data, dimensions, alphabet, input]);
 
   return (
-    <div ref={wrapperRef} className="svgWrapper" style={{ marginBottom: "2rem"}}>
+    <div ref={wrapperRef} className="svgWrapper" style={{ marginBottom: "1em"}}>
       <svg ref={svgRef}>
         <g className="x-axis" />
         <g className="y-axis" />

@@ -15,7 +15,11 @@ const useStyles = makeStyles(theme => ({
     fontWeight: theme.typography.fontWeightRegular,
   },
   body: {
-    fontSize: '14px'
+    fontSize: theme.typography.pxToRem(13)
+  },
+  link: {
+    marginTop: '10px',
+    fontSize: theme.typography.pxToRem(14)
   }
 
 }));
@@ -36,10 +40,12 @@ const ExplanatoryText = ({direction, method}) => {
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           <Typography className={classes.body}>
-            Atbash (Hebrew: אתבש‎; also transliterated Atbaš) is a monoalphabetic 
-            substitution cipher originally used to encrypt the Hebrew alphabet. 
-            It can be modified for use with any known writing system with a standard 
-            collating order.
+          Atbash (Hebrew: אתבש‎; also transliterated Atbaš) is a monoalphabetic 
+          substitution cipher originally used to encrypt the Hebrew alphabet. 
+          It can be modified for use with any known writing system with a standard 
+          collating order.
+          </Typography>
+          <Typography className={classes.link}>
             <a href="https://en.wikipedia.org/wiki/Atbash" target="blank">Atbash Cipher Wikipedia</a>
           </Typography>
         </ExpansionPanelDetails>
@@ -79,6 +85,8 @@ const ExplanatoryText = ({direction, method}) => {
               number of positions down the alphabet. For example, with a left shift of 3,
               D would be replaced by A, E would become B, and so on. The method is named 
               after Julius Caesar, who used it in his private correspondence.
+            </Typography>
+            <Typography className={classes.link}>
               <a href="https://en.wikipedia.org/wiki/Caesar_cipher" target="blank">Caesar's cipher Wikipedia</a>
             </Typography>
           </ExpansionPanelDetails>
@@ -123,6 +131,8 @@ const ExplanatoryText = ({direction, method}) => {
                 with a rule governing which letter goes to which. As such, it has the weaknesses of all 
                 substitution ciphers. Each letter is enciphered with the function (ax + b) mod 26, where b 
                 is the magnitude of the shift.
+              </Typography>
+              <Typography className={classes.link}>
                 <a href="https://en.wikipedia.org/wiki/Affine_cipher" target="blank">Affine Cipher Wikipedia</a>
               </Typography>
             </ExpansionPanelDetails>
@@ -161,6 +171,8 @@ const ExplanatoryText = ({direction, method}) => {
       
                 In the 19th century the scheme was misattributed to Blaise de Vigenère (1523–1596), and so acquired 
                 its present name.
+              </Typography>
+              <Typography className={classes.link}>
                 <a href="https://en.wikipedia.org/wiki/Vigen%C3%A8re_cipher" target="blank">Vigenere Cipher Wikipedia</a>
               </Typography>
             </ExpansionPanelDetails>
@@ -197,6 +209,8 @@ const ExplanatoryText = ({direction, method}) => {
                 not work with it. The frequency analysis of bigrams is possible, but considerably more difficult. With 
                 600 possible bigrams rather than the 26 possible monograms (single symbols, usually letters in this context),
                 a considerably larger cipher text is required in order to be useful.
+              </Typography>
+              <Typography className ={classes.link}>
                 <a href="https://en.wikipedia.org/wiki/Playfair_cipher" target="blank">Playfair Cipher Wikipedia</a>
               </Typography>
             </ExpansionPanelDetails>
@@ -235,6 +249,8 @@ const ExplanatoryText = ({direction, method}) => {
                 shortest code: a single dot. Because the Morse code elements are specified by proportion rather than specific 
                 time durations, the code is usually transmitted at the highest rate that the receiver is capable of decoding. The
                 Morse code transmission rate (speed) is specified in groups per minute, commonly referred to as words per minute.
+              </Typography>
+              <Typography className={classes.link}>
                 <a href="https://en.wikipedia.org/wiki/Morse_code" target="blank">Morse Code Wikipedia</a>
               </Typography>
             </ExpansionPanelDetails>
@@ -286,16 +302,18 @@ const ExplanatoryText = ({direction, method}) => {
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
             <Typography className={classes.body}>
-                In cryptography, a scytale is a tool used to perform a transposition cipher, consisting of a 
-                cylinder with a strip of parchment wound around it on which is written a message. The ancient 
-                Greeks, and the Spartans in particular, are said to have used this cipher to communicate during 
-                military campaigns.
-      
-                The recipient uses a rod of the same diameter on which the parchment is wrapped to read the message. 
-                It has the advantage of being fast and not prone to mistakes—a necessary property when on the 
-                battlefield. It can, however, be easily broken. Since the strip of parchment hints strongly at the 
-                method, the ciphertext would have to be transferred to something less suggestive, somewhat reducing 
-                the advantage noted.
+              In cryptography, a scytale is a tool used to perform a transposition cipher, consisting of a 
+              cylinder with a strip of parchment wound around it on which is written a message. The ancient 
+              Greeks, and the Spartans in particular, are said to have used this cipher to communicate during 
+              military campaigns.
+    
+              The recipient uses a rod of the same diameter on which the parchment is wrapped to read the message. 
+              It has the advantage of being fast and not prone to mistakes—a necessary property when on the 
+              battlefield. It can, however, be easily broken. Since the strip of parchment hints strongly at the 
+              method, the ciphertext would have to be transferred to something less suggestive, somewhat reducing 
+              the advantage noted.
+            </Typography>
+            <Typography className={classes.link}>
               <a href="https://en.wikipedia.org/wiki/Scytale" target="blank">Skytale Wikipedia</a>
             </Typography>
           </ExpansionPanelDetails>
@@ -334,6 +352,8 @@ const ExplanatoryText = ({direction, method}) => {
               of one-time pad ciphers have been used by nations for critical diplomatic and military 
               communication, but the problems of secure key distribution have made them impractical for 
               most applications.
+            </Typography>
+            <Typography className={classes.link}>
               <a href="https://en.wikipedia.org/wiki/One-time_pad" target="blank">One Time Pad</a>
             </Typography>
           </ExpansionPanelDetails>
@@ -367,6 +387,8 @@ const ExplanatoryText = ({direction, method}) => {
               Ron Rivest, Adi Shamir, and Leonard Adleman, who publicly described the algorithm in 1977. Clifford Cocks, an 
               English mathematician working for the British intelligence agency Government Communications Headquarters (GCHQ), 
               had developed an equivalent system in 1973, which was not declassified until 1997.
+            </Typography>
+            <Typography className={classes.link}>
               <a href="https://en.wikipedia.org/wiki/One-time_pad" target="blank">One Time Pad</a>
             </Typography>
           </ExpansionPanelDetails>

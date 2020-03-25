@@ -4,6 +4,7 @@ import logo from './img/key.png'
 const Header = () => {
   return (
     <>
+    <div id="header_margin"></div>
       <div className="site_header">
         <div className='site_title'>
           <p>cryptx</p>
@@ -15,7 +16,6 @@ const Header = () => {
           <a href="about.html" id="about">About</a>
         </div>
       </div>
-      <div id="header_margin"></div>
     </>
 
   )
