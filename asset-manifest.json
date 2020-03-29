@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/strngcrypt/static/css/main.9e5d3c09.chunk.css",
-    "main.js": "/strngcrypt/static/js/main.c570d550.chunk.js",
-    "main.js.map": "/strngcrypt/static/js/main.c570d550.chunk.js.map",
+    "main.js": "/strngcrypt/static/js/main.89e67220.chunk.js",
+    "main.js.map": "/strngcrypt/static/js/main.89e67220.chunk.js.map",
     "runtime-main.js": "/strngcrypt/static/js/runtime-main.b46013db.js",
     "runtime-main.js.map": "/strngcrypt/static/js/runtime-main.b46013db.js.map",
     "static/css/2.36ab2c59.chunk.css": "/strngcrypt/static/css/2.36ab2c59.chunk.css",
     "static/js/2.5ea9d848.chunk.js": "/strngcrypt/static/js/2.5ea9d848.chunk.js",
     "static/js/2.5ea9d848.chunk.js.map": "/strngcrypt/static/js/2.5ea9d848.chunk.js.map",
     "index.html": "/strngcrypt/index.html",
-    "precache-manifest.b7942bfdd6d0a11137318b4af55ee058.js": "/strngcrypt/precache-manifest.b7942bfdd6d0a11137318b4af55ee058.js",
+    "precache-manifest.9f02d7827627a1e5bfe47c0c1f2bf43d.js": "/strngcrypt/precache-manifest.9f02d7827627a1e5bfe47c0c1f2bf43d.js",
     "service-worker.js": "/strngcrypt/service-worker.js",
     "static/css/2.36ab2c59.chunk.css.map": "/strngcrypt/static/css/2.36ab2c59.chunk.css.map",
     "static/css/main.9e5d3c09.chunk.css.map": "/strngcrypt/static/css/main.9e5d3c09.chunk.css.map",
@@ -23,6 +23,6 @@
     "static/css/2.36ab2c59.chunk.css",
     "static/js/2.5ea9d848.chunk.js",
     "static/css/main.9e5d3c09.chunk.css",
-    "static/js/main.c570d550.chunk.js"
+    "static/js/main.89e67220.chunk.js"
   ]
 }
