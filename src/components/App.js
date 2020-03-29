@@ -4,6 +4,8 @@ import Hero from './hero';
 import Header from './general/Header'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Footer from './general/Footer'
+import Signup from './signup'
+import Login from './login'
 
 function App () {
   return (
@@ -18,12 +20,12 @@ function App () {
           } />
           <Route exact path="/signup" render={ () => 
             <Fragment>
-              <h1 style={{color: 'white'}}>SIGN UP</h1>
+              <Signup />
             </Fragment>
           } />
           <Route exact path="/login" render={ () => 
             <Fragment>
-              <h1 style={{color: 'white'}}>LOGIN</h1>
+              <Login />
             </Fragment>
           } />
           <Route exact path="/about" render={ () => 
@@ -36,6 +38,5 @@ function App () {
     </Router>
   )
 }  
-
 
 export default App;

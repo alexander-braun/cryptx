@@ -1,0 +1,67 @@
+#login_section {
+
+    min-height: calc(100vh - 110px);
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .MuiAvatar-colorDefault {
+        background-color:#4ab2ee;
+    }
+
+    .MuiTypography-colorTextSecondary {
+        color: rgba(255, 255, 255, 0.54);
+    }
+
+    .MuiTypography-colorPrimary {
+        color: #4ab2eec0;
+    }
+
+    .MuiCheckbox-root {
+        color: rgba(255, 255, 255, 0.54);
+    }
+
+    .MuiFormLabel-root {
+        color: rgba(255, 255, 255, 0.54);
+    }
+
+    .MuiInputBase-root {
+        color: white;
+    }
+
+    legend {
+        span {
+            color: white !important;
+        }
+    }
+
+    .MuiFormLabel-filled {
+        color: rgba(148, 148, 148, 1);
+    }
+}
+
+#login_section {
+    background-color: #191919;
+}
+
+#signup_form .MuiContainer-root {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+#signup_form {
+    margin-bottom: 10vh;
+    .MuiButton-containedPrimary {
+        background-color: #4ab2ee !important;
+    }
+  
+    .makeStyles-avatar-2 {
+        background-color: #4ab2ee;
+    }
+}
+
+.MuiOutlinedInput-notchedOutline {
+    border-color: rgba(255, 255, 255, 0.23) !important;
+}
+

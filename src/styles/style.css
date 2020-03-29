@@ -1567,14 +1567,14 @@ div:focus {
 }
 
 .slick-current .timeline_description {
-  font-weight: 600;
-  letter-spacing: 0.5px;
+  font-weight: 500;
+  letter-spacing: .07em;
   font-size: 13pt;
   line-height: 1.3;
 }
 
 .slick-current h3 {
-  font-weight: 600;
+  font-weight: 400;
   letter-spacing: 3px;
 }
 
@@ -1660,19 +1660,6 @@ div:focus {
   display: flex;
   margin-right: auto;
   margin-left: 0px;
-}
-
-#signup_form .MuiContainer-root {
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-
-#signup_form .MuiButton-containedPrimary {
-  background-color: #ff586e !important;
-}
-
-#signup_form .makeStyles-avatar-2 {
-  background-color: #ff586e;
 }
 
 #converter .block_head_text svg {
@@ -1881,15 +1868,6 @@ div:focus {
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   font-size: 16pt;
   font-weight: 200;
-}
-
-#footer_login,
-#footer_signup,
-#footer_about {
-  font-size: 16pt;
-  color: white;
-  margin: 0 1em;
-  text-decoration: none;
 }
 
 @media only screen and (max-width: 1500px) {

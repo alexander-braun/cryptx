@@ -191,7 +191,7 @@ class Timeline extends React.PureComponent {
                         <div value='rsa' className="history_element">
                             <h3 value='rsa'>1977</h3>
                             <div value='rsa' className="dot"></div>
-                            <div value='rsa' className="timeline_description">RSA</div>
+                            <div value='rsa' className="timeline_description">Rivest–Shamir–Adleman</div>
                         </div>
                     </div>               
                 </Slider>
