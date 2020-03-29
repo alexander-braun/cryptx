@@ -75,9 +75,9 @@ class BlockElementsCollector extends React.PureComponent {
     this.switchModal = this.switchModal.bind(this);
     this.setReplaceLetters = this.setReplaceLetters.bind(this);
     this.genRandomKey = this.genRandomKey.bind(this);
-    this.indexOfCoincidenceInputOutput = this.indexOfCoincidenceInputOutput.bind(
-      this
-    );
+    this.indexOfCoincidenceInputOutput = this.indexOfCoincidenceInputOutput.bind(this);
+    this.setAlpha = this.setAlpha.bind(this)
+    this.setBeta = this.setBeta.bind(this)
     this.setE = this.setE.bind(this);
     this.setPrimeTwo = this.setPrimeTwo.bind(this);
     this.setPrimeOne = this.setPrimeOne.bind(this);
@@ -99,102 +99,51 @@ class BlockElementsCollector extends React.PureComponent {
   //General
   changeMethod(evt) {
     let val;
-    const methods = [
-      'caesar',
-      'skytale',
-      'affine',
-      'vigenere',
-      'playfair',
-      'morse',
-      'replace',
-      'atbash',
-      'otp',
-      'rsa',
-      'rot13'
-    ];
-    if (methods.indexOf(evt) !== -1) {
+    const methodNames = {
+      'caesar': "Caesar's",
+      'otp': 'OTP',
+      'atbash': 'Atbash',
+      'affine': 'Affine',
+      'vigenere': 'Vigenère',
+      'playfair': 'Playfair',
+      'rot13': 'Rot13',
+      'morse': 'Morse',
+      'replace': 'Replace',
+      'skytale': 'Skytale',
+      'rsa': 'RSA'
+    }
+
+    if (Object.keys(methodNames).indexOf(evt) !== -1) {
       val = evt;
     } else {
       val = evt.target.value || evt.target.getAttribute('value');
     }
+
     this.setState({
       alphabet: 'abcdefghijklmnopqrstuvwxyz',
       caseFormat: 'maintain',
       includeChars: 'include',
       method: val
     });
-    switch (val) {
-      case 'caesar':
+
+    if(val !== 'caesar') {
         this.setState({
-          alphabetActive: true,
-          methodNameInset: "Caesar's"
-        });
-        break;
-      case 'otp':
-        this.genRandomKey();
+          alphabetActive: false
+        })
+      } else {
         this.setState({
-          alphabetActive: false,
-          methodNameInset: 'OTP'
-        });
-        break;
-      case 'atbash':
-        this.setState({
-          alphabetActive: false,
-          methodNameInset: 'Atbash'
-        });
-        break;
-      case 'affine':
-        this.setState({
-          alphabetActive: false,
-          methodNameInset: 'Atbash'
-        });
-        break;
-      case 'vigenere':
-        this.setState({
-          keyword: 'cipher',
-          alphabetActive: false,
-          methodNameInset: 'Vigenère'
-        });
-        break;
-      case 'playfair':
-        this.setState({
-          keyword: 'cipher',
-          alphabetActive: false,
-          methodNameInset: 'Playfair'
-        });
-        break;
-      case 'rot13':
-        this.setState({
-          alphabetActive: false,
-          methodNameInset: 'ROT13'
-        });
-        break;
-      case 'morse':
-        this.setState({
-          alphabetActive: false,
-          methodNameInset: 'Morse'
-        });
-        break;
-      case 'replace':
-        this.setState({
-          alphabetActive: false,
-          methodNameInset: 'Replace'
-        });
-        break;
-      case 'skytale':
-        this.setState({
-          alphabetActive: false,
-          methodNameInset: 'Skytale'
-        });
-        break;
-      case 'rsa':
-        this.setState({
-          methodNameInset: 'RSA'
-        });
-        break;
-      default:
-        return null;
+          alphabetActive: true
+      })
     }
+
+    if(val === 'otp') {
+      this.genRandomKey()
+    }
+
+    this.setState({
+      methodNameInset: methodNames[val]
+    })
+    
     this.encrypt();
   }
 
@@ -490,202 +439,131 @@ class BlockElementsCollector extends React.PureComponent {
       let foreignChars = prevState.includeChars;
       let method = prevState.method;
 
-      if(input === '') input = ' '
-
+      // IF DIR = CRACK
       if (direction === 'crack') {
         if (method === 'caesar') {
-          Caesar.setWordbook(prevState.wordbook);
-          Caesar.setUserInput(input);
-          Caesar.setAlphabet(alphabet);
-          Caesar.setSaltInput(prevState.cShift);
-          Caesar.setDirection(direction);
-          Caesar.setCase(caseFormat);
-          Caesar.setForeignChars(foreignChars);
+          Caesar.setAll(
+            prevState.wordbook, 
+            input, 
+            alphabet, 
+            prevState.cShift, 
+            direction, 
+            caseFormat, 
+            foreignChars)
           return {
             outputValue: Caesar.encrypt()
-          };
+          }
         } else if (method === 'atbash') {
           return {
             outputValue: Atbash.encrypt()
-          };
+          }
         } else if (method === 'rot13') {
-          Caesar.setUserInput(input);
-          Caesar.setAlphabet(alphabet);
-          Caesar.setSaltInput(13);
-          Caesar.setDirection('decrypt');
-          Caesar.setCase(caseFormat);
-          Caesar.setForeignChars(foreignChars);
+          Caesar.setAll(prevState.wordbook, input, alphabet, 13, 'decrypt', caseFormat, foreignChars)
           return {
             outputValue: Caesar.encrypt()
-          };
+          }
         } else {
           return {
             outputValue: ''
-          };
+          }
         }
       }
 
+      // IF DIR = ENC OR DEC
       switch (method) {
         case 'rot13':
-          Caesar.setUserInput(input);
-          Caesar.setAlphabet(alphabet);
-          Caesar.setSaltInput(13);
-          Caesar.setDirection(direction);
-          Caesar.setCase(caseFormat);
-          Caesar.setForeignChars(foreignChars);
+          Caesar.setAll(prevState.wordbook, input, alphabet, 13, direction, caseFormat, foreignChars)
           return {
             outputValue: Caesar.encrypt()
           };
         case 'caesar':
-          Caesar.setUserInput(input);
-          Caesar.setAlphabet(alphabet);
-          Caesar.setSaltInput(prevState.cShift);
-          Caesar.setDirection(direction);
-          Caesar.setCase(caseFormat);
-          Caesar.setForeignChars(foreignChars);
+          Caesar.setAll(prevState.wordbook, input, alphabet, prevState.cShift, direction, caseFormat, foreignChars)
           return {
             outputValue: Caesar.encrypt()
           };
         case 'rsa':
-          if(input === ' ') input = ''
           if (
             !prevState.prime_one ||
             !prevState.prime_two ||
             !prevState.e ||
             !input ||
-            prevState.prime_one === 1 ||
-            prevState.prime_two === 1
-          )
-            return null;
-          Rsa.setUserInput(input);
-          Rsa.setPrimeOne(prevState.prime_one);
-          Rsa.setPrimeTwo(prevState.prime_two);
-          Rsa.setE(prevState.e);
+            prevState.prime_one === '1' ||
+            prevState.prime_two === '1'
+          ) return null
+
+          Rsa.setUserInput(input)
+          Rsa.setPrimeOne(prevState.prime_one)
+          Rsa.setPrimeTwo(prevState.prime_two)
+          Rsa.setE(prevState.e)
 
           if (direction === 'encrypt') {
             return {
               n: Rsa.calcN(),
               phi: Rsa.calcPhi(),
               d: Rsa.calcD(),
-              outputValue:
-                Rsa.encrypt()[0] !== '!' ? Rsa.encrypt()[0] : Rsa.encrypt(),
-              timeToCalculate:
-                Rsa.encrypt()[1] !== '!'
-                  ? Rsa.encrypt()[1]
-                  : 'something went wrong here'
-            };
+              outputValue: Rsa.encrypt()[0] !== '!' ? Rsa.encrypt()[0] : Rsa.encrypt(),
+              timeToCalculate: Rsa.encrypt()[1] !== '!' ? Rsa.encrypt()[1] : 'something went wrong here'
+            }
           } else if (direction === 'decrypt') {
-            let decrypted = Rsa.decrypt();
+            let decrypted = Rsa.decrypt()
             return {
               outputValue: decrypted[0],
               timeToCalculate: decrypted[1]
-            };
+            }
           }
-          break;
+          break
         case 'otp':
-          Otp.setUserInput(input);
-          Otp.setCase(caseFormat);
-          Otp.setForeignChars(foreignChars);
-          Otp.setDirection(direction);
-          Otp.setKey(prevState.otpKey);
-          Otp.setAlphabet(alphabet);
+          Otp.setAll(input, caseFormat, foreignChars, direction, prevState.otpKey, alphabet)
           return {
             outputValue: Otp.encrypt()
-          };
+          }
         case 'atbash':
-          Atbash.setUserInput(input);
-          Atbash.setCase(caseFormat);
-          Atbash.setForeignChars(foreignChars);
+          Atbash.setAll(input, caseFormat, foreignChars)
           return {
             outputValue: Atbash.encrypt()
-          };
+          }
         case 'affine':
-          Affine.setAlphabet(alphabet);
-          Affine.setUserInput(input);
-          Affine.setAlpha(prevState.affineAlpha);
-          Affine.setBeta(prevState.affineBeta);
-          Affine.setDirection(direction);
-          Affine.setForeignChars(foreignChars);
-          Affine.setCase(caseFormat);
+          Affine.setAll(alphabet, input, prevState.affineAlpha, prevState.affineBeta, direction, foreignChars, caseFormat)
           return {
             outputValue: Affine.encrypt()
-          };
+          }
         case 'vigenere':
-          Vigenere.setUserInput(input);
-          Vigenere.setAlphabet(alphabet);
-          Vigenere.setDirection(direction);
-          Vigenere.setForeignChars(foreignChars);
-          Vigenere.setCase(caseFormat);
-          Vigenere.setKeyword(prevState.keyword);
+          Vigenere.setAll(input, alphabet, direction, foreignChars, caseFormat, prevState.keyword)
           return {
             outputValue: Vigenere.encrypt()
-          };
+          }
         case 'playfair':
-          Playfair.setUserInput(input);
-          Playfair.setAlphabet(alphabet);
-          Playfair.setDirection(direction);
-          Playfair.setKeyPhrase(prevState.keyword);
+          Playfair.setAll(input, alphabet, direction, prevState.keyword)
           return {
             outputValue: Playfair.encrypt(),
             playSquare: Playfair.getSquare()
-          };
+          }
         case 'morse':
-          Morse.setUserInput(input);
-          Morse.setDirection(direction);
+          Morse.setAll(input, direction)
           return {
             outputValue: Morse.encrypt()
-          };
+          }
         case 'replace':
-          Replace.setUserInput(input);
-          Replace.setToReplaceLetter(prevState.toReplaceLetter);
-          Replace.setReplaceLetter(prevState.replaceLetter);
+          Replace.setAll(input, prevState.toReplaceLetter, prevState.replaceLetter)
           return {
             outputValue: Replace.encrypt()
-          };
+          }
         case 'skytale':
-          Skytale.setDirection(direction);
-          Skytale.setCase(caseFormat);
-          Skytale.setUserInput(input);
-          Skytale.setRingLength(prevState.ringLength);
+          Skytale.setAll(direction, caseFormat, input, prevState.ringLength)
           return {
             outputValue: Skytale.encrypt()[0],
             skytaleLength: Skytale.encrypt()[1],
             skytaleProjectedValue: Skytale.getProjectedValue()
-          };
+          }
         default:
-          return null;
+          return null
       }
-    });
+    })
   }
-
-
-  /*
-  _onMouseMoveConverter(e) {
-    this.setState({ xPos: e.clientX})
-    this.setState({ yPos: e.clientY})
-    console.log(this.state.yPos)
-  }
-  returnCNumber = () => {
-    let windowWidth = window.innerWidth
-    let windowHeight = window.innerHeight
-    let adjustedNumber = Math.round(this.state.xPos / windowWidth * 50)
-    let adjustedHeight = Math.round(this.state.yPos / windowHeight * 100)
-    let da = 'M0 0 C' + adjustedNumber + ' ' + adjustedHeight + ' 80 100 100 0 Z'
-    console.log(da)
-    return da
-     onMouseMove={this._onMouseMoveConverter.bind(this)}
-
-     PROBLEM IST WEG WENN UNTEN MEHR PLATZ IST BITTESCHÖN DESSHALB FOOTER EVTL AM BOTTOM UND DAZU EIN ELEMENT WAS AUCH IMMER! !!!!!!
-  }
-  */
-
+  
   render() {
     return (
       <div id='converter'>
-      {/*
-        <svg id="curveUpColor" xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="15vh" viewBox="0 0 100 100" preserveAspectRatio="none">
-          <path d='M0 0 C20 50 80 50 100 0 Z' fill="url(#grad3)"></path>
-        </svg>*/}
         <Timeline changeMethod={this.changeMethod} method={this.state.method} />
         <div id='block_container'>
           <BlockElementInput

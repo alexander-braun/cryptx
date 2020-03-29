@@ -1582,7 +1582,7 @@ div {
 }
 
 .site_footer {
-  background-color: #272727;
+  background-color: #161616;
   width: 100vw;
   color: white;
   height: 50px;
@@ -1595,10 +1595,16 @@ div {
   z-index: 2;
 }
 
+.MuiBottomNavigationAction-root {
+    color: rgba(255, 255, 255, 0.54) !important;
+}
+
+
+
 #footer_links {
   margin-left: $maxleft1500;
   font-family: $font;
-  font-size: 16pt;
+  font-size: 15pt;
   font-weight: 200;
 }
 

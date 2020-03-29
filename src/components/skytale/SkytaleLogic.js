@@ -117,7 +117,13 @@ const skytale = (() => {
             let skytaleLenght = calcSkytaleLength()
             return [encrypted, skytaleLenght]
         }
-        
+    }
+
+    const setAll = (direction, caseFormat, input, ringLength) => {
+        setDirection(direction)
+        setCase(caseFormat)
+        setUserInput(input)
+        setRingLength(ringLength)
     }
 
     return {
@@ -126,6 +132,7 @@ const skytale = (() => {
         setRingLength: setRingLength,
         setCase: setCase,
         setDirection: setDirection,
+        setAll: setAll,
         getProjectedValue: getProjectedValue
     }
 })()

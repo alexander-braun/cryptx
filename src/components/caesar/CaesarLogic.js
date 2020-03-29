@@ -57,6 +57,7 @@ const caesar = (() => {
   };
 
   const readChar = () => {
+    if(!userInput) return
     const decryptedChars = [];
 
     let cleanInput = math.cleanInput(userInput, false, false, alphabet);
@@ -183,6 +184,16 @@ const caesar = (() => {
     }
   };
 
+  const setAll = (wordbook, input, alphabet, cShift, direction, caseFormat, foreignChars) => {
+    setWordbook(wordbook)
+    setUserInput(input)
+    setAlphabet(alphabet)
+    setSaltInput(cShift)
+    setDirection(direction)
+    setCase(caseFormat)
+    setForeignChars(foreignChars)
+  }
+
   return {
     setUserInput: setUserInput,
     setSaltInput: setSaltInput,
@@ -191,6 +202,7 @@ const caesar = (() => {
     setWordbook: setWordbook,
     setForeignChars: setForeignChars,
     setCase: setCase,
+    setAll: setAll,
     encrypt: encrypt
   };
 })();

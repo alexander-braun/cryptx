@@ -106,6 +106,15 @@ const affine = (() => {
         return math.transformCaseAndChars(userInput, rawOutput, caseFormat, includeChars)
     } 
 
+    const setAll = (alphabet, input, affineAlpha, affineBeta, direction, foreignChars, caseFormat) => {
+        setAlphabet(alphabet)
+        setUserInput(input)
+        setAlpha(affineAlpha)
+        setBeta(affineBeta)
+        setDirection(direction)
+        setForeignChars(foreignChars)
+        setCase(caseFormat)
+    }
 
     return {
         setUserInput: setUserInput,
@@ -115,6 +124,7 @@ const affine = (() => {
         setDirection: setDirection,
         setForeignChars: setForeignChars,
         setCase: setCase,
+        setAll: setAll,
         encrypt: transformText
     }
 })();

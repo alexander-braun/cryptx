@@ -221,12 +221,20 @@ const Playfair = (() => {
         return unformatted;
     }
 
+    const setAll = (input, alphabet, direction, keyword) => {
+        setUserInput(input)
+        setAlphabet(alphabet)
+        setDirection(direction)
+        setKeyPhrase(keyword)
+    }
+
     return {
         setUserInput: setUserInput,
         setAlphabet: setAlphabet,
         setDirection: setDirection,
         setKeyPhrase: setKeyPhrase,
         getSquare: getSquare,
+        setAll: setAll,
         encrypt: transformText
     }
 })();

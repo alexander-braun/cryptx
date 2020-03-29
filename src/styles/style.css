@@ -1841,7 +1841,7 @@ div:focus {
 }
 
 .site_footer {
-  background-color: #272727;
+  background-color: #161616;
   width: 100vw;
   color: white;
   height: 50px;
@@ -1863,10 +1863,14 @@ div:focus {
   z-index: 2;
 }
 
+.MuiBottomNavigationAction-root {
+  color: rgba(255, 255, 255, 0.54) !important;
+}
+
 #footer_links {
   margin-left: 13vw;
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-  font-size: 16pt;
+  font-size: 15pt;
   font-weight: 200;
 }
 

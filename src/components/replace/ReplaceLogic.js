@@ -22,11 +22,17 @@ const replace = (() => {
         return replaceAll(toReplaceLetter, replaceLetter, true);
     }
 
+    const setAll = (input, toReplaceLetter, replaceLetter) => {
+        setUserInput(input)
+        setToReplaceLetter(toReplaceLetter)
+        setReplaceLetter(replaceLetter)
+    }
 
     return {
         encrypt: transformText,
         setUserInput: setUserInput,
         setToReplaceLetter: setToReplaceLetter,
+        setAll: setAll,
         setReplaceLetter: setReplaceLetter
     }
 })()

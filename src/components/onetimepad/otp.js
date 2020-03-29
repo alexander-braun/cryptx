@@ -63,6 +63,15 @@ const otp = (() => {
         }
     }
 
+    const setAll = (input, caseFormat, foreignChars, direction, otpKey, alphabet) => {
+        setUserInput(input)
+        setCase(caseFormat)
+        setForeignChars(foreignChars)
+        setDirection(direction)
+        setKey(otpKey)
+        setAlphabet(alphabet)
+    }
+
     return {
         setUserInput: setUserInput,
         setDirection: setDirection,
@@ -70,6 +79,7 @@ const otp = (() => {
         setCase: setCase,
         setAlphabet: setAlphabet,
         setKey: setKey,
+        setAll: setAll,
         encrypt: encrypt
     }
 })();

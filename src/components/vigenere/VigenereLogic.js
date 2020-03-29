@@ -152,7 +152,14 @@ const vigenere = (() => {
         return text;
     }
 
-    
+    const setAll = (input, alphabet, direction, foreignChars, caseFormat, keyword) => {
+        setUserInput(input)
+        setAlphabet(alphabet)
+        setDirection(direction)
+        setForeignChars(foreignChars)
+        setCase(caseFormat)
+        setKeyWord(keyword)
+    }
 
     return {
         setKeyword: setKeyWord,
@@ -161,6 +168,7 @@ const vigenere = (() => {
         setDirection: setDirection,
         setForeignChars: setForeignChars,
         setCase: setCase,
+        setAll: setAll,
         encrypt: transformText
     }
 })();

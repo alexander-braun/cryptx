@@ -50,11 +50,18 @@ const atbash = (() => {
         } else return rawOutput
     }
 
+    const setAll = (input, caseFormat, foreignChars) => {
+        setUserInput(input)
+        setCase(caseFormat)
+        setForeignChars(foreignChars)
+    }
+
     return {
         
         setUserInput: setUserInput,
         setForeignChars: setForeignChars,
         setCase: setCase,
+        setAll: setAll,
         encrypt: encrypt
     }
 })();
