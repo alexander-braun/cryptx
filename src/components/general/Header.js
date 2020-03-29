@@ -1,5 +1,6 @@
 import React from 'react'
 import logo from './img/key.png'
+import { Link } from 'react-router-dom'
 
 const Header = () => {
   return (
@@ -7,13 +8,12 @@ const Header = () => {
     <div id="header_margin"></div>
       <div className="site_header">
         <div className='site_title'>
-          <p>cryptx</p>
-          <img src={logo} id="keyimage" alt="logo"></img>
+           <Link to="/"><p>cryptx</p></Link><img src={logo} id="keyimage" alt="logo"></img>
         </div>
         <div id="header_links">
-          <a href="login.html" id="login">Login</a>
-          <a href="signup.html" id="signup">Sign up</a>
-          <a href="about.html" id="about">About</a>
+          <Link to="/login" id="login">Login</Link>
+          <Link to="/signup" id="signup">Sign Up</Link>
+          <Link to="/about" id="about">About</Link>
         </div>
       </div>
     </>

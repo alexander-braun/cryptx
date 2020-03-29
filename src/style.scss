@@ -377,6 +377,12 @@ textarea {
     flex-direction: row;
     justify-items: center;
     align-items: center;
+    a {
+      text-decoration: none;
+      p {
+        color: white;
+      }
+    }
 
     img {
       margin-left: 10px;
@@ -565,7 +571,7 @@ textarea {
 
 .block_connector {
   flex-grow: 0;
-  min-width: 50px;
+  min-width: 40px;
   height: 50px;
   top: 5px;
   background-color: #252525;
@@ -865,7 +871,7 @@ select {
 
 .feature_text {
   font-size: 14px;
-  padding: 8px 24px 16px 24px;
+  padding: 16px 24px 16px 24px;
   font-weight: 400;
   margin: 0;
   color: #dadada;

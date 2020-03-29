@@ -123,7 +123,6 @@ class BlockElementsCollector extends React.PureComponent {
       includeChars: 'include',
       method: val
     });
-
     switch (val) {
       case 'caesar':
         this.setState({
@@ -740,7 +739,6 @@ class BlockElementsCollector extends React.PureComponent {
             ioc={this.state.iocOutput}
           />
         </div>
-        <Footer />
         <Modal
           switchModal={this.switchModal}
           changeMethod={this.changeMethod}

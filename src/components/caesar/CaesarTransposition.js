@@ -12,7 +12,7 @@ class CaesarTransposition extends React.Component {
     genAlphabet = () => {
         if(this.props.alphabet.length === 0) return
 
-        let style = {color: '#3daae9'}
+        let style = {color: '#ff7386'}
         let keys = ['iBka','DB5u','JyVA','1TJs','FUAf','rM2k','TVla',
                     '9b3r','Dk8g','byB9','LoZ8','ayjb','8Cbx','lv5i',
                     '6z4q','5nDP','yUsd','2egr','8QXH','pBHv','TJBV',
@@ -37,7 +37,7 @@ class CaesarTransposition extends React.Component {
 
         if(this.props.alphabet.length === 0) return
 
-        let style = {color: '#3daae9'}
+        let style = {color: '#ff7386'}
         let keys = ['iBtka','DB5uD','JyVDA','1lTJs','FU7Af','rnM2k','TVlka',
                     '96b3r','DkU8g','byBW9','LoLZ8','cayjb','8CTbx','lhv5i',
                     '6zT4q','5nDWP','yUsXd','2regr','8MQXH','pIBHv','T7JBV',
