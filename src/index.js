@@ -1,15 +1,15 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './styles/style.css';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import './styles/style.css'
 import './styles/login.css'
-import * as serviceWorker from './serviceWorker';
-import App from './components/App';
+import * as serviceWorker from './serviceWorker'
+import App from './components/App'
 
 if (process.env.NODE_ENV !== 'production') {
-    const {whyDidYouUpdate} = require('why-did-you-update');
-    whyDidYouUpdate(React);
+    const {whyDidYouUpdate} = require('why-did-you-update')
+    whyDidYouUpdate(React)
   }
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('root'))
 
-serviceWorker.unregister();
+serviceWorker.unregister()

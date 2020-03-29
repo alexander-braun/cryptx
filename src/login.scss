@@ -50,14 +50,13 @@
     margin-bottom: 0px;
 }
 
-#login_form {
-    margin-bottom: 10vh;
+#login_form, #signup_form {
     .MuiButton-containedPrimary {
         background-color: #4ab2ee !important;
     }
   
     .makeStyles-avatar-2 {
-        background-color: #4ab2ee;
+        background-color: #4ab2ee !important;
     }
 }
 

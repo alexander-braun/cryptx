@@ -54,16 +54,12 @@
   margin-bottom: 0px;
 }
 
-#login_form {
-  margin-bottom: 10vh;
-}
-
-#login_form .MuiButton-containedPrimary {
+#login_form .MuiButton-containedPrimary, #signup_form .MuiButton-containedPrimary {
   background-color: #4ab2ee !important;
 }
 
-#login_form .makeStyles-avatar-2 {
-  background-color: #4ab2ee;
+#login_form .makeStyles-avatar-2, #signup_form .makeStyles-avatar-2 {
+  background-color: #4ab2ee !important;
 }
 
 .MuiOutlinedInput-notchedOutline {
