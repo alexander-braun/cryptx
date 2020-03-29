@@ -58,7 +58,7 @@ export default function Login() {
             </linearGradient>
             <path d="M0 0 C 50 100 80 100 100 0 Z" fill="url(#grad2)"></path>
         </svg>
-        <div id="signup_form">
+        <div id="login_form">
             <Container id="signin_mainpage" component="main" maxWidth="xs">
                 <CssBaseline />
                 <div className={classes.paper}>
@@ -112,7 +112,7 @@ export default function Login() {
                             </Link>
                             </Grid>
                             <Grid item>
-                            <Link href="/" variant="body2">
+                            <Link href="/signup" variant="body2">
                                 {"Don't have an account? Sign Up"}
                             </Link>
                             </Grid>

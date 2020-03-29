@@ -1,4 +1,4 @@
-#login_section {
+#login_section, #signup_section {
 
     min-height: calc(100vh - 110px);
     margin-bottom: 50px;
@@ -45,12 +45,12 @@
     background-color: #191919;
 }
 
-#signup_form .MuiContainer-root {
+#login_form .MuiContainer-root {
     margin-top: 0px;
     margin-bottom: 0px;
 }
 
-#signup_form {
+#login_form {
     margin-bottom: 10vh;
     .MuiButton-containedPrimary {
         background-color: #4ab2ee !important;
