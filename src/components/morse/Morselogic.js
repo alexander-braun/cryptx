@@ -126,8 +126,6 @@ const morse = (() => {
     }
 
     return {
-        setUserInput: setUserInput,
-        setDirection: setDirection,
         setAll: setAll,
         encrypt: transformText
     }

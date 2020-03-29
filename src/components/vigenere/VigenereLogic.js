@@ -162,12 +162,6 @@ const vigenere = (() => {
     }
 
     return {
-        setKeyword: setKeyWord,
-        setUserInput: setUserInput,
-        setAlphabet: setAlphabet,
-        setDirection: setDirection,
-        setForeignChars: setForeignChars,
-        setCase: setCase,
         setAll: setAll,
         encrypt: transformText
     }

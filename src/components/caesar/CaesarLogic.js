@@ -195,13 +195,6 @@ const caesar = (() => {
   }
 
   return {
-    setUserInput: setUserInput,
-    setSaltInput: setSaltInput,
-    setAlphabet: setAlphabet,
-    setDirection: setDirection,
-    setWordbook: setWordbook,
-    setForeignChars: setForeignChars,
-    setCase: setCase,
     setAll: setAll,
     encrypt: encrypt
   };

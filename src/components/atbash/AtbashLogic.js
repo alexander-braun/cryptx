@@ -57,10 +57,6 @@ const atbash = (() => {
     }
 
     return {
-        
-        setUserInput: setUserInput,
-        setForeignChars: setForeignChars,
-        setCase: setCase,
         setAll: setAll,
         encrypt: encrypt
     }

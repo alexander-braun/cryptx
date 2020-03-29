@@ -117,13 +117,6 @@ const affine = (() => {
     }
 
     return {
-        setUserInput: setUserInput,
-        setAlpha: setAlpha,
-        setBeta: setBeta,
-        setAlphabet: setAlphabet,
-        setDirection: setDirection,
-        setForeignChars: setForeignChars,
-        setCase: setCase,
         setAll: setAll,
         encrypt: transformText
     }

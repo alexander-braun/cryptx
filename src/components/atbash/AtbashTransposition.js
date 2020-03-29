@@ -12,7 +12,7 @@ class AtbashTransposition extends React.Component {
     genAlphabet = (reverse) => {
         if(this.props.alphabet.length === 0) return
 
-        let style = {color: '#ff7386'}
+        let style = {color: 'white'}
         let keys = ['iBk','DB5','JyV','1Ts','FUf','rMk','TVa',
                     '9b3','Dk8','byB','Lo8','ayb','8Cx','lv5',
                     '6z4','5nD','yUs','2er','8QH','BHv','TJV',
@@ -26,7 +26,7 @@ class AtbashTransposition extends React.Component {
         let counter = 0
 
         for(let element of alphabet) {
-            let colorArrow = element.toLowerCase() === 'a' || element.toLowerCase() === 'z' ? '#ff7386' : 'rgba(255, 255, 255, 0.199)'
+            let colorArrow = element.toLowerCase() === 'a' || element.toLowerCase() === 'z' ? 'white' : 'rgba(255, 255, 255, 0.199)'
             
             output.push(
                 <div    className="alphabet_transpos" 

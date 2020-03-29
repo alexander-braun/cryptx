@@ -30,10 +30,7 @@ const replace = (() => {
 
     return {
         encrypt: transformText,
-        setUserInput: setUserInput,
-        setToReplaceLetter: setToReplaceLetter,
         setAll: setAll,
-        setReplaceLetter: setReplaceLetter
     }
 })()
 

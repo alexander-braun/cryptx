@@ -229,10 +229,6 @@ const Playfair = (() => {
     }
 
     return {
-        setUserInput: setUserInput,
-        setAlphabet: setAlphabet,
-        setDirection: setDirection,
-        setKeyPhrase: setKeyPhrase,
         getSquare: getSquare,
         setAll: setAll,
         encrypt: transformText

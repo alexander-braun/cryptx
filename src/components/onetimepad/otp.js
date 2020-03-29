@@ -73,12 +73,6 @@ const otp = (() => {
     }
 
     return {
-        setUserInput: setUserInput,
-        setDirection: setDirection,
-        setForeignChars: setForeignChars,
-        setCase: setCase,
-        setAlphabet: setAlphabet,
-        setKey: setKey,
         setAll: setAll,
         encrypt: encrypt
     }

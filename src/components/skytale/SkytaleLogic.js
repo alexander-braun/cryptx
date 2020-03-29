@@ -128,10 +128,6 @@ const skytale = (() => {
 
     return {
         encrypt: transformText,
-        setUserInput: setUserInput,
-        setRingLength: setRingLength,
-        setCase: setCase,
-        setDirection: setDirection,
         setAll: setAll,
         getProjectedValue: getProjectedValue
     }
