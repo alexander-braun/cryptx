@@ -41,7 +41,7 @@ body {
 }
 
 #root {
-  background-color: #191919;
+  background-color: #131313;
 }
 
 #hero {
@@ -66,8 +66,7 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background: -webkit-gradient(linear, left top, left bottom, from(#0e0e0e), to(#1d3850)) fixed;
-  background: #191919;
-  background-color: #191919;
+  background: #212121;
 }
 
 #hero h1 {
@@ -297,7 +296,7 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background: -webkit-gradient(linear, left top, left bottom, from(#212121), to(#333f49)) fixed;
-  background: #191919;
+  background: #212121;
 }
 
 p {
@@ -312,12 +311,12 @@ p {
 }
 
 textarea {
-  background-color: #252525;
+  background-color: #424242;
   color: #dadada;
   margin-top: 0;
   margin-bottom: 0;
-  -webkit-box-shadow: inset 0px 11px 8px -10px #00000030, inset 0px -11px 8px -10px #00000030;
-          box-shadow: inset 0px 11px 8px -10px #00000030, inset 0px -11px 8px -10px #00000030;
+  -webkit-box-shadow: inset 0px 5px 5px -5px #000000c5;
+          box-shadow: inset 0px 5px 5px -5px #000000c5;
 }
 
 textarea:focus {
@@ -354,8 +353,8 @@ textarea:focus {
   color: white;
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   font-weight: 700;
-  -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
-          box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.774), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+          box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.774), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
 }
 
 .site_header .site_title, #header_background .site_title {
@@ -486,7 +485,7 @@ textarea:focus {
 }
 
 .block .chartcontainer {
-  border-top: 1px solid #797979;
+  border-top: 1px solid #5e5e5e;
 }
 
 .block .chartcontainer .controller {
@@ -496,7 +495,7 @@ textarea:focus {
 
 .block .block_head {
   height: 60px;
-  background-color: rgba(59, 59, 59, 0.92);
+  background-color: #333;
   color: black;
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   font-size: 20px;
@@ -514,7 +513,6 @@ textarea:focus {
       -ms-flex-pack: start;
           justify-content: flex-start;
   padding: 16px 24px;
-  border-bottom: 1px solid #272727;
 }
 
 .block .block_head .block_head_text {
@@ -554,7 +552,7 @@ textarea:focus {
           box-sizing: border-box;
   width: 100%;
   height: 200px;
-  padding: 16px 24px;
+  padding: 24px 24px;
   line-height: 1.5;
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   font-size: 12pt;
@@ -578,8 +576,8 @@ textarea:focus {
 }
 
 .block_body_input div.controller:first-child {
-  -webkit-box-shadow: inset 0 10px 10px -10px #00000030;
-          box-shadow: inset 0 10px 10px -10px #00000030;
+  -webkit-box-shadow: inset 0px 5px 5px -5px #000000c5;
+          box-shadow: inset 0px 5px 5px -5px #000000c5;
 }
 
 .outer_box {
@@ -624,10 +622,11 @@ textarea:focus {
   -webkit-box-flex: 0;
       -ms-flex-positive: 0;
           flex-grow: 0;
-  min-width: 40px;
+  min-width: 50px;
   height: 50px;
   top: 5px;
-  background-color: #252525;
+  background-color: #a13637;
+  background-color: #398ab9;
   position: relative;
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   font-size: 20pt;
@@ -645,7 +644,7 @@ textarea:focus {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  color: white;
+  color: rgba(255, 255, 255, 0.6);
   -webkit-box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.035), 0 3px 14px 2px rgba(0, 0, 0, 0.03), 0 5px 5px -3px rgba(0, 0, 0, 0.05);
           box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.035), 0 3px 14px 2px rgba(0, 0, 0, 0.03), 0 5px 5px -3px rgba(0, 0, 0, 0.05);
 }
@@ -668,7 +667,7 @@ textarea:focus {
   -webkit-box-flex: 0;
       -ms-flex-positive: 0;
           flex-grow: 0;
-  background-color: #252525;
+  background-color: #424242;
   border-radius: 0px;
   overflow: hidden;
 }
@@ -696,7 +695,7 @@ textarea:focus {
 
 .block_settings .block_head {
   height: 60px;
-  background-color: rgba(59, 59, 59, 0.92);
+  background-color: #333;
   color: white;
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   font-size: 18pt;
@@ -714,7 +713,6 @@ textarea:focus {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  border-bottom: 1px solid #272727;
 }
 
 .block_settings .block_head .block_head_options {
@@ -739,7 +737,7 @@ textarea:focus {
 .block_settings .block_head .block_head_options .block_head_option {
   font-size: 14px;
   margin-right: 10px;
-  color: grey;
+  color: #ededed;
   -webkit-transition-duration: 0.2s;
           transition-duration: 0.2s;
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
@@ -835,9 +833,14 @@ textarea:focus {
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   font-size: 14pt;
   font-weight: 300;
-  background-color: #252525;
+  background-color: #424242;
   color: #dadada;
   margin: 0;
+  border-radius: 5px;
+}
+
+.block_settings .block_body .block_body_input .primes textarea {
+  background-color: #363636;
 }
 
 .chartcontainer .controller {
@@ -869,11 +872,11 @@ select {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
-  border-bottom: 1px solid #444444;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.192);
 }
 
 .controller .settings_name {
-  border-right: 1px solid #444444;
+  border-right: 1px solid rgba(255, 255, 255, 0.192);
   color: #949494;
   padding: 1em 1em 0 24px;
   font-family: "Source Sans Pro", "Roboto", "Helvetica", "Arial", sans-serif;
@@ -906,8 +909,8 @@ select {
   -ms-flex-line-pack: center;
       align-content: center;
   background: #020024;
-  background: -webkit-gradient(linear, left top, right top, color-stop(20%, #2c2c2c), to(#1f1f1f));
-  background: linear-gradient(90deg, #2c2c2c 20%, #1f1f1f 100%);
+  background: -webkit-gradient(linear, left top, right top, color-stop(20%, #464646), to(#292929));
+  background: linear-gradient(90deg, #464646 20%, #292929 100%);
 }
 
 .controller #caesar_transposition #alphabet_standart .alphabet_transpos,
@@ -935,8 +938,8 @@ select {
 }
 
 .controller .alphabet_row_collect {
-  -webkit-box-shadow: 0px 0px 20px rgba(17, 17, 17, 0.4);
-          box-shadow: 0px 0px 20px rgba(17, 17, 17, 0.4);
+  -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+          box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
 }
 
 .controller .arrow {
@@ -1028,7 +1031,7 @@ select {
 
 .primes code {
   color: black;
-  border: 1px solid #444444;
+  border: 1px solid rgba(255, 255, 255, 0.192);
   padding: 7px;
 }
 
@@ -1088,7 +1091,7 @@ select {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  border-bottom: 1px solid #444444;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.192);
 }
 
 .double_content.controller .controllbox {
@@ -1106,7 +1109,7 @@ select {
           justify-content: space-between;
   -ms-flex-line-pack: start;
       align-content: flex-start;
-  border-right: 1px solid #444444;
+  border-right: 1px solid rgba(255, 255, 255, 0.192);
   padding-bottom: 0.5rem;
 }
 
@@ -1349,8 +1352,8 @@ select {
   padding: 5px;
   font-weight: 900;
   cursor: default;
-  -webkit-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.486);
-          box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.486);
+  -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+          box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
 }
 
 #visualMatrix.controller {
@@ -1398,7 +1401,7 @@ select {
   position: absolute;
   height: 27px;
   width: 30px;
-  border: 1px solid #252525;
+  border: 1px solid #424242;
   border-width: 2px;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -1561,7 +1564,7 @@ div:focus {
   background-color: #f76c6c;
   width: 15px;
   height: 15px;
-  border: 3px solid #a33839;
+  border: 3px solid #2d6d92;
   background-color: white;
   margin-top: 3px;
 }
@@ -1668,9 +1671,19 @@ div:focus {
   padding-bottom: 2px;
 }
 
+#converter .MuiCollapse-entered, #converter .MuiCollapse-wrapper {
+  background: #424242;
+  -webkit-box-shadow: inset 0px 5px 5px -5px #000000c5;
+          box-shadow: inset 0px 5px 5px -5px #000000c5;
+}
+
 #converter .MuiButton-label svg {
   padding-bottom: 0;
   font-size: 18px;
+}
+
+#converter .MuiExpansionPanelSummary-root.Mui-expanded {
+  min-height: 20px !important;
 }
 
 #converter .MuiExpansionPanelDetails-root {
@@ -1678,6 +1691,7 @@ div:focus {
   -webkit-box-direction: normal !important;
       -ms-flex-direction: column !important;
           flex-direction: column !important;
+  padding: 24px 24px;
 }
 
 #converter .MuiExpansionPanel-rounded:first-child {
@@ -1699,11 +1713,11 @@ div:focus {
       align-self: center;
   border-radius: 20px !important;
   line-height: 1 !important;
-  color: #ff586e !important;
+  color: #398ab9 !important;
 }
 
 #converter .MuiPaper-root {
-  background-color: #363636 !important;
+  background-color: #333 !important;
   color: #dadada !important;
 }
 
@@ -1815,7 +1829,7 @@ div:focus {
   position: -webkit-sticky;
   position: sticky;
   top: 38px;
-  border-bottom: 4px solid #ed484aa6;
+  border-bottom: 4px solid #2d6d92;
 }
 
 #timeline div:focus {
@@ -2073,7 +2087,7 @@ div:focus {
   color: #fff;
   text-align: center;
   -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+          box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
 }
 
 #genRandomTab button:hover {
@@ -2147,7 +2161,7 @@ div:focus {
   -webkit-box-flex: 1;
       -ms-flex: 1 1 40%;
           flex: 1 1 40%;
-  border-bottom: 1px solid #444444;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.192);
 }
 
 .controller.double_content.prime textarea {
@@ -2157,7 +2171,7 @@ div:focus {
   font-size: 12px;
   overflow: auto;
   height: 100px;
-  padding-right: 5px;
+  padding: 7px;
 }
 
 .controller.double_content.prime .phi {

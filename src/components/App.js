@@ -8,27 +8,28 @@ import Signup from './signup'
 import Login from './login'
 
 function App () {
+  console.log('env', process.env.PUBLIC_URL)
   return (
     <Router>
         <Header />
         <Switch>
-          <Route exact path="/" render={ () => 
+          <Route exact path={process.env.PUBLIC_URL + '/'} render={ () => 
             <Fragment>
               <Hero />
               <BlockElementCollector />
             </Fragment>
           } />
-          <Route exact path="/signup" render={ () => 
+          <Route exact path={process.env.PUBLIC_URL + '/signup'} render={ () => 
             <Fragment>
               <Signup />
             </Fragment>
           } />
-          <Route exact path="/login" render={ () => 
+          <Route exact path={process.env.PUBLIC_URL + '/login'} render={ () => 
             <Fragment>
               <Login />
             </Fragment>
           } />
-          <Route exact path="/about" render={ () => 
+          <Route exact path={process.env.PUBLIC_URL + '/about'} render={ () => 
             <Fragment>
               <h1 style={{color: 'white'}}>ABOUT</h1>
             </Fragment>

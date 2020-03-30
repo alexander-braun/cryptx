@@ -68,7 +68,7 @@ export default function Login() {
                     <Typography component="h1" variant="h5">
                         Sign in
                     </Typography>
-                    <form className={classes.form} validate>
+                    <form className={classes.form} noValidate>
                         <TextField
                             className={classes.form}
                             variant="outlined"
@@ -112,7 +112,7 @@ export default function Login() {
                             </Link>
                             </Grid>
                             <Grid item>
-                            <Link href="/signup" variant="body2">
+                            <Link href={process.env.PUBLIC_URL + '/signup'} variant="body2">
                                 {"Don't have an account? Sign Up"}
                             </Link>
                             </Grid>

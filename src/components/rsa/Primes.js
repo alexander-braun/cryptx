@@ -74,7 +74,7 @@ const Primes = (props) => {
                     </div>
                 </div>
                 <div className="controllbox phi">
-                    <div className="settings_name">φ <i> = (Prime1 - 1) * (Prime2 - 1)</i></div>
+                    <div className="settings_name">φ<i>=(Prime1 - 1)*(Prime2 - 1)</i></div>
                     <div className="settings_operators">
                         <textarea style={{boxShadow: 'none'}} defaultValue={props.phi} type="text" id="phi_number" name="tentacles"></textarea>
                     </div>

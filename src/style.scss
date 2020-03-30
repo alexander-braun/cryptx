@@ -51,18 +51,18 @@ $inactivedot: #f76c6c;
 $colorHeader: white;
 $timeline_font_color: white;
 
-$border_grey: rgb(68, 68, 68);
+$border_grey: rgba(255, 255, 255, 0.192);
 $greyed_text: rgb(148, 148, 148);
 
 $blockbg: #ececec;
 $blockco: #101010;
-$blockcoinactive: grey;
+$blockcoinactive: #ededed;
 $blockcoactitive: black;
-$blockconnectorbg: #f54444;
+$blockconnectorbg: #398ab9;
 $blockconnectortransparent: 'transparent';
 $border_blocks: 0px;
 
-$border: #444444;
+$border: rgba(255, 255, 255, 0.192);
 
 $shadow_blocks: 0 8px 17px 2px rgba(0,0,0,0.14), 0 3px 14px 2px rgba(0,0,0,0.12), 0 5px 5px -3px rgba(0,0,0,0.2);
 
@@ -104,7 +104,7 @@ body {
 }
 
 #root {
-  background-color: #191919;
+  background-color: #131313;
 }
 
 #hero {
@@ -124,8 +124,7 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background: -webkit-gradient(linear, left top, left bottom, from(#0e0e0e), to(#1d3850)) fixed;
-  background: #191919;
-  background-color: #191919;
+  background: #212121;
 
   h1 {
     text-align: center;
@@ -326,7 +325,7 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background: -webkit-gradient(linear,left top,left bottom,from(#212121),to(#333f49)) fixed;
-  background: #191919;
+  background: #212121;
 }
 
 p {
@@ -337,11 +336,11 @@ p {
 }
 
 textarea {
-  background-color: #252525;
+  background-color: #424242;
   color: #dadada;
   margin-top: 0;
   margin-bottom: 0;
-  box-shadow: inset 0px 11px 8px -10px #00000030, inset 0px -11px 8px -10px #00000030;
+  box-shadow: inset 0px 5px 5px -5px #000000c5;
 
   &:focus {
     outline: none;
@@ -370,7 +369,7 @@ textarea {
   color: $colorHeader;
   font-family: $font;
   font-weight: 700;
-  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.774), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
 
   .site_title {
     display: flex;
@@ -462,7 +461,7 @@ textarea {
     box-shadow: 0 24px 38px 3px rgba(0,0,0,0.14), 0 9px 46px 8px rgba(0,0,0,0.12), 0 11px 15px -7px rgba(0,0,0,0.2);
   }
   .chartcontainer {
-    border-top: 1px solid #797979;
+    border-top: 1px solid rgb(94, 94, 94);
 
     .controller {
       border-bottom: none;
@@ -482,7 +481,7 @@ textarea {
 
   .block_head {
     height: 60px;
-    background-color: rgba(59,59,59,.92);
+    background-color: #333;
     color: black;
     font-family: $font;
     font-size: 20px;
@@ -492,7 +491,6 @@ textarea {
     flex-direction: row;
     justify-content: flex-start;
     padding: 16px 24px;
-    border-bottom: 1px solid #272727;
 
     .block_head_text {
       display: inline-block;
@@ -522,7 +520,7 @@ textarea {
         box-sizing: border-box;
         width: 100%;
         height: 200px;
-        padding: 16px 24px;
+        padding: 24px 24px;
         line-height: 1.5;
         font-family: $font;
         font-size: 12pt;
@@ -546,7 +544,9 @@ textarea {
   }
 
 .block_body_input div.controller:first-child {
-    box-shadow: inset 0 10px 10px -10px #00000030;
+    //box-shadow: inset 0 10px 10px -10px #e00a0a30;
+    //box-shadow: inset 0px 25px 15px -25px #00000030
+    box-shadow: inset 0px 5px 5px -5px #000000c5;
 }
 
 .outer_box {
@@ -571,10 +571,11 @@ textarea {
 
 .block_connector {
   flex-grow: 0;
-  min-width: 40px;
-  height: 50px;
+  min-width: 50px;
+  height:50px;
   top: 5px;
-  background-color: #252525;
+  background-color: #a13637;
+  background-color: #398ab9;
   position: relative;
   font-family: $font;
   font-size: 20pt;
@@ -583,7 +584,7 @@ textarea {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  color: white;
+  color: rgba(255, 255, 255, 0.6);
   box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.035), 0 3px 14px 2px rgba(0, 0, 0, 0.03), 0 5px 5px -3px rgba(0, 0, 0, 0.05);
 }
 
@@ -600,7 +601,7 @@ textarea {
   max-width: 450px;
   min-width: 350px;
   flex-grow: 0;
-  background-color: #252525;
+  background-color: #424242;
   border-radius: $border_blocks;
   overflow: hidden;
 
@@ -621,7 +622,7 @@ textarea {
 
   .block_head {
     height: 60px;
-    background-color: rgba(59,59,59,.92);
+    background-color: #333;
     color: white;
     font-family: $font;
     font-size: 18pt;
@@ -631,7 +632,6 @@ textarea {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    border-bottom: 1px solid #272727;
 
     .block_head_options {
       display: flex;
@@ -728,12 +728,17 @@ textarea {
         font-family: $font;
         font-size: 14pt;
         font-weight: 300;
-        background-color: #252525;
+        background-color: #424242;
         color: #dadada;
         margin: 0;
+        border-radius: 5px;
       }
     }
   }
+}
+
+.block_settings .block_body .block_body_input .primes textarea {
+  background-color: #363636;
 }
 
 .chartcontainer {
@@ -783,7 +788,7 @@ select {
       justify-content: center;
       align-content: center;
       background: rgb(2, 0, 36);
-      background: linear-gradient(90deg, #2c2c2c 20%, #1f1f1f 100%);
+      background: linear-gradient(90deg, #464646 20%, #292929 100%);
 
       .alphabet_transpos {
         border-left: 1px dashed rgba(255, 255, 255, 0.24);
@@ -804,7 +809,7 @@ select {
   }
 
   .alphabet_row_collect {
-    box-shadow: 0px 0px 20px rgba(17, 17, 17, 0.4);
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
   }
 
   .arrow {
@@ -1151,7 +1156,7 @@ select {
   padding: 5px;
   font-weight: 900;
   cursor: default;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.486);
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
 }
 
 #visualMatrix.controller {
@@ -1191,7 +1196,7 @@ select {
   height: 27px;
   width: 30px;
   
-  border: 1px solid #252525;
+  border: 1px solid #424242;
   border-width: 2px;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -1334,7 +1339,7 @@ div {
     background-color: $yellowish;
     width: 15px;
     height: 15px;
-    border: 3px solid #a33839;
+    border: 3px solid #2d6d92;
     background-color: white;
     margin-top: 3px;
   }
@@ -1425,6 +1430,10 @@ div {
     }  
   }
 
+  .MuiCollapse-entered, .MuiCollapse-wrapper {
+    background: #424242;
+    box-shadow: inset 0px 5px 5px -5px #000000c5;
+  }
 
   .MuiButton-label {
     svg {
@@ -1433,8 +1442,13 @@ div {
     }
   }
 
+  .MuiExpansionPanelSummary-root.Mui-expanded {
+    min-height: 20px !important;
+  }
+
   .MuiExpansionPanelDetails-root {
     flex-direction: column !important;
+    padding: 24px 24px;
   }
 
   .MuiExpansionPanel-rounded:first-child {
@@ -1454,11 +1468,11 @@ div {
     align-self: center;
     border-radius: 20px !important;
     line-height: 1 !important;
-    color: #ff586e !important;
+    color: #398ab9 !important;
   }  
 
   .MuiPaper-root {
-    background-color: #363636 !important;
+    background-color: #333 !important;
     color: #dadada !important;
     a {
       color: #dadada !important;
@@ -1552,7 +1566,7 @@ div {
     height: 0px;
     position: sticky;
     top: 38px;
-    border-bottom: 4px solid #ed484aa6;
+    border-bottom: 4px solid #2d6d92;
   }
 
   div {
@@ -1804,10 +1818,7 @@ div {
     color: #fff;
     text-align: center;
 
-    -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
-      0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
-      0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
 
     &:hover {
       -webkit-box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.14),
@@ -1892,7 +1903,7 @@ div {
     font-size: 12px;
     overflow: auto;
     height: 100px;
-    padding-right: 5px;
+    padding: 7px;
   }
   .phi {
     justify-self: center;
