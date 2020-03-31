@@ -5,7 +5,6 @@ function Hero() {
 
   const scrollToSignup = (e) => {
     setTimeout(() => {
-      window.location.hash = '#timeline';  
       let navbar = document.getElementsByClassName('site_header')[0]
       let navbarHeight = navbar.clientHeight;
       let scrollHeight = document.querySelector('#timeline').offsetTop - navbarHeight;
@@ -34,13 +33,6 @@ function Hero() {
     }
   }
 
-  const addRollawayAnim = () => {
-    let svg = document.getElementById('scrolldown')
-    if(!svg.classList.contains('rollaway')) {
-      svg.classList.add('rollaway')
-    }
-  }
-
   return (
     <>
       <div id='hero'>
@@ -61,7 +53,6 @@ function Hero() {
             viewBox="0 0 438.533 438.533"
             onMouseOut={addClass} 
             onMouseMove={removeBounce}
-            onClick={addRollawayAnim}
           >
             <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="0%">
               <stop offset="0%" style={{stopColor:'#f54444', stopOpacity:'1'}} />
