@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/cryptx/static/css/main.77d3bf8a.chunk.css",
-    "main.js": "/cryptx/static/js/main.ad1f2c02.chunk.js",
-    "main.js.map": "/cryptx/static/js/main.ad1f2c02.chunk.js.map",
+    "main.js": "/cryptx/static/js/main.872672b7.chunk.js",
+    "main.js.map": "/cryptx/static/js/main.872672b7.chunk.js.map",
     "runtime-main.js": "/cryptx/static/js/runtime-main.2a81c268.js",
     "runtime-main.js.map": "/cryptx/static/js/runtime-main.2a81c268.js.map",
     "static/css/2.4605bd15.chunk.css": "/cryptx/static/css/2.4605bd15.chunk.css",
     "static/js/2.73632081.chunk.js": "/cryptx/static/js/2.73632081.chunk.js",
     "static/js/2.73632081.chunk.js.map": "/cryptx/static/js/2.73632081.chunk.js.map",
     "index.html": "/cryptx/index.html",
-    "precache-manifest.1b2b2d0fcc2e54fdbcd90577792d60b3.js": "/cryptx/precache-manifest.1b2b2d0fcc2e54fdbcd90577792d60b3.js",
+    "precache-manifest.f3c390919a1aa63669365450a68dfec5.js": "/cryptx/precache-manifest.f3c390919a1aa63669365450a68dfec5.js",
     "service-worker.js": "/cryptx/service-worker.js",
     "static/css/2.4605bd15.chunk.css.map": "/cryptx/static/css/2.4605bd15.chunk.css.map",
     "static/css/main.77d3bf8a.chunk.css.map": "/cryptx/static/css/main.77d3bf8a.chunk.css.map",
@@ -23,6 +23,6 @@
     "static/css/2.4605bd15.chunk.css",
     "static/js/2.73632081.chunk.js",
     "static/css/main.77d3bf8a.chunk.css",
-    "static/js/main.ad1f2c02.chunk.js"
+    "static/js/main.872672b7.chunk.js"
   ]
 }
