@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "3d70fefe9d208d40ccecd5ea264a79b0",
+    "revision": "a616f3c6e9719114a206a87b4154b770",
     "url": "/cryptx/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/cryptx/static/css/2.4605bd15.chunk.css"
   },
   {
-    "revision": "15e8c49ca656b31a3fa8",
+    "revision": "87764092f574fa114ef3",
     "url": "/cryptx/static/css/main.77d3bf8a.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/cryptx/static/js/2.1e857579.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "15e8c49ca656b31a3fa8",
-    "url": "/cryptx/static/js/main.a91c5ecc.chunk.js"
+    "revision": "87764092f574fa114ef3",
+    "url": "/cryptx/static/js/main.d8add7e6.chunk.js"
   },
   {
     "revision": "4064976e0802e5b3850a",
