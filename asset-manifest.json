@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/cryptx/static/css/main.e5062221.chunk.css",
-    "main.js": "/cryptx/static/js/main.dbde6eb6.chunk.js",
-    "main.js.map": "/cryptx/static/js/main.dbde6eb6.chunk.js.map",
+    "main.css": "/cryptx/static/css/main.77d3bf8a.chunk.css",
+    "main.js": "/cryptx/static/js/main.a91c5ecc.chunk.js",
+    "main.js.map": "/cryptx/static/js/main.a91c5ecc.chunk.js.map",
     "runtime-main.js": "/cryptx/static/js/runtime-main.2a81c268.js",
     "runtime-main.js.map": "/cryptx/static/js/runtime-main.2a81c268.js.map",
     "static/css/2.4605bd15.chunk.css": "/cryptx/static/css/2.4605bd15.chunk.css",
     "static/js/2.1e857579.chunk.js": "/cryptx/static/js/2.1e857579.chunk.js",
     "static/js/2.1e857579.chunk.js.map": "/cryptx/static/js/2.1e857579.chunk.js.map",
     "index.html": "/cryptx/index.html",
-    "precache-manifest.d252f30cca4d8dfda6e5f38e98965727.js": "/cryptx/precache-manifest.d252f30cca4d8dfda6e5f38e98965727.js",
+    "precache-manifest.4fea5ca4b75bc35a04c56d9b7020cdb7.js": "/cryptx/precache-manifest.4fea5ca4b75bc35a04c56d9b7020cdb7.js",
     "service-worker.js": "/cryptx/service-worker.js",
     "static/css/2.4605bd15.chunk.css.map": "/cryptx/static/css/2.4605bd15.chunk.css.map",
-    "static/css/main.e5062221.chunk.css.map": "/cryptx/static/css/main.e5062221.chunk.css.map",
+    "static/css/main.77d3bf8a.chunk.css.map": "/cryptx/static/css/main.77d3bf8a.chunk.css.map",
     "static/js/2.1e857579.chunk.js.LICENSE.txt": "/cryptx/static/js/2.1e857579.chunk.js.LICENSE.txt",
     "static/media/caret.2961acbb.svg": "/cryptx/static/media/caret.2961acbb.svg",
     "static/media/key.png": "/cryptx/static/media/key.9a3a29fc.png",
@@ -22,7 +22,7 @@
     "static/js/runtime-main.2a81c268.js",
     "static/css/2.4605bd15.chunk.css",
     "static/js/2.1e857579.chunk.js",
-    "static/css/main.e5062221.chunk.css",
-    "static/js/main.dbde6eb6.chunk.js"
+    "static/css/main.77d3bf8a.chunk.css",
+    "static/js/main.a91c5ecc.chunk.js"
   ]
 }
