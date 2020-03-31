@@ -16,4 +16,4 @@ of cryptography for myself and potential users.
 
 <br>
 
-https://alexander-braun.github.io/strngcrypt/
+https://alexander-braun.github.io/cryptx/
