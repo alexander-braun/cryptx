@@ -14,12 +14,12 @@ import Replace from '../replace/ReplaceLogic';
 import Skytale from '../skytale/SkytaleLogic';
 import Atbash from '../atbash/AtbashLogic';
 import Timeline from '../../components/timeline/Timeline';
-import Footer from './Footer';
 import Otp from '../onetimepad/otp';
 import Rsa from '../rsa/RSALogic';
+import methodNamesAll from './MethodNames'
 
 class BlockElementsCollector extends React.PureComponent {
-  constructor(props) {
+  constructor() {
     super();
     this.state = {
       modalVisible: false,
@@ -75,7 +75,7 @@ class BlockElementsCollector extends React.PureComponent {
     this.switchModal = this.switchModal.bind(this);
     this.setReplaceLetters = this.setReplaceLetters.bind(this);
     this.genRandomKey = this.genRandomKey.bind(this);
-    this.indexOfCoincidenceInputOutput = this.indexOfCoincidenceInputOutput.bind(this);
+    this.indexOfCoincidence = this.indexOfCoincidence.bind(this);
     this.setAlpha = this.setAlpha.bind(this)
     this.setBeta = this.setBeta.bind(this)
     this.setE = this.setE.bind(this);
@@ -99,21 +99,7 @@ class BlockElementsCollector extends React.PureComponent {
   //General
   changeMethod(evt) {
     let val;
-    const methodNames = {
-      'caesar': "Caesar's",
-      'otp': 'OTP',
-      'atbash': 'Atbash',
-      'affine': 'Affine',
-      'vigenere': 'Vigenère',
-      'playfair': 'Playfair',
-      'rot13': 'Rot13',
-      'morse': 'Morse',
-      'replace': 'Replace',
-      'skytale': 'Skytale',
-      'rsa': 'RSA'
-    }
-
-    if (Object.keys(methodNames).indexOf(evt) !== -1) {
+    if (Object.keys(methodNamesAll).indexOf(evt) !== -1) {
       val = evt;
     } else {
       val = evt.target.value || evt.target.getAttribute('value');
@@ -126,13 +112,9 @@ class BlockElementsCollector extends React.PureComponent {
       method: val
     });
 
-    if(val !== 'caesar') {
-        this.setState({
-          alphabetActive: false
-        })
-      } else {
-        this.setState({
-          alphabetActive: true
+    if(val === 'caesar') {
+      this.setState({
+        alphabetActive: true
       })
     }
 
@@ -141,7 +123,7 @@ class BlockElementsCollector extends React.PureComponent {
     }
 
     this.setState({
-      methodNameInset: methodNames[val]
+      methodNameInset: methodNamesAll[val]
     })
     
     this.encrypt();
@@ -272,7 +254,7 @@ class BlockElementsCollector extends React.PureComponent {
 
   componentDidUpdate(prevProps, prevState, snapshot) {
     if (prevState.outputValue !== this.state.outputValue) {
-      this.indexOfCoincidenceInputOutput();
+      this.indexOfCoincidence();
     }
   }
 
@@ -339,19 +321,22 @@ class BlockElementsCollector extends React.PureComponent {
 
   //ioc
   calcIndexOfCoincidence(input) {
+
+    //Check if input or outputfield
+    let inputState = this.state.inputValue
+    let outputState = this.state.outputValue
+
     if (input) {
-      if (!this.state.inputValue) return;
-      if (this.state.inputValue.length === 0) return;
+      if (!inputState || inputState.length === 0) return;
     }
     if (!input) {
-      if (!this.state.outputValue) return;
-      if (this.state.outputValue.length === 0) return;
+      if (!outputState || outputState.length === 0) return;
     }
 
     //calc for input or output -> true = input, false = output
     let inputValue = input
-      ? this.state.inputValue.toString()
-      : this.state.outputValue.toString();
+      ? inputState.toString()
+      : outputState.toString();
 
     //don't use foreign chars
     let cleanedInput = inputValue.split('').filter(character => {
@@ -386,7 +371,7 @@ class BlockElementsCollector extends React.PureComponent {
     return !isNaN(ioc) ? ioc : '0';
   }
 
-  indexOfCoincidenceInputOutput() {
+  indexOfCoincidence() {
     this.setState({
       iocInput: this.calcIndexOfCoincidence(true),
       iocOutput: this.calcIndexOfCoincidence(false)

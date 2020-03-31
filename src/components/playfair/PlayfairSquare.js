@@ -3,14 +3,6 @@ import React from 'react'
 
 class PlayfaireSquare extends React.PureComponent {
 
-    shouldComponentUpdate(nextProps, nextState) {
-        for(let i = 0; i < nextProps.playSquare.length; i++) {
-            if(nextProps.playSquare[i] !== this.props.playSquare[i]) {
-                return true
-            }  
-        } return false
-    }
-
     keys = ['iBkh','DBd5','JyyV','1Tks','FUdf','rMka','TVsa',
     '9b3','Dkl8','bkyB','Ljo8','ahyb','8gCx','ldv5',
     '6z4','5nD','yUs','2er','8QH','BHv','TJV',

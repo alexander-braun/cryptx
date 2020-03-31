@@ -29,7 +29,7 @@ const useStyles = makeStyles(theme => ({
       fontWeight: theme.typography.fontWeightRegular,
     },
     body: {
-      fontSize: '14px'
+      fontSize: theme.typography.pxToRem(18),
     }
   
 }));
@@ -71,7 +71,7 @@ function IndexOfCoincidence({ioc, menue}) {
                 <Typography className={classes.heading}>Index Of Coincidence</Typography>
                 {icTooltip}
             </ExpansionPanelSummary>
-            <ExpansionPanelDetails className={classes.body}>
+            <ExpansionPanelDetails className={classes.body} style={{paddingTop: '24px'}}>
                 {
                     expandedStatus ? 
                     isThereIoc() : ''

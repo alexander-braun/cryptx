@@ -4,12 +4,13 @@ import './styles/style.css'
 import './styles/login.css'
 import * as serviceWorker from './serviceWorker'
 import App from './components/App'
+import { BrowserRouter as Router} from 'react-router-dom';
 
 if (process.env.NODE_ENV !== 'production') {
     const {whyDidYouUpdate} = require('why-did-you-update')
     whyDidYouUpdate(React)
   }
 
-ReactDOM.render(<App />, document.getElementById('root'))
+ReactDOM.render(<Router basename={process.env.PUBLIC_URL}><App /></Router>, document.getElementById('root'))
 
 serviceWorker.unregister()

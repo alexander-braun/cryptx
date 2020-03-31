@@ -128,7 +128,7 @@ function BarChart({ data, alphabet, inputValue }) {
       .attr('cx', (value, index) => xScale(alphabet[index]) + xScale.bandwidth() / 2)
       .attr('cy', value =>  -dimensions.height + dimensions.height - yScale(value))
       .attr("fill", '#ffffff20')
-      .style('stroke', '#327ca7')
+      .style('stroke', '#00a1ff')
       .on("mouseenter", (value, index) => {
         svg
           .selectAll(".tooltip")

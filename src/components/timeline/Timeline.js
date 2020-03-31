@@ -2,7 +2,9 @@
 import React from 'react'
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
-import Slider from "react-slick";
+import Slider from "react-slick"
+import methodNamesAll from '../general/MethodNames'
+import times from '../general/MethodTimes'
 
 class Timeline extends React.PureComponent {
     constructor(props) {
@@ -46,6 +48,15 @@ class Timeline extends React.PureComponent {
 
     componentDidUpdate(prevProps, prevState) {
         const listMethods = ['atbash', 'skytale', 'caesar', 'vigenere', 'morse', 'playfair', 'otp', 'rsa']
+
+        // If user chooses to go to method that is not in the timeline and back to the same method 
+        // Hide the method and year and then switch back
+
+        let hasHideClass = document.getElementsByClassName('hideOnTimeline')[0]
+        if(hasHideClass && hasHideClass.classList && hasHideClass.classList.contains('hideOnTimeline')) {
+            hasHideClass.classList.remove('hideOnTimeline')    
+        }
+
         if(prevProps.method !== this.props.method) {
             let changed = false;
             for(let listMethod of listMethods) {
@@ -56,8 +67,8 @@ class Timeline extends React.PureComponent {
             }
             if(!changed) {
                 let current = document.getElementsByClassName('slick-current')[0]
-                if(current) {
-                    current.classList.remove('slick-current')     
+                if(current) {   
+                    current.classList.add('hideOnTimeline')
                 } 
             }
         }
@@ -84,11 +95,39 @@ class Timeline extends React.PureComponent {
                     activeSlide2: current 
                 })
         }
+
+        const generateTimelineElements = () => {
+            let timelineElements = []
+            for(let element in methodNamesAll) {
+                if(!times[element]) continue
+                let key = 0
+                timelineElements.push (
+                    <div    
+                        key={key}
+                        value={element}
+                        onClick={(evt) => {
+                            this.props.changeMethod(evt)
+                            this.slider.slickGoTo(0)
+                        }}
+                    >
+                        <div value={element} className="history_element">
+                            <h3 value={element}>600 B.C.</h3>
+                            <div value={element} className="dot"></div>
+                            <div value={element} className="timeline_description">{methodNamesAll[element]}</div>
+                        </div>
+                    </div>     
+                )
+                key++
+            }
+            return timelineElements.map(item => item)
+        }
         return (
             <div id="timeline">
                 <div className="timeline_border"></div>
+                
                 <Slider ref={c => (this.slider = c)} {...settings}>
-                    <div    value='atbash' 
+                    {generateTimelineElements()}
+                    {/* <div    value='atbash' 
                             key={0} 
                             onClick={(evt) => {
                                 this.props.changeMethod(evt)
@@ -193,7 +232,7 @@ class Timeline extends React.PureComponent {
                             <div value='rsa' className="dot"></div>
                             <div value='rsa' className="timeline_description">Rivest–Shamir–Adleman</div>
                         </div>
-                    </div>               
+                    </div> */}              
                 </Slider>
             </div>
         );
