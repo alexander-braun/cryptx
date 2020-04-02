@@ -2,7 +2,6 @@
   "name": "cryptx",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://alexander-braun.github.io/cryptx",
   "dependencies": {
     "@material-ui/core": "^4.9.5",
     "@material-ui/icons": "^4.9.1",
