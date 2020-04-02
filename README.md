@@ -16,4 +16,4 @@ of cryptography for myself and potential users.
 
 <br>
 
-https://alexander-braun.github.io/cryptx/
+https://cryptx-dfcd7.web.app/
