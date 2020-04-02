@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/cryptx/static/css/main.1203b5f0.chunk.css",
+    "main.css": "/cryptx/static/css/main.41865137.chunk.css",
     "main.js": "/cryptx/static/js/main.3e10e05f.chunk.js",
     "main.js.map": "/cryptx/static/js/main.3e10e05f.chunk.js.map",
     "runtime-main.js": "/cryptx/static/js/runtime-main.2a81c268.js",
@@ -9,10 +9,10 @@
     "static/js/2.75e51e50.chunk.js": "/cryptx/static/js/2.75e51e50.chunk.js",
     "static/js/2.75e51e50.chunk.js.map": "/cryptx/static/js/2.75e51e50.chunk.js.map",
     "index.html": "/cryptx/index.html",
-    "precache-manifest.db8c370c4442d14aff98f28ec1c7a167.js": "/cryptx/precache-manifest.db8c370c4442d14aff98f28ec1c7a167.js",
+    "precache-manifest.584624f761d8c21586dccc8abe911764.js": "/cryptx/precache-manifest.584624f761d8c21586dccc8abe911764.js",
     "service-worker.js": "/cryptx/service-worker.js",
     "static/css/2.1ac3c3bd.chunk.css.map": "/cryptx/static/css/2.1ac3c3bd.chunk.css.map",
-    "static/css/main.1203b5f0.chunk.css.map": "/cryptx/static/css/main.1203b5f0.chunk.css.map",
+    "static/css/main.41865137.chunk.css.map": "/cryptx/static/css/main.41865137.chunk.css.map",
     "static/js/2.75e51e50.chunk.js.LICENSE.txt": "/cryptx/static/js/2.75e51e50.chunk.js.LICENSE.txt",
     "static/media/caret.2961acbb.svg": "/cryptx/static/media/caret.2961acbb.svg",
     "static/media/key.png": "/cryptx/static/media/key.9a3a29fc.png",
@@ -22,7 +22,7 @@
     "static/js/runtime-main.2a81c268.js",
     "static/css/2.1ac3c3bd.chunk.css",
     "static/js/2.75e51e50.chunk.js",
-    "static/css/main.1203b5f0.chunk.css",
+    "static/css/main.41865137.chunk.css",
     "static/js/main.3e10e05f.chunk.js"
   ]
 }
