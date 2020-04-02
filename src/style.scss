@@ -158,18 +158,20 @@ body {
 
     .hero_link {
       display: inline-block;
-      border-bottom: 3px solid #f54444;
       position: relative;
+      transition-duration: .1s;
+      transition-timing-function: ease-in;
+      border-bottom: 0px solid #f54444;
+
+      &:hover {
+        border-bottom: 3px solid #f54444;
+      }
 
       a {
         vertical-align: top;
-        transition-duration: .2s;
-        transition-timing-function: ease-in-out;
+        
 
-        &:hover {
-          bottom: -16px;
-          border-bottom: 3px solid #f54444;
-        }
+
       }
     }
     
@@ -191,7 +193,7 @@ body {
   animation-duration: 1s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
-  animation-iteration-count: 5;
+  animation-iteration-count: 4;
 
   &:hover {
     animation-iteration-count: 0;
@@ -288,11 +290,10 @@ body {
   background-attachment: fixed;
   background-size: cover;
   background-repeat: no-repeat;
-
 }
 
 #scrolldown {
-  margin-bottom: 15vh;
+  margin-bottom: 10vh;
   align-self: center;
   cursor: pointer;
 
@@ -303,7 +304,7 @@ body {
   &:hover {
     transition: all 200ms;
     -webkit-transition: all 200ms;
-    transform: scale(1.5)
+    transform: scale(1.2)
   }
 }
 
@@ -1250,6 +1251,20 @@ select {
   }
 }
 
+#curveDownColor, #curveUpColor {
+  transition-duration: 1s;
+}
+
+@media only screen and (max-width: 1400px) {
+  #curveDownColor {
+    height: 5em;
+  }
+  
+  #curveUpColor {
+    height: 5em;
+  }
+}
+
 @media only screen and (max-width: 1280px) {
   #block_container {
     margin: $max1280;
@@ -1260,13 +1275,6 @@ select {
   }
   .site_header p {
     margin-left: $maxleftu128;
-  }
-  #curveDownColor {
-    height: 5em;
-  }
-  
-  #curveUpColor {
-    height: 5em;
   }
 }
 
@@ -1645,14 +1653,14 @@ div {
 
 @media only screen and (max-width: 1500px) {
   #block_container {
-    margin: $max1500 12vw;
+    margin: $max1500 8vw;
     margin-bottom: 3em;
   }
   .site_header #header_links {
-    margin-right: 12vw;
+    margin-right: 8vw;
   }
   .site_header p {
-    margin-left: 12vw;
+    margin-left: 8vw;
   }
 
   .block_settings {
@@ -1686,6 +1694,15 @@ div {
     flex-direction: column;
     align-items: center;
   }
+
+  .site_header #header_links {
+    margin-right: 15vw;
+  }
+
+  .site_header p {
+    margin-left: 15vw;
+  }
+
   .block_connector {
     color: #dadada;
     top: 0;
@@ -1711,6 +1728,11 @@ div {
     .modal_body {
       width: 80vw;
     }
+  }
+
+  .site_header p {
+    margin-left: auto;
+    margin-right: auto;
   }
 
   #hero h1 {
