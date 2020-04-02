@@ -1,6 +1,5 @@
 #login_section, #signup_section {
   min-height: calc(100vh - 110px);
-  margin-bottom: 50px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

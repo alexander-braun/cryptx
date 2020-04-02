@@ -1,24 +1,8 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect } from "react";
 import { select, axisBottom, axisLeft, scaleLinear, scaleBand } from "d3";
-import ResizeObserver from "resize-observer-polyfill";
 import * as d3 from 'd3'
+import useResizeObserver from '../general/Resizeobserver'
 
-const useResizeObserver = ref => {
-  const [dimensions, setDimensions] = useState(null);
-  useEffect(() => {
-    const observeTarget = ref.current;
-    const resizeObserver = new ResizeObserver(entries => {
-      entries.forEach(entry => {
-        setDimensions(entry.contentRect);
-      });
-    });
-    resizeObserver.observe(observeTarget);
-    return () => {
-      resizeObserver.unobserve(observeTarget);
-    };
-  }, [ref]);
-  return dimensions;
-};
 
 function BarChart({ data, alphabet, inputValue }) {
   const input = inputValue ? inputValue : ' '

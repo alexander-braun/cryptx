@@ -351,8 +351,8 @@ textarea {
 
 
 #header_margin {
-  height: 60px;
   background-color: transparent;
+  width: 100vw;
 }
 
 .site_header, #header_background {
@@ -372,30 +372,6 @@ textarea {
   font-weight: 700;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
 
-  .site_title {
-    display: flex;
-    flex-direction: row;
-    justify-items: center;
-    align-items: center;
-    a {
-      text-decoration: none;
-      p {
-        color: white;
-      }
-    }
-
-    img {
-      margin-left: 10px;
-    }
-  }
-
-  #keyimage {
-    width: 2em;
-    align-self: center;
-    justify-self: flex-start;
-    margin-top: 5px;
-  }
-
   #header_links {
     transition-duration: $transitionMain;
     margin-right: $maxleft1500;
@@ -410,7 +386,7 @@ textarea {
       letter-spacing: .03em;
     }
 
-    #login {
+    #login, #home {
       transition-duration: 0.1s;
       margin-right: 2rem;
     }
@@ -424,16 +400,39 @@ textarea {
       transition-duration: 0.1s;
     }
   }
+}
 
+
+.site_title {
+  display: flex;
+  flex-direction: row;
+  justify-items: center;
+  align-items: center;
+  a {
+    text-decoration: none;
+    p {
+      color: white;
+    }
+  }
+
+  img {
+    margin-left: 10px;
+  }
   p {
     transition-duration: $transitionMain;
     font-size: 30pt;
     margin-top: 0;
     margin-bottom: 0;
-    margin-left: $maxleft1500;
     line-height: 1;
     outline: none;
   }
+}
+
+#keyimage {
+  width: 2em;
+  align-self: center;
+  justify-self: flex-start;
+  margin-top: 5px;
 }
 
 @-moz-document url-prefix() {
@@ -1253,6 +1252,7 @@ select {
 
 #curveDownColor, #curveUpColor {
   transition-duration: 1s;
+  height: 10em;
 }
 
 @media only screen and (max-width: 1500px) {
@@ -1770,23 +1770,18 @@ div {
     margin-top: 0;
   }
 
-  #header_margin {
-    display: none;
-  }
-
   .site_header {
     position: relative;
-    flex-direction: column;
     height: fit-content;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-between;
+    align-items: space-between;
 
     #header_links {
-      margin: 2px 0;
+      margin: 2px 1em;
     }
 
     .site_title {
-      margin: 4px 0;
+      margin: 8px 1em;
     }
   }
   .block {

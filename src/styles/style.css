@@ -323,8 +323,8 @@ textarea:focus {
 }
 
 #header_margin {
-  height: 60px;
   background-color: transparent;
+  width: 100vw;
 }
 
 .site_header, #header_background {
@@ -356,41 +356,6 @@ textarea:focus {
           box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
 }
 
-.site_header .site_title, #header_background .site_title {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  justify-items: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.site_header .site_title a, #header_background .site_title a {
-  text-decoration: none;
-}
-
-.site_header .site_title a p, #header_background .site_title a p {
-  color: white;
-}
-
-.site_header .site_title img, #header_background .site_title img {
-  margin-left: 10px;
-}
-
-.site_header #keyimage, #header_background #keyimage {
-  width: 2em;
-  -ms-flex-item-align: center;
-      -ms-grid-row-align: center;
-      align-self: center;
-  justify-self: flex-start;
-  margin-top: 5px;
-}
-
 .site_header #header_links, #header_background #header_links {
   -webkit-transition-duration: 100ms;
           transition-duration: 100ms;
@@ -407,7 +372,7 @@ textarea:focus {
   letter-spacing: .03em;
 }
 
-.site_header #header_links #login, #header_background #header_links #login {
+.site_header #header_links #login, .site_header #header_links #home, #header_background #header_links #login, #header_background #header_links #home {
   -webkit-transition-duration: 0.1s;
           transition-duration: 0.1s;
   margin-right: 2rem;
@@ -424,15 +389,49 @@ textarea:focus {
           transition-duration: 0.1s;
 }
 
-.site_header p, #header_background p {
+.site_title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.site_title a {
+  text-decoration: none;
+}
+
+.site_title a p {
+  color: white;
+}
+
+.site_title img {
+  margin-left: 10px;
+}
+
+.site_title p {
   -webkit-transition-duration: 100ms;
           transition-duration: 100ms;
   font-size: 30pt;
   margin-top: 0;
   margin-bottom: 0;
-  margin-left: 13vw;
   line-height: 1;
   outline: none;
+}
+
+#keyimage {
+  width: 2em;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  justify-self: flex-start;
+  margin-top: 5px;
 }
 
 @-moz-document url-prefix() {
@@ -1464,6 +1463,7 @@ select {
 #curveDownColor, #curveUpColor {
   -webkit-transition-duration: 1s;
           transition-duration: 1s;
+  height: 10em;
 }
 
 @media only screen and (max-width: 1500px) {
@@ -2020,30 +2020,23 @@ div:focus {
   .site_footer {
     margin-top: 0;
   }
-  #header_margin {
-    display: none;
-  }
   .site_header {
     position: relative;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
     height: -webkit-fit-content;
     height: -moz-fit-content;
     height: fit-content;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: space-between;
+        -ms-flex-align: space-between;
+            align-items: space-between;
   }
   .site_header #header_links {
-    margin: 2px 0;
+    margin: 2px 1em;
   }
   .site_header .site_title {
-    margin: 4px 0;
+    margin: 8px 1em;
   }
   .block {
     width: 100vw;

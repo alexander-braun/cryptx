@@ -8,10 +8,10 @@ function Hero() {
   const scrollToSignup = (e) => {
     setTimeout(() => {
       let navbar = document.getElementsByClassName('site_header')[0]
-      let navbarHeight = navbar.clientHeight;
-      let scrollHeight = document.querySelector('#timeline').offsetTop - navbarHeight;
-      window.scroll(0,scrollHeight);
-      e.preventDefault();
+      let navbarHeight = navbar.clientHeight
+      let scrollHeight = document.querySelector('#timeline').offsetTop - navbarHeight
+      window.scroll(0,scrollHeight)
+      e.preventDefault()
     }, 200)
     setTimeout(() => {
       let svg = document.getElementById('scrolldown')
