@@ -111,7 +111,7 @@ class Timeline extends React.PureComponent {
                         }}
                     >
                         <div value={element} className="history_element">
-                            <h3 value={element}>600 B.C.</h3>
+                            <h3 value={element}>{times[element]}</h3>
                             <div value={element} className="dot"></div>
                             <div value={element} className="timeline_description">{methodNamesAll[element]}</div>
                         </div>

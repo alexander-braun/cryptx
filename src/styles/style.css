@@ -426,7 +426,7 @@ textarea:focus {
 }
 
 #keyimage {
-  width: 2em;
+  width: 1.75em;
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
@@ -624,7 +624,7 @@ textarea:focus {
   height: 50px;
   top: 5px;
   background-color: #a13637;
-  background-color: #398ab9;
+  background-color: #3e94c5;
   position: relative;
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   font-size: 20pt;
@@ -795,7 +795,7 @@ textarea:focus {
 }
 
 .block_settings .block_head .block_head_text #caret {
-  width: 1.5em;
+  width: 2.5em;
   fill: white;
 }
 
@@ -1326,7 +1326,7 @@ select {
 }
 
 .playfairTable {
-  height: 40px;
+  height: 50px;
   margin: 2px;
   position: relative;
   text-align: center;
@@ -1340,13 +1340,13 @@ select {
   border: none;
   border-radius: 0;
   -webkit-box-flex: 1;
-      -ms-flex: 1 1 15%;
-          flex: 1 1 15%;
+      -ms-flex: 1 1 17%;
+          flex: 1 1 17%;
   display: inline-block;
   color: #dadada;
   text-decoration: none;
   font-size: 30px;
-  background-color: #327ca7;
+  background-color: #3e94c5;
   padding: 5px;
   font-weight: 900;
   cursor: default;
@@ -1407,7 +1407,7 @@ select {
   font-family: Times, serif;
   font-size: 10pt;
   color: black;
-  background-color: #31a1e0;
+  background-color: #1b88c7;
   color: white;
   font-size: 13pt;
   font-weight: 400;
@@ -1542,12 +1542,12 @@ div:focus {
 
 .history_element .dot {
   border: none;
-  width: 10px;
-  height: 10px;
+  width: 15px;
+  height: 15px;
   background-color: white;
   padding: 0;
   border-radius: 50%;
-  border: 1px solid #a33839;
+  border: 2px solid #3e94c5;
   margin-top: 4px;
 }
 
@@ -1575,9 +1575,9 @@ div:focus {
 
 .slick-current .dot {
   background-color: #f76c6c;
-  width: 15px;
-  height: 15px;
-  border: 3px solid #2d6d92;
+  width: 20px;
+  height: 20px;
+  border: 4px solid #3e94c5;
   background-color: white;
   margin-top: 3px;
 }
@@ -1738,7 +1738,7 @@ div:focus {
       align-self: center;
   border-radius: 20px !important;
   line-height: 1 !important;
-  color: #398ab9 !important;
+  color: #0a86ce !important;
 }
 
 #converter .MuiPaper-root {
@@ -1854,7 +1854,7 @@ div:focus {
   position: -webkit-sticky;
   position: sticky;
   top: 38px;
-  border-bottom: 4px solid #2d6d92;
+  border-bottom: 4px solid #3e94c5;
 }
 
 #timeline div:focus {
@@ -2017,8 +2017,12 @@ div:focus {
     height: 50px;
     background-color: transparent;
   }
+  #hero {
+    height: calc(100vh - 60px);
+  }
   .site_footer {
     margin-top: 0;
+    position: relative;
   }
   .site_header {
     position: relative;
@@ -2100,7 +2104,7 @@ div:focus {
       align-self: center;
   border-radius: 2px;
   border: none;
-  background-color: #327ca7;
+  background-color: #3e94c5;
   color: white;
   font-weight: 500;
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
