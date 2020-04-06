@@ -22,7 +22,6 @@ class EncryptionArea extends React.PureComponent {
   constructor() {
     super()
     this.state = {
-      modalVisible: false,
       method: 'skytale',
       methodNameInset: 'Skytale',
       inputValue: 'The quick brown fox jumps over the lazy dog.',
@@ -72,7 +71,6 @@ class EncryptionArea extends React.PureComponent {
     this.updateKeyword = this.updateKeyword.bind(this);
     this.caesarPlusMinus = this.caesarPlusMinus.bind(this);
     this.skytalePlusMinus = this.skytalePlusMinus.bind(this);
-    this.switchModal = this.switchModal.bind(this);
     this.setReplaceLetters = this.setReplaceLetters.bind(this);
     this.genRandomKey = this.genRandomKey.bind(this);
     this.indexOfCoincidence = this.indexOfCoincidence.bind(this);
@@ -81,19 +79,6 @@ class EncryptionArea extends React.PureComponent {
     this.setE = this.setE.bind(this);
     this.setPrimeTwo = this.setPrimeTwo.bind(this);
     this.setPrimeOne = this.setPrimeOne.bind(this);
-  }
-
-  //Modal
-  switchModal() {
-    if (!this.state.modalVisible) {
-      this.setState({
-        modalVisible: true
-      });
-    } else {
-      this.setState({
-        modalVisible: false
-      });
-    }
   }
 
   //General
@@ -563,7 +548,6 @@ class EncryptionArea extends React.PureComponent {
             changeDirection={this.changeDirection}
             method={this.state.method}
             methodNameInset={this.state.methodNameInset}
-            switchModal={this.switchModal}
             alphabet={this.state.alphabet}
             alphabetUpdate={this.alphabetUpdate}
             cShift={this.state.cShift}
@@ -603,9 +587,7 @@ class EncryptionArea extends React.PureComponent {
           />
         </div>
         <Modal
-          switchModal={this.switchModal}
           changeMethod={this.changeMethod}
-          modalVisible={this.state.modalVisible}
         />
       </div>
     );

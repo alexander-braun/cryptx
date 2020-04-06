@@ -1,18 +1,41 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { hideModal, showModal } from '../../actions/modal'
 
 class Modal extends React.Component {
+    constructor(props) {
+        super(props)
+        this.toggleModal = this.toggleModal.bind(this)
+        this.onModalClose = this.onModalClose.bind(this)
+        this.onModalOpen = this.onModalOpen.bind(this)
+    }
 
-    shouldComponentUpdate(nextProps, nextState) {
-        if(nextProps.modalVisible !== this.props.modalVisible) {
-            return true
-        } else return false
+    toggleModal() {
+        switch(this.props.modalOpen) {
+            case true:
+                this.onModalClose()
+                break
+            case false:
+                this.onModalOpen()
+                break
+            default:
+                break
+        }
+    }
+
+    onModalClose() {
+        this.props.onModalClose()
+    }
+
+    onModalOpen() {
+        this.props.onModalOpen()
     }
 
     render() {
-        if(this.props.modalVisible) {
+        if(this.props.modalOpen) {
             return (
                 <div className="modal" 
-                    onClick = {this.props.switchModal}
+                    onClick = {this.toggleModal}
                 >
                     <div className="inner_modal">
                         <div className="block_top_decoration"></div>
@@ -167,4 +190,13 @@ class Modal extends React.Component {
     }
 }
 
-export default Modal
+const mapStateToProps = state => ({
+    modalOpen: state.modal.modalOpen
+})
+
+const mapActionsToProps = {
+    onModalOpen: showModal,
+    onModalClose: hideModal
+}
+
+export default connect(mapStateToProps, mapActionsToProps)(Modal)
