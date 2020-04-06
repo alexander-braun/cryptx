@@ -3,8 +3,6 @@ import { ReactComponent as Caret} from './img/caret.svg'
 
 const BlockHeadSettings = ({switchModal, methodNameInset, changeDirection}) => {
 
-    
-
     const switchClassName = (evt) => {
         const buttons = document.getElementsByClassName('block_head_option')
         for(let button of buttons) {

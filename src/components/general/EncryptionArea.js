@@ -1,26 +1,26 @@
-import React from 'react';
-import BlockElementInput from '../input/BlockElementInput';
-import BlockElementOutput from './BlockElementOutput';
-import BlockConnectorEquals from './BlockConnectorEquals';
-import BlockConnectorPlus from './BlockConnectorPlus';
-import BlockElementSettings from './BlockElementSettings';
-import Modal from '../modal/Modal';
-import Caesar from '../caesar/CaesarLogic';
-import Affine from '../affine/AffineLogic';
-import Vigenere from '../vigenere/VigenereLogic';
-import Playfair from '../playfair/PlayfairLogic';
-import Morse from '../morse/Morselogic';
-import Replace from '../replace/ReplaceLogic';
-import Skytale from '../skytale/SkytaleLogic';
-import Atbash from '../atbash/AtbashLogic';
-import Timeline from '../../components/timeline/Timeline';
-import Otp from '../onetimepad/otp';
-import Rsa from '../rsa/RSALogic';
+import React from 'react'
+import BlockInput from './BlockInput'
+import BlockOutput from './BlockOutput'
+import BlockConnectorEquals from './BlockConnectorEquals'
+import BlockConnectorPlus from './BlockConnectorPlus'
+import BlockSettings from './BlockSettings'
+import Modal from '../modal/Modal'
+import Caesar from '../caesar/CaesarLogic'
+import Affine from '../affine/AffineLogic'
+import Vigenere from '../vigenere/VigenereLogic'
+import Playfair from '../playfair/PlayfairLogic'
+import Morse from '../morse/Morselogic'
+import Replace from '../replace/ReplaceLogic'
+import Skytale from '../skytale/SkytaleLogic'
+import Atbash from '../atbash/AtbashLogic'
+import Timeline from '../timeline/Timeline'
+import Otp from '../onetimepad/otp'
+import Rsa from '../rsa/RSALogic'
 import methodNamesAll from './MethodNames'
 
-class BlockElementsCollector extends React.PureComponent {
+class EncryptionArea extends React.PureComponent {
   constructor() {
-    super();
+    super()
     this.state = {
       modalVisible: false,
       method: 'skytale',
@@ -551,13 +551,13 @@ class BlockElementsCollector extends React.PureComponent {
       <div id='converter'>
         <Timeline changeMethod={this.changeMethod} method={this.state.method} />
         <div id='block_container'>
-          <BlockElementInput
+          <BlockInput
             inputValue={this.state.inputValue}
             updateInput={this.updateInput}
             ioc={this.state.iocInput}
           />
           <BlockConnectorPlus />
-          <BlockElementSettings
+          <BlockSettings
             updateKeyword={this.updateKeyword}
             keyword={this.state.keyword}
             changeDirection={this.changeDirection}
@@ -597,7 +597,7 @@ class BlockElementsCollector extends React.PureComponent {
             skytalePlusMinus={this.skytalePlusMinus}
           />
           <BlockConnectorEquals />
-          <BlockElementOutput
+          <BlockOutput
             outputValue={this.state.outputValue}
             ioc={this.state.iocOutput}
           />
@@ -612,4 +612,4 @@ class BlockElementsCollector extends React.PureComponent {
   }
 }
 
-export default BlockElementsCollector;
+export default EncryptionArea;

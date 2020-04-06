@@ -1,7 +1,7 @@
 import React from 'react'
 import ChartImporter from '../freqencyAnalysis/ChartImporter'
 import IndexOfCoincidence from '../indexOfCoincidence/IndexOfCoincidence'
-import math from '../general/Math'
+import math from './Math'
 
 
 class BlockElementOutput extends React.PureComponent {

@@ -9,7 +9,7 @@ import { BrowserRouter as Router} from 'react-router-dom';
 if (process.env.NODE_ENV !== 'production') {
     const {whyDidYouUpdate} = require('why-did-you-update')
     whyDidYouUpdate(React)
-  }
+}
 
 ReactDOM.render(<Router basename={process.env.PUBLIC_URL}><App /></Router>, document.getElementById('root'))
 

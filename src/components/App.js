@@ -1,15 +1,15 @@
 import React, { Fragment } from 'react'
-import BlockElementCollector from './general/BlockElementsCollector'
+import EncryptionArea from './general/EncryptionArea'
 import Hero from './hero';
-import Header from './general/Header'
-import { BrowserRouter as Router, Route, Switch, HashRouter} from 'react-router-dom'
-import Footer from './general/Footer'
+import Header from './header/Header'
+import { BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+import Footer from './footer/Footer'
 import Signup from './signup'
 import Login from './login'
 
 function App () {
   return (
-    <HashRouter basename="/">
+    <Router basename="/">
         <Header />
         <Route path={`/signup`} render={ () => 
           <Fragment>
@@ -29,11 +29,11 @@ function App () {
         <Route exact path={`/`} render={ () => 
           <Fragment>
             <Hero />
-            <BlockElementCollector />
+            <EncryptionArea />
           </Fragment>
         } />
         <Footer />
-    </HashRouter>
+    </Router>
   )
 }  
 
