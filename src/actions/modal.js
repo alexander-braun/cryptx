@@ -1,9 +1,5 @@
-import { HIDE_MODAL, SHOW_MODAL } from "./constants"
+import { TOGGLE_MODAL } from "./constants"
 
-export const hideModal = () => ({
-    type: HIDE_MODAL
-})
-
-export const showModal = () => ({
-    type: SHOW_MODAL
+export const toggleModal = () => ({
+    type: TOGGLE_MODAL
 })

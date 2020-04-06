@@ -1,7 +1,7 @@
 import React from 'react'
 import { ReactComponent as Caret} from './img/caret.svg'
 import { connect } from 'react-redux'
-import { hideModal, showModal } from '../../actions/modal'
+import { toggleModal } from '../../actions/modal'
 
 const BlockHeadSettings = (props) => {
 
@@ -17,24 +17,7 @@ const BlockHeadSettings = (props) => {
     }
 
     const toggleModal = () => {
-        switch(props.modalOpen) {
-            case true:
-                onModalClose()
-                break
-            case false:
-                onModalOpen()
-                break
-            default:
-                break
-        }
-    }
-
-    const onModalClose = () => {
-        props.onModalClose()
-    }
-
-    const onModalOpen = () => {
-        props.onModalOpen()
+        props.onModalToggle()
     }
 
     return (
@@ -87,8 +70,7 @@ const mapStateToProps = state => ({
 })
 
 const mapActionsToProps = {
-    onModalOpen: showModal,
-    onModalClose: hideModal
+    onModalToggle: toggleModal
 }
 
 

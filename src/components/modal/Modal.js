@@ -1,34 +1,15 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { hideModal, showModal } from '../../actions/modal'
+import { toggleModal } from '../../actions/modal'
 
 class Modal extends React.Component {
     constructor(props) {
         super(props)
         this.toggleModal = this.toggleModal.bind(this)
-        this.onModalClose = this.onModalClose.bind(this)
-        this.onModalOpen = this.onModalOpen.bind(this)
     }
 
     toggleModal() {
-        switch(this.props.modalOpen) {
-            case true:
-                this.onModalClose()
-                break
-            case false:
-                this.onModalOpen()
-                break
-            default:
-                break
-        }
-    }
-
-    onModalClose() {
-        this.props.onModalClose()
-    }
-
-    onModalOpen() {
-        this.props.onModalOpen()
+        this.props.onModalToggle()
     }
 
     render() {
@@ -195,8 +176,7 @@ const mapStateToProps = state => ({
 })
 
 const mapActionsToProps = {
-    onModalOpen: showModal,
-    onModalClose: hideModal
+    onModalToggle: toggleModal
 }
 
 export default connect(mapStateToProps, mapActionsToProps)(Modal)
