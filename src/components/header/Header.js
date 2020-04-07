@@ -97,7 +97,7 @@ export default function PersistentDrawerLeft() {
   const menueItems = width > 700 ? 
     <Typography variant="body1" noWrap style={{marginLeft: 'auto', fontSize: '1.15rem'}}>
       {['Login', 'Signup', 'About'].map((text, index) => (
-        <Link style={{color:'white', marginRight: '1em', textDecoration:'none'}} to={text === 'Login' ? '/login' : text === 'Signup' ? '/signup' : '/about'}>
+        <Link key={text} style={{color:'white', marginRight: '1em', textDecoration:'none'}} to={text === 'Login' ? '/login' : text === 'Signup' ? '/signup' : '/about'}>
           {text}
         </Link>
       ))}
@@ -153,7 +153,7 @@ export default function PersistentDrawerLeft() {
           <Divider />
           <List onClick={handleDrawerClose}>
             {['Home', 'Login', 'Signup', 'About'].map((text, index) => (
-              <Link to={text === 'Home' ? '/' : text === 'Login' ? '/login' : text === 'Signup' ? '/signup' : '/about'}>
+              <Link key={text} to={text === 'Home' ? '/' : text === 'Login' ? '/login' : text === 'Signup' ? '/signup' : '/about'}>
                 <ListItem button key={text} style={{color:'black', textDecoration:'none'}}>
                   <ListItemIcon>{text === 'Home' ? <HomeIcon /> : text === 'Login' ? <ExitToAppIcon /> : text === 'Signup' ? <CreateIcon /> : <InfoIcon />}</ListItemIcon>
                   <ListItemText primary={text} />

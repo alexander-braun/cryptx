@@ -3,8 +3,7 @@ import ExplanatoryText from './ExplanatoryText'
 import BlockHeadSettings from './BlockHeadSettings'
 import Settings from './settings'
 
-const BlockElementSettings = ({ cShift, 
-                                caesarPlusMinus,
+const BlockElementSettings = ({
                                 skytalePlusMinus,
                                 alphabet, 
                                 alphabetUpdate, 
@@ -49,7 +48,6 @@ const BlockElementSettings = ({ cShift,
               <Settings 
                 alphabetActive = {alphabetActive}
                 direction={direction}
-                cShift={cShift}
                 alphabet={alphabet}
                 alphabetUpdate={alphabetUpdate}
                 selectCase={selectCase}
@@ -77,7 +75,6 @@ const BlockElementSettings = ({ cShift,
                 n = {n}
                 d = {d}
                 timeToCalculate = {timeToCalculate}
-                caesarPlusMinus = {caesarPlusMinus}
                 skytalePlusMinus = {skytalePlusMinus}
               />
               

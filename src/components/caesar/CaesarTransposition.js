@@ -1,13 +1,7 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
-
-class CaesarTransposition extends React.Component {
-
-    shouldComponentUpdate(nextProps, nextState) {
-        if(nextProps.alphabet !== this.props.alphabet || nextProps.cShift !== this.props.cShift) {
-            return true
-        } else return false
-    }
+class CaesarTransposition extends React.PureComponent {
 
     genAlphabet = () => {
         if(this.props.alphabet.length === 0) return
@@ -85,4 +79,8 @@ class CaesarTransposition extends React.Component {
     }
 }
 
-export default CaesarTransposition
+const mapStateToProps = state => ({
+    cShift: state.cShift
+})
+
+export default connect(mapStateToProps)(CaesarTransposition)

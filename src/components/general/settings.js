@@ -16,8 +16,7 @@ import OtpGenerate from '../onetimepad/otpGenerate'
 import Primes from '../rsa/Primes'
 
 
-const BlockBodyInput = ({   cShift, 
-                            caesarPlusMinus,
+const BlockBodyInput = ({
                             skytalePlusMinus,
                             alphabet, 
                             alphabetUpdate, 
@@ -103,12 +102,8 @@ const BlockBodyInput = ({   cShift,
             case 'caesar':
                 bodyInput = 
                     <div className="block_body_input">
-                        <CaesarShift                   
-                            plusMinus = {caesarPlusMinus}
-                            cShift = {cShift}
-                        />
+                        <CaesarShift />
                         <CaesarTransposition 
-                            cShift = {cShift}
                             direction = {direction}
                             alphabet = {alphabet}
                         />

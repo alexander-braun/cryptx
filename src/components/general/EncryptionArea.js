@@ -18,6 +18,7 @@ import Otp from '../onetimepad/otp'
 import Rsa from '../rsa/RSALogic'
 import methodNamesAll from './MethodNames'
 import { connect } from 'react-redux'
+import setWordbook from '../../actions/wordbook'
 
 class EncryptionArea extends React.PureComponent {
   constructor(props) {
@@ -31,8 +32,6 @@ class EncryptionArea extends React.PureComponent {
       caseFormat: 'maintain',
       includeChars: 'include',
       alphabet: 'abcdefghijklmnopqrstuvwxyz',
-      cShift: 3,
-      wordbook: '',
       affineAlpha: 5,
       affineBeta: 1,
       keyword: 'cipher',
@@ -65,7 +64,6 @@ class EncryptionArea extends React.PureComponent {
     this.changeDirection = this.changeDirection.bind(this);
     this.changeMethod = this.changeMethod.bind(this);
     this.updateKeyword = this.updateKeyword.bind(this);
-    this.caesarPlusMinus = this.caesarPlusMinus.bind(this);
     this.skytalePlusMinus = this.skytalePlusMinus.bind(this);
     this.genRandomKey = this.genRandomKey.bind(this);
     this.indexOfCoincidence = this.indexOfCoincidence.bind(this);
@@ -160,35 +158,6 @@ class EncryptionArea extends React.PureComponent {
     this.encrypt();
   }
 
-  caesarPlusMinus(evt) {
-    if (evt.target.innerText === '+') {
-      if (this.state.cShift > 24) {
-        this.setState({
-          cShift: 0
-        });
-      } else {
-        this.setState(prevState => {
-          return {
-            cShift: prevState.cShift + 1
-          };
-        });
-      }
-    } else {
-      if (this.state.cShift < 1) {
-        this.setState({
-          cShift: 25
-        });
-      } else {
-        this.setState(prevState => {
-          return {
-            cShift: prevState.cShift - 1
-          };
-        });
-      }
-    }
-    this.encrypt();
-  }
-
   skytalePlusMinus(evt) {
     if (evt.target.innerText === '+') {
       if (this.state.ringLength > 19) {
@@ -220,14 +189,8 @@ class EncryptionArea extends React.PureComponent {
 
   async componentDidMount() {
     this.encrypt()
-    if (this.state.wordbook === '') {
-      const url =
-        'https://raw.githubusercontent.com/dwyl/english-words/master/words_dictionary.json';
-      const response = await fetch(url);
-      const data = await response.json();
-      this.setState({
-        wordbook: data
-      });
+    if(this.props.wordbook === null) {
+      this.props.onSetWordbook()
     }
   }
 
@@ -396,10 +359,10 @@ class EncryptionArea extends React.PureComponent {
       if (direction === 'crack') {
         if (method === 'caesar') {
           Caesar.setAll(
-            prevState.wordbook, 
+            this.props.wordbook, 
             input, 
             alphabet, 
-            prevState.cShift, 
+            this.props.cShift, 
             direction, 
             caseFormat, 
             foreignChars)
@@ -411,7 +374,7 @@ class EncryptionArea extends React.PureComponent {
             outputValue: Atbash.encrypt()
           }
         } else if (method === 'rot13') {
-          Caesar.setAll(prevState.wordbook, input, alphabet, 13, 'decrypt', caseFormat, foreignChars)
+          Caesar.setAll(this.props.wordbook, input, alphabet, 13, 'decrypt', caseFormat, foreignChars)
           return {
             outputValue: Caesar.encrypt()
           }
@@ -425,12 +388,12 @@ class EncryptionArea extends React.PureComponent {
       // IF DIR = ENC OR DEC
       switch (method) {
         case 'rot13':
-          Caesar.setAll(prevState.wordbook, input, alphabet, 13, direction, caseFormat, foreignChars)
+          Caesar.setAll(null, input, alphabet, 13, direction, caseFormat, foreignChars)
           return {
             outputValue: Caesar.encrypt()
           };
         case 'caesar':
-          Caesar.setAll(prevState.wordbook, input, alphabet, prevState.cShift, direction, caseFormat, foreignChars)
+          Caesar.setAll(null, input, alphabet, this.props.cShift, direction, caseFormat, foreignChars)
           return {
             outputValue: Caesar.encrypt()
           };
@@ -533,7 +496,6 @@ class EncryptionArea extends React.PureComponent {
             methodNameInset={this.state.methodNameInset}
             alphabet={this.state.alphabet}
             alphabetUpdate={this.alphabetUpdate}
-            cShift={this.state.cShift}
             selectCase={this.selectCase}
             includeChars={this.includeChars}
             direction={this.state.direction}
@@ -577,7 +539,13 @@ class EncryptionArea extends React.PureComponent {
 const mapStateToProps = state => ({
   toReplaceLetter: state.replace.toReplaceLetter,
   replaceLetter: state.replace.replaceLetter,
+  wordbook: state.wordbook,
+  cShift: state.cShift
 })
 
+const mapActionsToProps = {
+  onSetWordbook: setWordbook
+}
 
-export default connect(mapStateToProps)(EncryptionArea)
+
+export default connect(mapStateToProps, mapActionsToProps)(EncryptionArea)
