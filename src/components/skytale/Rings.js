@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
 
 class Rings extends React.PureComponent {
@@ -101,4 +102,8 @@ class Rings extends React.PureComponent {
     }
 }
 
-export default Rings
+const mapStateToProps = state => ({
+    ringLength: state.ringLength
+})
+
+export default connect(mapStateToProps)(Rings)

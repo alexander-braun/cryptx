@@ -36,7 +36,6 @@ class EncryptionArea extends React.PureComponent {
       affineBeta: 1,
       keyword: 'cipher',
       playSquare: '',
-      ringLength: 8,
       skytaleLength: 1,
       skytaleProjectedValue: '',
       alphabetActive: false,
@@ -64,7 +63,6 @@ class EncryptionArea extends React.PureComponent {
     this.changeDirection = this.changeDirection.bind(this);
     this.changeMethod = this.changeMethod.bind(this);
     this.updateKeyword = this.updateKeyword.bind(this);
-    this.skytalePlusMinus = this.skytalePlusMinus.bind(this);
     this.genRandomKey = this.genRandomKey.bind(this);
     this.indexOfCoincidence = this.indexOfCoincidence.bind(this);
     this.setAlpha = this.setAlpha.bind(this)
@@ -158,35 +156,6 @@ class EncryptionArea extends React.PureComponent {
     this.encrypt();
   }
 
-  skytalePlusMinus(evt) {
-    if (evt.target.innerText === '+') {
-      if (this.state.ringLength > 19) {
-        this.setState({
-          ringLength: 3
-        });
-      } else {
-        this.setState(prevState => {
-          return {
-            ringLength: prevState.ringLength + 1
-          };
-        });
-      }
-    } else if (evt.target.innerText === '-') {
-      if (this.state.ringLength < 4) {
-        this.setState({
-          ringLength: 20
-        });
-      } else {
-        this.setState(prevState => {
-          return {
-            ringLength: prevState.ringLength - 1
-          };
-        });
-      }
-    }
-    this.encrypt();
-  }
-
   async componentDidMount() {
     this.encrypt()
     if(this.props.wordbook === null) {
@@ -221,7 +190,7 @@ class EncryptionArea extends React.PureComponent {
   // Skytale
   setSkytaleRing(evt) {
     this.setState({
-      ringLength: evt.target.value
+      ringLength: this.props.ringLength
     });
   }
 
@@ -465,7 +434,7 @@ class EncryptionArea extends React.PureComponent {
             outputValue: Replace.encrypt()
           }
         case 'skytale':
-          Skytale.setAll(direction, caseFormat, input, prevState.ringLength)
+          Skytale.setAll(direction, caseFormat, input, this.props.ringLength)
           return {
             outputValue: Skytale.encrypt()[0],
             skytaleLength: Skytale.encrypt()[1],
@@ -502,7 +471,6 @@ class EncryptionArea extends React.PureComponent {
             setAlpha={this.setAlpha}
             setBeta={this.setBeta}
             playSquare={this.state.playSquare}
-            ringLength={this.state.ringLength}
             skytaleLength={this.state.skytaleLength}
             skytaleProjectedValue={this.state.skytaleProjectedValue}
             alphabetActive={this.state.alphabetActive}
@@ -519,7 +487,6 @@ class EncryptionArea extends React.PureComponent {
             n={this.state.n}
             d={this.state.d}
             timeToCalculate={this.state.timeToCalculate}
-            caesarPlusMinus={this.caesarPlusMinus}
             skytalePlusMinus={this.skytalePlusMinus}
           />
           <BlockConnectorEquals />
@@ -540,7 +507,8 @@ const mapStateToProps = state => ({
   toReplaceLetter: state.replace.toReplaceLetter,
   replaceLetter: state.replace.replaceLetter,
   wordbook: state.wordbook,
-  cShift: state.cShift
+  cShift: state.cShift,
+  ringLength: state.ringLength
 })
 
 const mapActionsToProps = {
