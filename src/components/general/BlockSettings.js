@@ -10,7 +10,6 @@ const BlockElementSettings = ({ cShift,
                                 alphabetUpdate, 
                                 selectCase, 
                                 includeChars, 
-                                switchModal, 
                                 method, 
                                 methodNameInset, 
                                 changeDirection, 
@@ -20,9 +19,6 @@ const BlockElementSettings = ({ cShift,
                                 updateKeyword,
                                 keyword,
                                 playSquare,
-                                setReplaceLetters,
-                                toReplaceLetter,
-                                replaceLetter,
                                 ringLength,
                                 skytaleLength,
                                 skytaleProjectedValue,
@@ -45,7 +41,6 @@ const BlockElementSettings = ({ cShift,
   return (
     <div className="block_settings">
       <BlockHeadSettings 
-        switchModal={switchModal} 
         methodNameInset={methodNameInset}
         changeDirection={changeDirection}
       />
@@ -65,9 +60,6 @@ const BlockElementSettings = ({ cShift,
                 updateKeyword={updateKeyword}
                 keyword={keyword}
                 playSquare = {playSquare}
-                setReplaceLetters = {setReplaceLetters}
-                toReplaceLetter = {toReplaceLetter}
-                replaceLetter = {replaceLetter}
                 ringLength = {ringLength}
                 skytaleLength = {skytaleLength}
                 skytaleProjectedValue = {skytaleProjectedValue}

@@ -20,7 +20,7 @@ const BlockElementInput = ({updateInput, inputValue, ioc}) => {
                 <textarea 
                   name="userinput" 
                   id="userinput" 
-                  defaultValue={inputValue} 
+                  value={inputValue} 
                   onClick = {(evt) => {
                     updateInput(evt)
                     math.autoresize(evt)

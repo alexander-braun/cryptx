@@ -30,9 +30,6 @@ const BlockBodyInput = ({   cShift,
                             updateKeyword,
                             keyword,
                             playSquare,
-                            setReplaceLetters,
-                            toReplaceLetter,
-                            replaceLetter,
                             ringLength,
                             skytaleLength,
                             skytaleProjectedValue,
@@ -189,11 +186,7 @@ const BlockBodyInput = ({   cShift,
                 break
             case 'replace':
                 bodyInput = 
-                    <ReplaceKeys 
-                        setReplaceLetters = {setReplaceLetters}
-                        toReplaceLetter = {toReplaceLetter}
-                        replaceLetter = {replaceLetter}
-                    />
+                    <ReplaceKeys />
                 break
             case 'skytale':
                 bodyInput = 

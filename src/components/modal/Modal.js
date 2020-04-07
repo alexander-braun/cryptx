@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { toggleModal } from '../../actions/modal'
+import '../../styles/modal.css'
 
 class Modal extends React.Component {
     constructor(props) {

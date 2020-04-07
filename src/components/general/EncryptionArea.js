@@ -17,10 +17,11 @@ import Timeline from '../timeline/Timeline'
 import Otp from '../onetimepad/otp'
 import Rsa from '../rsa/RSALogic'
 import methodNamesAll from './MethodNames'
+import { connect } from 'react-redux'
 
 class EncryptionArea extends React.PureComponent {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       method: 'skytale',
       methodNameInset: 'Skytale',
@@ -36,8 +37,6 @@ class EncryptionArea extends React.PureComponent {
       affineBeta: 1,
       keyword: 'cipher',
       playSquare: '',
-      toReplaceLetter: 'quick',
-      replaceLetter: 'mean',
       ringLength: 8,
       skytaleLength: 1,
       skytaleProjectedValue: '',
@@ -54,13 +53,10 @@ class EncryptionArea extends React.PureComponent {
       d: 0,
       n: 0,
       timeToCalculate: '0s',
-      xPos: 0,
-      yPos: 0,
       freqAnal1Open: false,
       freqAnal2Open: false
     };
 
-  
     this.encrypt = this.encrypt.bind(this);
     this.alphabetUpdate = this.alphabetUpdate.bind(this);
     this.selectCase = this.selectCase.bind(this);
@@ -71,7 +67,6 @@ class EncryptionArea extends React.PureComponent {
     this.updateKeyword = this.updateKeyword.bind(this);
     this.caesarPlusMinus = this.caesarPlusMinus.bind(this);
     this.skytalePlusMinus = this.skytalePlusMinus.bind(this);
-    this.setReplaceLetters = this.setReplaceLetters.bind(this);
     this.genRandomKey = this.genRandomKey.bind(this);
     this.indexOfCoincidence = this.indexOfCoincidence.bind(this);
     this.setAlpha = this.setAlpha.bind(this)
@@ -120,8 +115,7 @@ class EncryptionArea extends React.PureComponent {
     ) {
       this.setState({
         inputValue: ''
-      });
-      evt.target.value = '';
+      })
     } else {
       this.setState({
         inputValue: evt.target.value
@@ -241,6 +235,9 @@ class EncryptionArea extends React.PureComponent {
     if (prevState.outputValue !== this.state.outputValue) {
       this.indexOfCoincidence();
     }
+    if(prevProps !== this.props) {
+      this.encrypt()
+    }
   }
 
   //Affine
@@ -255,20 +252,6 @@ class EncryptionArea extends React.PureComponent {
     this.setState({
       affineBeta: evt.target.value
     });
-    this.encrypt();
-  }
-
-  // Replace
-  setReplaceLetters(evt) {
-    if (evt.target.id === 'to_replace_letter') {
-      this.setState({
-        toReplaceLetter: evt.target.value
-      });
-    } else {
-      this.setState({
-        replaceLetter: evt.target.value
-      });
-    }
     this.encrypt();
   }
 
@@ -514,7 +497,7 @@ class EncryptionArea extends React.PureComponent {
             outputValue: Morse.encrypt()
           }
         case 'replace':
-          Replace.setAll(input, prevState.toReplaceLetter, prevState.replaceLetter)
+          Replace.setAll(input, this.props.toReplaceLetter, this.props.replaceLetter)
           return {
             outputValue: Replace.encrypt()
           }
@@ -557,9 +540,6 @@ class EncryptionArea extends React.PureComponent {
             setAlpha={this.setAlpha}
             setBeta={this.setBeta}
             playSquare={this.state.playSquare}
-            setReplaceLetters={this.setReplaceLetters}
-            toReplaceLetter={this.state.toReplaceLetter}
-            replaceLetter={this.state.replaceLetter}
             ringLength={this.state.ringLength}
             skytaleLength={this.state.skytaleLength}
             skytaleProjectedValue={this.state.skytaleProjectedValue}
@@ -594,4 +574,10 @@ class EncryptionArea extends React.PureComponent {
   }
 }
 
-export default EncryptionArea;
+const mapStateToProps = state => ({
+  toReplaceLetter: state.replace.toReplaceLetter,
+  replaceLetter: state.replace.replaceLetter,
+})
+
+
+export default connect(mapStateToProps)(EncryptionArea)

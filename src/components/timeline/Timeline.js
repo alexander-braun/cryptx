@@ -5,6 +5,7 @@ import "slick-carousel/slick/slick-theme.css"
 import Slider from "react-slick"
 import methodNamesAll from '../general/MethodNames'
 import times from '../general/MethodTimes'
+import '../../styles/timeline.css'
 
 class Timeline extends React.PureComponent {
     constructor(props) {

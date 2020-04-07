@@ -1,0 +1,128 @@
+$blockbg: #ececec;
+$blockco: #101010;
+$font: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+
+.modal {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  z-index: 2;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  
+  .inner_modal {
+    border-radius: 0px;
+    overflow: hidden;
+  }
+  
+  .modal_header {
+    width: 27vw;
+    height: auto;
+    background-color: $blockbg;
+    color: $blockco;
+    font-size: 18pt;
+    font-weight: 700;
+    font-family: $font;
+    padding: 24px;
+  }
+  
+  .modal_body {
+    width: 27vw;
+    padding: 24px;
+    background-color: white;
+  }
+}
+  
+.modal_open {
+  overflow: hidden;
+}
+
+
+.method_category {
+  color: #898989;
+  font-size: 12pt;
+  font-weight: 700;
+  font-family: $font;
+  margin-top: 2em;
+
+  span {
+    padding-left: 0.25em;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    list-style: none;
+    padding: 0.25em;
+
+    button {
+      border: 0;
+      font-weight: 400;
+      font-size: 12pt;
+      font-family: $font;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .modal_category_method {
+    color: black;
+    width: fit-content;
+    padding: 10px;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1),
+      0 1px 3px 1px rgba(0, 0, 0, 0.08), 0 1px 2px 0 rgba(0, 0, 0, 0.16);
+    border-radius: 2px;
+    background: #fff;
+    transition-duration: 200ms;
+    &:hover {
+      box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.1), 0 2px 4px 2px rgba(0, 0, 0, 0.08), 0 2px 4px 0 rgba(0, 0, 0, 0.16);
+    }
+  }
+}
+
+@media only screen and (max-width: 1100px) {
+  .modal {
+    .modal_header,
+    .modal_body {
+      width: 50vw;
+    }
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .modal {
+    .modal_header,
+    .modal_body {
+      width: 80vw;
+    }
+  }
+}
+
+/*
+.informational_modal {
+  font-size: 194px;
+  font-weight: 900;
+  display: flex;
+  margin-right: auto;
+  margin-left: 0px;
+}
+*/

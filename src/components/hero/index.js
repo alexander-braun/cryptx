@@ -1,6 +1,7 @@
 import React from 'react'
 import { Animated } from "react-animated-css"
 import 'animate.css/animate.css'
+import '../../styles/hero.css'
 import { Link } from 'react-router-dom'
 
 function Hero() {

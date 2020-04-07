@@ -1,6 +1,8 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { toReplaceLetter, replaceLetter } from '../../actions/replace'
 
-const Replace = ({setReplaceLetters, toReplaceLetter, replaceLetter}) => {
+const Replace = (props) => {
     return (
         <div className="controller double_content">
             <div className="controllbox">
@@ -8,9 +10,9 @@ const Replace = ({setReplaceLetters, toReplaceLetter, replaceLetter}) => {
                 <div className="settings_operators">
                     <textarea 
                         style={{boxShadow: 'none'}}
-                        defaultValue={toReplaceLetter}
+                        defaultValue={props.toReplaceLetter}
                         onChange={(evt) => {
-                            setReplaceLetters(evt)
+                            props.onSetToReplaceLetter(evt.target.value)
                         }}
                         id="to_replace_letter"
                     />
@@ -21,9 +23,9 @@ const Replace = ({setReplaceLetters, toReplaceLetter, replaceLetter}) => {
                 <div className="settings_operators">
                     <textarea 
                         style={{boxShadow: 'none'}}
-                        defaultValue={replaceLetter}
+                        defaultValue={props.replaceLetter}
                         onChange={(evt) => {
-                            setReplaceLetters(evt)
+                            props.onSetReplaceLetter(evt.target.value)
                         }}
                         id="replacement_letter"
                     />
@@ -33,4 +35,15 @@ const Replace = ({setReplaceLetters, toReplaceLetter, replaceLetter}) => {
     )
 }
 
-export default Replace
+const mapStateToProps = state => ({
+    toReplaceLetter: state.replace.toReplaceLetter,
+    replaceLetter: state.replace.replaceLetter,
+})
+
+
+const mapActionsToProps = {
+    onSetReplaceLetter: replaceLetter,
+    onSetToReplaceLetter: toReplaceLetter
+}
+
+export default connect(mapStateToProps, mapActionsToProps)(Replace)

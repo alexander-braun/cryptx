@@ -1,0 +1,59 @@
+$font: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+
+#genRandomTab {
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    justify-content: space-between;
+    align-content: center;
+    box-sizing: border-box;
+    padding-top: 24px;
+  
+    button {
+        font-size: 14px;
+        width: fit-content;
+        align-self: center;
+        border-radius: 2px;
+        border: none;
+        background-color: rgba(62, 148, 197, 1);
+        color: white;
+        font-weight: 500;
+        font-family: $font;
+        margin-top: 1em;
+        padding-left: 24px;
+        padding-right: 24px;
+        -webkit-transition: -webkit-box-shadow 0.3s ease-out;
+        transition: box-shadow 0.3s ease-out;
+        text-decoration: none;
+        color: #fff;
+        text-align: center;
+        box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+  
+        &:hover {
+            -webkit-box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.14), 0 1px 7px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -1px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.14), 0 1px 7px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -1px rgba(0, 0, 0, 0.2);
+        }
+  
+        &:focus {
+            outline: none;
+        }
+    }
+  
+    #otpKey {
+        font-size: 12px;
+        word-break: break-word;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        cursor: text;
+        -webkit-user-select: auto;
+        -moz-user-select: auto;
+        -ms-user-select: auto;
+        user-select: auto;
+        width: 80%;
+        align-self: center;
+    }
+    #generate {
+        text-transform: uppercase;
+        margin-bottom: 1em;
+    }
+}

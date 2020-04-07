@@ -1,0 +1,39 @@
+$font: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+$transitionMain: 100ms;
+
+#header_margin {
+    background-color: transparent;
+    width: 100vw;
+}
+  
+.site_title {
+    display: flex;
+    flex-direction: row;
+    justify-items: center;
+    align-items: center;
+    a {
+        text-decoration: none;
+        p {
+            color: white;
+        }
+    }
+
+    img {
+        margin-left: 10px;
+    }
+    p {
+        transition-duration: $transitionMain;
+        font-size: 30pt;
+        margin-top: 0;
+        margin-bottom: 0;
+        line-height: 1;
+        outline: none;
+    }
+}
+  
+#keyimage {
+    width: 1.75em;
+    align-self: center;
+    justify-self: flex-start;
+    margin-top: 5px;
+}

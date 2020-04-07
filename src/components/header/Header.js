@@ -22,6 +22,7 @@ import InfoIcon from '@material-ui/icons/Info'
 import HomeIcon from '@material-ui/icons/Home'
 import ExitToAppIcon from '@material-ui/icons/ExitToApp'
 import CreateIcon from '@material-ui/icons/Create'
+import '../../styles/header.css'
 
 const drawerWidth = 240;
 

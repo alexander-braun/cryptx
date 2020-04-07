@@ -1,4 +1,5 @@
 import React from 'react'
+import '../../styles/otp.css'
 
 const Otp = ({genRandomKey, otpKey}) => {
 
