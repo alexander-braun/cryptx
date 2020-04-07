@@ -24,7 +24,6 @@ class EncryptionArea extends React.PureComponent {
   constructor(props) {
     super(props)
     this.state = {
-      method: 'skytale',
       methodNameInset: 'Skytale',
       outputValue: 'Gsv jfrxp yildm ulc qfnkh levi gsv ozab wlt.',
       caseFormat: 'maintain',
@@ -57,7 +56,6 @@ class EncryptionArea extends React.PureComponent {
     this.alphabetUpdate = this.alphabetUpdate.bind(this)
     this.selectCase = this.selectCase.bind(this)
     this.includeChars = this.includeChars.bind(this)
-    this.changeMethod = this.changeMethod.bind(this)
     this.updateKeyword = this.updateKeyword.bind(this)
     this.genRandomKey = this.genRandomKey.bind(this)
     this.indexOfCoincidence = this.indexOfCoincidence.bind(this)
@@ -69,37 +67,6 @@ class EncryptionArea extends React.PureComponent {
   }
 
   //General
-  changeMethod(evt) {
-    let val;
-    if (Object.keys(methodNamesAll).indexOf(evt) !== -1) {
-      val = evt;
-    } else {
-      val = evt.target.value || evt.target.getAttribute('value');
-    }
-
-    this.setState({
-      alphabet: 'abcdefghijklmnopqrstuvwxyz',
-      caseFormat: 'maintain',
-      includeChars: 'include',
-      method: val
-    });
-
-    if(val === 'caesar') {
-      this.setState({
-        alphabetActive: true
-      })
-    }
-
-    if(val === 'otp') {
-      this.genRandomKey()
-    }
-
-    this.setState({
-      methodNameInset: methodNamesAll[val]
-    })
-    
-    this.encrypt();
-  }
 
   includeChars(evt) {
     this.setState({
@@ -143,6 +110,29 @@ class EncryptionArea extends React.PureComponent {
     }
     if(prevProps !== this.props) {
       this.encrypt()
+    }
+    if(prevProps.method !== this.props.method) {
+      if(this.props.method === 'caesar') {
+        this.setState({
+          alphabetActive: true
+        })
+      }
+  
+      if(this.props.method === 'otp') {
+        this.genRandomKey()
+      }
+  
+      this.setState({
+        methodNameInset: methodNamesAll[this.props.method]
+      })
+
+      this.setState({
+        alphabet: 'abcdefghijklmnopqrstuvwxyz',
+        caseFormat: 'maintain',
+        includeChars: 'include'
+      })
+
+      this.encrypt();
     }
   }
 
@@ -288,7 +278,7 @@ class EncryptionArea extends React.PureComponent {
       let alphabet = prevState.alphabet;
       let caseFormat = prevState.caseFormat;
       let foreignChars = prevState.includeChars;
-      let method = prevState.method;
+      let method = this.props.method;
       let direction = this.props.direction
 
       // IF DIR = CRACK
@@ -401,7 +391,7 @@ class EncryptionArea extends React.PureComponent {
             outputValue: Replace.encrypt()
           }
         case 'skytale':
-          Skytale.setAll(direction, caseFormat, input, this.props.ringLength)
+          Skytale.setAll(direction, caseFormat, input, this.props.ringLength, foreignChars)
           return {
             outputValue: Skytale.encrypt()[0],
             skytaleLength: Skytale.encrypt()[1],
@@ -416,7 +406,7 @@ class EncryptionArea extends React.PureComponent {
   render() {
     return (
       <div id='converter'>
-        <Timeline changeMethod={this.changeMethod} method={this.state.method} />
+        <Timeline />
         <div id='block_container'>
           <BlockInput
             ioc={this.state.iocInput}
@@ -425,7 +415,6 @@ class EncryptionArea extends React.PureComponent {
           <BlockSettings
             updateKeyword={this.updateKeyword}
             keyword={this.state.keyword}
-            method={this.state.method}
             methodNameInset={this.state.methodNameInset}
             alphabet={this.state.alphabet}
             alphabetUpdate={this.alphabetUpdate}
@@ -457,9 +446,7 @@ class EncryptionArea extends React.PureComponent {
             ioc={this.state.iocOutput}
           />
         </div>
-        <Modal
-          changeMethod={this.changeMethod}
-        />
+        <Modal />
       </div>
     );
   }
@@ -472,7 +459,8 @@ const mapStateToProps = state => ({
   cShift: state.cShift,
   ringLength: state.ringLength,
   direction: state.toggleDirection.direction,
-  inputValue: state.updateInput.inputValue
+  inputValue: state.updateInput.inputValue,
+  method: state.method.method
 })
 
 const mapActionsToProps = {

@@ -1,5 +1,5 @@
 const skytale = (() => {
-    let userInput, caseFormat, ringLength, direction
+    let userInput, caseFormat, ringLength, direction, foreignChars
 
     const setUserInput = (value) => {
         value = value.split(' ').join('')
@@ -12,6 +12,10 @@ const skytale = (() => {
 
     const setDirection = (value) => {
         direction = value
+    }
+
+    const setForeignChars = (value) => {
+        foreignChars = value
     }
 
     const setRingLength = (value) => {
@@ -41,17 +45,25 @@ const skytale = (() => {
     }
 
     const transformText = () => {
+        let input = userInput
+        if(foreignChars === 'ignore') {
+            let inp = []
+            let alphabet = 'abcdefghijklmnopqrstuvwxyz'
+            for(let i = 0; i < input.length; i++) {
+                if(alphabet.indexOf(input[i].toLowerCase()) !== -1) inp.push(input[i])
+            }
+            input = inp.join('')
+        }
         if(direction === 'encrypt') {
-            if(!userInput) return ''
             const skytaleArr = [[]]
             let j = 0;
-            for(let i = 0; i < userInput.length; i++) {
+            for(let i = 0; i < input.length; i++) {
                 if(i % ringLength === 0 && i !== 0) {
                     j++
                     skytaleArr.push([])
-                    skytaleArr[j].push(userInput[i])
+                    skytaleArr[j].push(input[i])
                 } else {
-                    skytaleArr[j].push(userInput[i])
+                    skytaleArr[j].push(input[i])
                 }
             }
 
@@ -77,8 +89,8 @@ const skytale = (() => {
         }
         else if(direction === 'decrypt') {
             
-            const skytaleRows = Math.ceil(userInput.length / ringLength)
-            let lastRowLength = userInput.length % ringLength
+            const skytaleRows = Math.ceil(input.length / ringLength)
+            let lastRowLength = input.length % ringLength
             if(lastRowLength === 0) lastRowLength = ringLength
 
             const skyArr = []
@@ -90,12 +102,12 @@ const skytale = (() => {
             let indexOne = 0;
             for(let i = 0; i < lastRowLength; i++) {
                 for(let j = 0; j < skytaleRows; j++) {
-                    skyArr[j].push(userInput[indexOne])
+                    skyArr[j].push(input[indexOne])
                     indexOne++
                 }
             }
 
-            let restInput = userInput.slice(skytaleRows * lastRowLength)
+            let restInput = input.slice(skytaleRows * lastRowLength)
             
             let indexTwo = 0
             for(let j = 0; j < ringLength - lastRowLength; j++) {
@@ -119,11 +131,12 @@ const skytale = (() => {
         }
     }
 
-    const setAll = (direction, caseFormat, input, ringLength) => {
+    const setAll = (direction, caseFormat, input, ringLength, foreignChars) => {
         setDirection(direction)
         setCase(caseFormat)
         setUserInput(input)
         setRingLength(ringLength)
+        setForeignChars(foreignChars)
     }
 
     return {

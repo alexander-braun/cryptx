@@ -6,6 +6,7 @@ import cShift from './cShift'
 import ringLength from './ringlength'
 import toggleDirection from './direction'
 import updateInput from './input'
+import method from './method'
 
 export default combineReducers({
     modal,
@@ -14,5 +15,6 @@ export default combineReducers({
     cShift,
     ringLength,
     toggleDirection,
-    updateInput
+    updateInput,
+    method
 })

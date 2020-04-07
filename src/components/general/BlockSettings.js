@@ -9,7 +9,6 @@ const BlockElementSettings = ({
                                 alphabetUpdate, 
                                 selectCase, 
                                 includeChars, 
-                                method, 
                                 methodNameInset, 
                                 setAlpha,
                                 setBeta,
@@ -46,7 +45,6 @@ const BlockElementSettings = ({
                 alphabetUpdate={alphabetUpdate}
                 selectCase={selectCase}
                 includeChars={includeChars}
-                method={method}
                 setAlpha={setAlpha}
                 setBeta={setBeta}
                 updateKeyword={updateKeyword}
@@ -69,10 +67,7 @@ const BlockElementSettings = ({
                 timeToCalculate = {timeToCalculate}
                 skytalePlusMinus = {skytalePlusMinus}
               />
-              
-              <ExplanatoryText 
-                method={method}
-              />
+              <ExplanatoryText />
           </div>
       </div>
     </div>

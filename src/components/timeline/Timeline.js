@@ -6,6 +6,8 @@ import Slider from "react-slick"
 import methodNamesAll from '../general/MethodNames'
 import times from '../general/MethodTimes'
 import '../../styles/timeline.css'
+import { connect } from 'react-redux'
+import { changeMethod } from '../../actions/method'
 
 class Timeline extends React.PureComponent {
     constructor(props) {
@@ -107,7 +109,7 @@ class Timeline extends React.PureComponent {
                         key={key}
                         value={element}
                         onClick={(evt) => {
-                            this.props.changeMethod(evt)
+                            this.props.changeMethod(evt.target.getAttribute('value'))
                             this.slider.slickGoTo(0)
                         }}
                     >
@@ -134,4 +136,12 @@ class Timeline extends React.PureComponent {
     }
 }
 
-export default Timeline
+const mapStateToProps = state => ({
+    method: state.method.method
+})
+
+const mapActionsToProps = {
+    changeMethod: changeMethod
+}
+
+export default connect(mapStateToProps, mapActionsToProps)(Timeline)

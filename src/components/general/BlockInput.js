@@ -5,7 +5,7 @@ import math from './Math'
 import { connect } from 'react-redux'
 import { updateInput } from '../../actions/input'
 
-const BlockElementInput = ({updateInput, inputValue, ioc, input}) => {
+const BlockElementInput = ({updateInput, ioc, input}) => {
 
   useEffect(() => {
       let textareaOutput = document.getElementById('userinput')

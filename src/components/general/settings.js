@@ -229,7 +229,8 @@ const BlockBodyInput = ({
 }
 
 const mapStateToProps = state => ({
-    direction: state.toggleDirection.direction
+    direction: state.toggleDirection.direction,
+    method: state.method.method
 })
 
 export default connect(mapStateToProps)(BlockBodyInput)

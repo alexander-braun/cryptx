@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { toggleModal } from '../../actions/modal'
 import '../../styles/modal.css'
+import { changeMethod } from '../../actions/method'
 
 class Modal extends React.Component {
     constructor(props) {
@@ -31,7 +32,7 @@ class Modal extends React.Component {
                                             className="modal_category_method" 
                                             value="atbash"
                                             onClick={(evt) => {
-                                                this.props.changeMethod(evt)
+                                                this.props.changeMethod(evt.target.value)
                                             }}
                                         >
                                         Atbash Cipher
@@ -42,7 +43,7 @@ class Modal extends React.Component {
                                             className="modal_category_method" 
                                             value="caesar"
                                             onClick={(evt) => {
-                                                this.props.changeMethod(evt)
+                                                this.props.changeMethod(evt.target.value)
                                             }}
                                         >
                                         Ceasars Cipher
@@ -53,7 +54,7 @@ class Modal extends React.Component {
                                             className="modal_category_method" 
                                             value="skytale"
                                             onClick={(evt) => {
-                                                this.props.changeMethod(evt)
+                                                this.props.changeMethod(evt.target.value)
                                             }}
                                         >
                                         Skytale
@@ -64,7 +65,7 @@ class Modal extends React.Component {
                                             className="modal_category_method" 
                                             value="affine"
                                             onClick={(evt) => {
-                                                this.props.changeMethod(evt)
+                                                this.props.changeMethod(evt.target.value)
                                             }}
                                         >
                                         Affine Cipher
@@ -75,7 +76,7 @@ class Modal extends React.Component {
                                             className="modal_category_method" 
                                             value="vigenere"
                                             onClick={(evt) => {
-                                                this.props.changeMethod(evt)
+                                                this.props.changeMethod(evt.target.value)
                                             }}
                                         >
                                         Vigenère Cipher
@@ -86,7 +87,7 @@ class Modal extends React.Component {
                                             className="modal_category_method" 
                                             value="playfair"
                                             onClick={(evt) => {
-                                                this.props.changeMethod(evt)
+                                                this.props.changeMethod(evt.target.value)
                                             }}
                                         >
                                         Playfair Cipher
@@ -97,7 +98,7 @@ class Modal extends React.Component {
                                             className="modal_category_method" 
                                             value="otp"
                                             onClick={(evt) => {
-                                                this.props.changeMethod(evt)
+                                                this.props.changeMethod(evt.target.value)
                                             }}
                                         >
                                         One Time Pad
@@ -108,7 +109,7 @@ class Modal extends React.Component {
                                             className="modal_category_method" 
                                             value="rot13"
                                             onClick={(evt) => {
-                                                this.props.changeMethod(evt)
+                                                this.props.changeMethod(evt.target.value)
                                             }}
                                         >
                                         ROT13
@@ -124,7 +125,7 @@ class Modal extends React.Component {
                                             className="modal_category_method"
                                             value="morse"
                                             onClick={(evt) => {
-                                                this.props.changeMethod(evt)
+                                                this.props.changeMethod(evt.target.value)
                                             }}
                                         >
                                         Morse Code
@@ -140,7 +141,7 @@ class Modal extends React.Component {
                                             className="modal_category_method"
                                             value="rsa"
                                             onClick={(evt) => {
-                                                this.props.changeMethod(evt)
+                                                this.props.changeMethod(evt.target.value)
                                             }}
                                         >
                                         RSA
@@ -156,7 +157,7 @@ class Modal extends React.Component {
                                             className="modal_category_method"
                                             value="replace"
                                             onClick={(evt) => {
-                                                this.props.changeMethod(evt)
+                                                this.props.changeMethod(evt.target.value)
                                             }}
                                         >
                                         Replace
@@ -173,11 +174,13 @@ class Modal extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    modalOpen: state.modal.modalOpen
+    modalOpen: state.modal.modalOpen,
+    method: state.method.method
 })
 
 const mapActionsToProps = {
-    onModalToggle: toggleModal
+    onModalToggle: toggleModal,
+    changeMethod: changeMethod
 }
 
 export default connect(mapStateToProps, mapActionsToProps)(Modal)

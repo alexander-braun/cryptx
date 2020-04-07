@@ -28,6 +28,7 @@ const useStyles = makeStyles(theme => ({
 const ExplanatoryText = (props) => {
   const classes = useStyles();
   let expText
+  console.log(props)
   if(props.method === 'atbash') {
     if(props.direction !== 'crack') {
       expText = 
@@ -400,7 +401,8 @@ const ExplanatoryText = (props) => {
 }
 
 const mapStateToProps = state => ({
-  direction: state.toggleDirection.direction
+  direction: state.toggleDirection.direction,
+  method: state.method.method
 })
 
 export default connect(mapStateToProps)(ExplanatoryText)
