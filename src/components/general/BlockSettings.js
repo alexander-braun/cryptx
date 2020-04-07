@@ -11,21 +11,17 @@ const BlockElementSettings = ({
                                 includeChars, 
                                 method, 
                                 methodNameInset, 
-                                changeDirection, 
-                                direction,
                                 setAlpha,
                                 setBeta,
                                 updateKeyword,
                                 keyword,
                                 playSquare,
-                                ringLength,
                                 skytaleLength,
                                 skytaleProjectedValue,
                                 alphabetActive,
                                 updateOtpKey,
                                 genRandomKey,
                                 otpKey,
-                                inputValue,
                                 setPrimeOne,
                                 setPrimeTwo,
                                 setE,
@@ -41,13 +37,11 @@ const BlockElementSettings = ({
     <div className="block_settings">
       <BlockHeadSettings 
         methodNameInset={methodNameInset}
-        changeDirection={changeDirection}
       />
       <div className="block_body">
           <div className="block_body_input">
               <Settings 
                 alphabetActive = {alphabetActive}
-                direction={direction}
                 alphabet={alphabet}
                 alphabetUpdate={alphabetUpdate}
                 selectCase={selectCase}
@@ -58,11 +52,9 @@ const BlockElementSettings = ({
                 updateKeyword={updateKeyword}
                 keyword={keyword}
                 playSquare = {playSquare}
-                ringLength = {ringLength}
                 skytaleLength = {skytaleLength}
                 skytaleProjectedValue = {skytaleProjectedValue}
                 updateOtpKey = {updateOtpKey}
-                inputValue = {inputValue}
                 genRandomKey = {genRandomKey}
                 otpKey = {otpKey}
                 setPrimeOne = {setPrimeOne}
@@ -79,7 +71,6 @@ const BlockElementSettings = ({
               />
               
               <ExplanatoryText 
-                direction={direction}
                 method={method}
               />
           </div>

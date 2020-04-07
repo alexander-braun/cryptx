@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
 
 class AtbashTransposition extends React.Component {
@@ -68,4 +69,4 @@ class AtbashTransposition extends React.Component {
     }
 }
 
-export default AtbashTransposition
+export default connect()(AtbashTransposition)

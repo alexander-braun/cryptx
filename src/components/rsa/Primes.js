@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
 
 const Primes = (props) => {
@@ -122,6 +123,4 @@ const Primes = (props) => {
     )    
 }
 
-
-
-export default Primes
+export default connect()(Primes)

@@ -5,6 +5,7 @@ import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary'
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails'
 import Typography from '@material-ui/core/Typography'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
+import { connect } from 'react-redux'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -24,11 +25,11 @@ const useStyles = makeStyles(theme => ({
 
 }));
 
-const ExplanatoryText = ({direction, method}) => {
+const ExplanatoryText = (props) => {
   const classes = useStyles();
   let expText
-  if(method === 'atbash') {
-    if(direction !== 'crack') {
+  if(props.method === 'atbash') {
+    if(props.direction !== 'crack') {
       expText = 
       <ExpansionPanel>
         <ExpansionPanelSummary
@@ -65,8 +66,8 @@ const ExplanatoryText = ({direction, method}) => {
         </div>
     }
   }
-  if(method === 'caesar') {
-    if(direction !== 'crack') {
+  if(props.method === 'caesar') {
+    if(props.direction !== 'crack') {
       expText =     
         <ExpansionPanel>
           <ExpansionPanelSummary
@@ -103,8 +104,8 @@ const ExplanatoryText = ({direction, method}) => {
           <a href="https://en.wikipedia.org/wiki/Caesar_cipher" target="blank">Caesar's cipher Wikipedia</a>
         </div>
     }
-  } else if(method === 'affine') {
-      if(direction === 'crack') {
+  } else if(props.method === 'affine') {
+      if(props.direction === 'crack') {
         expText = 
           <div className="controller explanation">
             <p className="block_method_explanation">
@@ -138,8 +139,8 @@ const ExplanatoryText = ({direction, method}) => {
             </ExpansionPanelDetails>
           </ExpansionPanel>
       } 
-  } else if(method === 'vigenere') {
-      if(direction === 'crack') {
+  } else if(props.method === 'vigenere') {
+      if(props.direction === 'crack') {
         expText = 
         <div className="controller explanation">
           <p className="block_method_explanation">
@@ -178,8 +179,8 @@ const ExplanatoryText = ({direction, method}) => {
             </ExpansionPanelDetails>
           </ExpansionPanel> 
       } 
-  } else if(method === 'playfair') {
-      if(direction === 'crack') {
+  } else if(props.method === 'playfair') {
+      if(props.direction === 'crack') {
         expText = 
         <div className="controller explanation">
           <p className="block_method_explanation">
@@ -216,8 +217,8 @@ const ExplanatoryText = ({direction, method}) => {
             </ExpansionPanelDetails>
           </ExpansionPanel> 
       } 
-  } else if(method === 'morse') {
-      if(direction === 'crack') {
+  } else if(props.method === 'morse') {
+      if(props.direction === 'crack') {
         expText = 
         <div className="controller explanation">
           <p className="block_method_explanation">
@@ -256,8 +257,8 @@ const ExplanatoryText = ({direction, method}) => {
             </ExpansionPanelDetails>
           </ExpansionPanel> 
       } 
-  } else if(method === 'replace') {
-      if(direction === 'crack') {
+  } else if(props.method === 'replace') {
+      if(props.direction === 'crack') {
         expText = 
         <div className="controller explanation">
           <p className="block_method_explanation">
@@ -281,8 +282,8 @@ const ExplanatoryText = ({direction, method}) => {
             </ExpansionPanelDetails>
           </ExpansionPanel> 
       } 
-  } else if(method === 'skytale') {
-    if(direction === 'crack') {
+  } else if(props.method === 'skytale') {
+    if(props.direction === 'crack') {
       expText = 
       <div className="controller explanation">
         <p className="block_method_explanation">
@@ -319,8 +320,8 @@ const ExplanatoryText = ({direction, method}) => {
           </ExpansionPanelDetails>
         </ExpansionPanel>  
     } 
-  } else if(method === 'otp') {
-    if(direction === 'crack') {
+  } else if(props.method === 'otp') {
+    if(props.direction === 'crack') {
       expText = 
       <div className="controller explanation">
         <p className="block_method_explanation">
@@ -359,8 +360,8 @@ const ExplanatoryText = ({direction, method}) => {
           </ExpansionPanelDetails>
         </ExpansionPanel>   
     } 
-  } else if(method === 'rsa') {
-    if(direction === 'crack') {
+  } else if(props.method === 'rsa') {
+    if(props.direction === 'crack') {
       expText = 
       <div className="controller explanation">
         <p className="block_method_explanation">
@@ -398,6 +399,10 @@ const ExplanatoryText = ({direction, method}) => {
   return expText ? expText : null;
 }
 
-export default ExplanatoryText
+const mapStateToProps = state => ({
+  direction: state.toggleDirection.direction
+})
+
+export default connect(mapStateToProps)(ExplanatoryText)
 
 

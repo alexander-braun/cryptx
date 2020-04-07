@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import CaesarShift from '../caesar/CaesarShift'
 import Alphabet from './Alphabet'
 import CaseChars from './CaseChars'
@@ -14,28 +14,25 @@ import CaesarTransposition from '../caesar/CaesarTransposition'
 import AtbashTransposition from '../atbash/AtbashTransposition'
 import OtpGenerate from '../onetimepad/otpGenerate'
 import Primes from '../rsa/Primes'
+import { connect } from 'react-redux'
 
 
 const BlockBodyInput = ({
-                            skytalePlusMinus,
                             alphabet, 
                             alphabetUpdate, 
                             selectCase, 
                             includeChars, 
                             method, 
-                            direction, 
                             setAlpha, 
                             setBeta, 
                             updateKeyword,
                             keyword,
                             playSquare,
-                            ringLength,
                             skytaleLength,
                             skytaleProjectedValue,
                             alphabetActive,
                             otpKey,
                             genRandomKey,
-                            inputValue,
                             setPrimeOne,
                             setPrimeTwo,
                             setE,
@@ -45,7 +42,8 @@ const BlockBodyInput = ({
                             phi,
                             n,
                             d,
-                            timeToCalculate
+                            timeToCalculate,
+                            direction
                         }) => {
     let bodyInput
     const switchBodyInput = () => {
@@ -55,7 +53,6 @@ const BlockBodyInput = ({
                 bodyInput =
                     <div className="block_body_input">
                         <AtbashTransposition 
-                            direction = {direction}
                             alphabet = {alphabet}
                         />
                         <Alphabet 
@@ -72,7 +69,6 @@ const BlockBodyInput = ({
             case 'rsa': 
                 bodyInput = 
                     <Primes 
-                        inputValue={inputValue}
                         setPrimeOne = {setPrimeOne}
                         setPrimeTwo = {setPrimeTwo}
                         setE = {setE}
@@ -186,12 +182,8 @@ const BlockBodyInput = ({
             case 'skytale':
                 bodyInput = 
                     <div>
-                        <RingLength 
-                            ringLength = {ringLength}
-                            plusMinus = {skytalePlusMinus}
-                        />
+                        <RingLength />
                         <Rings 
-                            ringLength = {ringLength}
                             skytaleLength = {skytaleLength}
                             outputValue = {skytaleProjectedValue}
                         />
@@ -230,10 +222,14 @@ const BlockBodyInput = ({
     }
     
     return (
-        <>
+        <Fragment>
             {switchBodyInput()}
-        </>
+        </Fragment>
     )
 }
 
-export default BlockBodyInput
+const mapStateToProps = state => ({
+    direction: state.toggleDirection.direction
+})
+
+export default connect(mapStateToProps)(BlockBodyInput)

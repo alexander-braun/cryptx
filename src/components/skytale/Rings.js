@@ -67,6 +67,7 @@ class Rings extends React.PureComponent {
     }
     
     render() {
+        
         return (
             <div className="controller">
                 <div className="settings_name">SKYTALE</div>

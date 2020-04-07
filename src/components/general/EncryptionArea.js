@@ -26,9 +26,7 @@ class EncryptionArea extends React.PureComponent {
     this.state = {
       method: 'skytale',
       methodNameInset: 'Skytale',
-      inputValue: 'The quick brown fox jumps over the lazy dog.',
       outputValue: 'Gsv jfrxp yildm ulc qfnkh levi gsv ozab wlt.',
-      direction: 'encrypt',
       caseFormat: 'maintain',
       includeChars: 'include',
       alphabet: 'abcdefghijklmnopqrstuvwxyz',
@@ -55,21 +53,19 @@ class EncryptionArea extends React.PureComponent {
       freqAnal2Open: false
     };
 
-    this.encrypt = this.encrypt.bind(this);
-    this.alphabetUpdate = this.alphabetUpdate.bind(this);
-    this.selectCase = this.selectCase.bind(this);
-    this.includeChars = this.includeChars.bind(this);
-    this.updateInput = this.updateInput.bind(this);
-    this.changeDirection = this.changeDirection.bind(this);
-    this.changeMethod = this.changeMethod.bind(this);
-    this.updateKeyword = this.updateKeyword.bind(this);
-    this.genRandomKey = this.genRandomKey.bind(this);
-    this.indexOfCoincidence = this.indexOfCoincidence.bind(this);
+    this.encrypt = this.encrypt.bind(this)
+    this.alphabetUpdate = this.alphabetUpdate.bind(this)
+    this.selectCase = this.selectCase.bind(this)
+    this.includeChars = this.includeChars.bind(this)
+    this.changeMethod = this.changeMethod.bind(this)
+    this.updateKeyword = this.updateKeyword.bind(this)
+    this.genRandomKey = this.genRandomKey.bind(this)
+    this.indexOfCoincidence = this.indexOfCoincidence.bind(this)
     this.setAlpha = this.setAlpha.bind(this)
     this.setBeta = this.setBeta.bind(this)
     this.setE = this.setE.bind(this);
-    this.setPrimeTwo = this.setPrimeTwo.bind(this);
-    this.setPrimeOne = this.setPrimeOne.bind(this);
+    this.setPrimeTwo = this.setPrimeTwo.bind(this)
+    this.setPrimeOne = this.setPrimeOne.bind(this)
   }
 
   //General
@@ -105,21 +101,6 @@ class EncryptionArea extends React.PureComponent {
     this.encrypt();
   }
 
-  async updateInput(evt) {
-    if (
-      this.state.inputValue === 'The quick brown fox jumps over the lazy dog.'
-    ) {
-      this.setState({
-        inputValue: ''
-      })
-    } else {
-      this.setState({
-        inputValue: evt.target.value
-      });
-    }
-    this.encrypt();
-  }
-
   includeChars(evt) {
     this.setState({
       includeChars: evt.target.value
@@ -137,13 +118,6 @@ class EncryptionArea extends React.PureComponent {
   alphabetUpdate(evt) {
     this.setState({
       alphabet: evt.target.value
-    });
-    this.encrypt();
-  }
-
-  changeDirection(evt) {
-    this.setState({
-      direction: evt.target.value
     });
     this.encrypt();
   }
@@ -187,22 +161,15 @@ class EncryptionArea extends React.PureComponent {
     this.encrypt();
   }
 
-  // Skytale
-  setSkytaleRing(evt) {
-    this.setState({
-      ringLength: this.props.ringLength
-    });
-  }
-
   // otp
   genRandomKey() {
     let randomArr = [];
     let letters = this.state.alphabet.split('');
 
     let input = [];
-    for (let i = 0; i < this.state.inputValue.length; i++) {
-      if (this.state.alphabet.indexOf(this.state.inputValue[i] !== -1)) {
-        input.push(this.state.inputValue[i]);
+    for (let i = 0; i < this.props.inputValue.length; i++) {
+      if (this.state.alphabet.indexOf(this.props.inputValue[i] !== -1)) {
+        input.push(this.props.inputValue[i]);
       }
     }
 
@@ -223,7 +190,7 @@ class EncryptionArea extends React.PureComponent {
   calcIndexOfCoincidence(input) {
 
     //Check if input or outputfield
-    let inputState = this.state.inputValue
+    let inputState = this.props.inputValue
     let outputState = this.state.outputValue
 
     if (input) {
@@ -317,12 +284,12 @@ class EncryptionArea extends React.PureComponent {
 
   async encrypt() {
     this.setState(prevState => {
-      let input = prevState.inputValue;
+      let input = this.props.inputValue;
       let alphabet = prevState.alphabet;
-      let direction = prevState.direction;
       let caseFormat = prevState.caseFormat;
       let foreignChars = prevState.includeChars;
       let method = prevState.method;
+      let direction = this.props.direction
 
       // IF DIR = CRACK
       if (direction === 'crack') {
@@ -452,29 +419,24 @@ class EncryptionArea extends React.PureComponent {
         <Timeline changeMethod={this.changeMethod} method={this.state.method} />
         <div id='block_container'>
           <BlockInput
-            inputValue={this.state.inputValue}
-            updateInput={this.updateInput}
             ioc={this.state.iocInput}
           />
           <BlockConnectorPlus />
           <BlockSettings
             updateKeyword={this.updateKeyword}
             keyword={this.state.keyword}
-            changeDirection={this.changeDirection}
             method={this.state.method}
             methodNameInset={this.state.methodNameInset}
             alphabet={this.state.alphabet}
             alphabetUpdate={this.alphabetUpdate}
             selectCase={this.selectCase}
             includeChars={this.includeChars}
-            direction={this.state.direction}
             setAlpha={this.setAlpha}
             setBeta={this.setBeta}
             playSquare={this.state.playSquare}
             skytaleLength={this.state.skytaleLength}
             skytaleProjectedValue={this.state.skytaleProjectedValue}
             alphabetActive={this.state.alphabetActive}
-            inputValue={this.state.inputValue}
             genRandomKey={this.genRandomKey}
             otpKey={this.state.otpKey}
             setPrimeOne={this.setPrimeOne}
@@ -508,7 +470,9 @@ const mapStateToProps = state => ({
   replaceLetter: state.replace.replaceLetter,
   wordbook: state.wordbook,
   cShift: state.cShift,
-  ringLength: state.ringLength
+  ringLength: state.ringLength,
+  direction: state.toggleDirection.direction,
+  inputValue: state.updateInput.inputValue
 })
 
 const mapActionsToProps = {

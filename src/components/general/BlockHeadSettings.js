@@ -2,6 +2,7 @@ import React from 'react'
 import { ReactComponent as Caret} from './img/caret.svg'
 import { connect } from 'react-redux'
 import { toggleModal } from '../../actions/modal'
+import { toggleDirection } from '../../actions/direction'
 
 const BlockHeadSettings = (props) => {
 
@@ -33,8 +34,8 @@ const BlockHeadSettings = (props) => {
                 <button 
                     value='encrypt' 
                     onClick={(evt) => {
-                        props.changeDirection(evt)
                         switchClassName(evt)
+                        props.onToggleDirection(evt.target.value)
                     }} 
                     className="block_head_option selected"
                 >
@@ -43,7 +44,7 @@ const BlockHeadSettings = (props) => {
                     <button 
                     value='decrypt' 
                     onClick={(evt) => {
-                        props.changeDirection(evt)
+                        props.onToggleDirection(evt.target.value)
                         switchClassName(evt)
                     }} 
                     className="block_head_option"
@@ -53,7 +54,7 @@ const BlockHeadSettings = (props) => {
                 <button 
                     value='crack' 
                     onClick={(evt) => {
-                        props.changeDirection(evt)
+                        props.onToggleDirection(evt.target.value)
                         switchClassName(evt)
                     }} 
                     className="block_head_option"
@@ -66,11 +67,13 @@ const BlockHeadSettings = (props) => {
 }
 
 const mapStateToProps = state => ({
-    modalOpen: state.modal.modalOpen
+    modalOpen: state.modal.modalOpen,
+    direction: state.toggleDirection.direction
 })
 
 const mapActionsToProps = {
-    onModalToggle: toggleModal
+    onModalToggle: toggleModal,
+    onToggleDirection: toggleDirection
 }
 
 
