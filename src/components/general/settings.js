@@ -21,7 +21,6 @@ const BlockBodyInput = ({
                             alphabet, 
                             alphabetUpdate, 
                             selectCase, 
-                            includeChars, 
                             method, 
                             setAlpha, 
                             setBeta, 
@@ -62,7 +61,6 @@ const BlockBodyInput = ({
                         />
                         <CaseChars 
                             selectCase = {selectCase}
-                            includeChars = {includeChars}
                         />
                     </div>
                 break
@@ -91,7 +89,6 @@ const BlockBodyInput = ({
                         />
                         <CaseChars 
                             selectCase = {selectCase}
-                            includeChars = {includeChars}
                         />
                     </div> 
                 break
@@ -110,7 +107,6 @@ const BlockBodyInput = ({
                         />
                         <CaseChars 
                             selectCase = {selectCase}
-                            includeChars = {includeChars}
                         />
                     </div>
                 break
@@ -128,7 +124,6 @@ const BlockBodyInput = ({
                         />
                         <CaseChars 
                             selectCase = {selectCase}
-                            includeChars = {includeChars}
                         />
                     </div>
                 break
@@ -146,7 +141,6 @@ const BlockBodyInput = ({
                         />
                         <CaseChars 
                             selectCase = {selectCase}
-                            includeChars = {includeChars}
                         />
                     </div> 
                 break
@@ -168,7 +162,6 @@ const BlockBodyInput = ({
                         />
                         <CaseChars 
                             selectCase = {selectCase}
-                            includeChars = {includeChars}
                         />
                     </div> 
                 break
@@ -194,7 +187,6 @@ const BlockBodyInput = ({
                         />
                         <CaseChars 
                             selectCase = {selectCase}
-                            includeChars = {includeChars}
                         />
                     </div>
                 break
@@ -207,7 +199,6 @@ const BlockBodyInput = ({
                         />
                         <CaseChars 
                             selectCase = {selectCase}
-                            includeChars = {includeChars}
                         />
                         <Alphabet 
                             alphabet = {alphabet} 

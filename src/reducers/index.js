@@ -7,6 +7,7 @@ import ringLength from './ringlength'
 import toggleDirection from './direction'
 import updateInput from './input'
 import method from './method'
+import includeChars from './includechars'
 
 export default combineReducers({
     modal,
@@ -16,5 +17,6 @@ export default combineReducers({
     ringLength,
     toggleDirection,
     updateInput,
-    method
+    method,
+    includeChars
 })

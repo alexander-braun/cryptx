@@ -19,6 +19,7 @@ import Rsa from '../rsa/RSALogic'
 import methodNamesAll from './MethodNames'
 import { connect } from 'react-redux'
 import setWordbook from '../../actions/wordbook'
+import toggleChars from '../../actions/includeChars'
 
 class EncryptionArea extends React.PureComponent {
   constructor(props) {
@@ -27,7 +28,6 @@ class EncryptionArea extends React.PureComponent {
       methodNameInset: 'Skytale',
       outputValue: 'Gsv jfrxp yildm ulc qfnkh levi gsv ozab wlt.',
       caseFormat: 'maintain',
-      includeChars: 'include',
       alphabet: 'abcdefghijklmnopqrstuvwxyz',
       affineAlpha: 5,
       affineBeta: 1,
@@ -55,7 +55,6 @@ class EncryptionArea extends React.PureComponent {
     this.encrypt = this.encrypt.bind(this)
     this.alphabetUpdate = this.alphabetUpdate.bind(this)
     this.selectCase = this.selectCase.bind(this)
-    this.includeChars = this.includeChars.bind(this)
     this.updateKeyword = this.updateKeyword.bind(this)
     this.genRandomKey = this.genRandomKey.bind(this)
     this.indexOfCoincidence = this.indexOfCoincidence.bind(this)
@@ -67,13 +66,6 @@ class EncryptionArea extends React.PureComponent {
   }
 
   //General
-
-  includeChars(evt) {
-    this.setState({
-      includeChars: evt.target.value
-    });
-    this.encrypt();
-  }
 
   selectCase(evt) {
     this.setState({
@@ -129,8 +121,9 @@ class EncryptionArea extends React.PureComponent {
       this.setState({
         alphabet: 'abcdefghijklmnopqrstuvwxyz',
         caseFormat: 'maintain',
-        includeChars: 'include'
       })
+
+      this.props.toggleChars('include')
 
       this.encrypt();
     }
@@ -277,7 +270,7 @@ class EncryptionArea extends React.PureComponent {
       let input = this.props.inputValue;
       let alphabet = prevState.alphabet;
       let caseFormat = prevState.caseFormat;
-      let foreignChars = prevState.includeChars;
+      let foreignChars = this.props.includeChars;
       let method = this.props.method;
       let direction = this.props.direction
 
@@ -419,7 +412,6 @@ class EncryptionArea extends React.PureComponent {
             alphabet={this.state.alphabet}
             alphabetUpdate={this.alphabetUpdate}
             selectCase={this.selectCase}
-            includeChars={this.includeChars}
             setAlpha={this.setAlpha}
             setBeta={this.setBeta}
             playSquare={this.state.playSquare}
@@ -460,11 +452,13 @@ const mapStateToProps = state => ({
   ringLength: state.ringLength,
   direction: state.toggleDirection.direction,
   inputValue: state.updateInput.inputValue,
-  method: state.method.method
+  method: state.method.method,
+  includeChars: state.includeChars
 })
 
 const mapActionsToProps = {
-  onSetWordbook: setWordbook
+  onSetWordbook: setWordbook,
+  toggleChars: toggleChars
 }
 
 

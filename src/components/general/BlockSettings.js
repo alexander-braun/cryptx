@@ -8,7 +8,6 @@ const BlockElementSettings = ({
                                 alphabet, 
                                 alphabetUpdate, 
                                 selectCase, 
-                                includeChars, 
                                 methodNameInset, 
                                 setAlpha,
                                 setBeta,
@@ -44,7 +43,6 @@ const BlockElementSettings = ({
                 alphabet={alphabet}
                 alphabetUpdate={alphabetUpdate}
                 selectCase={selectCase}
-                includeChars={includeChars}
                 setAlpha={setAlpha}
                 setBeta={setBeta}
                 updateKeyword={updateKeyword}

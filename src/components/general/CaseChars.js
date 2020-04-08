@@ -1,26 +1,18 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import toggleChars from '../../actions/includeChars'
 
 class CaseChars extends React.PureComponent {
-    constructor () {
-        super()
-        this.state = {
-            include: true,
-            ignore: false
-        }
-        this.changeClass = this.changeClass.bind(this)
+    constructor (props) {
+        super(props)
+        this.selectChars = this.selectChars.bind(this)
     }
 
-    changeClass(evt) {
-        if(evt.target.value === 'include') {
-            this.setState({
-                include: true,
-                ignore: false
-            })
+    selectChars(evt) {
+        if(evt.target.id === 'includeChars') {
+            this.props.toggleChars('include')
         } else {
-            this.setState({
-                include: false,
-                ignore: true
-            })
+            this.props.toggleChars('ignore')
         }
     }
 
@@ -47,20 +39,18 @@ class CaseChars extends React.PureComponent {
                     <div className="settings_operators">
                         <button 
                             id="includeChars" 
-                            className={this.state.include ? 'active' : 'inactive'} 
+                            className={this.props.includeChars === 'include' ? 'active' : 'inactive'} 
                             onClick = {(evt) => {
-                                this.props.includeChars(evt)
-                                this.changeClass(evt)
+                                this.selectChars(evt)
                             }} 
                             value="include">
                             Include
                         </button>
                         <button 
                             id="ignoreChars" 
-                            className={this.state.ignore ? 'active' : 'inactive'} 
+                            className={this.props.includeChars === 'include' ? 'inactive' : 'active'} 
                             onClick = {(evt) => {
-                                this.props.includeChars(evt)
-                                this.changeClass(evt)
+                                this.selectChars(evt)
                             }} 
                             value="ignore">
                             Ignore
@@ -72,4 +62,12 @@ class CaseChars extends React.PureComponent {
     }
 }
 
-export default CaseChars
+const mapStateToProps = state => ({
+    includeChars: state.includeChars
+})
+
+const mapActionsToProps = {
+    toggleChars: toggleChars
+}
+
+export default connect(mapStateToProps, mapActionsToProps)(CaseChars)
