@@ -4,10 +4,11 @@ import replace from './replace'
 import wordbook from './wordbook'
 import cShift from './cShift'
 import ringLength from './ringlength'
-import toggleDirection from './direction'
-import updateInput from './input'
+import direction from './direction'
+import input from './input'
 import method from './method'
 import includeChars from './includechars'
+import output from './output'
 
 export default combineReducers({
     modal,
@@ -15,8 +16,9 @@ export default combineReducers({
     wordbook,
     cShift,
     ringLength,
-    toggleDirection,
-    updateInput,
+    direction,
+    input,
     method,
-    includeChars
+    includeChars,
+    output
 })

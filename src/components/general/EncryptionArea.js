@@ -20,13 +20,12 @@ import methodNamesAll from './MethodNames'
 import { connect } from 'react-redux'
 import setWordbook from '../../actions/wordbook'
 import toggleChars from '../../actions/includeChars'
+import setOutput from '../../actions/setOutput'
 
 class EncryptionArea extends React.PureComponent {
   constructor(props) {
     super(props)
     this.state = {
-      methodNameInset: 'Skytale',
-      outputValue: 'Gsv jfrxp yildm ulc qfnkh levi gsv ozab wlt.',
       caseFormat: 'maintain',
       alphabet: 'abcdefghijklmnopqrstuvwxyz',
       affineAlpha: 5,
@@ -97,10 +96,8 @@ class EncryptionArea extends React.PureComponent {
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
-    if (prevState.outputValue !== this.state.outputValue) {
-      this.indexOfCoincidence();
-    }
     if(prevProps !== this.props) {
+      this.indexOfCoincidence()
       this.encrypt()
     }
     if(prevProps.method !== this.props.method) {
@@ -113,10 +110,6 @@ class EncryptionArea extends React.PureComponent {
       if(this.props.method === 'otp') {
         this.genRandomKey()
       }
-  
-      this.setState({
-        methodNameInset: methodNamesAll[this.props.method]
-      })
 
       this.setState({
         alphabet: 'abcdefghijklmnopqrstuvwxyz',
@@ -150,9 +143,9 @@ class EncryptionArea extends React.PureComponent {
     let letters = this.state.alphabet.split('');
 
     let input = [];
-    for (let i = 0; i < this.props.inputValue.length; i++) {
-      if (this.state.alphabet.indexOf(this.props.inputValue[i] !== -1)) {
-        input.push(this.props.inputValue[i]);
+    for (let i = 0; i < this.props.input.length; i++) {
+      if (this.state.alphabet.indexOf(this.props.input[i] !== -1)) {
+        input.push(this.props.input[i]);
       }
     }
 
@@ -173,8 +166,8 @@ class EncryptionArea extends React.PureComponent {
   calcIndexOfCoincidence(input) {
 
     //Check if input or outputfield
-    let inputState = this.props.inputValue
-    let outputState = this.state.outputValue
+    let inputState = this.props.input
+    let outputState = this.props.output
 
     if (input) {
       if (!inputState || inputState.length === 0) return;
@@ -186,7 +179,7 @@ class EncryptionArea extends React.PureComponent {
     //calc for input or output -> true = input, false = output
     let inputValue = input
       ? inputState.toString()
-      : outputState.toString();
+      : outputState.toString()
 
     //don't use foreign chars
     let cleanedInput = inputValue.split('').filter(character => {
@@ -216,7 +209,7 @@ class EncryptionArea extends React.PureComponent {
       .reduce((a, b) => a + b, 0);
 
     //final calculation with countsum and inputlength
-    let ioc = countCi / (cleanedInput.length * (cleanedInput.length - 1));
+    let ioc = countCi / (cleanedInput.length * (cleanedInput.length - 1))
 
     return !isNaN(ioc) ? ioc : '0';
   }
@@ -267,7 +260,7 @@ class EncryptionArea extends React.PureComponent {
 
   async encrypt() {
     this.setState(prevState => {
-      let input = this.props.inputValue;
+      let input = this.props.input;
       let alphabet = prevState.alphabet;
       let caseFormat = prevState.caseFormat;
       let foreignChars = this.props.includeChars;
@@ -285,22 +278,14 @@ class EncryptionArea extends React.PureComponent {
             direction, 
             caseFormat, 
             foreignChars)
-          return {
-            outputValue: Caesar.encrypt()
-          }
+            this.props.setOutput(Caesar.encrypt())
         } else if (method === 'atbash') {
-          return {
-            outputValue: Atbash.encrypt()
-          }
+            this.props.setOutput(Atbash.encrypt())
         } else if (method === 'rot13') {
           Caesar.setAll(this.props.wordbook, input, alphabet, 13, 'decrypt', caseFormat, foreignChars)
-          return {
-            outputValue: Caesar.encrypt()
-          }
+          this.props.setOutput(Caesar.encrypt())
         } else {
-          return {
-            outputValue: ''
-          }
+          this.props.setOutput('')
         }
       }
 
@@ -308,14 +293,12 @@ class EncryptionArea extends React.PureComponent {
       switch (method) {
         case 'rot13':
           Caesar.setAll(null, input, alphabet, 13, direction, caseFormat, foreignChars)
-          return {
-            outputValue: Caesar.encrypt()
-          };
+          this.props.setOutput(Caesar.encrypt())
+          break
         case 'caesar':
           Caesar.setAll(null, input, alphabet, this.props.cShift, direction, caseFormat, foreignChars)
-          return {
-            outputValue: Caesar.encrypt()
-          };
+          this.props.setOutput(Caesar.encrypt())
+          break
         case 'rsa':
           if (
             !prevState.prime_one ||
@@ -332,61 +315,60 @@ class EncryptionArea extends React.PureComponent {
           Rsa.setE(prevState.e)
 
           if (direction === 'encrypt') {
+            let n = Rsa.calcN()
+            let phi = Rsa.calcPhi()
+            let d = Rsa.calcD()
+            let output = Rsa.encrypt()[0] !== '!' ? Rsa.encrypt()[0] : Rsa.encrypt()
+            let timeToCalculate = Rsa.encrypt()[1] !== '!' ? Rsa.encrypt()[1] : 'something went wrong here'
+            this.props.setOutput(output)
             return {
-              n: Rsa.calcN(),
-              phi: Rsa.calcPhi(),
-              d: Rsa.calcD(),
-              outputValue: Rsa.encrypt()[0] !== '!' ? Rsa.encrypt()[0] : Rsa.encrypt(),
-              timeToCalculate: Rsa.encrypt()[1] !== '!' ? Rsa.encrypt()[1] : 'something went wrong here'
+              n,
+              phi,
+              d,
+              timeToCalculate
             }
           } else if (direction === 'decrypt') {
             let decrypted = Rsa.decrypt()
+            this.props.setOutput(decrypted[0])
             return {
-              outputValue: decrypted[0],
               timeToCalculate: decrypted[1]
             }
           }
           break
         case 'otp':
           Otp.setAll(input, caseFormat, foreignChars, direction, prevState.otpKey, alphabet)
-          return {
-            outputValue: Otp.encrypt()
-          }
+          this.props.setOutput(Otp.encrypt())
+          break
         case 'atbash':
           Atbash.setAll(input, caseFormat, foreignChars)
-          return {
-            outputValue: Atbash.encrypt()
-          }
+          this.props.setOutput(Atbash.encrypt())
+          break
         case 'affine':
           Affine.setAll(alphabet, input, prevState.affineAlpha, prevState.affineBeta, direction, foreignChars, caseFormat)
-          return {
-            outputValue: Affine.encrypt()
-          }
+          this.props.setOutput(Affine.encrypt())
+          break
         case 'vigenere':
           Vigenere.setAll(input, alphabet, direction, foreignChars, caseFormat, prevState.keyword)
-          return {
-            outputValue: Vigenere.encrypt()
-          }
+          this.props.setOutput(Vigenere.encrypt())
+          break
         case 'playfair':
           Playfair.setAll(input, alphabet, direction, prevState.keyword)
+          this.props.setOutput(Playfair.encrypt())
           return {
-            outputValue: Playfair.encrypt(),
             playSquare: Playfair.getSquare()
           }
         case 'morse':
           Morse.setAll(input, direction)
-          return {
-            outputValue: Morse.encrypt()
-          }
+          this.props.setOutput(Morse.encrypt())
+          break
         case 'replace':
           Replace.setAll(input, this.props.toReplaceLetter, this.props.replaceLetter)
-          return {
-            outputValue: Replace.encrypt()
-          }
+          this.props.setOutput(Replace.encrypt())
+          break
         case 'skytale':
           Skytale.setAll(direction, caseFormat, input, this.props.ringLength, foreignChars)
+          this.props.setOutput(Skytale.encrypt()[0])
           return {
-            outputValue: Skytale.encrypt()[0],
             skytaleLength: Skytale.encrypt()[1],
             skytaleProjectedValue: Skytale.getProjectedValue()
           }
@@ -408,7 +390,6 @@ class EncryptionArea extends React.PureComponent {
           <BlockSettings
             updateKeyword={this.updateKeyword}
             keyword={this.state.keyword}
-            methodNameInset={this.state.methodNameInset}
             alphabet={this.state.alphabet}
             alphabetUpdate={this.alphabetUpdate}
             selectCase={this.selectCase}
@@ -430,11 +411,9 @@ class EncryptionArea extends React.PureComponent {
             n={this.state.n}
             d={this.state.d}
             timeToCalculate={this.state.timeToCalculate}
-            skytalePlusMinus={this.skytalePlusMinus}
           />
           <BlockConnectorEquals />
           <BlockOutput
-            outputValue={this.state.outputValue}
             ioc={this.state.iocOutput}
           />
         </div>
@@ -450,15 +429,17 @@ const mapStateToProps = state => ({
   wordbook: state.wordbook,
   cShift: state.cShift,
   ringLength: state.ringLength,
-  direction: state.toggleDirection.direction,
-  inputValue: state.updateInput.inputValue,
-  method: state.method.method,
+  direction: state.direction,
+  input: state.input,
+  output: state.output,
+  method: state.method,
   includeChars: state.includeChars
 })
 
 const mapActionsToProps = {
   onSetWordbook: setWordbook,
-  toggleChars: toggleChars
+  toggleChars: toggleChars,
+  setOutput: setOutput
 }
 
 

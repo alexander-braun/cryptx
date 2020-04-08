@@ -3,6 +3,7 @@ import { ReactComponent as Caret} from './img/caret.svg'
 import { connect } from 'react-redux'
 import { toggleModal } from '../../actions/modal'
 import { toggleDirection } from '../../actions/direction'
+import MethodNames from './MethodNames'
 
 const BlockHeadSettings = (props) => {
 
@@ -28,7 +29,7 @@ const BlockHeadSettings = (props) => {
                 id="block_head_modal"
                 onClick = {toggleModal}
             >  
-                {props.methodNameInset} <Caret />
+                {MethodNames[props.method]} <Caret />
             </button>
             <div className="block_head_options">
                 <button 
@@ -67,8 +68,9 @@ const BlockHeadSettings = (props) => {
 }
 
 const mapStateToProps = state => ({
-    modalOpen: state.modal.modalOpen,
-    direction: state.toggleDirection.direction
+    modalOpen: state.modal,
+    direction: state.direction,
+    method: state.method
 })
 
 const mapActionsToProps = {

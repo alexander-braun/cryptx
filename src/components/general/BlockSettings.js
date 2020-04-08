@@ -4,11 +4,9 @@ import BlockHeadSettings from './BlockHeadSettings'
 import Settings from './settings'
 
 const BlockElementSettings = ({
-                                skytalePlusMinus,
                                 alphabet, 
                                 alphabetUpdate, 
                                 selectCase, 
-                                methodNameInset, 
                                 setAlpha,
                                 setBeta,
                                 updateKeyword,
@@ -33,9 +31,7 @@ const BlockElementSettings = ({
                                 }) => {
   return (
     <div className="block_settings">
-      <BlockHeadSettings 
-        methodNameInset={methodNameInset}
-      />
+      <BlockHeadSettings />
       <div className="block_body">
           <div className="block_body_input">
               <Settings 
@@ -63,7 +59,6 @@ const BlockElementSettings = ({
                 n = {n}
                 d = {d}
                 timeToCalculate = {timeToCalculate}
-                skytalePlusMinus = {skytalePlusMinus}
               />
               <ExplanatoryText />
           </div>

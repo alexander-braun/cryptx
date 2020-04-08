@@ -58,8 +58,8 @@ const ExplanatoryText = (props) => {
 }
 
 const mapStateToProps = state => ({
-  direction: state.toggleDirection.direction,
-  method: state.method.method
+  direction: state.direction,
+  method: state.method
 })
 
 export default connect(mapStateToProps)(ExplanatoryText)

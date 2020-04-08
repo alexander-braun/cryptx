@@ -57,7 +57,7 @@ function IndexOfCoincidence({ioc, menue}) {
     const classes = useStyles();
     
     const isThereIoc = () => {
-        if(!ioc) return 'no input'
+        if(!ioc && ioc !== 0) return 'no input'
         else return ioc
     }
 

@@ -2,12 +2,13 @@ import React from 'react'
 import ChartImporter from '../freqencyAnalysis/ChartImporter'
 import IndexOfCoincidence from '../indexOfCoincidence/IndexOfCoincidence'
 import math from './Math'
+import { connect } from 'react-redux'
 
 
 class BlockElementOutput extends React.PureComponent {
 
   componentDidUpdate(prevProps) {
-    if (prevProps.outputValue !== this.props.outputValue) {
+    if (prevProps.output !== this.props.output) {
       let textareaOutput = document.getElementById('output')
       math.autoresize(textareaOutput)
     }
@@ -24,9 +25,9 @@ class BlockElementOutput extends React.PureComponent {
                   <textarea
                     name="output" 
                     id="output" 
-                    value={this.props.outputValue ? this.props.outputValue : ''}
+                    value={this.props.output ? this.props.output : ''}
                     onChange={(evt) => {
-                      this.value = this.props.outputValue
+                      this.value = this.props.output
                       math.autoresize(evt)
                     }}
                   >
@@ -34,7 +35,7 @@ class BlockElementOutput extends React.PureComponent {
               </div>
           </div>
             <div className="chartcontainer" style={{width: '100%', borderTop: 'none'}}>
-              <ChartImporter inputValue={this.props.outputValue} menue = {'output'}/>
+              <ChartImporter inputValue={this.props.output} menue = {'output'}/>
             </div>
             <div className="chartcontainer" style={{width: '100%'}}>
               <IndexOfCoincidence ioc = {this.props.ioc} menue={'output'}/>
@@ -44,5 +45,9 @@ class BlockElementOutput extends React.PureComponent {
   }
 }
 
-export default BlockElementOutput
+const mapStateToProps = state => ({
+  output: state.output
+})
+
+export default connect(mapStateToProps)(BlockElementOutput)
 

@@ -55,7 +55,7 @@ const BlockElementInput = ({updateInput, ioc, input}) => {
 }
 
 const mapStateToProps = state => ({
-  input: state.updateInput.inputValue
+  input: state.input
 })
 
 const mapActionsToProps = {

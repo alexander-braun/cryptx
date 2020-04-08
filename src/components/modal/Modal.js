@@ -5,20 +5,11 @@ import '../../styles/modal.css'
 import { changeMethod } from '../../actions/method'
 
 class Modal extends React.Component {
-    constructor(props) {
-        super(props)
-        this.toggleModal = this.toggleModal.bind(this)
-    }
-
-    toggleModal() {
-        this.props.onModalToggle()
-    }
-
     render() {
         if(this.props.modalOpen) {
             return (
                 <div className="modal" 
-                    onClick = {this.toggleModal}
+                    onClick = {this.props.onModalToggle}
                 >
                     <div className="inner_modal">
                         <div className="block_top_decoration"></div>
@@ -174,8 +165,8 @@ class Modal extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    modalOpen: state.modal.modalOpen,
-    method: state.method.method
+    modalOpen: state.modal,
+    method: state.method
 })
 
 const mapActionsToProps = {

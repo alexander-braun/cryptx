@@ -97,7 +97,6 @@ const BlockBodyInput = ({
                     <div className="block_body_input">
                         <CaesarShift />
                         <CaesarTransposition 
-                            direction = {direction}
                             alphabet = {alphabet}
                         />
                         <Alphabet 
@@ -220,8 +219,8 @@ const BlockBodyInput = ({
 }
 
 const mapStateToProps = state => ({
-    direction: state.toggleDirection.direction,
-    method: state.method.method
+    direction: state.direction,
+    method: state.method
 })
 
 export default connect(mapStateToProps)(BlockBodyInput)

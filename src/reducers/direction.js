@@ -1,16 +1,9 @@
 import { TOGGLE_DIRECTION } from '../actions/constants'
 
-const initialState = {
-    direction: 'encrypt'
-}
-
-export default function(state = initialState, action) {
+export default function(state = 'encrypt', action) {
     switch(action.type) {
         case TOGGLE_DIRECTION:
-            return {
-                ...state,
-                direction: action.direction
-            }
+            return action.direction
         default:
             return state
     }
