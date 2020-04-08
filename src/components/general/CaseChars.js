@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import toggleChars from '../../actions/includeChars'
+import toggleCase from '../../actions/toggleCase'
 
 class CaseChars extends React.PureComponent {
     constructor (props) {
@@ -24,9 +25,9 @@ class CaseChars extends React.PureComponent {
                     <div className="settings_operators" style={{padding: '0.5rem 0.5rem 0.5rem 20px'}}>
                         <select 
                             id="selectCase" 
-                            defaultValue = 'maintain' 
+                            defaultValue = {this.props.caseformat}
                             onChange = {(evt) => {
-                                this.props.selectCase(evt)
+                                this.props.toggleCase(evt.target.value)
                             }}
                         >
                             <option value="maintain" style={{color: 'black', fontSize: '14px'}}>Maintain Case</option>
@@ -67,7 +68,8 @@ const mapStateToProps = state => ({
 })
 
 const mapActionsToProps = {
-    toggleChars: toggleChars
+    toggleChars: toggleChars,
+    toggleCase: toggleCase
 }
 
 export default connect(mapStateToProps, mapActionsToProps)(CaseChars)

@@ -21,12 +21,12 @@ import { connect } from 'react-redux'
 import setWordbook from '../../actions/wordbook'
 import toggleChars from '../../actions/includeChars'
 import setOutput from '../../actions/setOutput'
+import toggleCase from '../../actions/toggleCase'
 
 class EncryptionArea extends React.PureComponent {
   constructor(props) {
     super(props)
     this.state = {
-      caseFormat: 'maintain',
       alphabet: 'abcdefghijklmnopqrstuvwxyz',
       affineAlpha: 5,
       affineBeta: 1,
@@ -49,11 +49,10 @@ class EncryptionArea extends React.PureComponent {
       timeToCalculate: '0s',
       freqAnal1Open: false,
       freqAnal2Open: false
-    };
+    }
 
     this.encrypt = this.encrypt.bind(this)
     this.alphabetUpdate = this.alphabetUpdate.bind(this)
-    this.selectCase = this.selectCase.bind(this)
     this.updateKeyword = this.updateKeyword.bind(this)
     this.genRandomKey = this.genRandomKey.bind(this)
     this.indexOfCoincidence = this.indexOfCoincidence.bind(this)
@@ -65,13 +64,6 @@ class EncryptionArea extends React.PureComponent {
   }
 
   //General
-
-  selectCase(evt) {
-    this.setState({
-      caseFormat: evt.target.value
-    });
-    this.encrypt();
-  }
 
   alphabetUpdate(evt) {
     this.setState({
@@ -112,11 +104,8 @@ class EncryptionArea extends React.PureComponent {
       }
 
       this.setState({
-        alphabet: 'abcdefghijklmnopqrstuvwxyz',
-        caseFormat: 'maintain',
+        alphabet: 'abcdefghijklmnopqrstuvwxyz'
       })
-
-      this.props.toggleChars('include')
 
       this.encrypt();
     }
@@ -262,7 +251,7 @@ class EncryptionArea extends React.PureComponent {
     this.setState(prevState => {
       let input = this.props.input;
       let alphabet = prevState.alphabet;
-      let caseFormat = prevState.caseFormat;
+      let caseFormat = this.props.caseformat
       let foreignChars = this.props.includeChars;
       let method = this.props.method;
       let direction = this.props.direction
@@ -392,7 +381,6 @@ class EncryptionArea extends React.PureComponent {
             keyword={this.state.keyword}
             alphabet={this.state.alphabet}
             alphabetUpdate={this.alphabetUpdate}
-            selectCase={this.selectCase}
             setAlpha={this.setAlpha}
             setBeta={this.setBeta}
             playSquare={this.state.playSquare}
@@ -433,13 +421,15 @@ const mapStateToProps = state => ({
   input: state.input,
   output: state.output,
   method: state.method,
-  includeChars: state.includeChars
+  includeChars: state.includeChars,
+  caseformat: state.caseformat
 })
 
 const mapActionsToProps = {
   onSetWordbook: setWordbook,
   toggleChars: toggleChars,
-  setOutput: setOutput
+  setOutput: setOutput,
+  toggleCase: toggleCase
 }
 
 

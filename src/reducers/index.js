@@ -9,6 +9,7 @@ import input from './input'
 import method from './method'
 import includeChars from './includechars'
 import output from './output'
+import caseformat from './caseformat'
 
 export default combineReducers({
     modal,
@@ -20,5 +21,6 @@ export default combineReducers({
     input,
     method,
     includeChars,
-    output
+    output,
+    caseformat
 })
