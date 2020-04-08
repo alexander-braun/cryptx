@@ -10,6 +10,7 @@ import method from './method'
 import includeChars from './includechars'
 import output from './output'
 import caseformat from './caseformat'
+import prime1 from './prime1'
 
 export default combineReducers({
     modal,
@@ -22,5 +23,6 @@ export default combineReducers({
     method,
     includeChars,
     output,
-    caseformat
+    caseformat,
+    prime1
 })

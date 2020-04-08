@@ -20,7 +20,6 @@ import { connect } from 'react-redux'
 const BlockBodyInput = ({
                             alphabet, 
                             alphabetUpdate, 
-                            selectCase, 
                             method, 
                             setAlpha, 
                             setBeta, 
@@ -36,7 +35,6 @@ const BlockBodyInput = ({
                             setPrimeTwo,
                             setE,
                             e,
-                            prime_one,
                             prime_two,
                             phi,
                             n,
@@ -59,19 +57,15 @@ const BlockBodyInput = ({
                             alphabetUpdate = {alphabetUpdate} 
                             alphabetActive = {alphabetActive}
                         />
-                        <CaseChars 
-                            selectCase = {selectCase}
-                        />
+                        <CaseChars />
                     </div>
                 break
             case 'rsa': 
                 bodyInput = 
                     <Primes 
-                        setPrimeOne = {setPrimeOne}
                         setPrimeTwo = {setPrimeTwo}
                         setE = {setE}
                         e = {e}
-                        prime_one = {prime_one}
                         prime_two = {prime_two}
                         phi = {phi}
                         n = {n}
@@ -87,9 +81,7 @@ const BlockBodyInput = ({
                             alphabetUpdate = {alphabetUpdate} 
                             alphabetActive = {alphabetActive}
                         />
-                        <CaseChars 
-                            selectCase = {selectCase}
-                        />
+                        <CaseChars />
                     </div> 
                 break
             case 'caesar':
@@ -104,9 +96,7 @@ const BlockBodyInput = ({
                             alphabetUpdate = {alphabetUpdate} 
                             alphabetActive = {alphabetActive}
                         />
-                        <CaseChars 
-                            selectCase = {selectCase}
-                        />
+                        <CaseChars />
                     </div>
                 break
             case 'affine':
@@ -121,9 +111,7 @@ const BlockBodyInput = ({
                             alphabetUpdate = {alphabetUpdate} 
                             alphabetActive = {alphabetActive}
                         />
-                        <CaseChars 
-                            selectCase = {selectCase}
-                        />
+                        <CaseChars />
                     </div>
                 break
             case 'vigenere':
@@ -138,9 +126,7 @@ const BlockBodyInput = ({
                             alphabetUpdate = {alphabetUpdate} 
                             alphabetActive = {alphabetActive}
                         />
-                        <CaseChars 
-                            selectCase = {selectCase}
-                        />
+                        <CaseChars />
                     </div> 
                 break
             case 'playfair':
@@ -159,9 +145,7 @@ const BlockBodyInput = ({
                             alphabetUpdate = {alphabetUpdate} 
                             alphabetActive = {alphabetActive}
                         />
-                        <CaseChars 
-                            selectCase = {selectCase}
-                        />
+                        <CaseChars />
                     </div> 
                 break
             case 'morse':
@@ -184,9 +168,7 @@ const BlockBodyInput = ({
                             alphabetUpdate = {alphabetUpdate} 
                             alphabetActive = {alphabetActive}
                         />
-                        <CaseChars 
-                            selectCase = {selectCase}
-                        />
+                        <CaseChars />
                     </div>
                 break
             case 'otp':
@@ -196,9 +178,7 @@ const BlockBodyInput = ({
                             genRandomKey = {genRandomKey}
                             otpKey = {otpKey}
                         />
-                        <CaseChars 
-                            selectCase = {selectCase}
-                        />
+                        <CaseChars />
                         <Alphabet 
                             alphabet = {alphabet} 
                             alphabetUpdate = {alphabetUpdate} 

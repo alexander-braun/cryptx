@@ -6,7 +6,6 @@ import Settings from './settings'
 const BlockElementSettings = ({
                                 alphabet, 
                                 alphabetUpdate, 
-                                selectCase, 
                                 setAlpha,
                                 setBeta,
                                 updateKeyword,
@@ -22,7 +21,6 @@ const BlockElementSettings = ({
                                 setPrimeTwo,
                                 setE,
                                 e,
-                                prime_one,
                                 prime_two,
                                 phi,
                                 n,
@@ -38,7 +36,6 @@ const BlockElementSettings = ({
                 alphabetActive = {alphabetActive}
                 alphabet={alphabet}
                 alphabetUpdate={alphabetUpdate}
-                selectCase={selectCase}
                 setAlpha={setAlpha}
                 setBeta={setBeta}
                 updateKeyword={updateKeyword}
@@ -53,7 +50,6 @@ const BlockElementSettings = ({
                 setPrimeTwo = {setPrimeTwo}
                 setE = {setE}
                 e = {e}
-                prime_one = {prime_one}
                 prime_two = {prime_two}
                 phi = {phi}
                 n = {n}

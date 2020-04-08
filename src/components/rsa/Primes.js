@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import setPrime1 from '../../actions/setPrime1'
 
 
 const Primes = (props) => {
@@ -12,7 +13,7 @@ const Primes = (props) => {
                 if(numbers.indexOf(element) !== -1) cleanInput.push(element)
             }    
             return cleanInput.join('')    
-        }
+        } else return ''
     }
 
     return (
@@ -26,10 +27,10 @@ const Primes = (props) => {
                             id="prime_1" 
                             name="tentacles"
                             style={{boxShadow: 'none'}}
-                            defaultValue={props.prime_one} 
+                            defaultValue={props.prime1} 
                             onChange = {(e) => {
                                 let input = cleanPrime(e.target.value)
-                                props.setPrimeOne(input)
+                                props.setPrime1(input)
                             }}
                             >
                         </textarea>
@@ -123,4 +124,12 @@ const Primes = (props) => {
     )    
 }
 
-export default connect()(Primes)
+const mapStateToProps = state => ({
+    prime1: state.prime1
+})
+
+const mapActionsToProps = {
+    setPrime1: setPrime1
+}
+
+export default connect(mapStateToProps, mapActionsToProps)(Primes)
