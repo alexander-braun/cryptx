@@ -1,6 +1,6 @@
 import { UPDATE_INPUT } from '../actions/constants'
 
-export default function(state = 'The quick brown fox jumps over the lazy dog.', action) {
+const input = (state = 'The quick brown fox jumps over the lazy dog.', action) => {
     switch(action.type) {
         case UPDATE_INPUT:
             return action.input
@@ -8,3 +8,5 @@ export default function(state = 'The quick brown fox jumps over the lazy dog.', 
             return state
     }
 }
+
+export default input

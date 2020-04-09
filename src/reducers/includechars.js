@@ -1,6 +1,6 @@
 import { TOGGLE_INCLUDE_CHARS } from '../actions/constants'
 
-export default function(state = 'include', action) {
+const includeChars = (state = 'include', action) => {
     switch(action.type) {
         case TOGGLE_INCLUDE_CHARS:
             return action.chars
@@ -8,3 +8,5 @@ export default function(state = 'include', action) {
             return state
     }
 }
+
+export default includeChars

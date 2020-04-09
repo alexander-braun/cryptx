@@ -21,12 +21,12 @@ import setWordbook from '../../actions/wordbook'
 import toggleChars from '../../actions/includeChars'
 import setOutput from '../../actions/setOutput'
 import toggleCase from '../../actions/toggleCase'
+import updateAlphabet from '../../actions/updateAlphabet'
 
 class EncryptionArea extends React.PureComponent {
   constructor(props) {
     super(props)
     this.state = {
-      alphabet: 'abcdefghijklmnopqrstuvwxyz',
       affineAlpha: 5,
       affineBeta: 1,
       keyword: 'cipher',
@@ -37,8 +37,6 @@ class EncryptionArea extends React.PureComponent {
       otpKey: '',
       iocInput: 0,
       iocOutput: 0,
-      prime_two:
-        '290245329165570025116016487217740287508837913295571609463914348778319654489118435855243301969001872061575755804802874062021927719647357060447135321577028929269578574760547268310055056867386875959045119093967972205124270441648450825188877095173754196346551952542599226295413057787340278528252358809329',
       e: 17,
       phi: 0,
       d: 0,
@@ -49,24 +47,15 @@ class EncryptionArea extends React.PureComponent {
     }
 
     this.encrypt = this.encrypt.bind(this)
-    this.alphabetUpdate = this.alphabetUpdate.bind(this)
     this.updateKeyword = this.updateKeyword.bind(this)
     this.genRandomKey = this.genRandomKey.bind(this)
     this.indexOfCoincidence = this.indexOfCoincidence.bind(this)
     this.setAlpha = this.setAlpha.bind(this)
     this.setBeta = this.setBeta.bind(this)
-    this.setE = this.setE.bind(this);
-    this.setPrimeTwo = this.setPrimeTwo.bind(this)
+    this.setE = this.setE.bind(this)
   }
 
   //General
-
-  alphabetUpdate(evt) {
-    this.setState({
-      alphabet: evt.target.value
-    });
-    this.encrypt();
-  }
 
   updateKeyword(evt) {
     let keyword = evt.target.value.toLowerCase();
@@ -93,15 +82,17 @@ class EncryptionArea extends React.PureComponent {
         this.setState({
           alphabetActive: true
         })
+      } else {
+        this.setState({
+          alphabetActive: false
+        })
       }
   
       if(this.props.method === 'otp') {
         this.genRandomKey()
       }
-
-      this.setState({
-        alphabet: 'abcdefghijklmnopqrstuvwxyz'
-      })
+      
+      this.props.updateAlphabet('abcdefghijklmnopqrstuvwxyz')
 
       this.encrypt();
     }
@@ -125,11 +116,11 @@ class EncryptionArea extends React.PureComponent {
   // otp
   genRandomKey() {
     let randomArr = [];
-    let letters = this.state.alphabet.split('');
+    let letters = this.props.alphabet.split('');
 
     let input = [];
     for (let i = 0; i < this.props.input.length; i++) {
-      if (this.state.alphabet.indexOf(this.props.input[i] !== -1)) {
+      if (this.props.alphabet.indexOf(this.props.input[i] !== -1)) {
         input.push(this.props.input[i]);
       }
     }
@@ -166,9 +157,11 @@ class EncryptionArea extends React.PureComponent {
       ? inputState.toString()
       : outputState.toString()
 
+    let alphabet = 'abcdefghijklmnopqrstuvwxyz'
+
     //don't use foreign chars
     let cleanedInput = inputValue.split('').filter(character => {
-      return this.state.alphabet.indexOf(character.toLowerCase()) !== -1;
+      return alphabet.indexOf(character.toLowerCase()) !== -1;
     });
 
     //Return if only signs
@@ -177,7 +170,7 @@ class EncryptionArea extends React.PureComponent {
     // count all the occurences of every letter in the input
     let arrCounts = new Array(26).fill(0);
     for (let character of cleanedInput) {
-      let indexOfCharacter = this.state.alphabet.indexOf(
+      let indexOfCharacter = alphabet.indexOf(
         character.toLowerCase()
       );
       arrCounts[indexOfCharacter]++;
@@ -207,18 +200,6 @@ class EncryptionArea extends React.PureComponent {
   }
 
   //rsa
-  setPrimeTwo(val) {
-    if (!isNaN(val)) {
-      this.setState(prevState => {
-        return {
-          prime_two: val
-        };
-      });
-    }
-    if (val !== '1') {
-      this.encrypt();
-    }
-  }
 
   setE(val) {
     let tVal = val.target.value;
@@ -235,7 +216,7 @@ class EncryptionArea extends React.PureComponent {
   async encrypt() {
     this.setState(prevState => {
       let input = this.props.input;
-      let alphabet = prevState.alphabet;
+      let alphabet = this.props.alphabet;
       let caseFormat = this.props.caseformat
       let foreignChars = this.props.includeChars;
       let method = this.props.method;
@@ -274,27 +255,29 @@ class EncryptionArea extends React.PureComponent {
           this.props.setOutput(Caesar.encrypt())
           break
         case 'rsa':
-          if (
-            !this.props.prime1 ||
-            !prevState.prime_two ||
-            !prevState.e ||
-            !input ||
-            this.props.prime1 === '1' ||
-            prevState.prime_two === '1'
-          ) return null
+          console.log(this.props.prim1)
+          if (this.props.prime1 === 'bad input' ||
+              this.props.prime2 === 'bad input' ||
+              !prevState.e
+              ) {
+            return this.props.setOutput('bad input')  
+          } 
 
           Rsa.setUserInput(input)
           Rsa.setPrimeOne(this.props.prime1)
-          Rsa.setPrimeTwo(prevState.prime_two)
+          Rsa.setPrimeTwo(this.props.prime2)
           Rsa.setE(prevState.e)
 
           if (direction === 'encrypt') {
             let n = Rsa.calcN()
             let phi = Rsa.calcPhi()
             let d = Rsa.calcD()
-            let output = Rsa.encrypt()[0] !== '!' ? Rsa.encrypt()[0] : Rsa.encrypt()
-            let timeToCalculate = Rsa.encrypt()[1] !== '!' ? Rsa.encrypt()[1] : 'something went wrong here'
-            this.props.setOutput(output)
+            let timeToCalculate
+            if(input.length > 0) {
+              let output = Rsa.encrypt()[0] !== '!' ? Rsa.encrypt()[0] : Rsa.encrypt()
+              timeToCalculate = Rsa.encrypt()[1] !== '!' ? Rsa.encrypt()[1] : 'something went wrong here'
+              this.props.setOutput(output)  
+            }
             return {
               n,
               phi,
@@ -364,8 +347,6 @@ class EncryptionArea extends React.PureComponent {
           <BlockSettings
             updateKeyword={this.updateKeyword}
             keyword={this.state.keyword}
-            alphabet={this.state.alphabet}
-            alphabetUpdate={this.alphabetUpdate}
             setAlpha={this.setAlpha}
             setBeta={this.setBeta}
             playSquare={this.state.playSquare}
@@ -374,11 +355,8 @@ class EncryptionArea extends React.PureComponent {
             alphabetActive={this.state.alphabetActive}
             genRandomKey={this.genRandomKey}
             otpKey={this.state.otpKey}
-            setPrimeOne={this.setPrimeOne}
-            setPrimeTwo={this.setPrimeTwo}
             setE={this.setE}
             e={this.state.e}
-            prime_two={this.state.prime_two}
             phi={this.state.phi}
             n={this.state.n}
             d={this.state.d}
@@ -407,14 +385,17 @@ const mapStateToProps = state => ({
   method: state.method,
   includeChars: state.includeChars,
   caseformat: state.caseformat,
-  prime1: state.prime1
+  prime1: state.prime1,
+  prime2: state.prime2,
+  alphabet: state.alphabet
 })
 
 const mapActionsToProps = {
   onSetWordbook: setWordbook,
   toggleChars: toggleChars,
   setOutput: setOutput,
-  toggleCase: toggleCase
+  toggleCase: toggleCase,
+  updateAlphabet: updateAlphabet
 }
 
 

@@ -1,6 +1,9 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import updateAlphabet from '../../actions/updateAlphabet'
 
-const Alphabet = ({alphabet, alphabetUpdate, alphabetActive}) => {
+const Alphabet = ({alphabet, alphabetUpdate, alphabetActive, updateAlphabet}) => {
+  console.log(alphabetActive)
   return (
     <div className="controller">
       <div className="settings_name">Alphabet</div>
@@ -10,7 +13,7 @@ const Alphabet = ({alphabet, alphabetUpdate, alphabetActive}) => {
             value={alphabet}
             readOnly = {!alphabetActive}
             onChange = {(evt) => {
-              alphabetUpdate(evt)  
+              updateAlphabet(evt.target.value)  
             }}
           />
       </div>
@@ -18,4 +21,12 @@ const Alphabet = ({alphabet, alphabetUpdate, alphabetActive}) => {
   )
 }
 
-export default Alphabet
+const mapActionsToProps = {
+  updateAlphabet: updateAlphabet
+}
+
+const mapStateToProps = state => ({
+  alphabet: state.alphabet
+})
+
+export default connect(mapStateToProps, mapActionsToProps)(Alphabet)

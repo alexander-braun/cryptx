@@ -1,6 +1,6 @@
 import { CHANGE_METHOD } from '../actions/constants'
 
-export default function(state = 'skytale', action) {
+const method = (state = 'skytale', action) => {
     switch(action.type) {
         case CHANGE_METHOD:
             return action.method
@@ -8,3 +8,5 @@ export default function(state = 'skytale', action) {
             return state
     }
 }
+
+export default method

@@ -766,10 +766,8 @@ select {
 }
 
 .double_content.controller .controllbox .settings_operators {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  padding: 0.5rem 0.5rem 0.5rem 24px;
+  width: 100%;
+  padding: 0.5rem 24px 0.5rem 24px;
   justify-self: flex-start;
   font-size: 12pt;
 }
@@ -1308,6 +1306,7 @@ div:focus {
   }
   .block_settings {
     max-width: 70vw;
+    width: 100%;
   }
 }
 

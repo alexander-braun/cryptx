@@ -1,18 +1,18 @@
-import { TO_REPLACE_LETTER, REPLACE_LETTER } from '../actions/constants'
+import { SET_TO_REPLACE_LETTER, SET_REPLACE_LETTER } from '../actions/constants'
 
 const initialState = {
     toReplaceLetter: 'quick',
     replaceLetter: 'mean',
 }
 
-export default function(state = initialState, action) {
+const replace = (state = initialState, action) => {
     switch(action.type) {
-        case TO_REPLACE_LETTER:
+        case SET_TO_REPLACE_LETTER:
             return {
                 ...state,
                 toReplaceLetter: action.payload.toReplaceLetter
             }
-        case REPLACE_LETTER:
+        case SET_REPLACE_LETTER:
             return {
                 ...state,
                 replaceLetter: action.payload.replaceLetter
@@ -21,3 +21,5 @@ export default function(state = initialState, action) {
             return state
     }
 }
+
+export default replace

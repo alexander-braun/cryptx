@@ -58,6 +58,7 @@ const otp = (() => {
 
     const encrypt = () => {
         if(direction !== 'crack') {
+            if(userInput.length >= 0) return ''
             let rawOutput = transformText()
             return math.transformCaseAndChars(userInput, rawOutput, caseFormat, includeChars) 
         }

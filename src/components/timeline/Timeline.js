@@ -137,7 +137,7 @@ class Timeline extends React.PureComponent {
 }
 
 const mapStateToProps = state => ({
-    method: state.method.method
+    method: state.method
 })
 
 const mapActionsToProps = {

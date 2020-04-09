@@ -19,7 +19,6 @@ import { connect } from 'react-redux'
 
 const BlockBodyInput = ({
                             alphabet, 
-                            alphabetUpdate, 
                             method, 
                             setAlpha, 
                             setBeta, 
@@ -54,7 +53,6 @@ const BlockBodyInput = ({
                         />
                         <Alphabet 
                             alphabet = {alphabet} 
-                            alphabetUpdate = {alphabetUpdate} 
                             alphabetActive = {alphabetActive}
                         />
                         <CaseChars />
@@ -78,7 +76,6 @@ const BlockBodyInput = ({
                     <div className="block_body_input">
                         <Alphabet 
                             alphabet = {alphabet} 
-                            alphabetUpdate = {alphabetUpdate} 
                             alphabetActive = {alphabetActive}
                         />
                         <CaseChars />
@@ -93,7 +90,6 @@ const BlockBodyInput = ({
                         />
                         <Alphabet 
                             alphabet = {alphabet} 
-                            alphabetUpdate = {alphabetUpdate} 
                             alphabetActive = {alphabetActive}
                         />
                         <CaseChars />
@@ -108,7 +104,6 @@ const BlockBodyInput = ({
                         />
                         <Alphabet 
                             alphabet = {alphabet} 
-                            alphabetUpdate = {alphabetUpdate} 
                             alphabetActive = {alphabetActive}
                         />
                         <CaseChars />
@@ -123,7 +118,6 @@ const BlockBodyInput = ({
                         />
                         <Alphabet 
                             alphabet = {alphabet} 
-                            alphabetUpdate = {alphabetUpdate} 
                             alphabetActive = {alphabetActive}
                         />
                         <CaseChars />
@@ -142,7 +136,6 @@ const BlockBodyInput = ({
                         />
                         <Alphabet 
                             alphabet = {alphabet} 
-                            alphabetUpdate = {alphabetUpdate} 
                             alphabetActive = {alphabetActive}
                         />
                         <CaseChars />
@@ -165,7 +158,6 @@ const BlockBodyInput = ({
                         />
                         <Alphabet 
                             alphabet = {alphabet} 
-                            alphabetUpdate = {alphabetUpdate} 
                             alphabetActive = {alphabetActive}
                         />
                         <CaseChars />
@@ -181,7 +173,6 @@ const BlockBodyInput = ({
                         <CaseChars />
                         <Alphabet 
                             alphabet = {alphabet} 
-                            alphabetUpdate = {alphabetUpdate} 
                             alphabetActive = {alphabetActive}
                         />
                     </div>
@@ -200,7 +191,8 @@ const BlockBodyInput = ({
 
 const mapStateToProps = state => ({
     direction: state.direction,
-    method: state.method
+    method: state.method,
+    alphabet: state.alphabet
 })
 
 export default connect(mapStateToProps)(BlockBodyInput)

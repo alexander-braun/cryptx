@@ -1,10 +1,12 @@
-import { WORDBOOK } from '../actions/constants'
+import { SET_WORDBOOK } from '../actions/constants'
 
-export default function(state = null, action) {
+const wordbook = (state = null, action) => {
     switch(action.type) {
-        case WORDBOOK:
+        case SET_WORDBOOK:
             return action.payload.data
         default:
             return state
     }
 }
+
+export default wordbook
