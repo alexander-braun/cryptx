@@ -57,7 +57,6 @@ class EncryptionArea extends React.PureComponent {
     this.setBeta = this.setBeta.bind(this)
     this.setE = this.setE.bind(this);
     this.setPrimeTwo = this.setPrimeTwo.bind(this)
-    this.setPrimeOne = this.setPrimeOne.bind(this)
   }
 
   //General
@@ -208,17 +207,6 @@ class EncryptionArea extends React.PureComponent {
   }
 
   //rsa
-  setPrimeOne(val) {
-    if (!isNaN(val)) {
-      this.setState({
-        prime_one: val
-      });
-    }
-    if (val !== '1') {
-      this.encrypt();
-    }
-  }
-
   setPrimeTwo(val) {
     if (!isNaN(val)) {
       this.setState(prevState => {
