@@ -1,6 +1,9 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import setAffineAlpha from '../../actions/setAffineAlpha'
+import setAffineBeta from '../../actions/setAffineBeta'
 
-const Alpha = ({setAlpha, setBeta}) => {
+const AlphaBeta = (props) => {
     const optionsBeta = () => {
         const optionsArray = []
         for(let i = 0; i < 25; i++) {
@@ -17,7 +20,7 @@ const Alpha = ({setAlpha, setBeta}) => {
                         defaultValue="5" 
                         className="affine"
                         onChange = {(evt) => {
-                            setAlpha(evt)
+                            props.setAffineAlpha(evt.target.value)
                         }}
                     >
                         <option value="1">1</option>
@@ -42,7 +45,7 @@ const Alpha = ({setAlpha, setBeta}) => {
                         defaultValue="1" 
                         className="affine"
                         onChange = {(evt) => {
-                            setBeta(evt)
+                            props.setAffineBeta(evt.target.value)
                         }}
                     >   
                         {optionsBeta().map(option => option)}
@@ -53,4 +56,14 @@ const Alpha = ({setAlpha, setBeta}) => {
     )
 }
 
-export default Alpha
+const mapStateToProps = state => ({
+    affine_alpha: state.affine.affine_alpha,
+    affine_beta: state.affine.affine_beta
+})
+
+const mapActionsToProps = {
+    setAffineAlpha: setAffineAlpha,
+    setAffineBeta: setAffineBeta
+}
+
+export default connect(mapStateToProps, mapActionsToProps)(AlphaBeta)

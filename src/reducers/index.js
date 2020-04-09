@@ -15,6 +15,9 @@ import prime2 from './prime2'
 import alphabet from './alphabet'
 import keywordVigenere from './keywordVigenere'
 import keywordPlayfair from './keywordPlayfair'
+import affine from './affine'
+import otpKey from './otpKey'
+import playsquare from './playsquare'
 
 export default combineReducers({
     modal,
@@ -32,5 +35,8 @@ export default combineReducers({
     prime2,
     alphabet,
     keywordVigenere,
-    keywordPlayfair
+    keywordPlayfair,
+    affine,
+    otpKey,
+    playsquare
 })

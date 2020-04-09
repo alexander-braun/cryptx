@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { connect } from 'react-redux'
 
 class PlayfaireSquare extends React.PureComponent {
 
@@ -18,7 +18,7 @@ class PlayfaireSquare extends React.PureComponent {
                         id={ID} 
                         className="playfairTable"
                     >
-                        {this.props.playSquare[i]}
+                        {this.props.playsquare[i]}
                 </div>
             )
         }
@@ -50,4 +50,8 @@ class PlayfaireSquare extends React.PureComponent {
     }
 }
 
-export default PlayfaireSquare
+const mapStateToProps = state => ({
+    playsquare: state.playsquare
+})
+
+export default connect(mapStateToProps)(PlayfaireSquare)

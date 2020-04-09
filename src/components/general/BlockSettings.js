@@ -4,19 +4,9 @@ import BlockHeadSettings from './BlockHeadSettings'
 import Settings from './settings'
 
 const BlockElementSettings = ({
-                                setAlpha,
-                                setBeta,
-                                updateKeyword,
-                                keyword,
-                                playSquare,
                                 skytaleLength,
                                 skytaleProjectedValue,
                                 alphabetActive,
-                                updateOtpKey,
-                                genRandomKey,
-                                otpKey,
-                                setPrimeOne,
-                                setPrimeTwo,
                                 setE,
                                 e,
                                 prime_two,
@@ -32,18 +22,8 @@ const BlockElementSettings = ({
           <div className="block_body_input">
               <Settings 
                 alphabetActive = {alphabetActive}
-                setAlpha={setAlpha}
-                setBeta={setBeta}
-                updateKeyword={updateKeyword}
-                keyword={keyword}
-                playSquare = {playSquare}
                 skytaleLength = {skytaleLength}
                 skytaleProjectedValue = {skytaleProjectedValue}
-                updateOtpKey = {updateOtpKey}
-                genRandomKey = {genRandomKey}
-                otpKey = {otpKey}
-                setPrimeOne = {setPrimeOne}
-                setPrimeTwo = {setPrimeTwo}
                 setE = {setE}
                 e = {e}
                 prime_two = {prime_two}

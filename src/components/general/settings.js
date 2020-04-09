@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 import CaesarShift from '../caesar/CaesarShift'
 import Alphabet from './Alphabet'
 import CaseChars from './CaseChars'
-import Alpha from '../affine/Alpha'
+import AlphaBeta from '../affine/AlphaBeta'
 import KeywordVigenere from '../vigenere/KeywordVigenere'
 import KeywordPlayfair from '../playfair/KeywordPlayfair'
 import CharOptions from '../playfair/CharOptions'
@@ -20,18 +20,9 @@ import { connect } from 'react-redux'
 const BlockBodyInput = ({
                             alphabet, 
                             method, 
-                            setAlpha, 
-                            setBeta, 
-                            updateKeyword,
-                            keyword,
-                            playSquare,
                             skytaleLength,
                             skytaleProjectedValue,
                             alphabetActive,
-                            otpKey,
-                            genRandomKey,
-                            setPrimeOne,
-                            setPrimeTwo,
                             setE,
                             e,
                             prime_two,
@@ -61,7 +52,6 @@ const BlockBodyInput = ({
             case 'rsa': 
                 bodyInput = 
                     <Primes 
-                        setPrimeTwo = {setPrimeTwo}
                         setE = {setE}
                         e = {e}
                         prime_two = {prime_two}
@@ -98,10 +88,7 @@ const BlockBodyInput = ({
             case 'affine':
                 bodyInput = 
                     <div className="block_body_input">
-                        <Alpha
-                            setAlpha = {setAlpha}
-                            setBeta = {setBeta}
-                        />
+                        <AlphaBeta />
                         <Alphabet 
                             alphabet = {alphabet} 
                             alphabetActive = {alphabetActive}
@@ -112,10 +99,7 @@ const BlockBodyInput = ({
             case 'vigenere':
                 bodyInput = 
                     <div className="block_body_input">
-                        <KeywordVigenere
-                            updateKeyword={updateKeyword}
-                            keyword={keyword}
-                        />
+                        <KeywordVigenere />
                         <Alphabet 
                             alphabet = {alphabet} 
                             alphabetActive = {alphabetActive}
@@ -126,14 +110,9 @@ const BlockBodyInput = ({
             case 'playfair':
                 bodyInput = 
                     <div className="block_body_input">
-                        <PlayfairSquare 
-                            playSquare={playSquare}
-                        />
+                        <PlayfairSquare />
                         <CharOptions />
-                        <KeywordPlayfair
-                            updateKeyword={updateKeyword}
-                            keyword={keyword}
-                        />
+                        <KeywordPlayfair />
                         <Alphabet 
                             alphabet = {alphabet} 
                             alphabetActive = {alphabetActive}
@@ -166,10 +145,7 @@ const BlockBodyInput = ({
             case 'otp':
                 bodyInput = 
                     <div>
-                        <OtpGenerate 
-                            genRandomKey = {genRandomKey}
-                            otpKey = {otpKey}
-                        />
+                        <OtpGenerate />
                         <CaseChars />
                         <Alphabet 
                             alphabet = {alphabet} 

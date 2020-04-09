@@ -22,18 +22,16 @@ import toggleChars from '../../actions/includeChars'
 import setOutput from '../../actions/setOutput'
 import toggleCase from '../../actions/toggleCase'
 import updateAlphabet from '../../actions/updateAlphabet'
+import setOtpKey from '../../actions/setOtpKey'
+import setPlaysquare from '../../actions/setPlaysquare'
 
 class EncryptionArea extends React.PureComponent {
   constructor(props) {
     super(props)
     this.state = {
-      affineAlpha: 5,
-      affineBeta: 1,
-      playSquare: '',
       skytaleLength: 1,
       skytaleProjectedValue: '',
       alphabetActive: false,
-      otpKey: '',
       iocInput: 0,
       iocOutput: 0,
       e: 17,
@@ -46,10 +44,7 @@ class EncryptionArea extends React.PureComponent {
     }
 
     this.encrypt = this.encrypt.bind(this)
-    this.genRandomKey = this.genRandomKey.bind(this)
     this.indexOfCoincidence = this.indexOfCoincidence.bind(this)
-    this.setAlpha = this.setAlpha.bind(this)
-    this.setBeta = this.setBeta.bind(this)
     this.setE = this.setE.bind(this)
   }
 
@@ -77,10 +72,6 @@ class EncryptionArea extends React.PureComponent {
           alphabetActive: false
         })
       }
-  
-      if(this.props.method === 'otp') {
-        this.genRandomKey()
-      }
       
       this.props.updateAlphabet('abcdefghijklmnopqrstuvwxyz')
 
@@ -88,45 +79,6 @@ class EncryptionArea extends React.PureComponent {
     }
   }
 
-  //Affine
-  setAlpha(evt) {
-    this.setState({
-      affineAlpha: evt.target.value
-    });
-    this.encrypt();
-  }
-
-  setBeta(evt) {
-    this.setState({
-      affineBeta: evt.target.value
-    });
-    this.encrypt();
-  }
-
-  // otp
-  genRandomKey() {
-    let randomArr = [];
-    let letters = this.props.alphabet.split('');
-
-    let input = [];
-    for (let i = 0; i < this.props.input.length; i++) {
-      if (this.props.alphabet.indexOf(this.props.input[i] !== -1)) {
-        input.push(this.props.input[i]);
-      }
-    }
-
-    let userInputLength = input.length;
-
-    for (let i = 0; i < userInputLength; i++) {
-      randomArr.push(letters[Math.floor(Math.random() * 26)]);
-    }
-
-    this.setState({
-      otpKey: randomArr.join('')
-    });
-
-    this.encrypt();
-  }
 
   //ioc
   calcIndexOfCoincidence(input) {
@@ -272,7 +224,7 @@ class EncryptionArea extends React.PureComponent {
           }
           break
         case 'otp':
-          Otp.setAll(input, caseFormat, foreignChars, direction, prevState.otpKey, alphabet)
+          Otp.setAll(input, caseFormat, foreignChars, direction, this.props.otpKey, alphabet)
           this.props.setOutput(Otp.encrypt())
           break
         case 'atbash':
@@ -280,7 +232,7 @@ class EncryptionArea extends React.PureComponent {
           this.props.setOutput(Atbash.encrypt())
           break
         case 'affine':
-          Affine.setAll(alphabet, input, prevState.affineAlpha, prevState.affineBeta, direction, foreignChars, caseFormat)
+          Affine.setAll(alphabet, input, this.props.affine_alpha, this.props.affine_beta, direction, foreignChars, caseFormat)
           this.props.setOutput(Affine.encrypt())
           break
         case 'vigenere':
@@ -290,9 +242,8 @@ class EncryptionArea extends React.PureComponent {
         case 'playfair':
           Playfair.setAll(input, alphabet, direction, this.props.keywordPlayfair)
           this.props.setOutput(Playfair.encrypt())
-          return {
-            playSquare: Playfair.getSquare()
-          }
+          this.props.setPlaysquare(Playfair.getSquare())
+          break
         case 'morse':
           Morse.setAll(input, direction)
           this.props.setOutput(Morse.encrypt())
@@ -324,14 +275,9 @@ class EncryptionArea extends React.PureComponent {
           />
           <BlockConnectorPlus />
           <BlockSettings
-            setAlpha={this.setAlpha}
-            setBeta={this.setBeta}
-            playSquare={this.state.playSquare}
             skytaleLength={this.state.skytaleLength}
             skytaleProjectedValue={this.state.skytaleProjectedValue}
             alphabetActive={this.state.alphabetActive}
-            genRandomKey={this.genRandomKey}
-            otpKey={this.state.otpKey}
             setE={this.setE}
             e={this.state.e}
             phi={this.state.phi}
@@ -366,7 +312,11 @@ const mapStateToProps = state => ({
   prime2: state.prime2,
   alphabet: state.alphabet,
   keywordVigenere: state.keywordVigenere,
-  keywordPlayfair: state.keywordPlayfair
+  keywordPlayfair: state.keywordPlayfair,
+  affine_alpha: state.affine.affine_alpha,
+  affine_beta: state.affine.affine_beta,
+  otpKey: state.otpKey,
+  playSquare: state.playSquare
 })
 
 const mapActionsToProps = {
@@ -374,7 +324,9 @@ const mapActionsToProps = {
   toggleChars: toggleChars,
   setOutput: setOutput,
   toggleCase: toggleCase,
-  updateAlphabet: updateAlphabet
+  updateAlphabet: updateAlphabet,
+  setOtpKey: setOtpKey,
+  setPlaysquare: setPlaysquare
 }
 
 
