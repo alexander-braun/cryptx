@@ -11,6 +11,7 @@ import includeChars from './includechars'
 import output from './output'
 import caseformat from './caseformat'
 import prime1 from './prime1'
+import alphabet from './alphabet'
 
 export default combineReducers({
     modal,
@@ -24,5 +25,6 @@ export default combineReducers({
     includeChars,
     output,
     caseformat,
-    prime1
+    prime1,
+    alphabet
 })

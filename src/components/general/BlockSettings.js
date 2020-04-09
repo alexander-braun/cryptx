@@ -4,8 +4,6 @@ import BlockHeadSettings from './BlockHeadSettings'
 import Settings from './settings'
 
 const BlockElementSettings = ({
-                                alphabet, 
-                                alphabetUpdate, 
                                 setAlpha,
                                 setBeta,
                                 updateKeyword,
@@ -34,8 +32,6 @@ const BlockElementSettings = ({
           <div className="block_body_input">
               <Settings 
                 alphabetActive = {alphabetActive}
-                alphabet={alphabet}
-                alphabetUpdate={alphabetUpdate}
                 setAlpha={setAlpha}
                 setBeta={setBeta}
                 updateKeyword={updateKeyword}

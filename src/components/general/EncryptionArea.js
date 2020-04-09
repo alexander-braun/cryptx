@@ -21,12 +21,12 @@ import setWordbook from '../../actions/wordbook'
 import toggleChars from '../../actions/includeChars'
 import setOutput from '../../actions/setOutput'
 import toggleCase from '../../actions/toggleCase'
+import updateAlphabet from '../../actions/updateAlphabet'
 
 class EncryptionArea extends React.PureComponent {
   constructor(props) {
     super(props)
     this.state = {
-      alphabet: 'abcdefghijklmnopqrstuvwxyz',
       affineAlpha: 5,
       affineBeta: 1,
       keyword: 'cipher',
@@ -49,7 +49,6 @@ class EncryptionArea extends React.PureComponent {
     }
 
     this.encrypt = this.encrypt.bind(this)
-    this.alphabetUpdate = this.alphabetUpdate.bind(this)
     this.updateKeyword = this.updateKeyword.bind(this)
     this.genRandomKey = this.genRandomKey.bind(this)
     this.indexOfCoincidence = this.indexOfCoincidence.bind(this)
@@ -61,13 +60,6 @@ class EncryptionArea extends React.PureComponent {
   }
 
   //General
-
-  alphabetUpdate(evt) {
-    this.setState({
-      alphabet: evt.target.value
-    });
-    this.encrypt();
-  }
 
   updateKeyword(evt) {
     let keyword = evt.target.value.toLowerCase();
@@ -94,15 +86,17 @@ class EncryptionArea extends React.PureComponent {
         this.setState({
           alphabetActive: true
         })
+      } else {
+        this.setState({
+          alphabetActive: false
+        })
       }
   
       if(this.props.method === 'otp') {
         this.genRandomKey()
       }
-
-      this.setState({
-        alphabet: 'abcdefghijklmnopqrstuvwxyz'
-      })
+      
+      this.props.updateAlphabet('abcdefghijklmnopqrstuvwxyz')
 
       this.encrypt();
     }
@@ -126,11 +120,11 @@ class EncryptionArea extends React.PureComponent {
   // otp
   genRandomKey() {
     let randomArr = [];
-    let letters = this.state.alphabet.split('');
+    let letters = this.props.alphabet.split('');
 
     let input = [];
     for (let i = 0; i < this.props.input.length; i++) {
-      if (this.state.alphabet.indexOf(this.props.input[i] !== -1)) {
+      if (this.props.alphabet.indexOf(this.props.input[i] !== -1)) {
         input.push(this.props.input[i]);
       }
     }
@@ -167,9 +161,11 @@ class EncryptionArea extends React.PureComponent {
       ? inputState.toString()
       : outputState.toString()
 
+    let alphabet = 'abcdefghijklmnopqrstuvwxyz'
+
     //don't use foreign chars
     let cleanedInput = inputValue.split('').filter(character => {
-      return this.state.alphabet.indexOf(character.toLowerCase()) !== -1;
+      return alphabet.indexOf(character.toLowerCase()) !== -1;
     });
 
     //Return if only signs
@@ -178,7 +174,7 @@ class EncryptionArea extends React.PureComponent {
     // count all the occurences of every letter in the input
     let arrCounts = new Array(26).fill(0);
     for (let character of cleanedInput) {
-      let indexOfCharacter = this.state.alphabet.indexOf(
+      let indexOfCharacter = alphabet.indexOf(
         character.toLowerCase()
       );
       arrCounts[indexOfCharacter]++;
@@ -247,7 +243,7 @@ class EncryptionArea extends React.PureComponent {
   async encrypt() {
     this.setState(prevState => {
       let input = this.props.input;
-      let alphabet = prevState.alphabet;
+      let alphabet = this.props.alphabet;
       let caseFormat = this.props.caseformat
       let foreignChars = this.props.includeChars;
       let method = this.props.method;
@@ -378,8 +374,6 @@ class EncryptionArea extends React.PureComponent {
           <BlockSettings
             updateKeyword={this.updateKeyword}
             keyword={this.state.keyword}
-            alphabet={this.state.alphabet}
-            alphabetUpdate={this.alphabetUpdate}
             setAlpha={this.setAlpha}
             setBeta={this.setBeta}
             playSquare={this.state.playSquare}
@@ -421,14 +415,16 @@ const mapStateToProps = state => ({
   method: state.method,
   includeChars: state.includeChars,
   caseformat: state.caseformat,
-  prime1: state.prime1
+  prime1: state.prime1,
+  alphabet: state.alphabet
 })
 
 const mapActionsToProps = {
   onSetWordbook: setWordbook,
   toggleChars: toggleChars,
   setOutput: setOutput,
-  toggleCase: toggleCase
+  toggleCase: toggleCase,
+  updateAlphabet: updateAlphabet
 }
 
 
