@@ -13,6 +13,8 @@ import caseformat from './caseformat'
 import prime1 from './prime1'
 import prime2 from './prime2'
 import alphabet from './alphabet'
+import keywordVigenere from './keywordVigenere'
+import keywordPlayfair from './keywordPlayfair'
 
 export default combineReducers({
     modal,
@@ -28,5 +30,7 @@ export default combineReducers({
     caseformat,
     prime1,
     prime2,
-    alphabet
+    alphabet,
+    keywordVigenere,
+    keywordPlayfair
 })

@@ -1,6 +1,8 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import setKeywordPlayfair from '../../actions/setKeywordPlayfair'
 
-const KeywordPlayfair = ({keyword, updateKeyword, removeSubstLetter}) => {
+const KeywordPlayfair = ({keywordPlayfair, setKeywordPlayfair}) => {
   
   return (
     <div className="controller">
@@ -8,9 +10,9 @@ const KeywordPlayfair = ({keyword, updateKeyword, removeSubstLetter}) => {
       <div className="settings_operators">
           <textarea 
             id="alphabet" 
-            defaultValue={keyword} 
+            defaultValue={keywordPlayfair} 
             onChange = {(evt) => {
-                updateKeyword(evt)
+                setKeywordPlayfair(evt.target.value.toLowerCase())
             }}
             style={{boxShadow:'none'}}
           />
@@ -20,4 +22,12 @@ const KeywordPlayfair = ({keyword, updateKeyword, removeSubstLetter}) => {
   )
 }
 
-export default KeywordPlayfair
+const mapStateToProps = state => ({
+  keywordPlayfair: state.keywordPlayfair
+})
+
+const mapActionsToProps = {
+  setKeywordPlayfair: setKeywordPlayfair
+}
+
+export default connect(mapStateToProps, mapActionsToProps)(KeywordPlayfair)

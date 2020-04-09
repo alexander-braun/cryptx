@@ -2,8 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import updateAlphabet from '../../actions/updateAlphabet'
 
-const Alphabet = ({alphabet, alphabetUpdate, alphabetActive, updateAlphabet}) => {
-  console.log(alphabetActive)
+const Alphabet = ({alphabet, alphabetActive, updateAlphabet}) => {
   return (
     <div className="controller">
       <div className="settings_name">Alphabet</div>

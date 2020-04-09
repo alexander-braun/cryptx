@@ -29,7 +29,6 @@ class EncryptionArea extends React.PureComponent {
     this.state = {
       affineAlpha: 5,
       affineBeta: 1,
-      keyword: 'cipher',
       playSquare: '',
       skytaleLength: 1,
       skytaleProjectedValue: '',
@@ -47,7 +46,6 @@ class EncryptionArea extends React.PureComponent {
     }
 
     this.encrypt = this.encrypt.bind(this)
-    this.updateKeyword = this.updateKeyword.bind(this)
     this.genRandomKey = this.genRandomKey.bind(this)
     this.indexOfCoincidence = this.indexOfCoincidence.bind(this)
     this.setAlpha = this.setAlpha.bind(this)
@@ -56,14 +54,6 @@ class EncryptionArea extends React.PureComponent {
   }
 
   //General
-
-  updateKeyword(evt) {
-    let keyword = evt.target.value.toLowerCase();
-    this.setState({
-      keyword: keyword
-    });
-    this.encrypt();
-  }
 
   async componentDidMount() {
     this.encrypt()
@@ -224,23 +214,13 @@ class EncryptionArea extends React.PureComponent {
 
       // IF DIR = CRACK
       if (direction === 'crack') {
-        if (method === 'caesar') {
-          Caesar.setAll(
-            this.props.wordbook, 
-            input, 
-            alphabet, 
-            this.props.cShift, 
-            direction, 
-            caseFormat, 
-            foreignChars)
-            this.props.setOutput(Caesar.encrypt())
+        if (method === 'caesar' || method === 'rot13') {
+          Caesar.setAll(this.props.wordbook, input, alphabet, method === 'rot13' ? 13 : this.props.cShift, direction, caseFormat, foreignChars)
+          return this.props.setOutput(Caesar.encrypt())
         } else if (method === 'atbash') {
-            this.props.setOutput(Atbash.encrypt())
-        } else if (method === 'rot13') {
-          Caesar.setAll(this.props.wordbook, input, alphabet, 13, 'decrypt', caseFormat, foreignChars)
-          this.props.setOutput(Caesar.encrypt())
+            return this.props.setOutput(Atbash.encrypt())
         } else {
-          this.props.setOutput('')
+          return this.props.setOutput('')
         }
       }
 
@@ -255,7 +235,6 @@ class EncryptionArea extends React.PureComponent {
           this.props.setOutput(Caesar.encrypt())
           break
         case 'rsa':
-          console.log(this.props.prim1)
           if (this.props.prime1 === 'bad input' ||
               this.props.prime2 === 'bad input' ||
               !prevState.e
@@ -305,11 +284,11 @@ class EncryptionArea extends React.PureComponent {
           this.props.setOutput(Affine.encrypt())
           break
         case 'vigenere':
-          Vigenere.setAll(input, alphabet, direction, foreignChars, caseFormat, prevState.keyword)
+          Vigenere.setAll(input, alphabet, direction, foreignChars, caseFormat, this.props.keywordVigenere)
           this.props.setOutput(Vigenere.encrypt())
           break
         case 'playfair':
-          Playfair.setAll(input, alphabet, direction, prevState.keyword)
+          Playfair.setAll(input, alphabet, direction, this.props.keywordPlayfair)
           this.props.setOutput(Playfair.encrypt())
           return {
             playSquare: Playfair.getSquare()
@@ -345,8 +324,6 @@ class EncryptionArea extends React.PureComponent {
           />
           <BlockConnectorPlus />
           <BlockSettings
-            updateKeyword={this.updateKeyword}
-            keyword={this.state.keyword}
             setAlpha={this.setAlpha}
             setBeta={this.setBeta}
             playSquare={this.state.playSquare}
@@ -387,7 +364,9 @@ const mapStateToProps = state => ({
   caseformat: state.caseformat,
   prime1: state.prime1,
   prime2: state.prime2,
-  alphabet: state.alphabet
+  alphabet: state.alphabet,
+  keywordVigenere: state.keywordVigenere,
+  keywordPlayfair: state.keywordPlayfair
 })
 
 const mapActionsToProps = {
