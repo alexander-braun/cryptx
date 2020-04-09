@@ -290,7 +290,6 @@ class EncryptionArea extends React.PureComponent {
             !this.props.prime1 ||
             !prevState.prime_two ||
             !prevState.e ||
-            !input ||
             this.props.prime1 === '1' ||
             prevState.prime_two === '1'
           ) return null
@@ -304,9 +303,12 @@ class EncryptionArea extends React.PureComponent {
             let n = Rsa.calcN()
             let phi = Rsa.calcPhi()
             let d = Rsa.calcD()
-            let output = Rsa.encrypt()[0] !== '!' ? Rsa.encrypt()[0] : Rsa.encrypt()
-            let timeToCalculate = Rsa.encrypt()[1] !== '!' ? Rsa.encrypt()[1] : 'something went wrong here'
-            this.props.setOutput(output)
+            let timeToCalculate
+            if(input.length > 0) {
+              let output = Rsa.encrypt()[0] !== '!' ? Rsa.encrypt()[0] : Rsa.encrypt()
+              timeToCalculate = Rsa.encrypt()[1] !== '!' ? Rsa.encrypt()[1] : 'something went wrong here'
+              this.props.setOutput(output)  
+            }
             return {
               n,
               phi,

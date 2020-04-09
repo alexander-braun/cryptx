@@ -1,6 +1,6 @@
 import { TOGGLE_CASEFORMAT } from '../actions/constants'
 
-export default function(state = 'maintain', action) {
+const caseformat = (state = 'maintain', action) => {
     switch(action.type) {
         case TOGGLE_CASEFORMAT:
             return action.caseformat
@@ -8,3 +8,5 @@ export default function(state = 'maintain', action) {
             return state
     }
 }
+
+export default caseformat
