@@ -11,6 +11,7 @@ import includeChars from './includechars'
 import output from './output'
 import caseformat from './caseformat'
 import prime1 from './prime1'
+import prime2 from './prime2'
 import alphabet from './alphabet'
 
 export default combineReducers({
@@ -26,5 +27,6 @@ export default combineReducers({
     output,
     caseformat,
     prime1,
+    prime2,
     alphabet
 })

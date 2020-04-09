@@ -37,8 +37,6 @@ class EncryptionArea extends React.PureComponent {
       otpKey: '',
       iocInput: 0,
       iocOutput: 0,
-      prime_two:
-        '290245329165570025116016487217740287508837913295571609463914348778319654489118435855243301969001872061575755804802874062021927719647357060447135321577028929269578574760547268310055056867386875959045119093967972205124270441648450825188877095173754196346551952542599226295413057787340278528252358809329',
       e: 17,
       phi: 0,
       d: 0,
@@ -54,9 +52,7 @@ class EncryptionArea extends React.PureComponent {
     this.indexOfCoincidence = this.indexOfCoincidence.bind(this)
     this.setAlpha = this.setAlpha.bind(this)
     this.setBeta = this.setBeta.bind(this)
-    this.setE = this.setE.bind(this);
-    this.setPrimeTwo = this.setPrimeTwo.bind(this)
-    this.setPrimeOne = this.setPrimeOne.bind(this)
+    this.setE = this.setE.bind(this)
   }
 
   //General
@@ -204,29 +200,6 @@ class EncryptionArea extends React.PureComponent {
   }
 
   //rsa
-  setPrimeOne(val) {
-    if (!isNaN(val)) {
-      this.setState({
-        prime_one: val
-      });
-    }
-    if (val !== '1') {
-      this.encrypt();
-    }
-  }
-
-  setPrimeTwo(val) {
-    if (!isNaN(val)) {
-      this.setState(prevState => {
-        return {
-          prime_two: val
-        };
-      });
-    }
-    if (val !== '1') {
-      this.encrypt();
-    }
-  }
 
   setE(val) {
     let tVal = val.target.value;
@@ -282,17 +255,17 @@ class EncryptionArea extends React.PureComponent {
           this.props.setOutput(Caesar.encrypt())
           break
         case 'rsa':
-          if (
-            !this.props.prime1 ||
-            !prevState.prime_two ||
-            !prevState.e ||
-            this.props.prime1 === '1' ||
-            prevState.prime_two === '1'
-          ) return null
+          console.log(this.props.prim1)
+          if (this.props.prime1 === 'bad input' ||
+              this.props.prime2 === 'bad input' ||
+              !prevState.e
+              ) {
+            return this.props.setOutput('bad input')  
+          } 
 
           Rsa.setUserInput(input)
           Rsa.setPrimeOne(this.props.prime1)
-          Rsa.setPrimeTwo(prevState.prime_two)
+          Rsa.setPrimeTwo(this.props.prime2)
           Rsa.setE(prevState.e)
 
           if (direction === 'encrypt') {
@@ -382,11 +355,8 @@ class EncryptionArea extends React.PureComponent {
             alphabetActive={this.state.alphabetActive}
             genRandomKey={this.genRandomKey}
             otpKey={this.state.otpKey}
-            setPrimeOne={this.setPrimeOne}
-            setPrimeTwo={this.setPrimeTwo}
             setE={this.setE}
             e={this.state.e}
-            prime_two={this.state.prime_two}
             phi={this.state.phi}
             n={this.state.n}
             d={this.state.d}
@@ -416,6 +386,7 @@ const mapStateToProps = state => ({
   includeChars: state.includeChars,
   caseformat: state.caseformat,
   prime1: state.prime1,
+  prime2: state.prime2,
   alphabet: state.alphabet
 })
 
