@@ -1,0 +1,50 @@
+#header_margin {
+  background-color: transparent;
+  width: 100vw;
+}
+
+.site_title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.site_title a {
+  text-decoration: none;
+}
+
+.site_title a p {
+  color: white;
+}
+
+.site_title img {
+  margin-left: 10px;
+}
+
+.site_title p {
+  -webkit-transition-duration: 100ms;
+          transition-duration: 100ms;
+  font-size: 30pt;
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 1;
+  outline: none;
+}
+
+#keyimage {
+  width: 1.75em;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  justify-self: flex-start;
+  margin-top: 5px;
+}
+/*# sourceMappingURL=header.css.map */

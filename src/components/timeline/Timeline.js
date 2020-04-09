@@ -82,6 +82,7 @@ class Timeline extends React.PureComponent {
     }
     
     render() {
+        console.log(this.props.method)
         const settings = {
             infinite: true,
             speed: 500,
@@ -137,7 +138,7 @@ class Timeline extends React.PureComponent {
 }
 
 const mapStateToProps = state => ({
-    method: state.method.method
+    method: state.method
 })
 
 const mapActionsToProps = {

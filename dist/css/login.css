@@ -1,0 +1,91 @@
+#login_section, #signup_section {
+  min-height: calc(100vh - 110px);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+#login_section .MuiAvatar-colorDefault, #signup_section .MuiAvatar-colorDefault {
+  background-color: #4ab2ee;
+}
+
+#login_section .MuiTypography-colorTextSecondary, #signup_section .MuiTypography-colorTextSecondary {
+  color: rgba(255, 255, 255, 0.54);
+}
+
+#login_section .MuiTypography-colorPrimary, #signup_section .MuiTypography-colorPrimary {
+  color: #4ab2eec0;
+}
+
+#login_section .MuiCheckbox-root, #signup_section .MuiCheckbox-root {
+  color: rgba(255, 255, 255, 0.54);
+}
+
+#login_section .MuiFormLabel-root, #signup_section .MuiFormLabel-root {
+  color: rgba(255, 255, 255, 0.54);
+}
+
+#login_section .MuiInputBase-root, #signup_section .MuiInputBase-root {
+  color: white;
+}
+
+#login_section legend span, #signup_section legend span {
+  color: white !important;
+}
+
+#login_section .MuiFormLabel-filled, #signup_section .MuiFormLabel-filled {
+  color: #949494;
+}
+
+#login_section, #signup_section {
+  background-color: #212121;
+}
+
+#login_form .MuiContainer-root {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+#login_form .MuiButton-containedPrimary, #signup_form .MuiButton-containedPrimary {
+  background-color: #4ab2ee !important;
+}
+
+#login_form .makeStyles-avatar-2, #signup_form .makeStyles-avatar-2 {
+  background-color: #4ab2ee !important;
+}
+
+.MuiOutlinedInput-notchedOutline {
+  border-color: rgba(255, 255, 255, 0.23) !important;
+}
+
+#signup_form {
+  display: -ms-grid;
+  display: grid;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 15vw;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+/*# sourceMappingURL=login.css.map */
