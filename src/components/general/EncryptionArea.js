@@ -40,7 +40,6 @@ class EncryptionArea extends React.PureComponent {
       alphabetActive: false,
       e: 17
     }
-
     this.encrypt = this.encrypt.bind(this)
     this.setE = this.setE.bind(this)
   }
@@ -64,15 +63,17 @@ class EncryptionArea extends React.PureComponent {
             prevProps.input !== this.props.input ||
             prevState.e !== this.state.e ||
             prevProps.direction !== this.props.direction ||
-            prevProps.method !== this.props.method) {
+            prevProps.method !== this.props.method ||
+            prevProps.prime1 !== this.props.prime1 ||
+            prevProps.prime2 !== this.props.prime2) {
               this.encrypt()
-            }
+        }
       }
       else {
         this.encrypt()  
       }
     }
-    if(prevProps.input !== this.props.input) {
+    if(prevProps.input !== this.props.input || prevProps.output !== this.props.output) {
       this.props.setIocInput(this.calcIndexOfCoincidence(true))
       this.props.setIocOutput(this.calcIndexOfCoincidence(false))
     }
@@ -160,7 +161,7 @@ class EncryptionArea extends React.PureComponent {
   }
 
   async encrypt() {
-    this.setState((prevState, props) => {
+    this.setState(prevState => {
       let input = this.props.input;
       let alphabet = this.props.alphabet;
       let caseFormat = this.props.caseformat
@@ -210,32 +211,13 @@ class EncryptionArea extends React.PureComponent {
 
           if (direction === 'encrypt') {
             let output = Rsa.encrypt()
-            console.log(output)
-            if(output !== undefined && output[0] === '!') {
-              this.props.setOutput(output)
-              break
-            }
-            if(output !== undefined && output[0] && output[1]) {
-              this.props.setOutput(output[0])  
-              this.props.setTimeToCalculate(output[1])  
-              break
-            } else {
-              this.props.setOutput('Something went wrong')
-              break
-            }
+            this.props.setOutput(output[0])  
+            this.props.setTimeToCalculate(output[1])  
+            break
           } else {
             let output = Rsa.decrypt()
-            if(output !== undefined && (output[0] === '!' || output[0] === 'P')) {
-              this.props.setOutput(output)
-              break
-            }
-            if(output !== undefined && output[0] && output[1]) {
-              this.props.setOutput(output[0])
-              this.props.setTimeToCalculate(output[1])  
-            } else {
-              this.props.setOutput('Something went wrong')
-              break
-            }
+            this.props.setOutput(output[0])
+            this.props.setTimeToCalculate(output[1]) 
             break
           }
         case 'otp':

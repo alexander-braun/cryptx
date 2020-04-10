@@ -58,7 +58,7 @@ const Rsa = (() => {
 
         //First check if phi and e are coprime otherwise this is a waste of time.
         let gcd = bigintModArith.gcd(BigInt(phi), BigInt(e))
-        if (gcd !== BigInt(1)) return '!!! φ(n) and e are not coprime - gcd of φ(n) and e is ' + gcd + ' Please check that you have two prime numbers and an appropriate e without a common gcd!!!'
+        if (gcd !== BigInt(1)) return ['!!! φ(n) and e are not coprime - gcd of φ(n) and e is ' + gcd + ' Please check that you have two prime numbers and an appropriate e without a common gcd!!!', '']
 
         if(!userInput || !e || !n) return
         //Convert Input to Dezimal to get an encryptable number
@@ -87,7 +87,7 @@ const Rsa = (() => {
         let alphabet = 'abcdefghijklmnopqrstuvwxyz'
 
         for(let i = 0; i < userInput.length; i++) {
-            if(alphabet.indexOf(userInput[i]) !== -1) return `Please don't enter anything but a big number into the input field when you decrypt something.`
+            if(alphabet.indexOf(userInput[i]) !== -1) return [`Please don't enter anything but a big number into the input field when you decrypt something.`, '']
         }
 
         let decryptedDEZ = bigintModArith.modPow(userInput, d, n).toString()
@@ -103,8 +103,7 @@ const Rsa = (() => {
                 decryptedDEZ = decryptedDEZ.slice(2)
             }
             else {
-                console.log(decryptedDEZ)
-                return
+                return ['Something went wrong...', '']
             } 
         }
         
@@ -118,6 +117,7 @@ const Rsa = (() => {
 
         if(!decryptedLetters || !t1 || !t0 || t1 - t0 === undefined) return ['Bad Input', '']
 
+        console.log([decryptedLetters.join(''), ((t1 - t0) / 1000).toString() + 's'])
         return [decryptedLetters.join(''), ((t1 - t0) / 1000).toString() + 's']
     }
 

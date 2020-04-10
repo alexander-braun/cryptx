@@ -12,7 +12,8 @@ const Primes = (props) => {
             let cleanInput = []
             for(let element of rawInput) {
                 if(numbers.indexOf(element) !== -1) cleanInput.push(element)
-            }    
+            }   
+            if(cleanInput[0] === '0') return 'Bad input'
             if ((cleanInput.length === 1 && (cleanInput[0] === '1' || cleanInput[0] === '0')) ||
                 cleanInput.length === 0) return 'Bad input'
             return cleanInput.join('')    
@@ -74,19 +75,19 @@ const Primes = (props) => {
                 <div className="controllbox" style={{borderRight: 'none'}}>
                     <div className="settings_name">n = PUBLIC KEY</div>
                     <div className="settings_operators">
-                        <textarea style={{boxShadow: 'none'}} defaultValue={props.n} type="text" id="prime_2" name="tentacles"></textarea>
+                        <textarea style={{boxShadow: 'none'}} value={props.n} type="text" id="prime_2" name="tentacles"></textarea>
                     </div>
                 </div>
                 <div className="controllbox phi">
                     <div className="settings_name">φ<i>=(Prime1 - 1)*(Prime2 - 1)</i></div>
                     <div className="settings_operators">
-                        <textarea style={{boxShadow: 'none'}} defaultValue={props.phi} type="text" id="phi_number" name="tentacles"></textarea>
+                        <textarea style={{boxShadow: 'none'}} value={props.phi} type="text" id="phi_number" name="tentacles"></textarea>
                     </div>
                 </div>
                 <div className="controllbox" style={{borderRight: 'none'}}>
                     <div className="settings_name">d <i> = (e ^ −1) mod ϕ</i></div>
                     <div className="settings_operators">
-                        <textarea style={{boxShadow: 'none'}} defaultValue={props.d} type="text" id="d_calculated" name="tentacles"></textarea>
+                        <textarea style={{boxShadow: 'none'}} value={props.d} type="text" id="d_calculated" name="tentacles"></textarea>
                     </div>
                 </div>
                 <div className="controllbox" style={{border: 'none', borderBottom: '1px solid #444444'}}>
