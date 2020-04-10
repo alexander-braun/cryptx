@@ -23,11 +23,6 @@ const BlockBodyInput = ({
                             alphabetActive,
                             setE,
                             e,
-                            prime_two,
-                            phi,
-                            n,
-                            d,
-                            timeToCalculate,
                             direction
                         }) => {
     let bodyInput
@@ -52,11 +47,6 @@ const BlockBodyInput = ({
                     <Primes 
                         setE = {setE}
                         e = {e}
-                        prime_two = {prime_two}
-                        phi = {phi}
-                        n = {n}
-                        d = {d}
-                        timeToCalculate = {timeToCalculate}
                     />
                 break
             case 'rot13':

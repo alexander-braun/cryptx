@@ -28,23 +28,20 @@ import setSkytaleLength from '../../actions/setSkytaleLength'
 import setSkytaleProjectedValue from '../../actions/setSkytaleProjectedValue'
 import setIocInput from '../../actions/setIocInput'
 import setIocOutput from '../../actions/setIocOutput'
+import setTimeToCalculate from '../../actions/setTimeToCalculate'
+import setRsaPhi from '../../actions/setRsaPhi'
+import setRsaN from '../../actions/setRsaN'
+import setRsaD from '../../actions/setRsaD'
 
 class EncryptionArea extends React.PureComponent {
   constructor(props) {
     super(props)
     this.state = {
       alphabetActive: false,
-      e: 17,
-      phi: 0,
-      d: 0,
-      n: 0,
-      timeToCalculate: '0s',
-      freqAnal1Open: false,
-      freqAnal2Open: false
+      e: 17
     }
 
     this.encrypt = this.encrypt.bind(this)
-    this.indexOfCoincidence = this.indexOfCoincidence.bind(this)
     this.setE = this.setE.bind(this)
   }
 
@@ -55,12 +52,29 @@ class EncryptionArea extends React.PureComponent {
     if(this.props.wordbook === null) {
       this.props.onSetWordbook()
     }
+    this.props.updateAlphabet('abcdefghijklmnopqrstuvwxyz')
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
-    if(prevProps !== this.props) {
-      this.indexOfCoincidence()
-      this.encrypt()
+    if (prevProps !== this.props) {
+      if (prevProps.method === 'rsa') {
+        if (prevProps.d !== this.props.d ||
+            prevProps.phi !== this.props.phi ||
+            prevProps.n !== this.props.n ||
+            prevProps.input !== this.props.input ||
+            prevState.e !== this.state.e ||
+            prevProps.direction !== this.props.direction ||
+            prevProps.method !== this.props.method) {
+              this.encrypt()
+            }
+      }
+      else {
+        this.encrypt()  
+      }
+    }
+    if(prevProps.input !== this.props.input) {
+      this.props.setIocInput(this.calcIndexOfCoincidence(true))
+      this.props.setIocOutput(this.calcIndexOfCoincidence(false))
     }
     if(prevProps.method !== this.props.method) {
       if(this.props.method === 'caesar') {
@@ -72,12 +86,9 @@ class EncryptionArea extends React.PureComponent {
           alphabetActive: false
         })
       }
-      
-      this.props.updateAlphabet('abcdefghijklmnopqrstuvwxyz')
-
-      this.encrypt();
     }
   }
+
 
 
   //ioc
@@ -134,11 +145,6 @@ class EncryptionArea extends React.PureComponent {
     return !isNaN(ioc) ? ioc : '0';
   }
 
-  indexOfCoincidence() {
-    this.props.setIocInput(this.calcIndexOfCoincidence(true))
-    this.props.setIocOutput(this.calcIndexOfCoincidence(false))
-  }
-
   //rsa
 
   setE(val) {
@@ -154,7 +160,7 @@ class EncryptionArea extends React.PureComponent {
   }
 
   async encrypt() {
-    this.setState(prevState => {
+    this.setState((prevState, props) => {
       let input = this.props.input;
       let alphabet = this.props.alphabet;
       let caseFormat = this.props.caseformat
@@ -187,40 +193,51 @@ class EncryptionArea extends React.PureComponent {
         case 'rsa':
           if (this.props.prime1 === 'Bad input' ||
               this.props.prime2 === 'Bad input' ||
-              !prevState.e
+              !prevState.e ||
+              input.length === 0
               ) {
             return this.props.setOutput('Bad input')  
-          } 
+          }
 
           Rsa.setUserInput(input)
           Rsa.setPrimeOne(this.props.prime1)
           Rsa.setPrimeTwo(this.props.prime2)
-          Rsa.setE(prevState.e)
+          Rsa.setE(prevState.e) 
+
+          this.props.setRsaN(Rsa.calcN())
+          this.props.setRsaPhi(Rsa.calcPhi())
+          this.props.setRsaD(Rsa.calcD())
 
           if (direction === 'encrypt') {
-            let n = Rsa.calcN()
-            let phi = Rsa.calcPhi()
-            let d = Rsa.calcD()
-            let timeToCalculate
-            if(input.length > 0) {
-              let output = Rsa.encrypt()[0] !== '!' ? Rsa.encrypt()[0] : Rsa.encrypt()
-              timeToCalculate = Rsa.encrypt()[1] !== '!' ? Rsa.encrypt()[1] : 'something went wrong here'
-              this.props.setOutput(output)  
+            let output = Rsa.encrypt()
+            console.log(output)
+            if(output !== undefined && output[0] === '!') {
+              this.props.setOutput(output)
+              break
             }
-            return {
-              n,
-              phi,
-              d,
-              timeToCalculate
+            if(output !== undefined && output[0] && output[1]) {
+              this.props.setOutput(output[0])  
+              this.props.setTimeToCalculate(output[1])  
+              break
+            } else {
+              this.props.setOutput('Something went wrong')
+              break
             }
-          } else if (direction === 'decrypt') {
-            let decrypted = Rsa.decrypt()
-            this.props.setOutput(decrypted[0])
-            return {
-              timeToCalculate: decrypted[1]
+          } else {
+            let output = Rsa.decrypt()
+            if(output !== undefined && (output[0] === '!' || output[0] === 'P')) {
+              this.props.setOutput(output)
+              break
             }
+            if(output !== undefined && output[0] && output[1]) {
+              this.props.setOutput(output[0])
+              this.props.setTimeToCalculate(output[1])  
+            } else {
+              this.props.setOutput('Something went wrong')
+              break
+            }
+            break
           }
-          break
         case 'otp':
           Otp.setAll(input, caseFormat, foreignChars, direction, this.props.otpKey, alphabet)
           this.props.setOutput(Otp.encrypt())
@@ -275,10 +292,6 @@ class EncryptionArea extends React.PureComponent {
             alphabetActive={this.state.alphabetActive}
             setE={this.setE}
             e={this.state.e}
-            phi={this.state.phi}
-            n={this.state.n}
-            d={this.state.d}
-            timeToCalculate={this.state.timeToCalculate}
           />
           <BlockConnectorEquals />
           <BlockOutput />
@@ -313,7 +326,11 @@ const mapStateToProps = state => ({
   skytaleLength: state.skytale.length,
   skytaleProjectedValue: state.projectedValue,
   iocInput: state.ioc.input,
-  iocOutput: state.ioc.output
+  iocOutput: state.ioc.output,
+  timeToCalculate: state.rsa.timeToCalculate,
+  phi: state.rsa.phi,
+  n: state.rsa.n,
+  d: state.rsa.d
 })
 
 const mapActionsToProps = {
@@ -327,7 +344,11 @@ const mapActionsToProps = {
   setSkytaleLength: setSkytaleLength,
   setSkytaleProjectedValue: setSkytaleProjectedValue,
   setIocInput: setIocInput,
-  setIocOutput: setIocOutput
+  setIocOutput: setIocOutput,
+  setTimeToCalculate: setTimeToCalculate,
+  setRsaPhi: setRsaPhi,
+  setRsaN: setRsaN,
+  setRsaD: setRsaD
 }
 
 

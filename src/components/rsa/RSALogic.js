@@ -75,6 +75,8 @@ const Rsa = (() => {
         //let encryptedHEX = encryptedDEZ.toString(16)
         var t1 = performance.now();
 
+        if(!encryptedDEZ || !t1 || !t0 || t1 - t0 === undefined) return ['Bad Input', '']
+
         return [encryptedDEZ.toString(), ((t1 - t0) / 1000).toString() + 's']
     }
 
@@ -113,6 +115,8 @@ const Rsa = (() => {
         }
 
         var t1 = performance.now();
+
+        if(!decryptedLetters || !t1 || !t0 || t1 - t0 === undefined) return ['Bad Input', '']
 
         return [decryptedLetters.join(''), ((t1 - t0) / 1000).toString() + 's']
     }

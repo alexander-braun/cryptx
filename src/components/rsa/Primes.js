@@ -18,7 +18,6 @@ const Primes = (props) => {
             return cleanInput.join('')    
         } else return 'Bad input'
     }
-
     return (
         <div className = 'primes'>
             <div className="controller double_content prime">
@@ -129,7 +128,11 @@ const Primes = (props) => {
 
 const mapStateToProps = state => ({
     prime1: state.rsa.prime1,
-    prime2: state.rsa.prime2
+    prime2: state.rsa.prime2,
+    timeToCalculate: state.rsa.timeToCalculate,
+    d: state.rsa.d,
+    phi: state.rsa.phi,
+    n: state.rsa.n
 })
 
 const mapActionsToProps = {
@@ -137,4 +140,4 @@ const mapActionsToProps = {
     setPrime2: setPrime2
 }
 
-export default connect(mapStateToProps, mapActionsToProps)(Primes)
+export default React.memo(connect(mapStateToProps, mapActionsToProps)(Primes))
