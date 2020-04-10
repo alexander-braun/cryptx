@@ -1,6 +1,6 @@
 import { UPDATE_OUTPUT } from "./constants"
 
-const setOutput = (output) => ({
+const setOutput = output => ({
     type: UPDATE_OUTPUT,
     output
 })

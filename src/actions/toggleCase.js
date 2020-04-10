@@ -1,6 +1,6 @@
 import { TOGGLE_CASEFORMAT } from "./constants"
 
-const toggleCaseFormat = (caseformat) => ({
+const toggleCaseFormat = caseformat => ({
     type: TOGGLE_CASEFORMAT,
     caseformat
 })

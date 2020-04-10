@@ -18,6 +18,8 @@ import keywordPlayfair from './keywordPlayfair'
 import affine from './affine'
 import otpKey from './otpKey'
 import playsquare from './playsquare'
+import skytaleLength from './skytaleLength'
+import skytaleProjectedValue from './skytaleProjectedValue'
 
 export default combineReducers({
     modal,
@@ -38,5 +40,7 @@ export default combineReducers({
     keywordPlayfair,
     affine,
     otpKey,
-    playsquare
+    playsquare,
+    skytaleLength,
+    skytaleProjectedValue
 })

@@ -54,6 +54,7 @@ const skytale = (() => {
             }
             input = inp.join('')
         }
+        
         if(direction === 'encrypt') {
             const skytaleArr = [[]]
             let j = 0;
@@ -83,9 +84,8 @@ const skytale = (() => {
                 encrypted = encryptedText.join('')
             }
 
-            let skytaleLenght = calcSkytaleLength()
-
-            return [encrypted, skytaleLenght]
+            let skytaleLength = calcSkytaleLength()
+            return [encrypted, skytaleLength]
         }
         else if(direction === 'decrypt') {
             

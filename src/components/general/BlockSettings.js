@@ -4,8 +4,6 @@ import BlockHeadSettings from './BlockHeadSettings'
 import Settings from './settings'
 
 const BlockElementSettings = ({
-                                skytaleLength,
-                                skytaleProjectedValue,
                                 alphabetActive,
                                 setE,
                                 e,
@@ -22,8 +20,6 @@ const BlockElementSettings = ({
           <div className="block_body_input">
               <Settings 
                 alphabetActive = {alphabetActive}
-                skytaleLength = {skytaleLength}
-                skytaleProjectedValue = {skytaleProjectedValue}
                 setE = {setE}
                 e = {e}
                 prime_two = {prime_two}

@@ -1,6 +1,6 @@
 import { SET_OTP_KEY } from "./constants"
 
-const setOtpKey = (otpKey) => ({
+const setOtpKey = otpKey => ({
     type: SET_OTP_KEY,
     otpKey
 })

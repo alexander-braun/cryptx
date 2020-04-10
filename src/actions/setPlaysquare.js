@@ -1,6 +1,6 @@
 import { PLAYSQUARE } from "./constants"
 
-const setPlaysquare = (playsquare) => ({
+const setPlaysquare = playsquare => ({
     type: PLAYSQUARE,
     playsquare
 })

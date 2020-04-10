@@ -20,8 +20,6 @@ import { connect } from 'react-redux'
 const BlockBodyInput = ({
                             alphabet, 
                             method, 
-                            skytaleLength,
-                            skytaleProjectedValue,
                             alphabetActive,
                             setE,
                             e,
@@ -131,10 +129,7 @@ const BlockBodyInput = ({
                 bodyInput = 
                     <div>
                         <RingLength />
-                        <Rings 
-                            skytaleLength = {skytaleLength}
-                            outputValue = {skytaleProjectedValue}
-                        />
+                        <Rings />
                         <Alphabet 
                             alphabet = {alphabet} 
                             alphabetActive = {alphabetActive}

@@ -24,13 +24,13 @@ import toggleCase from '../../actions/toggleCase'
 import updateAlphabet from '../../actions/updateAlphabet'
 import setOtpKey from '../../actions/setOtpKey'
 import setPlaysquare from '../../actions/setPlaysquare'
+import setSkytaleLength from '../../actions/setSkytaleLength'
+import setSkytaleProjectedValue from '../../actions/setSkytaleProjectedValue'
 
 class EncryptionArea extends React.PureComponent {
   constructor(props) {
     super(props)
     this.state = {
-      skytaleLength: 1,
-      skytaleProjectedValue: '',
       alphabetActive: false,
       iocInput: 0,
       iocOutput: 0,
@@ -254,11 +254,12 @@ class EncryptionArea extends React.PureComponent {
           break
         case 'skytale':
           Skytale.setAll(direction, caseFormat, input, this.props.ringLength, foreignChars)
-          this.props.setOutput(Skytale.encrypt()[0])
-          return {
-            skytaleLength: Skytale.encrypt()[1],
-            skytaleProjectedValue: Skytale.getProjectedValue()
-          }
+          let skytale = Skytale.encrypt()
+          let projected = Skytale.getProjectedValue()
+          this.props.setOutput(skytale[0])
+          this.props.setSkytaleLength(skytale[1])
+          this.props.setSkytaleProjectedValue(projected)
+          break
         default:
           return null
       }
@@ -275,8 +276,6 @@ class EncryptionArea extends React.PureComponent {
           />
           <BlockConnectorPlus />
           <BlockSettings
-            skytaleLength={this.state.skytaleLength}
-            skytaleProjectedValue={this.state.skytaleProjectedValue}
             alphabetActive={this.state.alphabetActive}
             setE={this.setE}
             e={this.state.e}
@@ -316,7 +315,9 @@ const mapStateToProps = state => ({
   affine_alpha: state.affine.affine_alpha,
   affine_beta: state.affine.affine_beta,
   otpKey: state.otpKey,
-  playSquare: state.playSquare
+  playSquare: state.playSquare,
+  skytaleLength: state.skytaleLength,
+  skytaleProjectedValue: state.skytaleProjectedValue
 })
 
 const mapActionsToProps = {
@@ -326,7 +327,9 @@ const mapActionsToProps = {
   toggleCase: toggleCase,
   updateAlphabet: updateAlphabet,
   setOtpKey: setOtpKey,
-  setPlaysquare: setPlaysquare
+  setPlaysquare: setPlaysquare,
+  setSkytaleLength: setSkytaleLength,
+  setSkytaleProjectedValue: setSkytaleProjectedValue
 }
 
 
