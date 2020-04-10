@@ -3,7 +3,6 @@ import modal from './modal'
 import replace from './replace'
 import wordbook from './wordbook'
 import cShift from './cShift'
-import ringLength from './ringlength'
 import direction from './direction'
 import input from './input'
 import method from './method'
@@ -18,15 +17,13 @@ import keywordPlayfair from './keywordPlayfair'
 import affine from './affine'
 import otpKey from './otpKey'
 import playsquare from './playsquare'
-import skytaleLength from './skytaleLength'
-import skytaleProjectedValue from './skytaleProjectedValue'
+import skytale from './skytale'
 
 export default combineReducers({
     modal,
     replace,
     wordbook,
     cShift,
-    ringLength,
     direction,
     input,
     method,
@@ -41,6 +38,5 @@ export default combineReducers({
     affine,
     otpKey,
     playsquare,
-    skytaleLength,
-    skytaleProjectedValue
+    skytale
 })

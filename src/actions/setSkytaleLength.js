@@ -1,8 +1,8 @@
 import { SET_SKYTALE_LENGTH } from './constants'
 
-const setSkytaleLength = skytaleLength => ({
+const setSkytaleLength = length => ({
     type: SET_SKYTALE_LENGTH,
-    skytaleLength
+    length
 })
 
 export default setSkytaleLength

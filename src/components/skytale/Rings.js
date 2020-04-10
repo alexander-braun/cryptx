@@ -103,9 +103,9 @@ class Rings extends React.PureComponent {
 }
 
 const mapStateToProps = state => ({
-    ringLength: state.ringLength,
-    skytaleLength: state.skytaleLength,
-    skytaleProjectedValue: state.skytaleProjectedValue
+    ringLength: state.skytale.ringLength,
+    skytaleLength: state.skytale.length,
+    skytaleProjectedValue: state.skytale.projectedValue
 })
 
 export default connect(mapStateToProps)(Rings)

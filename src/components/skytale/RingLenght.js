@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { setRinglength } from '../../actions/ringLength'
+import { setRinglength } from '../../actions/setRingLength'
 
 const RingLength = (props) => {
 
@@ -57,7 +57,7 @@ const RingLength = (props) => {
 }
 
 const mapStateToProps = state => ({
-  ringLength: state.ringLength
+  ringLength: state.skytale.ringLength
 })
 
 const mapActionsToProps = {

@@ -300,7 +300,6 @@ const mapStateToProps = state => ({
   replaceLetter: state.replace.replaceLetter,
   wordbook: state.wordbook,
   cShift: state.cShift,
-  ringLength: state.ringLength,
   direction: state.direction,
   input: state.input,
   output: state.output,
@@ -316,8 +315,9 @@ const mapStateToProps = state => ({
   affine_beta: state.affine.affine_beta,
   otpKey: state.otpKey,
   playSquare: state.playSquare,
-  skytaleLength: state.skytaleLength,
-  skytaleProjectedValue: state.skytaleProjectedValue
+  ringLength: state.skytale.ringLength,
+  skytaleLength: state.skytale.length,
+  skytaleProjectedValue: state.projectedValue
 })
 
 const mapActionsToProps = {

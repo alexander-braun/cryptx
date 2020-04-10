@@ -1,8 +1,8 @@
 import { SET_SKYTALE_PROJECTED_VALUE } from './constants'
 
-const setSkytaleProjectedValue = skytaleProjectedValue => ({
+const setSkytaleProjectedValue = projectedValue => ({
     type: SET_SKYTALE_PROJECTED_VALUE,
-    skytaleProjectedValue
+    projectedValue
 })
 
 export default setSkytaleProjectedValue
