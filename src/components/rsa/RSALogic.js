@@ -117,7 +117,6 @@ const Rsa = (() => {
 
         if(!decryptedLetters || !t1 || !t0 || t1 - t0 === undefined) return ['Bad Input', '']
 
-        console.log([decryptedLetters.join(''), ((t1 - t0) / 1000).toString() + 's'])
         return [decryptedLetters.join(''), ((t1 - t0) / 1000).toString() + 's']
     }
 
@@ -143,20 +142,25 @@ const Rsa = (() => {
         return n.toString()
     }
 
+    const setAll = (input, prime1, prime2, e) => {
+        setUserInput(input)
+        setPrimeOne(prime1)
+        setPrimeTwo(prime2)
+        setE(e)
+    }
+
+    const calc = (direction) => {
+        return direction === 'encrypt' ? encrypt() : decrypt()
+    }
+
     return {
         encrypt: encrypt,
-        textToHex: textToHex,
-        hexToDecimal: hexToDecimal,
-        bigToNumber: bigToNumber,
-        decimalToHex: decimalToHex,
+        decrypt: decrypt,
         calcD: calcD,
         calcPhi: calcPhi,
-        setPrimeOne: setPrimeOne,
-        setPrimeTwo: setPrimeTwo,
-        setE: setE,
         calcN: calcN,
-        setUserInput: setUserInput,
-        decrypt: decrypt
+        setAll: setAll,
+        calc: calc
     }
 })()
 

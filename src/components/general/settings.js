@@ -16,45 +16,34 @@ import OtpGenerate from '../onetimepad/otpGenerate'
 import Primes from '../rsa/Primes'
 import { connect } from 'react-redux'
 
-
-const BlockBodyInput = ({
-                            alphabet, 
-                            method, 
-                            alphabetActive,
-                            setE,
-                            e,
-                            direction
-                        }) => {
+const BlockBodyInput = (props) => {
     let bodyInput
     const switchBodyInput = () => {
-        if (direction === 'crack') return null
-        switch (method) {
+        if (props.direction === 'crack') return null
+        switch (props.method) {
             case 'atbash':
                 bodyInput =
                     <div className="block_body_input">
                         <AtbashTransposition 
-                            alphabet = {alphabet}
+                            alphabet = {props.alphabet}
                         />
                         <Alphabet 
-                            alphabet = {alphabet} 
-                            alphabetActive = {alphabetActive}
+                            alphabet = {props.alphabet} 
+                            alphabetActive = {props.alphabetActive}
                         />
                         <CaseChars />
                     </div>
                 break
             case 'rsa': 
                 bodyInput = 
-                    <Primes 
-                        setE = {setE}
-                        e = {e}
-                    />
+                    <Primes />
                 break
             case 'rot13':
                 bodyInput = 
                     <div className="block_body_input">
                         <Alphabet 
-                            alphabet = {alphabet} 
-                            alphabetActive = {alphabetActive}
+                            alphabet = {props.alphabet} 
+                            alphabetActive = {props.alphabetActive}
                         />
                         <CaseChars />
                     </div> 
@@ -64,11 +53,11 @@ const BlockBodyInput = ({
                     <div className="block_body_input">
                         <CaesarShift />
                         <CaesarTransposition 
-                            alphabet = {alphabet}
+                            alphabet = {props.alphabet}
                         />
                         <Alphabet 
-                            alphabet = {alphabet} 
-                            alphabetActive = {alphabetActive}
+                            alphabet = {props.alphabet} 
+                            alphabetActive = {props.alphabetActive}
                         />
                         <CaseChars />
                     </div>
@@ -78,8 +67,8 @@ const BlockBodyInput = ({
                     <div className="block_body_input">
                         <AlphaBeta />
                         <Alphabet 
-                            alphabet = {alphabet} 
-                            alphabetActive = {alphabetActive}
+                            alphabet = {props.alphabet} 
+                            alphabetActive = {props.alphabetActive}
                         />
                         <CaseChars />
                     </div>
@@ -89,8 +78,8 @@ const BlockBodyInput = ({
                     <div className="block_body_input">
                         <KeywordVigenere />
                         <Alphabet 
-                            alphabet = {alphabet} 
-                            alphabetActive = {alphabetActive}
+                            alphabet = {props.alphabet} 
+                            alphabetActive = {props.alphabetActive}
                         />
                         <CaseChars />
                     </div> 
@@ -102,8 +91,8 @@ const BlockBodyInput = ({
                         <CharOptions />
                         <KeywordPlayfair />
                         <Alphabet 
-                            alphabet = {alphabet} 
-                            alphabetActive = {alphabetActive}
+                            alphabet = {props.alphabet} 
+                            alphabetActive = {props.alphabetActive}
                         />
                         <CaseChars />
                     </div> 
@@ -121,8 +110,8 @@ const BlockBodyInput = ({
                         <RingLength />
                         <Rings />
                         <Alphabet 
-                            alphabet = {alphabet} 
-                            alphabetActive = {alphabetActive}
+                            alphabet = {props.alphabet} 
+                            alphabetActive = {props.alphabetActive}
                         />
                         <CaseChars />
                     </div>
@@ -133,8 +122,8 @@ const BlockBodyInput = ({
                         <OtpGenerate />
                         <CaseChars />
                         <Alphabet 
-                            alphabet = {alphabet} 
-                            alphabetActive = {alphabetActive}
+                            alphabet = {props.alphabet} 
+                            alphabetActive = {props.alphabetActive}
                         />
                     </div>
                 break
@@ -153,7 +142,8 @@ const BlockBodyInput = ({
 const mapStateToProps = state => ({
     direction: state.direction,
     method: state.method,
-    alphabet: state.alphabet
+    alphabet: state.alphabet.alphabet,
+    alphabetActive: state.alphabet.active
 })
 
 export default connect(mapStateToProps)(BlockBodyInput)

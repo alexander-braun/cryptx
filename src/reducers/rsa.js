@@ -1,4 +1,4 @@
-import { SET_PRIME_1, SET_PRIME_2, SET_TIME_TO_CALCULATE, SET_RSA_PHI, SET_RSA_D, SET_RSA_N } from '../actions/constants'
+import { SET_PRIME_1, SET_PRIME_2, SET_TIME_TO_CALCULATE, SET_RSA_PHI, SET_RSA_D, SET_RSA_N, SET_RSA_E } from '../actions/constants'
 
 const initialState = {
     prime1: '250556952327646214427246777488032351712139094643988394726193347352092526616305469220133287929222242315761834129196430398011844978805263868522770723615504744438638381670321613949280530254014602887707960375752016807510602846590492724216092721283154099469988532068424757856392563537802339735359978831013',
@@ -6,11 +6,20 @@ const initialState = {
     timeToCalculate: '0s',
     d: 0,
     phi: 0,
-    n: 0
+    n: 0,
+    e: 17
 }
 
 const rsa = (state = initialState, action) => {
     switch(action.type) {
+        case SET_RSA_E:
+            if (!isNaN(action.e) && action.e !== null) {
+                return {
+                    ...state,
+                    e: action.e
+                }    
+            }
+            break
         case SET_RSA_PHI:
             return {
                 ...state,

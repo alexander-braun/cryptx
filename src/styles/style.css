@@ -583,6 +583,7 @@ select {
       -ms-flex-direction: column;
           flex-direction: column;
   font-size: 14px;
+  line-height: 1.5;
 }
 
 .controller .alphabet_row_collect {

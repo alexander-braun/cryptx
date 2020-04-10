@@ -32,42 +32,45 @@ import setTimeToCalculate from '../../actions/setTimeToCalculate'
 import setRsaPhi from '../../actions/setRsaPhi'
 import setRsaN from '../../actions/setRsaN'
 import setRsaD from '../../actions/setRsaD'
+import setAlphabetActive from '../../actions/setAlphabetActive'
 
 class EncryptionArea extends React.PureComponent {
   constructor(props) {
     super(props)
-    this.state = {
-      alphabetActive: false,
-      e: 17
-    }
-    this.encrypt = this.encrypt.bind(this)
-    this.setE = this.setE.bind(this)
-  }
 
-  //General
+    this.encrypt = this.encrypt.bind(this)
+  }
 
   async componentDidMount() {
     this.encrypt()
+  }
+
+  componentDidUpdate(prevProps) {
     if(this.props.wordbook === null) {
       this.props.onSetWordbook()
     }
-    this.props.updateAlphabet('abcdefghijklmnopqrstuvwxyz')
-  }
 
-  componentDidUpdate(prevProps, prevState, snapshot) {
+    //As RSA needs a lot of parameters both writable and read only this if-else chain
+    //makes sure those parameters are properly set up
     if (prevProps !== this.props) {
       if (prevProps.method === 'rsa') {
+        if(this.props.prime1 === 'Bad input' ||
+            this.props.prime2 === 'Bad input' ||
+            !this.props.input ||
+            !this.props.e) {
+              return this.props.setOutput('Bad input')  
+            }
         if (prevProps.d !== this.props.d ||
             prevProps.phi !== this.props.phi ||
             prevProps.n !== this.props.n ||
             prevProps.input !== this.props.input ||
-            prevState.e !== this.state.e ||
+            prevProps.e !== this.props.e ||
             prevProps.direction !== this.props.direction ||
             prevProps.method !== this.props.method ||
             prevProps.prime1 !== this.props.prime1 ||
             prevProps.prime2 !== this.props.prime2) {
               this.encrypt()
-        }
+          }
       }
       else {
         this.encrypt()  
@@ -78,19 +81,16 @@ class EncryptionArea extends React.PureComponent {
       this.props.setIocOutput(this.calcIndexOfCoincidence(false))
     }
     if(prevProps.method !== this.props.method) {
-      if(this.props.method === 'caesar') {
-        this.setState({
-          alphabetActive: true
-        })
+      this.props.updateAlphabet('abcdefghijklmnopqrstuvwxyz')
+      if(this.props.method === 'caesar' || 
+         this.props.method === 'atbash' ||
+         this.props.method === 'rot13') {
+        this.props.setAlphabetActive(true)
       } else {
-        this.setState({
-          alphabetActive: false
-        })
+        this.props.setAlphabetActive(false)
       }
     }
   }
-
-
 
   //ioc
   calcIndexOfCoincidence(input) {
@@ -146,121 +146,85 @@ class EncryptionArea extends React.PureComponent {
     return !isNaN(ioc) ? ioc : '0';
   }
 
-  //rsa
+  encrypt() {
+    let input = this.props.input;
+    let alphabet = this.props.alphabet;
+    let caseFormat = this.props.caseformat
+    let foreignChars = this.props.includeChars;
+    let method = this.props.method;
+    let direction = this.props.direction
 
-  setE(val) {
-    let tVal = val.target.value;
-    if (!isNaN(tVal) && tVal !== null) {
-      this.setState(prevState => {
-        return {
-          e: tVal
-        };
-      });
+    if (direction === 'crack') {
+      if (method === 'caesar' || method === 'rot13') {
+        Caesar.setAll(this.props.wordbook, input, alphabet, method === 'rot13' ? 13 : this.props.cShift, direction, caseFormat, foreignChars)
+        return this.props.setOutput(Caesar.encrypt())
+      } else if (method === 'atbash') {
+          return this.props.setOutput(Atbash.encrypt())
+      } else {
+        return this.props.setOutput('')
+      }
     }
-    this.encrypt();
-  }
 
-  async encrypt() {
-    this.setState(prevState => {
-      let input = this.props.input;
-      let alphabet = this.props.alphabet;
-      let caseFormat = this.props.caseformat
-      let foreignChars = this.props.includeChars;
-      let method = this.props.method;
-      let direction = this.props.direction
+    switch (method) {
+      case 'rot13':
+        Caesar.setAll(null, input, alphabet, 13, direction, caseFormat, foreignChars)
+        this.props.setOutput(Caesar.encrypt())
+        break
+      case 'caesar':
+        Caesar.setAll(null, input, alphabet, this.props.cShift, direction, caseFormat, foreignChars)
+        this.props.setOutput(Caesar.encrypt())
+        break
+      case 'rsa':
+        Rsa.setAll(input, this.props.prime1, this.props.prime2, this.props.e)
 
-      // IF DIR = CRACK
-      if (direction === 'crack') {
-        if (method === 'caesar' || method === 'rot13') {
-          Caesar.setAll(this.props.wordbook, input, alphabet, method === 'rot13' ? 13 : this.props.cShift, direction, caseFormat, foreignChars)
-          return this.props.setOutput(Caesar.encrypt())
-        } else if (method === 'atbash') {
-            return this.props.setOutput(Atbash.encrypt())
-        } else {
-          return this.props.setOutput('')
-        }
-      }
+        this.props.setRsaN(Rsa.calcN())
+        this.props.setRsaPhi(Rsa.calcPhi())
+        this.props.setRsaD(Rsa.calcD())
 
-      // IF DIR = ENC OR DEC
-      switch (method) {
-        case 'rot13':
-          Caesar.setAll(null, input, alphabet, 13, direction, caseFormat, foreignChars)
-          this.props.setOutput(Caesar.encrypt())
-          break
-        case 'caesar':
-          Caesar.setAll(null, input, alphabet, this.props.cShift, direction, caseFormat, foreignChars)
-          this.props.setOutput(Caesar.encrypt())
-          break
-        case 'rsa':
-          if (this.props.prime1 === 'Bad input' ||
-              this.props.prime2 === 'Bad input' ||
-              !prevState.e ||
-              input.length === 0
-              ) {
-            return this.props.setOutput('Bad input')  
-          }
-
-          Rsa.setUserInput(input)
-          Rsa.setPrimeOne(this.props.prime1)
-          Rsa.setPrimeTwo(this.props.prime2)
-          Rsa.setE(prevState.e) 
-
-          this.props.setRsaN(Rsa.calcN())
-          this.props.setRsaPhi(Rsa.calcPhi())
-          this.props.setRsaD(Rsa.calcD())
-
-          if (direction === 'encrypt') {
-            let output = Rsa.encrypt()
-            this.props.setOutput(output[0])  
-            this.props.setTimeToCalculate(output[1])  
-            break
-          } else {
-            let output = Rsa.decrypt()
-            this.props.setOutput(output[0])
-            this.props.setTimeToCalculate(output[1]) 
-            break
-          }
-        case 'otp':
-          Otp.setAll(input, caseFormat, foreignChars, direction, this.props.otpKey, alphabet)
-          this.props.setOutput(Otp.encrypt())
-          break
-        case 'atbash':
-          Atbash.setAll(input, caseFormat, foreignChars)
-          this.props.setOutput(Atbash.encrypt())
-          break
-        case 'affine':
-          Affine.setAll(alphabet, input, this.props.affine_alpha, this.props.affine_beta, direction, foreignChars, caseFormat)
-          this.props.setOutput(Affine.encrypt())
-          break
-        case 'vigenere':
-          Vigenere.setAll(input, alphabet, direction, foreignChars, caseFormat, this.props.keywordVigenere)
-          this.props.setOutput(Vigenere.encrypt())
-          break
-        case 'playfair':
-          Playfair.setAll(input, alphabet, direction, this.props.keywordPlayfair)
-          this.props.setOutput(Playfair.encrypt())
-          this.props.setPlaysquare(Playfair.getSquare())
-          break
-        case 'morse':
-          Morse.setAll(input, direction)
-          this.props.setOutput(Morse.encrypt())
-          break
-        case 'replace':
-          Replace.setAll(input, this.props.toReplaceLetter, this.props.replaceLetter)
-          this.props.setOutput(Replace.encrypt())
-          break
-        case 'skytale':
-          Skytale.setAll(direction, caseFormat, input, this.props.ringLength, foreignChars)
-          let skytale = Skytale.encrypt()
-          let projected = Skytale.getProjectedValue()
-          this.props.setOutput(skytale[0])
-          this.props.setSkytaleLength(skytale[1])
-          this.props.setSkytaleProjectedValue(projected)
-          break
-        default:
-          return null
-      }
-    })
+        const output = Rsa.calc(direction)
+        this.props.setOutput(output[0])
+        this.props.setTimeToCalculate(output[1])
+        break
+      case 'otp':
+        Otp.setAll(input, caseFormat, foreignChars, direction, this.props.otpKey, alphabet)
+        this.props.setOutput(Otp.encrypt())
+        break
+      case 'atbash':
+        Atbash.setAll(input, caseFormat, foreignChars)
+        this.props.setOutput(Atbash.encrypt())
+        break
+      case 'affine':
+        Affine.setAll(alphabet, input, this.props.affine_alpha, this.props.affine_beta, direction, foreignChars, caseFormat)
+        this.props.setOutput(Affine.encrypt())
+        break
+      case 'vigenere':
+        Vigenere.setAll(input, alphabet, direction, foreignChars, caseFormat, this.props.keywordVigenere)
+        this.props.setOutput(Vigenere.encrypt())
+        break
+      case 'playfair':
+        Playfair.setAll(input, alphabet, direction, this.props.keywordPlayfair)
+        this.props.setOutput(Playfair.encrypt())
+        this.props.setPlaysquare(Playfair.getSquare())
+        break
+      case 'morse':
+        Morse.setAll(input, direction)
+        this.props.setOutput(Morse.encrypt())
+        break
+      case 'replace':
+        Replace.setAll(input, this.props.toReplaceLetter, this.props.replaceLetter)
+        this.props.setOutput(Replace.encrypt())
+        break
+      case 'skytale':
+        Skytale.setAll(direction, caseFormat, input, this.props.ringLength, foreignChars)
+        let skytale = Skytale.encrypt()
+        let projected = Skytale.getProjectedValue()
+        this.props.setSkytaleProjectedValue(projected)
+        this.props.setOutput(skytale[0])
+        this.props.setSkytaleLength(skytale[1])
+        break
+      default:
+        return null
+    }
   }
   
   render() {
@@ -270,11 +234,7 @@ class EncryptionArea extends React.PureComponent {
         <div id='block_container'>
           <BlockInput />
           <BlockConnectorPlus />
-          <BlockSettings
-            alphabetActive={this.state.alphabetActive}
-            setE={this.setE}
-            e={this.state.e}
-          />
+          <BlockSettings />
           <BlockConnectorEquals />
           <BlockOutput />
         </div>
@@ -297,7 +257,8 @@ const mapStateToProps = state => ({
   caseformat: state.caseformat,
   prime1: state.rsa.prime1,
   prime2: state.rsa.prime2,
-  alphabet: state.alphabet,
+  alphabet: state.alphabet.alphabet,
+  alphabetActive: state.alphabet.active,
   keywordVigenere: state.keywordVigenere,
   keywordPlayfair: state.keywordPlayfair,
   affine_alpha: state.affine.affine_alpha,
@@ -312,7 +273,8 @@ const mapStateToProps = state => ({
   timeToCalculate: state.rsa.timeToCalculate,
   phi: state.rsa.phi,
   n: state.rsa.n,
-  d: state.rsa.d
+  d: state.rsa.d,
+  e: state.rsa.e
 })
 
 const mapActionsToProps = {
@@ -330,7 +292,8 @@ const mapActionsToProps = {
   setTimeToCalculate: setTimeToCalculate,
   setRsaPhi: setRsaPhi,
   setRsaN: setRsaN,
-  setRsaD: setRsaD
+  setRsaD: setRsaD,
+  setAlphabetActive: setAlphabetActive
 }
 
 

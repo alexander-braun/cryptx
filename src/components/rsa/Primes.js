@@ -2,10 +2,9 @@ import React from 'react'
 import { connect } from 'react-redux'
 import setPrime1 from '../../actions/setPrime1'
 import setPrime2 from '../../actions/setprime2'
-
+import setRsaE from '../../actions/setRsaE'
 
 const Primes = (props) => {
-
     const cleanPrime = (rawInput) => {
         if(rawInput.length !== 0) {
             let numbers = '0123456789'
@@ -66,7 +65,7 @@ const Primes = (props) => {
                             defaultValue={props.e}
                             style={{boxShadow: 'none'}}
                             onChange = {(e) => {
-                                props.setE(e)
+                                props.setRsaE(e.target.value)
                             }}
                         >
                         </textarea>
@@ -75,19 +74,19 @@ const Primes = (props) => {
                 <div className="controllbox" style={{borderRight: 'none'}}>
                     <div className="settings_name">n = PUBLIC KEY</div>
                     <div className="settings_operators">
-                        <textarea style={{boxShadow: 'none'}} value={props.n} type="text" id="prime_2" name="tentacles"></textarea>
+                        <textarea readOnly style={{boxShadow: 'none'}} value={props.n} type="text" id="prime_2" name="tentacles"></textarea>
                     </div>
                 </div>
                 <div className="controllbox phi">
                     <div className="settings_name">φ<i>=(Prime1 - 1)*(Prime2 - 1)</i></div>
                     <div className="settings_operators">
-                        <textarea style={{boxShadow: 'none'}} value={props.phi} type="text" id="phi_number" name="tentacles"></textarea>
+                        <textarea readOnly style={{boxShadow: 'none'}} value={props.phi} type="text" id="phi_number" name="tentacles"></textarea>
                     </div>
                 </div>
                 <div className="controllbox" style={{borderRight: 'none'}}>
                     <div className="settings_name">d <i> = (e ^ −1) mod ϕ</i></div>
                     <div className="settings_operators">
-                        <textarea style={{boxShadow: 'none'}} value={props.d} type="text" id="d_calculated" name="tentacles"></textarea>
+                        <textarea readOnly style={{boxShadow: 'none'}} value={props.d} type="text" id="d_calculated" name="tentacles"></textarea>
                     </div>
                 </div>
                 <div className="controllbox" style={{border: 'none', borderBottom: '1px solid #444444'}}>
@@ -133,12 +132,14 @@ const mapStateToProps = state => ({
     timeToCalculate: state.rsa.timeToCalculate,
     d: state.rsa.d,
     phi: state.rsa.phi,
-    n: state.rsa.n
+    n: state.rsa.n,
+    e: state.rsa.e
 })
 
 const mapActionsToProps = {
     setPrime1: setPrime1,
-    setPrime2: setPrime2
+    setPrime2: setPrime2,
+    setRsaE: setRsaE
 }
 
 export default React.memo(connect(mapStateToProps, mapActionsToProps)(Primes))

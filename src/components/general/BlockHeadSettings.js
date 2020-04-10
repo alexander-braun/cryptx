@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { toggleModal } from '../../actions/modal'
 import { toggleDirection } from '../../actions/direction'
 import MethodNames from './MethodNames'
+import MethodCrackAvailability from './MethodCrackAvailability'
 
 const BlockHeadSettings = (props) => {
 
@@ -52,16 +53,21 @@ const BlockHeadSettings = (props) => {
                 >
                     Decrypt
                 </button>
-                <button 
-                    value='crack' 
-                    onClick={(evt) => {
-                        props.onToggleDirection(evt.target.value)
-                        switchClassName(evt)
-                    }} 
-                    className="block_head_option"
-                >
-                    Crack
-                </button>
+                {
+                    MethodCrackAvailability[props.method] ? (
+                        <button 
+                            value='crack' 
+                            onClick={(evt) => {
+                                props.onToggleDirection(evt.target.value)
+                                switchClassName(evt)
+                            }} 
+                            className="block_head_option"
+                        >
+                            Crack
+                        </button>
+                    ) :
+                    null
+                }
             </div>
         </div>
     )

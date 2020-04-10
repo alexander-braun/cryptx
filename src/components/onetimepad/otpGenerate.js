@@ -39,10 +39,7 @@ class Otp extends React.PureComponent  {
             <div className="controller">
                 <div className="settings_name">GENERATE RANDOM KEY</div>
                 <div className="settings_operators" id="genRandomTab">
-                    <div 
-                        className="settings_operator" 
-                        id="otpKey"
-                    >
+                    <div className="settings_operator" id="otpKey">
                         { 
                             this.props.otpKey
                         }
@@ -70,7 +67,7 @@ class Otp extends React.PureComponent  {
 
 const mapStateToProps = state => ({
     otpKey: state.otpKey,
-    alphabet: state.alphabet,
+    alphabet: state.alphabet.alphabet,
     input: state.input
 })
 

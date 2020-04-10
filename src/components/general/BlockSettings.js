@@ -3,21 +3,13 @@ import ExplanatoryText from './ExplanatoryText'
 import BlockHeadSettings from './BlockHeadSettings'
 import Settings from './settings'
 
-const BlockElementSettings = ({
-                                alphabetActive,
-                                setE,
-                                e,
-                                }) => {
+const BlockSettings = () => {
   return (
     <div className="block_settings">
       <BlockHeadSettings />
       <div className="block_body">
           <div className="block_body_input">
-              <Settings 
-                alphabetActive = {alphabetActive}
-                setE = {setE}
-                e = {e}
-              />
+              <Settings />
               <ExplanatoryText />
           </div>
       </div>
@@ -25,5 +17,5 @@ const BlockElementSettings = ({
   )
 }
 
-export default BlockElementSettings
+export default BlockSettings
 
