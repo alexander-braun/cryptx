@@ -38,7 +38,7 @@ class BlockElementOutput extends React.PureComponent {
               <ChartImporter inputValue={this.props.output} menue = {'output'}/>
             </div>
             <div className="chartcontainer" style={{width: '100%'}}>
-              <IndexOfCoincidence ioc = {this.props.ioc} menue={'output'}/>
+              <IndexOfCoincidence ioc = {this.props.iocOutput} menue={'output'}/>
             </div>
         </div>
     )
@@ -46,7 +46,8 @@ class BlockElementOutput extends React.PureComponent {
 }
 
 const mapStateToProps = state => ({
-  output: state.output
+  output: state.output,
+  iocOutput: state.ioc.output
 })
 
 export default connect(mapStateToProps)(BlockElementOutput)

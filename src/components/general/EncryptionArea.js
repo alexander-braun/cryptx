@@ -26,14 +26,14 @@ import setOtpKey from '../../actions/setOtpKey'
 import setPlaysquare from '../../actions/setPlaysquare'
 import setSkytaleLength from '../../actions/setSkytaleLength'
 import setSkytaleProjectedValue from '../../actions/setSkytaleProjectedValue'
+import setIocInput from '../../actions/setIocInput'
+import setIocOutput from '../../actions/setIocOutput'
 
 class EncryptionArea extends React.PureComponent {
   constructor(props) {
     super(props)
     this.state = {
       alphabetActive: false,
-      iocInput: 0,
-      iocOutput: 0,
       e: 17,
       phi: 0,
       d: 0,
@@ -135,10 +135,8 @@ class EncryptionArea extends React.PureComponent {
   }
 
   indexOfCoincidence() {
-    this.setState({
-      iocInput: this.calcIndexOfCoincidence(true),
-      iocOutput: this.calcIndexOfCoincidence(false)
-    });
+    this.props.setIocInput(this.calcIndexOfCoincidence(true))
+    this.props.setIocOutput(this.calcIndexOfCoincidence(false))
   }
 
   //rsa
@@ -187,11 +185,11 @@ class EncryptionArea extends React.PureComponent {
           this.props.setOutput(Caesar.encrypt())
           break
         case 'rsa':
-          if (this.props.prime1 === 'bad input' ||
-              this.props.prime2 === 'bad input' ||
+          if (this.props.prime1 === 'Bad input' ||
+              this.props.prime2 === 'Bad input' ||
               !prevState.e
               ) {
-            return this.props.setOutput('bad input')  
+            return this.props.setOutput('Bad input')  
           } 
 
           Rsa.setUserInput(input)
@@ -271,9 +269,7 @@ class EncryptionArea extends React.PureComponent {
       <div id='converter'>
         <Timeline />
         <div id='block_container'>
-          <BlockInput
-            ioc={this.state.iocInput}
-          />
+          <BlockInput />
           <BlockConnectorPlus />
           <BlockSettings
             alphabetActive={this.state.alphabetActive}
@@ -285,9 +281,7 @@ class EncryptionArea extends React.PureComponent {
             timeToCalculate={this.state.timeToCalculate}
           />
           <BlockConnectorEquals />
-          <BlockOutput
-            ioc={this.state.iocOutput}
-          />
+          <BlockOutput />
         </div>
         <Modal />
       </div>
@@ -306,8 +300,8 @@ const mapStateToProps = state => ({
   method: state.method,
   includeChars: state.includeChars,
   caseformat: state.caseformat,
-  prime1: state.prime1,
-  prime2: state.prime2,
+  prime1: state.rsa.prime1,
+  prime2: state.rsa.prime2,
   alphabet: state.alphabet,
   keywordVigenere: state.keywordVigenere,
   keywordPlayfair: state.keywordPlayfair,
@@ -317,7 +311,9 @@ const mapStateToProps = state => ({
   playSquare: state.playSquare,
   ringLength: state.skytale.ringLength,
   skytaleLength: state.skytale.length,
-  skytaleProjectedValue: state.projectedValue
+  skytaleProjectedValue: state.projectedValue,
+  iocInput: state.ioc.input,
+  iocOutput: state.ioc.output
 })
 
 const mapActionsToProps = {
@@ -329,7 +325,9 @@ const mapActionsToProps = {
   setOtpKey: setOtpKey,
   setPlaysquare: setPlaysquare,
   setSkytaleLength: setSkytaleLength,
-  setSkytaleProjectedValue: setSkytaleProjectedValue
+  setSkytaleProjectedValue: setSkytaleProjectedValue,
+  setIocInput: setIocInput,
+  setIocOutput: setIocOutput
 }
 
 

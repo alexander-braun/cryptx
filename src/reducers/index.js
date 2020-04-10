@@ -9,8 +9,6 @@ import method from './method'
 import includeChars from './includechars'
 import output from './output'
 import caseformat from './caseformat'
-import prime1 from './prime1'
-import prime2 from './prime2'
 import alphabet from './alphabet'
 import keywordVigenere from './keywordVigenere'
 import keywordPlayfair from './keywordPlayfair'
@@ -18,6 +16,8 @@ import affine from './affine'
 import otpKey from './otpKey'
 import playsquare from './playsquare'
 import skytale from './skytale'
+import rsa from './rsa'
+import ioc from './ioc'
 
 export default combineReducers({
     modal,
@@ -30,13 +30,13 @@ export default combineReducers({
     includeChars,
     output,
     caseformat,
-    prime1,
-    prime2,
     alphabet,
     keywordVigenere,
     keywordPlayfair,
     affine,
     otpKey,
     playsquare,
-    skytale
+    skytale,
+    rsa,
+    ioc
 })

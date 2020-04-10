@@ -5,7 +5,7 @@ import math from './Math'
 import { connect } from 'react-redux'
 import { updateInput } from '../../actions/input'
 
-const BlockElementInput = ({updateInput, ioc, input}) => {
+const BlockElementInput = ({updateInput, iocInput, input}) => {
 
   useEffect(() => {
       let textareaOutput = document.getElementById('userinput')
@@ -48,14 +48,15 @@ const BlockElementInput = ({updateInput, ioc, input}) => {
             </div>
           </div>
           <div className="chartcontainer" style={{width: '100%'}}>
-            <IndexOfCoincidence ioc = {ioc} menue={'input'}/>
+            <IndexOfCoincidence ioc = {iocInput} menue={'input'}/>
           </div>
       </div>
   )
 }
 
 const mapStateToProps = state => ({
-  input: state.input
+  input: state.input,
+  iocInput: state.ioc.input
 })
 
 const mapActionsToProps = {

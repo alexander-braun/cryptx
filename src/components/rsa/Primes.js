@@ -12,12 +12,13 @@ const Primes = (props) => {
             let cleanInput = []
             for(let element of rawInput) {
                 if(numbers.indexOf(element) !== -1) cleanInput.push(element)
-                else return 'bad input'
             }    
-            if (cleanInput.length === 1 && cleanInput[0] === '1' || cleanInput[0] === '0') return 'bad input'
+            if ((cleanInput.length === 1 && (cleanInput[0] === '1' || cleanInput[0] === '0')) ||
+                cleanInput.length === 0) return 'Bad input'
             return cleanInput.join('')    
-        } else return 'bad input'
+        } else return 'Bad input'
     }
+
     return (
         <div className = 'primes'>
             <div className="controller double_content prime">
@@ -127,8 +128,8 @@ const Primes = (props) => {
 }
 
 const mapStateToProps = state => ({
-    prime1: state.prime1,
-    prime2: state.prime2
+    prime1: state.rsa.prime1,
+    prime2: state.rsa.prime2
 })
 
 const mapActionsToProps = {
