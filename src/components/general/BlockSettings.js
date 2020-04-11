@@ -1,7 +1,7 @@
 import React from 'react'
 import ExplanatoryText from './ExplanatoryText'
 import BlockHeadSettings from './BlockHeadSettings'
-import Settings from './settings'
+import Settings from './Settings'
 
 const BlockSettings = () => {
   return (

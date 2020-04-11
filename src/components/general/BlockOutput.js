@@ -3,6 +3,7 @@ import ChartImporter from '../freqencyAnalysis/ChartImporter'
 import IndexOfCoincidence from '../indexOfCoincidence/IndexOfCoincidence'
 import math from './Math'
 import { connect } from 'react-redux'
+import ChiSquared from '../chi_squared/chisquared'
 
 
 class BlockElementOutput extends React.PureComponent {
@@ -39,6 +40,9 @@ class BlockElementOutput extends React.PureComponent {
             </div>
             <div className="chartcontainer" style={{width: '100%'}}>
               <IndexOfCoincidence ioc = {this.props.iocOutput} menue={'output'}/>
+            </div>
+            <div className="chartcontainer" style={{width: '100%'}}>
+              <ChiSquared menue={'output'}/>
             </div>
         </div>
     )

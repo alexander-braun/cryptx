@@ -1272,6 +1272,10 @@ div:focus {
   font-weight: 200;
 }
 
+#chi_result {
+  margin-top: 20px;
+}
+
 @media only screen and (max-width: 1500px) {
   #block_container {
     margin: 0rem 8vw 8vw;

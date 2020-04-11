@@ -4,6 +4,7 @@ import IndexOfCoincidence from '../indexOfCoincidence/IndexOfCoincidence'
 import math from './Math'
 import { connect } from 'react-redux'
 import { updateInput } from '../../actions/input'
+import ChiSquared from '../chi_squared/chisquared'
 
 const BlockElementInput = ({updateInput, iocInput, input}) => {
 
@@ -49,6 +50,9 @@ const BlockElementInput = ({updateInput, iocInput, input}) => {
           </div>
           <div className="chartcontainer" style={{width: '100%'}}>
             <IndexOfCoincidence ioc = {iocInput} menue={'input'}/>
+          </div>
+          <div className="chartcontainer" style={{width: '100%'}}>
+            <ChiSquared menue={'input'}/>
           </div>
       </div>
   )

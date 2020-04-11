@@ -38,7 +38,7 @@ let icTooltip = (
     <StyledTooltip
         title={
         <React.Fragment>
-            <Typography color="inherit">Index Of Coincidence</Typography>
+            <Typography color="inherit">Index Of Coincidence (IC)</Typography>
             Is an indicator for the frequency of wich letters appears in a text.
             Different languages and encryption algorithms have distinguishable IC's. This makes the IC a good tool
             to analyse how a given text is encrypted. F.e. the skytale method isn't transforming a letter, just it's
@@ -68,7 +68,7 @@ function IndexOfCoincidence({ioc, menue}) {
                 aria-controls="panel2a-content"
                 id="panel2a-header"
                 >
-                <Typography className={classes.heading}>Index Of Coincidence</Typography>
+                <Typography className={classes.heading}>Index Of Coincidence (IC)</Typography>
                 {icTooltip}
             </ExpansionPanelSummary>
             <ExpansionPanelDetails className={classes.body} style={{paddingTop: '24px'}}>
