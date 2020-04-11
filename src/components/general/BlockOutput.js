@@ -7,8 +7,8 @@ import ChiSquared from '../chi_squared/chisquared'
 import SwapHorizIcon from '@material-ui/icons/SwapHoriz';
 import { withStyles } from '@material-ui/core/styles';
 import Tooltip from '@material-ui/core/Tooltip';
-import { toggleDirection } from '../../actions/direction'
-import { updateInput } from '../../actions/input'
+import { toggleDirection } from '../../actions/toggleDirection'
+import { updateInput } from '../../actions/updateInput'
 
 const StyledTooltip = withStyles(theme => ({
   tooltip: {
@@ -33,6 +33,7 @@ let icTooltip = (
 )
 
 class BlockElementOutput extends React.PureComponent {
+  
   constructor(props) {
     super(props)
     this.swapInputOutput = this.swapInputOutput.bind(this)

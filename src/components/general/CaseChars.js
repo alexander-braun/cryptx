@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import toggleChars from '../../actions/includeChars'
+import toggleChars from '../../actions/toggleIncludeChars'
 import toggleCase from '../../actions/toggleCase'
 
 class CaseChars extends React.PureComponent {
@@ -37,7 +37,7 @@ class CaseChars extends React.PureComponent {
                 </div>
                 <div className="controllbox" style={{borderRight: 'none'}}>
                     <div className="settings_name">FOREIGN CHARS</div>
-                    <div className="settings_operators">
+                    <div className="settings_operators" style={{justifyContent: 'start'}}>
                         <button 
                             id="includeChars" 
                             className={this.props.includeChars === 'include' ? 'active' : 'inactive'} 

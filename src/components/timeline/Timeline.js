@@ -7,7 +7,7 @@ import methodNamesAll from '../general/MethodNames'
 import times from '../general/MethodTimes'
 import '../../styles/timeline.css'
 import { connect } from 'react-redux'
-import { changeMethod } from '../../actions/method'
+import { changeMethod } from '../../actions/changeMethod'
 
 class Timeline extends React.PureComponent {
     constructor(props) {

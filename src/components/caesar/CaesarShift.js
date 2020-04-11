@@ -1,5 +1,5 @@
 import React from 'react'
-import { setCshift } from '../../actions/cShift'
+import { setCshift } from '../../actions/setCShift'
 import { connect } from 'react-redux'
 
 const CaesarShift = (props) => {

@@ -1,8 +1,8 @@
 import React from 'react'
 import { ReactComponent as Caret} from './img/caret.svg'
 import { connect } from 'react-redux'
-import { toggleModal } from '../../actions/modal'
-import { toggleDirection } from '../../actions/direction'
+import { toggleModal } from '../../actions/toggleModal'
+import { toggleDirection } from '../../actions/toggleDirection'
 import MethodNames from './MethodNames'
 import MethodCrackAvailability from './MethodCrackAvailability'
 
@@ -25,7 +25,7 @@ const BlockHeadSettings = (props) => {
                 <button 
                     value='encrypt' 
                     onClick={(evt) => {
-                        props.onToggleDirection(evt.target.value)
+                        props.toggleDirection(evt.target.value)
                     }} 
                     className={`block_head_option ${props.direction === 'encrypt' ? 'selected' : ''}`}
                 >
@@ -34,7 +34,7 @@ const BlockHeadSettings = (props) => {
                     <button 
                     value='decrypt' 
                     onClick={(evt) => {
-                        props.onToggleDirection(evt.target.value)
+                        props.toggleDirection(evt.target.value)
                     }} 
                     className={`block_head_option ${props.direction === 'decrypt' ? 'selected' : ''}`}
                 >
@@ -45,7 +45,7 @@ const BlockHeadSettings = (props) => {
                         <button 
                             value='crack' 
                             onClick={(evt) => {
-                                props.onToggleDirection(evt.target.value)
+                                props.toggleDirection(evt.target.value)
                             }} 
                             className={`block_head_option ${props.direction === 'crack' ? 'selected' : ''}`}
                         >
@@ -67,7 +67,7 @@ const mapStateToProps = state => ({
 
 const mapActionsToProps = {
     onModalToggle: toggleModal,
-    onToggleDirection: toggleDirection
+    toggleDirection: toggleDirection
 }
 
 

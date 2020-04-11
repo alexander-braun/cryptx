@@ -3,13 +3,13 @@ import ChartImporter from '../freqencyAnalysis/ChartImporter'
 import IndexOfCoincidence from '../indexOfCoincidence/IndexOfCoincidence'
 import math from './Math'
 import { connect } from 'react-redux'
-import { updateInput } from '../../actions/input'
+import { updateInput } from '../../actions/updateInput'
 import ChiSquared from '../chi_squared/chisquared'
 import SwapHorizIcon from '@material-ui/icons/SwapHoriz';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Tooltip from '@material-ui/core/Tooltip';
-import { toggleDirection } from '../../actions/direction'
+import { toggleDirection } from '../../actions/toggleDirection'
 
 const StyledTooltip = withStyles(theme => ({
   tooltip: {

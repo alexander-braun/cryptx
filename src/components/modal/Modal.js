@@ -1,8 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { toggleModal } from '../../actions/modal'
+import { toggleModal } from '../../actions/toggleModal'
 import '../../styles/modal.css'
-import { changeMethod } from '../../actions/method'
+import { changeMethod } from '../../actions/changeMethod'
 
 class Modal extends React.Component {
     render() {
