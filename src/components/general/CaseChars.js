@@ -19,10 +19,10 @@ class CaseChars extends React.PureComponent {
 
     render() {
         return (
-            <div className="controller double_content">
+            <div className="controller double_content" style={{borderBottom: 'none'}}>
                 <div className="controllbox">
                     <div className="settings_name">CASE</div>
-                    <div className="settings_operators" style={{padding: '0.5rem 0.5rem 0.5rem 20px'}}>
+                    <div className="settings_operators" style={{padding: '0.5rem 0.5rem 0.5rem 20px', borderBottom: 'none'}}>
                         <select 
                             id="selectCase" 
                             defaultValue = {this.props.caseformat}
@@ -35,7 +35,7 @@ class CaseChars extends React.PureComponent {
                         </select>
                     </div>
                 </div>
-                <div className="controllbox" style={{borderRight: 'none'}}>
+                <div className="controllbox" style={{borderRight: 'none', borderBottom: 'none'}}>
                     <div className="settings_name">FOREIGN CHARS</div>
                     <div className="settings_operators" style={{justifyContent: 'start'}}>
                         <button 

@@ -167,13 +167,13 @@ function ChiSquared(props) {
                         <select 
                             id="chi_lang_select" 
                             className={classes.select} 
-                            style={{marginLeft: '1em', backgroundColor: 'rgb(62, 148, 197)', padding: '5px', borderRadius: '20px'}}
+                            style={{marginLeft: '1em', backgroundColor: 'transparent', border: '1px solid #ffffff78', padding: '5px', fontWeight: '400', borderRadius: '20px', fontSize: '12px'}}
                             onClick={evt => updateSelected(evt.target.value)} 
                         >
                             {Object.keys(languages).map(language => {
                                 return (
                                     <option 
-                                        style={{fontWeight: '600'}} 
+                                        style={{fontWeight: '400', fontSize: '12px', color: 'black'}} 
                                         key={language} 
                                         className={classes.option} 
                                         id={language}

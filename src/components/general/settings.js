@@ -120,11 +120,11 @@ const BlockBodyInput = (props) => {
                 bodyInput = 
                     <div>
                         <OtpGenerate />
-                        <CaseChars />
                         <Alphabet 
                             alphabet = {props.alphabet} 
                             alphabetActive = {props.alphabetActive}
                         />
+                        <CaseChars />
                     </div>
                 break
             default: return null
