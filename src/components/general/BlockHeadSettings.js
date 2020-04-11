@@ -8,17 +8,6 @@ import MethodCrackAvailability from './MethodCrackAvailability'
 
 const BlockHeadSettings = (props) => {
 
-    const switchClassName = (evt) => {
-        const buttons = document.getElementsByClassName('block_head_option')
-        for(let button of buttons) {
-            if(evt.target === button) {
-                button.className = 'block_head_option selected'
-            } else {
-                button.className = 'block_head_option'
-            }
-        }
-    }
-
     const toggleModal = () => {
         props.onModalToggle()
     }
@@ -36,10 +25,9 @@ const BlockHeadSettings = (props) => {
                 <button 
                     value='encrypt' 
                     onClick={(evt) => {
-                        switchClassName(evt)
                         props.onToggleDirection(evt.target.value)
                     }} 
-                    className="block_head_option selected"
+                    className={`block_head_option ${props.direction === 'encrypt' ? 'selected' : ''}`}
                 >
                     Encrypt
                 </button>
@@ -47,9 +35,8 @@ const BlockHeadSettings = (props) => {
                     value='decrypt' 
                     onClick={(evt) => {
                         props.onToggleDirection(evt.target.value)
-                        switchClassName(evt)
                     }} 
-                    className="block_head_option"
+                    className={`block_head_option ${props.direction === 'decrypt' ? 'selected' : ''}`}
                 >
                     Decrypt
                 </button>
@@ -59,9 +46,8 @@ const BlockHeadSettings = (props) => {
                             value='crack' 
                             onClick={(evt) => {
                                 props.onToggleDirection(evt.target.value)
-                                switchClassName(evt)
                             }} 
-                            className="block_head_option"
+                            className={`block_head_option ${props.direction === 'crack' ? 'selected' : ''}`}
                         >
                             Crack
                         </button>

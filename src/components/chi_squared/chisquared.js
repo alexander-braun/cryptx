@@ -55,6 +55,10 @@ const useStyles = makeStyles(theme => ({
         letterSpacing: '.05em',
         fontfamily: '"Roboto", "Helvetica", "Arial", sans-serif',
         fontWeight: '400',
+    },
+    result: {
+        paddingTop: '20px',
+        borderTop: '1px solid rgba(255, 255, 255, 0.192)',
     }
   
 }));
@@ -82,12 +86,12 @@ function ChiSquared(props) {
     const chiSquaredCalculation = (language) => {
 
         const letters = 'abcdefghijklmnopqrstuvwxyzœßàąçĉćèéêëęĝĥîìïĵłńóòŝśùŭźż'
+        let input = props.menue === 'input' ? props.input : props.output
 
         //Puts the letter occurences of every letter into an array
 
         const countLetters = () => {
             let output = Array(letters.length).fill(0)
-            let input = props.menue === 'input' ? props.input : props.output
             for(let letterToSearch of letters) {
                 for(let i = 0; i < input.split('').length; i++) {
                     if(letterToSearch === input.split('')[i].toLowerCase()) {
@@ -98,8 +102,10 @@ function ChiSquared(props) {
             return output
         }
 
+        // Calculate the expected letter distribution for every letter and
+        // put it into an array
+
         const calcExpectedCount = () => {
-            let input = props.menue === 'input' ? props.input : props.output
             let cleanInput = []
             for(let i = 0; i < input.length; i++) {
                 if(letters.indexOf(input[i].toLowerCase()) !== -1) {
@@ -116,6 +122,8 @@ function ChiSquared(props) {
             }
             return expectedCounts    
         }
+
+        // Calculates the final chi squared value
         
         const difference = () => {
             if(language !== undefined) {
@@ -125,11 +133,17 @@ function ChiSquared(props) {
 
                 let index = 0
                 for(let element of observed) {
+
+                    // Division by 0 is not possible so if ...
+
                     if(Math.pow((element - expected[index]), 2) !== 0 && expected[index] !== 0) {
                         singleChis.push(Math.pow((element - expected[index]), 2) / expected[index])    
                     } else singleChis.push(0)
                     index++
                 }
+                
+                // The last step is to add the single chi squared values up to the final chi squared value for the whole text
+
                 return singleChis.reduce((total, num) => total + num)
             }
         }
@@ -168,11 +182,11 @@ function ChiSquared(props) {
                                     </option>)
                             })}
                         </select>
-                        <div id="chi_result">
-                            {chiSquaredCalculation(selectedElement)}
+                        <div id="chi_result" className={classes.result}>
+                            χ2 = {chiSquaredCalculation(selectedElement)}
                         </div>
                     </Fragment>
-                    ) : null
+                    ) : ''
                 }
             </ExpansionPanelDetails>
         </ExpansionPanel> 

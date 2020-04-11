@@ -65,7 +65,7 @@ function ChartImporter({inputValue}) {
                 expandIcon={<ExpandMoreIcon />}
                 aria-controls="panel2a-content"
                 id="panel2a-header"
-                >
+            >
                 <Typography className={classes.heading}>Frequency Analysis</Typography>
                 {icTooltip}
             </ExpansionPanelSummary>

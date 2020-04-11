@@ -58,7 +58,7 @@ function IndexOfCoincidence({ioc, menue}) {
     
     const isThereIoc = () => {
         if(!ioc && ioc !== 0) return 'no input'
-        else return ioc
+        else return `IC = ${ioc}`
     }
 
     return (

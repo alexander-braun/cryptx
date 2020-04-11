@@ -1276,6 +1276,15 @@ div:focus {
   margin-top: 20px;
 }
 
+.swapIcon {
+  -webkit-transition-duration: 200ms;
+          transition-duration: 200ms;
+}
+
+.swapIcon:hover {
+  color: white;
+}
+
 @media only screen and (max-width: 1500px) {
   #block_container {
     margin: 0rem 8vw 8vw;
