@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, Fragment } from 'react'
 import ExpansionPanel from '@material-ui/core/ExpansionPanel'
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary'
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails'
@@ -147,28 +147,33 @@ function ChiSquared(props) {
                 {icTooltip}
             </ExpansionPanelSummary>
             <ExpansionPanelDetails className={classes.body} style={{paddingTop: '24px', display: 'block'}}>
-                <label htmlFor="chi_lang_select" className={classes.label}>Language to compare to:</label>
-                <select 
-                    id="chi_lang_select" 
-                    className={classes.select} 
-                    style={{marginLeft: '1em', backgroundColor: 'rgb(62, 148, 197)', padding: '5px', borderRadius: '20px'}}
-                    onClick={evt => updateSelected(evt.target.value)} 
-                >
-                    {Object.keys(languages).map(language => {
-                        return (
-                            <option 
-                                style={{fontWeight: '600'}} 
-                                key={language} 
-                                className={classes.option} 
-                                id={language}
-                            >
-                                {language}
-                            </option>)
-                    })}
-                </select>
-                <div id="chi_result">
-                    {chiSquaredCalculation(selectedElement)}
-                </div>
+                {expandedStatus ? (
+                    <Fragment>
+                        <label htmlFor="chi_lang_select" className={classes.label}>Language to compare to:</label>
+                        <select 
+                            id="chi_lang_select" 
+                            className={classes.select} 
+                            style={{marginLeft: '1em', backgroundColor: 'rgb(62, 148, 197)', padding: '5px', borderRadius: '20px'}}
+                            onClick={evt => updateSelected(evt.target.value)} 
+                        >
+                            {Object.keys(languages).map(language => {
+                                return (
+                                    <option 
+                                        style={{fontWeight: '600'}} 
+                                        key={language} 
+                                        className={classes.option} 
+                                        id={language}
+                                    >
+                                        {language}
+                                    </option>)
+                            })}
+                        </select>
+                        <div id="chi_result">
+                            {chiSquaredCalculation(selectedElement)}
+                        </div>
+                    </Fragment>
+                    ) : null
+                }
             </ExpansionPanelDetails>
         </ExpansionPanel> 
     )
