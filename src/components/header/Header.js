@@ -97,7 +97,7 @@ export default function PersistentDrawerLeft() {
   const menueItems = width > 700 ? 
     <Typography variant="body1" noWrap style={{marginLeft: 'auto', fontSize: '1.15rem'}}>
       {['Login', 'Signup', 'About'].map((text, index) => (
-        <Link key={text} style={{color:'white', marginRight: text !== 'About' ? '1em' : '0', textDecoration:'none'}} to={text === 'Login' ? '/login' : text === 'Signup' ? '/signup' : '/about'}>
+        <Link key={text} style={{letterSpacing: '0.05rem', color:'white', marginRight: text !== 'About' ? '1.5em' : '0', textDecoration:'none'}} to={text === 'Login' ? '/login' : text === 'Signup' ? '/signup' : '/about'}>
           {text}
         </Link>
       ))}

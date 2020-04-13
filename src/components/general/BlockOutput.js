@@ -28,7 +28,7 @@ let icTooltip = (
       </React.Fragment>
       }
   >
-      <SwapHorizIcon style={{color: '#0a86ce', fontSize: '24px'}}/>
+      <SwapHorizIcon style={{color: '#3e94c5', fontSize: '24px'}}/>
   </StyledTooltip>
 )
 
