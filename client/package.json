@@ -62,5 +62,5 @@
   "devDependencies": {
     "redux-immutable-state-invariant": "^2.1.0"
   },
-  "proxy": "http://localhost:3000"
+  "proxy": "http://localhost:5000"
 }

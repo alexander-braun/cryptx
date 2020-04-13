@@ -75,7 +75,7 @@ const SignIn = (props) => {
   }
   
   if(props.isAuthenticated) {
-      window.location.href = "/#timeline"
+      window.location.href = "/"
   }
   
   return (

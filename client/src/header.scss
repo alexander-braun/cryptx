@@ -40,10 +40,7 @@ $transitionMain: 100ms;
 
 .MuiToolbar-root {
     h6 {
-        margin-left: 13vw;
-    }
-    p.MuiTypography-root {
-        margin-right: 13vw
+        margin-left: 5vw;
     }
 }
 
@@ -51,58 +48,5 @@ $transitionMain: 100ms;
     .MuiToolbar-gutters {
         padding-left: 0px !important;
         padding-right: 0px !important;
-    }
-}
-
-@media only screen and (max-width: 1500px) {
-    .MuiToolbar-root {
-        h6 {
-            margin-left: 8vw;
-        }
-        p.MuiTypography-root {
-            margin-right: 8vw;
-        }
-    }
-}
-
-
-@media only screen and (max-width: 1100px) {
-    .MuiToolbar-root {
-        h6 {
-            margin: 0 auto
-        }
-        p.MuiTypography-root {
-            margin: 0 auto
-        }
-    }
-}
-
-@media only screen and (max-width: 720px) {
-    .MuiToolbar-root {
-        h6 {
-            margin-right: auto;
-        }
-        p.MuiTypography-root {
-            margin: 0 auto
-        }
-        button {
-            margin-right: auto;
-        }
-    }
-}
-
-@media only screen and (max-width: 700px) {
-    .MuiToolbar-root {
-        h6 {
-            margin-right: auto;
-            margin-left: 24px;
-        }
-        p.MuiTypography-root {
-            margin: 0 auto
-        }
-        button {
-            margin-left: auto;
-            margin-right: 24px;
-        }
     }
 }

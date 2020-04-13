@@ -65,7 +65,7 @@ const Login = (props) => {
       props.login(email, password)
     }
     if(props.isAuthenticated) {
-        window.location.href = "/#timeline"
+        window.location.href = "/"
     }
     return (
         <div id="login_section">
@@ -170,7 +170,7 @@ const mapStateToProps = state => ({
 })
 
 Login.propTypes = {
-    login: PropTypes.func,
+    login: PropTypes.func.isRequired,
     isAuthenticated: PropTypes.bool
 }
   

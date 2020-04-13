@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { Fragment, useState } from 'react'
 import logo from './img/key.png'
 import { Link } from 'react-router-dom'
 import ResizeObserver from 'react-resize-observer';
@@ -18,11 +18,15 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
+import PersonIcon from '@material-ui/icons/Person';
 import InfoIcon from '@material-ui/icons/Info'
 import HomeIcon from '@material-ui/icons/Home'
 import ExitToAppIcon from '@material-ui/icons/ExitToApp'
 import CreateIcon from '@material-ui/icons/Create'
 import '../../styles/header.css'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
+import { logout } from '../../actions/authenticate'
 
 const drawerWidth = 240;
 
@@ -77,7 +81,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function PersistentDrawerLeft() {
+const Header = (props) => {
 
   let [height, updateHeight] = useState()
   let [width, updateWidth] = useState()
@@ -87,21 +91,137 @@ export default function PersistentDrawerLeft() {
   const [open, setOpen] = useState(false);
 
   const handleDrawerOpen = () => {
-    setOpen(true);
-  };
+    setOpen(true)
+  }
 
   const handleDrawerClose = () => {
-    setOpen(false);
-  };
+    setOpen(false)
+  }
 
-  const menueItems = width > 700 ? 
-    <Typography variant="body1" noWrap style={{marginLeft: 'auto', fontSize: '1.15rem'}}>
-      {['Login', 'Signup', 'About'].map((text, index) => (
-        <Link key={text} style={{letterSpacing: '0.05rem', color:'white', marginRight: text !== 'About' ? '1.5em' : '0', textDecoration:'none'}} to={text === 'Login' ? '/login' : text === 'Signup' ? '/signup' : '/about'}>
-          {text}
+  const authLinksDesktop = (
+    <div style={{marginLeft: 'auto', display: 'flex', flexDirection: 'row', justifyItems: 'center', alignItems: 'center'}}>
+      <Typography variant="body1" noWrap style={{fontSize:'1.15rem', marginRight: '1rem'}}>
+        <Link
+          style={{letterSpacing:'0.05rem', color:'white', marginRight: '1em', textDecoration: 'none'}}
+          to='#!'
+          onClick={props.logout}
+        >
+          Logout
         </Link>
-      ))}
-    </Typography> :
+      </Typography>
+      <Typography variant="body1" noWrap style={{fontSize:'1.15rem', marginRight: '1rem'}}>
+        <Link
+          style={{letterSpacing:'0.05rem', color:'white', marginRight: '1em', textDecoration: 'none'}}
+          to='/Profile'
+        >
+          Profile
+        </Link>
+      </Typography>
+      <Typography variant="body1" noWrap style={{fontSize:'1.15rem', marginRight: '5vw'}}>
+        <Link
+          style={{letterSpacing:'0.05rem', color:'white', textDecoration: 'none'}}
+          to='/About'
+        >
+          About
+        </Link>
+      </Typography>
+    </div>
+  )
+
+  const guestLinksDesktop = (
+    <div style={{marginLeft: 'auto', display: 'flex', flexDirection: 'row', justifyItems: 'center', alignItems: 'center'}}>
+      <Typography variant="body1" noWrap style={{fontSize:'1.15rem', marginRight: '1rem'}}>
+        <Link
+          style={{letterSpacing:'0.05rem', color:'white', marginRight: '1em', textDecoration: 'none'}}
+          to='/Login'
+        >
+          Login
+        </Link>
+      </Typography>
+      <Typography variant="body1" noWrap style={{fontSize:'1.15rem', marginRight: '1rem'}}>
+        <Link
+          style={{letterSpacing:'0.05rem', color:'white', marginRight: '1em', textDecoration: 'none'}}
+          to='/Signup'
+        >
+          Signup
+        </Link>
+      </Typography>
+      <Typography variant="body1" noWrap style={{fontSize:'1.15rem', marginRight: '5vw'}}>
+        <Link
+          style={{letterSpacing:'0.05rem', color:'white', textDecoration: 'none'}}
+          to='/About'
+        >
+          About
+        </Link>
+      </Typography>
+    </div>
+  )
+
+  const authLinksMobile = (
+    <Fragment>
+      <CreateIcon />
+      <List onClick={handleDrawerClose}>
+        <Link to='/'>
+          <ListItem button style={{color:'black', textDecoration:'none'}}>
+            <ListItemIcon><HomeIcon /></ListItemIcon>
+            <ListItemText primary="Home" />
+          </ListItem>
+        </Link>
+        <Link to='#!' onClick={props.logout}>
+          <ListItem button style={{color:'black', textDecoration:'none'}}>
+            <ListItemIcon><ExitToAppIcon /></ListItemIcon>
+            <ListItemText primary="Logout" />
+          </ListItem>
+        </Link>
+        <Link to='/Profile'>
+          <ListItem button style={{color:'black', textDecoration:'none'}}>
+            <ListItemIcon><PersonIcon /></ListItemIcon>
+            <ListItemText primary="Profile" />
+          </ListItem>
+        </Link>
+        <Link to='/About'>
+          <ListItem button style={{color:'black', textDecoration:'none'}}>
+            <ListItemIcon><InfoIcon /></ListItemIcon>
+            <ListItemText primary="About" />
+          </ListItem>
+        </Link>
+      </List>
+    </Fragment>
+  )
+
+  const guestLinksMobile = (
+    <Fragment>
+      <CreateIcon />
+      <List onClick={handleDrawerClose}>
+        <Link to='/'>
+          <ListItem button style={{color:'black', textDecoration:'none'}}>
+            <ListItemIcon><HomeIcon /></ListItemIcon>
+            <ListItemText primary="Home" />
+          </ListItem>
+        </Link>
+        <Link to='/Login'>
+          <ListItem button style={{color:'black', textDecoration:'none'}}>
+            <ListItemIcon><ExitToAppIcon /></ListItemIcon>
+            <ListItemText primary="Login" />
+          </ListItem>
+        </Link>
+        <Link to='/Signup'>
+          <ListItem button style={{color:'black', textDecoration:'none'}}>
+            <ListItemIcon><PersonIcon /></ListItemIcon>
+            <ListItemText primary="Signup" />
+          </ListItem>
+        </Link>
+        <Link to='/About'>
+          <ListItem button style={{color:'black', textDecoration:'none'}}>
+            <ListItemIcon><InfoIcon /></ListItemIcon>
+            <ListItemText primary="About" />
+          </ListItem>
+        </Link>
+      </List>
+    </Fragment>
+  )
+
+  const iconMenue = (
     <IconButton
       color="inherit"
       aria-label="open drawer"
@@ -111,6 +231,15 @@ export default function PersistentDrawerLeft() {
     >
       <MenuIcon style={{fontSize: '.7em'}} />
     </IconButton>
+  )
+
+  const menueItems = () => {
+    if(width > 700) {
+      return !props.auth.loading && (<Fragment>{props.auth.isAuthenticated ? authLinksDesktop : guestLinksDesktop}</Fragment>)
+    } else {
+      return iconMenue
+    }
+  }
 
   return (
     <React.Fragment>
@@ -133,7 +262,7 @@ export default function PersistentDrawerLeft() {
               <Link to={'/'}><p>cryptx</p></Link><img href='/' src={logo} id="keyimage" alt="logo"></img>
             </div>
           </Typography>
-          {menueItems}
+          {menueItems()}
         </Toolbar>
         </AppBar>
         <Drawer
@@ -152,14 +281,9 @@ export default function PersistentDrawerLeft() {
           </div>
           <Divider />
           <List onClick={handleDrawerClose}>
-            {['Home', 'Login', 'Signup', 'About'].map((text, index) => (
-              <Link key={text} to={text === 'Home' ? '/' : text === 'Login' ? '/login' : text === 'Signup' ? '/signup' : '/about'}>
-                <ListItem button key={text} style={{color:'black', textDecoration:'none'}}>
-                  <ListItemIcon>{text === 'Home' ? <HomeIcon /> : text === 'Login' ? <ExitToAppIcon /> : text === 'Signup' ? <CreateIcon /> : <InfoIcon />}</ListItemIcon>
-                  <ListItemText primary={text} />
-                </ListItem>
-              </Link>
-            ))}
+            {
+              !props.auth.loading && (<Fragment>{props.auth.isAuthenticated ? authLinksMobile : guestLinksMobile}</Fragment>)
+            }
           </List>
         </Drawer>
       </div>
@@ -167,3 +291,17 @@ export default function PersistentDrawerLeft() {
   )
 }
 
+const mapStateToProps = state => ({
+  auth: state.auth
+})
+
+const mapActionsToProps = {
+  logout: logout
+}
+
+Header.propTypes = {
+  logout: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired
+}
+
+export default connect(mapStateToProps, mapActionsToProps)(Header)
