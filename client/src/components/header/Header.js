@@ -23,6 +23,7 @@ import InfoIcon from '@material-ui/icons/Info'
 import HomeIcon from '@material-ui/icons/Home'
 import ExitToAppIcon from '@material-ui/icons/ExitToApp'
 import CreateIcon from '@material-ui/icons/Create'
+import VpnKeyIcon from '@material-ui/icons/VpnKey';
 import '../../styles/header.css'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
@@ -102,16 +103,16 @@ const Header = (props) => {
     <div style={{marginLeft: 'auto', display: 'flex', flexDirection: 'row', justifyItems: 'center', alignItems: 'center'}}>
       <Typography variant="body1" noWrap style={{fontSize:'1.15rem', marginRight: '1rem'}}>
         <Link
-          style={{letterSpacing:'0.05rem', color:'white', marginRight: '1em', textDecoration: 'none'}}
+          style={{letterSpacing:'0.05rem',color:'white',marginRight:'1em',textDecoration:'none'}}
           to='#!'
           onClick={props.logout}
         >
-          Logout
+          Logout 
         </Link>
       </Typography>
       <Typography variant="body1" noWrap style={{fontSize:'1.15rem', marginRight: '1rem'}}>
         <Link
-          style={{letterSpacing:'0.05rem', color:'white', marginRight: '1em', textDecoration: 'none'}}
+          style={{letterSpacing:'0.05rem',color:'white',marginRight:'1em',textDecoration:'none'}}
           to='/Profile'
         >
           Profile
@@ -119,7 +120,7 @@ const Header = (props) => {
       </Typography>
       <Typography variant="body1" noWrap style={{fontSize:'1.15rem', marginRight: '5vw'}}>
         <Link
-          style={{letterSpacing:'0.05rem', color:'white', textDecoration: 'none'}}
+          style={{letterSpacing:'0.05rem',color:'white',marginRight:'1em',textDecoration:'none'}}
           to='/About'
         >
           About
@@ -132,7 +133,7 @@ const Header = (props) => {
     <div style={{marginLeft: 'auto', display: 'flex', flexDirection: 'row', justifyItems: 'center', alignItems: 'center'}}>
       <Typography variant="body1" noWrap style={{fontSize:'1.15rem', marginRight: '1rem'}}>
         <Link
-          style={{letterSpacing:'0.05rem', color:'white', marginRight: '1em', textDecoration: 'none'}}
+          style={{letterSpacing:'0.05rem',color:'white',marginRight:'1em',textDecoration:'none'}}
           to='/Login'
         >
           Login
@@ -140,7 +141,7 @@ const Header = (props) => {
       </Typography>
       <Typography variant="body1" noWrap style={{fontSize:'1.15rem', marginRight: '1rem'}}>
         <Link
-          style={{letterSpacing:'0.05rem', color:'white', marginRight: '1em', textDecoration: 'none'}}
+          style={{letterSpacing:'0.05rem',color:'white',marginRight:'1em',textDecoration:'none'}}
           to='/Signup'
         >
           Signup
@@ -148,7 +149,7 @@ const Header = (props) => {
       </Typography>
       <Typography variant="body1" noWrap style={{fontSize:'1.15rem', marginRight: '5vw'}}>
         <Link
-          style={{letterSpacing:'0.05rem', color:'white', textDecoration: 'none'}}
+          style={{letterSpacing:'0.05rem',color:'white',marginRight:'1em',textDecoration:'none'}}
           to='/About'
         >
           About
@@ -159,7 +160,6 @@ const Header = (props) => {
 
   const authLinksMobile = (
     <Fragment>
-      <CreateIcon />
       <List onClick={handleDrawerClose}>
         <Link to='/'>
           <ListItem button style={{color:'black', textDecoration:'none'}}>
@@ -191,7 +191,6 @@ const Header = (props) => {
 
   const guestLinksMobile = (
     <Fragment>
-      <CreateIcon />
       <List onClick={handleDrawerClose}>
         <Link to='/'>
           <ListItem button style={{color:'black', textDecoration:'none'}}>
@@ -259,7 +258,7 @@ const Header = (props) => {
         <Toolbar>
           <Typography variant="h6" noWrap style={{marginRight: 'auto'}}>
             <div className='site_title'>
-              <Link to={'/'}><p>cryptx</p></Link><img href='/' src={logo} id="keyimage" alt="logo"></img>
+              <Link to={'/'}><p>cryptx</p></Link><Link style={{display:'flex', flexDirection:'row', justifyContent:'center', alignItems:'center'}} to={'/'}><img style={{margin:'0', marginTop:'.2em', marginLeft:'.2em'}} src={logo} id="keyimage" alt="logo"></img></Link>
             </div>
           </Typography>
           {menueItems()}

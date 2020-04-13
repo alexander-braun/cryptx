@@ -10,6 +10,8 @@ import store from '../store'
 import { Provider } from 'react-redux'
 import { loadUser } from '../actions/authenticate'
 import setAuthToken from '../utils/setAuthToken'
+import About from './about'
+import Profile from './userprofile'
 
 if(localStorage.token) {
   setAuthToken(localStorage.token)
@@ -37,7 +39,12 @@ const App = () => {
         } />
         <Route path={`/about`} render={ () => 
           <Fragment>
-            <h1 style={{color: 'white'}}>ABOUT</h1>
+            <About />
+          </Fragment>
+        } />
+        <Route path={`/Profile`} render={ () => 
+          <Fragment>
+            <Profile />
           </Fragment>
         } />
         <Route exact path={`/`} render={ () => 
