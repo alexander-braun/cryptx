@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useState, Redirect } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
-import Link from '@material-ui/core/Link';
+import { Link } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
@@ -13,12 +13,16 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import '../../styles/login.css'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
+import { login } from '../../actions/authenticate'
+import Alert from '../alert/alert'
 
 function Copyright() {
     return (
         <Typography variant="body2" color="textSecondary" align="center">
         {'Copyright © '}
-        <Link color="inherit" to="https://alexander-braun.github.io/strngcrypt/">
+        <Link style={{color:"#4ab2eec0"}} to="https://alexander-braun.github.io/strngcrypt/">
         Cryptx
         </Link>{' '}
         {new Date().getFullYear()}
@@ -48,8 +52,21 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-export default function Login() {
+const Login = (props) => {
     const classes = useStyles()
+    const [formData, updateFormdata] = useState({
+      email: '',
+      password: ''
+    })
+    const { email, password } = formData
+    const onChange = e => updateFormdata({...formData, [e.target.name]: e.target.value})
+    const onSubmit = async e => {
+      e.preventDefault()
+      props.login(email, password)
+    }
+    if(props.isAuthenticated) {
+        window.location.href = "/#timeline"
+    }
     return (
         <div id="login_section">
             <svg fill="rgb(23, 114, 167)" id="curveDownColor" xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="15vh" viewBox="0 0 100 100" preserveAspectRatio="none">
@@ -59,6 +76,7 @@ export default function Login() {
             </linearGradient>
             <path d="M0 0 C 50 100 80 100 100 0 Z" fill="url(#grad2)"></path>
         </svg>
+        <Alert />
         <div id="login_form">
             <Container id="signin_mainpage" component="main" maxWidth="xs">
                 <CssBaseline />
@@ -69,7 +87,9 @@ export default function Login() {
                     <Typography component="h1" variant="h5">
                         Sign in
                     </Typography>
-                    <form className={classes.form} noValidate>
+                    <form 
+                        className={classes.form} 
+                        onSubmit={e => onSubmit(e)}>
                         <TextField
                             className={classes.form}
                             variant="outlined"
@@ -80,6 +100,8 @@ export default function Login() {
                             label="Email Address"
                             name="email"
                             autoComplete="email"
+                            value={email}
+                            onChange={e => onChange(e)}
                         />
                         <TextField
                             variant="outlined"
@@ -91,6 +113,8 @@ export default function Login() {
                             type="password"
                             id="password"
                             autoComplete="current-password"
+                            value={password}
+                            onChange={e => onChange(e)}
                         />
                         <FormControlLabel
                             control={<Checkbox value="remember" color="primary" />}
@@ -107,12 +131,12 @@ export default function Login() {
                         </Button>
                         <Grid container>
                             <Grid item xs>
-                            <Link href="#" variant="body2">
+                            <Link style={{color:'#4ab2eec0', textDecoration:'none'}} to="#" variant="body2">
                                 Forgot password?
                             </Link>
                             </Grid>
                             <Grid item>
-                            <Link href={process.env.PUBLIC_URL + '/signup'} variant="body2">
+                            <Link to={process.env.PUBLIC_URL + '/signup'} style={{color:'#4ab2eec0', textDecoration:'none'}} variant="body2">
                                 {"Don't have an account? Sign Up"}
                             </Link>
                             </Grid>
@@ -137,4 +161,17 @@ export default function Login() {
     );
 }
 
+const mapActionsToProps = {
+    login: login
+}
+
+const mapStateToProps = state => ({
+    isAuthenticated: state.auth.isAuthenticated
+})
+
+Login.propTypes = {
+    login: PropTypes.func,
+    isAuthenticated: PropTypes.bool
+}
   
+export default connect(mapStateToProps, mapActionsToProps)(Login)

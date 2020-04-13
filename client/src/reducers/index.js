@@ -18,6 +18,8 @@ import playsquare from './playsquare'
 import skytale from './skytale'
 import rsa from './rsa'
 import ioc from './ioc'
+import alert from './alert'
+import auth from './auth'
 
 export default combineReducers({
     modal,
@@ -38,5 +40,7 @@ export default combineReducers({
     playsquare,
     skytale,
     rsa,
-    ioc
+    ioc,
+    alert,
+    auth
 })

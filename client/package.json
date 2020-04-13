@@ -33,6 +33,7 @@
     "redux-thunk": "^2.3.0",
     "request": "^2.88.2",
     "slick-carousel": "^1.8.1",
+    "uuid": "^7.0.3",
     "why-did-you-update": "^0.1.1"
   },
   "scripts": {
@@ -60,5 +61,6 @@
   },
   "devDependencies": {
     "redux-immutable-state-invariant": "^2.1.0"
-  }
+  },
+  "proxy": "http://localhost:3000"
 }
