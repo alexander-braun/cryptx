@@ -24,7 +24,38 @@ const App = () => {
   }, [])
 
   return (
-    <h1>HELLO</h1>
+    <Provider store={store}>
+      <Router basename="/">
+        <Header />
+        <Route path={`/signup`} render={ () => 
+          <Fragment>
+            <Signup />
+          </Fragment>
+        } />
+        <Route path={`/login`} render={ () => 
+          <Fragment>
+            <Login />
+          </Fragment>
+        } />
+        <Route path={`/about`} render={ () => 
+          <Fragment>
+            <About />
+          </Fragment>
+        } />
+        <Route path={`/Profile`} render={ () => 
+          <Fragment>
+            <Profile />
+          </Fragment>
+        } />
+        <Route exact path={`/`} render={ () => 
+          <Fragment>
+            <Hero />
+            <EncryptionArea />
+          </Fragment>
+        } />
+        <Footer />
+      </Router>
+    </Provider>
   )
 }  
 
