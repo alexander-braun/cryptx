@@ -20,10 +20,10 @@ app.use('/api/posts', require('./routes/api/posts'))
 app.use('/api/presets', require('./routes/api/presets'))
 
 //Serve static assets in production
-if(process.env.Node_ENV === 'production') {
-    app.use(express.static('client/public'));
+if(process.env.NODE_ENV === 'production') {
+    app.use(express.static('client/build'));
     app.get('*', (req, res) => {
-        res.sendFile(path.resolve(__dirname, 'client', 'public', 'index.html'));
+        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
     });
 }
 
