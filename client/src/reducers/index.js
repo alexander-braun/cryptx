@@ -20,6 +20,7 @@ import rsa from './rsa'
 import ioc from './ioc'
 import alert from './alert'
 import auth from './auth'
+import presetsModal from './presetsModal'
 
 export default combineReducers({
     modal,
@@ -42,5 +43,6 @@ export default combineReducers({
     rsa,
     ioc,
     alert,
-    auth
+    auth,
+    presetsModal
 })

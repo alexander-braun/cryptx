@@ -9,28 +9,10 @@ import { withStyles } from '@material-ui/core/styles';
 import Tooltip from '@material-ui/core/Tooltip';
 import { toggleDirection } from '../../actions/toggleDirection'
 import { updateInput } from '../../actions/updateInput'
-
-const StyledTooltip = withStyles(theme => ({
-  tooltip: {
-      backgroundColor: '#f5f5f9',
-      color: 'rgba(0, 0, 0, 0.87)',
-      maxWidth: 420,
-      fontSize: theme.typography.pxToRem(12),
-      border: '1px solid #dadde9',
-    },
-}))(Tooltip);
-
-let icTooltip = (
-  <StyledTooltip
-      title={
-      <React.Fragment>
-          Swap Input, Output and encryption direction.
-      </React.Fragment>
-      }
-  >
-      <SwapHorizIcon style={{color: '#3e94c5', fontSize: '24px'}}/>
-  </StyledTooltip>
-)
+import IcTooltipSwapInput from './IcTooltipSwapInputs'
+import IcTooltipLoadPreset from './IcTooltipLoadPreset'
+import { togglePresetsModal } from '../../actions/togglePresetsModal'
+import IcTooltipSavePreset from './IcTooltipSavePreset'
 
 class BlockElementOutput extends React.PureComponent {
   
@@ -56,15 +38,34 @@ class BlockElementOutput extends React.PureComponent {
       return (
         <div className="block">
           <div className="block_head">
-              <div className="block_head_text">Output</div>
-              <button 
-                onClick={() => {
-                  this.swapInputOutput()
-                }} 
-                style={{marginLeft: 'auto', backgroundColor:'transparent', border: 'none', cursor: 'pointer'}}
-              >
-                {icTooltip}
-              </button>
+            <div className="block_head_text">Output</div>
+            <button 
+              onClick={(e) => {
+                e.preventDefault()
+                this.swapInputOutput()
+              }} 
+              style={{marginLeft: 'auto', backgroundColor:'transparent', border: 'none', cursor: 'pointer'}}
+            >
+              <IcTooltipSwapInput />
+            </button>
+            <button 
+              style={{backgroundColor:'transparent', border: 'none', cursor: 'pointer'}}
+              onClick={(e) => {
+                e.preventDefault()
+                this.props.togglePresetsModal('load')
+              }}
+            >
+              <IcTooltipLoadPreset />
+            </button>
+            <button 
+              style={{backgroundColor:'transparent', border: 'none', cursor: 'pointer'}}
+              onClick={(e) => {
+                e.preventDefault()
+                this.props.togglePresetsModal('save')
+              }}
+            >
+              <IcTooltipSavePreset />
+            </button>
           </div>
           <div className="block_body">
                 <div className="block_body_output">
@@ -97,12 +98,14 @@ class BlockElementOutput extends React.PureComponent {
 const mapStateToProps = state => ({
   output: state.output,
   iocOutput: state.ioc.output,
-  direction: state.direction
+  direction: state.direction,
+  presetsModal: state.presetsModal
 })
 
 const mapActionsToProps = {
   updateInput: updateInput,
   toggleDirection: toggleDirection,
+  togglePresetsModal: togglePresetsModal
 }
 
 

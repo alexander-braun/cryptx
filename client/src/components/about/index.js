@@ -9,7 +9,7 @@ const About = () => {
                     ... started in 2020. 
                 </p>
                 <p className="about_paragraph" style={{fontSize:'1rem'}}>
-                    The project was created by <a style={{color: 'rgb(26, 134, 195)', fontWeight: '600', textDecoration:'none'}} target="_blank" href="https://github.com/alexander-braun/cryptx">Alexander Braun</a> 
+                    The project was created by <a style={{color: 'rgb(26, 134, 195)', fontWeight: '600', textDecoration:'none'}} rel="noopener noreferrer" target="_blank" href="https://github.com/alexander-braun/cryptx">Alexander Braun</a> 
                 </p>
             </div>
         </div>

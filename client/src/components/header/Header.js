@@ -101,26 +101,26 @@ const Header = (props) => {
 
   const authLinksDesktop = (
     <div style={{marginLeft: 'auto', display: 'flex', flexDirection: 'row', justifyItems: 'center', alignItems: 'center'}}>
-      <Typography variant="body1" noWrap style={{fontSize:'1.15rem', marginRight: '1rem'}}>
+      <Typography variant="body1" noWrap style={{fontSize:'1rem', marginRight: '1.5rem'}}>
         <Link
-          style={{letterSpacing:'0.05rem',color:'white',marginRight:'1em',textDecoration:'none'}}
+          style={{letterSpacing:'0.075rem',color:'white',textDecoration:'none'}}
           to='#!'
           onClick={props.logout}
         >
           Logout 
         </Link>
       </Typography>
-      <Typography variant="body1" noWrap style={{fontSize:'1.15rem', marginRight: '1rem'}}>
+      <Typography variant="body1" noWrap style={{fontSize:'1rem', marginRight: '1.5rem'}}>
         <Link
-          style={{letterSpacing:'0.05rem',color:'white',marginRight:'1em',textDecoration:'none'}}
+          style={{letterSpacing:'0.075rem',color:'white',textDecoration:'none'}}
           to='/Profile'
         >
           Profile
         </Link>
       </Typography>
-      <Typography variant="body1" noWrap style={{fontSize:'1.15rem', marginRight: '5vw'}}>
+      <Typography variant="body1" noWrap style={{fontSize:'1rem', marginRight: '5vw'}}>
         <Link
-          style={{letterSpacing:'0.05rem',color:'white',marginRight:'1em',textDecoration:'none'}}
+          style={{letterSpacing:'0.075rem',color:'white',textDecoration:'none'}}
           to='/About'
         >
           About
@@ -131,25 +131,25 @@ const Header = (props) => {
 
   const guestLinksDesktop = (
     <div style={{marginLeft: 'auto', display: 'flex', flexDirection: 'row', justifyItems: 'center', alignItems: 'center'}}>
-      <Typography variant="body1" noWrap style={{fontSize:'1.15rem', marginRight: '1rem'}}>
+      <Typography variant="body1" noWrap style={{fontSize:'1rem', marginRight: '1.5rem'}}>
         <Link
-          style={{letterSpacing:'0.05rem',color:'white',marginRight:'1em',textDecoration:'none'}}
+          style={{letterSpacing:'0.075rem',color:'white',textDecoration:'none'}}
           to='/Login'
         >
           Login
         </Link>
       </Typography>
-      <Typography variant="body1" noWrap style={{fontSize:'1.15rem', marginRight: '1rem'}}>
+      <Typography variant="body1" noWrap style={{fontSize:'1rem', marginRight: '1.5rem'}}>
         <Link
-          style={{letterSpacing:'0.05rem',color:'white',marginRight:'1em',textDecoration:'none'}}
+          style={{letterSpacing:'0.075rem',color:'white',textDecoration:'none'}}
           to='/Signup'
         >
           Signup
         </Link>
       </Typography>
-      <Typography variant="body1" noWrap style={{fontSize:'1.15rem', marginRight: '5vw'}}>
+      <Typography variant="body1" noWrap style={{fontSize:'1rem', marginRight: '5vw'}}>
         <Link
-          style={{letterSpacing:'0.05rem',color:'white',marginRight:'1em',textDecoration:'none'}}
+          style={{letterSpacing:'0.075rem',color:'white',textDecoration:'none'}}
           to='/About'
         >
           About

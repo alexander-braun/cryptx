@@ -1,43 +1,22 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import ChartImporter from '../freqencyAnalysis/ChartImporter'
 import IndexOfCoincidence from '../indexOfCoincidence/IndexOfCoincidence'
 import math from './Math'
 import { connect } from 'react-redux'
 import { updateInput } from '../../actions/updateInput'
 import ChiSquared from '../chi_squared/chisquared'
-import SwapHorizIcon from '@material-ui/icons/SwapHoriz';
-import { withStyles } from '@material-ui/core/styles';
-import Tooltip from '@material-ui/core/Tooltip';
 import { toggleDirection } from '../../actions/toggleDirection'
+import IcTooltipSwapInput from './IcTooltipSwapInputs'
+import IcTooltipLoadPreset from './IcTooltipLoadPreset'
+import { togglePresetsModal } from '../../actions/togglePresetsModal'
+import IcTooltipSavePreset from './IcTooltipSavePreset'
 
-const StyledTooltip = withStyles(theme => ({
-  tooltip: {
-      backgroundColor: '#f5f5f9',
-      color: 'rgba(0, 0, 0, 0.87)',
-      maxWidth: 420,
-      fontSize: theme.typography.pxToRem(12),
-      border: '1px solid #dadde9',
-    },
-}))(Tooltip);
-
-let icTooltip = (
-  <StyledTooltip
-      title={
-      <React.Fragment>
-          Swap Input, Output and encryption direction.
-      </React.Fragment>
-      }
-  >
-      <SwapHorizIcon style={{color: '#3e94c5', fontSize: '24px'}}/>
-  </StyledTooltip>
-)
-
-const BlockElementInput = ({updateInput, iocInput, input, output, direction, toggleDirection}) => {
+const BlockInput = ({updateInput, iocInput, input, output, direction, toggleDirection, togglePresetsModal}) => {
 
   useEffect(() => {
       let textareaOutput = document.getElementById('userinput')
       math.autoresize(textareaOutput)
-  });
+  })
 
   const update = (evt) => {
     if(evt.target.value === 'The quick brown fox jumps over the lazy dog.') {
@@ -58,12 +37,31 @@ const BlockElementInput = ({updateInput, iocInput, input, output, direction, tog
         <div className="block_head">
             <div className="block_head_text">Input</div>
             <button 
-              onClick={() => {
+              onClick={(e) => {
+                e.preventDefault()
                 swapInputOutput()
               }} 
               style={{marginLeft: 'auto', backgroundColor:'transparent', border: 'none', cursor: 'pointer'}}
             >
-              {icTooltip}
+              <IcTooltipSwapInput />
+            </button>
+            <button 
+              style={{backgroundColor:'transparent', border: 'none', cursor: 'pointer'}}
+              onClick={(e) => {
+                e.preventDefault()
+                togglePresetsModal('load')
+              }}
+            >
+              <IcTooltipLoadPreset />
+            </button>
+            <button 
+              style={{backgroundColor:'transparent', border: 'none', cursor: 'pointer'}}
+              onClick={(e) => {
+                e.preventDefault()
+                togglePresetsModal('save')
+              }}
+            >
+              <IcTooltipSavePreset />
             </button>
         </div>
         <div className="block_body">
@@ -102,13 +100,15 @@ const mapStateToProps = state => ({
   input: state.input,
   iocInput: state.ioc.input,
   output: state.output,
-  direction: state.direction
+  direction: state.direction,
+  presetsModal: state.presetsModal
 })
 
 const mapActionsToProps = {
   updateInput: updateInput,
   toggleDirection: toggleDirection,
+  togglePresetsModal: togglePresetsModal
 }
 
-export default connect(mapStateToProps, mapActionsToProps)(BlockElementInput)
+export default connect(mapStateToProps, mapActionsToProps)(BlockInput)
 
