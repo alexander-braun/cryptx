@@ -2,7 +2,6 @@
   "name": "cryptx",
   "version": "0.1.0",
   "private": true,
-  "homepage": "alexanderbraun.dev",
   "dependencies": {
     "@material-ui/core": "^4.9.5",
     "@material-ui/icons": "^4.9.1",
@@ -62,6 +61,5 @@
   },
   "devDependencies": {
     "redux-immutable-state-invariant": "^2.1.0"
-  },
-  "proxy": "http://localhost:5000"
+  }
 }
