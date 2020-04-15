@@ -34,8 +34,8 @@ class VigenereTransposition extends React.PureComponent {
             output.push(
                 <div className="alphabet_transpos" key={keys[counter] + element}>
                     <div>{element}</div>
-                    <div className="arrow">{this.props.direction === 'encrypt' ? '+' : '-'}</div>
-                    <div>{key[counter]}</div>
+                    <div className="arrow">&</div>
+                    <div style={counter < keywordVigenere.length ? {color: 'rgb(255, 63, 88)'} : {}}>{key[counter]}</div>
                     <div className="arrow">=</div>
                     <div>{out[counter]}</div>
                 </div>

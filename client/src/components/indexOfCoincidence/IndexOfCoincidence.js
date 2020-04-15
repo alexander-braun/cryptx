@@ -51,14 +51,44 @@ let icTooltip = (
     </StyledTooltip>
 )
 
+let probabilities = {
+    'English': 1.73,
+    'French': 2.02,
+    'German': 2.05,
+    'Italian': 1.94,
+    'Portugese': 1.94,
+    'Russian': 1.76,
+    'Spanish': 1.94
+}
+
 
 function IndexOfCoincidence({ioc, menue}) {
     const [expandedStatus, changeExpandedStatus] = useState(false)
     const classes = useStyles();
     
+    const languageProbability = () => {
+        let adjustedIOC = ioc * 26
+        let tempProbability = Infinity
+        let language = ''
+        for(let probability of Object.keys(probabilities)) {
+            let diff = probabilities[probability] - adjustedIOC
+            console.log(Math.abs(diff), tempProbability)
+            if(Math.abs(diff) < tempProbability) {
+                tempProbability = Math.abs(diff)
+                language = probability
+            }
+        }
+        return language
+    }
     const isThereIoc = () => {
         if(!ioc && ioc !== 0) return 'no input'
-        else return `IC = ${ioc}`
+        else return (
+            <div>
+                <div style={{color: 'rgb(255, 88, 110)', marginBottom: '2vh', fontSize:'.9rem'}}><span style={{color:'rgb(218, 218, 218)'}}>IC per letter =</span> {ioc}</div>
+                <div style={{color: 'rgb(255, 88, 110)', marginBottom: '2vh', fontSize:'.9rem'}}><span style={{color:'rgb(218, 218, 218)'}}>Σ IC's =</span> {ioc * 26}</div>
+                <div style={{color:'#dadada', fontSize:'.9rem'}}>Language IOC closest to <span style={{color: 'rgb(255, 88, 110)'}}>{languageProbability()}</span></div>
+            </div>
+        )
     }
 
     return (
@@ -73,8 +103,7 @@ function IndexOfCoincidence({ioc, menue}) {
             </ExpansionPanelSummary>
             <ExpansionPanelDetails className={classes.body} style={{paddingTop: '24px'}}>
                 {
-                    expandedStatus ? 
-                    isThereIoc() : ''
+                    expandedStatus ? isThereIoc() : ''
                 }
             </ExpansionPanelDetails>
         </ExpansionPanel> 
