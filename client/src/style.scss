@@ -2,6 +2,12 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Khula:400,700&display=swap');
 
+$main_background: #18191a;
+$controller_background: #3a3b3c;
+$block_head: #242526;
+$brighter_controller: #4e4f50;
+$feature_analysis: #333;
+
 html {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialised;
@@ -15,6 +21,7 @@ $fontKhula: 'Khula', 'Source Sans Pro', 'Roboto', 'Helvetica', 'Arial',
   sans-serif;
 
 // Vars
+$main_background: #18191a;
 $mainMarginMin1500: 5rem;
 $mainMarginMax1500: 3rem;
 $mainMarginMax1280: 2rem;
@@ -97,7 +104,7 @@ body {
 }
 
 #root {
-  background-color: #131313;
+  background-color: $main_background;
 }
 
 /*
@@ -124,7 +131,7 @@ body {
   background-attachment: fixed;
   background-size: cover;
   background-repeat: no-repeat;
-  background: #212121;
+  background: $main_background;
 }
 
 p {
@@ -135,7 +142,7 @@ p {
 }
 
 textarea {
-  background-color: #424242;
+  background-color: $controller_background;
   color: #dadada;
   margin-top: 0;
   margin-bottom: 0;
@@ -175,7 +182,7 @@ textarea {
 
   .block_head {
     height: 60px;
-    background-color: #333;
+    background-color: $block_head;
     color: black;
     font-family: $font;
     font-size: 20px;
@@ -290,7 +297,7 @@ textarea {
   max-width: 450px;
   min-width: 350px;
   flex-grow: 0;
-  background-color: #424242;
+  background-color: $controller_background;
   border-radius: $border_blocks;
   overflow: hidden;
   &:hover {
@@ -314,7 +321,7 @@ textarea {
 
   .block_head {
     height: 60px;
-    background-color: #333;
+    background-color: $block_head;
     color: white;
     font-family: $font;
     font-size: 18pt;
@@ -420,7 +427,7 @@ textarea {
         font-family: $font;
         font-size: 14pt;
         font-weight: 300;
-        background-color: #424242;
+        background-color: $controller_background;
         color: #dadada;
         margin: 0;
         border-radius: 5px;
@@ -430,12 +437,12 @@ textarea {
 }
 
 .block_settings .block_body .block_body_input .primes textarea {
-  background-color: #363636;
+  background-color: $brighter_controller;
 }
 
 .chartcontainer {
   .controller {
-    background-color: #363636;
+    background-color: $controller_background;
   }
 }
 
@@ -792,7 +799,7 @@ select {
   height: 27px;
   width: 30px;
   
-  border: 1px solid #424242;
+  border: 1px solid $controller_background;
   border-width: 2px;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -937,7 +944,7 @@ div {
   }
 
   .MuiCollapse-entered, .MuiCollapse-wrapper {
-    background: #424242;
+    background: $controller_background;
     box-shadow: inset 0px 5px 5px -5px #000000c5;
   }
 
@@ -978,11 +985,11 @@ div {
     align-self: center;
     border-radius: 20px !important;
     line-height: 1 !important;
-    color: rgb(10, 134, 206) !important;
+    color: #b0b3b8 !important;
   }  
 
   .MuiPaper-root {
-    background-color: #333 !important;
+    background-color: $feature_analysis !important;
     color: #dadada !important;
     a {
       color: #dadada !important;

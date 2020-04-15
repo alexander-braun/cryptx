@@ -16,7 +16,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   background: -webkit-gradient(linear, left top, left bottom, from(#0e0e0e), to(#1d3850)) fixed;
-  background: #212121;
+  background: #18191a;
 }
 
 #hero svg {
@@ -48,7 +48,7 @@
   color: white;
   font-family: "Khula", "Source Sans Pro", "Roboto", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
-  font-size: 20px;
+  font-size: 22px;
   letter-spacing: 0.05em;
   width: 100vw;
   font-style: normal;
@@ -75,7 +75,7 @@
 }
 
 #hero h3 a {
-  color: white;
+  color: #a8abaf;
   text-decoration: none;
   line-height: 1.25em;
 }
@@ -157,7 +157,7 @@
 }
 
 #scrolldown {
-  margin-bottom: 10vh;
+  margin-bottom: 15vh;
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;

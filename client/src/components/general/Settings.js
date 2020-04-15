@@ -15,6 +15,7 @@ import AtbashTransposition from '../atbash/AtbashTransposition'
 import OtpGenerate from '../onetimepad/otpGenerate'
 import Primes from '../rsa/Primes'
 import { connect } from 'react-redux'
+import VigenereTransposition from '../vigenere/vigenereTransposition'
 
 const BlockBodyInput = (props) => {
     let bodyInput
@@ -77,6 +78,7 @@ const BlockBodyInput = (props) => {
                 bodyInput = 
                     <div className="block_body_input">
                         <KeywordVigenere />
+                        <VigenereTransposition alphabet={props.alphabet} />
                         <Alphabet 
                             alphabet = {props.alphabet} 
                             alphabetActive = {props.alphabetActive}

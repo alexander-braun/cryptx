@@ -41,7 +41,7 @@ body {
 }
 
 #root {
-  background-color: #131313;
+  background-color: #18191a;
 }
 
 /*
@@ -76,7 +76,7 @@ body {
   background-attachment: fixed;
   background-size: cover;
   background-repeat: no-repeat;
-  background: #212121;
+  background: #18191a;
 }
 
 p {
@@ -91,7 +91,7 @@ p {
 }
 
 textarea {
-  background-color: #424242;
+  background-color: #3a3b3c;
   color: #dadada;
   margin-top: 0;
   margin-bottom: 0;
@@ -143,7 +143,7 @@ textarea:focus {
 
 .block .block_head {
   height: 60px;
-  background-color: #333;
+  background-color: #242526;
   color: black;
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   font-size: 20px;
@@ -315,7 +315,7 @@ textarea:focus {
   -webkit-box-flex: 0;
       -ms-flex-positive: 0;
           flex-grow: 0;
-  background-color: #424242;
+  background-color: #3a3b3c;
   border-radius: 0px;
   overflow: hidden;
 }
@@ -343,7 +343,7 @@ textarea:focus {
 
 .block_settings .block_head {
   height: 60px;
-  background-color: #333;
+  background-color: #242526;
   color: white;
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   font-size: 18pt;
@@ -481,18 +481,18 @@ textarea:focus {
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   font-size: 14pt;
   font-weight: 300;
-  background-color: #424242;
+  background-color: #3a3b3c;
   color: #dadada;
   margin: 0;
   border-radius: 5px;
 }
 
 .block_settings .block_body .block_body_input .primes textarea {
-  background-color: #363636;
+  background-color: #4e4f50;
 }
 
 .chartcontainer .controller {
-  background-color: #363636;
+  background-color: #3a3b3c;
 }
 
 select {
@@ -928,7 +928,7 @@ select {
   position: absolute;
   height: 27px;
   width: 30px;
-  border: 1px solid #424242;
+  border: 1px solid #3a3b3c;
   border-width: 2px;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -1095,7 +1095,7 @@ div:focus {
 }
 
 #converter .MuiCollapse-entered, #converter .MuiCollapse-wrapper {
-  background: #424242;
+  background: #3a3b3c;
   -webkit-box-shadow: inset 0px 5px 5px -5px #000000c5;
           box-shadow: inset 0px 5px 5px -5px #000000c5;
 }
@@ -1140,7 +1140,7 @@ div:focus {
       align-self: center;
   border-radius: 20px !important;
   line-height: 1 !important;
-  color: #0a86ce !important;
+  color: #b0b3b8 !important;
 }
 
 #converter .MuiPaper-root {

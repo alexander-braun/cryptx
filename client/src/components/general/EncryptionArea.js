@@ -160,6 +160,7 @@ class EncryptionArea extends React.PureComponent {
         Caesar.setAll(this.props.wordbook, input, alphabet, method === 'rot13' ? 13 : this.props.cShift, direction, caseFormat, foreignChars)
         return this.props.setOutput(Caesar.encrypt())
       } else if (method === 'atbash') {
+          Atbash.setAll(input, caseFormat, foreignChars)
           return this.props.setOutput(Atbash.encrypt())
       } else {
         return this.props.setOutput('')

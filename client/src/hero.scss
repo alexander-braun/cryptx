@@ -1,6 +1,8 @@
 $fontKhula: 'Khula', 'Source Sans Pro', 'Roboto', 'Helvetica', 'Arial',
   sans-serif;
 
+$main_background: #18191a;
+
 #hero {
     height: calc(100vh - 60px - 50px);
     display: flex;
@@ -14,7 +16,7 @@ $fontKhula: 'Khula', 'Source Sans Pro', 'Roboto', 'Helvetica', 'Arial',
     background-size: cover;
     background-repeat: no-repeat;
     background: -webkit-gradient(linear, left top, left bottom, from(#0e0e0e), to(#1d3850)) fixed;
-    background: #212121;
+    background: $main_background;
 
     svg {
         padding: 0;
@@ -43,7 +45,7 @@ $fontKhula: 'Khula', 'Source Sans Pro', 'Roboto', 'Helvetica', 'Arial',
         color: white;
         font-family: $fontKhula;
         font-weight: 400;
-        font-size: 20px;
+        font-size: 22px;
         letter-spacing: 0.05em;
         width: 100vw;
         font-style: normal;
@@ -67,7 +69,7 @@ $fontKhula: 'Khula', 'Source Sans Pro', 'Roboto', 'Helvetica', 'Arial',
         }
       
         a {
-            color: white;
+            color: #a8abaf;
             text-decoration: none;
             line-height: 1.25em;
         }
@@ -147,7 +149,7 @@ $fontKhula: 'Khula', 'Source Sans Pro', 'Roboto', 'Helvetica', 'Arial',
 }
 
 #scrolldown {
-    margin-bottom: 10vh;
+    margin-bottom: 15vh;
     align-self: center;
     cursor: pointer;
     transition: all 200ms;

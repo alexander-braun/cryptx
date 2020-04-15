@@ -1,3 +1,5 @@
+$main_background: #18191a;
+
 #login_section, #signup_section {
 
     min-height: calc(100vh - 110px);
@@ -41,7 +43,7 @@
 }
 
 #login_section, #signup_section {
-    background-color: #212121;
+    background-color: $main_background;
 }
 
 #login_form .MuiContainer-root {
