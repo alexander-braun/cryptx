@@ -6,4 +6,4 @@ of cryptography for myself and potential users.
 
 <br>
 
-https://cryptx-dfcd7.web.app/
+https://crypt-x.herokuapp.com/
