@@ -15,11 +15,11 @@ const initialState = {
     'ic_output': true,
     'ic_input': true,
 
-    'chi': false,
+    'chi_input': true,
+    'chi_output': true
 }
 
 const analysisMethod = (state = initialState, action) => {
-    console.log(action.type)
     switch(action.type) {
         case TOGGLE_ANALYSIS_METHOD_FQ_INPUT:
             return {
