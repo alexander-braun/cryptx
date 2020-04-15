@@ -21,6 +21,8 @@ import ioc from './ioc'
 import alert from './alert'
 import auth from './auth'
 import presetsModal from './presetsModal'
+import analysisModal from './analysisModal'
+import analysisMethod from './analysisMethod'
 
 export default combineReducers({
     modal,
@@ -44,5 +46,7 @@ export default combineReducers({
     ioc,
     alert,
     auth,
-    presetsModal
+    presetsModal,
+    analysisModal,
+    analysisMethod
 })

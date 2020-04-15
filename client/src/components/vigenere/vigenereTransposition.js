@@ -35,7 +35,7 @@ class VigenereTransposition extends React.PureComponent {
                 <div className="alphabet_transpos" key={keys[counter] + element}>
                     <div>{element}</div>
                     <div className="arrow">&</div>
-                    <div style={counter < keywordVigenere.length ? {color: 'rgb(255, 63, 88)'} : {}}>{key[counter]}</div>
+                    <div style={counter < keywordVigenere.length ? {fontWeight: '900'} : {color:'rgba(255, 255, 255, 0.43)', fontWeight :'200'}}>{key[counter]}</div>
                     <div className="arrow">=</div>
                     <div>{out[counter]}</div>
                 </div>
@@ -56,7 +56,7 @@ class VigenereTransposition extends React.PureComponent {
                 </div>    
                 <div id="caesar_explanatory_text">
                     <p className="feature_text"> 
-                        Visualization of the character mapping for input, key and output.
+                        Visualization of the character mapping for input, keyword and output.
                     </p>
                 </div>    
             </div> 

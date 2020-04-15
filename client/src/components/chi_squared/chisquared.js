@@ -11,6 +11,8 @@ import InfoIcon from '@material-ui/icons/Info';
 import { makeStyles } from '@material-ui/core/styles'
 import { connect } from 'react-redux'
 import languages from './letterFrequency'
+import HighlightOffIcon from '@material-ui/icons/HighlightOff'
+import { toggleAnalysisMethodCHIInput, toggleAnalysisMethodCHIOutput } from '../../actions/toggleAnalysisMethod'
 
 const StyledTooltip = withStyles(theme => ({
     tooltip: {
@@ -79,6 +81,19 @@ let icTooltip = (
 
 
 function ChiSquared(props) {
+    let icTooltipRemove = (
+        <StyledTooltip
+            onClick={() => props.menue === 'input' ? props.toggleAnalysisMethodCHIInput() : props.toggleAnalysisMethodCHIOutput()}
+            title={
+            <React.Fragment>
+                <Typography color="inherit">Remove Analysis Method</Typography>
+                Removes this element from the menue. You can always get it back by clicking the PLUS icon in the top right corner.
+            </React.Fragment>
+            }
+        >
+            <Button><HighlightOffIcon></HighlightOffIcon></Button>
+        </StyledTooltip>
+    )
     const [expandedStatus, changeExpandedStatus] = useState(false)
     const [selectedElement, updateSelected] = useState('English')
     const classes = useStyles();
@@ -159,6 +174,7 @@ function ChiSquared(props) {
                 >
                 <Typography className={classes.heading}>Chi Squared χ2</Typography>
                 {icTooltip}
+                {icTooltipRemove}
             </ExpansionPanelSummary>
             <ExpansionPanelDetails className={classes.body} style={{paddingTop: '24px', display: 'block'}}>
                 {expandedStatus ? (
@@ -198,4 +214,9 @@ const mapStateToProps = state => ({
     output: state.output
 })
 
-export default connect(mapStateToProps)(ChiSquared)
+const mapActionToProps = {
+    toggleAnalysisMethodCHIInput: toggleAnalysisMethodCHIInput,
+    toggleAnalysisMethodCHIOutput: toggleAnalysisMethodCHIOutput
+}
+
+export default connect(mapStateToProps, mapActionToProps)(ChiSquared)

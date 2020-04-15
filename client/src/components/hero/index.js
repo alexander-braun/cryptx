@@ -46,7 +46,7 @@ function Hero() {
           <Animated animationInDelay={0} animationIn="bounceInDown" animationInDuration={1000}  isVisible={true}>
             <h3>
               <div className="hero_link">
-                <Link to="/signup">Unlock Free Access to all Features!</Link>
+                <Link to="/signup">Unlock Free Access to all Features for free!</Link>
               </div>
           	</h3>
           </Animated>

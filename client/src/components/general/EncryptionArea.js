@@ -34,6 +34,7 @@ import setRsaN from '../../actions/setRsaN'
 import setRsaD from '../../actions/setRsaD'
 import setAlphabetActive from '../../actions/setAlphabetActive'
 import PresetsModal from '../presetsModal'
+import AnalysisModal from '../analysisModal'
 
 class EncryptionArea extends React.PureComponent {
   constructor(props) {
@@ -242,6 +243,7 @@ class EncryptionArea extends React.PureComponent {
         </div>
         <Modal />
         <PresetsModal />
+        <AnalysisModal />
       </div>
     );
   }

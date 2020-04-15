@@ -9,6 +9,10 @@ import Button from '@material-ui/core/Button';
 import Tooltip from '@material-ui/core/Tooltip';
 import InfoIcon from '@material-ui/icons/Info';
 import { makeStyles } from '@material-ui/core/styles'
+import HighlightOffIcon from '@material-ui/icons/HighlightOff'
+import { connect } from 'react-redux'
+import { toggleAnalysisMethodICOutput, toggleAnalysisMethodICInput } from '../../actions/toggleAnalysisMethod'
+
 
 const StyledTooltip = withStyles(theme => ({
     tooltip: {
@@ -62,7 +66,21 @@ let probabilities = {
 }
 
 
-function IndexOfCoincidence({ioc, menue}) {
+function IndexOfCoincidence({ioc, toggleAnalysisMethodICInput, toggleAnalysisMethodICOutput, menue}) {
+    let icTooltipRemove = (
+        <StyledTooltip
+            onClick={() => menue === 'input' ? toggleAnalysisMethodICInput() : toggleAnalysisMethodICOutput()}
+            title={
+            <React.Fragment>
+                <Typography color="inherit">Remove Analysis Method</Typography>
+                Removes this element from the menue. You can always get it back by clicking the PLUS icon in the top right corner.
+            </React.Fragment>
+            }
+        >
+            <Button><HighlightOffIcon></HighlightOffIcon></Button>
+        </StyledTooltip>
+    )
+
     const [expandedStatus, changeExpandedStatus] = useState(false)
     const classes = useStyles();
     
@@ -72,7 +90,6 @@ function IndexOfCoincidence({ioc, menue}) {
         let language = ''
         for(let probability of Object.keys(probabilities)) {
             let diff = probabilities[probability] - adjustedIOC
-            console.log(Math.abs(diff), tempProbability)
             if(Math.abs(diff) < tempProbability) {
                 tempProbability = Math.abs(diff)
                 language = probability
@@ -84,9 +101,9 @@ function IndexOfCoincidence({ioc, menue}) {
         if(!ioc && ioc !== 0) return 'no input'
         else return (
             <div>
-                <div style={{color: 'rgb(255, 88, 110)', marginBottom: '2vh', fontSize:'.9rem'}}><span style={{color:'rgb(218, 218, 218)'}}>IC per letter =</span> {ioc}</div>
-                <div style={{color: 'rgb(255, 88, 110)', marginBottom: '2vh', fontSize:'.9rem'}}><span style={{color:'rgb(218, 218, 218)'}}>Σ IC's =</span> {ioc * 26}</div>
-                <div style={{color:'#dadada', fontSize:'.9rem'}}>Language IOC closest to <span style={{color: 'rgb(255, 88, 110)'}}>{languageProbability()}</span></div>
+                <div style={{fontWeight: '400', color: 'rgb(171, 64, 78)', marginBottom: '2vh', fontSize:'.9rem'}}><span style={{color:'rgb(218, 218, 218)'}}>IC per letter =</span> {ioc}</div>
+                <div style={{fontWeight: '400', color: 'rgb(171, 64, 78)', marginBottom: '2vh', fontSize:'.9rem'}}><span style={{color:'rgb(218, 218, 218)'}}>Σ IC's =</span> {ioc * 26}</div>
+                <div style={{fontWeight: '400', color:'#dadada', fontSize:'.9rem'}}>Text IC closest to <span style={{color: 'rgb(171, 64, 78)'}}>{languageProbability()}</span></div>
             </div>
         )
     }
@@ -100,6 +117,7 @@ function IndexOfCoincidence({ioc, menue}) {
                 >
                 <Typography className={classes.heading}>Index Of Coincidence (IC)</Typography>
                 {icTooltip}
+                {icTooltipRemove}
             </ExpansionPanelSummary>
             <ExpansionPanelDetails className={classes.body} style={{paddingTop: '24px'}}>
                 {
@@ -110,4 +128,9 @@ function IndexOfCoincidence({ioc, menue}) {
     )
 }
 
-export default IndexOfCoincidence
+const mapActionToProps = {
+    toggleAnalysisMethodICInput: toggleAnalysisMethodICInput,
+    toggleAnalysisMethodICOutput: toggleAnalysisMethodICOutput
+}
+
+export default connect(null, mapActionToProps)(IndexOfCoincidence)

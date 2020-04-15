@@ -11,6 +11,9 @@ import Tooltip from '@material-ui/core/Tooltip';
 import InfoIcon from '@material-ui/icons/Info';
 import Barchart from './Barchart'
 import freq from './data'
+import HighlightOffIcon from '@material-ui/icons/HighlightOff'
+import { connect } from 'react-redux'
+import { toggleAnalysisMethodFQInput, toggleAnalysisMethodFQOutput } from '../../actions/toggleAnalysisMethod'
 
 
 const useStyles = makeStyles(theme => ({
@@ -53,7 +56,21 @@ let icTooltip = (
     </StyledTooltip>
 )
 
-function ChartImporter({inputValue}) {
+function ChartImporter({inputValue, toggleAnalysisMethodFQInput, toggleAnalysisMethodFQOutput, menue}) {
+    let icTooltipRemove = (
+        <StyledTooltip
+            onClick={() => menue === 'input' ? toggleAnalysisMethodFQInput() : toggleAnalysisMethodFQOutput()}
+            title={
+            <React.Fragment>
+                <Typography color="inherit">Remove Analysis Method</Typography>
+                Removes this element from the menue. You can always get it back by clicking the PLUS icon in the top right corner.
+            </React.Fragment>
+            }
+        >
+            <Button><HighlightOffIcon></HighlightOffIcon></Button>
+        </StyledTooltip>
+    )
+
     let [data] = useState([...freq])
     const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('')
     const classes = useStyles();
@@ -68,6 +85,7 @@ function ChartImporter({inputValue}) {
             >
                 <Typography className={classes.heading}>Frequency Analysis</Typography>
                 {icTooltip}
+                {icTooltipRemove}
             </ExpansionPanelSummary>
             <ExpansionPanelDetails>
                 <div className="freq">
@@ -94,4 +112,10 @@ function ChartImporter({inputValue}) {
     )
 }
 
-export default ChartImporter
+const mapActionToProps = {
+    toggleAnalysisMethodFQInput: toggleAnalysisMethodFQInput,
+    toggleAnalysisMethodFQOutput: toggleAnalysisMethodFQOutput
+}
+
+
+export default connect(null, mapActionToProps)(ChartImporter)
