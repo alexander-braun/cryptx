@@ -43,7 +43,7 @@ class EncryptionArea extends React.PureComponent {
     this.encrypt = this.encrypt.bind(this)
   }
 
-  async componentDidMount() {
+  componentDidMount() {
     this.encrypt()
   }
 
@@ -52,8 +52,6 @@ class EncryptionArea extends React.PureComponent {
       this.props.onSetWordbook()
     }
 
-    //As RSA needs a lot of parameters both writable and read only this if-else chain
-    //makes sure those parameters are properly set up
     if (prevProps !== this.props) {
       if (prevProps.method === 'rsa') {
         if(this.props.prime1 === 'Bad input' ||
@@ -229,7 +227,7 @@ class EncryptionArea extends React.PureComponent {
         return null
     }
   }
-  
+
   render() {
     return (
       <div id='converter'>

@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useState, useEffect, useRef } from 'react'
 import logo from './img/key.png'
 import { Link } from 'react-router-dom'
 import ResizeObserver from 'react-resize-observer';
@@ -86,11 +86,11 @@ const Header = (props) => {
 
   let [height, updateHeight] = useState()
   let [width, updateWidth] = useState()
+  const [open, setOpen] = useState(false);
 
   const classes = useStyles();
   const theme = useTheme();
-  const [open, setOpen] = useState(false);
-
+  
   const handleDrawerOpen = () => {
     setOpen(true)
   }
@@ -236,9 +236,9 @@ const Header = (props) => {
     if(width > 700) {
       return !props.auth.loading && (<Fragment>{props.auth.isAuthenticated ? authLinksDesktop : guestLinksDesktop}</Fragment>)
     } else {
-      return iconMenue
+        return iconMenue
+      }
     }
-  }
 
   return (
     <React.Fragment>

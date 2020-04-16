@@ -5,7 +5,6 @@ import '../../styles/hero.css'
 import { Link } from 'react-router-dom'
 
 function Hero() {
-
   const scrollToSignup = (e) => {
     setTimeout(() => {
       let navbar = document.getElementsByClassName('site_header')[0]

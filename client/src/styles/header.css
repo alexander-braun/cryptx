@@ -52,6 +52,16 @@
   margin-left: 5vw;
 }
 
+.navNormal {
+  -webkit-transition-duration: 600ms;
+          transition-duration: 600ms;
+  opacity: 1;
+}
+
+.navHidden {
+  opacity: 0;
+}
+
 @media (min-width: 600px) {
   .MuiToolbar-gutters {
     padding-left: 0px !important;
