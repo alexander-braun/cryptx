@@ -1278,6 +1278,10 @@ div:focus {
   margin-top: 20px;
 }
 
+#chi_lang_select {
+  -moz-appearance: none;
+}
+
 .swapIcon {
   -webkit-transition-duration: 200ms;
           transition-duration: 200ms;

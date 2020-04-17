@@ -13,7 +13,6 @@ import setAuthToken from '../utils/setAuthToken'
 import About from './about'
 import Profile from './userprofile'
 import PrivateRoute from './routing/PrivateRoute'
-import HideElementOnScroll from './hideOnScroll'
 
 if(localStorage.token) {
   setAuthToken(localStorage.token)
@@ -28,9 +27,7 @@ const App = () => {
   return (
     <Provider store={store}>
       <Router basename="/">
-        <div className={!HideElementOnScroll() ? 'navNormal' : 'navHidden'}>
-          <Header />
-        </div>
+        <Header />
         <Switch>
           <Route exact path={`/`} render={ () => 
             <Fragment>
@@ -50,4 +47,4 @@ const App = () => {
   )
 }  
 
-export default App;
+export default App

@@ -1097,6 +1097,10 @@ div {
   margin-top: 20px;
 }
 
+#chi_lang_select {
+  -moz-appearance: none;
+}
+
 .swapIcon {
   transition-duration: 200ms;
   &:hover {

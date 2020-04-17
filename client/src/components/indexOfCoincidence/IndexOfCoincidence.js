@@ -101,9 +101,24 @@ function IndexOfCoincidence({ioc, toggleAnalysisMethodICInput, toggleAnalysisMet
         if(!ioc && ioc !== 0) return 'no input'
         else return (
             <div>
-                <div style={{fontWeight: '400', color: 'rgb(171, 64, 78)', marginBottom: '2vh', fontSize:'.9rem'}}><span style={{color:'rgb(218, 218, 218)'}}>IC per letter =</span> {ioc}</div>
-                <div style={{fontWeight: '400', color: 'rgb(171, 64, 78)', marginBottom: '2vh', fontSize:'.9rem'}}><span style={{color:'rgb(218, 218, 218)'}}>Σ IC's =</span> {ioc * 26}</div>
-                <div style={{fontWeight: '400', color:'#dadada', fontSize:'.9rem'}}>Text IC closest to <span style={{color: 'rgb(171, 64, 78)'}}>{languageProbability()}</span></div>
+                <div style={{fontWeight: '400', color: 'rgb(171, 64, 78)', marginBottom: '2vh', fontSize:'.9rem'}}>
+                    <span style={{color:'rgb(218, 218, 218)'}}>
+                        IC per letter =
+                    </span> 
+                    &nbsp;{ioc.toFixed(4)}
+                </div>
+                <div style={{fontWeight: '400', color: 'rgb(171, 64, 78)', marginBottom: '2vh', fontSize:'.9rem'}}>
+                    <span style={{color:'rgb(218, 218, 218)'}}>
+                    Σ IC's =
+                    </span>
+                    &nbsp;{(ioc * 26).toFixed(4)}
+                </div>
+                <div style={{fontWeight: '400', color:'#dadada', fontSize:'.9rem'}}>
+                    Text IC closest to 
+                    <span style={{color: 'rgb(171, 64, 78)'}}>
+                        &nbsp;{languageProbability()}
+                    </span>
+                </div>
             </div>
         )
     }

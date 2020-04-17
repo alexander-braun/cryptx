@@ -14,9 +14,22 @@ const ProfileSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
-    picture : {
+    picture: {
         type: String
-    }
+    },
+    presets: [
+        {
+            name: {
+                type: String
+            },
+            description: {
+                type: String
+            },
+            params: {
+                type: Object
+            }
+        }
+    ]
 })
 
 const Profile = mongoose.model('profile', ProfileSchema)

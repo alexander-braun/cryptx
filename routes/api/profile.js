@@ -31,7 +31,7 @@ router.post('/', auth, async (req, res) => {
     if(!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() })
     }
-    const { description, date, picture } = req.body
+    const { description, date, picture, presets } = req.body
 
     // Build profile obj
     const profileFields = {}
@@ -41,6 +41,7 @@ router.post('/', auth, async (req, res) => {
     if(description) profileFields.description = description
     if(date) profileFields.date = date
     if(picture) profileFields.picture = picture
+    if(presets) profileFields.presets = presets
 
     try {
         let profile = await Profile.findOne({ user: req.user.id })

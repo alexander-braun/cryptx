@@ -23,6 +23,7 @@ import auth from './auth'
 import presetsModal from './presetsModal'
 import analysisModal from './analysisModal'
 import analysisMethod from './analysisMethod'
+import profile from './profile'
 
 export default combineReducers({
     modal,
@@ -48,5 +49,6 @@ export default combineReducers({
     auth,
     presetsModal,
     analysisModal,
-    analysisMethod
+    analysisMethod,
+    profile
 })

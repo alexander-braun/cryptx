@@ -28,6 +28,7 @@ import '../../styles/header.css'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { logout } from '../../actions/authenticate'
+import HideElementOnScroll from '../hideOnScroll'
 
 const drawerWidth = 240;
 
@@ -238,14 +239,15 @@ const Header = (props) => {
     } else {
         return iconMenue
       }
-    }
+  }
 
   return (
-    <React.Fragment>
+    <div className={!HideElementOnScroll() ? 'navNormal' : 'navHidden'}>
       <div id="header_margin" style={{height: `${height}px`, position: 'relative'}} className="site_header"></div>
-      <div className={classes.root}>
+      <div className={classes.root} >
         <CssBaseline />
         <AppBar
+          id="navbar"
           position="fixed"
           className={classes.appBar}
         >
@@ -258,7 +260,12 @@ const Header = (props) => {
         <Toolbar>
           <Typography variant="h6" noWrap style={{marginRight: 'auto'}}>
             <div className='site_title'>
-              <Link to={'/'}><p>cryptx</p></Link><Link style={{display:'flex', flexDirection:'row', justifyContent:'center', alignItems:'center'}} to={'/'}><img style={{margin:'0', marginTop:'.2em', marginLeft:'.2em'}} src={logo} id="keyimage" alt="logo"></img></Link>
+              <Link to={'/'}>
+                <p>cryptx</p>
+              </Link>
+              <Link style={{display:'flex', flexDirection:'row', justifyContent:'center', alignItems:'center'}} to={'/'}>
+                <img style={{margin:'0', marginTop:'.2em', marginLeft:'.2em'}} src={logo} id="keyimage" alt="logo"></img>
+              </Link>
             </div>
           </Typography>
           {menueItems()}
@@ -286,7 +293,7 @@ const Header = (props) => {
           </List>
         </Drawer>
       </div>
-    </React.Fragment>
+    </div>
   )
 }
 

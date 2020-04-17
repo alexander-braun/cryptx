@@ -30,7 +30,6 @@ const AnalysisModal = ({
         chi_output,
         chi_input
     }) => {
-        console.log(fq_input, fq_output)
     return (
         <Fragment>
             {analysisModal ? (

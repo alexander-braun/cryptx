@@ -49,7 +49,7 @@ class EncryptionArea extends React.PureComponent {
 
   componentDidUpdate(prevProps) {
     if(this.props.wordbook === null) {
-      this.props.onSetWordbook()
+      this.props.setWordbook()
     }
 
     if (prevProps !== this.props) {
@@ -281,7 +281,7 @@ const mapStateToProps = state => ({
 })
 
 const mapActionsToProps = {
-  onSetWordbook: setWordbook,
+  setWordbook: setWordbook,
   toggleChars: toggleChars,
   setOutput: setOutput,
   toggleCase: toggleCase,

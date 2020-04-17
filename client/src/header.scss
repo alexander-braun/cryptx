@@ -45,12 +45,17 @@ $transitionMain: 100ms;
 }
 
 .navNormal {
-    transition-duration: 600ms;
+    transition-duration: 700ms;
     opacity: 1;
 }
 
 .navHidden {
+    transition-duration: 700ms;
     opacity: 0;
+}
+
+.slideup {
+    transform: translateY(-200px);
 }
 
 @media (min-width: 600px){
