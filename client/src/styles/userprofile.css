@@ -1,4 +1,55 @@
+#profile_wrapper {
+  background-color: #18191a;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
 #userprofile_container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#userprofile_container h1 {
+  font-size: 3rem;
+  text-align: center;
+}
+
+#userprofile_container h2 {
+  font-weight: 400;
+  margin-top: 2vw;
+  text-align: center;
+  font-size: 1.75rem;
+}
+
+#userprofile_container img {
+  border-radius: 50%;
+}
+
+.left {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -12,18 +63,53 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin-bottom: 3rem;
 }
 
-#userprofile_container h1 {
-  font-size: 3rem;
+#presets {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 1.25rem;
 }
 
-#userprofile_container h3 {
+#presets td, #presets th {
+  border: 1px solid #1a1a1a;
+  padding: 8px;
+}
+
+#presets td {
+  font-size: .8rem;
+  background-color: #3a3b3c;
+  text-align: center;
+  letter-spacing: .1rem;
+}
+
+#presets th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #242526;
+  color: white;
+}
+
+.update_profile {
+  margin-top: 3rem;
+  text-align: center;
+  color: white;
   font-weight: 400;
   margin-top: 2vw;
 }
 
-#userprofile_container img {
-  border-radius: 50%;
+.update_profile h2 {
+  font-weight: 400;
+  font-size: 1.75rem;
+}
+
+.update_profile a {
+  padding: 10px;
+  background-color: #242526;
+  text-decoration: none;
+  border: 1px solid #3a3b3c;
+  color: white;
 }
 /*# sourceMappingURL=userprofile.css.map */

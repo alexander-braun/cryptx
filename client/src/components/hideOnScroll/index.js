@@ -6,7 +6,7 @@ const HideElementOnScroll = () => {
   const handleScroll = () => {
     //checkscroll
     const top = window.pageYOffset || document.documentElement.scrollTop
-    setHide(top >= 200)
+    setHide(top >= 100)
   }
 
   useEffect(() => {
