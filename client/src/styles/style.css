@@ -102,7 +102,7 @@ textarea {
 }
 
 textarea:focus {
-  outline: none;
+  outline-color: transparent;
 }
 
 .block {
@@ -426,7 +426,7 @@ textarea:focus {
 }
 
 .block_settings .block_head button:focus {
-  outline: none;
+  outline-color: transparent;
 }
 
 .block_settings .block_head .block_head_text {
@@ -631,7 +631,7 @@ select {
 }
 
 .controller .settings_operators #selectCase:focus {
-  outline: none;
+  outline-color: transparent;
 }
 
 .controller .settings_operators textarea#alphabet {
@@ -639,7 +639,7 @@ select {
 }
 
 .controller .settings_operators textarea#alphabet:focus {
-  outline: none;
+  outline-color: transparent;
 }
 
 .controller .settings_operators #alphabet {
@@ -810,7 +810,7 @@ select {
 }
 
 .double_content.controller .controllbox .settings_operators select.affine:focus {
-  outline: none;
+  outline-color: transparent;
 }
 
 .double_content.controller .controllbox .settings_operators #includeChars {
@@ -1049,7 +1049,7 @@ select {
 }
 
 div:focus {
-  outline: none;
+  outline-color: transparent;
 }
 
 .freq {
@@ -1315,6 +1315,10 @@ div:focus {
 
 #chi_lang_select {
   -moz-appearance: none;
+}
+
+#chi_lang_select:hover {
+  background-color: #525050 !important;
 }
 
 .swapIcon {

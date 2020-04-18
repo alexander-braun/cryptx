@@ -28,9 +28,9 @@ const AnalysisModal = ({
         fq_input,
         fq_output,
         chi_output,
-        chi_input
+        chi_input,
+        isAuthenticated
     }) => {
-
         const toggleModal = (e) => {
             if(!(e.target.className !== 'modal')) {
                 toggleAnalysisModal()
@@ -98,8 +98,14 @@ const AnalysisModal = ({
                                     {
                                         ic_input && ic_output && fq_input && fq_output && chi_output && chi_input ? (
                                             <li>
-                                                All methods already in use
+                                                All methods already in use...
                                             </li>
+                                        ) : null
+                                    }
+                                    {!isAuthenticated ? (
+                                        <li style={{color:'rgb(255, 88, 110)'}}>
+                                            Login or signup to get more analysis tools!
+                                        </li>
                                         ) : null
                                     }
                                 </ul>
@@ -122,7 +128,9 @@ const mapStateToProps = state => ({
     ic_output: state.analysisMethod.ic_output,
 
     chi_input: state.analysisMethod.chi_input,
-    chi_output: state.analysisMethod.chi_output
+    chi_output: state.analysisMethod.chi_output,
+
+    isAuthenticated: state.auth.isAuthenticated
 
 })
 

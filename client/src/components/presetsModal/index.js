@@ -36,7 +36,6 @@ class PresetsModal extends React.Component {
         this.genTable = this.genTable.bind(this)
         this.handleLoadPreset = this.handleLoadPreset.bind(this)
         this.handleSavePreset = this.handleSavePreset.bind(this)
-        this.handleDeletePreset = this.handleDeletePreset.bind(this)
     }
 
     genTable = () => {
@@ -50,8 +49,8 @@ class PresetsModal extends React.Component {
                     <td>{preset.name}</td>
                     <td>{methodNamesAll[method]}</td>
                     <td>{preset.description}</td>
-                    <td style={{color: 'rgb(62, 148, 197)', fontSize: '24px', textAlign:'center'}} id={preset._id} onClick={e => this.handleLoadPreset(preset._id)} className="presetBtn"><GetAppIcon /></td>
-                    <td onClick={e => this.handleDeletePreset(preset._id)} style={{color: 'rgb(230, 50, 73)', fontSize: '24px', textAlign:'center'}} className="presetBtn"><DeleteForeverIcon /></td>
+                    <td style={{color: 'rgb(62, 148, 197)', fontSize: '24px', textAlign:'center'}} id={preset._id} onClick={e => this.handleLoadPreset(preset._id)} className="presetBtn loadIcon"><GetAppIcon /></td>
+                    <td onClick={e => this.props.deletePreset(preset._id)} style={{color: 'rgb(230, 50, 73)', fontSize: '24px', textAlign:'center'}} className="presetBtn deleteIcon"><DeleteForeverIcon /></td>
                 </tr>
             )
             ind++
@@ -154,10 +153,6 @@ class PresetsModal extends React.Component {
         this.props.togglePresetsModal()
     }
 
-    handleDeletePreset = (id) => {
-        this.props.deletePreset(id)
-    }
-
     toggleModal = (e) => {
         if(!(e.target.className !== 'modal')) {
             this.props.togglePresetsModal()
@@ -210,7 +205,7 @@ class PresetsModal extends React.Component {
                                                     <tr>
                                                         <td><input required value={this.props.presetName} onChange={e => this.props.setPresetName(e.target.value)} type="text" name="name" placeholder="Preset Name" /></td>
                                                         <td><input required value={this.props.presetDescription} onChange={e => this.props.setPresetDescription(e.target.value)} type="text" name="description" placeholder="Description" /></td>
-                                                        <td className="presetBtn" style={{textAlign:'center'}}><button type="submit"><GetAppIcon /></button></td>
+                                                        <td className="presetBtn" style={{textAlign:'center'}}><button className="loadIcon" type="submit"><GetAppIcon /></button></td>
                                                     </tr>
                                                 </tbody>
                                             </table>

@@ -151,7 +151,7 @@ textarea {
   box-shadow: inset 0px 5px 5px -5px #000000c5;
 
   &:focus {
-    outline: none;
+    outline-color: transparent;
   }
 }
 
@@ -383,7 +383,7 @@ textarea {
 
     button {
       &:focus {
-        outline: none;
+        outline-color: transparent;
       }
       background-color: transparent;
       font-weight: 700;
@@ -550,7 +550,7 @@ select {
 
     #selectCase {
       &:focus {
-        outline: none;
+        outline-color: transparent;
       }
     }
 
@@ -558,7 +558,7 @@ select {
       height: auto;
 
       &:focus {
-        outline: none;
+        outline-color: transparent;
       }
     }
 
@@ -701,7 +701,7 @@ select {
         width: 3em;
         color: #dadada;
         &:focus {
-          outline: none;
+          outline-color: transparent;
         }
       }
 
@@ -916,7 +916,7 @@ select {
 
 div {
   &:focus {
-    outline: none;
+    outline-color: transparent;
   }
 }
 
@@ -1139,6 +1139,9 @@ div {
 }
 
 #chi_lang_select {
+  &:hover {
+    background-color: rgb(82, 80, 80) !important;
+  }
   -moz-appearance: none;
 }
 

@@ -136,6 +136,18 @@ $font: 'Roboto', 'Helvetica', 'Arial', sans-serif;
   max-width: 30vw;
 }
 
+.loadIcon {
+  &:hover {
+    color: #58c2ff !important;
+  }
+}
+
+.deleteIcon {
+  &:hover {
+    color: rgb(255, 113, 132) !important;
+  }
+}
+
 
 /*
 .informational_modal {

@@ -153,6 +153,14 @@
   max-width: 30vw;
 }
 
+.loadIcon:hover {
+  color: #58c2ff !important;
+}
+
+.deleteIcon:hover {
+  color: #ff7184 !important;
+}
+
 /*
 .informational_modal {
   font-size: 194px;
