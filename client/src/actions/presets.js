@@ -1,5 +1,5 @@
 
-import { ADD_PRESET, LOAD_PRESETS, PRESET_ERROR } from './constants'
+import { ADD_PRESET, LOAD_PRESETS, PRESET_ERROR, DELETE_PRESET_ERROR, DELETE_PRESET_SUCCESS } from './constants'
 import axios from 'axios'
 
 //Add Preset
@@ -35,6 +35,23 @@ export const loadPresets = () => async dispatch => {
     } catch(error) {
         dispatch({
             type: PRESET_ERROR
+        })
+    }
+}
+
+//Delete a preset
+export const deletePreset = (id) => async dispatch => {
+    try {
+        const res = await axios.delete(`./api/presets/${id}`)
+        dispatch({
+            type: DELETE_PRESET_SUCCESS,
+            payload: res.data,
+            id: id
+        })
+    } catch(error) {
+        console.error(error)
+        dispatch({
+            type: DELETE_PRESET_ERROR
         })
     }
 }

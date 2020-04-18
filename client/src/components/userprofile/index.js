@@ -5,26 +5,13 @@ import '../../styles/userprofile.css'
 import { getCurrentProfile } from '../../actions/profiles'
 import Spinner from '../spinner/Spinner'
 import GetAppIcon from '@material-ui/icons/GetApp'
-import EditIcon from '@material-ui/icons/Edit'
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever'
-
-import { Link } from 'react-router-dom'
-import { addPreset } from '../../actions/addPreset'
+import { addPreset } from '../../actions/presets'
 
 const Profile = (props) => {
 
     useEffect(() => {
         props.getCurrentProfile()
-        /*
-        props.addPreset(
-            {   "name": "My final pres",
-                "description": "fuckeridoo",
-                "preset": {
-                    "method": "caesar",
-                    "cshift": "4"
-                }
-            })
-        */
     }, [])
 
     return (
@@ -45,7 +32,6 @@ const Profile = (props) => {
                                         <th>Method</th>
                                         <th>Description</th>
                                         <th>Load</th>
-                                        <th>Edit</th>
                                         <th>Delete</th>
                                     </tr>
                                     <tr>
@@ -53,7 +39,6 @@ const Profile = (props) => {
                                         <td>Caesars cipher</td>
                                         <td>encryption test</td>
                                         <td><GetAppIcon /></td>
-                                        <td><EditIcon /></td>
                                         <td><DeleteForeverIcon /></td>
                                     </tr>
                                 </tbody>

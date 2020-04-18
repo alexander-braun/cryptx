@@ -8,7 +8,8 @@ class Modal extends React.Component {
     render() {
         if(this.props.modalOpen) {
             return (
-                <div className="modal" 
+                <div className="modal"
+                    id="methodSelectModal" 
                     onClick = {this.props.onModalToggle}
                 >
                     <div className="inner_modal">

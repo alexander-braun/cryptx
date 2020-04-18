@@ -2,11 +2,10 @@ import React, { Fragment } from 'react'
 import { connect } from 'react-redux'
 import { togglePresetsModal } from '../../actions/togglePresetsModal'
 import '../../styles/modal.css'
-import { loadPresets, addPreset } from '../../actions/addPreset'
+import { loadPresets, addPreset, deletePreset } from '../../actions/presets'
 import GetAppIcon from '@material-ui/icons/GetApp'
-import EditIcon from '@material-ui/icons/Edit'
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever'
-
+import PropTypes from 'prop-types'
 import { setCshift } from '../../actions/setCShift'
 import { updateInput } from '../../actions/updateInput'
 import toggleChars from '../../actions/toggleIncludeChars'
@@ -34,6 +33,7 @@ class PresetsModal extends React.Component {
         this.genTable = this.genTable.bind(this)
         this.handleLoadPreset = this.handleLoadPreset.bind(this)
         this.handleSavePreset = this.handleSavePreset.bind(this)
+        this.handleDeletePreset = this.handleDeletePreset.bind(this)
     }
     genTable = () => {
         let presetTable = []
@@ -45,19 +45,18 @@ class PresetsModal extends React.Component {
                     <td>{preset.name}</td>
                     <td>{preset.preset.method}</td>
                     <td>{preset.description}</td>
-                    <td id={preset._id} onClick={e => this.handleLoadPreset(preset._id)} className="presetBtn"><GetAppIcon /></td>
-                    <td className="presetBtn"><EditIcon /></td>
-                    <td className="presetBtn"><DeleteForeverIcon /></td>
+                    <td style={{color: 'rgb(62, 148, 197)', fontSize: '24px', textAlign:'center'}} id={preset._id} onClick={e => this.handleLoadPreset(preset._id)} className="presetBtn"><GetAppIcon /></td>
+                    <td onClick={e => this.handleDeletePreset(preset._id)} style={{color: 'rgb(230, 50, 73)', fontSize: '24px', textAlign:'center'}} className="presetBtn"><DeleteForeverIcon /></td>
                 </tr>
             )
             ind++
         }
+        
         return presetTable
     }
 
     componentDidUpdate(prevProps) {
-        this.props.loadPresets()
-        if(prevProps.presets.length !== this.props.presets.length) {
+        if(this.props.isAuthenticated && prevProps.presets.length !== this.props.presets.length) {
             this.genTable()
         }
     }
@@ -113,6 +112,8 @@ class PresetsModal extends React.Component {
         toReplaceLetter !== undefined && this.props.setToReplaceLetter(toReplaceLetter)
         affine_alpha !== undefined && this.props.setAffineAlpha(affine_alpha)
         affine_beta !== undefined && this.props.setAffineBeta(affine_beta)
+
+        this.props.togglePresetsModal()
     }
 
     handleSavePreset = () => {
@@ -142,7 +143,15 @@ class PresetsModal extends React.Component {
                 "preset": {
                     ...presetSettings
                 }
-            })
+            }
+        )
+        this.props.setPresetName('')
+        this.props.setPresetDescription('')
+        this.props.togglePresetsModal()
+    }
+
+    handleDeletePreset = (id) => {
+        this.props.deletePreset(id)
     }
 
     toggleModal = (e) => {
@@ -152,26 +161,25 @@ class PresetsModal extends React.Component {
     }
 
     render() {
-        if(this.props.presetsModal) {
+        if(this.props.isAuthenticated && this.props.presetsModal) {
             return (
                 <div className="modal" onClick = {e => this.toggleModal(e)}>
                     <div className="inner_modal">
                         <div className="block_top_decoration"></div>
                         {this.props.target === 'load' ? (
                             <Fragment>
-                                <div className="modal_header">'Load a Preset'</div>
+                                <div className="modal_header">Load a Preset</div>
                                 <div className="modal_body" style={{padding: '0'}}>
                                     <div className="right">
                                         <table id="presets">
                                             <tbody style={{color: 'white'}}>
                                                 <tr>
-                                                    <th></th>
+                                                    <th>#</th>
                                                     <th>Preset Name</th>
                                                     <th>Method</th>
                                                     <th>Description</th>
-                                                    <th style={{padding: '.5em 0em'}}>Load</th>
-                                                    <th style={{padding: '.5em 0em'}}>Edit</th>
-                                                    <th style={{padding: '.5em 0em'}}>Delete</th>
+                                                    <th>Load</th>
+                                                    <th>Delete</th>
                                                 </tr>
                                                 {this.genTable().map(row => row)}
                                             </tbody>
@@ -191,16 +199,14 @@ class PresetsModal extends React.Component {
                                             <table id="presets">
                                                 <tbody style={{color: 'white'}}>
                                                     <tr>
-                                                        <th></th>
                                                         <th>Preset Name</th>
                                                         <th>Description</th>
-                                                        <th style={{padding: '.5em 0em'}}>Save</th>
+                                                        <th>Save</th>
                                                     </tr>
                                                     <tr>
-                                                        <td></td>
-                                                        <td><input value={this.props.presetName} onChange={e => this.props.setPresetName(e.target.value)} type="text" name="name" placeholder="Preset Name" /></td>
-                                                        <td><input value={this.props.presetDescription} onChange={e => this.props.setPresetDescription(e.target.value)} type="text" name="description" placeholder="Description" /></td>
-                                                        <td className="presetBtn"><button type="submit"><GetAppIcon /></button></td>
+                                                        <td><input required value={this.props.presetName} onChange={e => this.props.setPresetName(e.target.value)} type="text" name="name" placeholder="Preset Name" /></td>
+                                                        <td><input required value={this.props.presetDescription} onChange={e => this.props.setPresetDescription(e.target.value)} type="text" name="description" placeholder="Description" /></td>
+                                                        <td className="presetBtn" style={{textAlign:'center'}}><button type="submit"><GetAppIcon /></button></td>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -223,7 +229,6 @@ const mapStateToProps = state => ({
     presets: state.presets,
     presetDescription: state.presetDescription,
     presetName: state.presetName,
-
     toReplaceLetter: state.replace.toReplaceLetter,
     replaceLetter: state.replace.replaceLetter,
     cShift: state.cShift,
@@ -243,13 +248,15 @@ const mapStateToProps = state => ({
     otpKey: state.otpKey,
     playSquare: state.playSquare,
     ringLength: state.skytale.ringLength,
+    isAuthenticated: state.auth.isAuthenticated
 })
+
+
 
 const mapActionsToProps = {
     togglePresetsModal,
     loadPresets,
     addPreset,
-
     setCshift,
     updateInput,
     toggleCase,
@@ -269,7 +276,13 @@ const mapActionsToProps = {
     setToReplaceLetter: toReplaceLetter,
     setReplaceLetter: replaceLetter,
     setAffineAlpha,
-    setAffineBeta
+    setAffineBeta,
+    deletePreset
+}
+
+
+PresetsModal.propTypes = {
+    presets: PropTypes.array.isRequired,
 }
 
 export default connect(mapStateToProps, mapActionsToProps)(PresetsModal)

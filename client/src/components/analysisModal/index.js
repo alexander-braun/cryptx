@@ -30,11 +30,18 @@ const AnalysisModal = ({
         chi_output,
         chi_input
     }) => {
+
+        const toggleModal = (e) => {
+            if(!(e.target.className !== 'modal')) {
+                toggleAnalysisModal()
+            }
+        }
+
     return (
         <Fragment>
             {analysisModal ? (
                 <div className="modal" 
-                    onClick = {toggleAnalysisModal}
+                    onClick = {e => toggleModal(e)}
                 >
                     <div className="inner_modal">
                         <div className="block_top_decoration"></div>
