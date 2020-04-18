@@ -23,7 +23,7 @@ const IcTooltipAddAnalysisMethod = () => {
             </React.Fragment>
             }
         >
-            <AddCircleOutlineIcon style={{color: '#3e94c5', fontSize: '24px'}}/>
+            <AddCircleOutlineIcon className="headBtn" style={{color: '#3e94c5', fontSize: '24px'}}/>
         </StyledTooltip>
     )
 }

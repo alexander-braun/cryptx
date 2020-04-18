@@ -38,7 +38,7 @@ const Primes = (props) => {
                         </textarea>
                     </div>
                 </div>
-                <div className="controllbox" style={{borderRight: 'inset 0px 0px 6px #0000003d'}}>
+                <div className="controllbox" style={{borderRight: 'none'}}>
                     <div className="settings_name">Prime 2</div>
                     <div className="settings_operators">
                         <textarea 

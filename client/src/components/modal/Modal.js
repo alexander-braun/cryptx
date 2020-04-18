@@ -15,7 +15,7 @@ class Modal extends React.Component {
                     <div className="inner_modal">
                         <div className="block_top_decoration"></div>
                         <div className="modal_header">Encryption Methods</div>
-                        <div className="modal_body">
+                        <div className="modal_body" style={{backgroundColor:'#272727'}}>
                             <div className="method_category">
                                 <span className="modal_category_title">Ciphers</span>
                                 <ul>

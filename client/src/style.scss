@@ -195,6 +195,12 @@ textarea {
     justify-content: flex-start;
     padding: 16px 24px;
 
+    .MuiSvgIcon-root {
+      &:hover{
+        color: #58c2ff !important;
+      }
+    }
+
     .block_head_text {
       display: inline-block;
       align-self: center;
@@ -335,6 +341,12 @@ textarea {
     justify-content: space-between;
     filter: drop-shadow(0px -5px 5px #000000c5);
 
+    .MuiSvgIcon-root {
+      &:hover{
+        color: #58c2ff !important;
+      }
+    }
+
     .block_head_options {
       display: flex;
       justify-content: center;
@@ -446,6 +458,12 @@ textarea {
 .chartcontainer {
   .controller {
     background-color: $controller_background;
+  }
+
+  .MuiSvgIcon-root {
+    &:hover{
+      color: #ffffff !important;
+    }
   }
 }
 
@@ -574,6 +592,12 @@ select {
     #minus_ring {
       font-size: 30px;
     }
+
+    #plus_ring, #minus_ring, #plus_caesar, #minus_caesar {
+      &:hover {
+        color: white;
+      }
+    }
   }
 }
 
@@ -688,17 +712,24 @@ select {
         cursor: pointer;
         color: #898989;
         font-size: 14px;
-        font-weight: 700;
+        font-weight: 500;
         font-family: $font;
         padding-left: 0;
         letter-spacing: .05em;
 
         &.active {
           color: #dadada;
+          &:hover {
+            color: #dadada;
+          }
         }
 
         &:focus {
-          outline: none;
+          outline-color: transparent;
+        }
+
+        &:hover {
+          color: #b1b1b1;
         }
       }
 
@@ -710,13 +741,21 @@ select {
         font-size: 14px;
         font-weight: 500;
         font-family: $font;
+        letter-spacing: .05em;
 
         &.active {
           color: #dadada;
+          &:hover {
+            color: #dadada;
+          }
         }
 
         &:focus {
-          outline: none;
+          outline-color: transparent;
+        }
+
+        &:hover {
+          color: #b1b1b1;
         }
       }
     }

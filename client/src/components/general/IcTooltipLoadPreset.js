@@ -23,7 +23,7 @@ const IcTooltipLoadPreset = () => {
             </React.Fragment>
             }
         >
-            <GetAppIcon style={{color: '#3e94c5', fontSize: '24px'}}/>
+            <GetAppIcon className="headBtn" style={{color: '#3e94c5', fontSize: '24px'}}/>
         </StyledTooltip>
     )
 }

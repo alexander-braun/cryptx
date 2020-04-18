@@ -17,6 +17,10 @@ const PresetSchema = new mongoose.Schema({
     preset: {
         type: Object,
         required: true
+    },
+    date: {
+        type: String,
+        default: Date.now()
     }
 })
 

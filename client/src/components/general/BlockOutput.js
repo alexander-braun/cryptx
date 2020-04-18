@@ -6,12 +6,17 @@ import BlockheadButtons from './BlockheadButtons'
 import AnalysisMethods from './AnalysisMethods'
 
 class BlockElementOutput extends React.PureComponent {
-
+  
   componentDidUpdate(prevProps) {
     if (prevProps.output !== this.props.output) {
       let textareaOutput = document.getElementById('output')
       math.autoresize(textareaOutput)
     }
+  }
+
+  componentDidMount() {
+    let textareaOutput = document.getElementById('output')
+    math.autoresize(textareaOutput)
   }
 
   render() {

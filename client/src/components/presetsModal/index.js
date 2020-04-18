@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react'
+import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { togglePresetsModal } from '../../actions/togglePresetsModal'
 import '../../styles/modal.css'
@@ -25,6 +26,8 @@ import setPresetName from '../../actions/setPresetName'
 import { toReplaceLetter, replaceLetter } from '../../actions/replace'
 import setAffineAlpha from '../../actions/setAffineAlpha'
 import setAffineBeta from '../../actions/setAffineBeta'
+import SentimentVeryDissatisfiedIcon from '@material-ui/icons/SentimentVeryDissatisfied'
+import methodNamesAll from '../general/MethodNames'
 
 
 class PresetsModal extends React.Component {
@@ -35,15 +38,17 @@ class PresetsModal extends React.Component {
         this.handleSavePreset = this.handleSavePreset.bind(this)
         this.handleDeletePreset = this.handleDeletePreset.bind(this)
     }
+
     genTable = () => {
         let presetTable = []
         let ind = 0
         for(let preset of this.props.presets) {
+            let method = preset.preset.method
             presetTable.push(
                 <tr key={preset._id}>
-                    <td className="presets_id">{ind}</td>
+                    {preset.date !== undefined && <td>{preset.date}</td>}
                     <td>{preset.name}</td>
-                    <td>{preset.preset.method}</td>
+                    <td>{methodNamesAll[method]}</td>
                     <td>{preset.description}</td>
                     <td style={{color: 'rgb(62, 148, 197)', fontSize: '24px', textAlign:'center'}} id={preset._id} onClick={e => this.handleLoadPreset(preset._id)} className="presetBtn"><GetAppIcon /></td>
                     <td onClick={e => this.handleDeletePreset(preset._id)} style={{color: 'rgb(230, 50, 73)', fontSize: '24px', textAlign:'center'}} className="presetBtn"><DeleteForeverIcon /></td>
@@ -51,7 +56,6 @@ class PresetsModal extends React.Component {
             )
             ind++
         }
-        
         return presetTable
     }
 
@@ -174,12 +178,12 @@ class PresetsModal extends React.Component {
                                         <table id="presets">
                                             <tbody style={{color: 'white'}}>
                                                 <tr>
-                                                    <th>#</th>
+                                                    <th style={{textAlign:'center'}}>Date</th>
                                                     <th>Preset Name</th>
                                                     <th>Method</th>
                                                     <th>Description</th>
-                                                    <th>Load</th>
-                                                    <th>Delete</th>
+                                                    <th style={{textAlign:'center'}}>Load</th>
+                                                    <th style={{textAlign:'center'}}>Delete</th>
                                                 </tr>
                                                 {this.genTable().map(row => row)}
                                             </tbody>
@@ -189,7 +193,7 @@ class PresetsModal extends React.Component {
                             </Fragment>
                             ) : (
                                 <Fragment>
-                                    <div className="modal_header">Save as Preset</div>
+                                    <div className="modal_header" style={{minWidth:'40vw'}}>Save as Preset</div>
                                     <div className="modal_body" style={{padding: '0'}}>
                                         <div className="right">
                                         <form onSubmit={e => {
@@ -197,11 +201,11 @@ class PresetsModal extends React.Component {
                                             this.handleSavePreset(e)
                                         }}>
                                             <table id="presets">
-                                                <tbody style={{color: 'white'}}>
+                                                <tbody style={{color: 'white', padding:'2em'}}>
                                                     <tr>
                                                         <th>Preset Name</th>
                                                         <th>Description</th>
-                                                        <th>Save</th>
+                                                        <th style={{textAlign:'center'}}>Save</th>
                                                     </tr>
                                                     <tr>
                                                         <td><input required value={this.props.presetName} onChange={e => this.props.setPresetName(e.target.value)} type="text" name="name" placeholder="Preset Name" /></td>
@@ -216,6 +220,21 @@ class PresetsModal extends React.Component {
                                 </Fragment>
                             )
                         }
+                    </div>
+                </div>
+            )
+        } else if(this.props.presetsModal) {
+            return (
+                <div className="modal" onClick = {e => this.toggleModal(e)}>
+                    <div className="inner_modal noAuthModal">
+                        <div style={{textAlign:'center', backgroundColor:'rgb(255, 88, 110)', padding: '2em'}}>
+                            <SentimentVeryDissatisfiedIcon style={{color:'white', fontSize: '10em'}}/>
+                            <div className="modal_header" style={{textAlign:'center', backgroundColor:'rgb(255, 88, 110)', fontWeight:'400', fontSize: '1.5rem', letterSpacing: '.05rem'}}>Please login or signup to save and load presets!</div>
+                        </div>
+                        <div style={{paddingTop: '1em', textAlign:'center', height:'fit-content', display:'flex', flexDirection:'row', justifyContent:'space-between', alignItems:'space-between', fontSize: '1.25em', letterSpacing:'.1rem'}}>
+                            <Link onClick = {this.props.togglePresetsModal} style={{backgroundColor: 'rgb(92, 93, 95)', borderRadius: '50px', margin:'1em', textDecoration:'none', color:'white', padding: '.5em', width:'15em', height: 'fit-content', cursor:'pointer'}} to="/login">Login</Link>
+                            <Link onClick = {this.props.togglePresetsModal} style={{backgroundColor: 'rgb(92, 93, 95)', borderRadius: '50px', margin:'1em', textDecoration:'none', color:'white', padding: '.5em', width:'15em', height: 'fit-content', cursor:'pointer'}} to="/signup">Signup</Link>
+                        </div>
                     </div>
                 </div>
             )

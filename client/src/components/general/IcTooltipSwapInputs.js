@@ -10,11 +10,11 @@ const StyledTooltip = withStyles(theme => ({
         maxWidth: 420,
         fontSize: theme.typography.pxToRem(12),
         border: '1px solid #dadde9',
-      },
+      }
 }))(Tooltip);
 
-
 const IcTooltipSwapInput = () => {
+
     return (
         <StyledTooltip
             title={
@@ -23,7 +23,7 @@ const IcTooltipSwapInput = () => {
             </React.Fragment>
             }
         >
-            <SwapHorizIcon style={{color: '#3e94c5', fontSize: '24px'}}/>
+            <SwapHorizIcon className="headBtn" style={{color: '#3e94c5', fontSize: '24px'}}/>
         </StyledTooltip>
     )
 }

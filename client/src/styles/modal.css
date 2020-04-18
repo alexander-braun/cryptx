@@ -26,10 +26,14 @@
 }
 
 .modal .inner_modal {
-  background-color: #242526;
+  background-color: #303031;
   border-radius: 0px;
   overflow: hidden;
   padding: 1em;
+}
+
+.modal .inner_modal a:hover {
+  background-color: #7f8185 !important;
 }
 
 .modal .modal_header {
@@ -37,7 +41,7 @@
   height: auto;
   background-color: #1a86c3;
   color: white;
-  font-size: 24pt;
+  font-size: 18pt;
   font-weight: 700;
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   padding: 16px;
@@ -45,9 +49,9 @@
 }
 
 .modal .modal_body {
-  max-width: 80vw;
+  max-width: 50vw;
   padding: 24px;
-  background-color: #49494b;
+  background-color: #2d2d2d;
 }
 
 .modal_open {
@@ -55,11 +59,12 @@
 }
 
 .method_category {
-  color: #898989;
+  color: #cacaca;
   font-size: 12pt;
-  font-weight: 700;
+  font-weight: 400;
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-  margin-top: 2em;
+  margin-top: 1em;
+  letter-spacing: .1rem;
 }
 
 .method_category span {
@@ -119,9 +124,10 @@
   background: #fff;
   -webkit-transition-duration: 200ms;
           transition-duration: 200ms;
-  background: #6b6d6f;
+  background: #424344;
   color: white;
   letter-spacing: .05rem;
+  font-size: .9rem;
 }
 
 .method_category .modal_category_method:hover {
@@ -141,6 +147,10 @@
 
 .presetBtn {
   cursor: pointer;
+}
+
+.noAuthModal {
+  max-width: 30vw;
 }
 
 /*

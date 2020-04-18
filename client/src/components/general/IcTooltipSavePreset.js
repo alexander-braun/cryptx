@@ -23,7 +23,7 @@ const IcTooltipLoadPreset = () => {
             </React.Fragment>
             }
         >
-            <PublishIcon style={{color: '#3e94c5', fontSize: '24px'}}/>
+            <PublishIcon className="headBtn" style={{color: '#3e94c5', fontSize: '24px'}}/>
         </StyledTooltip>
     )
 }

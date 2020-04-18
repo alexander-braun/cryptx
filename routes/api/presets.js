@@ -18,11 +18,13 @@ router.post('/', [auth, [
     }
 
     try{
+        let today = new Date()
         const newPreset = new Preset({
             user: req.user.id,
             description: req.body.description,
             preset: req.body.preset,
-            name: req.body.name
+            name: req.body.name,
+            date: today.getFullYear() + '-' + (today.getMonth() +1) + '-' + today.getDate()
         })
         const preset = await newPreset.save()
         res.json(preset)
