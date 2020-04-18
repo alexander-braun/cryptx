@@ -9,6 +9,7 @@ import Login from './login'
 import store from '../store'
 import { Provider } from 'react-redux'
 import { loadUser } from '../actions/authenticate'
+import { loadPresets } from '../actions/addPreset'
 import setAuthToken from '../utils/setAuthToken'
 import About from './about'
 import Profile from './userprofile'
@@ -22,6 +23,7 @@ const App = () => {
 
   useEffect(() => {
     store.dispatch(loadUser())
+    store.dispatch(loadPresets())
   }, [])
 
   return (

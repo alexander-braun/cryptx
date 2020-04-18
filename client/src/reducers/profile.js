@@ -6,7 +6,8 @@ import {
 const initialState = {
     profile: null,
     loading: true,
-    error: {}
+    error: {},
+    presets: []
 }
 
 export default function(state = initialState, action) {

@@ -13,6 +13,7 @@ html {
   -webkit-font-smoothing: antialised;
   font-weight: 400;
   scroll-behavior: smooth;
+  background-color: #18191a;
 }
 
 $font: 'Roboto', 'Helvetica', 'Arial', sans-serif;
@@ -80,6 +81,7 @@ html {
 ::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px #696969; 
   border-radius: 10px;
+  background-color: white;
 }
 
 ::-webkit-scrollbar-thumb {

@@ -2,7 +2,8 @@ import axios from 'axios'
 import { setAlert } from './alert'
 import {
     GET_PROFILE,
-    PROFILE_ERROR
+    PROFILE_ERROR,
+    UPDATE_PRESETS
 } from './constants'
 
 //Get current users profile

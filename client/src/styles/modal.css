@@ -31,7 +31,7 @@
 }
 
 .modal .modal_header {
-  width: 27vw;
+  width: auto;
   height: auto;
   background-color: #ececec;
   color: #101010;
@@ -42,7 +42,10 @@
 }
 
 .modal .modal_body {
-  width: 27vw;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  max-width: 80vw;
   padding: 24px;
   background-color: white;
 }
@@ -118,18 +121,8 @@
           box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.1), 0 2px 4px 2px rgba(0, 0, 0, 0.08), 0 2px 4px 0 rgba(0, 0, 0, 0.16);
 }
 
-@media only screen and (max-width: 1500px) {
-  .modal .modal_header,
-  .modal .modal_body {
-    width: 40vw;
-  }
-}
-
-@media only screen and (max-width: 700px) {
-  .modal .modal_header,
-  .modal .modal_body {
-    width: 100vw;
-  }
+.presetBtn {
+  cursor: pointer;
 }
 
 /*

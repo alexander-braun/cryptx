@@ -6,12 +6,25 @@ import { getCurrentProfile } from '../../actions/profiles'
 import Spinner from '../spinner/Spinner'
 import GetAppIcon from '@material-ui/icons/GetApp'
 import EditIcon from '@material-ui/icons/Edit'
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever'
+
 import { Link } from 'react-router-dom'
+import { addPreset } from '../../actions/addPreset'
 
 const Profile = (props) => {
 
     useEffect(() => {
         props.getCurrentProfile()
+        /*
+        props.addPreset(
+            {   "name": "My final pres",
+                "description": "fuckeridoo",
+                "preset": {
+                    "method": "caesar",
+                    "cshift": "4"
+                }
+            })
+        */
     }, [])
 
     return (
@@ -24,7 +37,7 @@ const Profile = (props) => {
                             <img src={!props.auth.loading && props.auth.user.avatar}></img>
                         </div>
                         <div className="right">
-                            <h2>Saved Presets</h2>
+                            <h1>Saved Presets</h1>
                             <table id="presets">
                                 <tbody>
                                     <tr>
@@ -33,6 +46,7 @@ const Profile = (props) => {
                                         <th>Description</th>
                                         <th>Load</th>
                                         <th>Edit</th>
+                                        <th>Delete</th>
                                     </tr>
                                     <tr>
                                         <td>My caesar preset</td>
@@ -40,19 +54,12 @@ const Profile = (props) => {
                                         <td>encryption test</td>
                                         <td><GetAppIcon /></td>
                                         <td><EditIcon /></td>
+                                        <td><DeleteForeverIcon /></td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
-                    {props.profile.profile !== null ? (
-                        <div className="update_profile">has</div>
-                        ) : (
-                        <div className="update_profile">
-                            <h2>Update User Profile!</h2>
-                            <Link to="/create-profile">Update Profile</Link>
-                        </div>
-                    )}    
                 </div>
             </Fragment>
         )
@@ -65,13 +72,15 @@ const mapStateToProps = state => ({
 })
 
 const mapActionsToProps = {
-    getCurrentProfile
+    getCurrentProfile,
+    addPreset
 }
 
 Profile.propTypes = {
     getCurrentProfile: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
-    profile: PropTypes.object.isRequired
+    profile: PropTypes.object.isRequired,
+    addPreset: PropTypes.func.isRequired
 }
 
 export default connect(mapStateToProps, mapActionsToProps)(Profile)

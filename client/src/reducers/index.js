@@ -24,6 +24,9 @@ import presetsModal from './presetsModal'
 import analysisModal from './analysisModal'
 import analysisMethod from './analysisMethod'
 import profile from './profile'
+import presets from './presets'
+import presetDescription from './presetDescription'
+import presetName from './presetName'
 
 export default combineReducers({
     modal,
@@ -50,5 +53,8 @@ export default combineReducers({
     presetsModal,
     analysisModal,
     analysisMethod,
-    profile
+    profile,
+    presets,
+    presetDescription,
+    presetName
 })

@@ -15,7 +15,8 @@ const PresetSchema = new mongoose.Schema({
         required: true
     },
     preset: {
-        type: Object
+        type: Object,
+        required: true
     }
 })
 

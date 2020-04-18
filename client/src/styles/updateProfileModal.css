@@ -1,0 +1,48 @@
+.update_modal {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  z-index: 2;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  overflow: hidden;
+}
+
+.update_modal .inner_modal {
+  border-radius: 0px;
+  overflow: hidden;
+}
+
+.update_modal .modal_header {
+  width: 27vw;
+  height: auto;
+  background-color: #ececec;
+  color: #101010;
+  font-size: 18pt;
+  font-weight: 700;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  padding: 24px;
+}
+
+.update_modal .update_modal_body {
+  width: 27vw;
+  padding: 24px;
+  background-color: white;
+}
+/*# sourceMappingURL=updateProfileModal.css.map */

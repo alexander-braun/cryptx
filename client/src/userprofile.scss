@@ -1,6 +1,6 @@
 #profile_wrapper {
     background-color: #18191a;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -15,14 +15,10 @@
     margin-left: auto;
     margin-right: auto;
     h1 {
-        font-size: 3rem;
-        text-align: center;
-    }
-    h2 {
         font-weight: 400;
         margin-top: 2vw;
         text-align: center;
-        font-size: 1.75rem;
+        letter-spacing: .2rem;
     }
     img {
         border-radius: 50%;
@@ -41,26 +37,33 @@
     border-collapse: collapse;
     width: 100%;
     font-size: 1.25rem;
-  }
+}
+
+tbody {
+   tr:nth-child(even){background-color: #3a3b3c} 
+   tr:nth-child(odd){background-color: #424344} 
+}
   
 #presets td, #presets th {
     border: 1px solid rgb(26, 26, 26);
     padding: 8px;
+    text-align: center;
+    padding: .5em 2em;
 }
 
 #presets td {
-    font-size: .8rem;
-    background-color: #3a3b3c;
+    font-size: 1rem;
     text-align: center;
-    letter-spacing: .1rem;
+    letter-spacing: .15rem;
 }
 
 #presets th {
     padding-top: 12px;
     padding-bottom: 12px;
-    text-align: left;
+    text-align: center;
     background-color: #242526;
     color: white;
+    letter-spacing: .1rem;
 }
 
 .update_profile {
@@ -70,16 +73,19 @@
     font-weight: 400;
     margin-top: 2vw;
 
-    h2 {
+    h1 {
         font-weight: 400;
-        font-size: 1.75rem;
+        margin-top: 2vw;
+        text-align: center;
+        letter-spacing: .2rem;
     }
 
-    a {
+    button {
         padding: 10px;
         background-color: #242526;
         text-decoration: none;
         border: 1px solid #3a3b3c;
         color: white;
+        cursor: pointer;
     }
 }

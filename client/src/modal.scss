@@ -3,6 +3,7 @@ $blockco: #101010;
 $font: 'Roboto', 'Helvetica', 'Arial', sans-serif;
 
 .modal {
+
   position: absolute;
   width: 100vw;
   height: 100vh;
@@ -25,7 +26,7 @@ $font: 'Roboto', 'Helvetica', 'Arial', sans-serif;
   }
   
   .modal_header {
-    width: 27vw;
+    width: auto;
     height: auto;
     background-color: $blockbg;
     color: $blockco;
@@ -36,7 +37,8 @@ $font: 'Roboto', 'Helvetica', 'Arial', sans-serif;
   }
   
   .modal_body {
-    width: 27vw;
+    width: fit-content;
+    max-width: 80vw;
     padding: 24px;
     background-color: white;
   }
@@ -99,23 +101,10 @@ $font: 'Roboto', 'Helvetica', 'Arial', sans-serif;
   }
 }
 
-@media only screen and (max-width: 1500px) {
-  .modal {
-    .modal_header,
-    .modal_body {
-      width: 40vw;
-    }
-  }
+.presetBtn {
+  cursor: pointer;
 }
 
-@media only screen and (max-width: 700px) {
-  .modal {
-    .modal_header,
-    .modal_body {
-      width: 100vw;
-    }
-  }
-}
 
 /*
 .informational_modal {
