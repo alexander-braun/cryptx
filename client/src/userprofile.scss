@@ -20,6 +20,10 @@
         text-align: center;
         letter-spacing: .2rem;
     }
+    h2 {
+        font-weight: 400;
+        letter-spacing: .1rem;
+    }
     img {
         border-radius: 50%;
     }
@@ -76,6 +80,7 @@ tbody {
     font-size: 1rem;
     padding-left: .5rem;
     padding-right: .5rem;
+    font-weight: 400;
 }
 
 .update_profile {

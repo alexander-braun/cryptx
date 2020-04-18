@@ -41,7 +41,7 @@
   font-weight: 700;
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   padding: 16px;
-  text-align: center;
+  text-align: left;
 }
 
 .modal .modal_body {
@@ -115,12 +115,13 @@
   padding: 10px;
   -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1), 0 1px 3px 1px rgba(0, 0, 0, 0.08), 0 1px 2px 0 rgba(0, 0, 0, 0.16);
           box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1), 0 1px 3px 1px rgba(0, 0, 0, 0.08), 0 1px 2px 0 rgba(0, 0, 0, 0.16);
-  border-radius: 2px;
+  border-radius: 50px;
   background: #fff;
   -webkit-transition-duration: 200ms;
           transition-duration: 200ms;
-  background: #1a86c3;
-  color: #ffffffd9;
+  background: #6b6d6f;
+  color: white;
+  letter-spacing: .05rem;
 }
 
 .method_category .modal_category_method:hover {

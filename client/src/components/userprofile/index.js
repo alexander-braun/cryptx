@@ -22,27 +22,7 @@ const Profile = (props) => {
                         <div className="left">
                             <h1>Welcome {props.auth.user && props.auth.user.name}!</h1>
                             <img src={!props.auth.loading && props.auth.user.avatar}></img>
-                        </div>
-                        <div className="right">
-                            <h1>Saved Presets</h1>
-                            <table id="presets">
-                                <tbody>
-                                    <tr>
-                                        <th>Preset Name</th>
-                                        <th>Method</th>
-                                        <th>Description</th>
-                                        <th>Load</th>
-                                        <th>Delete</th>
-                                    </tr>
-                                    <tr>
-                                        <td>My caesar preset</td>
-                                        <td>Caesars cipher</td>
-                                        <td>encryption test</td>
-                                        <td><GetAppIcon /></td>
-                                        <td><DeleteForeverIcon /></td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <h2>You have full access to all features of cryptX !</h2>
                         </div>
                     </div>
                 </div>

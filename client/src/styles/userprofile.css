@@ -40,6 +40,11 @@
   letter-spacing: .2rem;
 }
 
+#userprofile_container h2 {
+  font-weight: 400;
+  letter-spacing: .1rem;
+}
+
 #userprofile_container img {
   border-radius: 50%;
 }
@@ -107,6 +112,7 @@ tbody tr:nth-child(odd) {
   font-size: 1rem;
   padding-left: .5rem;
   padding-right: .5rem;
+  font-weight: 400;
 }
 
 .update_profile {
