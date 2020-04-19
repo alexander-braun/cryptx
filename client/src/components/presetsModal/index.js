@@ -28,6 +28,7 @@ import setAffineAlpha from '../../actions/setAffineAlpha'
 import setAffineBeta from '../../actions/setAffineBeta'
 import SentimentVeryDissatisfiedIcon from '@material-ui/icons/SentimentVeryDissatisfied'
 import methodNamesAll from '../general/MethodNames'
+import HighlightOffIcon from '@material-ui/icons/HighlightOff'
 
 
 class PresetsModal extends React.Component {
@@ -162,13 +163,13 @@ class PresetsModal extends React.Component {
                         <div className="block_top_decoration"></div>
                         {this.props.target === 'load' ? (
                             <Fragment>
-                                <div className="modal_header">Load a Preset</div>
+                                <div className="modal_header">Load a Preset<button style={{color:'#b0b3b8'}}><HighlightOffIcon  onClick={this.props.togglePresetsModal} /></button></div>
                                 <div className="modal_body" style={{padding: '0'}}>
-                                    <div className="right">
+                                    <div className="tablecontainer_presets" style={{padding: '1em'}}>
                                         <table id="presets">
                                             <tbody style={{color: 'white'}}>
                                                 <tr>
-                                                    <th style={{textAlign:'center'}}>Date</th>
+                                                    <th>Date</th>
                                                     <th>Preset Name</th>
                                                     <th>Method</th>
                                                     <th>Description</th>
@@ -179,32 +180,38 @@ class PresetsModal extends React.Component {
                                             </tbody>
                                         </table>
                                     </div>
+                                    <div className="loadpreset_explanatory">
+                                        <button onClick={this.props.togglePresetsModal}>Close</button>
+                                    </div>
                                 </div>
                             </Fragment>
                             ) : (
                                 <Fragment>
-                                    <div className="modal_header" style={{minWidth:'40vw'}}>Save as Preset</div>
+                                    <div className="modal_header">Save as Preset<button style={{color:'#b0b3b8'}}><HighlightOffIcon  onClick={this.props.togglePresetsModal} /></button></div>
                                     <div className="modal_body" style={{padding: '0'}}>
-                                        <div className="right">
-                                        <form onSubmit={e => {
-                                            e.preventDefault()
-                                            this.handleSavePreset(e)
-                                        }}>
-                                            <table id="presets">
-                                                <tbody style={{color: 'white', padding:'2em'}}>
-                                                    <tr>
-                                                        <th>Preset Name</th>
-                                                        <th>Description</th>
-                                                        <th style={{textAlign:'center'}}>Save</th>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><input required value={this.props.presetName} onChange={e => this.props.setPresetName(e.target.value)} type="text" name="name" placeholder="Preset Name" /></td>
-                                                        <td><input required value={this.props.presetDescription} onChange={e => this.props.setPresetDescription(e.target.value)} type="text" name="description" placeholder="Description" /></td>
-                                                        <td className="presetBtn" style={{textAlign:'center'}}><button className="loadIcon" type="submit"><GetAppIcon /></button></td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
+                                        <div className="tablecontainer_presets">
+                                            <form onSubmit={e => {
+                                                e.preventDefault()
+                                                this.handleSavePreset(e)
+                                            }}>
+                                                <table id="presets">
+                                                    <tbody style={{color: 'white', padding:'2em'}}>
+                                                        <tr>
+                                                            <th>Preset Name</th>
+                                                            <th>Description</th>
+                                                            <th style={{textAlign:'center'}}>Save</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><input required value={this.props.presetName} onChange={e => this.props.setPresetName(e.target.value)} type="text" name="name" placeholder="Preset Name" /></td>
+                                                            <td><input required value={this.props.presetDescription} onChange={e => this.props.setPresetDescription(e.target.value)} type="text" name="description" placeholder="Description" /></td>
+                                                            <td className="presetBtn" style={{textAlign:'center'}}><button className="loadIcon" type="submit"><GetAppIcon /></button></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
                                             </form>
+                                        </div>
+                                        <div className="loadpreset_explanatory">
+                                            <button onClick={this.props.togglePresetsModal}>Close</button>
                                         </div>
                                     </div>
                                 </Fragment>
@@ -219,7 +226,7 @@ class PresetsModal extends React.Component {
                     <div className="inner_modal noAuthModal">
                         <div style={{textAlign:'center', backgroundColor:'rgb(255, 88, 110)', padding: '2em'}}>
                             <SentimentVeryDissatisfiedIcon style={{color:'white', fontSize: '10em'}}/>
-                            <div className="modal_header" style={{textAlign:'center', backgroundColor:'rgb(255, 88, 110)', fontWeight:'400', fontSize: '1.5rem', letterSpacing: '.05rem'}}>Please login or signup to save and load presets!</div>
+                            <div className="modal_header" style={{filter:'none', textAlign:'center', backgroundColor:'rgb(255, 88, 110)', fontWeight:'400', fontSize: '1.5rem', letterSpacing: '.05rem'}}>Please login or signup to save and load presets!</div>
                         </div>
                         <div style={{paddingTop: '1em', textAlign:'center', height:'fit-content', display:'flex', flexDirection:'row', justifyContent:'space-between', alignItems:'space-between', fontSize: '1.25em', letterSpacing:'.1rem'}}>
                             <Link onClick = {this.props.togglePresetsModal} style={{backgroundColor: 'rgb(92, 93, 95)', borderRadius: '50px', margin:'1em', textDecoration:'none', color:'white', padding: '.5em', width:'15em', height: 'fit-content', cursor:'pointer'}} to="/login">Login</Link>

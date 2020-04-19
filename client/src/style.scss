@@ -1138,11 +1138,15 @@ div {
   margin-top: 20px;
 }
 
-#chi_lang_select {
-  &:hover {
-    background-color: rgb(82, 80, 80) !important;
-  }
+#chi_lang_select, #freq_lang_select {
+  color: white;
+  font-family: $font;
+  letter-spacing: .075rem;
+  background-color: rgb(82, 80, 80) !important;
   -moz-appearance: none;
+  &:focus{
+    outline-color: transparent;
+  }
 }
 
 .swapIcon {

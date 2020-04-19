@@ -1313,12 +1313,16 @@ div:focus {
   margin-top: 20px;
 }
 
-#chi_lang_select {
+#chi_lang_select, #freq_lang_select {
+  color: white;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  letter-spacing: .075rem;
+  background-color: #525050 !important;
   -moz-appearance: none;
 }
 
-#chi_lang_select:hover {
-  background-color: #525050 !important;
+#chi_lang_select:focus, #freq_lang_select:focus {
+  outline-color: transparent;
 }
 
 .swapIcon {

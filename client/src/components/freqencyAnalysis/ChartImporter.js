@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, Fragment } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import ExpansionPanel from '@material-ui/core/ExpansionPanel'
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary'
@@ -10,10 +10,11 @@ import Button from '@material-ui/core/Button';
 import Tooltip from '@material-ui/core/Tooltip';
 import InfoIcon from '@material-ui/icons/Info';
 import Barchart from './Barchart'
-import freq from './data'
+import { freq } from './data'
 import HighlightOffIcon from '@material-ui/icons/HighlightOff'
 import { connect } from 'react-redux'
 import { toggleAnalysisMethodFQInput, toggleAnalysisMethodFQOutput } from '../../actions/toggleAnalysisMethod'
+import { languages } from './data'
 
 
 const useStyles = makeStyles(theme => ({
@@ -71,7 +72,8 @@ function ChartImporter({inputValue, toggleAnalysisMethodFQInput, toggleAnalysisM
         </StyledTooltip>
     )
 
-    let [data] = useState([...freq])
+    
+    const [selectedElement, updateSelected] = useState('English')
     const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('')
     const classes = useStyles();
     const [panelStatus, changePanelStatus] = useState(false)
@@ -89,23 +91,47 @@ function ChartImporter({inputValue, toggleAnalysisMethodFQInput, toggleAnalysisM
             </ExpansionPanelSummary>
             <ExpansionPanelDetails>
                 <div className="freq">
-                {
-                    panelStatus ?
-                        <React.Fragment>
-                            <Barchart 
-                                data={data} 
-                                alphabet={alphabet} 
-                                inputValue={inputValue}
-                            />
-                        </React.Fragment> 
-                        : null
-                }
+                    {
+                        panelStatus ?
+                            <React.Fragment>
+                                <Barchart 
+                                    data={[...freq[selectedElement.toLowerCase()]]} 
+                                    alphabet={alphabet} 
+                                    inputValue={inputValue}
+                                />
+                            </React.Fragment> 
+                            : null
+                    }
                 </div> 
+                <div className="freq_select" style={{marginTop:'2em'}}>
+                    {
+                        panelStatus ?
+                            <Fragment>
+                                <label htmlFor="freq_lang_select" className={classes.label}>Language to compare to:</label>
+                                <select 
+                                    id="freq_lang_select" 
+                                    style={{marginLeft: '1em', backgroundColor: 'transparent', border: '1px solid #ffffff78', padding: '5px', fontWeight: '400', borderRadius: '20px', fontSize: '12px'}}
+                                    onClick={evt => updateSelected(evt.target.value)} 
+                                >
+                                    {languages.map(language => {
+                                        return (
+                                            <option 
+                                                style={{fontWeight: '400', fontSize: '12px'}} 
+                                                key={language} 
+                                                id={language}
+                                            >
+                                                {language}
+                                            </option>)
+                                    })}
+                                </select>
+                            </Fragment> : null
+                    }
+                </div>
             </ExpansionPanelDetails>
             <ExpansionPanelDetails>
                 <Typography className={classes.body}> 
                     The blue <b>dots</b> represent your input. The red <b>bars </b>
-                    represent the standart distributon of letters in the english language.
+                    represent the standart distributon of letters in the {selectedElement} language.
                 </Typography>
             </ExpansionPanelDetails>
         </ExpansionPanel> 

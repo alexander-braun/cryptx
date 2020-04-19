@@ -79,12 +79,8 @@
   font-size: .9rem;
 }
 
-tbody tr:nth-child(even) {
-  background-color: #49494b;
-}
-
-tbody tr:nth-child(odd) {
-  background-color: #3a3b3c;
+tbody {
+  background-color: #2d2d2d;
 }
 
 #presets td, #presets th {
@@ -100,19 +96,22 @@ tbody tr:nth-child(odd) {
   font-weight: 200;
   padding-left: .5rem;
   padding-right: .5rem;
+  border-bottom: 1px solid #424242;
+  background-color: #2d2d2d;
 }
 
 #presets th {
   padding-top: 1rem;
   padding-bottom: 1rem;
   text-align: left;
-  background-color: #242526;
+  background-color: #2d2d2d;
   color: white;
   letter-spacing: .1rem;
   font-size: 1rem;
   padding-left: .5rem;
   padding-right: .5rem;
   font-weight: 400;
+  border-bottom: 1px solid #424242;
 }
 
 .update_profile {

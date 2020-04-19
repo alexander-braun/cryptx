@@ -189,7 +189,7 @@ function ChiSquared(props) {
                             {Object.keys(languages).map(language => {
                                 return (
                                     <option 
-                                        style={{fontWeight: '400', fontSize: '12px', color: 'black'}} 
+                                        style={{fontWeight: '400', fontSize: '12px'}} 
                                         key={language} 
                                         className={classes.option} 
                                         id={language}
