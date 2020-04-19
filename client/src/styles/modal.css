@@ -29,7 +29,6 @@
   background-color: #303031;
   border-radius: 0px;
   overflow: hidden;
-  overflow-y: scroll;
 }
 
 .modal .inner_modal a:hover {
@@ -146,7 +145,7 @@
   width: -moz-fit-content;
   width: -webkit-fit-content;
   width: fit-content;
-  padding: 7px;
+  padding: 10px;
   -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1), 0 1px 3px 1px rgba(0, 0, 0, 0.08), 0 1px 2px 0 rgba(0, 0, 0, 0.16);
           box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1), 0 1px 3px 1px rgba(0, 0, 0, 0.08), 0 1px 2px 0 rgba(0, 0, 0, 0.16);
   border-radius: 50px;
@@ -157,6 +156,7 @@
   color: white;
   letter-spacing: .05rem;
   font-size: .8rem;
+  font-weight: 200;
 }
 
 .method_category .modal_category_method:hover {
@@ -277,4 +277,9 @@
   margin-left: 0px;
 }
 */
+@media only screen and (max-width: 700px) {
+  .inner_modal {
+    overflow-y: scroll;
+  }
+}
 /*# sourceMappingURL=modal.css.map */

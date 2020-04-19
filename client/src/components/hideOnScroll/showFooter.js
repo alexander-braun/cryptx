@@ -6,8 +6,12 @@ const ShowFooter = () => {
   const handleScroll = () => {
     //checkscroll
     const top = window.pageYOffset || document.documentElement.scrollTop
-    setShow(window.innerHeight - 200 > top)
+    setShow(window.innerHeight - 80 > top)
   }
+
+  useEffect(() => {
+    handleScroll()
+  })
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll)
