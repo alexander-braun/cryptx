@@ -155,6 +155,17 @@ class Modal extends React.Component {
                                         Replace
                                         </button>
                                     </li>
+                                    <li>
+                                        <button
+                                            className="modal_category_method"
+                                            value="reverse"
+                                            onClick={(evt) => {
+                                                this.props.changeMethod(evt.target.value)
+                                            }}
+                                        >
+                                        Reverse
+                                        </button>
+                                    </li>
                                 </ul>
                             </div>
                         </div>

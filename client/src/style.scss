@@ -1144,6 +1144,9 @@ div {
   letter-spacing: .075rem;
   background-color: rgb(82, 80, 80) !important;
   -moz-appearance: none;
+  &:hover{
+    cursor: pointer;
+  }
   &:focus{
     outline-color: transparent;
   }

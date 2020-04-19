@@ -27,13 +27,22 @@ $main_background: #18191a;
         color: white;
         font-family: $fontKhula;
         font-weight: 400;
-        font-size: 60px;
+        font-size: 45px;
+        font-style: italic;
         letter-spacing: 0em;
         width: 100vw;
-        font-style: normal;
-        line-height: 1.25em;
+        line-height: 1.5em;
         text-rendering: optimizeLegibility;
         margin-bottom: 0em;
+    }
+
+    h2 {
+        color: white;
+        text-align: center;
+        font-family: $fontKhula;
+        font-weight: 200;
+        font-size: 25px;
+        letter-spacing: .1rem;
     }
   
     div {
@@ -57,10 +66,14 @@ $main_background: #18191a;
             position: relative;
             transition-duration: .1s;
             transition-timing-function: ease-in;
-            border-bottom: 0px solid #f54444;
-    
+            border-bottom: 3px solid transparent;
+            margin-bottom: 2em;
+            letter-spacing: .1rem;
+            font-weight: 400;
+
             &:hover {
                 border-bottom: 3px solid #f54444;
+                letter-spacing: .12rem;
             }
   
             a {
@@ -149,7 +162,7 @@ $main_background: #18191a;
 }
 
 #scrolldown {
-    margin-bottom: 15vh;
+    margin-bottom: 0;
     align-self: center;
     cursor: pointer;
     transition: all 200ms;

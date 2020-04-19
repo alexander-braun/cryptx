@@ -35,6 +35,7 @@ import setRsaD from '../../actions/setRsaD'
 import setAlphabetActive from '../../actions/setAlphabetActive'
 import PresetsModal from '../presetsModal'
 import AnalysisModal from '../analysisModal'
+import Reverse from '../reverse/reverseLogic'
 
 class EncryptionArea extends React.PureComponent {
   constructor(props) {
@@ -76,10 +77,12 @@ class EncryptionArea extends React.PureComponent {
         this.encrypt()  
       }
     }
+
     if(prevProps.input !== this.props.input || prevProps.output !== this.props.output) {
       this.props.setIocInput(this.calcIndexOfCoincidence(true))
       this.props.setIocOutput(this.calcIndexOfCoincidence(false))
     }
+
     if(prevProps.method !== this.props.method) {
       this.props.updateAlphabet('abcdefghijklmnopqrstuvwxyz')
       if(this.props.method === 'caesar' || 
@@ -189,6 +192,10 @@ class EncryptionArea extends React.PureComponent {
       case 'otp':
         Otp.setAll(input, caseFormat, foreignChars, direction, this.props.otpKey, alphabet)
         this.props.setOutput(Otp.encrypt())
+        break
+      case 'reverse':
+        Reverse.setAll(input, caseFormat, foreignChars, alphabet)
+        this.props.setOutput(Reverse.encrypt())
         break
       case 'atbash':
         Atbash.setAll(input, caseFormat, foreignChars)

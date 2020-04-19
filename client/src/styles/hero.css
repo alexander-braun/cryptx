@@ -28,13 +28,22 @@
   color: white;
   font-family: "Khula", "Source Sans Pro", "Roboto", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
-  font-size: 60px;
+  font-size: 45px;
+  font-style: italic;
   letter-spacing: 0em;
   width: 100vw;
-  font-style: normal;
-  line-height: 1.25em;
+  line-height: 1.5em;
   text-rendering: optimizeLegibility;
   margin-bottom: 0em;
+}
+
+#hero h2 {
+  color: white;
+  text-align: center;
+  font-family: "Khula", "Source Sans Pro", "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 200;
+  font-size: 25px;
+  letter-spacing: .1rem;
 }
 
 #hero div {
@@ -63,11 +72,15 @@
           transition-duration: .1s;
   -webkit-transition-timing-function: ease-in;
           transition-timing-function: ease-in;
-  border-bottom: 0px solid #f54444;
+  border-bottom: 3px solid transparent;
+  margin-bottom: 2em;
+  letter-spacing: .1rem;
+  font-weight: 400;
 }
 
 #hero h3 .hero_link:hover {
   border-bottom: 3px solid #f54444;
+  letter-spacing: .12rem;
 }
 
 #hero h3 .hero_link a {
@@ -157,7 +170,7 @@
 }
 
 #scrolldown {
-  margin-bottom: 15vh;
+  margin-bottom: 0;
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;

@@ -1321,6 +1321,10 @@ div:focus {
   -moz-appearance: none;
 }
 
+#chi_lang_select:hover, #freq_lang_select:hover {
+  cursor: pointer;
+}
+
 #chi_lang_select:focus, #freq_lang_select:focus {
   outline-color: transparent;
 }

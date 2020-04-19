@@ -128,7 +128,7 @@ function ChartImporter({inputValue, toggleAnalysisMethodFQInput, toggleAnalysisM
                     }
                 </div>
             </ExpansionPanelDetails>
-            <ExpansionPanelDetails>
+            <ExpansionPanelDetails style={{paddingTop: '0'}}>
                 <Typography className={classes.body}> 
                     The blue <b>dots</b> represent your input. The red <b>bars </b>
                     represent the standart distributon of letters in the {selectedElement} language.

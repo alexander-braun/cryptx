@@ -37,6 +37,10 @@ const explenatory = {
         'linksrc': `https://en.wikipedia.org/wiki/Affine_cipher`,
         'linkname': `Affine Cipher Wikipedia`
     },
+    'reverse': {    
+        'normal': `Reverses the input.`,
+        'crack': `No Crack function yet  :(`
+    },
     'vigenere': {
         'normal': `The Vigenère cipher is a method of encrypting alphabetic text 
         by using a series of interwoven Caesar ciphers, based on the letters of a keyword. It employs a 

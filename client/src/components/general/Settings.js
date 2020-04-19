@@ -22,6 +22,12 @@ const BlockBodyInput = (props) => {
     const switchBodyInput = () => {
         if (props.direction === 'crack') return null
         switch (props.method) {
+            case 'reverse':
+                bodyInput =
+                    <div className="block_body_input">
+                        <CaseChars />
+                    </div>
+                break
             case 'atbash':
                 bodyInput =
                     <div className="block_body_input">

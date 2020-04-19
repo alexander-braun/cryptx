@@ -86,7 +86,6 @@ const math = (() => {
     const transformCaseAndChars = (userInput, rawOutput, caseFormat, includeChars) => {
 
         let cleanOutput
-
         if(caseFormat === 'maintain') {
             if(includeChars === 'include') {
                 cleanOutput = math.restoreForeignChars(userInput, rawOutput)

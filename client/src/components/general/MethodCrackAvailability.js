@@ -10,6 +10,7 @@ const methodNamesAll = {
     'affine': false,
     'rot13': false,
     'replace': false, 
+    'reverse': false
 }
 
 export default methodNamesAll

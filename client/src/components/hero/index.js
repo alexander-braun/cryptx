@@ -47,14 +47,8 @@ function Hero(props) {
         <div id='hero'>
           <div id="hero_text">
             <Animated animationInDelay={200} animationIn="bounceInDown" animationInDuration={1000} isVisible={true}>
-              <h1>The Cryptographic Playground<br></br>for Everybody.</h1>
-            </Animated>
-            <Animated animationInDelay={0} animationIn="bounceInDown" animationInDuration={1000}  isVisible={true}>
-              <h3>
-                <div className="hero_link">
-                  <Link to="/signup">Unlock Free Access to all Features for free!</Link>
-                </div>
-              </h3>
+              <h1>"If you think cryptography is the answer to your problem,<br></br>then you don't know what your problem is."</h1>
+              <h2>Peter G. Neumann</h2>
             </Animated>
           </div>
           
@@ -86,7 +80,13 @@ function Hero(props) {
               </svg>
             </div>
           </Animated>
-        
+          <Animated animationInDelay={0} animationIn="bounceInDown" animationInDuration={1000}  isVisible={true}>
+            <h3>
+              <div className="hero_link">
+                <Link to="/signup">Signup for free now!</Link>
+              </div>
+            </h3>
+          </Animated>
         </div>
       </Fragment>
     )
