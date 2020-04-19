@@ -138,6 +138,12 @@ $font: 'Roboto', 'Helvetica', 'Arial', sans-serif;
   }
 }
 
+
+.method_category ul {
+  margin-top: .5em;
+  margin-bottom: 2em;
+}
+
 #methodSelectModal {
   .modal_body {
     max-width: 40vw;

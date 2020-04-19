@@ -36,6 +36,7 @@ import setAlphabetActive from '../../actions/setAlphabetActive'
 import PresetsModal from '../presetsModal'
 import AnalysisModal from '../analysisModal'
 import Reverse from '../reverse/reverseLogic'
+import CaseTransform from '../caseTransform/caseTransformLogic'
 
 class EncryptionArea extends React.PureComponent {
   constructor(props) {
@@ -179,6 +180,7 @@ class EncryptionArea extends React.PureComponent {
         this.props.setOutput(Caesar.encrypt())
         break
       case 'rsa':
+        
         Rsa.setAll(input, this.props.prime1, this.props.prime2, this.props.e)
 
         this.props.setRsaN(Rsa.calcN())
@@ -186,7 +188,10 @@ class EncryptionArea extends React.PureComponent {
         this.props.setRsaD(Rsa.calcD())
 
         const output = Rsa.calc(direction)
-        this.props.setOutput(output[0])
+
+        if(output.length === 0) this.props.setOutput('')
+        else this.props.setOutput(output[0])
+        
         this.props.setTimeToCalculate(output[1])
         break
       case 'otp':
@@ -196,6 +201,10 @@ class EncryptionArea extends React.PureComponent {
       case 'reverse':
         Reverse.setAll(input, caseFormat, foreignChars, alphabet)
         this.props.setOutput(Reverse.encrypt())
+        break
+      case 'casetransform':
+        CaseTransform.setAll(input, this.props.caseTransformChoice)
+        this.props.setOutput(CaseTransform.encrypt())
         break
       case 'atbash':
         Atbash.setAll(input, caseFormat, foreignChars)
@@ -284,7 +293,8 @@ const mapStateToProps = state => ({
   phi: state.rsa.phi,
   n: state.rsa.n,
   d: state.rsa.d,
-  e: state.rsa.e
+  e: state.rsa.e,
+  caseTransformChoice: state.caseTransformChoice
 })
 
 const mapActionsToProps = {

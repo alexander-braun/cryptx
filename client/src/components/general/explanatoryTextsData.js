@@ -37,6 +37,9 @@ const explenatory = {
         'linksrc': `https://en.wikipedia.org/wiki/Affine_cipher`,
         'linkname': `Affine Cipher Wikipedia`
     },
+    'casetransform': {
+        'normal': `Transforms your input text into the selected case-format.`
+    },
     'reverse': {    
         'normal': `Reverses the input.`,
         'crack': `No Crack function yet  :(`

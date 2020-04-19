@@ -1,4 +1,4 @@
-const replace = (() => {
+const Reverse = (() => {
     let userInput, caseFormat, foreignChars, alphabet
 
     const setUserInput = (value) => {
@@ -55,4 +55,4 @@ const replace = (() => {
     }
 })()
 
-export default replace
+export default Reverse

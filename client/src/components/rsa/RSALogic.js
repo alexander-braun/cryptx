@@ -22,6 +22,7 @@ const Rsa = (() => {
     }
 
     const encrypt = () => {
+        if(userInput === '') return ''
         var t0 = performance.now();
 
         //First check if phi and e are coprime otherwise this is a waste of time.

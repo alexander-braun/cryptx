@@ -1138,7 +1138,7 @@ div {
   margin-top: 20px;
 }
 
-#chi_lang_select, #freq_lang_select {
+#chi_lang_select, #freq_lang_select, #case_transform_select {
   color: white;
   font-family: $font;
   letter-spacing: .075rem;
@@ -1157,6 +1157,11 @@ div {
   &:hover {
     color: white;
   }
+}
+
+.caseSelect {
+  display: flex;
+  flex-direction: column;
 }
 
 // MEDIA RULES

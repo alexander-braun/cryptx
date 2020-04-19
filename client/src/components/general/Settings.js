@@ -16,12 +16,19 @@ import OtpGenerate from '../onetimepad/otpGenerate'
 import Primes from '../rsa/Primes'
 import { connect } from 'react-redux'
 import VigenereTransposition from '../vigenere/vigenereTransposition'
+import CaseTransform from '../caseTransform/CaseTransform'
 
 const BlockBodyInput = (props) => {
     let bodyInput
     const switchBodyInput = () => {
         if (props.direction === 'crack') return null
         switch (props.method) {
+            case 'casetransform':
+                bodyInput =
+                    <div className="block_body_input">
+                        <CaseTransform />
+                    </div>
+                break
             case 'reverse':
                 bodyInput =
                     <div className="block_body_input">

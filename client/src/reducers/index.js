@@ -27,6 +27,7 @@ import profile from './profile'
 import presets from './presets'
 import presetDescription from './presetDescription'
 import presetName from './presetName'
+import caseTransformChoice from './caseTransformChoice'
 
 export default combineReducers({
     modal,
@@ -56,5 +57,6 @@ export default combineReducers({
     profile,
     presets,
     presetDescription,
-    presetName
+    presetName,
+    caseTransformChoice
 })

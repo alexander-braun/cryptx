@@ -1313,7 +1313,7 @@ div:focus {
   margin-top: 20px;
 }
 
-#chi_lang_select, #freq_lang_select {
+#chi_lang_select, #freq_lang_select, #case_transform_select {
   color: white;
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   letter-spacing: .075rem;
@@ -1321,11 +1321,11 @@ div:focus {
   -moz-appearance: none;
 }
 
-#chi_lang_select:hover, #freq_lang_select:hover {
+#chi_lang_select:hover, #freq_lang_select:hover, #case_transform_select:hover {
   cursor: pointer;
 }
 
-#chi_lang_select:focus, #freq_lang_select:focus {
+#chi_lang_select:focus, #freq_lang_select:focus, #case_transform_select:focus {
   outline-color: transparent;
 }
 
@@ -1336,6 +1336,16 @@ div:focus {
 
 .swapIcon:hover {
   color: white;
+}
+
+.caseSelect {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 @media only screen and (max-width: 1500px) {

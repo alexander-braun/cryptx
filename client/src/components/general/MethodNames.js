@@ -10,7 +10,8 @@ const methodNamesAll = {
     'affine': 'Affine',
     'rot13': 'Rot13',
     'replace': 'Replace',
-    'reverse': 'Reverse'
+    'reverse': 'Reverse',
+    'casetransform': 'Case'
 }
 
 export default methodNamesAll

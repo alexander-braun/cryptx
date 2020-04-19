@@ -187,28 +187,34 @@ class PresetsModal extends React.Component {
                             </Fragment>
                             ) : (
                                 <Fragment>
-                                <div className="modal_header">Load a Preset<button style={{color:'#b0b3b8'}}><HighlightOffIcon onClick={this.props.togglePresetsModal} /></button></div>
-                                <div className="modal_body" style={{padding: '0'}}>
-                                    <div className="tablecontainer_presets" style={{padding: '1em'}}>
-                                        <table id="presets">
-                                            <tbody style={{color: 'white'}}>
-                                                <tr>
-                                                    <th>Date</th>
-                                                    <th>Preset Name</th>
-                                                    <th>Method</th>
-                                                    <th>Description</th>
-                                                    <th style={{textAlign:'center'}}>Load</th>
-                                                    <th style={{textAlign:'center'}}>Delete</th>
-                                                </tr>
-                                                {this.genTable().map(row => row)}
-                                            </tbody>
-                                        </table>
+                                    <div className="modal_header" style={{minWidth:'40vw'}}>Save as Preset<button style={{color:'#b0b3b8'}}><HighlightOffIcon  onClick={this.props.togglePresetsModal} /></button></div>
+                                    <div className="modal_body" style={{padding: '0'}}>
+                                        <div className="right" style={{padding:'1em'}}>
+                                        <form onSubmit={e => {
+                                            e.preventDefault()
+                                            this.handleSavePreset(e)
+                                        }}>
+                                            <table id="presets">
+                                                <tbody style={{color: 'white'}}>
+                                                    <tr>
+                                                        <th>Preset Name</th>
+                                                        <th>Description</th>
+                                                        <th style={{textAlign:'center'}}>Save</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><input required value={this.props.presetName} onChange={e => this.props.setPresetName(e.target.value)} type="text" name="name" placeholder="Preset Name" /></td>
+                                                        <td><input required value={this.props.presetDescription} onChange={e => this.props.setPresetDescription(e.target.value)} type="text" name="description" placeholder="Description" /></td>
+                                                        <td className="presetBtn" style={{textAlign:'center'}}><button className="loadIcon" type="submit"><GetAppIcon /></button></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            </form>
+                                        </div>
+                                        <div className="loadpreset_explanatory" style={{marginLeft:'auto'}}>
+                                            <button onClick={this.props.togglePresetsModal}>Close</button>
+                                        </div>
                                     </div>
-                                    <div className="loadpreset_explanatory" style={{marginLeft:'auto'}}>
-                                        <button onClick={this.props.togglePresetsModal}>Close</button>
-                                    </div>
-                                </div>
-                            </Fragment>
+                                </Fragment>
                             )
                         }
                     </div>
