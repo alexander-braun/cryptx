@@ -77,3 +77,9 @@ $main_background: #18191a;
     background-size: cover;
     background-repeat: no-repeat;
 }
+
+@media (min-width: 0px) {
+    #signup_form {
+        padding: 1em;
+    }
+}

@@ -76,6 +76,8 @@
   margin-bottom: 2em;
   letter-spacing: .1rem;
   font-weight: 400;
+  margin-top: 5em;
+  font-style: italic;
 }
 
 #hero h3 .hero_link:hover {
@@ -170,7 +172,7 @@
 }
 
 #scrolldown {
-  margin-bottom: 0;
+  margin-bottom: 5em;
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
@@ -201,9 +203,15 @@
 }
 
 @media only screen and (max-width: 700px) {
+  #hero_text {
+    margin-top: 7em;
+  }
   #hero h1 {
     font-size: 25px;
-    width: 100vw;
+    width: 90vw;
+  }
+  #hero h2 {
+    font-size: 20px;
   }
   #hero h3 {
     font-size: 14px;

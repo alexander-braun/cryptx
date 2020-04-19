@@ -88,4 +88,10 @@
   background-size: cover;
   background-repeat: no-repeat;
 }
+
+@media (min-width: 0px) {
+  #signup_form {
+    padding: 1em;
+  }
+}
 /*# sourceMappingURL=login.css.map */

@@ -50,6 +50,13 @@ function Hero(props) {
               <h1>"If you think cryptography is the answer to your problem,<br></br>then you don't know what your problem is."</h1>
               <h2>Peter G. Neumann</h2>
             </Animated>
+            <Animated animationInDelay={0} animationIn="bounceInDown" animationInDuration={1000}  isVisible={true}>
+                <h3>
+                  <div className="hero_link">
+                    <Link to="/signup">Signup for free now!</Link>
+                  </div>
+                </h3>
+            </Animated>
           </div>
           
           <Animated animationInDelay={300} animationIn="fadeInUpBig" animationInDuration={400} isVisible={true}>
@@ -79,13 +86,6 @@ function Hero(props) {
                 C367.164,196.807,365.357,201.09,361.733,204.705z"/>
               </svg>
             </div>
-          </Animated>
-          <Animated animationInDelay={0} animationIn="bounceInDown" animationInDuration={1000}  isVisible={true}>
-            <h3>
-              <div className="hero_link">
-                <Link to="/signup">Signup for free now!</Link>
-              </div>
-            </h3>
           </Animated>
         </div>
       </Fragment>

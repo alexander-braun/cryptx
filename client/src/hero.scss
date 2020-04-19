@@ -70,6 +70,8 @@ $main_background: #18191a;
             margin-bottom: 2em;
             letter-spacing: .1rem;
             font-weight: 400;
+            margin-top: 5em;
+            font-style: italic;
 
             &:hover {
                 border-bottom: 3px solid #f54444;
@@ -162,7 +164,7 @@ $main_background: #18191a;
 }
 
 #scrolldown {
-    margin-bottom: 0;
+    margin-bottom: 5em;
     align-self: center;
     cursor: pointer;
     transition: all 200ms;
@@ -192,10 +194,17 @@ $main_background: #18191a;
 }
 
 @media only screen and (max-width: 700px) {
-  
+    #hero_text {
+        margin-top: 7em;
+    }
+
     #hero h1 {
         font-size: 25px;
-        width:  100vw;
+        width:  90vw;
+    }
+
+    #hero h2 {
+        font-size: 20px;
     }
   
     #hero h3 {
