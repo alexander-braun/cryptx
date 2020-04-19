@@ -190,9 +190,9 @@
           transform: scale(1.2);
 }
 
-@media only screen and (max-width: 1280px) {
+@media only screen and (max-width: 1300px) {
   #hero_text {
-    margin-top: 20vh;
+    margin-top: 28vh;
   }
   #hero h1 {
     font-size: 35px;
