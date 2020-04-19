@@ -1,5 +1,4 @@
 #hero {
-  height: calc(100vh - 60px - 50px);
   min-height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
