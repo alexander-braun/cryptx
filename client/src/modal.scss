@@ -24,6 +24,7 @@ $font: 'Roboto', 'Helvetica', 'Arial', sans-serif;
     background-color: #303031;
     border-radius: 0px;
     overflow: hidden;
+    overflow-y: scroll;
 
     a {
       &:hover {

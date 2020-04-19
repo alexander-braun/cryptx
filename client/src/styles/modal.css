@@ -29,6 +29,7 @@
   background-color: #303031;
   border-radius: 0px;
   overflow: hidden;
+  overflow-y: scroll;
 }
 
 .modal .inner_modal a:hover {
