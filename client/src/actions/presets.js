@@ -49,7 +49,7 @@ export const deletePreset = (id) => async dispatch => {
             id: id
         })
     } catch(error) {
-        console.error(error)
+        console.error('ERROR', error)
         dispatch({
             type: DELETE_PRESET_ERROR
         })

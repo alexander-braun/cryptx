@@ -98,7 +98,7 @@ const AnalysisModal = ({
                                     {
                                         ic_input && ic_output && fq_input && fq_output && chi_output && chi_input ? (
                                             <li>
-                                                All methods already in use...
+                                                All available methods already in use...
                                             </li>
                                         ) : null
                                     }

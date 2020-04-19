@@ -4,15 +4,13 @@ import { connect } from 'react-redux'
 import '../../styles/userprofile.css'
 import { getCurrentProfile } from '../../actions/profiles'
 import Spinner from '../spinner/Spinner'
-import GetAppIcon from '@material-ui/icons/GetApp'
-import DeleteForeverIcon from '@material-ui/icons/DeleteForever'
 import { addPreset } from '../../actions/presets'
 
 const Profile = (props) => {
 
     useEffect(() => {
         props.getCurrentProfile()
-    }, [])
+    }, [props])
     return (
         props.profile.loading && props.profile === null ? <Spinner /> : (
             <Fragment>
@@ -20,7 +18,7 @@ const Profile = (props) => {
                     <div style={{color:'white'}} id="userprofile_container">
                         <div className="left">
                             <h1>Welcome {props.auth.user && props.auth.user.name}!</h1>
-                            <img src={!props.auth.loading && props.auth.user.avatar}></img>
+                            <img alt="userimage" src={!props.auth.loading && props.auth.user.avatar}></img>
                             <h2>You have full access to all features of cryptX !</h2>
                         </div>
                     </div>

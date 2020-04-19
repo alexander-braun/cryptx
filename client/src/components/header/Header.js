@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect, useRef } from 'react'
+import React, { Fragment, useState } from 'react'
 import logo from './img/key.png'
 import { Link } from 'react-router-dom'
 import ResizeObserver from 'react-resize-observer';
@@ -22,8 +22,6 @@ import PersonIcon from '@material-ui/icons/Person';
 import InfoIcon from '@material-ui/icons/Info'
 import HomeIcon from '@material-ui/icons/Home'
 import ExitToAppIcon from '@material-ui/icons/ExitToApp'
-import CreateIcon from '@material-ui/icons/Create'
-import VpnKeyIcon from '@material-ui/icons/VpnKey';
 import '../../styles/header.css'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'

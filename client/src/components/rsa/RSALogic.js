@@ -21,38 +21,6 @@ const Rsa = (() => {
         userInput = val
     }
 
-    const textToHex = (input) => {
-        let hexArr = []
-        for(let i = 0; i < input.length; i++) {
-            let hexCode = Number(input.charCodeAt(i)).toString(16)
-            hexArr.push(hexCode)
-        }
-        return hexArr
-    }
-
-    const hexToDecimal = (input) => {
-        let decimalArr = []
-        for(let element of input) {
-            decimalArr.push(parseInt(element, 16))
-        }
-        return String(decimalArr.join(''))
-    }
-
-    const decimalToHex = (input) => {
-        let hexArr = []
-        for(let element of input) {
-            hexArr.push(element.toString(16))
-        }
-    }
-
-    const bigToNumber = (arr) => {
-        let numberArr = []
-        for(let element of arr) {
-            numberArr.push(Number(element.toString()))
-        }
-        return numberArr
-    }
-
     const encrypt = () => {
         var t0 = performance.now();
 

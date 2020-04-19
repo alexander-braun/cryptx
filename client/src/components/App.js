@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react'
+import React, { Fragment, useEffect } from 'react'
 import EncryptionArea from './general/EncryptionArea'
 import Hero from './hero';
 import Header from './header/Header'

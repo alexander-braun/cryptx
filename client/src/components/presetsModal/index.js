@@ -40,7 +40,6 @@ class PresetsModal extends React.Component {
 
     genTable = () => {
         let presetTable = []
-        let ind = 0
         for(let preset of this.props.presets) {
             let method = preset.preset.method
             presetTable.push(
@@ -53,7 +52,6 @@ class PresetsModal extends React.Component {
                     <td onClick={e => this.props.deletePreset(preset._id)} style={{color: 'rgb(230, 50, 73)', fontSize: '24px', textAlign:'center'}} className="presetBtn deleteIcon"><DeleteForeverIcon /></td>
                 </tr>
             )
-            ind++
         }
         return presetTable
     }
@@ -64,11 +62,8 @@ class PresetsModal extends React.Component {
         }
     }
 
-    componentWillMount() {
-        this.props.loadPresets()
-    }
-
     handleLoadPreset = (id) => {
+        if(!this.props.isAuthenticated) return
         let selected
         for(let preset of this.props.presets) {
             if(preset._id === id) {
