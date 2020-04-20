@@ -19,7 +19,6 @@ class Modal extends React.Component {
                     onClick = {e => this.handleModalToggle(e)}
                 >
                     <div className="inner_modal">
-                        <div className="block_top_decoration"></div>
                         <div className="modal_header">Encryption Methods<button style={{color:'#b0b3b8'}}><HighlightOffIcon onClick={this.props.onModalToggle} /></button></div>
                         <div className="modal_body" style={{backgroundColor:'#272727'}}>
                             <div className="method_category methods_modal">

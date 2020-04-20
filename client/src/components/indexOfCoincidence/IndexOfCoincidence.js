@@ -105,13 +105,13 @@ function IndexOfCoincidence({ioc, toggleAnalysisMethodICInput, toggleAnalysisMet
                     <span style={{color:'rgb(218, 218, 218)'}}>
                         IC per letter =
                     </span> 
-                    &nbsp;{ioc != 0 && ioc !=='undefined' && ioc.toFixed(4)}
+                    &nbsp;{parseFloat(ioc).toFixed(4)}
                 </div>
                 <div style={{letterSpacing:'.05rem', fontWeight: '500', color: 'rgb(214, 58, 78)', marginBottom: '2vh', fontSize:'.9rem'}}>
                     <span style={{color:'rgb(218, 218, 218)'}}>
                     Σ IC's =
                     </span>
-                    &nbsp;{ioc != 0 && ioc !=='undefined' && (ioc * 26).toFixed(4)}
+                    &nbsp;{parseFloat(ioc * 26).toFixed(4)}
                 </div>
                 <div style={{letterSpacing:'.05rem', fontWeight: '500', color:'#dadada', fontSize:'.9rem'}}>
                     Text IC closest to 

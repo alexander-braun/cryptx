@@ -34,9 +34,13 @@ import HighlightOffIcon from '@material-ui/icons/HighlightOff'
 class PresetsModal extends React.Component {
     constructor(props){
         super(props)
+        this.state = {
+            width: 0
+        }
         this.genTable = this.genTable.bind(this)
         this.handleLoadPreset = this.handleLoadPreset.bind(this)
         this.handleSavePreset = this.handleSavePreset.bind(this)
+        this.getDeviceWidth = this.getDeviceWidth.bind(this)
     }
 
     genTable = () => {
@@ -45,10 +49,10 @@ class PresetsModal extends React.Component {
             let method = preset.preset.method
             presetTable.push(
                 <tr key={preset._id}>
-                    {preset.date !== undefined && <td>{preset.date}</td>}
+                    {this.state.width >= 700 ? preset.date !== undefined && <td>{preset.date}</td> : null}
                     <td>{preset.name}</td>
                     <td>{methodNamesAll[method]}</td>
-                    <td>{preset.description}</td>
+                    {this.state.width >= 700 ? <td>{preset.description}</td> : null}
                     <td style={{color: 'rgb(62, 148, 197)', fontSize: '24px', textAlign:'center'}} id={preset._id} onClick={e => this.handleLoadPreset(preset._id)} className="presetBtn loadIcon"><GetAppIcon /></td>
                     <td onClick={e => this.props.deletePreset(preset._id)} style={{color: 'rgb(230, 50, 73)', fontSize: '24px', textAlign:'center'}} className="presetBtn deleteIcon"><DeleteForeverIcon /></td>
                 </tr>
@@ -155,24 +159,34 @@ class PresetsModal extends React.Component {
         }
     }
 
+    getDeviceWidth = () => {
+        let width = window.innerWidth
+        this.setState({
+            width: width
+        })
+    }
+
+    componentDidMount() {
+        this.getDeviceWidth()
+    }
+
     render() {
         if(this.props.isAuthenticated && this.props.presetsModal) {
             return (
                 <div className="modal" onClick = {e => this.toggleModal(e)}>
-                    <div className="inner_modal">
-                        <div className="block_top_decoration"></div>
+                    <div className="inner_modal presetcontainer">
                         {this.props.target === 'load' ? (
                             <Fragment>
                                 <div className="modal_header">Load a Preset<button style={{color:'#b0b3b8'}}><HighlightOffIcon  onClick={this.props.togglePresetsModal} /></button></div>
-                                <div className="modal_body" style={{padding: '0'}}>
+                                <div className="modal_body" style={{padding: '0', width:'100%;'}}>
                                     <div className="tablecontainer_presets" style={{padding: '1em'}}>
                                         <table id="presets">
                                             <tbody style={{color: 'white'}}>
                                                 <tr>
-                                                    <th>Date</th>
+                                                    {this.state.width <= 700 ? null : <th>Date</th>}
                                                     <th>Preset Name</th>
                                                     <th>Method</th>
-                                                    <th>Description</th>
+                                                    {this.state.width <= 700 ? null : <th>Description</th>}
                                                     <th style={{textAlign:'center'}}>Load</th>
                                                     <th style={{textAlign:'center'}}>Delete</th>
                                                 </tr>
@@ -187,8 +201,8 @@ class PresetsModal extends React.Component {
                             </Fragment>
                             ) : (
                                 <Fragment>
-                                    <div className="modal_header" style={{minWidth:'40vw'}}>Save as Preset<button style={{color:'#b0b3b8'}}><HighlightOffIcon  onClick={this.props.togglePresetsModal} /></button></div>
-                                    <div className="modal_body" style={{padding: '0'}}>
+                                    <div className="modal_header">Save as Preset<button style={{color:'#b0b3b8'}}><HighlightOffIcon  onClick={this.props.togglePresetsModal} /></button></div>
+                                    <div className="modal_body" style={{padding: '0', width:'fit-content'}}>
                                         <div className="right" style={{padding:'1em'}}>
                                         <form onSubmit={e => {
                                             e.preventDefault()
@@ -240,9 +254,6 @@ class PresetsModal extends React.Component {
                             </div>
                             <div className="loadpreset_explanatory">
                                 <Link onClick={this.props.togglePresetsModal} to='/Signup'>Signup</Link>
-                            </div>
-                            <div className="loadpreset_explanatory">
-                                <button onClick={this.props.togglePresetsModal}>Close</button>
                             </div>
                         </div>
                     </div>

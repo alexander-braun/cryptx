@@ -180,7 +180,6 @@ class EncryptionArea extends React.PureComponent {
         this.props.setOutput(Caesar.encrypt())
         break
       case 'rsa':
-        
         Rsa.setAll(input, this.props.prime1, this.props.prime2, this.props.e)
 
         this.props.setRsaN(Rsa.calcN())

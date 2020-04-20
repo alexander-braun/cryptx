@@ -6,7 +6,7 @@ $font: 'Roboto', 'Helvetica', 'Arial', sans-serif;
 
   position: absolute;
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   position: fixed;
   z-index: 2;
   left: 0;
@@ -23,7 +23,6 @@ $font: 'Roboto', 'Helvetica', 'Arial', sans-serif;
   .inner_modal {
     background-color: #303031;
     border-radius: 0px;
-    overflow: hidden;
 
     a {
       &:hover {
@@ -31,7 +30,6 @@ $font: 'Roboto', 'Helvetica', 'Arial', sans-serif;
       }
     }
   }
-
 
 
   .modal_header {
@@ -235,7 +233,14 @@ $font: 'Roboto', 'Helvetica', 'Arial', sans-serif;
 */
 
 @media only screen and (max-width: 700px) {
-  .inner_modal {
+  #methodSelectModal.inner_modal {
     overflow-y: scroll;
+  }
+  .inner_modal.presetcontainer {
+    width: 100%;
+  }
+  .presetcontainer.modal_header {
+    display: block;
+    width: auto;
   }
 }

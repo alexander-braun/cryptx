@@ -26,7 +26,7 @@ const Playfair = (() => {
     }
 
     const createPairsOfFive = (alphabet) => {
-
+        console.log(playSquare)
         // Sort the generated Alphabet into 5 pairs of 5 characters each
     
         const fiveElementPairs = [];
