@@ -18,6 +18,8 @@ import { connect } from 'react-redux'
 import VigenereTransposition from '../vigenere/vigenereTransposition'
 import CaseTransform from '../caseTransform/CaseTransform'
 import KeywordsNihilist from '../nihilist/KeywordNihilist'
+import NihilistSquare from '../nihilist/NihilistSquare'
+import NihilistTransposition from '../nihilist/NihilistTransposition'
 
 const BlockBodyInput = (props) => {
     let bodyInput
@@ -40,6 +42,8 @@ const BlockBodyInput = (props) => {
                 bodyInput = 
                     <div className="block_body_input">
                         <KeywordsNihilist />
+                        <NihilistSquare />
+                        <NihilistTransposition />
                     </div>
                 break
             case 'atbash':

@@ -39,6 +39,8 @@ import Reverse from '../reverse/reverseLogic'
 import CaseTransform from '../caseTransform/caseTransformLogic'
 import Nihilist from '../nihilist/nihilistLogic'
 import setNihilistSquare from '../../actions/setNihilistSquare'
+import setNihilistRunningKey from '../../actions/setNihilistRunningKey'
+import setNihilistPlainNumbers from '../../actions/setNihilistPlainNumbers'
 
 class EncryptionArea extends React.PureComponent {
   constructor(props) {
@@ -235,6 +237,8 @@ class EncryptionArea extends React.PureComponent {
         Nihilist.setAll(input, alphabet, direction, this.props.keyNihilist, this.props.cipherNihilist)
         this.props.setOutput(Nihilist.transformText())
         this.props.setNihilistSquare(Nihilist.getSquare())
+        this.props.setNihilistRunningKey(Nihilist.getNihilistRunningKey())
+        this.props.setNihilistPlainNumbers(Nihilist.getNihilistPlainNumbers())
         break
       case 'skytale':
         Skytale.setAll(direction, caseFormat, input, this.props.ringLength, foreignChars)
@@ -321,7 +325,9 @@ const mapActionsToProps = {
   setRsaN,
   setRsaD,
   setAlphabetActive,
-  setNihilistSquare
+  setNihilistSquare,
+  setNihilistRunningKey,
+  setNihilistPlainNumbers
 }
 
 

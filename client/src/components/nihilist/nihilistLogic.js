@@ -2,7 +2,7 @@ const Nihilist = (() => {
 
     //Setup all variables
     
-    let userInput, alphabet, direction
+    let userInput, alphabet, direction, nihilistRunningKey, nihilistPlainNumbers
 
     const setUserInput = (input) => {
         userInput = String(input);
@@ -24,6 +24,14 @@ const Nihilist = (() => {
     let cipherWord
     const setCipherWord = (input) => {
         cipherWord = input
+    }
+
+    const getNihilistRunningKey = () => {
+        return nihilistRunningKey
+    }
+
+    const getNihilistPlainNumbers = () => {
+        return nihilistPlainNumbers
     }
 
     const polybiusSquare = () => {
@@ -84,7 +92,6 @@ const Nihilist = (() => {
 
     const encrypt = () => {
         let numberArray = getNumbers()
-        let output = []
         let cleanKeyArr = []
         let ind = 0
         if(numberArray[0].length > numberArray[1].length) {
@@ -98,6 +105,9 @@ const Nihilist = (() => {
                 }
             }
         } else cleanKeyArr = numberArray[1]
+
+        nihilistRunningKey = cleanKeyArr
+        nihilistPlainNumbers = numberArray[0]
 
         let out = []
         for(let i = 0; i < numberArray[0].length; i++) {
@@ -152,6 +162,12 @@ const Nihilist = (() => {
     }
 
     const transformText = () => {
+        if(cipherWord.length === 0) return 'Please enter a Keyphrase'
+        for(let i = 0; i < alphabet.length; i++) {
+            if(isNaN(Number(userInput[i])) && direction === 'decrypt') {
+                return 'Not a valid input'
+            }
+        }
         return direction === 'encrypt' ? encrypt() : decrypt()
     }
 
@@ -166,7 +182,9 @@ const Nihilist = (() => {
     return {
         setAll: setAll,
         transformText: transformText,
-        getSquare: polybiusSquare
+        getSquare: polybiusSquare,
+        getNihilistRunningKey, 
+        getNihilistPlainNumbers
     }
 })();
 

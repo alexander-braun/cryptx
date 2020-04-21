@@ -119,6 +119,9 @@ const Rsa = (() => {
     }
 
     const calc = (direction) => {
+        for(let i = 0; i < userInput.length; i++) {
+            if(isNaN(Number(userInput[i])) && direction === 'decrypt') return 'Bad input'
+        }
         return direction === 'encrypt' ? encrypt() : decrypt()
     }
 

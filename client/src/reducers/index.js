@@ -31,6 +31,8 @@ import caseTransformChoice from './caseTransformChoice'
 import keyNihilist from './keyNihilist'
 import cipherNihilist from './cipherNihilist'
 import nihilistSquare from './nihilistSquare'
+import nihilistRunningKey from './nihilistRunningKey'
+import nihilistPlainNumbers from './nihilistPlainNumbers'
 
 export default combineReducers({
     modal,
@@ -64,5 +66,7 @@ export default combineReducers({
     caseTransformChoice,
     keyNihilist,
     cipherNihilist,
-    nihilistSquare
+    nihilistSquare,
+    nihilistRunningKey,
+    nihilistPlainNumbers
 })
