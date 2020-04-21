@@ -12,11 +12,11 @@ const Primes = (props) => {
             for(let element of rawInput) {
                 if(numbers.indexOf(element) !== -1) cleanInput.push(element)
             }   
-            if(cleanInput[0] === '0') return 'Bad input'
+            if(cleanInput[0] === '0') return
             if ((cleanInput.length === 1 && (cleanInput[0] === '1' || cleanInput[0] === '0')) ||
-                cleanInput.length === 0) return 'Bad input'
+                cleanInput.length === 0) return
             return cleanInput.join('')    
-        } else return 'Bad input'
+        } else return
     }
     return (
         <div className = 'primes'>

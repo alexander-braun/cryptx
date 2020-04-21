@@ -58,28 +58,12 @@ class EncryptionArea extends React.PureComponent {
     }
 
     if (prevProps !== this.props) {
-      if (prevProps.method === 'rsa') {
-        if(this.props.prime1 === 'Bad input' ||
-            this.props.prime2 === 'Bad input' ||
-            !this.props.input ||
-            !this.props.e) {
-              return this.props.setOutput('Bad input')  
-            }
-        if (prevProps.d !== this.props.d ||
-            prevProps.phi !== this.props.phi ||
-            prevProps.n !== this.props.n ||
-            prevProps.input !== this.props.input ||
-            prevProps.e !== this.props.e ||
-            prevProps.direction !== this.props.direction ||
-            prevProps.method !== this.props.method ||
-            prevProps.prime1 !== this.props.prime1 ||
-            prevProps.prime2 !== this.props.prime2) {
-              this.encrypt()
-          }
+      //Time to Calculate is always a bit different, leading into maximum update depth nirvana
+      //Only encrypt when something else then ttc has changed
+      if(prevProps.timeToCalculate !== this.props.timeToCalculate) {
+        return
       }
-      else {
-        this.encrypt()  
-      }
+      else this.encrypt()  
     }
 
     if(prevProps.input !== this.props.input || prevProps.output !== this.props.output) {
@@ -153,6 +137,21 @@ class EncryptionArea extends React.PureComponent {
     return !isNaN(ioc) ? ioc : '0';
   }
 
+  setRsaOutputs = (output) => {
+    if(this.props.output !== output[0]) {
+      this.props.setOutput(output[0])  
+    }
+    if(this.props.phi !== output[2]) {
+      this.props.setRsaPhi(output[2])
+    }
+    if(this.props.d !== output[3]) {
+      this.props.setRsaD(output[3])  
+    }
+    if(this.props.n !== output[4]) {
+      this.props.setRsaN(output[4])
+    }
+  }
+
   encrypt() {
     let input = this.props.input;
     let alphabet = this.props.alphabet;
@@ -184,17 +183,10 @@ class EncryptionArea extends React.PureComponent {
         break
       case 'rsa':
         Rsa.setAll(input, this.props.prime1, this.props.prime2, this.props.e)
-
-        this.props.setRsaN(Rsa.calcN())
-        this.props.setRsaPhi(Rsa.calcPhi())
-        this.props.setRsaD(Rsa.calcD())
-
         const output = Rsa.calc(direction)
-
-        if(output.length === 0) this.props.setOutput('')
-        else this.props.setOutput(output[0])
-        
+        if(output === undefined || output[0] === undefined) return ''
         this.props.setTimeToCalculate(output[1])
+        this.setRsaOutputs(output)
         break
       case 'otp':
         Otp.setAll(input, caseFormat, foreignChars, direction, this.props.otpKey, alphabet)
@@ -235,7 +227,9 @@ class EncryptionArea extends React.PureComponent {
         break
       case 'nihilist':
         Nihilist.setAll(input, alphabet, direction, this.props.keyNihilist, this.props.cipherNihilist)
-        this.props.setOutput(Nihilist.transformText())
+        const outputNihilist = Nihilist.transformText()
+        if(outputNihilist === '') return
+        this.props.setOutput(outputNihilist)
         this.props.setNihilistSquare(Nihilist.getSquare())
         this.props.setNihilistRunningKey(Nihilist.getNihilistRunningKey())
         this.props.setNihilistPlainNumbers(Nihilist.getNihilistPlainNumbers())

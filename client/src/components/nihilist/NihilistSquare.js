@@ -7,6 +7,7 @@ import { v4 as uuidv4 } from 'uuid';
 class NihilistSquare extends React.PureComponent {
 
     createVisualMatrix = () => {
+        if(!this.props.nihilistSquare || this.props.nihilistSquare.length === 0) return
         let table = (
             <table id="nihilistSquare">
                 <tbody style={{color: 'white'}}>

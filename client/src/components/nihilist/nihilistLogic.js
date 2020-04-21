@@ -127,6 +127,7 @@ const Nihilist = (() => {
 
     const transformNumbersToText = (numbers) => {
         const square = polybiusSquare()
+        
         const plainTextArray = []
         for(let number of numbers) {
             let numElem = String(number).split('')
@@ -139,6 +140,7 @@ const Nihilist = (() => {
     const decrypt = () => {
         let numberArray = getNumbers()[1]
         let inputArray = userInput.split(' ')
+        if(inputArray[0].length !== 2) return ''
 
         let cleanKeyArr = []
         let ind = 0

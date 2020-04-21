@@ -22,14 +22,14 @@ const Rsa = (() => {
     }
 
     const encrypt = () => {
-        if(userInput === '') return ''
+        if(userInput === '' || !userInput || !e || !n) return
+
         var t0 = performance.now();
 
         //First check if phi and e are coprime otherwise this is a waste of time.
         let gcd = bigintModArith.gcd(BigInt(phi), BigInt(e))
         if (gcd !== BigInt(1)) return ['!!! φ(n) and e are not coprime - gcd of φ(n) and e is ' + gcd + ' Please check that you have two prime numbers and an appropriate e without a common gcd!!!', '']
 
-        if(!userInput || !e || !n) return
         //Convert Input to Dezimal to get an encryptable number
         let inputArr = userInput.split('')
         let dezArr = []
@@ -45,18 +45,17 @@ const Rsa = (() => {
         var t1 = performance.now();
 
         if(!encryptedDEZ || !t1 || !t0 || t1 - t0 === undefined) return ['Bad Input', '']
-
-        return [encryptedDEZ.toString(), ((t1 - t0) / 1000).toString() + 's']
+        return [encryptedDEZ.toString(), ((t1 - t0) / 1000).toString() + 's', calcPhi(), calcD(), calcN()]
     }
 
     const decrypt = () => {
         var t0 = performance.now();
+        if(userInput.length === 0 || !d || !n) return
 
         //Check if we are trying to decrypt a number
-        let alphabet = 'abcdefghijklmnopqrstuvwxyz'
-
+        let numbers = '0123456789'
         for(let i = 0; i < userInput.length; i++) {
-            if(alphabet.indexOf(userInput[i]) !== -1) return [`Please don't enter anything but a big number into the input field when you decrypt something.`, '']
+            if(numbers.indexOf(userInput[i]) === -1) return [`Please don't enter anything but a big number into the input field when you decrypt something.`, '']
         }
 
         let decryptedDEZ = bigintModArith.modPow(userInput, d, n).toString()
@@ -86,7 +85,7 @@ const Rsa = (() => {
 
         if(!decryptedLetters || !t1 || !t0 || t1 - t0 === undefined) return ['Bad Input', '']
 
-        return [decryptedLetters.join(''), ((t1 - t0) / 1000).toString() + 's']
+        return [decryptedLetters.join(''), ((t1 - t0) / 1000).toString() + 's', calcPhi(), calcD(), calcN()]
     }
 
     const calcPhi = () => {
@@ -98,7 +97,6 @@ const Rsa = (() => {
       }
     
     const calcD = () => {
-
         if(!e || !phi || e === null || phi === null) return
         if(bigintModArith.modInv(e, phi) === null) return
 
@@ -111,16 +109,31 @@ const Rsa = (() => {
         return n.toString()
     }
 
+    const numberChecker = (input) => {
+        if(!input) return
+        let numbers = '0123456789'.split('')
+        for(let i = 0; i < input.length; i++) {
+            if(numbers.indexOf(input[i]) === -1) return false
+        }
+        return true
+    }
+
     const setAll = (input, prime1, prime2, e) => {
         setUserInput(input)
         setPrimeOne(prime1)
         setPrimeTwo(prime2)
         setE(e)
+        if(!numberChecker(prime_one) || !numberChecker(prime_two) || !numberChecker(e)) {
+            return
+        }
+        phi = calcPhi()
+        d = calcD()
+        n = calcN()
     }
 
     const calc = (direction) => {
-        for(let i = 0; i < userInput.length; i++) {
-            if(isNaN(Number(userInput[i])) && direction === 'decrypt') return 'Bad input'
+        if(!numberChecker(prime_one) || !numberChecker(prime_two) || !numberChecker(e) || !numberChecker(d) || !numberChecker(n)) {
+            return ['BAD INPUT', 'BAD INPUT', 'BAD INPUT', 'BAD INPUT', 'BAD INPUT']
         }
         return direction === 'encrypt' ? encrypt() : decrypt()
     }
