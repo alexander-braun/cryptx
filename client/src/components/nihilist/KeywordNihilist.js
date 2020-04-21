@@ -1,33 +1,50 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import setKeywordPlayfair from '../../actions/setKeywordPlayfair'
+import setKeyNihilist from '../../actions/setKeyNihilist'
+import setCipherNihilist from '../../actions/setCipherNihilist'
 
-const KeywordPlayfair = ({keywordPlayfair, setKeywordPlayfair}) => {
+const KeywordsNihilist = (props) => {
   
   return (
-    <div className="controller">
-      <div className="settings_name">Keyword</div>
-      <div className="settings_operators">
-          <textarea 
-            id="alphabet" 
-            defaultValue={keywordPlayfair} 
-            onChange = {(evt) => {
-                setKeywordPlayfair(evt.target.value.toLowerCase())
-            }}
-            style={{boxShadow:'none'}}
-          />
+    <React.Fragment>
+      <div className="controller">
+        <div className="settings_name">Polybius square Key</div>
+        <div className="settings_operators">
+            <textarea 
+              id="alphabet" 
+              defaultValue={props.keyNihilist} 
+              onChange = {(evt) => {
+                props.setKeyNihilist(evt.target.value.toLowerCase())
+              }}
+              style={{boxShadow:'none'}}
+            />
+        </div>
       </div>
-      <div id="matrix"></div>
-    </div>
+      <div className="controller">
+        <div className="settings_name">Keyphrase</div>
+        <div className="settings_operators">
+            <textarea 
+              id="alphabet" 
+              defaultValue={props.cipherNihilist} 
+              onChange = {(evt) => {
+                props.setCipherNihilist(evt.target.value.toLowerCase())
+              }}
+              style={{boxShadow:'none'}}
+            />
+        </div>
+      </div>
+    </React.Fragment>
   )
 }
 
 const mapStateToProps = state => ({
-  keywordPlayfair: state.keywordPlayfair
+  keyNihilist: state.keyNihilist,
+  cipherNihilist: state.cipherNihilist
 })
 
 const mapActionsToProps = {
-  setKeywordPlayfair: setKeywordPlayfair
+  setCipherNihilist,
+  setKeyNihilist
 }
 
-export default connect(mapStateToProps, mapActionsToProps)(KeywordPlayfair)
+export default connect(mapStateToProps, mapActionsToProps)(KeywordsNihilist)

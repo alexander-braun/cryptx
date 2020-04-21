@@ -1,34 +1,33 @@
-const Playfair = (() => {
+const Nihilist = (() => {
 
     //Setup all variables
     
-    let userInput, alphabet, direction, keyphrase, cipherWord
-
-    const getSquare = () => playSquare
+    let userInput, alphabet, direction
 
     const setUserInput = (input) => {
         userInput = String(input);
     }
 
     const setAlphabet = (input) => {
-        alphabet = input.split('')
+        alphabet = input
     }
 
     const setDirection = (input) => {
         direction = input;
     }
 
+    let keyphrase
     const setKeyPhrase = (input) => {
         keyphrase = input
     }
 
+    let cipherWord
     const setCipherWord = (input) => {
         cipherWord = input
     }
 
     const polybiusSquare = () => {
-        let keyphrase = 'ZEBRAS'
-        keyphrase = keyphrase.split('')
+        if(typeof keyphrase === 'string') keyphrase = keyphrase.split('')
         const arr = []
         for(let i = 0; i < keyphrase.length; i++) {
             if( alphabet.indexOf(keyphrase[i].toLowerCase()) !== -1 && 
@@ -55,7 +54,8 @@ const Playfair = (() => {
 
     const getNumberForOne = (letter) => {
         let num1, num2, i = 0
-        for(let element of polybiusSquare()) {
+        let squareArr = polybiusSquare()
+        for(let element of squareArr) {
             if(element.includes(letter.toLowerCase())) {
                 num1 = i + 1
                 num2 = element.indexOf(letter.toLowerCase()) + 1
@@ -69,8 +69,9 @@ const Playfair = (() => {
         let array = []
         for(let i = 0; i < text.length; i++) {
             if(alphabet.indexOf(text[i].toLowerCase()) !== -1) {
-                array.push(getNumberForOne(text[i]))    
-            } else array.push(text[i])
+                if(isNaN(getNumberForOne(text[i]))) array.push(getNumberForOne('i'))
+                else array.push(getNumberForOne(text[i]))    
+            }
         }
         return array
     }
@@ -96,12 +97,62 @@ const Playfair = (() => {
                     ind = 0
                 }
             }
-        }
+        } else cleanKeyArr = numberArray[1]
 
+        let out = []
         for(let i = 0; i < numberArray[0].length; i++) {
-            output.push(Number(numberArray[0][i]) + Number(cleanKeyArr[i]))
+            out.push(Number(numberArray[0][i]) + Number(cleanKeyArr[i]))
         }
-        return output
+        
+        return out.join(' ')
+    }
+
+    const subtractKeyFromPlaintext = (inputArray, cleanKeyArr) => {
+        let outputNumbers = []
+        for(let i = 0; i < inputArray.length; i++) {
+            outputNumbers.push(inputArray[i] - cleanKeyArr[i])
+        }
+        return outputNumbers
+    }
+
+    const transformNumbersToText = (numbers) => {
+        const square = polybiusSquare()
+        const plainTextArray = []
+        for(let number of numbers) {
+            let numElem = String(number).split('')
+            let letter = square[Number(numElem[0]) - 1][Number(numElem[1]) - 1]
+            plainTextArray.push(letter)
+        }
+        return plainTextArray
+    }
+
+    const decrypt = () => {
+        let numberArray = getNumbers()[1]
+        let inputArray = userInput.split(' ')
+
+        let cleanKeyArr = []
+        let ind = 0
+
+        if(inputArray.length > numberArray.length) {
+            for(let i = 0; i < inputArray.length; i++) {
+                if(ind < numberArray.length - 1) {
+                    cleanKeyArr.push(numberArray[ind])
+                    ind++
+                } else {
+                    cleanKeyArr.push(numberArray[ind])
+                    ind = 0
+                }
+            }
+        } else cleanKeyArr = numberArray
+        
+        let plainNumbers = subtractKeyFromPlaintext(inputArray, cleanKeyArr)
+        let outputClearText = transformNumbersToText(plainNumbers)
+
+        return outputClearText.join('')
+    }
+
+    const transformText = () => {
+        return direction === 'encrypt' ? encrypt() : decrypt()
     }
 
     const setAll = (input, alphabet, direction, keyword, cipherWord) => {
@@ -109,15 +160,15 @@ const Playfair = (() => {
         setAlphabet(alphabet)
         setDirection(direction)
         setKeyPhrase(keyword)
-        setCipherWord(cipherword)
+        setCipherWord(cipherWord)
     }
 
     return {
-        getSquare: getSquare,
         setAll: setAll,
-        encrypt: encrypt
+        transformText: transformText,
+        getSquare: polybiusSquare
     }
 })();
 
 
-export default Playfair
+export default Nihilist

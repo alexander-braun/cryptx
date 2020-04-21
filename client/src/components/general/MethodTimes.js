@@ -5,6 +5,7 @@ const times = {
     'vigenere': '1553',
     'morse': '1837',
     'playfair': '1854',
+    'nihilist': '1880',
     'otp': '1882',
     'rsa': '1977'
 }

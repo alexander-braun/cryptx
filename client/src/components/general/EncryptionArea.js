@@ -37,11 +37,12 @@ import PresetsModal from '../presetsModal'
 import AnalysisModal from '../analysisModal'
 import Reverse from '../reverse/reverseLogic'
 import CaseTransform from '../caseTransform/caseTransformLogic'
+import Nihilist from '../nihilist/nihilistLogic'
+import setNihilistSquare from '../../actions/setNihilistSquare'
 
 class EncryptionArea extends React.PureComponent {
   constructor(props) {
     super(props)
-
     this.encrypt = this.encrypt.bind(this)
   }
 
@@ -230,6 +231,11 @@ class EncryptionArea extends React.PureComponent {
         Replace.setAll(input, this.props.toReplaceLetter, this.props.replaceLetter)
         this.props.setOutput(Replace.encrypt())
         break
+      case 'nihilist':
+        Nihilist.setAll(input, alphabet, direction, this.props.keyNihilist, this.props.cipherNihilist)
+        this.props.setOutput(Nihilist.transformText())
+        this.props.setNihilistSquare(Nihilist.getSquare())
+        break
       case 'skytale':
         Skytale.setAll(direction, caseFormat, input, this.props.ringLength, foreignChars)
         let skytale = Skytale.encrypt()
@@ -293,26 +299,29 @@ const mapStateToProps = state => ({
   n: state.rsa.n,
   d: state.rsa.d,
   e: state.rsa.e,
-  caseTransformChoice: state.caseTransformChoice
+  caseTransformChoice: state.caseTransformChoice,
+  keyNihilist: state.keyNihilist,
+  cipherNihilist: state.cipherNihilist
 })
 
 const mapActionsToProps = {
-  setWordbook: setWordbook,
-  toggleChars: toggleChars,
-  setOutput: setOutput,
-  toggleCase: toggleCase,
-  updateAlphabet: updateAlphabet,
-  setOtpKey: setOtpKey,
-  setPlaysquare: setPlaysquare,
-  setSkytaleLength: setSkytaleLength,
-  setSkytaleProjectedValue: setSkytaleProjectedValue,
-  setIocInput: setIocInput,
-  setIocOutput: setIocOutput,
-  setTimeToCalculate: setTimeToCalculate,
-  setRsaPhi: setRsaPhi,
-  setRsaN: setRsaN,
-  setRsaD: setRsaD,
-  setAlphabetActive: setAlphabetActive
+  setWordbook,
+  toggleChars,
+  setOutput,
+  toggleCase,
+  updateAlphabet,
+  setOtpKey,
+  setPlaysquare,
+  setSkytaleLength,
+  setSkytaleProjectedValue,
+  setIocInput,
+  setIocOutput,
+  setTimeToCalculate,
+  setRsaPhi,
+  setRsaN,
+  setRsaD,
+  setAlphabetActive,
+  setNihilistSquare
 }
 
 

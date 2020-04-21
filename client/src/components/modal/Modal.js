@@ -128,6 +128,23 @@ class Modal extends React.Component {
                                 </ul>
                             </div>
                             <div className="method_category">
+                                <span className="modal_category_title">Polybius square ciphers</span>
+                                <ul>
+                                    <li>
+                                        <button
+                                            className="modal_category_method"
+                                            value="nihilist"
+                                            onClick={(evt) => {
+                                                this.props.onModalToggle()
+                                                this.props.changeMethod(evt.target.value)
+                                            }}
+                                        >
+                                        Nihilist Cipher
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div className="method_category">
                                 <span className="modal_category_title">Polyalphabetic Ciphers</span>
                                 <ul>
                                     <li>

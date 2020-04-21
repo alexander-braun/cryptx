@@ -37,6 +37,15 @@ const explenatory = {
         'linksrc': `https://en.wikipedia.org/wiki/Affine_cipher`,
         'linkname': `Affine Cipher Wikipedia`
     },
+    'nihilist': {
+        'normal': `In the history of cryptography, the Nihilist cipher is a manually operated symmetric encryption cipher, 
+        originally used by Russian Nihilists in the 1880s to organize terrorism against the tsarist regime. The term is 
+        sometimes extended to several improved algorithms used much later for communication by the First Chief Directorate 
+        with its spies.`,
+        'crack': `No Crack function yet  :(`,
+        'linksrc': `https://en.wikipedia.org/wiki/Nihilist_cipher`,
+        'linkname': `Nihilist Cipher Wikipedia`
+    },
     'casetransform': {
         'normal': `Transforms your input text into the selected case-format.`
     },

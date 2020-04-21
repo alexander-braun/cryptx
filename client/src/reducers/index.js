@@ -28,6 +28,9 @@ import presets from './presets'
 import presetDescription from './presetDescription'
 import presetName from './presetName'
 import caseTransformChoice from './caseTransformChoice'
+import keyNihilist from './keyNihilist'
+import cipherNihilist from './cipherNihilist'
+import nihilistSquare from './nihilistSquare'
 
 export default combineReducers({
     modal,
@@ -58,5 +61,8 @@ export default combineReducers({
     presets,
     presetDescription,
     presetName,
-    caseTransformChoice
+    caseTransformChoice,
+    keyNihilist,
+    cipherNihilist,
+    nihilistSquare
 })

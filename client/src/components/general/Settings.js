@@ -17,6 +17,7 @@ import Primes from '../rsa/Primes'
 import { connect } from 'react-redux'
 import VigenereTransposition from '../vigenere/vigenereTransposition'
 import CaseTransform from '../caseTransform/CaseTransform'
+import KeywordsNihilist from '../nihilist/KeywordNihilist'
 
 const BlockBodyInput = (props) => {
     let bodyInput
@@ -33,6 +34,12 @@ const BlockBodyInput = (props) => {
                 bodyInput =
                     <div className="block_body_input">
                         <CaseChars />
+                    </div>
+                break
+            case 'nihilist':
+                bodyInput = 
+                    <div className="block_body_input">
+                        <KeywordsNihilist />
                     </div>
                 break
             case 'atbash':
@@ -102,9 +109,9 @@ const BlockBodyInput = (props) => {
             case 'playfair':
                 bodyInput = 
                     <div className="block_body_input">
-                        <PlayfairSquare />
                         <CharOptions />
                         <KeywordPlayfair />
+                        <PlayfairSquare />
                         <Alphabet 
                             alphabet = {props.alphabet} 
                             alphabetActive = {props.alphabetActive}

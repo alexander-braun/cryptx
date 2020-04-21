@@ -457,7 +457,7 @@ textarea:focus {
 }
 
 .block_settings .block_head .block_head_text #caret {
-  width: 2.5em;
+  width: 30px;
   fill: white;
 }
 
