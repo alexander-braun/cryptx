@@ -4,8 +4,7 @@ This app is a sideproject to learn about cryptography and javascript. It's meant
 
 Please visit here: https://crypt-x.herokuapp.com/
 
-Available methods:<br><br>
-
+<b>Available methods:</b><br>
 -Atbash Cipher<br>
 -Caesars Cipher<br>
 -Skytale<br>
@@ -20,14 +19,12 @@ Available methods:<br><br>
 -RSA<br>
 -Replace, Reverse and Case-Transform<br>
 
-Tools available:<br><br>
-
+<b>Tools available:</b><br>
 -Frequency analysis with language comparsion choice<br>
 -Index of Coincidence with language detection feature<br>
 -Chi Squared Analysis with languages to compare to<br>
 
-Other Feature:<br><br>
-
+<b>Other Feature:</b><br>
 -User Login<br>
 -Save Presets<br>
 -Load Presets<br>
