@@ -5,14 +5,15 @@ const methodNamesAll = {
     'vigenere': 'Vigenère',
     'morse': 'Morse Code',
     'playfair': 'Playfair',
-    'otp': 'OTP',
     'nihilist': 'Nihilist',
+    'otp': 'OTP',
     'rsa': 'RSA',
     'affine': 'Affine',
     'rot13': 'Rot13',
     'replace': 'Replace',
     'reverse': 'Reverse',
-    'casetransform': 'Case'
+    'casetransform': 'Case',
+    'substitution': 'Substitution'
 }
 
 export default methodNamesAll

@@ -20,12 +20,19 @@ import CaseTransform from '../caseTransform/CaseTransform'
 import KeywordsNihilist from '../nihilist/KeywordNihilist'
 import NihilistSquare from '../nihilist/NihilistSquare'
 import NihilistTransposition from '../nihilist/NihilistTransposition'
+import SubstitutionTable from '../substitutionAlphabet/SubstitutionTable'
 
 const BlockBodyInput = (props) => {
     let bodyInput
     const switchBodyInput = () => {
         if (props.direction === 'crack') return null
         switch (props.method) {
+            case 'substitution':
+                bodyInput =
+                    <div className="block_body_input">
+                        <SubstitutionTable />
+                    </div>
+                break
             case 'casetransform':
                 bodyInput =
                     <div className="block_body_input">

@@ -108,6 +108,18 @@ class Modal extends React.Component {
                                         ROT13
                                         </button>
                                     </li>
+                                    <li>
+                                        <button 
+                                            className="modal_category_method" 
+                                            value="substitution"
+                                            onClick={(evt) => {
+                                                this.props.onModalToggle()
+                                                this.props.changeMethod(evt.target.value)
+                                            }}
+                                        >
+                                        Alphabetic Substitution Cipher
+                                        </button>
+                                    </li>
                                 </ul>
                             </div>
                             <div className="method_category">

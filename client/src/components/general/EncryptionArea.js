@@ -41,6 +41,7 @@ import Nihilist from '../nihilist/nihilistLogic'
 import setNihilistSquare from '../../actions/setNihilistSquare'
 import setNihilistRunningKey from '../../actions/setNihilistRunningKey'
 import setNihilistPlainNumbers from '../../actions/setNihilistPlainNumbers'
+import Substitute from '../substitutionAlphabet/substitutionLogic'
 
 class EncryptionArea extends React.PureComponent {
   constructor(props) {
@@ -173,6 +174,10 @@ class EncryptionArea extends React.PureComponent {
     }
 
     switch (method) {
+      case 'substitution': 
+        Substitute.setAll(input, this.props.substitutionAlphabet, direction)
+        this.props.setOutput(Substitute.encrypt())
+        break
       case 'rot13':
         Caesar.setAll(null, input, alphabet, 13, direction, caseFormat, foreignChars)
         this.props.setOutput(Caesar.encrypt())
@@ -299,7 +304,8 @@ const mapStateToProps = state => ({
   e: state.rsa.e,
   caseTransformChoice: state.caseTransformChoice,
   keyNihilist: state.keyNihilist,
-  cipherNihilist: state.cipherNihilist
+  cipherNihilist: state.cipherNihilist,
+  substitutionAlphabet: state.substitutionAlphabet
 })
 
 const mapActionsToProps = {

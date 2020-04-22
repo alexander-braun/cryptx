@@ -33,6 +33,7 @@ import cipherNihilist from './cipherNihilist'
 import nihilistSquare from './nihilistSquare'
 import nihilistRunningKey from './nihilistRunningKey'
 import nihilistPlainNumbers from './nihilistPlainNumbers'
+import substitutionAlphabet from './substitutionAlphabet'
 
 export default combineReducers({
     modal,
@@ -68,5 +69,6 @@ export default combineReducers({
     cipherNihilist,
     nihilistSquare,
     nihilistRunningKey,
-    nihilistPlainNumbers
+    nihilistPlainNumbers,
+    substitutionAlphabet
 })

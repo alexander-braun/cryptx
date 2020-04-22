@@ -46,6 +46,14 @@ const explenatory = {
         'linksrc': `https://en.wikipedia.org/wiki/Nihilist_cipher`,
         'linkname': `Nihilist Cipher Wikipedia`
     },
+    'substitution': {
+        'normal': `In cryptography, a substitution cipher is a method of encrypting by which units of plaintext are replaced 
+        with ciphertext, according to a fixed system; the "units" may be single letters (the most common), pairs of letters, 
+        triplets of letters, mixtures of the above, and so forth. The receiver deciphers the text by performing the inverse substitution.`,
+        'crack': `No Crack function yet  :(`,
+        'linksrc': `https://en.wikipedia.org/wiki/Substitution_cipher`,
+        'linkname': `Alphabetic Substitution Cipher`
+    },
     'casetransform': {
         'normal': `Transforms your input text into the selected case-format.`
     },
