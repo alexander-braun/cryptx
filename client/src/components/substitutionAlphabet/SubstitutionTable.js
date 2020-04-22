@@ -17,9 +17,10 @@ const SubstitutionAlphabet = (props) => {
     useEffect(() => {
         let substitutionAlphabet = Object.values(props.substitutionAlphabet)
         let double = []
+        console.log(substitutionAlphabet)
         for(let character of substitutionAlphabet) {
-            if(substitutionAlphabet.indexOf(character.toLowerCase()) !== substitutionAlphabet.lastIndexOf(character.toLowerCase())) {
-                double.indexOf(character) === -1 && double.push(character.toLowerCase())
+            if(substitutionAlphabet.indexOf(character) !== substitutionAlphabet.lastIndexOf(character)) {
+                double.indexOf(character) === -1 && double.push(character)
             }
         }
 

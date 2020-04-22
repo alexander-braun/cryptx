@@ -46,6 +46,10 @@
   background-color: #3e94c5;
 }
 
+.substitution_wrapper .double_character_case {
+  background-color: #3ec567;
+}
+
 .substitution_wrapper input {
   background-color: #ff3f59ad;
   border-radius: 50%;

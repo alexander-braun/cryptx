@@ -24,6 +24,11 @@ const Substitute = (() => {
                 output.push(substitutionAlphabet[userInput[i].toLowerCase()] || userInput[i])
             }
         }
+        if(direction === 'decrypt') {
+            for(let i = 0; i < userInput.length; i++) {
+                output.push(Object.keys(substitutionAlphabet).find(key => substitutionAlphabet[key] === userInput[i].toLowerCase()) || userInput[i])
+            }
+        }
         return output.join('')
     }
 
