@@ -23,6 +23,7 @@ Please visit here: https://crypt-x.herokuapp.com/
 -Frequency analysis with language comparsion choice<br>
 -Index of Coincidence with language detection feature<br>
 -Chi Squared Analysis with languages to compare to<br>
+-Caesar Cipher cracking function<br>
 
 <b>Other Feature:</b><br>
 -User Login<br>
