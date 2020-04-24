@@ -42,6 +42,7 @@ import setNihilistSquare from '../../actions/setNihilistSquare'
 import setNihilistRunningKey from '../../actions/setNihilistRunningKey'
 import setNihilistPlainNumbers from '../../actions/setNihilistPlainNumbers'
 import Substitute from '../substitutionAlphabet/substitutionLogic'
+import Trifid from '../trifid/trifidLogic'
 
 class EncryptionArea extends React.PureComponent {
   constructor(props) {
@@ -174,6 +175,10 @@ class EncryptionArea extends React.PureComponent {
     }
 
     switch (method) {
+      case 'trifid': 
+        Trifid.setAll(input, this.props.trifidKey, this.props.trifidGroupSize, this.props.trifid27thLetter, alphabet)
+        this.props.setOutput(Trifid.encrypt())
+        break
       case 'substitution': 
         Substitute.setAll(input, this.props.substitutionAlphabet, direction)
         this.props.setOutput(Substitute.encrypt())
@@ -305,7 +310,10 @@ const mapStateToProps = state => ({
   caseTransformChoice: state.caseTransformChoice,
   keyNihilist: state.keyNihilist,
   cipherNihilist: state.cipherNihilist,
-  substitutionAlphabet: state.substitutionAlphabet
+  substitutionAlphabet: state.substitutionAlphabet,
+  trifidKey: state.trifid.trifidKey,
+  trifid27thLetter: state.trifid.trifid27thLetter,
+  trifidGroupSize: state.trifid.trifidGroupSize
 })
 
 const mapActionsToProps = {

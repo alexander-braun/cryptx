@@ -21,12 +21,19 @@ import KeywordsNihilist from '../nihilist/KeywordNihilist'
 import NihilistSquare from '../nihilist/NihilistSquare'
 import NihilistTransposition from '../nihilist/NihilistTransposition'
 import SubstitutionTable from '../substitutionAlphabet/SubstitutionTable'
+import TrifidSettings from '../trifid/TrifidSettings'
 
 const BlockBodyInput = (props) => {
     let bodyInput
     const switchBodyInput = () => {
         if (props.direction === 'crack') return null
         switch (props.method) {
+            case 'trifid': 
+                bodyInput = 
+                    <div className="block_body_input">
+                        <TrifidSettings />
+                    </div>
+                break
             case 'substitution':
                 bodyInput =
                     <div className="block_body_input">

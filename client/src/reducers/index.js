@@ -34,6 +34,7 @@ import nihilistSquare from './nihilistSquare'
 import nihilistRunningKey from './nihilistRunningKey'
 import nihilistPlainNumbers from './nihilistPlainNumbers'
 import substitutionAlphabet from './substitutionAlphabet'
+import trifid from './trifid'
 
 export default combineReducers({
     modal,
@@ -70,5 +71,6 @@ export default combineReducers({
     nihilistSquare,
     nihilistRunningKey,
     nihilistPlainNumbers,
-    substitutionAlphabet
+    substitutionAlphabet,
+    trifid
 })

@@ -154,6 +154,18 @@ class Modal extends React.Component {
                                         Nihilist Cipher
                                         </button>
                                     </li>
+                                    <li>
+                                        <button
+                                            className="modal_category_method"
+                                            value="trifid"
+                                            onClick={(evt) => {
+                                                this.props.onModalToggle()
+                                                this.props.changeMethod(evt.target.value)
+                                            }}
+                                        >
+                                        Trifid Cipher
+                                        </button>
+                                    </li>
                                 </ul>
                             </div>
                             <div className="method_category">

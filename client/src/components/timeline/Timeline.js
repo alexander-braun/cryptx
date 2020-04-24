@@ -50,7 +50,7 @@ class Timeline extends React.PureComponent {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        const listMethods = ['atbash', 'skytale', 'caesar', 'vigenere', 'morse', 'playfair', 'nihilist', 'otp', 'rsa']
+        const listMethods = ['atbash', 'skytale', 'caesar', 'vigenere', 'morse', 'playfair', 'nihilist', 'otp', 'trifid', 'rsa']
 
         // If user chooses to go to method that is not in the timeline and back to the same method 
         // Hide the method and year and then switch back

@@ -7,6 +7,7 @@ const methodNamesAll = {
     'playfair': 'Playfair',
     'nihilist': 'Nihilist',
     'otp': 'OTP',
+    'trifid': 'Trifid',
     'rsa': 'RSA',
     'affine': 'Affine',
     'rot13': 'Rot13',

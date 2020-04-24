@@ -7,6 +7,7 @@ const times = {
     'playfair': '1854',
     'nihilist': '1880',
     'otp': '1882',
+    'trifid': '1902',
     'rsa': '1977'
 }
 
