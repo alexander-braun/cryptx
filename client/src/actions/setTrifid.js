@@ -15,4 +15,4 @@ const setTrifidGroupSize = trifidGroupSize => ({
     trifidGroupSize
 })
 
-export default { setTrifidKey, setTrifid27thLetter, setTrifidGroupSize }
+export { setTrifidKey, setTrifid27thLetter, setTrifidGroupSize }

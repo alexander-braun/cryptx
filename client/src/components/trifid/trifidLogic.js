@@ -1,6 +1,6 @@
 const Trifid = (() => {
 
-    let userInput, trifidKey, groupSize, twentySeventhLetter, alphabet
+    let userInput, trifidKey, groupSize, twentySeventhLetter, alphabet, direction
 
     const setUserInput = (value) => {
         userInput = value
@@ -8,6 +8,10 @@ const Trifid = (() => {
 
     const setAlphabet = (value) => {
         alphabet = value
+    }
+
+    const setDirection = (value) => {
+        direction = value
     }
 
     const setTrifidKey = (value) => {
@@ -106,13 +110,17 @@ const Trifid = (() => {
         return group
     }
 
-    const generateGroups = () => {
+    const cleanInputLength = () => {
         let cleanInputLength = 0
         for(let i = 0; i < userInput.length; i++) {
             if(alphabet.indexOf(userInput[i].toLowerCase()) !== -1) cleanInputLength++
         }
+        return cleanInputLength
+    }
+
+    const generateGroups = () => {
         let groups = []
-        for(let i = 0; i < Math.ceil(cleanInputLength / groupSize); i++) {
+        for(let i = 0; i < Math.ceil(cleanInputLength() / groupSize); i++) {
             groups.push(generateGroup(i))
         }
         return groups
@@ -165,33 +173,105 @@ const Trifid = (() => {
         return groups
     }
 
-    const cleanLetters = (numberArr) => {
+    const cleanLettersEncrypt = () => {
         let groups = transformAllGroups()
         const cleanGroups = []
         for(let i = 0; i < groups.length; i++) {
             cleanGroups.push(...groups[i])
         }
-
         let allLayers = generateAllLayers()
         let decrypted = []
         for(let i = 0; i < cleanGroups.length; i++) {
             let numbers = cleanGroups[i]
             decrypted.push(allLayers[numbers[0]][numbers[1]][numbers[2]])
         }
+        return decrypted.join('')
+    }
 
+    //Decryption Process
+    const generateDecryptionGroups = () => {
+        let encodedNumbers = encodeLetters().flat()
+        let groups = []
+        for(let i = 0; i < Math.ceil(cleanInputLength() / groupSize); i++) {
+            groups.push([])
+            groups[i].push(encodedNumbers.slice(i * groupSize * 3, i * groupSize * 3 + groupSize * 3))
+        }
+
+        let groupsDecodedNumbers = []
+        for(let i = 0; i < groups.length; i++) {
+            groupsDecodedNumbers.push(generateOneDecryptionGroup(groups[i])) 
+        }
+        return groupsDecodedNumbers
+    }
+
+    const generateOneDecryptionGroup = (slice) => {
+        let groupsRow = []
+            for(let j = 0; j < 3; j++) {
+                groupsRow.push(slice[0].slice(j * slice[0].length / 3, j * slice[0].length / 3 + slice[0].length / 3)) 
+            }   
+
+        const cleanGroupsRow = []
+        for(let i = 0; i < groupsRow.length; i++) {
+            if(groupsRow[i].length !== 0) {
+                cleanGroupsRow.push(groupsRow[i])
+            }
+        }
+        const groupsCol = []
+        for(let i = 0; i < groupSize; i++) {
+            groupsCol.push([])
+            for(let j = 0; j < cleanGroupsRow.length; j++) {
+                groupsCol[i].push(cleanGroupsRow[j][i])   
+            }
+        }
+
+        const cleanGroupsCol = []
+        for(let i = 0; i < groupsCol.length; i++) {
+            if(groupsCol[i][0] !== undefined) cleanGroupsCol.push(groupsCol[i])
+        }
+
+        return cleanGroupsCol
+    }
+
+    const cleanLettersDecrypt = () => {
+        let groups = generateDecryptionGroups()
+        const cleanGroups = []
+        for(let i = 0; i < groups.length; i++) {
+            cleanGroups.push(...groups[i])
+        }
+
+        // Do here something if the cleanGroup contains an array or more with less then 3 digits in it! 
+        // Go straigth to next row if length is not there
+
+
+
+
+        let allLayers = generateAllLayers()
+        
+        let decrypted = []
+        for(let i = 0; i < cleanGroups.length; i++) {
+            let numbers = cleanGroups[i]
+            decrypted.push(allLayers[numbers[0]][numbers[1]][numbers[2]])
+        }
         return decrypted.join('')
     }
 
     const encrypt = () => {
-        return cleanLetters()
+        if(!userInput) return ''
+        if(direction === 'encrypt') {
+            return cleanLettersEncrypt()
+        } else {
+            return cleanLettersDecrypt()
+        }
+        
     }
 
-    const setAll = (input, trifidKey, groupSize, twentySeventhLetter, alphabet) => {
+    const setAll = (input, trifidKey, groupSize, twentySeventhLetter, alphabet, direction) => {
         setUserInput(input)
         setTrifidKey(trifidKey)
         setGroupSize(groupSize)
         setTwentySeventhLetterLetter(twentySeventhLetter)
         setAlphabet(alphabet)
+        setDirection(direction)
     }
 
     return {

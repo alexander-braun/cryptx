@@ -176,7 +176,7 @@ class EncryptionArea extends React.PureComponent {
 
     switch (method) {
       case 'trifid': 
-        Trifid.setAll(input, this.props.trifidKey, this.props.trifidGroupSize, this.props.trifid27thLetter, alphabet)
+        Trifid.setAll(input, this.props.trifidKey, this.props.trifidGroupSize, this.props.trifid27thLetter, alphabet, direction)
         this.props.setOutput(Trifid.encrypt())
         break
       case 'substitution': 

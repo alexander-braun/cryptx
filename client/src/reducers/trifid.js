@@ -14,6 +14,7 @@ const trifid = (state = initialState, action) => {
                 trifidKey: action.trifidKey
             }
         case SET_TRIFID_GROUP_SIZE:
+            console.log(action.trifidGroupSize)
             return {
                 ...state,
                 trifidGroupSize: action.trifidGroupSize
