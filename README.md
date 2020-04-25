@@ -11,6 +11,7 @@ Please visit here: https://crypt-x.herokuapp.com/
 -Affine Cipher<br>
 -Playfair Cipher<br>
 -One Time Pad<br>
+-Trifid Cipher<br>
 -ROT13<br>
 -Alphabetic Substitution Cipher<br>
 -Morse Code<br>
