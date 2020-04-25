@@ -239,12 +239,6 @@ const Trifid = (() => {
             cleanGroups.push(...groups[i])
         }
 
-        // Do here something if the cleanGroup contains an array or more with less then 3 digits in it! 
-        // Go straigth to next row if length is not there
-
-
-
-
         let allLayers = generateAllLayers()
         
         let decrypted = []
@@ -256,13 +250,12 @@ const Trifid = (() => {
     }
 
     const encrypt = () => {
-        if(!userInput) return ''
+        if(!userInput || userInput.length === 0) return [null, generateAllLayers(), null]
         if(direction === 'encrypt') {
-            return cleanLettersEncrypt()
+            return [cleanLettersEncrypt(), generateAllLayers(), encodeLetters()]
         } else {
-            return cleanLettersDecrypt()
+            return [cleanLettersDecrypt(), generateAllLayers(), generateDecryptionGroups().flat(1)]
         }
-        
     }
 
     const setAll = (input, trifidKey, groupSize, twentySeventhLetter, alphabet, direction) => {

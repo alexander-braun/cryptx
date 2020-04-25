@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { setTrifidGroupSize, setTrifidKey } from '../../actions/setTrifid'
+import { setTrifidGroupSize, setTrifidKey, setTrifid27thLetter } from '../../actions/setTrifid'
 
 const TrifidSettings = (props) => {
 
@@ -8,9 +8,13 @@ const TrifidSettings = (props) => {
         if(e === '+') {
             props.setTrifidGroupSize(props.trifidGroupSize + 1)
         } else if(e === '-') {
-            props.setTrifidGroupSize(props.trifidGroupSize - 1)
+            if(props.trifidGroupSize >= 3) {
+                props.setTrifidGroupSize(props.trifidGroupSize - 1)
+            }
         } else {
-            props.setTrifidGroupSize(e.target.value)    
+            if(e.target.value >= 2) {
+                props.setTrifidGroupSize(e.target.value)      
+            } else props.setTrifidGroupSize(2)
         }
     }
 
@@ -18,16 +22,22 @@ const TrifidSettings = (props) => {
         props.setTrifidKey(e.target.value)
     }
 
+    const handleLetterChange = (e) => {
+        let value = e.target.value[0]
+        if(value.length === 0) value = '+'
+        props.setTrifid27thLetter(value)
+    }   
+
     return (
         <React.Fragment>
             <div className="controller">
                 <div className="settings_name">Trifid Keyword</div>
                 <div className="settings_operators">
                     <textarea 
-                    id="alphabet" 
-                    defaultValue={'FELIX MARIE DELASTELLE'}
-                    onChange={(e) => handleKeywordChange(e)}
-                    style={{boxShadow:'none'}}
+                        defaultValue={'FELIX MARIE DELASTELLE'}
+                        onChange={(e) => handleKeywordChange(e)}
+                        style={{boxShadow:'none'}}
+                        id="trifid_key"
                     />
                 </div>
             </div>
@@ -42,7 +52,7 @@ const TrifidSettings = (props) => {
                     >
                     -
                     </div>
-                    <input value={props.trifidGroupSize} onChange={e => handleGroupSizeChange(e)}></input>
+                    <input className="trifid_input" value={props.trifidGroupSize} onChange={e => handleGroupSizeChange(e)}></input>
                     <div 
                         value="+"
                         id="plus_caesar"
@@ -51,6 +61,17 @@ const TrifidSettings = (props) => {
                     >
                     +
                     </div>
+                </div>
+            </div>
+            <div className="controller">
+                <div className="settings_name">Trifid 27th Letter</div>
+                <div className="settings_operators">
+                    <textarea 
+                        defaultValue={'+'}
+                        onChange={(e) => handleLetterChange(e)}
+                        style={{boxShadow:'none'}}
+                        id="trifid_27th_letter"
+                    />
                 </div>
             </div>
         </React.Fragment>
@@ -65,7 +86,8 @@ const mapStateToProps = state => ({
 
 const mapActionsToProps = {
     setTrifidGroupSize,
-    setTrifidKey
+    setTrifidKey,
+    setTrifid27thLetter
 }
 
 export default connect(mapStateToProps, mapActionsToProps)(TrifidSettings)

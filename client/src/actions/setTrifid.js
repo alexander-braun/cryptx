@@ -1,4 +1,4 @@
-import { SET_TRIFID_KEY, SET_TRIFID_27TH_LETTER, SET_TRIFID_GROUP_SIZE } from './constants'
+import { SET_TRIFID_KEY, SET_TRIFID_27TH_LETTER, SET_TRIFID_GROUP_SIZE, SET_TRIFID_LAYERS, SET_TRIFID_GROUPS} from './constants'
 
 const setTrifidKey = trifidKey => ({
     type: SET_TRIFID_KEY,
@@ -15,4 +15,14 @@ const setTrifidGroupSize = trifidGroupSize => ({
     trifidGroupSize
 })
 
-export { setTrifidKey, setTrifid27thLetter, setTrifidGroupSize }
+const setTrifidLayers = trifidLayers => ({
+    type: SET_TRIFID_LAYERS,
+    trifidLayers
+})
+
+const setTrifidGroups = trifidGroups => ({
+    type: SET_TRIFID_GROUPS,
+    trifidGroups
+})
+
+export { setTrifidKey, setTrifid27thLetter, setTrifidGroupSize, setTrifidLayers, setTrifidGroups }

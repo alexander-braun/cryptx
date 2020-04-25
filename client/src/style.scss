@@ -626,6 +626,115 @@ select {
   }
 }
 
+.trifid_input {
+  padding: 0;
+  text-align: center;
+  background: transparent;
+  border: none;
+  color: white;
+  max-width: 50px;
+  font-size: 30px;
+  font-weight: 700;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}
+
+#trifid_key {
+  width: 100%;
+  display: block;
+  border: 1px solid #ccc;
+  overflow-x: hidden;
+  overflow-y: auto;
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+  padding: 1rem 0.5rem 0 24px;
+  letter-spacing: .05em;
+  height: auto;
+}
+
+.trifid_layer_row {
+  display: flex;
+  flex-direction: row;
+}
+
+.trifid_layer_letter {
+  width: 30px;
+  height: 30px;
+  padding: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.438);
+  border-left: none;
+  border-top: none;
+  text-align: center;
+}
+
+.trifid_layer_letter:first-child {
+  border-left: 1px solid rgba(255, 255, 255, 0.438);
+}
+
+.settings_operators.trifid_layer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px;
+}
+
+#trifid_27th_letter {
+  width: 100%;
+  display: block;
+  border: 1px solid #ccc;
+  overflow-x: hidden;
+  overflow-y: auto;
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+  padding: 1rem 24px 0 24px;
+  letter-spacing: .05em;
+  height: auto;
+  text-align: center;
+  max-height: 2.5em;
+  font-size: 30px;
+  font-weight: 700;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}
+
+#trifid_square {
+  text-align: center;
+  color: #dadada;
+  font-size: 15px;
+  font-weight: 900;
+  margin-bottom: 1em;
+
+  tr {
+    width: 100%;
+  }
+
+  th {
+    background-color: #3e94c5;
+    height: 20px;
+    min-width: 20px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+    margin: 2px;
+  }
+
+  td {
+    background-color: #3e94c5;
+    height: 20px;
+    min-width: 20px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+    margin: 2px;
+  }
+}
+
+#trifid_square .trifid_groups_tablehead {
+  background-color: #ff3f58;
+}
+
+#trifid_square .trifid_groups_encrypted {
+  background-color: #025483;
+}
+
 .explanation {
   width: 100%;
   overflow: hidden;

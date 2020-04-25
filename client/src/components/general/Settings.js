@@ -22,6 +22,8 @@ import NihilistSquare from '../nihilist/NihilistSquare'
 import NihilistTransposition from '../nihilist/NihilistTransposition'
 import SubstitutionTable from '../substitutionAlphabet/SubstitutionTable'
 import TrifidSettings from '../trifid/TrifidSettings'
+import TrifidLayers from '../trifid/TrifidLayers'
+import TrifidGroups from '../trifid/TrifidGroups'
 
 const BlockBodyInput = (props) => {
     let bodyInput
@@ -32,6 +34,8 @@ const BlockBodyInput = (props) => {
                 bodyInput = 
                     <div className="block_body_input">
                         <TrifidSettings />
+                        <TrifidLayers />
+                        <TrifidGroups />
                     </div>
                 break
             case 'substitution':

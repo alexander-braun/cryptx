@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import '../../styles/nihilistSquare.css'
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from 'uuid'
 
 
 class NihilistSquare extends React.PureComponent {
