@@ -822,7 +822,7 @@ select {
   color: #dadada;
   font-size: 15px;
   font-weight: 900;
-  border: 3px solid #ffffff2a;
+  margin: 3px;
   -webkit-box-flex: 2;
       -ms-flex: 2 2 auto;
           flex: 2 2 auto;
