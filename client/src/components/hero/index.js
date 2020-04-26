@@ -47,7 +47,7 @@ function Hero(props) {
         <div id='hero'>
           <div id="hero_text">
             <Animated animationInDelay={200} animationIn="bounceInDown" animationInDuration={1000} isVisible={true}>
-              <h1>"Li brx wklqn fubswrjudskb lv wkh dqvzhu wr brxu sureohp,<br></br>wkhq brx grq'w nqrz zkdw brxu sureohp lv."</h1>
+              <h1>"Wt mci hvwby qfmdhcufodvm wg hvs obgksf hc mcif dfcpzsa, &nbsp;<br></br> hvsb mci rcb'h ybck kvoh mcif dfcpzsa wg."</h1>
               <h2>Peter G. Neumann</h2>
             </Animated>
             <Animated animationInDelay={0} animationIn="bounceInDown" animationInDuration={1000}  isVisible={true}>
@@ -65,7 +65,7 @@ function Hero(props) {
                 id="scrolldown" 
                 className="bounce"
                 xmlns="http://www.w3.org/2000/svg" 
-                version="1.1" 
+                
                 width="50" 
                 height="50"
                 viewBox="0 0 438.533 438.533"

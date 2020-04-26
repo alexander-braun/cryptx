@@ -16,7 +16,7 @@ const BlockInput = ({updateInput, iocInput, input}) => {
     if(evt.target.value === 'The quick brown fox jumps over the lazy dog.') {
       updateInput('')
     } else {
-      updateInput(evt.target.value)
+      updateInput(evt.target.value.replace(/(\r\n|\n|\r)/gm,""))
     }
   }
 
