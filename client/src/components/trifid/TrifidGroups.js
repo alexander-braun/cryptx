@@ -19,7 +19,7 @@ const TrifidGroups = (props) => {
     return (
         <div className="controller">
             <div className="settings_name">Trifid Groups</div>
-            <div className="settings_operators trifid_layer">
+            <div className="settings_operators trifid_group">
                 {[...Array(Math.ceil(cleanInputLength() / Number(props.trifidGroupSize))).keys()].map(element => {
                     return (
                         <table key={uuidv4()} id="trifid_square" className="trifid_groups">

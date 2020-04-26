@@ -773,6 +773,25 @@ select {
   padding: 24px;
 }
 
+.settings_operators.trifid_group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
+  padding: 24px;
+}
+
 #trifid_27th_letter {
   width: 100%;
   display: block;
@@ -792,6 +811,12 @@ select {
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
 }
 
+#trifid_square:last-child {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+}
+
 #trifid_square {
   text-align: center;
   color: #dadada;
@@ -799,6 +824,9 @@ select {
   font-weight: 900;
   border: 1px solid white;
   margin: 3px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
 }
 
 #trifid_square tr {

@@ -680,6 +680,15 @@ select {
   padding: 24px;
 }
 
+.settings_operators.trifid_group {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: left;
+  padding: 24px;
+}
+
 #trifid_27th_letter {
   width: 100%;
   display: block;
@@ -699,6 +708,10 @@ select {
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
 }
 
+#trifid_square:last-child {
+  flex: 1 1 auto;
+}
+
 #trifid_square {
   text-align: center;
   color: #dadada;
@@ -706,6 +719,7 @@ select {
   font-weight: 900;
   border: 1px solid white;
   margin: 3px;
+  flex: 1 1 auto;
 
   tr {
     width: 100%;
