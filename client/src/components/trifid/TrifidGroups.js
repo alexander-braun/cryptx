@@ -3,18 +3,19 @@ import { connect } from 'react-redux'
 import { v4 as uuidv4 } from 'uuid'
 
 const TrifidGroups = (props) => {
+
     const cleanInput = []
     const cleanInputLength = () => {
         let cleanInputLength = 0
         for(let i = 0; i < props.input.length; i++) {
-            if(props.alphabet.indexOf(props.input[i].toLowerCase()) !== -1) {
+            if(props.alphabet.indexOf(props.input[i].toLowerCase()) !== -1 || props.input[i].toLowerCase() === props.trifid27thLetter.toLowerCase()) {
                 cleanInputLength++
                 cleanInput.push(props.input[i])
             }
         }
         return cleanInputLength
     }
-    console.log(props.trifidGroups)
+
     return (
         <div className="controller">
             <div className="settings_name">Trifid Groups</div>
@@ -67,6 +68,7 @@ const TrifidGroups = (props) => {
 const mapStateToProps = state => ({
     trifidGroups: state.trifid.trifidGroups,
     trifidGroupSize: state.trifid.trifidGroupSize,
+    trifid27thLetter: state.trifid.trifid27thLetter,
     input: state.input,
     alphabet: state.alphabet.alphabet,
     output: state.output
