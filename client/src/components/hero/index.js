@@ -47,7 +47,7 @@ function Hero(props) {
         <div id='hero'>
           <div id="hero_text">
             <Animated animationInDelay={200} animationIn="bounceInDown" animationInDuration={1000} isVisible={true}>
-              <h1>"If you think cryptography is the answer to your problem,<br></br>then you don't know what your problem is."</h1>
+              <h1>"Li brx wklqn fubswrjudskb lv wkh dqvzhu wr brxu sureohp,<br></br>wkhq brx grq'w nqrz zkdw brxu sureohp lv."</h1>
               <h2>Peter G. Neumann</h2>
             </Animated>
             <Animated animationInDelay={0} animationIn="bounceInDown" animationInDuration={1000}  isVisible={true}>
@@ -73,6 +73,10 @@ function Hero(props) {
                 onMouseMove={removeBounce}
                 fill="rbg(255,255,255"
               >
+
+              version="1.1" width="100%" height="15vh" viewBox="0 0 100 100" preserveAspectRatio="none"
+
+
                 <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="0%">
                   <stop offset="0%" style={{stopColor:'#dededee6', stopOpacity:'1'}} />
                   <stop offset="100%" style={{stopColor:'#dededee6', stopOpacity:'1'}} />

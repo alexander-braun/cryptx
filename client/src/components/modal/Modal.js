@@ -27,10 +27,9 @@ class Modal extends React.Component {
                                     <li>
                                         <button 
                                             className="modal_category_method" 
-                                            value="atbash"
                                             onClick={(evt) => {
                                                 this.props.onModalToggle()
-                                                this.props.changeMethod(evt.target.value)
+                                                this.props.changeMethod("atbash")
                                             }}
                                         >
                                             <div className="modal_method_wrapper">
@@ -42,10 +41,9 @@ class Modal extends React.Component {
                                     <li>
                                         <button 
                                             className="modal_category_method" 
-                                            value="caesar"
                                             onClick={(evt) => {
                                                 this.props.onModalToggle()
-                                                this.props.changeMethod(evt.target.value)
+                                                this.props.changeMethod("caesar")
                                             }}
                                         >
                                             <div className="modal_method_wrapper">
@@ -57,10 +55,9 @@ class Modal extends React.Component {
                                     <li>
                                         <button 
                                             className="modal_category_method" 
-                                            value="skytale"
                                             onClick={(evt) => {
                                                 this.props.onModalToggle()
-                                                this.props.changeMethod(evt.target.value)
+                                                this.props.changeMethod("skytale")
                                             }}
                                         >
                                             <div className="modal_method_wrapper">
@@ -72,10 +69,9 @@ class Modal extends React.Component {
                                     <li>
                                         <button 
                                             className="modal_category_method" 
-                                            value="affine"
                                             onClick={(evt) => {
                                                 this.props.onModalToggle()
-                                                this.props.changeMethod(evt.target.value)
+                                                this.props.changeMethod("affine")
                                             }}
                                         >
                                             <div className="modal_method_wrapper">
@@ -87,10 +83,9 @@ class Modal extends React.Component {
                                     <li>
                                         <button 
                                             className="modal_category_method" 
-                                            value="playfair"
                                             onClick={(evt) => {
                                                 this.props.onModalToggle()
-                                                this.props.changeMethod(evt.target.value)
+                                                this.props.changeMethod("playfair")
                                             }}
                                         >
                                             <div className="modal_method_wrapper">
@@ -102,10 +97,9 @@ class Modal extends React.Component {
                                     <li>
                                         <button 
                                             className="modal_category_method" 
-                                            value="otp"
                                             onClick={(evt) => {
                                                 this.props.onModalToggle()
-                                                this.props.changeMethod(evt.target.value)
+                                                this.props.changeMethod("otp")
                                             }}
                                         >
                                             <div className="modal_method_wrapper">
@@ -117,10 +111,9 @@ class Modal extends React.Component {
                                     <li>
                                         <button 
                                             className="modal_category_method" 
-                                            value="rot13"
                                             onClick={(evt) => {
                                                 this.props.onModalToggle()
-                                                this.props.changeMethod(evt.target.value)
+                                                this.props.changeMethod("rot13")
                                             }}
                                         >
                                             <div className="modal_method_wrapper">
@@ -132,10 +125,9 @@ class Modal extends React.Component {
                                     <li>
                                         <button 
                                             className="modal_category_method" 
-                                            value="substitution"
                                             onClick={(evt) => {
                                                 this.props.onModalToggle()
-                                                this.props.changeMethod(evt.target.value)
+                                                this.props.changeMethod("substitution")
                                             }}
                                         >
                                             <div className="modal_method_wrapper">
@@ -152,10 +144,9 @@ class Modal extends React.Component {
                                     <li>
                                         <button
                                             className="modal_category_method"
-                                            value="morse"
                                             onClick={(evt) => {
                                                 this.props.onModalToggle()
-                                                this.props.changeMethod(evt.target.value)
+                                                this.props.changeMethod("morse")
                                             }}
                                         >
                                             <div className="modal_method_wrapper">
@@ -172,10 +163,9 @@ class Modal extends React.Component {
                                     <li>
                                         <button
                                             className="modal_category_method"
-                                            value="nihilist"
                                             onClick={(evt) => {
                                                 this.props.onModalToggle()
-                                                this.props.changeMethod(evt.target.value)
+                                                this.props.changeMethod("nihilist")
                                             }}
                                         >
                                             <div className="modal_method_wrapper">
@@ -187,10 +177,9 @@ class Modal extends React.Component {
                                     <li>
                                         <button
                                             className="modal_category_method"
-                                            value="trifid"
                                             onClick={(evt) => {
                                                 this.props.onModalToggle()
-                                                this.props.changeMethod(evt.target.value)
+                                                this.props.changeMethod("trifid")
                                             }}
                                         >
                                             <div className="modal_method_wrapper">
@@ -207,10 +196,9 @@ class Modal extends React.Component {
                                     <li>
                                         <button 
                                             className="modal_category_method" 
-                                            value="vigenere"
                                             onClick={(evt) => {
                                                 this.props.onModalToggle()
-                                                this.props.changeMethod(evt.target.value)
+                                                this.props.changeMethod("vigenere")
                                             }}
                                         >
                                             <div className="modal_method_wrapper">
@@ -227,10 +215,9 @@ class Modal extends React.Component {
                                     <li>
                                         <button
                                             className="modal_category_method"
-                                            value="rsa"
                                             onClick={(evt) => {
                                                 this.props.onModalToggle()
-                                                this.props.changeMethod(evt.target.value)
+                                                this.props.changeMethod("rsa")
                                             }}
                                         >
                                             <div className="modal_method_wrapper">
@@ -247,10 +234,9 @@ class Modal extends React.Component {
                                     <li>
                                         <button
                                             className="modal_category_method"
-                                            value="replace"
                                             onClick={(evt) => {
                                                 this.props.onModalToggle()
-                                                this.props.changeMethod(evt.target.value)
+                                                this.props.changeMethod("replace")
                                             }}
                                         >
                                             <div className="modal_method_wrapper">
@@ -262,10 +248,9 @@ class Modal extends React.Component {
                                     <li>
                                         <button
                                             className="modal_category_method"
-                                            value="reverse"
                                             onClick={(evt) => {
                                                 this.props.onModalToggle()
-                                                this.props.changeMethod(evt.target.value)
+                                                this.props.changeMethod("reverse")
                                             }}
                                         >
                                             <div className="modal_method_wrapper">
@@ -277,10 +262,9 @@ class Modal extends React.Component {
                                     <li>
                                         <button
                                             className="modal_category_method"
-                                            value="casetransform"
                                             onClick={(evt) => {
                                                 this.props.onModalToggle()
-                                                this.props.changeMethod(evt.target.value)
+                                                this.props.changeMethod("casetransform")
                                             }}
                                         >
                                             <div className="modal_method_wrapper">
