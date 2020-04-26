@@ -277,13 +277,13 @@
 }
 */
 @media only screen and (max-width: 700px) {
-  #methodSelectModal.inner_modal {
+  #methodSelectModal .inner_modal {
     overflow-y: scroll;
   }
   .inner_modal.presetcontainer {
     width: 100%;
   }
-  .presetcontainer.modal_header {
+  .modal_header {
     display: block;
     width: auto;
   }
