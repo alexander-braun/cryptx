@@ -62,8 +62,7 @@
   width: fit-content;
 }
 
-.timeline_description,
-.dot, h3 {
+.timeline_description, .dot, h3 {
   -webkit-transition-duration: 0.2s;
           transition-duration: 0.2s;
 }
@@ -98,9 +97,8 @@
   color: transparent;
 }
 
-.slick-prev:before,
-.slick-next:before {
-  font-size: 25pt !important;
+.slick-prev:before, .slick-next:before {
+  font-size: 30px !important;
 }
 
 #timeline {
@@ -130,12 +128,12 @@
 
 #timeline .slick-next {
   right: -17px;
-  top: 31px;
+  top: 33px;
 }
 
 #timeline .slick-prev {
-  left: -30px;
-  top: 31px;
+  left: -28px;
+  top: 33px;
 }
 
 #timeline .slick-track:focus {
@@ -144,6 +142,17 @@
 
 #timeline h3 {
   text-align: center;
+}
+
+.slick-prev:before, .slick-next:before {
+  color: white !important;
+  opacity: 0.9;
+}
+
+@-moz-document url-prefix() {
+  .history_element h3 {
+    font-weight: 400;
+  }
 }
 
 @media only screen and (max-width: 1100px) {

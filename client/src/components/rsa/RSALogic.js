@@ -1,9 +1,8 @@
 const Rsa = (() => {
     /* global BigInt */
     const bigInt = require("big-integer")
-    const bigintModArith = require('bigint-mod-arith');
 
-    let prime_one, prime_two, e, phi, userInput, n, d, testval
+    let prime_one, prime_two, e, phi, userInput, n, d
 
 
     const setPrimeOne = (val) => {

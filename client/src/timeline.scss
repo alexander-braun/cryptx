@@ -87,7 +87,7 @@ $timeline_font_color: white;
 }
 
 .slick-prev:before, .slick-next:before {
-    font-size: 25pt !important;
+    font-size: 30px !important;
 }
 
 #timeline {
@@ -117,11 +117,11 @@ $timeline_font_color: white;
 
     .slick-next {
         right: -17px;
-        top: 31px;
+        top: 33px;
     }
     .slick-prev {
-        left: -30px;
-        top: 31px;
+        left: -28px;
+        top: 33px;
     }
 
     .slick-track {
@@ -136,7 +136,7 @@ $timeline_font_color: white;
 }
 
 .slick-prev:before, .slick-next:before {
-    color: $slickarrow !important;
+    color: white !important;
     opacity: 0.9;
 }
 
