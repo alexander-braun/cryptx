@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import BlockInput from './BlockInput'
 import BlockOutput from './BlockOutput'
 import BlockConnectorEquals from './BlockConnectorEquals'
 import BlockConnectorPlus from './BlockConnectorPlus'
 import BlockSettings from './BlockSettings'
-import Modal from '../modal/Modal'
+//import Modal from '../modal/Modal'
 import Caesar from '../caesar/CaesarLogic'
 import Affine from '../affine/AffineLogic'
 import Vigenere from '../vigenere/VigenereLogic'
@@ -44,6 +44,9 @@ import setNihilistPlainNumbers from '../../actions/setNihilistPlainNumbers'
 import Substitute from '../substitutionAlphabet/substitutionLogic'
 import Trifid from '../trifid/trifidLogic'
 import { setTrifidLayers, setTrifidGroups } from '../../actions/setTrifid'
+
+const Modal = React.lazy(() => import('../modal/Modal'));
+
 
 class EncryptionArea extends React.PureComponent {
   constructor(props) {
@@ -272,7 +275,9 @@ class EncryptionArea extends React.PureComponent {
           <BlockConnectorEquals />
           <BlockOutput />
         </div>
-        <Modal />
+        <Suspense fallback={<div>...Loading</div>}>
+          <Modal />
+        </Suspense>
         <PresetsModal />
         <AnalysisModal />
       </div>
