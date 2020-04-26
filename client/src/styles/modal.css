@@ -195,7 +195,10 @@
 }
 
 .loadpreset_explanatory {
-  padding: 1em;
+  padding-left: 24px;
+  padding-right: 24px;
+  padding-top: 1em;
+  padding-bottom: 1em;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -267,15 +270,37 @@
   color: #b0b3b8;
 }
 
-/*
-.informational_modal {
-  font-size: 194px;
-  font-weight: 900;
-  display: flex;
-  margin-right: auto;
-  margin-left: 0px;
+.timeline_feature_sign {
+  color: #3e94c5;
+  font-weight: 700;
+  float: left;
+  margin-right: 5px;
 }
-*/
+
+.not_in_timeline_feature_sign {
+  color: #c53e3e;
+  font-weight: 700;
+  float: left;
+  margin-right: 5px;
+}
+
+.modal_explanation_wrapper {
+  color: rgba(255, 255, 255, 0.884);
+  margin-right: auto;
+  letter-spacing: .1rem;
+  font-weight: 400;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.modal_legend {
+  margin-right: auto;
+}
+
+.timeline_feature_name {
+  display: inline-block;
+}
+
 @media only screen and (max-width: 700px) {
   #methodSelectModal .inner_modal {
     overflow-y: scroll;

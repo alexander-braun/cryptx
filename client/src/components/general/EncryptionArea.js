@@ -258,6 +258,7 @@ class EncryptionArea extends React.PureComponent {
         this.props.setSkytaleProjectedValue(projected)
         this.props.setOutput(skytale[0])
         this.props.setSkytaleLength(skytale[1])
+        Skytale.generateOutputs()
         break
       default:
         return null

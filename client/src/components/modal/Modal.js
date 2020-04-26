@@ -33,7 +33,10 @@ class Modal extends React.Component {
                                                 this.props.changeMethod(evt.target.value)
                                             }}
                                         >
-                                        Atbash Cipher
+                                            <div className="modal_method_wrapper">
+                                                <div className="timeline_feature_sign">F</div>
+                                                <div className="timeline_feature_name">Atbash Cipher</div>
+                                            </div>
                                         </button>
                                     </li>
                                     <li>
@@ -45,7 +48,10 @@ class Modal extends React.Component {
                                                 this.props.changeMethod(evt.target.value)
                                             }}
                                         >
-                                        Ceasars Cipher
+                                            <div className="modal_method_wrapper">
+                                                <div className="timeline_feature_sign">F</div>
+                                                <div className="timeline_feature_name">Ceasars Cipher</div>
+                                            </div>
                                         </button>
                                     </li>
                                     <li>
@@ -57,7 +63,10 @@ class Modal extends React.Component {
                                                 this.props.changeMethod(evt.target.value)
                                             }}
                                         >
-                                        Skytale
+                                            <div className="modal_method_wrapper">
+                                                <div className="timeline_feature_sign">F</div>
+                                                <div className="timeline_feature_name">Skytale</div>
+                                            </div>
                                         </button>
                                     </li>
                                     <li>
@@ -69,7 +78,10 @@ class Modal extends React.Component {
                                                 this.props.changeMethod(evt.target.value)
                                             }}
                                         >
-                                        Affine Cipher
+                                            <div className="modal_method_wrapper">
+                                                <div className="not_in_timeline_feature_sign">N</div>
+                                                <div className="timeline_feature_name">Affine</div>
+                                            </div>
                                         </button>
                                     </li>
                                     <li>
@@ -81,7 +93,10 @@ class Modal extends React.Component {
                                                 this.props.changeMethod(evt.target.value)
                                             }}
                                         >
-                                        Playfair Cipher
+                                            <div className="modal_method_wrapper">
+                                                <div className="timeline_feature_sign">F</div>
+                                                <div className="timeline_feature_name">Playfair Cipher</div>
+                                            </div>
                                         </button>
                                     </li>
                                     <li>
@@ -93,7 +108,10 @@ class Modal extends React.Component {
                                                 this.props.changeMethod(evt.target.value)
                                             }}
                                         >
-                                        One Time Pad
+                                            <div className="modal_method_wrapper">
+                                                <div className="timeline_feature_sign">F</div>
+                                                <div className="timeline_feature_name">One Time Pad</div>
+                                            </div>
                                         </button>
                                     </li>
                                     <li>
@@ -105,7 +123,10 @@ class Modal extends React.Component {
                                                 this.props.changeMethod(evt.target.value)
                                             }}
                                         >
-                                        ROT13
+                                            <div className="modal_method_wrapper">
+                                                <div className="not_in_timeline_feature_sign">N</div>
+                                                <div className="timeline_feature_name">Rot13</div>
+                                            </div>
                                         </button>
                                     </li>
                                     <li>
@@ -117,7 +138,10 @@ class Modal extends React.Component {
                                                 this.props.changeMethod(evt.target.value)
                                             }}
                                         >
-                                        Alphabetic Substitution Cipher
+                                            <div className="modal_method_wrapper">
+                                                <div className="not_in_timeline_feature_sign">N</div>
+                                                <div className="timeline_feature_name">Alphabetic Substitution Cipher</div>
+                                            </div>
                                         </button>
                                     </li>
                                 </ul>
@@ -134,7 +158,10 @@ class Modal extends React.Component {
                                                 this.props.changeMethod(evt.target.value)
                                             }}
                                         >
-                                        Morse Code
+                                            <div className="modal_method_wrapper">
+                                                <div className="timeline_feature_sign">F</div>
+                                                <div className="timeline_feature_name">Morse Code</div>
+                                            </div>
                                         </button>
                                     </li>
                                 </ul>
@@ -151,7 +178,10 @@ class Modal extends React.Component {
                                                 this.props.changeMethod(evt.target.value)
                                             }}
                                         >
-                                        Nihilist Cipher
+                                            <div className="modal_method_wrapper">
+                                                <div className="timeline_feature_sign">F</div>
+                                                <div className="timeline_feature_name">Nihilist Cipher</div>
+                                            </div>
                                         </button>
                                     </li>
                                     <li>
@@ -163,7 +193,10 @@ class Modal extends React.Component {
                                                 this.props.changeMethod(evt.target.value)
                                             }}
                                         >
-                                        Trifid Cipher
+                                            <div className="modal_method_wrapper">
+                                                <div className="timeline_feature_sign">F</div>
+                                                <div className="timeline_feature_name">Trifid Cipher</div>
+                                            </div>
                                         </button>
                                     </li>
                                 </ul>
@@ -180,7 +213,10 @@ class Modal extends React.Component {
                                                 this.props.changeMethod(evt.target.value)
                                             }}
                                         >
-                                        Vigenère Cipher
+                                            <div className="modal_method_wrapper">
+                                                <div className="timeline_feature_sign">F</div>
+                                                <div className="timeline_feature_name">Vigenère Cipher</div>
+                                            </div>
                                         </button>
                                     </li>
                                 </ul>
@@ -197,7 +233,10 @@ class Modal extends React.Component {
                                                 this.props.changeMethod(evt.target.value)
                                             }}
                                         >
-                                        RSA
+                                            <div className="modal_method_wrapper">
+                                                <div className="timeline_feature_sign">F</div>
+                                                <div className="timeline_feature_name">RSA</div>
+                                            </div>
                                         </button>
                                     </li>
                                 </ul>
@@ -214,7 +253,10 @@ class Modal extends React.Component {
                                                 this.props.changeMethod(evt.target.value)
                                             }}
                                         >
-                                        Replace
+                                            <div className="modal_method_wrapper">
+                                                <div className="not_in_timeline_feature_sign">N</div>
+                                                <div className="timeline_feature_name">Replace</div>
+                                            </div>
                                         </button>
                                     </li>
                                     <li>
@@ -226,7 +268,10 @@ class Modal extends React.Component {
                                                 this.props.changeMethod(evt.target.value)
                                             }}
                                         >
-                                        Reverse
+                                            <div className="modal_method_wrapper">
+                                                <div className="not_in_timeline_feature_sign">N</div>
+                                                <div className="timeline_feature_name">Reverse</div>
+                                            </div>
                                         </button>
                                     </li>
                                     <li>
@@ -238,13 +283,20 @@ class Modal extends React.Component {
                                                 this.props.changeMethod(evt.target.value)
                                             }}
                                         >
-                                        Case Transforms
+                                            <div className="modal_method_wrapper">
+                                                <div className="not_in_timeline_feature_sign">N</div>
+                                                <div className="timeline_feature_name">Case Transforms</div>
+                                            </div>
                                         </button>
                                     </li>
                                 </ul>
                             </div>
                         </div>
                         <div className="loadpreset_explanatory" style={{width:'100%', borderTop:'1px solid #424242', marginLeft:'auto', backgroundColor: 'rgb(39, 39, 39)'}}>
+                            <div className="modal_legend">
+                                <div className="modal_explanation_wrapper"><div className="timeline_feature_sign">F</div> Featured in Timeline</div>
+                                <div className="modal_explanation_wrapper"><div className="not_in_timeline_feature_sign">N</div> Not featured in Timeline</div>
+                            </div>
                             <button onClick={this.props.onModalToggle}>Close</button>
                         </div>
                     </div>
