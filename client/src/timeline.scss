@@ -104,8 +104,8 @@ $timeline_font_color: white;
         min-width: 100%;
         max-width: 45vw;
         height: 0px;
-        position: sticky;
-        top: 38px;
+        position: relative;
+        top: 37px;
         border-bottom: 4px solid rgba(62, 148, 197, 1);
     }
 
@@ -116,12 +116,12 @@ $timeline_font_color: white;
     }
 
     .slick-next {
-        right: -17px;
-        top: 33px;
+        width: auto;
+        height: auto;
     }
     .slick-prev {
-        left: -28px;
-        top: 33px;
+        width: auto;
+        height: auto;
     }
 
     .slick-track {

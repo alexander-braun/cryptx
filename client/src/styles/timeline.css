@@ -116,9 +116,8 @@
   min-width: 100%;
   max-width: 45vw;
   height: 0px;
-  position: -webkit-sticky;
-  position: sticky;
-  top: 38px;
+  position: relative;
+  top: 37px;
   border-bottom: 4px solid #3e94c5;
 }
 
@@ -127,13 +126,13 @@
 }
 
 #timeline .slick-next {
-  right: -17px;
-  top: 33px;
+  width: auto;
+  height: auto;
 }
 
 #timeline .slick-prev {
-  left: -28px;
-  top: 33px;
+  width: auto;
+  height: auto;
 }
 
 #timeline .slick-track:focus {
