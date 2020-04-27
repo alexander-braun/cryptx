@@ -119,7 +119,7 @@ const caesar = (() => {
     for (let i = 1; i < 26; i++) {
       let salt = i
       const textoutput = readCharCrack(textinput, salt)
-      arr.push(textoutput.split(' '))
+      arr.push([textoutput.split(' '), i])
     }
     return arr
   }
@@ -129,10 +129,10 @@ const caesar = (() => {
     let possibleCombinations = {}
     let counter = 0
     // Brute Force lookup all possibilities against the english dictionary
-
     for (let output of allOutputs) {
       possibleCombinations[counter] = []
-      for (let word of output) {
+      for (let word of output[0]) {
+        possibleCombinations[counter].shiftV = output[1]
         if (words[word] === 1) {
           possibleCombinations[counter].push(word)
         }
@@ -145,16 +145,21 @@ const caesar = (() => {
     let keys = Object.keys(possibleCombinations)
     let length = 0
     let result
+    let shiftV
 
     for (let key of keys) {
       if (possibleCombinations[key].length > length) {
         length = possibleCombinations[key].length
         result = possibleCombinations[key]
+        shiftV = 26 - possibleCombinations[key].shiftV
       }
     }
     if (length === 0)
       return `Weird text you got there! This tool can only crack english texts that are encrypted with the caesar cipher! Your input: "${userInput}"`
-    return result.join(' ')
+    direction = 'decrypt'
+    setSaltInput(shiftV)
+    result = encrypt()
+    return result
   }
 
   const loadWordbook = () => {
