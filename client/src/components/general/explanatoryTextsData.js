@@ -54,6 +54,13 @@ const explenatory = {
         'linksrc': `https://en.wikipedia.org/wiki/Substitution_cipher`,
         'linkname': `Alphabetic Substitution Cipher`
     },
+    'trifid' : {
+        'normal': `The trifid cipher uses a table to fractionate each plaintext letter into a trigram,[2] mixes the constituents 
+        of the trigrams, and then applies the table in reverse to turn these mixed trigrams into ciphertext letters. Delastelle 
+        notes that the most practical system uses three symbols for the trigrams.`,
+        'linksrc': `https://en.wikipedia.org/wiki/Trifid_cipher`,
+        'linkname': `Trifid Cipher`
+    },
     'casetransform': {
         'normal': `Transforms your input text into the selected case-format.`
     },

@@ -9,7 +9,7 @@ function BarChart({ data, alphabet, inputValue }) {
   const svgRef = useRef();
   const wrapperRef = useRef();
   const dimensions = useResizeObserver(wrapperRef);
-
+  console.log(data)
   // will be called initially and on every data change
   useEffect(() => {
     if(!input) return undefined
