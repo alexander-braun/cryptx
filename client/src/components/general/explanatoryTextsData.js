@@ -1,9 +1,7 @@
 const explenatory = {
     'atbash': {
-        'normal': `Atbash (Hebrew: אתבש‎; also transliterated Atbaš) is a monoalphabetic 
-        substitution cipher originally used to encrypt the Hebrew alphabet. 
-        It can be modified for use with any known writing system with a standard 
-        collating order.`,
+        'normal': `Atbash is a monoalphabetic substitution cipher. While it was used to encrypt the hebrew alphabet, it can still be
+        used to encrypt nearly all known alphabets. Atbash reverses the mapping of the characters and is very easy to break.`,
         'crack': `The cracking function does exactly the same as the encryption- and decryption algorithm.
         There is only one possibility for an encrypted letter to go to. F.e. the letter 'A' will
         always be mapped to 'Z' and 'Z' will always be mapped back to 'A'.`,
@@ -11,13 +9,9 @@ const explenatory = {
         'linkname': `Atbash Cipher Wikipedia`
     },
     'caesar': {
-        'normal': `In cryptography, a Caesar cipher, also known as Caesar's cipher, the shift 
-        cipher, Caesar's code or Caesar shift, is one of the simplest and most 
-        widely known encryption techniques. It is a type of substitution cipher 
-        in which each letter in the plaintext is replaced by a letter some fixed 
-        number of positions down the alphabet. For example, with a left shift of 3,
-        D would be replaced by A, E would become B, and so on. The method is named 
-        after Julius Caesar, who used it in his private correspondence.`,
+        'normal': `The Caesar cipher is a substitution cypher wich was used by Julius Caesar to encrypt
+        his correspondences. The classic shift of 3 maps every character 3 places before its original 
+        position. F.e. a "T" in right shift would become a "W"`,
         'crack': `Use this functionality on encrypted texts!
             This method uses a brute force attack with the english dictionary. 
             It gave better results for shorter phrases and words then frequency analysis.
@@ -26,36 +20,29 @@ const explenatory = {
         'linkname': `Caesar's cipher Wikipedia`
     },
     'affine': {
-        'normal': `The affine is a type of monoalphabetic substitution cipher, where each letter in an alphabet 
-        is mapped to its numeric equivalent, encrypted using a simple mathematical function, and 
-        converted back to a letter. The formula used means that each letter encrypts to one other 
-        letter, and back again, meaning the cipher is essentially a standard substitution cipher 
-        with a rule governing which letter goes to which. As such, it has the weaknesses of all 
-        substitution ciphers. Each letter is enciphered with the function (ax + b) mod 26, where b 
-        is the magnitude of the shift.`,
+        'normal': `The affine cipher is a monoalphabetic substitution cipher. Each letter in the alphabet is mapped
+        to its numeric equivalent and encrypted using a simple formula: E(x) = (ax + b) mod m. The resulting number
+        is then converted back to its alphabetic equivalent`,
         'crack': `No Crack function yet  :(`,
         'linksrc': `https://en.wikipedia.org/wiki/Affine_cipher`,
         'linkname': `Affine Cipher Wikipedia`
     },
     'nihilist': {
-        'normal': `In the history of cryptography, the Nihilist cipher is a manually operated symmetric encryption cipher, 
-        originally used by Russian Nihilists in the 1880s to organize terrorism against the tsarist regime. The term is 
-        sometimes extended to several improved algorithms used much later for communication by the First Chief Directorate 
-        with its spies.`,
+        'normal': `Used by russian nihilists in the 1880's the cipher was used to organize attacks against the tsarist regime. The
+        cipher uses a polybius square with a mixed alphabet.`,
         'crack': `No Crack function yet  :(`,
         'linksrc': `https://en.wikipedia.org/wiki/Nihilist_cipher`,
         'linkname': `Nihilist Cipher Wikipedia`
     },
     'substitution': {
-        'normal': `In cryptography, a substitution cipher is a method of encrypting by which units of plaintext are replaced 
-        with ciphertext, according to a fixed system; the "units" may be single letters (the most common), pairs of letters, 
-        triplets of letters, mixtures of the above, and so forth. The receiver deciphers the text by performing the inverse substitution.`,
+        'normal': `The substitution cipher substitutes letters of the the original alphabet with letters from the new alphabet. Without
+        the key, this cipher is very hard to crack.`,
         'crack': `No Crack function yet  :(`,
         'linksrc': `https://en.wikipedia.org/wiki/Substitution_cipher`,
         'linkname': `Alphabetic Substitution Cipher`
     },
     'trifid' : {
-        'normal': `The trifid cipher uses a table to fractionate each plaintext letter into a trigram,[2] mixes the constituents 
+        'normal': `The trifid cipher uses a table to fractionate each plaintext letter into a trigram, mixes the constituents 
         of the trigrams, and then applies the table in reverse to turn these mixed trigrams into ciphertext letters. Delastelle 
         notes that the most practical system uses three symbols for the trigrams.`,
         'linksrc': `https://en.wikipedia.org/wiki/Trifid_cipher`,
@@ -69,33 +56,16 @@ const explenatory = {
         'crack': `No Crack function yet  :(`
     },
     'vigenere': {
-        'normal': `The Vigenère cipher is a method of encrypting alphabetic text 
-        by using a series of interwoven Caesar ciphers, based on the letters of a keyword. It employs a 
-        form of polyalphabetic substitution.
-
-        First described by Giovan Battista Bellaso in 1553, the cipher is easy to understand and implement, 
-        but it resisted all attempts to break it until 1863, three centuries later. This earned it the description 
-        le chiffre indéchiffrable (French for 'the indecipherable cipher'). Many people have tried to 
-        implement encryption schemes that are essentially Vigenère ciphers. In 1863, Friedrich Kasiski was 
-        the first to publish a general method of deciphering Vigenère ciphers.
-
-        In the 19th century the scheme was misattributed to Blaise de Vigenère (1523–1596), and so acquired 
-        its present name.`,
+        'normal': `The Vigenère Cipher was invented by Giovan Battista Bellaso in 1553 and is a polyalphabetic
+        substitution cipher. It wasn't broken until 1863 and earned itself the description "Le chiffre indéchiffrable.`,
         'crack': `No Crack function yet  :(`,
         'linksrc': `https://en.wikipedia.org/wiki/Vigen%C3%A8re_cipher`,
         'linkname': `Vigenere Cipher Wikipedia`,
     },
     'playfair': {
-        'normal': `The Playfair cipher or Playfair square or Wheatstone-Playfair cipher is a manual symmetric encryption 
-        technique and was the first literal digram substitution cipher. The scheme was invented in 1854 by 
-        Charles Wheatstone, but bears the name of Lord Playfair for promoting its use.
-
-        The technique encrypts pairs of letters (bigrams or digrams), instead of single letters as in the simple 
-        substitution cipher and rather more complex Vigenère cipher systems then in use. The Playfair is thus 
-        significantly harder to break since the frequency analysis used for simple substitution ciphers does 
-        not work with it. The frequency analysis of bigrams is possible, but considerably more difficult. With 
-        600 possible bigrams rather than the 26 possible monograms (single symbols, usually letters in this context),
-        a considerably larger cipher text is required in order to be useful.`,
+        'normal': `The playfair cipher was invented in 1854 by Charles Wheatstone. It encrypts pairs of letters instead
+        of single letters and is harder to break then simple substitution ciphers. There are 600 possible bigrams rather
+        then 26 monograms wich makes it necessary to obtain a longer encrypted text to break the cipher.`,
         'crack': `No Crack function yet  :(`,
         'linksrc': `https://en.wikipedia.org/wiki/Playfair_cipher`,
         'linkname': `Playfair Cipher Wikipedia`
@@ -107,12 +77,7 @@ const explenatory = {
         is the basic unit of time measurement in Morse code transmission. The duration of a dash is three times the 
         duration of a dot. Each dot or dash within a character is followed by period of signal absence, called a space, 
         equal to the dot duration. The letters of a word are separated by a space of duration equal to three dots, and 
-        the words are separated by a space equal to seven dots.To increase the efficiency of encoding, Morse code was 
-        designed so that the length of each symbol is approximately inverse to the frequency of occurrence in text of the 
-        English language character that it represents. Thus the most common letter in English, the letter "E", has the 
-        shortest code: a single dot. Because the Morse code elements are specified by proportion rather than specific 
-        time durations, the code is usually transmitted at the highest rate that the receiver is capable of decoding. The
-        Morse code transmission rate (speed) is specified in groups per minute, commonly referred to as words per minute.`,
+        the words are separated by a space equal to seven dots.`,
         'crack': `No Crack function yet  :(`,
         'linksrc': 'https://en.wikipedia.org/wiki/Morse_code',
         'linkname': `Morse Code Wikipedia` 
@@ -124,33 +89,16 @@ const explenatory = {
         'linkname': ''
     },
     'skytale': {
-        'normal': `In cryptography, a scytale is a tool used to perform a transposition cipher, consisting of a 
-        cylinder with a strip of parchment wound around it on which is written a message. The ancient 
-        Greeks, and the Spartans in particular, are said to have used this cipher to communicate during 
-        military campaigns.
-
-        The recipient uses a rod of the same diameter on which the parchment is wrapped to read the message. 
-        It has the advantage of being fast and not prone to mistakes—a necessary property when on the 
-        battlefield. It can, however, be easily broken. Since the strip of parchment hints strongly at the 
-        method, the ciphertext would have to be transferred to something less suggestive, somewhat reducing 
-        the advantage noted.`,
+        'normal': `The skytale is a tool to perform a transposition cipher. A cylinder is used to wrap the message
+        around it. It was used by the ancient greeks and the spartans to communicate their battle plans.`,
         'crack': `No Crack function yet  :(`,
         'linksrc': `https://en.wikipedia.org/wiki/Scytale`,
         'linkname': `Skytale Wikipedia`
     },
     'otp': {
-        'normal': `In cryptography, the one-time pad (OTP) is an encryption technique that cannot be cracked, 
-        but requires the use of a one-time pre-shared key the same size as, or longer than, the message 
-        being sent. In this technique, a plaintext is paired with a random secret key (also referred 
-        to as a one-time pad). Then, each bit or character of the plaintext is encrypted by combining 
-        it with the corresponding bit or character from the pad using modular addition. If the key 
-        is truly random, at least as long as the plaintext, never reused in whole or in 
-        part, and kept completely secret, then the resulting ciphertext will be impossible to 
-        decrypt or break. It has also been proven that any cipher with the property of perfect 
-        secrecy must use keys with effectively the same requirements as OTP keys. Digital versions 
-        of one-time pad ciphers have been used by nations for critical diplomatic and military 
-        communication, but the problems of secure key distribution have made them impractical for 
-        most applications.`,
+        'normal': `The OTP is an unbreakable form of encryption when used correctly. Every character is encoded
+        randomly to a new character. A "B" in one place can become a "Z" in another place. The key has to be shared
+        to decrypt messages.`,
         'crack': `No Crack function yet  :(`,
         'linksrc': `https://en.wikipedia.org/wiki/One-time_pad`,
         'linkname': `One Time Pad`
