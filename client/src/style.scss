@@ -1251,10 +1251,21 @@ div {
 }
 
 #footer_links {
+  margin-left: auto;
   margin-left: $maxleft1500;
   font-family: $font;
-  font-size: 15pt;
+  font-size: .8rem;
   font-weight: 200;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.596);
+
+  #github_icon {
+    margin-right: 2rem;
+    font-size: 2rem;
+  }
 }
 
 #chi_result {

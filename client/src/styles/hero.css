@@ -1,17 +1,9 @@
 #hero {
   min-height: 100vh;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -ms-flex-line-pack: center;
-      align-content: center;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: center;
   background-attachment: fixed;
   background-size: cover;
   background-repeat: no-repeat;
@@ -47,9 +39,7 @@
 }
 
 #hero div {
-  -ms-flex-item-align: center;
-      -ms-grid-row-align: center;
-      align-self: center;
+  align-self: center;
 }
 
 #hero h3 {
@@ -68,10 +58,8 @@
 #hero h3 .hero_link {
   display: inline-block;
   position: relative;
-  -webkit-transition-duration: .1s;
-          transition-duration: .1s;
-  -webkit-transition-timing-function: ease-in;
-          transition-timing-function: ease-in;
+  transition-duration: .1s;
+  transition-timing-function: ease-in;
   border-bottom: 3px solid transparent;
   margin-bottom: 2em;
   letter-spacing: .1rem;
@@ -96,98 +84,55 @@
 }
 
 .bounce {
-  -webkit-animation-name: bounce;
   animation-name: bounce;
-  -webkit-transform-origin: center bottom;
   transform-origin: center bottom;
-  -webkit-animation-duration: 1s;
   animation-duration: 1s;
-  -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
-  -webkit-animation-iteration-count: 4;
-          animation-iteration-count: 4;
+  animation-iteration-count: 4;
 }
 
 .bounce:hover {
-  -webkit-animation-iteration-count: 0;
-          animation-iteration-count: 0;
-}
-
-@-webkit-keyframes bounce {
-  0%, 20%, 53%, 80%, 100% {
-    -webkit-transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-  }
-  40%, 43% {
-    -webkit-transition-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
-    transition-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
-    -webkit-transform: translate3d(0, -30px, 0);
-  }
-  70% {
-    -webkit-transition-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
-    transition-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
-    -webkit-transform: translate3d(0, -15px, 0);
-  }
-  95% {
-    -webkit-transform: translate3d(0, -4px, 0);
-    transform: translate3d(0, -4px, 0);
-  }
+  animation-iteration-count: 0;
 }
 
 @keyframes bounce {
   0%, 20%, 53%, 80%, 100% {
-    -webkit-transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
     transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
   }
   40%, 43% {
-    -webkit-transition-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
     transition-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
-    -webkit-transform: translate3d(0, -30px, 0);
     transform: translate3d(0, -30px, 0);
   }
   70% {
-    -webkit-transition-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
     transition-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
-    -webkit-transform: translate3d(0, -15px, 0);
     transform: translate3d(0, -15px, 0);
   }
   90% {
-    -webkit-transform: translate3d(0, -4px, 0);
     transform: translate3d(0, -4px, 0);
   }
 }
 
 #hero_text {
-  -ms-grid-column-align: center;
-      justify-self: center;
-  -ms-flex-item-align: center;
-      -ms-grid-row-align: center;
-      align-self: center;
+  justify-self: center;
+  align-self: center;
   width: auto;
   margin-top: 30vh;
 }
 
 #scrolldown {
   margin-bottom: 150px;
-  -ms-flex-item-align: center;
-      -ms-grid-row-align: center;
-      align-self: center;
+  align-self: center;
   cursor: pointer;
   transition: all 200ms;
   -webkit-transition: all 200ms;
-  -webkit-transition-timing-function: ease-in-out;
-          transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out;
 }
 
 #scrolldown:hover {
   transition: all 200ms;
   -webkit-transition: all 200ms;
-  -webkit-transform: scale(1.2);
-          transform: scale(1.2);
+  transform: scale(1.2);
 }
 
 @media only screen and (max-width: 1500px) {
@@ -234,13 +179,9 @@
   }
   #hero h3 {
     font-size: 14px;
-    width: -webkit-fit-content;
-    width: -moz-fit-content;
     width: fit-content;
-    -webkit-margin-before: 0;
-            margin-block-start: 0;
-    -webkit-margin-after: 0;
-            margin-block-end: 0;
+    margin-block-start: 0;
+    margin-block-end: 0;
     margin: 0 auto;
     margin-top: 10px;
   }

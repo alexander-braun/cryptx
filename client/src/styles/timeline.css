@@ -1,26 +1,15 @@
 .history_element {
   font-weight: 400;
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   font-size: 12pt;
   height: 70px;
   display: flex;
   flex-direction: column;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -57,19 +46,15 @@
   margin: 0px;
   width: 100%;
   text-align: center;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
   width: fit-content;
 }
 
 .timeline_description, .dot, h3 {
-  -webkit-transition-duration: 0.2s;
-          transition-duration: 0.2s;
+  transition-duration: 0.2s;
 }
 
 .dot {
-  -webkit-transition-duration: 0.2s;
-          transition-duration: 0.2s;
+  transition-duration: 0.2s;
 }
 
 .slick-current .dot {
@@ -163,8 +148,7 @@
 @media only screen and (max-width: 700px) {
   #timeline {
     margin-top: 0;
-    -webkit-box-sizing: border-box;
-            box-sizing: border-box;
+    box-sizing: border-box;
     max-width: 50vw;
     padding: 30px;
   }
