@@ -1,8 +1,8 @@
-import { SET_IOC_OUTPUT } from './constants'
+import { SET_IOC_OUTPUT } from './constants';
 
-const setIocOutput = output => ({
-    type: SET_IOC_OUTPUT,
-    output
-})
+const setIocOutput = (output) => ({
+  type: SET_IOC_OUTPUT,
+  output,
+});
 
-export default setIocOutput
+export default setIocOutput;

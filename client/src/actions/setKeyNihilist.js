@@ -1,8 +1,8 @@
-import { SET_KEYWORD_NIHILIST } from "./constants"
+import { SET_KEYWORD_NIHILIST } from './constants';
 
-const setKeywordNihilist = keywordNihilist => ({
-    type: SET_KEYWORD_NIHILIST,
-    keywordNihilist
-})
+const setKeywordNihilist = (keywordNihilist) => ({
+  type: SET_KEYWORD_NIHILIST,
+  keywordNihilist,
+});
 
-export default setKeywordNihilist
+export default setKeywordNihilist;

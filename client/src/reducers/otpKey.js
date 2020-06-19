@@ -1,12 +1,12 @@
-import { SET_OTP_KEY } from '../actions/constants'
+import { SET_OTP_KEY } from '../actions/constants';
 
 const otpKey = (state = '', action) => {
-  switch(action.type) {
+  switch (action.type) {
     case SET_OTP_KEY:
-      return action.otpKey
+      return action.otpKey;
     default:
-      return state
+      return state;
   }
-}
+};
 
-export default otpKey
+export default otpKey;

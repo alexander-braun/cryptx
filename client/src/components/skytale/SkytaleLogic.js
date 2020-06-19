@@ -1,162 +1,157 @@
 const skytale = (() => {
-    let userInput, caseFormat, ringLength, direction, foreignChars
+  let userInput, caseFormat, ringLength, direction, foreignChars;
 
-    const setUserInput = (value) => {
-        value = value.split(' ').join('')
-        userInput = value
+  const setUserInput = (value) => {
+    value = value.split(' ').join('');
+    userInput = value;
+  };
+
+  const setCase = (value) => {
+    caseFormat = value;
+  };
+
+  const setDirection = (value) => {
+    direction = value;
+  };
+
+  const setForeignChars = (value) => {
+    foreignChars = value;
+  };
+
+  const setRingLength = (value) => {
+    ringLength = value;
+  };
+
+  const calcSkytaleLength = () => {
+    return Math.ceil(userInput.length / ringLength);
+  };
+
+  const getProjectedValue = () => {
+    let projectedValue = '';
+
+    if (direction === 'encrypt') {
+      setDirection('decrypt');
+      projectedValue = transformText(false)[0];
+      return projectedValue;
+    } else if (direction === 'decrypt') {
+      let tempVal = transformText(false)[0];
+      setUserInput(tempVal);
+      setDirection('decrypt');
+      projectedValue = transformText(false)[0];
+      return projectedValue;
+    }
+    return projectedValue;
+  };
+
+  const transformText = () => {
+    let input = userInput;
+    if (foreignChars === 'ignore') {
+      let inp = [];
+      let alphabet = 'abcdefghijklmnopqrstuvwxyz';
+      for (let i = 0; i < input.length; i++) {
+        if (alphabet.indexOf(input[i].toLowerCase()) !== -1) inp.push(input[i]);
+      }
+      input = inp.join('');
     }
 
-    const setCase = (value) => {
-        caseFormat = value
-    }
-
-    const setDirection = (value) => {
-        direction = value
-    }
-
-    const setForeignChars = (value) => {
-        foreignChars = value
-    }
-
-    const setRingLength = (value) => {
-        ringLength = value
-    }
-
-    const calcSkytaleLength = () => {
-        return Math.ceil(userInput.length / ringLength)
-    }
-
-    const getProjectedValue = () => {
-        let projectedValue = ''
-
-        if(direction === 'encrypt') {
-            setDirection('decrypt')
-            projectedValue = transformText(false)[0]
-            return projectedValue
+    if (direction === 'encrypt') {
+      const skytaleArr = [[]];
+      let j = 0;
+      for (let i = 0; i < input.length; i++) {
+        if (i % ringLength === 0 && i !== 0) {
+          j++;
+          skytaleArr.push([]);
+          skytaleArr[j].push(input[i]);
+        } else {
+          skytaleArr[j].push(input[i]);
         }
-        else if(direction === 'decrypt') {
-            let tempVal = transformText(false)[0]
-            setUserInput(tempVal)
-            setDirection('decrypt')
-            projectedValue = transformText(false)[0]
-            return projectedValue
+      }
+
+      const encryptedText = [];
+      for (let i = 0; i < ringLength; i++) {
+        for (let j = 0; j < skytaleArr.length; j++) {
+          if (skytaleArr[j][i]) encryptedText.push(skytaleArr[j][i]);
         }
-        return projectedValue
-    }
+      }
 
-    const transformText = () => {
-        let input = userInput
-        if(foreignChars === 'ignore') {
-            let inp = []
-            let alphabet = 'abcdefghijklmnopqrstuvwxyz'
-            for(let i = 0; i < input.length; i++) {
-                if(alphabet.indexOf(input[i].toLowerCase()) !== -1) inp.push(input[i])
-            }
-            input = inp.join('')
+      let encrypted;
+
+      if (caseFormat === 'ignore') {
+        encrypted = encryptedText.join('').toLowerCase();
+      } else {
+        encrypted = encryptedText.join('');
+      }
+
+      let skytaleLength = calcSkytaleLength();
+      return [encrypted, skytaleLength];
+    } else if (direction === 'decrypt') {
+      const skytaleRows = Math.ceil(input.length / ringLength);
+      let lastRowLength = input.length % ringLength;
+      if (lastRowLength === 0) lastRowLength = ringLength;
+
+      const skyArr = [];
+
+      for (let i = 0; i < skytaleRows; i++) {
+        skyArr.push([]);
+      }
+
+      let indexOne = 0;
+      for (let i = 0; i < lastRowLength; i++) {
+        for (let j = 0; j < skytaleRows; j++) {
+          skyArr[j].push(input[indexOne]);
+          indexOne++;
         }
-        
-        if(direction === 'encrypt') {
-            const skytaleArr = [[]]
-            let j = 0;
-            for(let i = 0; i < input.length; i++) {
-                if(i % ringLength === 0 && i !== 0) {
-                    j++
-                    skytaleArr.push([])
-                    skytaleArr[j].push(input[i])
-                } else {
-                    skytaleArr[j].push(input[i])
-                }
-            }
+      }
 
-            const encryptedText = []
-            for(let i = 0; i < ringLength; i++) {
-                for(let j = 0; j < skytaleArr.length; j++) {
-                    if(skytaleArr[j][i]) encryptedText.push(skytaleArr[j][i])
-                }
-            }
+      let restInput = input.slice(skytaleRows * lastRowLength);
 
-            let encrypted
-
-            if(caseFormat === 'ignore') {
-                encrypted = encryptedText.join('').toLowerCase()
-            }
-            else {
-                encrypted = encryptedText.join('')
-            }
-
-            let skytaleLength = calcSkytaleLength()
-            return [encrypted, skytaleLength]
+      let indexTwo = 0;
+      for (let j = 0; j < ringLength - lastRowLength; j++) {
+        for (let i = 0; i < skytaleRows - 1; i++) {
+          skyArr[i].push(restInput[indexTwo]);
+          indexTwo++;
         }
-        else if(direction === 'decrypt') {
-            
-            const skytaleRows = Math.ceil(input.length / ringLength)
-            let lastRowLength = input.length % ringLength
-            if(lastRowLength === 0) lastRowLength = ringLength
+      }
 
-            const skyArr = []
+      let encrypted;
 
-            for(let i = 0; i < skytaleRows; i++) {
-                skyArr.push([])
-            }
+      if (caseFormat === 'ignore') {
+        encrypted = skyArr.flat().join('').toLowerCase();
+      } else {
+        encrypted = skyArr.flat().join('');
+      }
 
-            let indexOne = 0;
-            for(let i = 0; i < lastRowLength; i++) {
-                for(let j = 0; j < skytaleRows; j++) {
-                    skyArr[j].push(input[indexOne])
-                    indexOne++
-                }
-            }
-
-            let restInput = input.slice(skytaleRows * lastRowLength)
-            
-            let indexTwo = 0
-            for(let j = 0; j < ringLength - lastRowLength; j++) {
-                for(let i = 0; i < skytaleRows - 1; i++) {
-                    skyArr[i].push(restInput[indexTwo])
-                    indexTwo++
-                }    
-            }
-            
-            let encrypted
-
-            if(caseFormat === 'ignore') {
-                encrypted = skyArr.flat().join('').toLowerCase()
-            }
-            else {
-              encrypted = skyArr.flat().join('')  
-            }
-
-            let skytaleLenght = calcSkytaleLength()
-            return [encrypted, skytaleLenght]
-        }
+      let skytaleLenght = calcSkytaleLength();
+      return [encrypted, skytaleLenght];
     }
+  };
 
-    //Cracking functionality
+  //Cracking functionality
 
-    const generateOutputs = () => {
-        direction = 'decrypt'
-        let outputs = []
-        for(let i = 3; i <= 20; i++) {
-            ringLength = i
-            outputs.push(transformText(), i)
-        }
-        console.log(outputs)
+  const generateOutputs = () => {
+    direction = 'decrypt';
+    let outputs = [];
+    for (let i = 3; i <= 20; i++) {
+      ringLength = i;
+      outputs.push(transformText(), i);
     }
+    console.log(outputs);
+  };
 
-    const setAll = (direction, caseFormat, input, ringLength, foreignChars) => {
-        setDirection(direction)
-        setCase(caseFormat)
-        setUserInput(input)
-        setRingLength(ringLength)
-        setForeignChars(foreignChars)
-    }
+  const setAll = (direction, caseFormat, input, ringLength, foreignChars) => {
+    setDirection(direction);
+    setCase(caseFormat);
+    setUserInput(input);
+    setRingLength(ringLength);
+    setForeignChars(foreignChars);
+  };
 
-    return {
-        encrypt: transformText,
-        setAll: setAll,
-        getProjectedValue: getProjectedValue,
-        generateOutputs: generateOutputs
-    }
-})()
+  return {
+    encrypt: transformText,
+    setAll: setAll,
+    getProjectedValue: getProjectedValue,
+    generateOutputs: generateOutputs,
+  };
+})();
 
-export default skytale
+export default skytale;

@@ -1,6 +1,6 @@
-import { TOGGLE_DIRECTION } from "./constants"
+import { TOGGLE_DIRECTION } from './constants';
 
-export const toggleDirection = direction => ({
-    type: TOGGLE_DIRECTION,
-    direction
-})
+export const toggleDirection = (direction) => ({
+  type: TOGGLE_DIRECTION,
+  direction,
+});

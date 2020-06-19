@@ -1,8 +1,8 @@
-import { SET_NIHILIST_SQUARE } from "./constants"
+import { SET_NIHILIST_SQUARE } from './constants';
 
-const setNihilistSquare = nihilistSquare => ({
-    type: SET_NIHILIST_SQUARE,
-    nihilistSquare
-})
+const setNihilistSquare = (nihilistSquare) => ({
+  type: SET_NIHILIST_SQUARE,
+  nihilistSquare,
+});
 
-export default setNihilistSquare 
+export default setNihilistSquare;

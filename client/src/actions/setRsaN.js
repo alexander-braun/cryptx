@@ -1,8 +1,8 @@
-import { SET_RSA_N } from './constants'
+import { SET_RSA_N } from './constants';
 
-const setRsaN = n => ({
-    type: SET_RSA_N,
-    n
-})
+const setRsaN = (n) => ({
+  type: SET_RSA_N,
+  n,
+});
 
-export default setRsaN
+export default setRsaN;

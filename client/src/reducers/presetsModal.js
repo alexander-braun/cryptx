@@ -1,21 +1,21 @@
-import { TOGGLE_PRESETS_MODAL } from '../actions/constants'
+import { TOGGLE_PRESETS_MODAL } from '../actions/constants';
 
 const initialState = {
-    modalOpen: false,
-    target: null
-}
+  modalOpen: false,
+  target: null,
+};
 
 const presetsModal = (state = initialState, action) => {
-    switch(action.type) {
-        case TOGGLE_PRESETS_MODAL:
-            return {
-                ...state,
-                modalOpen: !state.modalOpen,
-                target: action.target
-            }
-        default:
-            return state
-    }
-}
+  switch (action.type) {
+    case TOGGLE_PRESETS_MODAL:
+      return {
+        ...state,
+        modalOpen: !state.modalOpen,
+        target: action.target,
+      };
+    default:
+      return state;
+  }
+};
 
-export default presetsModal
+export default presetsModal;

@@ -1,8 +1,8 @@
-import { TOGGLE_CASEFORMAT } from "./constants"
+import { TOGGLE_CASEFORMAT } from './constants';
 
-const toggleCaseFormat = caseformat => ({
-    type: TOGGLE_CASEFORMAT,
-    caseformat
-})
+const toggleCaseFormat = (caseformat) => ({
+  type: TOGGLE_CASEFORMAT,
+  caseformat,
+});
 
-export default toggleCaseFormat
+export default toggleCaseFormat;

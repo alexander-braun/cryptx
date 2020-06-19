@@ -1,8 +1,8 @@
-import { UPDATE_OUTPUT } from "./constants"
+import { UPDATE_OUTPUT } from './constants';
 
-const setOutput = output => ({
-    type: UPDATE_OUTPUT,
-    output
-})
+const setOutput = (output) => ({
+  type: UPDATE_OUTPUT,
+  output,
+});
 
-export default setOutput
+export default setOutput;

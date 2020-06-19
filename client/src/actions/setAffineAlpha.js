@@ -1,8 +1,8 @@
-import { SET_AFFINE_ALPHA } from "./constants"
+import { SET_AFFINE_ALPHA } from './constants';
 
-const setAffineAlpha = affine_alpha => ({
-    type: SET_AFFINE_ALPHA,
-    affine_alpha
-})
+const setAffineAlpha = (affine_alpha) => ({
+  type: SET_AFFINE_ALPHA,
+  affine_alpha,
+});
 
-export default setAffineAlpha
+export default setAffineAlpha;

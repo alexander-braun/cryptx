@@ -1,8 +1,8 @@
-import { SET_KEYWORD_VIGENERE } from "./constants"
+import { SET_KEYWORD_VIGENERE } from './constants';
 
-const setKeywordVigenere = keywordVigenere => ({
-    type: SET_KEYWORD_VIGENERE,
-    keywordVigenere
-})
+const setKeywordVigenere = (keywordVigenere) => ({
+  type: SET_KEYWORD_VIGENERE,
+  keywordVigenere,
+});
 
-export default setKeywordVigenere
+export default setKeywordVigenere;

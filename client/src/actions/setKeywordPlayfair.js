@@ -1,8 +1,8 @@
-import { SET_KEYWORD_PLAYFAIR } from "./constants"
+import { SET_KEYWORD_PLAYFAIR } from './constants';
 
-const setKeywordPlayfair = keywordPlayfair => ({
-    type: SET_KEYWORD_PLAYFAIR,
-    keywordPlayfair
-})
+const setKeywordPlayfair = (keywordPlayfair) => ({
+  type: SET_KEYWORD_PLAYFAIR,
+  keywordPlayfair,
+});
 
-export default setKeywordPlayfair
+export default setKeywordPlayfair;

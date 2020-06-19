@@ -1,111 +1,155 @@
-import React from 'react'
-import { connect } from 'react-redux'
-
+import React from 'react';
+import { connect } from 'react-redux';
 
 class Rings extends React.PureComponent {
-
-    generateRingStyles(planeNumber, character, ringNumber) {
-        
-        let firstCharacterStyle = ''
-        if(planeNumber === 0 && ringNumber === 0){ 
-            firstCharacterStyle = '#ff586e'
-        }
-
-        // No value ? no background
-        let transparencyValue = !character ? 'transparent' : ''
-
-        // Calculates the arc radius with one piece width = 30px
-        // Could scale bud didn't make sense yet
-        let d = (30 / Math.PI) / (360 / this.props.ringLength / 360) / 2 - 5
-
-        //rotateValue according to the piece of plane that will be rotated
-        let rotateValue = 360 / this.props.ringLength + (planeNumber * 360 / this.props.ringLength) - 360 / this.props.ringLength
-
-        let ringStyles =    { 
-                                WebkitTransform: `rotateY(${rotateValue}deg) translateZ(${d}px)`,
-
-                                backgroundColor: firstCharacterStyle !== '' ? firstCharacterStyle : transparencyValue
-                            }
-        return ringStyles
+  generateRingStyles(planeNumber, character, ringNumber) {
+    let firstCharacterStyle = '';
+    if (planeNumber === 0 && ringNumber === 0) {
+      firstCharacterStyle = '#ff586e';
     }
 
-    generateOneRingElement(indexOfCharacter, character, ringNumber) {
+    // No value ? no background
+    let transparencyValue = !character ? 'transparent' : '';
 
-        // classes just for react key value
-        let classes = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen',
-                        'nineteen', 'twenty']
-        let div =   <div  
-                        key={classes[indexOfCharacter] + character}
-                        className={'plane ' + classes[indexOfCharacter]}
-                        style={this.generateRingStyles(indexOfCharacter, character, ringNumber)}
-                    >
-                    {character}
-                    </div>
-        return div
-    }
+    // Calculates the arc radius with one piece width = 30px
+    // Could scale bud didn't make sense yet
+    let d = 30 / Math.PI / (360 / this.props.ringLength / 360) / 2 - 5;
 
-    generateAllRingElements(ringNumber) {
-        let parent = []
-        for(let i = 0; i < this.props.ringLength; i++) {
-            
-            // Loops throug the encrypted output and puts the generated ring element into the parent
-            // The ring number accounts for the output[i] value used so every ring has the right letters
-            parent.push(this.generateOneRingElement(i, this.props.skytaleProjectedValue[i + (ringNumber * this.props.ringLength)], ringNumber))
-        }
-        return parent
-    }
+    //rotateValue according to the piece of plane that will be rotated
+    let rotateValue =
+      360 / this.props.ringLength +
+      (planeNumber * 360) / this.props.ringLength -
+      360 / this.props.ringLength;
 
-    generateAllRings() {
-        let parent = []
-        for(let i = 0; i < this.props.skytaleLength; i++) {
-            let ringNumber = i
-            parent.push(
-                <div key={i + 'ring'} className="shape ring">{this.generateAllRingElements(ringNumber)}</div>
-            )
-        }
-        return parent
-    }
-    
-    render() {
-        return (
-            <div className="controller">
-                <div className="settings_name">SKYTALE</div>
-                <div className="settings_operators" style={{display: 'flex', flexDirection: 'column', alignItems:'center', justifyContent: 'center'}}>
-                    <div id="ring_container">
-                        <div 
-                            id="turntable"
-                            style={{height: `${this.props.skytaleLength * 25}px`}}
-                        >
-                            {this.generateAllRings()}
-                        </div>
-                    </div>
-                    <div id="skytale_explanatory_text">
-                        <p className="feature_text"> 
-                            You can only see a readable alignment of letters (top to bottom, left to right) if you are <b>encrypting
-                            a cleartext</b> or <b>decrypting an encrypted text</b>. The ring-segment-count needs to stay
-                            exactly the same for both directions. The first letter of your message is marked in&nbsp;
-                            <span style={{ backgroundColor: '#ff586e', 
-                                        display: 'inline-block', 
-                                        padding: '0px 3px', 
-                                        color: 'white', 
-                                        fontWeight: 'bold',
-                                        fontStyle: 'normal', 
-                                        lineHeight: '1.2'}}
-                            >
-                            red
-                            </span>
-                        </p>
-                    </div>    
-                </div>
-            </div> 
+    let ringStyles = {
+      WebkitTransform: `rotateY(${rotateValue}deg) translateZ(${d}px)`,
+
+      backgroundColor:
+        firstCharacterStyle !== '' ? firstCharacterStyle : transparencyValue,
+    };
+    return ringStyles;
+  }
+
+  generateOneRingElement(indexOfCharacter, character, ringNumber) {
+    // classes just for react key value
+    let classes = [
+      'one',
+      'two',
+      'three',
+      'four',
+      'five',
+      'six',
+      'seven',
+      'eight',
+      'nine',
+      'ten',
+      'eleven',
+      'twelve',
+      'thirteen',
+      'fourteen',
+      'fifteen',
+      'sixteen',
+      'seventeen',
+      'eighteen',
+      'nineteen',
+      'twenty',
+    ];
+    let div = (
+      <div
+        key={classes[indexOfCharacter] + character}
+        className={'plane ' + classes[indexOfCharacter]}
+        style={this.generateRingStyles(indexOfCharacter, character, ringNumber)}
+      >
+        {character}
+      </div>
+    );
+    return div;
+  }
+
+  generateAllRingElements(ringNumber) {
+    let parent = [];
+    for (let i = 0; i < this.props.ringLength; i++) {
+      // Loops throug the encrypted output and puts the generated ring element into the parent
+      // The ring number accounts for the output[i] value used so every ring has the right letters
+      parent.push(
+        this.generateOneRingElement(
+          i,
+          this.props.skytaleProjectedValue[
+            i + ringNumber * this.props.ringLength
+          ],
+          ringNumber
         )
+      );
     }
+    return parent;
+  }
+
+  generateAllRings() {
+    let parent = [];
+    for (let i = 0; i < this.props.skytaleLength; i++) {
+      let ringNumber = i;
+      parent.push(
+        <div key={i + 'ring'} className='shape ring'>
+          {this.generateAllRingElements(ringNumber)}
+        </div>
+      );
+    }
+    return parent;
+  }
+
+  render() {
+    return (
+      <div className='controller'>
+        <div className='settings_name'>SKYTALE</div>
+        <div
+          className='settings_operators'
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <div id='ring_container'>
+            <div
+              id='turntable'
+              style={{ height: `${this.props.skytaleLength * 25}px` }}
+            >
+              {this.generateAllRings()}
+            </div>
+          </div>
+          <div id='skytale_explanatory_text'>
+            <p className='feature_text'>
+              You can only see a readable alignment of letters (top to bottom,
+              left to right) if you are <b>encrypting a cleartext</b> or{' '}
+              <b>decrypting an encrypted text</b>. The ring-segment-count needs
+              to stay exactly the same for both directions. The first letter of
+              your message is marked in&nbsp;
+              <span
+                style={{
+                  backgroundColor: '#ff586e',
+                  display: 'inline-block',
+                  padding: '0px 3px',
+                  color: 'white',
+                  fontWeight: 'bold',
+                  fontStyle: 'normal',
+                  lineHeight: '1.2',
+                }}
+              >
+                red
+              </span>
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
 
-const mapStateToProps = state => ({
-    ringLength: state.skytale.ringLength,
-    skytaleLength: state.skytale.length,
-    skytaleProjectedValue: state.skytale.projectedValue
-})
+const mapStateToProps = (state) => ({
+  ringLength: state.skytale.ringLength,
+  skytaleLength: state.skytale.length,
+  skytaleProjectedValue: state.skytale.projectedValue,
+});
 
-export default connect(mapStateToProps)(Rings)
+export default connect(mapStateToProps)(Rings);

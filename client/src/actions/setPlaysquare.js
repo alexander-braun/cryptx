@@ -1,8 +1,8 @@
-import { PLAYSQUARE } from "./constants"
+import { PLAYSQUARE } from './constants';
 
-const setPlaysquare = playsquare => ({
-    type: PLAYSQUARE,
-    playsquare
-})
+const setPlaysquare = (playsquare) => ({
+  type: PLAYSQUARE,
+  playsquare,
+});
 
-export default setPlaysquare 
+export default setPlaysquare;

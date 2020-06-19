@@ -1,57 +1,83 @@
-import React from 'react'
-import { connect } from 'react-redux'
+import React from 'react';
+import { connect } from 'react-redux';
 
 class PlayfaireSquare extends React.PureComponent {
+  keys = [
+    'iBkh',
+    'DBd5',
+    'JyyV',
+    '1Tks',
+    'FUdf',
+    'rMka',
+    'TVsa',
+    '9b3',
+    'Dkl8',
+    'bkyB',
+    'Ljo8',
+    'ahyb',
+    '8gCx',
+    'ldv5',
+    '6z4',
+    '5nD',
+    'yUs',
+    '2er',
+    '8QH',
+    'BHv',
+    'TJV',
+    'wJn',
+    'DmX',
+    'JXz',
+    'bKq',
+    'coo',
+  ];
 
-    keys = ['iBkh','DBd5','JyyV','1Tks','FUdf','rMka','TVsa',
-    '9b3','Dkl8','bkyB','Ljo8','ahyb','8gCx','ldv5',
-    '6z4','5nD','yUs','2er','8QH','BHv','TJV',
-    'wJn','DmX','JXz','bKq','coo']
-
-    createVisualMatrix = () => {
-        let parent = []
-        let children = []
-        for(let i = 0; i < 25; i++) {
-            let ID = 'table' + i;
-            children.push(
-                <div    key={this.keys[i]} 
-                        id={ID} 
-                        className="playfairTable"
-                    >
-                        {this.props.playsquare[i]}
-                </div>
-            )
-        }
-        parent.push(
-            <div id="visualMatrix" key='playKey' style={{boxShadow:'none'}} className="controller">{children}</div>
-        )
-        return parent
+  createVisualMatrix = () => {
+    let parent = [];
+    let children = [];
+    for (let i = 0; i < 25; i++) {
+      let ID = 'table' + i;
+      children.push(
+        <div key={this.keys[i]} id={ID} className='playfairTable'>
+          {this.props.playsquare[i]}
+        </div>
+      );
     }
+    parent.push(
+      <div
+        id='visualMatrix'
+        key='playKey'
+        style={{ boxShadow: 'none' }}
+        className='controller'
+      >
+        {children}
+      </div>
+    );
+    return parent;
+  };
 
-    render() {
-        return (
-            <div className="controller">
-                <div className="settings_name">PLAYFAIR SQUARE</div>
-                <div className="settings_operators">
-                    {this.createVisualMatrix()}
-                </div>
-                <div id="skytale_explanatory_text">
-                    <p className="feature_text"> 
-                        This method is a bit shaky encrypting forth and back. One letter is
-                        left out and substituted with another letter - either not use this letter or
-                        at least be aware that there might be inconsistencies. A substitution letter will 
-                        be added if two of the same letters occure directly after each other (if the first letter 
-                        is on an even index). Change the '<b>j</b>' in the default input message to an '<b>i</b>' 
-                        for a better encryption result.
-                    </p>
-                </div>    
-            </div> 
-        )
-    }
+  render() {
+    return (
+      <div className='controller'>
+        <div className='settings_name'>PLAYFAIR SQUARE</div>
+        <div className='settings_operators'>{this.createVisualMatrix()}</div>
+        <div id='skytale_explanatory_text'>
+          <p className='feature_text'>
+            This method is a bit shaky encrypting forth and back. One letter is
+            left out and substituted with another letter - either not use this
+            letter or at least be aware that there might be inconsistencies. A
+            substitution letter will be added if two of the same letters occure
+            directly after each other (if the first letter is on an even index).
+            Change the '<b>j</b>' in the default input message to an '<b>i</b>'
+            for a better encryption result.
+          </p>
+        </div>
+      </div>
+    );
+  }
 }
 
-const mapStateToProps = state => ({
-    playsquare: state.playsquare
-})
+const mapStateToProps = (state) => ({
+  playsquare: state.playsquare,
+});
 
-export default connect(mapStateToProps)(PlayfaireSquare)
+export default connect(mapStateToProps)(PlayfaireSquare);

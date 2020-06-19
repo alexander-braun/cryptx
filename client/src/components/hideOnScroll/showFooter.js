@@ -1,26 +1,26 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
 const ShowFooter = () => {
-  const [show, setShow] = useState(false)
+  const [show, setShow] = useState(false);
 
   const handleScroll = () => {
     //checkscroll
-    const top = window.pageYOffset || document.documentElement.scrollTop
-    setShow(window.innerHeight - 80 > top)
-  }
+    const top = window.pageYOffset || document.documentElement.scrollTop;
+    setShow(window.innerHeight - 80 > top);
+  };
 
   useEffect(() => {
-    handleScroll()
-  })
+    handleScroll();
+  });
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll)
+    window.addEventListener('scroll', handleScroll);
     return () => {
-      window.removeEventListener("scroll", handleScroll)
-    }
-  }, [])
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
-  return show
-}
+  return show;
+};
 
-export default ShowFooter
+export default ShowFooter;

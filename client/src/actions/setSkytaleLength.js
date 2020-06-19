@@ -1,8 +1,8 @@
-import { SET_SKYTALE_LENGTH } from './constants'
+import { SET_SKYTALE_LENGTH } from './constants';
 
-const setSkytaleLength = length => ({
-    type: SET_SKYTALE_LENGTH,
-    length
-})
+const setSkytaleLength = (length) => ({
+  type: SET_SKYTALE_LENGTH,
+  length,
+});
 
-export default setSkytaleLength
+export default setSkytaleLength;

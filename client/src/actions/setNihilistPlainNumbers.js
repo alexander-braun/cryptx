@@ -1,8 +1,8 @@
-import { SET_NIHILIST_PLAIN_NUMBERS } from "./constants"
+import { SET_NIHILIST_PLAIN_NUMBERS } from './constants';
 
-const setNihilistPlainNumbers = nihilistPlainNumbers => ({
-    type: SET_NIHILIST_PLAIN_NUMBERS,
-    nihilistPlainNumbers
-})
+const setNihilistPlainNumbers = (nihilistPlainNumbers) => ({
+  type: SET_NIHILIST_PLAIN_NUMBERS,
+  nihilistPlainNumbers,
+});
 
-export default setNihilistPlainNumbers
+export default setNihilistPlainNumbers;

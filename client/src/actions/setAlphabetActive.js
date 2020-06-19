@@ -1,8 +1,8 @@
-import { SET_ALPHABET_ACTIVE } from './constants'
+import { SET_ALPHABET_ACTIVE } from './constants';
 
-const setAlphabetActive = active => ({
-    type: SET_ALPHABET_ACTIVE,
-    active
-})
+const setAlphabetActive = (active) => ({
+  type: SET_ALPHABET_ACTIVE,
+  active,
+});
 
-export default setAlphabetActive
+export default setAlphabetActive;

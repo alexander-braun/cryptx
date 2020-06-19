@@ -1,8 +1,8 @@
-import { SET_PRIME_1 } from "./constants"
+import { SET_PRIME_1 } from './constants';
 
-const setPrime1 = prime1 => ({
-    type: SET_PRIME_1,
-    prime1
-})
+const setPrime1 = (prime1) => ({
+  type: SET_PRIME_1,
+  prime1,
+});
 
-export default setPrime1
+export default setPrime1;

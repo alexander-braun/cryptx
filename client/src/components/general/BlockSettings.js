@@ -1,21 +1,20 @@
-import React from 'react'
-import ExplanatoryText from './ExplanatoryText'
-import BlockHeadSettings from './BlockHeadSettings'
-import Settings from './Settings'
+import React from 'react';
+import ExplanatoryText from './ExplanatoryText';
+import BlockHeadSettings from './BlockHeadSettings';
+import Settings from './Settings';
 
 const BlockSettings = () => {
   return (
-    <div className="block_settings">
+    <div className='block_settings'>
       <BlockHeadSettings />
-      <div className="block_body">
-          <div className="block_body_input">
-              <Settings />
-              <ExplanatoryText />
-          </div>
+      <div className='block_body'>
+        <div className='block_body_input'>
+          <Settings />
+          <ExplanatoryText />
+        </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default BlockSettings
-
+export default BlockSettings;

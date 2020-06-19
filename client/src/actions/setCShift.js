@@ -1,6 +1,6 @@
-import { SET_CSHIFT } from "./constants"
+import { SET_CSHIFT } from './constants';
 
-export const setCshift = cShift => ({
-    type: SET_CSHIFT,
-    cShift
-})
+export const setCshift = (cShift) => ({
+  type: SET_CSHIFT,
+  cShift,
+});
