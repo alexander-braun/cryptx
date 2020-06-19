@@ -47,7 +47,7 @@ function Hero(props) {
         <div id='hero'>
           <div id="hero_text">
             <Animated animationInDelay={200} animationIn="bounceInDown" animationInDuration={1000} isVisible={true}>
-              <h1>"Wt mci hvwby qfmdhcufodvm wg hvs obgksf hc mcif dfcpzsa, &nbsp;<br></br> hvsb mci rcb'h ybck kvoh mcif dfcpzsa wg."</h1>
+              <h1>"If you think cryptography is the answer to your problem, &nbsp;<br></br> then you don't know what your problem is."</h1>
               <h2>Peter G. Neumann</h2>
             </Animated>
             <Animated animationInDelay={0} animationIn="bounceInDown" animationInDuration={1000}  isVisible={true}>
