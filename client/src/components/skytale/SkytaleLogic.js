@@ -135,7 +135,6 @@ const skytale = (() => {
       ringLength = i;
       outputs.push(transformText(), i);
     }
-    console.log(outputs);
   };
 
   const setAll = (direction, caseFormat, input, ringLength, foreignChars) => {
