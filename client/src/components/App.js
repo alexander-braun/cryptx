@@ -35,7 +35,7 @@ const App = () => {
             path={`/`}
             render={() => (
               <Fragment>
-                <Hero />
+                {/*<Hero />*/}
                 <EncryptionArea />
               </Fragment>
             )}
