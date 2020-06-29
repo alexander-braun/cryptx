@@ -14,7 +14,7 @@ import { connect } from 'react-redux';
 import {
   toggleAnalysisMethodICOutput,
   toggleAnalysisMethodICInput,
-} from '../../actions/toggleAnalysisMethod';
+} from '../../../actions/toggleAnalysisMethod';
 
 const StyledTooltip = withStyles((theme) => ({
   tooltip: {

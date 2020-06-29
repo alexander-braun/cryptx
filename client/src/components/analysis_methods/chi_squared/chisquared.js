@@ -15,7 +15,7 @@ import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import {
   toggleAnalysisMethodCHIInput,
   toggleAnalysisMethodCHIOutput,
-} from '../../actions/toggleAnalysisMethod';
+} from '../../../actions/toggleAnalysisMethod';
 
 const StyledTooltip = withStyles((theme) => ({
   tooltip: {

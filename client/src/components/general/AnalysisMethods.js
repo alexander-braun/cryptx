@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
-import ChartImporter from '../freqencyAnalysis/ChartImporter';
-import IndexOfCoincidence from '../indexOfCoincidence/IndexOfCoincidence';
-import ChiSquared from '../chi_squared/chisquared';
+import ChartImporter from '../analysis_methods/freqencyAnalysis/ChartImporter';
+import IndexOfCoincidence from '../analysis_methods/indexOfCoincidence/IndexOfCoincidence';
+import ChiSquared from '../analysis_methods/chi_squared/chisquared';
 
 const AnalysisMethods = (props) => {
   const icMenue =
