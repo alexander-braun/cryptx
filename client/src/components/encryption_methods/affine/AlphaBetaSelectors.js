@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import setAffineAlpha from '../../actions/setAffineAlpha';
-import setAffineBeta from '../../actions/setAffineBeta';
+import setAffineAlpha from '../../../actions/setAffineAlpha';
+import setAffineBeta from '../../../actions/setAffineBeta';
 
-const AlphaBeta = (props) => {
+const AlphaBetaSelectors = (props) => {
   const optionsBeta = () => {
     const optionsArray = [];
     for (let i = 0; i < 25; i++) {
@@ -11,6 +11,15 @@ const AlphaBeta = (props) => {
     }
     return optionsArray;
   };
+
+  const optionsAlpha = () => {
+    let valuesAlpha = [1, 3, 5, 7, 9, 11, 15, 17, 19, 21, 23, 25];
+    valuesAlpha = valuesAlpha.map((value) => {
+      return <option value={value}>{value}</option>;
+    });
+    return valuesAlpha;
+  };
+
   return (
     <div className='controller double_content'>
       <div className='controllbox'>
@@ -25,18 +34,7 @@ const AlphaBeta = (props) => {
               props.setAffineAlpha(evt.target.value);
             }}
           >
-            <option value='1'>1</option>
-            <option value='3'>3</option>
-            <option value='5'>5</option>
-            <option value='7'>7</option>
-            <option value='9'>9</option>
-            <option value='11'>11</option>
-            <option value='15'>15</option>
-            <option value='17'>17</option>
-            <option value='19'>19</option>
-            <option value='21'>21</option>
-            <option value='23'>23</option>
-            <option value='25'>25</option>
+            {optionsAlpha()}
           </select>
         </div>
       </div>
@@ -52,7 +50,7 @@ const AlphaBeta = (props) => {
               props.setAffineBeta(evt.target.value);
             }}
           >
-            {optionsBeta().map((option) => option)}
+            {optionsBeta()}
           </select>
         </div>
       </div>
@@ -70,4 +68,4 @@ const mapActionsToProps = {
   setAffineBeta: setAffineBeta,
 };
 
-export default connect(mapStateToProps, mapActionsToProps)(AlphaBeta);
+export default connect(mapStateToProps, mapActionsToProps)(AlphaBetaSelectors);

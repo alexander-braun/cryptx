@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { toReplaceLetter, replaceLetter } from '../../actions/replace';
+import { toReplaceLetter, replaceLetter } from '../../../actions/replace';
 
 const Replace = (props) => {
   return (

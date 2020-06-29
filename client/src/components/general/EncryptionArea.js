@@ -5,17 +5,25 @@ import BlockConnectorEquals from './BlockConnectorEquals';
 import BlockConnectorPlus from './BlockConnectorPlus';
 import BlockSettings from './BlockSettings';
 //import Modal from '../modal/Modal'
-import Caesar from '../caesar/CaesarLogic';
-import Affine from '../affine/AffineLogic';
-import Vigenere from '../vigenere/VigenereLogic';
-import Playfair from '../playfair/PlayfairLogic';
-import Morse from '../morse/Morselogic';
-import Replace from '../replace/ReplaceLogic';
-import Skytale from '../skytale/SkytaleLogic';
-import Atbash from '../atbash/AtbashLogic';
+
+//Logic
+import Caesar from '../encryption_methods/caesar/CaesarLogic';
+import Affine from '../encryption_methods/affine/AffineLogic';
+import Nihilist from '../encryption_methods/nihilist/nihilistLogic';
+import Vigenere from '../encryption_methods/vigenere/VigenereLogic';
+import Playfair from '../encryption_methods/playfair/PlayfairLogic';
+import Morse from '../encryption_methods/morse/Morselogic';
+import Replace from '../encryption_methods/replace/ReplaceLogic';
+import Skytale from '../encryption_methods/skytale/SkytaleLogic';
+import Atbash from '../encryption_methods/atbash/AtbashLogic';
+import Rsa from '../encryption_methods/rsa/RSALogic';
+import Reverse from '../encryption_methods/reverse/reverseLogic';
+import CaseTransform from '../encryption_methods/caseTransform/caseTransformLogic';
+import Substitute from '../encryption_methods/substitutionAlphabet/substitutionLogic';
+import Trifid from '../encryption_methods/trifid/trifidLogic';
+import Otp from '../encryption_methods/onetimepad/otpLogic';
+
 import Timeline from '../timeline/Timeline';
-import Otp from '../onetimepad/otp';
-import Rsa from '../rsa/RSALogic';
 import { connect } from 'react-redux';
 import setWordbook from '../../actions/wordbook';
 import toggleChars from '../../actions/toggleIncludeChars';
@@ -35,14 +43,9 @@ import setRsaD from '../../actions/setRsaD';
 import setAlphabetActive from '../../actions/setAlphabetActive';
 import PresetsModal from '../presetsModal';
 import AnalysisModal from '../analysisModal';
-import Reverse from '../reverse/reverseLogic';
-import CaseTransform from '../caseTransform/caseTransformLogic';
-import Nihilist from '../nihilist/nihilistLogic';
 import setNihilistSquare from '../../actions/setNihilistSquare';
 import setNihilistRunningKey from '../../actions/setNihilistRunningKey';
 import setNihilistPlainNumbers from '../../actions/setNihilistPlainNumbers';
-import Substitute from '../substitutionAlphabet/substitutionLogic';
-import Trifid from '../trifid/trifidLogic';
 import { setTrifidLayers, setTrifidGroups } from '../../actions/setTrifid';
 
 const Modal = React.lazy(() => import('../modal/Modal'));

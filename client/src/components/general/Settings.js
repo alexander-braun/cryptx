@@ -1,29 +1,31 @@
 import React, { Fragment } from 'react';
-import CaesarShift from '../caesar/CaesarShift';
+import { connect } from 'react-redux';
+
 import Alphabet from './Alphabet';
 import CaseChars from './CaseChars';
-import AlphaBeta from '../affine/AlphaBeta';
-import KeywordVigenere from '../vigenere/KeywordVigenere';
-import KeywordPlayfair from '../playfair/KeywordPlayfair';
-import CharOptions from '../playfair/CharOptions';
-import PlayfairSquare from '../playfair/PlayfairSquare';
-import ReplaceKeys from '../replace/ReplaceKeys';
-import RingLength from '../skytale/RingLenght';
-import Rings from '../skytale/Rings';
-import CaesarTransposition from '../caesar/CaesarTransposition';
-import AtbashTransposition from '../atbash/AtbashTransposition';
-import OtpGenerate from '../onetimepad/otpGenerate';
-import Primes from '../rsa/Primes';
-import { connect } from 'react-redux';
-import VigenereTransposition from '../vigenere/vigenereTransposition';
-import CaseTransform from '../caseTransform/CaseTransform';
-import KeywordsNihilist from '../nihilist/KeywordNihilist';
-import NihilistSquare from '../nihilist/NihilistSquare';
-import NihilistTransposition from '../nihilist/NihilistTransposition';
-import SubstitutionTable from '../substitutionAlphabet/SubstitutionTable';
-import TrifidSettings from '../trifid/TrifidSettings';
-import TrifidLayers from '../trifid/TrifidLayers';
-import TrifidGroups from '../trifid/TrifidGroups';
+import CaesarShift from '../encryption_methods/caesar/CaesarShift';
+import CaesarTransposition from '../encryption_methods/caesar/CaesarTransposition';
+import AlphaBetaSelectors from '../encryption_methods/affine/AlphaBetaSelectors';
+import KeywordVigenere from '../encryption_methods/vigenere/KeywordVigenere';
+import KeywordPlayfair from '../encryption_methods/playfair/KeywordPlayfair';
+import CharOptions from '../encryption_methods/playfair/CharOptions';
+import PlayfairSquare from '../encryption_methods/playfair/PlayfairSquare';
+import ReplaceKeys from '../encryption_methods/replace/ReplaceKeys';
+import RingLength from '../encryption_methods/skytale/RingLenght';
+import Rings from '../encryption_methods/skytale/Rings';
+import AtbashTransposition from '../encryption_methods/atbash/AtbashTransposition';
+import OtpGenerate from '../encryption_methods/onetimepad/otpGenerate';
+import Primes from '../encryption_methods/rsa/Primes';
+
+import VigenereTransposition from '../encryption_methods/vigenere/vigenereTransposition';
+import CaseTransform from '../encryption_methods/caseTransform/CaseTransform';
+import KeywordsNihilist from '../encryption_methods/nihilist/KeywordNihilist';
+import NihilistSquare from '../encryption_methods/nihilist/NihilistSquare';
+import NihilistTransposition from '../encryption_methods/nihilist/NihilistTransposition';
+import SubstitutionTable from '../encryption_methods/substitutionAlphabet/SubstitutionTable';
+import TrifidSettings from '../encryption_methods/trifid/TrifidSettings';
+import TrifidLayers from '../encryption_methods/trifid/TrifidLayers';
+import TrifidGroups from '../encryption_methods/trifid/TrifidGroups';
 
 const BlockBodyInput = (props) => {
   let bodyInput;
@@ -111,7 +113,7 @@ const BlockBodyInput = (props) => {
       case 'affine':
         bodyInput = (
           <div className='block_body_input'>
-            <AlphaBeta />
+            <AlphaBetaSelectors />
             <Alphabet
               alphabet={props.alphabet}
               alphabetActive={props.alphabetActive}

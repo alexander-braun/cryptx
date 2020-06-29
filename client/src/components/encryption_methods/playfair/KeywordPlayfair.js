@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import setKeywordPlayfair from '../../actions/setKeywordPlayfair';
+import setKeywordPlayfair from '../../../actions/setKeywordPlayfair';
 
 const KeywordPlayfair = ({ keywordPlayfair, setKeywordPlayfair }) => {
   return (

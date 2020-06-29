@@ -1,7 +1,7 @@
 import React from 'react';
-import '../../styles/otp.css';
+import '../../../styles/otp.css';
 import { connect } from 'react-redux';
-import setOtpKey from '../../actions/setOtpKey';
+import setOtpKey from '../../../actions/setOtpKey';
 
 class Otp extends React.PureComponent {
   constructor(props) {

@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
-import '../../styles/substitution.css';
-import setSubstitutionAlphabet from '../../actions/setSubstitutionAlphabet';
+import '../../../styles/substitution.css';
+import setSubstitutionAlphabet from '../../../actions/setSubstitutionAlphabet';
 
 const SubstitutionAlphabet = (props) => {
   const handleAlphabetChange = (e) => {

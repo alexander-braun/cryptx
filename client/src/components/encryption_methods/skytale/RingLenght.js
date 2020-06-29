@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setRinglength } from '../../actions/setRingLength';
+import { setRinglength } from '../../../actions/setRingLength';
 
 const RingLength = (props) => {
   const setRings = (evt) => {

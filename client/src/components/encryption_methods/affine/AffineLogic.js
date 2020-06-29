@@ -1,4 +1,4 @@
-import math from '../math/Math';
+import math from '../../math/Math';
 
 const affine = (() => {
   //Setup all variables
@@ -49,7 +49,7 @@ const affine = (() => {
 
   //Affine Method
 
-  // Modulo to account for stupid js
+  // Modulo to account for wrong js method
 
   const modulo = (a, b) => {
     return ((a % b) + b) % b;
@@ -66,32 +66,33 @@ const affine = (() => {
     }
   };
 
-  const encrypt = (input, a, b) => {
+  const encrypt = (input, alpha, beta) => {
     let arr = [];
-    let lowerInput = input.toLowerCase();
-    for (let i = 0; i < lowerInput.length; i++) {
-      let char = lowerInput[i];
+    let lowerCase = input.toLowerCase();
+    for (let i = 0; i < lowerCase.length; i++) {
+      let char = lowerCase[i];
       if (alphabet.indexOf(char) !== -1) {
-        let numberId = (a * alphabet.indexOf(char) + b) % alphabet.length;
+        let numberId =
+          (alpha * alphabet.indexOf(char) + beta) % alphabet.length;
         let character = alphabet[numberId];
         if (character === undefined) {
           arr.push(char);
         } else arr.push(character);
-      } else arr.push(lowerInput[i]);
+      } else arr.push(lowerCase[i]);
     }
     return arr.join('');
   };
 
-  const decrypt = (input, a, b) => {
+  const decrypt = (input, alpha, beta) => {
     let arr = [];
-    let inverseAlpha = modInverse(a, alphabet.length);
-    let lowerInput = input.toLowerCase();
-    for (let i = 0; i < lowerInput.length; i++) {
-      let char = lowerInput[i];
+    let inverseAlpha = modInverse(alpha, alphabet.length);
+    let lowerCase = input.toLowerCase();
+    for (let i = 0; i < lowerCase.length; i++) {
+      let char = lowerCase[i];
       if (alphabet.indexOf(char) !== -1) {
         let indexChar = alphabet.indexOf(char);
         let resultIndex = modulo(
-          inverseAlpha * (indexChar - b),
+          inverseAlpha * (indexChar - beta),
           alphabet.length
         );
         if (alphabet[resultIndex]) {

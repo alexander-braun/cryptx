@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setCaseTransformChoice } from '../../actions/setCaseTransformChoice';
+import { setCaseTransformChoice } from '../../../actions/setCaseTransformChoice';
 
 let options = [
   'Lower case',

@@ -4,7 +4,7 @@ import {
   setTrifidGroupSize,
   setTrifidKey,
   setTrifid27thLetter,
-} from '../../actions/setTrifid';
+} from '../../../actions/setTrifid';
 
 const TrifidSettings = (props) => {
   const handleGroupSizeChange = (e) => {

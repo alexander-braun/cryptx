@@ -1,4 +1,4 @@
-import math from '../math/Math';
+import math from '../../math/Math';
 
 const atbash = (() => {
   //Setup all variables

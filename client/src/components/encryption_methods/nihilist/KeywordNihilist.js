@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import setKeyNihilist from '../../actions/setKeyNihilist';
-import setCipherNihilist from '../../actions/setCipherNihilist';
+import setKeyNihilist from '../../../actions/setKeyNihilist';
+import setCipherNihilist from '../../../actions/setCipherNihilist';
 
 const KeywordsNihilist = (props) => {
   return (

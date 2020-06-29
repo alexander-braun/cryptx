@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import setKeywordVigenere from '../../actions/setKeywordVigenere';
+import setKeywordVigenere from '../../../actions/setKeywordVigenere';
 
 const KeywordVigenere = ({ keywordVigenere, setKeywordVigenere }) => {
   return (

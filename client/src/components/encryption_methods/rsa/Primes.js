@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import setPrime1 from '../../actions/setPrime1';
-import setPrime2 from '../../actions/setprime2';
-import setRsaE from '../../actions/setRsaE';
+import setPrime1 from '../../../actions/setPrime1';
+import setPrime2 from '../../../actions/setprime2';
+import setRsaE from '../../../actions/setRsaE';
 
 const Primes = (props) => {
   const cleanPrime = (rawInput) => {
