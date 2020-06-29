@@ -30,15 +30,15 @@ const AlphaBetaSelectors = (props) => {
   };
 
   return (
-    <div className='controller double_content'>
-      <div className='controllbox'>
-        <div className='settings_name' style={{ textTransform: 'none' }}>
+    <div className='contentbox contentbox--double'>
+      <div className='content-element content-element--double'>
+        <div className='content-element__settings-name content-element__settings-name--no-transform'>
           α
         </div>
-        <div className='settings_operators'>
+        <div className='content-element__settings-operators content-element__settings-operators--double'>
           <select
             defaultValue='5'
-            className='affine'
+            className='content-element__select content-element__select--sm'
             onChange={(evt) => {
               props.setAffineAlpha(evt.target.value);
             }}
@@ -47,14 +47,14 @@ const AlphaBetaSelectors = (props) => {
           </select>
         </div>
       </div>
-      <div className='controllbox' style={{ borderRight: 'none' }}>
-        <div className='settings_name' style={{ textTransform: 'none' }}>
+      <div className='content-element content-element--double'>
+        <div className='content-element__settings-name content-element__settings-name--no-transform'>
           β
         </div>
-        <div className='settings_operators'>
+        <div className='content-element__settings-operators content-element__settings-operators--double'>
           <select
             defaultValue='1'
-            className='affine'
+            className='content-element__select'
             onChange={(evt) => {
               props.setAffineBeta(evt.target.value);
             }}

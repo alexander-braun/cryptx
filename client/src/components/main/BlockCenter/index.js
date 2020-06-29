@@ -2,6 +2,7 @@ import React from 'react';
 import ExplanatoryText from './ExplanatoryText';
 import BlockHeadSettings from './HeadSettings';
 import Settings from './EncryptionMethodSettings';
+import './center.scss';
 
 const BlockCenter = () => {
   return (

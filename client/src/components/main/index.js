@@ -1,10 +1,13 @@
 import React, { Suspense } from 'react';
+import { connect } from 'react-redux';
+
+//Components
 import BlockInput from './BlockInputOutput/Input';
 import BlockOutput from './BlockInputOutput/Output';
 import BlockConnectorEquals from './BlockOther/ConnectorEquals';
 import BlockConnectorPlus from './BlockOther/ConnectorPlus';
 import BlockSettings from './BlockCenter';
-//import Modal from '../modal/Modal'
+import Timeline from '../timeline/Timeline';
 
 //Logic
 import Caesar from '../encryption_methods/caesar/CaesarLogic';
@@ -23,8 +26,7 @@ import Substitute from '../encryption_methods/substitutionAlphabet/substitutionL
 import Trifid from '../encryption_methods/trifid/trifidLogic';
 import Otp from '../encryption_methods/onetimepad/otpLogic';
 
-import Timeline from '../timeline/Timeline';
-import { connect } from 'react-redux';
+// Actions
 import setWordbook from '../../actions/wordbook';
 import toggleChars from '../../actions/toggleIncludeChars';
 import setOutput from '../../actions/setOutput';
@@ -41,15 +43,14 @@ import setRsaPhi from '../../actions/setRsaPhi';
 import setRsaN from '../../actions/setRsaN';
 import setRsaD from '../../actions/setRsaD';
 import setAlphabetActive from '../../actions/setAlphabetActive';
-
-// Modals
-import PresetsModal from '../modals/save_&_load_presets';
-import AnalysisModal from '../modals/add_analysis_method';
-
 import setNihilistSquare from '../../actions/setNihilistSquare';
 import setNihilistRunningKey from '../../actions/setNihilistRunningKey';
 import setNihilistPlainNumbers from '../../actions/setNihilistPlainNumbers';
 import { setTrifidLayers, setTrifidGroups } from '../../actions/setTrifid';
+
+// Modals
+import PresetsModal from '../modals/save_&_load_presets';
+import AnalysisModal from '../modals/add_analysis_method';
 
 const Modal = React.lazy(() => import('../modals/choose_encryption_method'));
 

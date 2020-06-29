@@ -1,0 +1,96 @@
+.contentbox {
+  width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+  height: auto;
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.192);
+
+  &--double {
+    flex-direction: row;
+
+    &:nth-child(2) {
+      border-right: none;
+    }
+  }
+}
+
+.content-element {
+  width: 50%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: flex-start;
+  border-right: 1px solid rgba(255, 255, 255, 0.192);
+  padding-bottom: 0.5rem;
+
+  &--double {
+    &:nth-child(2) {
+      border-right: none;
+    }
+  }
+
+  &__select {
+    background: rgba(0, 0, 0, 0);
+    border: none;
+    font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+    padding: 0;
+    width: fit-content;
+    text-align: left;
+    cursor: pointer;
+    letter-spacing: 0.05em;
+    font-size: 12pt;
+    font-weight: 700;
+    color: #dadada;
+
+    & option {
+      color: black;
+      font-weight: 700;
+    }
+
+    &--sm {
+      width: 3em;
+    }
+  }
+
+  &__settings-operators {
+    font-size: 14px;
+    font-weight: 700;
+    font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: #dadada;
+    letter-spacing: 0.1em;
+
+    &--double {
+      width: 100%;
+      padding: 0.5rem 24px;
+      justify-self: flex-start;
+      font-size: 12pt;
+    }
+  }
+
+  &__settings-name {
+    border-right: 1px solid rgba(255, 255, 255, 0.192);
+    color: #949494;
+    padding: 1em 1em 0 24px;
+    font-family: 'Source Sans Pro', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.2px;
+    border-right: none;
+
+    &--no-transform {
+      text-transform: none;
+    }
+  }
+}
