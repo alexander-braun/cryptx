@@ -87,11 +87,7 @@ class EncryptionArea extends React.PureComponent {
 
     if (prevProps.method !== this.props.method) {
       this.props.updateAlphabet('abcdefghijklmnopqrstuvwxyz');
-      if (
-        this.props.method === 'caesar' ||
-        this.props.method === 'atbash' ||
-        this.props.method === 'rot13'
-      ) {
+      if (this.props.method === 'caesar' || this.props.method === 'rot13') {
         this.props.setAlphabetActive(true);
       } else {
         this.props.setAlphabetActive(false);

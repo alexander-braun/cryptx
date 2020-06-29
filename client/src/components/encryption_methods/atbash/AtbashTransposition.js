@@ -3,24 +3,19 @@ import { connect } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 
 class AtbashTransposition extends React.Component {
-  shouldComponentUpdate(nextProps, nextState) {
-    if (nextProps.alphabet !== this.props.alphabet) {
-      return true;
-    } else return false;
-  }
-
+  /**
+   * Generates both the reversed and the normal alphabet for visualization
+   */
   genAlphabet = (reverse) => {
-    if (this.props.alphabet.length === 0) return;
-
     let style = { color: 'white' };
 
     let alphabet = this.props.alphabet.toLowerCase().split('').sort();
+
     alphabet = reverse
       ? [...new Set(alphabet)].reverse()
       : [...new Set(alphabet)];
 
     let output = [];
-    let counter = 0;
 
     for (let element of alphabet) {
       let colorArrow =
@@ -30,7 +25,7 @@ class AtbashTransposition extends React.Component {
 
       output.push(
         <div
-          className='alphabet_transpos'
+          className='alphabet-row__character'
           key={uuidv4()}
           style={
             element.toLowerCase() === 'a' || element.toLowerCase() === 'z'
@@ -46,19 +41,26 @@ class AtbashTransposition extends React.Component {
           </div>
         </div>
       );
-      counter++;
     }
     return output;
   };
 
   render() {
     return (
-      <div className='controller'>
-        <div className='settings_name'>Atbash Cipher Transposition</div>
-        <div id='caesar_transposition'>
-          <div className='alphabet_row_collect'>
-            <div id='alphabet_standart'>{this.genAlphabet(false)}</div>
-            <div id='alphabet_transpositioned'>{this.genAlphabet(true)}</div>
+      <div className='contentbox'>
+        <div className='content-element'>
+          <div className='content-element__settings-name'>
+            Atbash Cipher Transposition
+          </div>
+          <div className='content-element__content content-element__content--alphabet-transposition'>
+            <div className='alphabet-row'>
+              <div className='alphabet-row__standard'>
+                {this.genAlphabet(false)}
+              </div>
+              <div className='alphabet-row__transpositioned'>
+                {this.genAlphabet(true)}
+              </div>
+            </div>
           </div>
         </div>
         <div id='caesar_explanatory_text'>
