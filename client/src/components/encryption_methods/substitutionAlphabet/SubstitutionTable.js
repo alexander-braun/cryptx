@@ -16,7 +16,6 @@ const SubstitutionAlphabet = (props) => {
   useEffect(() => {
     let substitutionAlphabet = Object.values(props.substitutionAlphabet);
     let double = [];
-    console.log(substitutionAlphabet);
     for (let character of substitutionAlphabet) {
       if (
         substitutionAlphabet.indexOf(character) !==
@@ -42,11 +41,11 @@ const SubstitutionAlphabet = (props) => {
         {props.alphabet.split('').map((character) => {
           return (
             <div className='substitution_wrapper' key={uuidv4()}>
-              <div className='substitution_character' key={uuidv4()}>
+              <div className='substitution_character'>
                 {character.toUpperCase()}
               </div>
               <div className='arrow'>↓</div>
-              <div className='substitution_input' key={uuidv4()}>
+              <div className='substitution_input'>
                 <input
                   onChange={(e) => handleAlphabetChange(e)}
                   data-parent={character}

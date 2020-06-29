@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { v4 as uuidv4 } from 'uuid';
 import setAffineAlpha from '../../../actions/setAffineAlpha';
 import setAffineBeta from '../../../actions/setAffineBeta';
 
@@ -7,7 +8,11 @@ const AlphaBetaSelectors = (props) => {
   const optionsBeta = () => {
     const optionsArray = [];
     for (let i = 0; i < 25; i++) {
-      optionsArray.push(<option value={i + 1}>{i + 1}</option>);
+      optionsArray.push(
+        <option value={i + 1} key={uuidv4()}>
+          {i + 1}
+        </option>
+      );
     }
     return optionsArray;
   };
@@ -15,7 +20,11 @@ const AlphaBetaSelectors = (props) => {
   const optionsAlpha = () => {
     let valuesAlpha = [1, 3, 5, 7, 9, 11, 15, 17, 19, 21, 23, 25];
     valuesAlpha = valuesAlpha.map((value) => {
-      return <option value={value}>{value}</option>;
+      return (
+        <option value={value} key={uuidv4()}>
+          {value}
+        </option>
+      );
     });
     return valuesAlpha;
   };

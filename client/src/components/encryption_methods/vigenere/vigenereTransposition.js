@@ -1,37 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { v4 as uuidv4 } from 'uuid';
 
 class VigenereTransposition extends React.PureComponent {
   genAlphabet = () => {
-    let keys = [
-      'ika',
-      'D5u',
-      'JVA',
-      '1Js',
-      'FAf',
-      'r2k',
-      'Tla',
-      '9br',
-      'D8g',
-      'bB9',
-      'Lo8',
-      'ajb',
-      '8bx',
-      'l5i',
-      '6zq',
-      '5DP',
-      'yUd',
-      '2gr',
-      '8XH',
-      'pHv',
-      'TBV',
-      'wnj',
-      'DXo',
-      'JzT',
-      'bqo',
-      'coo',
-    ];
-
     //Generate Inputstream
     let input = this.props.input.split(' ').join('').split('');
     input = input.length >= 27 ? input.slice(0, 26) : input;
@@ -54,7 +26,7 @@ class VigenereTransposition extends React.PureComponent {
     let counter = 0;
     for (let element of input) {
       output.push(
-        <div className='alphabet_transpos' key={keys[counter] + element}>
+        <div className='alphabet_transpos' key={uuidv4()}>
           <div>{element}</div>
           <div className='arrow'>&</div>
           <div

@@ -44,7 +44,7 @@ const TrifidGroups = (props) => {
                 </tr>
                 {[0, 1, 2].map((number) => {
                   return (
-                    <tr>
+                    <tr key={uuidv4()}>
                       {props.trifidGroups
                         .slice(
                           element * props.trifidGroupSize,
@@ -53,7 +53,7 @@ const TrifidGroups = (props) => {
                         )
                         .map((element) => {
                           return (
-                            <td className='trifid_groups_number'>
+                            <td className='trifid_groups_number' key={uuidv4()}>
                               {element[number] + 1}
                             </td>
                           );
@@ -70,7 +70,9 @@ const TrifidGroups = (props) => {
                     )
                     .map((letter) => {
                       return (
-                        <td className='trifid_groups_encrypted'>{letter}</td>
+                        <td className='trifid_groups_encrypted' key={uuidv4()}>
+                          {letter}
+                        </td>
                       );
                     })}
                 </tr>

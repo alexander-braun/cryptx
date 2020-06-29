@@ -1,43 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { v4 as uuidv4 } from 'uuid';
 
 class PlayfaireSquare extends React.PureComponent {
-  keys = [
-    'iBkh',
-    'DBd5',
-    'JyyV',
-    '1Tks',
-    'FUdf',
-    'rMka',
-    'TVsa',
-    '9b3',
-    'Dkl8',
-    'bkyB',
-    'Ljo8',
-    'ahyb',
-    '8gCx',
-    'ldv5',
-    '6z4',
-    '5nD',
-    'yUs',
-    '2er',
-    '8QH',
-    'BHv',
-    'TJV',
-    'wJn',
-    'DmX',
-    'JXz',
-    'bKq',
-    'coo',
-  ];
-
   createVisualMatrix = () => {
     let parent = [];
     let children = [];
     for (let i = 0; i < 25; i++) {
       let ID = 'table' + i;
       children.push(
-        <div key={this.keys[i]} id={ID} className='playfairTable'>
+        <div key={uuidv4()} id={ID} className='playfairTable'>
           {this.props.playsquare[i]}
         </div>
       );
@@ -45,7 +17,7 @@ class PlayfaireSquare extends React.PureComponent {
     parent.push(
       <div
         id='visualMatrix'
-        key='playKey'
+        key={uuidv4()}
         style={{ boxShadow: 'none' }}
         className='controller'
       >

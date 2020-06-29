@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { v4 as uuidv4 } from 'uuid';
 
 class AtbashTransposition extends React.Component {
   shouldComponentUpdate(nextProps, nextState) {
@@ -12,34 +13,6 @@ class AtbashTransposition extends React.Component {
     if (this.props.alphabet.length === 0) return;
 
     let style = { color: 'white' };
-    let keys = [
-      'iBk',
-      'DB5',
-      'JyV',
-      '1Ts',
-      'FUf',
-      'rMk',
-      'TVa',
-      '9b3',
-      'Dk8',
-      'byB',
-      'Lo8',
-      'ayb',
-      '8Cx',
-      'lv5',
-      '6z4',
-      '5nD',
-      'yUs',
-      '2er',
-      '8QH',
-      'BHv',
-      'TJV',
-      'wJn',
-      'DmX',
-      'JXz',
-      'bKq',
-      'coo',
-    ];
 
     let alphabet = this.props.alphabet.toLowerCase().split('').sort();
     alphabet = reverse
@@ -58,7 +31,7 @@ class AtbashTransposition extends React.Component {
       output.push(
         <div
           className='alphabet_transpos'
-          key={keys[counter]}
+          key={uuidv4()}
           style={
             element.toLowerCase() === 'a' || element.toLowerCase() === 'z'
               ? style

@@ -1,50 +1,22 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { v4 as uuidv4 } from 'uuid';
 
 class CaesarTransposition extends React.PureComponent {
   genAlphabet = () => {
     if (this.props.alphabet.length === 0) return;
 
     let style = { color: 'white' };
-    let keys = [
-      'iBka',
-      'DB5u',
-      'JyVA',
-      '1TJs',
-      'FUAf',
-      'rM2k',
-      'TVla',
-      '9b3r',
-      'Dk8g',
-      'byB9',
-      'LoZ8',
-      'ayjb',
-      '8Cbx',
-      'lv5i',
-      '6z4q',
-      '5nDP',
-      'yUsd',
-      '2egr',
-      '8QXH',
-      'pBHv',
-      'TJBV',
-      'wJnj',
-      'DmXo',
-      'JXzT',
-      'bKqo',
-      'cloo',
-    ];
 
     let alphabet = this.props.alphabet.toLowerCase().split('').sort();
     alphabet = [...new Set(alphabet)];
 
     let output = [];
-    let counter = 0;
     for (let element of alphabet) {
       output.push(
         <div
           className='alphabet_transpos'
-          key={keys[counter]}
+          key={uuidv4()}
           style={
             element.toLowerCase() === 'a'
               ? style
@@ -55,7 +27,6 @@ class CaesarTransposition extends React.PureComponent {
           <div className={element.toLowerCase() === 'a' ? '' : 'arrow'}>↓</div>
         </div>
       );
-      counter++;
     }
     return output;
   };
@@ -64,34 +35,6 @@ class CaesarTransposition extends React.PureComponent {
     if (this.props.alphabet.length === 0) return;
 
     let style = { color: 'white' };
-    let keys = [
-      'iBtka',
-      'DB5uD',
-      'JyVDA',
-      '1lTJs',
-      'FU7Af',
-      'rnM2k',
-      'TVlka',
-      '96b3r',
-      'DkU8g',
-      'byBW9',
-      'LoLZ8',
-      'cayjb',
-      '8CTbx',
-      'lhv5i',
-      '6zT4q',
-      '5nDWP',
-      'yUsXd',
-      '2regr',
-      '8MQXH',
-      'pIBHv',
-      'T7JBV',
-      'wJrnj',
-      'Dm5Xo',
-      'JXnzT',
-      'bKMqo',
-      'clXoo',
-    ];
 
     let alphabet = this.props.alphabet.toLowerCase().split('').sort();
     alphabet = [...new Set(alphabet)];
@@ -105,7 +48,7 @@ class CaesarTransposition extends React.PureComponent {
       output.push(
         <div
           className='alphabet_transpos'
-          key={keys[i]}
+          key={uuidv4()}
           style={
             alphabet[i].toLowerCase() === 'a'
               ? style
