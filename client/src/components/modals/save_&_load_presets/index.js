@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { togglePresetsModal } from '../../../actions/togglePresetsModal';
-import '../../../styles/modal.css';
+import '../modal.scss';
 import { loadPresets, addPreset, deletePreset } from '../../../actions/presets';
 import GetAppIcon from '@material-ui/icons/GetApp';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';

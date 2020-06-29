@@ -22,7 +22,7 @@ import PersonIcon from '@material-ui/icons/Person';
 import InfoIcon from '@material-ui/icons/Info';
 import HomeIcon from '@material-ui/icons/Home';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import '../../styles/header.css';
+import './header.scss';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { logout } from '../../actions/authenticate';

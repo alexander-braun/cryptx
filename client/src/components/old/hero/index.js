@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { Animated } from 'react-animated-css';
 import 'animate.css/animate.css';
-import '../../styles/hero.css';
+import './hero.scss';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';

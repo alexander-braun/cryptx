@@ -9,7 +9,7 @@ import {
   toggleAnalysisMethodCHIOutput,
   toggleAnalysisMethodCHIInput,
 } from '../../../actions/toggleAnalysisMethod';
-import '../../../styles/modal.css';
+import '../modal.scss';
 
 const AnalysisModal = ({
   analysisModal,

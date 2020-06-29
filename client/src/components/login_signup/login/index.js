@@ -12,11 +12,11 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import '../../styles/login.css';
+import '../login_signup.scss';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { login } from '../../actions/authenticate';
-import Alert from '../alert';
+import { login } from '../../../actions/authenticate';
+import Alert from '../../alert';
 
 function Copyright() {
   return (

@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../../styles/otp.css';
+import './otp.scss';
 import { connect } from 'react-redux';
 import setOtpKey from '../../../actions/setOtpKey';
 

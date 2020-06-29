@@ -1,9 +1,9 @@
 import React, { Suspense } from 'react';
-import BlockInput from './BlockInputOutput/Input';
-import BlockOutput from './BlockInputOutput/Output';
-import BlockConnectorEquals from './BlockOther/ConnectorEquals';
-import BlockConnectorPlus from './BlockOther/ConnectorPlus';
-import BlockSettings from './BlockCenter';
+import BlockInput from './BlockInput';
+import BlockOutput from './BlockOutput';
+import BlockConnectorEquals from './BlockConnectorEquals';
+import BlockConnectorPlus from './BlockConnectorPlus';
+import BlockSettings from './BlockSettings';
 //import Modal from '../modal/Modal'
 
 //Logic

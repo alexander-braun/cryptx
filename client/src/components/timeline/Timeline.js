@@ -4,7 +4,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import Slider from 'react-slick';
 import EncryptionMethodNames from '../main/BlockCenter/EncryptionMethodNames';
 import EncryptionMethodYears from '../main/BlockCenter/EncryptionMethodYears';
-import '../../styles/timeline.css';
+import './timeline.scss';
 import { connect } from 'react-redux';
 import { changeMethod } from '../../actions/changeMethod';
 
