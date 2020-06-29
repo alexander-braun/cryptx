@@ -41,14 +41,17 @@ import setRsaPhi from '../../actions/setRsaPhi';
 import setRsaN from '../../actions/setRsaN';
 import setRsaD from '../../actions/setRsaD';
 import setAlphabetActive from '../../actions/setAlphabetActive';
-import PresetsModal from '../presetsModal';
-import AnalysisModal from '../analysisModal';
+
+// Modals
+import PresetsModal from '../modals/save_&_load_presets';
+import AnalysisModal from '../modals/add_analysis_method';
+
 import setNihilistSquare from '../../actions/setNihilistSquare';
 import setNihilistRunningKey from '../../actions/setNihilistRunningKey';
 import setNihilistPlainNumbers from '../../actions/setNihilistPlainNumbers';
 import { setTrifidLayers, setTrifidGroups } from '../../actions/setTrifid';
 
-const Modal = React.lazy(() => import('../modal/Modal'));
+const Modal = React.lazy(() => import('../modals/choos_encryption_method'));
 
 class EncryptionArea extends React.PureComponent {
   constructor(props) {

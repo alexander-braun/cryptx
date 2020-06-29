@@ -16,7 +16,7 @@ import '../../styles/login.css';
 import { connect } from 'react-redux';
 import { setAlert } from '../../actions/alert';
 import PropTypes from 'prop-types';
-import Alert from '../alert/alert';
+import Alert from '../alert';
 import { register } from '../../actions/authenticate';
 
 function Copyright() {

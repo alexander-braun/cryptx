@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { toggleModal } from '../../actions/toggleModal';
-import '../../styles/modal.css';
-import { changeMethod } from '../../actions/changeMethod';
+import { toggleModal } from '../../../actions/toggleModal';
+import '../../../styles/modal.css';
+import { changeMethod } from '../../../actions/changeMethod';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 
 class Modal extends React.Component {

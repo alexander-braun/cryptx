@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
-import { toggleAnalysisModal } from '../../actions/toggleAnalysisModal';
+import { toggleAnalysisModal } from '../../../actions/toggleAnalysisModal';
 import {
   toggleAnalysisMethodFQInput,
   toggleAnalysisMethodFQOutput,
@@ -8,8 +8,8 @@ import {
   toggleAnalysisMethodICOutput,
   toggleAnalysisMethodCHIOutput,
   toggleAnalysisMethodCHIInput,
-} from '../../actions/toggleAnalysisMethod';
-import '../../styles/modal.css';
+} from '../../../actions/toggleAnalysisMethod';
+import '../../../styles/modal.css';
 
 const AnalysisModal = ({
   analysisModal,
