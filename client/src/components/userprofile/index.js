@@ -10,6 +10,7 @@ const Profile = (props) => {
   useEffect(() => {
     props.getCurrentProfile();
   }, [props]);
+
   return props.profile.loading && props.profile === null ? (
     <Spinner />
   ) : (
@@ -20,7 +21,7 @@ const Profile = (props) => {
             <h1>Welcome {props.auth.user && props.auth.user.name}!</h1>
             <img
               alt='userimage'
-              src={!props.auth.loading && props.auth.user.avatar}
+              src={!props.auth.loading ? props.auth.user.avatar : null}
             ></img>
             <h2>You have full access to all features of cryptX !</h2>
           </div>

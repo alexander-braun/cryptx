@@ -1,10 +1,10 @@
 import React from 'react';
 import { ReactComponent as Caret } from './img/caret.svg';
 import { connect } from 'react-redux';
-import { toggleModal } from '../../actions/toggleModal';
-import { toggleDirection } from '../../actions/toggleDirection';
-import MethodNames from './MethodNames';
-import MethodCrackAvailability from './MethodCrackAvailability';
+import { toggleModal } from '../../../actions/toggleModal';
+import { toggleDirection } from '../../../actions/toggleDirection';
+import MethodNames from './EncryptionMethodNames';
+import MethodCrackAvailability from './EncryptionMethodCrackAvailability';
 
 const BlockHeadSettings = (props) => {
   const toggleModal = () => {

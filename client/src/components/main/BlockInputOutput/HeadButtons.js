@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
-import { togglePresetsModal } from '../../actions/togglePresetsModal';
-import { toggleDirection } from '../../actions/toggleDirection';
-import { updateInput } from '../../actions/updateInput';
-import { toggleAnalysisModal } from '../../actions/toggleAnalysisModal';
+import { togglePresetsModal } from '../../../actions/togglePresetsModal';
+import { toggleDirection } from '../../../actions/toggleDirection';
+import { updateInput } from '../../../actions/updateInput';
+import { toggleAnalysisModal } from '../../../actions/toggleAnalysisModal';
 import IcTooltipSwapInput from './IcTooltipSwapInputs';
 import IcTooltipLoadPreset from './IcTooltipLoadPreset';
 import IcTooltipSavePreset from './IcTooltipSavePreset';

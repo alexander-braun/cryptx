@@ -1,11 +1,11 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
-import ChartImporter from '../analysis_methods/freqencyAnalysis/ChartImporter';
-import IndexOfCoincidence from '../analysis_methods/indexOfCoincidence/IndexOfCoincidence';
-import ChiSquared from '../analysis_methods/chi_squared/chisquared';
+import ChartImporter from './freqencyAnalysis/ChartImporter';
+import IndexOfCoincidence from './indexOfCoincidence/IndexOfCoincidence';
+import ChiSquared from './chi_squared/chisquared';
 
 const AnalysisMethods = (props) => {
-  const icMenue =
+  const indexOfCoincidenceMenue =
     props.menue === 'output' && props.ic_output ? (
       <div className='chartcontainer' style={{ width: '100%' }}>
         <IndexOfCoincidence menue={props.menue} ioc={props.iocInput} />
@@ -15,7 +15,7 @@ const AnalysisMethods = (props) => {
         <IndexOfCoincidence menue={props.menue} ioc={props.iocInput} />
       </div>
     ) : null;
-  const fqMenue =
+  const frequencyAnalysisMenue =
     props.menue === 'output' && props.fq_output ? (
       <div
         className='chartcontainer'
@@ -35,7 +35,7 @@ const AnalysisMethods = (props) => {
         </div>
       </div>
     ) : null;
-  const chiMenue =
+  const chiSquaredMenue =
     props.menue === 'output' && props.chi_output ? (
       <div className='chartcontainer' style={{ width: '100%' }}>
         <ChiSquared menue={props.menue} />
@@ -47,9 +47,9 @@ const AnalysisMethods = (props) => {
     ) : null;
   return (
     <Fragment>
-      {fqMenue}
-      {icMenue}
-      {chiMenue}
+      {frequencyAnalysisMenue}
+      {indexOfCoincidenceMenue}
+      {chiSquaredMenue}
     </Fragment>
   );
 };

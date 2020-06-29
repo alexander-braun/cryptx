@@ -27,7 +27,7 @@ import { toReplaceLetter, replaceLetter } from '../../../actions/replace';
 import setAffineAlpha from '../../../actions/setAffineAlpha';
 import setAffineBeta from '../../../actions/setAffineBeta';
 import SentimentVeryDissatisfiedIcon from '@material-ui/icons/SentimentVeryDissatisfied';
-import methodNamesAll from '../../general/MethodNames';
+import methodNamesAll from '../../main/BlockCenter/EncryptionMethodNames';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 
 class PresetsModal extends React.Component {

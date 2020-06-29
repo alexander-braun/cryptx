@@ -2,8 +2,8 @@ import React from 'react';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Slider from 'react-slick';
-import methodNamesAll from '../general/MethodNames';
-import times from '../general/MethodTimes';
+import EncryptionMethodNames from '../main/BlockCenter/EncryptionMethodNames';
+import EncryptionMethodYears from '../main/BlockCenter/EncryptionMethodYears';
 import '../../styles/timeline.css';
 import { connect } from 'react-redux';
 import { changeMethod } from '../../actions/changeMethod';
@@ -123,8 +123,8 @@ class Timeline extends React.PureComponent {
 
     const generateTimelineElements = () => {
       let timelineElements = [];
-      for (let element in methodNamesAll) {
-        if (!times[element]) continue;
+      for (let element in EncryptionMethodNames) {
+        if (!EncryptionMethodYears[element]) continue;
         let key = 0;
         timelineElements.push(
           <div
@@ -136,10 +136,10 @@ class Timeline extends React.PureComponent {
             }}
           >
             <div value={element} className='history_element'>
-              <h3 value={element}>{times[element]}</h3>
+              <h3 value={element}>{EncryptionMethodYears[element]}</h3>
               <div value={element} className='dot'></div>
               <div value={element} className='timeline_description'>
-                {methodNamesAll[element]}
+                {EncryptionMethodNames[element]}
               </div>
             </div>
           </div>

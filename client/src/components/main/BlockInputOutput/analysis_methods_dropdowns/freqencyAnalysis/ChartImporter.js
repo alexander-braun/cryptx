@@ -16,7 +16,7 @@ import { connect } from 'react-redux';
 import {
   toggleAnalysisMethodFQInput,
   toggleAnalysisMethodFQOutput,
-} from '../../../actions/toggleAnalysisMethod';
+} from '../../../../../actions/toggleAnalysisMethod';
 import { languages } from './data';
 
 const useStyles = makeStyles((theme) => ({

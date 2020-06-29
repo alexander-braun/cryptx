@@ -1,4 +1,4 @@
-const times = {
+const years = {
   atbash: '600 B.C.',
   skytale: '300 B.C.',
   caesar: '100 B.C. - 44 B.C.',
@@ -11,4 +11,4 @@ const times = {
   rsa: '1977',
 };
 
-export default times;
+export default years;

@@ -1,6 +1,5 @@
-import React, { Fragment, useEffect } from 'react';
-import EncryptionArea from './general/EncryptionArea';
-import Hero from './hero';
+import React, { useEffect } from 'react';
+import Main from './main';
 import Header from './header/Header';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Footer from './footer/Footer';
@@ -30,16 +29,7 @@ const App = () => {
       <Router basename='/'>
         <Header />
         <Switch>
-          <Route
-            exact
-            path={`/`}
-            render={() => (
-              <Fragment>
-                {/*<Hero />*/}
-                <EncryptionArea />
-              </Fragment>
-            )}
-          />
+          <Route exact path={`/`} render={() => <Main />} />
           <Route exact path={`/signup`} component={Signup} />
           <Route exact path={`/login`} component={Login} />
           <Route exact path={`/about`} component={About} />

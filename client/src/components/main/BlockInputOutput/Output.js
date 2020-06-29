@@ -1,9 +1,9 @@
 import React from 'react';
-import math from './Math';
+import math from '../helper/Math';
 import { connect } from 'react-redux';
-import { updateInput } from '../../actions/updateInput';
-import BlockheadButtons from './BlockheadButtons';
-import AnalysisMethods from './AnalysisMethods';
+import { updateInput } from '../../../actions/updateInput';
+import BlockheadButtons from './HeadButtons';
+import AnalysisMethods from './analysis_methods_dropdowns';
 
 class BlockElementOutput extends React.PureComponent {
   componentDidUpdate(prevProps) {

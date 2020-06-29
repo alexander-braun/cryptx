@@ -1,5 +1,5 @@
 const Substitute = (() => {
-  let userInput, alphabet, substitutionAlphabet, direction;
+  let userInput, substitutionAlphabet, direction;
 
   const setUserInput = (value) => {
     userInput = value;
@@ -7,10 +7,6 @@ const Substitute = (() => {
 
   const setSubstitutionAlphabet = (value) => {
     substitutionAlphabet = value;
-  };
-
-  const setAlphabet = (value) => {
-    alphabet = value;
   };
 
   const setDirection = (value) => {
@@ -27,11 +23,13 @@ const Substitute = (() => {
       }
     }
     if (direction === 'decrypt') {
+      let sAlphabet = substitutionAlphabet;
+      let uInput = userInput;
+      let keys = Object.keys(sAlphabet);
       for (let i = 0; i < userInput.length; i++) {
         output.push(
-          Object.keys(substitutionAlphabet).find(
-            (key) => substitutionAlphabet[key] === userInput[i].toLowerCase()
-          ) || userInput[i]
+          keys.find((key) => sAlphabet[key] === uInput[i].toLowerCase()) ||
+            userInput[i]
         );
       }
     }

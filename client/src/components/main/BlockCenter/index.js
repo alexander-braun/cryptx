@@ -1,9 +1,9 @@
 import React from 'react';
 import ExplanatoryText from './ExplanatoryText';
-import BlockHeadSettings from './BlockHeadSettings';
-import Settings from './Settings';
+import BlockHeadSettings from './HeadSettings';
+import Settings from './EncryptionMethodSettings';
 
-const BlockSettings = () => {
+const BlockCenter = () => {
   return (
     <div className='block_settings'>
       <BlockHeadSettings />
@@ -17,4 +17,4 @@ const BlockSettings = () => {
   );
 };
 
-export default BlockSettings;
+export default BlockCenter;

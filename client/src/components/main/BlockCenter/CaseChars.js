@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import toggleChars from '../../actions/toggleIncludeChars';
-import toggleCase from '../../actions/toggleCase';
+import toggleChars from '../../../actions/toggleIncludeChars';
+import toggleCase from '../../../actions/toggleCase';
 
 class CaseChars extends React.PureComponent {
   constructor(props) {

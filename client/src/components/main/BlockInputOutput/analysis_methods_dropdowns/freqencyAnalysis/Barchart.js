@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import { select, axisBottom, axisLeft, scaleLinear, scaleBand } from 'd3';
 import * as d3 from 'd3';
-import useResizeObserver from '../../general/Resizeobserver';
+import useResizeObserver from '../../../../main/helper/Resizeobserver';
 
 function BarChart({ data, alphabet, inputValue }) {
   const input = inputValue ? inputValue : ' ';

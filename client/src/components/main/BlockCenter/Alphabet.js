@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import updateAlphabet from '../../actions/updateAlphabet';
+import updateAlphabet from '../../../actions/updateAlphabet';
 
 const Alphabet = ({ alphabet, alphabetActive, updateAlphabet }) => {
   const genStyle = () => {

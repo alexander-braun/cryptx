@@ -1,5 +1,4 @@
 const Rsa = (() => {
-  /* global BigInt */
   const bigInt = require('big-integer');
 
   let prime_one, prime_two, e, phi, userInput, n, d;
