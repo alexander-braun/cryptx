@@ -1,0 +1,27 @@
+.foreign-chars {
+  border: none;
+  background: transparent;
+  padding-right: 1em;
+  cursor: pointer;
+  color: #898989;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  padding-left: 0;
+  letter-spacing: 0.05em;
+
+  &--active {
+    color: #dadada;
+    &:hover {
+      color: #dadada;
+    }
+  }
+
+  &:focus {
+    outline-color: transparent;
+  }
+
+  &:hover {
+    color: #b1b1b1;
+  }
+}

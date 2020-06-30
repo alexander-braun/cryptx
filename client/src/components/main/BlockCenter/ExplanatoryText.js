@@ -7,6 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { connect } from 'react-redux';
 import explanatoryTextsObj from './explanatoryTextsData';
+import './center.scss';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -53,11 +54,15 @@ const ExplanatoryText = (props) => {
         </ExpansionPanelDetails>
       </ExpansionPanel>
     ) : (
-      <div className='controller explanation'>
-        <p className='block_method_explanation'>
+      <div className='contentbox explanation'>
+        <p className='explanation__paragraph'>
           {explanatoryTextsObj[props.method]['crack']}
         </p>
-        <a href={explanatoryTextsObj[props.method]['linksrc']} target='blank'>
+        <a
+          className='explanation__link'
+          href={explanatoryTextsObj[props.method]['linksrc']}
+          target='blank'
+        >
           {explanatoryTextsObj[props.method]['linkname']}
         </a>
       </div>

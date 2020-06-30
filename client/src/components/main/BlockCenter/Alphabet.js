@@ -3,25 +3,21 @@ import { connect } from 'react-redux';
 import updateAlphabet from '../../../actions/updateAlphabet';
 
 const Alphabet = ({ alphabet, alphabetActive, updateAlphabet }) => {
-  const genStyle = () => {
-    return {
-      boxShadow: 'none',
-      color: alphabetActive ? '#dadada' : 'grey',
-    };
-  };
   return (
-    <div className='controller'>
-      <div className='settings_name'>Alphabet</div>
-      <div className='settings_operators'>
-        <textarea
-          id='alphabet'
-          value={alphabet}
-          readOnly={!alphabetActive}
-          style={genStyle()}
-          onChange={(evt) => {
-            updateAlphabet(evt.target.value);
-          }}
-        />
+    <div className='contentbox'>
+      <div className='content-element'>
+        <div className='content-element__settings-name'>Alphabet</div>
+        <div className='content-element__settings-operators'>
+          <textarea
+            className='content-element__textarea'
+            value={alphabet}
+            readOnly={!alphabetActive}
+            style={alphabetActive ? { color: '#dadada' } : { color: 'grey' }}
+            onChange={(evt) => {
+              updateAlphabet(evt.target.value);
+            }}
+          />
+        </div>
       </div>
     </div>
   );

@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import toggleChars from '../../../actions/toggleIncludeChars';
 import toggleCase from '../../../actions/toggleCase';
+import './case-chars.scss';
 
 class CaseChars extends React.PureComponent {
   constructor(props) {
@@ -9,8 +10,11 @@ class CaseChars extends React.PureComponent {
     this.selectChars = this.selectChars.bind(this);
   }
 
+  /**
+   * Set the foreign characters to in- or exclude
+   */
   selectChars(evt) {
-    if (evt.target.id === 'includeChars') {
+    if (evt.target.value === 'include') {
       this.props.toggleChars('include');
     } else {
       this.props.toggleChars('ignore');
@@ -19,54 +23,34 @@ class CaseChars extends React.PureComponent {
 
   render() {
     return (
-      <div
-        className='controller double_content'
-        style={{ borderBottom: 'none' }}
-      >
-        <div className='controllbox'>
-          <div className='settings_name'>CASE</div>
-          <div
-            className='settings_operators'
-            style={{
-              padding: '0.5rem 0.5rem 0.5rem 20px',
-              borderBottom: 'none',
-            }}
-          >
+      <div className='contentbox contentbox--double'>
+        <div className='content-element content-element--double'>
+          <div className='content-element__settings-name content-element__settings-name--double'>
+            CASE
+          </div>
+          <div className='content-element__settings-operators content-element__settings-operators--double'>
             <select
-              id='selectCase'
               defaultValue={this.props.caseformat}
               onChange={(evt) => {
                 this.props.toggleCase(evt.target.value);
               }}
+              className='content-element__select content-element__select--font-s'
             >
-              <option
-                value='maintain'
-                style={{ color: 'black', fontSize: '14px' }}
-              >
-                Maintain Case
-              </option>
-              <option
-                value='ignore'
-                style={{ color: 'black', fontSize: '14px' }}
-              >
-                Ignore Case
-              </option>
+              <option value='maintain'>Maintain Case</option>
+              <option value='ignore'>Ignore Case</option>
             </select>
           </div>
         </div>
-        <div
-          className='controllbox'
-          style={{ borderRight: 'none', borderBottom: 'none' }}
-        >
-          <div className='settings_name'>FOREIGN CHARS</div>
-          <div
-            className='settings_operators'
-            style={{ justifyContent: 'start' }}
-          >
+        <div className='content-element content-element--double'>
+          <div className='content-element__settings-name content-element__settings-name--double'>
+            FOREIGN CHARS
+          </div>
+          <div className='content-element__settings-operators content-element__settings-operators--double'>
             <button
-              id='includeChars'
               className={
-                this.props.includeChars === 'include' ? 'active' : 'inactive'
+                this.props.includeChars === 'include'
+                  ? 'foreign-chars foreign-chars--active'
+                  : 'foreign-chars'
               }
               onClick={(evt) => {
                 this.selectChars(evt);
@@ -76,9 +60,10 @@ class CaseChars extends React.PureComponent {
               Include
             </button>
             <button
-              id='ignoreChars'
               className={
-                this.props.includeChars === 'include' ? 'inactive' : 'active'
+                this.props.includeChars === 'include'
+                  ? 'foreign-chars'
+                  : 'foreign-chars foreign-chars--active'
               }
               onClick={(evt) => {
                 this.selectChars(evt);

@@ -6,28 +6,29 @@ import { toggleDirection } from '../../../actions/toggleDirection';
 import MethodNames from './EncryptionMethodNames';
 import MethodCrackAvailability from './EncryptionMethodCrackAvailability';
 
-const BlockHeadSettings = (props) => {
+const BlockHeadCenter = (props) => {
+  /**
+   * Switch Method Modal toggle
+   */
   const toggleModal = () => {
     props.onModalToggle();
   };
 
   return (
-    <div className='block_head'>
-      <button
-        className='block_head_text'
-        id='block_head_modal'
-        onClick={toggleModal}
-      >
-        {MethodNames[props.method]} <Caret />
+    <div className='block-head'>
+      <button className='block-head__text' onClick={toggleModal}>
+        {MethodNames[props.method]} <Caret className='caret' />
       </button>
-      <div className='block_head_options'>
+      <div className='block-head__options'>
         <button
           value='encrypt'
           onClick={(evt) => {
             props.toggleDirection(evt.target.value);
           }}
-          className={`block_head_option ${
-            props.direction === 'encrypt' ? 'selected' : ''
+          className={`block-head__option ${
+            props.direction === 'encrypt'
+              ? 'block-head__option block-head__option--selected'
+              : 'block-head__option'
           }`}
         >
           Encrypt
@@ -37,9 +38,11 @@ const BlockHeadSettings = (props) => {
           onClick={(evt) => {
             props.toggleDirection(evt.target.value);
           }}
-          className={`block_head_option ${
-            props.direction === 'decrypt' ? 'selected' : ''
-          }`}
+          className={
+            props.direction === 'decrypt'
+              ? 'block-head__option block-head__option--selected'
+              : 'block-head__option'
+          }
         >
           Decrypt
         </button>
@@ -49,9 +52,11 @@ const BlockHeadSettings = (props) => {
             onClick={(evt) => {
               props.toggleDirection(evt.target.value);
             }}
-            className={`block_head_option ${
-              props.direction === 'crack' ? 'selected' : ''
-            }`}
+            className={
+              props.direction === 'crack'
+                ? 'block-head__option block-head__option--selected'
+                : 'block-head__option'
+            }
           >
             Crack
           </button>
@@ -75,4 +80,4 @@ const mapActionsToProps = {
 export default connect(
   mapStateToProps,
   mapActionsToProps
-)(React.memo(BlockHeadSettings));
+)(React.memo(BlockHeadCenter));
