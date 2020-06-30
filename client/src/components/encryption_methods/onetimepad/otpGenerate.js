@@ -40,7 +40,7 @@ class Otp extends React.PureComponent {
     return (
       <div className='contentbox'>
         <div className='content-element'>
-          <div className='content-element__settings-name'>
+          <div className=' content-element__settings-name'>
             GENERATE RANDOM KEY
           </div>
           <div className='content-element__settings-operators content-element__settings-operators--vertical-center-flex'>

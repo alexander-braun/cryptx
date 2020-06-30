@@ -43,6 +43,12 @@
     padding: 1rem 0.5rem 0 24px;
     letter-spacing: 0.05em;
     box-shadow: none;
+
+    resize: none;
+    border: none;
+    overflow: hidden;
+    box-sizing: border-box;
+    font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
   }
 
   &__split {
@@ -206,7 +212,6 @@
   }
 
   &__settings-name {
-    border-right: 1px solid rgba(255, 255, 255, 0.192);
     color: #949494;
     padding: 1em 1em 0 24px;
     font-family: 'Source Sans Pro', 'Roboto', 'Helvetica', 'Arial', sans-serif;
@@ -216,6 +221,11 @@
     text-transform: uppercase;
     letter-spacing: 0.2px;
     width: fit-content;
+    border-right: 1px solid rgba(255, 255, 255, 0.192);
+
+    &--double {
+      border: none;
+    }
 
     &--no-transform {
       text-transform: none;

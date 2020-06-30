@@ -38,7 +38,7 @@ const AlphaBetaSelectors = (props) => {
   return (
     <div className='contentbox contentbox--double'>
       <div className='content-element content-element--double'>
-        <div className='content-element__settings-name content-element__settings-name--no-transform'>
+        <div className='content-element__settings-name content-element__settings-name--no-transform content-element__settings-name--double'>
           α
         </div>
         <div className='content-element__settings-operators content-element__settings-operators--double'>
@@ -54,7 +54,7 @@ const AlphaBetaSelectors = (props) => {
         </div>
       </div>
       <div className='content-element content-element--double'>
-        <div className='content-element__settings-name content-element__settings-name--no-transform'>
+        <div className='content-element__settings-name content-element__settings-name--no-transform content-element__settings-name--double'>
           β
         </div>
         <div className='content-element__settings-operators content-element__settings-operators--double'>

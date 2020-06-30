@@ -1,0 +1,38 @@
+#visualMatrix.controller {
+  border: none;
+}
+
+.playfair-square {
+  padding: 24px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  height: fit-content;
+
+  &__element {
+    height: 50px;
+    margin: 2px;
+    position: relative;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 0;
+    flex: 1 1 17%;
+    display: inline-block;
+    color: #dadada;
+    text-decoration: none;
+    font-size: 30px;
+    background-color: rgba(62, 148, 197, 1);
+    padding: 5px;
+    font-weight: 900;
+    cursor: default;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+      0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+  }
+}
+
+.playfair-square-element {
+}

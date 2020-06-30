@@ -4,19 +4,20 @@ import setKeywordPlayfair from '../../../actions/setKeywordPlayfair';
 
 const KeywordPlayfair = ({ keywordPlayfair, setKeywordPlayfair }) => {
   return (
-    <div className='controller'>
-      <div className='settings_name'>Keyword</div>
-      <div className='settings_operators'>
-        <textarea
-          id='alphabet'
-          defaultValue={keywordPlayfair}
-          onChange={(evt) => {
-            setKeywordPlayfair(evt.target.value.toLowerCase());
-          }}
-          style={{ boxShadow: 'none' }}
-        />
+    <div className='contentbox'>
+      <div className='content-element'>
+        <div className='content-element__settings-name'>Keyword</div>
+        <div className='content-element__settings-operators'>
+          <textarea
+            defaultValue={keywordPlayfair}
+            onChange={(evt) => {
+              setKeywordPlayfair(evt.target.value.toLowerCase());
+            }}
+            className='content-element__textarea'
+          />
+        </div>
+        <div id='matrix'></div>
       </div>
-      <div id='matrix'></div>
     </div>
   );
 };

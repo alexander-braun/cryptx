@@ -1,18 +1,22 @@
 import React from 'react';
 
-const CharOptions = ({ setAlpha, setBeta, encrypt }) => {
+const CharOptions = () => {
   return (
-    <div className='controller double_content'>
-      <div className='controllbox'>
-        <div className='settings_name'>Letter to leave out</div>
-        <div className='settings_operators'>
-          <div className='char-left-out'>J</div>
+    <div className='contentbox contentbox--double'>
+      <div className='content-element content-element--double'>
+        <div className='content-element__settings-name content-element__settings-name--double'>
+          Letter to leave out
+        </div>
+        <div className='content-element__settings-operators content-element__settings-operators--double'>
+          <div className='content-element__settings-operator'>J</div>
         </div>
       </div>
-      <div className='controllbox' style={{ borderRight: 'none' }}>
-        <div className='settings_name'>Substitution letter</div>
-        <div className='settings_operators'>
-          <div className='char-left-out'>X</div>
+      <div className='content-element content-element--double'>
+        <div className='content-element__settings-name content-element__settings-name--double'>
+          Substitution letter
+        </div>
+        <div className='content-element__settings-operators content-element__settings-operators--double'>
+          <div className='content-element__settings-operator'>X</div>
         </div>
       </div>
     </div>
