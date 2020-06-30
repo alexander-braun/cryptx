@@ -3,47 +3,52 @@ import { setCshift } from '../../../actions/setCShift';
 import { connect } from 'react-redux';
 
 const CaesarShift = (props) => {
+  /**
+   * Finds the shift value according to
+   * the plus/minus button and sends the
+   * value to redux.
+   */
   const calcShift = (evt) => {
-    let method = evt.target.id;
-    if (method === 'minus_caesar') {
+    let method = evt.target.dataset.val;
+    if (method === '-') {
       if (props.cShift < 1) {
-        props.setC(25);
+        props.setCshift(25);
       } else {
-        props.setC(props.cShift - 1);
+        props.setCshift(props.cShift - 1);
       }
-    } else if (method === 'plus_caesar') {
+    } else if (method === '+') {
       if (props.cShift > 24) {
-        props.setC(0);
+        props.setCshift(0);
       } else {
-        props.setC(props.cShift + 1);
+        props.setCshift(props.cShift + 1);
       }
     }
   };
 
   return (
-    <div className='controller'>
-      <div className='settings_name'>SHIFT</div>
-      <div className='settings_operators'>
-        <div
-          value='-'
-          id='minus_caesar'
-          className='settings_operator'
-          onClick={(evt) => {
-            calcShift(evt);
-          }}
-        >
-          -
-        </div>
-        <div className='settings_operator' id='caesar_shift_value'>
-          {props.cShift}
-        </div>
-        <div
-          value='+'
-          id='plus_caesar'
-          className='settings_operator'
-          onClick={(evt) => calcShift(evt)}
-        >
-          +
+    <div className='contentbox'>
+      <div className='content-element'>
+        <div className='content-element__settings-name'>SHIFT</div>
+        <div className='content-element__settings-operators'>
+          <div
+            data-val='-'
+            className='content-element__adjust-plus-minus'
+            onClick={(evt) => {
+              calcShift(evt);
+            }}
+          >
+            -
+          </div>
+          <div className='content-element__adjust-plus-minus'>
+            {props.cShift}
+          </div>
+          <div
+            data-val='+'
+            className='content-element__adjust-plus-minus'
+            onClick={(evt) => calcShift(evt)}
+          >
+            +
+          </div>
         </div>
       </div>
     </div>
@@ -55,7 +60,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapActionsToProps = {
-  setC: setCshift,
+  setCshift: setCshift,
 };
 
 export default React.memo(

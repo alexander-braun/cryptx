@@ -1,7 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { setCaseTransformChoice } from '../../../actions/setCaseTransformChoice';
+import { v4 as uuidv4 } from 'uuid';
 
+/**
+ * Abailable Case-Options
+ */
 let options = [
   'Lower case',
   'Upper case',
@@ -11,47 +15,38 @@ let options = [
 ];
 
 const CaseTransform = (props) => {
-  const onClickSetChoice = (e) => {
+  /**
+   * Send case-choice to reduxs
+   */
+  const setCaseTransform = (e) => {
     let val = e.target.value.split(' ')[0].toLowerCase();
     props.setCaseTransformChoice(val);
   };
 
   return (
-    <div className='controller' style={{ borderBottom: 'none' }}>
-      <div className='settings_name'>Case Format</div>
-      <div
-        className='settings_operators'
-        style={{ paddingRight: '24px', margin: '2em 0' }}
-      >
-        <div id='select_case_transform' className='settings_operator'>
-          Select Case:
+    <div className='contentbox' style={{ borderBottom: 'none' }}>
+      <div className='content-element'>
+        <div className='content-element__settings-name'>Case Format</div>
+        <div className='content-element__settings-operators content-element__settings-operators--split'>
+          <div className='content-element__split content-element__split--text'>
+            Select Case:
+          </div>
+          <select
+            className='content-element__split content-element__split--button'
+            onClick={(e) => setCaseTransform(e)}
+          >
+            {options.map((option) => {
+              return (
+                <option
+                  key={uuidv4()}
+                  className='content-element__split--option'
+                >
+                  {option}
+                </option>
+              );
+            })}
+          </select>
         </div>
-        <select
-          id='case_transform_select'
-          style={{
-            width: 'fit-content',
-            marginLeft: '1em',
-            backgroundColor: 'transparent',
-            border: '1px solid #ffffff78',
-            padding: '5px',
-            fontWeight: '400',
-            borderRadius: '20px',
-            fontSize: '12px',
-          }}
-          onClick={(e) => onClickSetChoice(e)}
-        >
-          {options.map((option) => {
-            return (
-              <option
-                style={{ fontWeight: '400', fontSize: '12px' }}
-                key={option}
-                id={option}
-              >
-                {option}
-              </option>
-            );
-          })}
-        </select>
       </div>
     </div>
   );

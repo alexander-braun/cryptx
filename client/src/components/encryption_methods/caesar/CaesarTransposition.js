@@ -2,12 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 
+let whiteChar = { color: 'white' };
+let standartChar = { color: 'rgba(255, 255, 255, 0.627)' };
+
 class CaesarTransposition extends React.PureComponent {
   genAlphabet = () => {
     if (this.props.alphabet.length === 0) return;
-
-    let style = { color: 'white' };
-
     let alphabet = this.props.alphabet.toLowerCase().split('').sort();
     alphabet = [...new Set(alphabet)];
 
@@ -15,13 +15,12 @@ class CaesarTransposition extends React.PureComponent {
     for (let element of alphabet) {
       output.push(
         <div
-          className='alphabet_transpos'
-          key={uuidv4()}
-          style={
+          className={
             element.toLowerCase() === 'a'
-              ? style
-              : { color: 'rgba(255, 255, 255, 0.627)' }
+              ? 'alphabet-row__character alphabet-row__character--white'
+              : 'alphabet-row__character'
           }
+          key={uuidv4()}
         >
           <div>{element}</div>
           <div className={element.toLowerCase() === 'a' ? '' : 'arrow'}>↓</div>
@@ -34,8 +33,6 @@ class CaesarTransposition extends React.PureComponent {
   genShifted = (shift) => {
     if (this.props.alphabet.length === 0) return;
 
-    let style = { color: 'white' };
-
     let alphabet = this.props.alphabet.toLowerCase().split('').sort();
     alphabet = [...new Set(alphabet)];
 
@@ -47,13 +44,12 @@ class CaesarTransposition extends React.PureComponent {
     for (let i = 0; i < alphabet.length; i++) {
       output.push(
         <div
-          className='alphabet_transpos'
-          key={uuidv4()}
-          style={
+          className={
             alphabet[i].toLowerCase() === 'a'
-              ? style
-              : { color: 'rgba(255, 255, 255, 0.627)' }
+              ? 'alphabet-row__character alphabet-row__character--white'
+              : 'alphabet-row__character'
           }
+          key={uuidv4()}
         >
           <div className={alphabet[i].toLowerCase() === 'a' ? '' : 'arrow'}>
             ↑
@@ -68,18 +64,20 @@ class CaesarTransposition extends React.PureComponent {
 
   render() {
     return (
-      <div className='controller'>
-        <div className='settings_name'>Caesar Cipher Transposition</div>
-        <div id='caesar_transposition'>
-          <div className='alphabet_row_collect'>
-            <div id='alphabet_standart'>{this.genAlphabet()}</div>
-            <div id='alphabet_transpositioned'>
-              {this.genShifted(this.props.cShift)}
+      <div className='contentbox'>
+        <div className='content-element'>
+          <div className='content-element__settings-name'>
+            Caesar Cipher Transposition
+          </div>
+          <div className='content-element__content content-element__content--alphabet-transposition'>
+            <div className='alphabet-row'>
+              <div className='alphabet-row__standard'>{this.genAlphabet()}</div>
+              <div className='alphabet-row__transpositioned'>
+                {this.genShifted(this.props.cShift)}
+              </div>
             </div>
           </div>
-        </div>
-        <div id='caesar_explanatory_text'>
-          <p className='feature_text'>
+          <p className='content-element__feature_text'>
             Visualization of the character mapping on <b>shift</b> changes.
           </p>
         </div>
