@@ -31,6 +31,20 @@
   justify-content: space-between;
   align-content: flex-start;
 
+  &__textarea {
+    width: 100%;
+    display: block;
+    border: 1px solid #ccc;
+    overflow-x: hidden;
+    overflow-y: auto;
+    font-size: 14px;
+    font-weight: 500;
+    border: none;
+    padding: 1rem 0.5rem 0 24px;
+    letter-spacing: 0.05em;
+    box-shadow: none;
+  }
+
   &__split {
     font-size: 14px;
     &--option {
@@ -181,6 +195,23 @@
 
   .arrow {
     color: rgba(255, 255, 255, 0.2);
+  }
+
+  &__vertically {
+    border-left: 1px dashed rgba(255, 255, 255, 0.24);
+    font-size: 100%;
+    width: 10px;
+    flex-grow: 2;
+    font-weight: 400;
+    text-align: center;
+    text-transform: lowercase;
+    color: #ffffffd5;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    line-height: 1.5;
   }
 
   &__character {

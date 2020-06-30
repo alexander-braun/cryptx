@@ -1,29 +1,34 @@
 #nihilistSquare {
-    text-align: center;
-    color: #dadada;
-    font-size: 30px;
-    font-weight: 900;
-    padding: 24px;
+  text-align: center;
+  color: #dadada;
+  font-size: 30px;
+  font-weight: 900;
+  padding: 24px;
+  width: 100%;
+  table {
+    display: block;
     width: 100%;
-    table {
-        display: block;
-        width: 100%;
-    }
-    tr {
-        width: 100%;
-    }
-    th {
-        background-color: #3e94c5;
-        height: 50px;
-        min-width: 50px;
-        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
-        margin: 2px;
-    }
-    td {
-        background-color: #3e94c5;
-        height: 50px;
-        min-width: 50px;
-        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
-        margin: 2px;
-    }
+  }
+  tbody {
+    color: white;
+  }
+  tr {
+    width: 100%;
+  }
+  th {
+    background-color: #3e94c5;
+    height: 50px;
+    min-width: 50px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+      0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+    margin: 2px;
+  }
+  td {
+    background-color: #3e94c5;
+    height: 50px;
+    min-width: 50px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+      0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+    margin: 2px;
+  }
 }

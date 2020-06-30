@@ -6,29 +6,31 @@ import setCipherNihilist from '../../../actions/setCipherNihilist';
 const KeywordsNihilist = (props) => {
   return (
     <React.Fragment>
-      <div className='controller'>
-        <div className='settings_name'>Polybius square Key</div>
-        <div className='settings_operators'>
-          <textarea
-            id='alphabet'
-            defaultValue={props.keyNihilist}
-            onChange={(evt) => {
-              props.setKeyNihilist(evt.target.value.toLowerCase());
-            }}
-            style={{ boxShadow: 'none' }}
-          />
+      <div className='contentbox'>
+        <div className='content-element'>
+          <div className='content-element__settings-name'>
+            Polybius square Key
+          </div>
+          <div className='content-element__settings-operators'>
+            <textarea
+              defaultValue={props.keyNihilist}
+              className='content-element__textarea'
+              onChange={(evt) => {
+                props.setKeyNihilist(evt.target.value.toLowerCase());
+              }}
+            />
+          </div>
         </div>
       </div>
-      <div className='controller'>
-        <div className='settings_name'>Keyphrase</div>
-        <div className='settings_operators'>
+      <div className='contentbox'>
+        <div className='content-element__settings-name'>Keyphrase</div>
+        <div className='content-element__settings-operators'>
           <textarea
-            id='alphabet'
+            className='content-element__textarea'
             defaultValue={props.cipherNihilist}
             onChange={(evt) => {
               props.setCipherNihilist(evt.target.value.toLowerCase());
             }}
-            style={{ boxShadow: 'none' }}
           />
         </div>
       </div>

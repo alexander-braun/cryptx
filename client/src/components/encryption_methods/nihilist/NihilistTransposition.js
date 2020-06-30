@@ -4,52 +4,70 @@ import { v4 as uuidv4 } from 'uuid';
 
 class NihilistTransposition extends React.PureComponent {
   genAlphabet = () => {
-    //Generate Inputstream
-    let input = this.props.nihilistPlainNumbers;
-    input = input.length >= 15 ? input.slice(0, 14) : input;
+    /**
+     * Get the numbers wich are formed by the plaintext letters in the
+     * nihilist matrix and slice them if there are more then 14.
+     */
+    let inputToNumbers = this.props.nihilistPlainNumbers;
+    inputToNumbers =
+      inputToNumbers.length >= 15
+        ? inputToNumbers.slice(0, 14)
+        : inputToNumbers;
 
-    //Generate Keystream
+    /**
+     * Get the numbers wich are formed by the letters of the
+     * key in the matrix and slice them if there are more then 14.
+     */
     let key = this.props.nihilistRunningKey;
     key = key.length >= 15 ? key.slice(0, 14) : key;
 
-    //Generate Outputstream
+    /**
+     * Get the final sum of key and plaintext numbers and slice
+     * them if they are bigger then 14.
+     */
     let out =
       this.props.direction === 'encrypt'
         ? this.props.output.split(' ')
         : this.props.input.split(' ');
     out = out.length >= 15 ? out.slice(0, 14) : out;
 
-    //Generate Plaintext
+    /**
+     * Get the plaintext input and slice if bigger then 14 chars.
+     */
     let plaintext =
       this.props.direction === 'encrypt'
         ? this.props.input.split(' ').join('').split('')
         : this.props.output.split(' ').join('').split('');
     plaintext = plaintext.length >= 15 ? plaintext.slice(0, 14) : plaintext;
 
-    //Generate Plainkey
+    /**
+     * Get the key in its original form, not transformed by numbers.
+     * Continuously add the letters of the key to the newKey array so
+     * it repeats itself.
+     */
     let plainkey = this.props.cipherNihilist.split('');
-    let ind = 0;
     let newKey = [];
-    if (input.length > plainkey.length) {
-      for (let i = 0; i < input.length; i++) {
-        if (ind < plainkey.length - 1) {
-          newKey.push(plainkey[ind]);
-          ind++;
-        } else {
-          newKey.push(plainkey[ind]);
-          ind = 0;
-        }
+    let i = 0;
+    while (newKey.length < 14) {
+      if (i < plainkey.length) {
+        newKey.push(plainkey[i]);
+        i++;
+      } else {
+        i = 0;
       }
-    } else newKey = plainkey;
-    newKey = newKey.length >= 15 ? newKey.slice(0, 14) : newKey;
+    }
 
-    //Generate Visualisation with all elements
+    /**
+     * Bring all elements together into the visualisation.
+     * This mapping is happening vertically not horizontally
+     * like with caesar and atbash. (change later!)
+     */
     let output = [];
     let counter = 0;
-    for (let element of input) {
+    for (let element of inputToNumbers) {
       output.push(
         <div
-          className='alphabet_transpos'
+          className='alphabet-row__vertically'
           style={{ fontSize: '12px' }}
           key={uuidv4()}
         >
@@ -76,20 +94,24 @@ class NihilistTransposition extends React.PureComponent {
         {this.props.output !== 'Not a valid input' &&
         this.props.output !== 'Please enter a Keyphrase' ? (
           <div
-            className='controller'
+            className='contentbox'
             style={{
               borderBottom: 'none',
               borderTop: '1px solid rgba(255, 255, 255, 0.192)',
             }}
           >
-            <div className='settings_name'>Nihilist Cipher Transposition</div>
-            <div id='caesar_transposition'>
-              <div className='alphabet_row_collect'>
-                <div id='alphabet_standart'>{this.genAlphabet()}</div>
+            <div className='content-element'>
+              <div className='content-element__settings-name'>
+                Nihilist Cipher Transposition
               </div>
-            </div>
-            <div id='caesar_explanatory_text'>
-              <p className='feature_text'>
+              <div className='content-element__content content-element__content--alphabet-transposition'>
+                <div className='alphabet-row'>
+                  <div className='alphabet-row__standard'>
+                    {this.genAlphabet()}
+                  </div>
+                </div>
+              </div>
+              <p className='content-element__feature_text'>
                 Visualization of the character mapping for input, keyword and
                 output.
               </p>
