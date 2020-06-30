@@ -1,8 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { v4 as uuidv4 } from 'uuid';
+import './rings.scss';
 
 class Rings extends React.PureComponent {
-  generateRingStyles(planeNumber, character, ringNumber) {
+  /**
+   * Generates the style of a plane.
+   * Makes the first plane red so it is visible
+   * as the first letter of the input phrase.
+   * If an element has no character it is made
+   * transparent.
+   */
+  generatePlaneStyle(planeNumber, character, ringNumber) {
     let firstCharacterStyle = '';
     if (planeNumber === 0 && ringNumber === 0) {
       firstCharacterStyle = '#ff586e';
@@ -11,11 +20,13 @@ class Rings extends React.PureComponent {
     // No value ? no background
     let transparencyValue = !character ? 'transparent' : '';
 
-    // Calculates the arc radius with one piece width = 30px
-    // Could scale bud didn't make sense yet
+    /**
+     * Calculates the arc radius with one piece width = 30px
+     * Could scale but didn't make sense yet
+     */
     let d = 30 / Math.PI / (360 / this.props.ringLength / 360) / 2 - 5;
 
-    //rotateValue according to the piece of plane that will be rotated
+    //rotateValue according to the piece of plane
     let rotateValue =
       360 / this.props.ringLength +
       (planeNumber * 360) / this.props.ringLength -
@@ -23,42 +34,21 @@ class Rings extends React.PureComponent {
 
     let ringStyles = {
       WebkitTransform: `rotateY(${rotateValue}deg) translateZ(${d}px)`,
-
       backgroundColor:
         firstCharacterStyle !== '' ? firstCharacterStyle : transparencyValue,
     };
     return ringStyles;
   }
 
+  /**
+   * Responsible for one plane
+   */
   generateOneRingElement(indexOfCharacter, character, ringNumber) {
-    // classes just for react key value
-    let classes = [
-      'one',
-      'two',
-      'three',
-      'four',
-      'five',
-      'six',
-      'seven',
-      'eight',
-      'nine',
-      'ten',
-      'eleven',
-      'twelve',
-      'thirteen',
-      'fourteen',
-      'fifteen',
-      'sixteen',
-      'seventeen',
-      'eighteen',
-      'nineteen',
-      'twenty',
-    ];
     let div = (
       <div
-        key={classes[indexOfCharacter] + character}
-        className={'plane ' + classes[indexOfCharacter]}
-        style={this.generateRingStyles(indexOfCharacter, character, ringNumber)}
+        key={uuidv4()}
+        className='ring-container__plane'
+        style={this.generatePlaneStyle(indexOfCharacter, character, ringNumber)}
       >
         {character}
       </div>
@@ -66,6 +56,9 @@ class Rings extends React.PureComponent {
     return div;
   }
 
+  /**
+   * Generates all planes for one ring
+   */
   generateAllRingElements(ringNumber) {
     let parent = [];
     for (let i = 0; i < this.props.ringLength; i++) {
@@ -84,60 +77,42 @@ class Rings extends React.PureComponent {
     return parent;
   }
 
+  /**
+   * Main function generate the cylinder
+   */
   generateAllRings() {
     let parent = [];
     for (let i = 0; i < this.props.skytaleLength; i++) {
       let ringNumber = i;
       parent.push(
-        <div key={i + 'ring'} className='shape ring'>
+        <div key={i + 'ring'} className='ring-container__ring'>
           {this.generateAllRingElements(ringNumber)}
         </div>
       );
     }
     return parent;
   }
-
   render() {
     return (
-      <div className='controller'>
-        <div className='settings_name'>SKYTALE</div>
-        <div
-          className='settings_operators'
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}
-        >
-          <div id='ring_container'>
-            <div
-              id='turntable'
-              style={{ height: `${this.props.skytaleLength * 25}px` }}
-            >
-              {this.generateAllRings()}
+      <div className='contentbox'>
+        <div className='content-element'>
+          <div className='content-element__settings-name'>SKYTALE</div>
+          <div className='content-element__settings-operators content-element__settings-operators--vertical-center-flex'>
+            <div className='ring-container'>
+              <div
+                className='ring-container__turntable'
+                style={{ height: `${this.props.skytaleLength * 25}px` }}
+              >
+                {this.generateAllRings()}
+              </div>
             </div>
-          </div>
-          <div id='skytale_explanatory_text'>
-            <p className='feature_text'>
+            <p className='content-element__feature_text'>
               You can only see a readable alignment of letters (top to bottom,
               left to right) if you are <b>encrypting a cleartext</b> or{' '}
               <b>decrypting an encrypted text</b>. The ring-segment-count needs
               to stay exactly the same for both directions. The first letter of
               your message is marked in&nbsp;
-              <span
-                style={{
-                  backgroundColor: '#ff586e',
-                  display: 'inline-block',
-                  padding: '0px 3px',
-                  color: 'white',
-                  fontWeight: 'bold',
-                  fontStyle: 'normal',
-                  lineHeight: '1.2',
-                }}
-              >
-                red
-              </span>
+              <span className='content-element__feature_text--red'>red</span>
             </p>
           </div>
         </div>

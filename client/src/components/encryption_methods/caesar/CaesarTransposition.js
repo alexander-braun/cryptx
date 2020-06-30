@@ -2,15 +2,16 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 
-let whiteChar = { color: 'white' };
-let standartChar = { color: 'rgba(255, 255, 255, 0.627)' };
-
 class CaesarTransposition extends React.PureComponent {
+  /**
+   * Generates html structure for one row of the alphabet transposition.
+   * The letter "A" is market in white. The othere characters are slightly
+   * less visible. Also generates the belonging down-arrow.
+   */
   genAlphabet = () => {
     if (this.props.alphabet.length === 0) return;
     let alphabet = this.props.alphabet.toLowerCase().split('').sort();
     alphabet = [...new Set(alphabet)];
-
     let output = [];
     for (let element of alphabet) {
       output.push(
@@ -30,12 +31,13 @@ class CaesarTransposition extends React.PureComponent {
     return output;
   };
 
+  /**
+   * Generates the lower half of the alphabet + arrow.
+   */
   genShifted = (shift) => {
     if (this.props.alphabet.length === 0) return;
-
     let alphabet = this.props.alphabet.toLowerCase().split('').sort();
     alphabet = [...new Set(alphabet)];
-
     for (let i = 0; i < shift; i++) {
       let temp = alphabet.shift();
       alphabet.push(temp);
@@ -58,7 +60,6 @@ class CaesarTransposition extends React.PureComponent {
         </div>
       );
     }
-
     return output;
   };
 

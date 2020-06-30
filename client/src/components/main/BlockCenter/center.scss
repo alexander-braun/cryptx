@@ -30,6 +30,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-content: flex-start;
+  padding-bottom: 0.5rem;
 
   &__textarea {
     width: 100%;
@@ -49,6 +50,32 @@
     overflow: hidden;
     box-sizing: border-box;
     font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+
+    &--window-light {
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 0px 6px inset;
+      resize: none;
+      border: none;
+      overflow: auto;
+      box-sizing: border-box;
+      width: 100%;
+      padding: 7px;
+      line-height: 1.5;
+      font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+      font-size: 12px;
+      font-weight: 300;
+      background-color: #4e4f50;
+      color: #dadada;
+      margin: 0;
+      border-radius: 5px;
+      height: 100px;
+      boxshadow: inset 0px 0px 6px #0000003d;
+    }
+
+    &--double {
+      padding: 0;
+      font-size: 14pt;
+      font-weight: 200;
+    }
   }
 
   &__split {
@@ -82,6 +109,16 @@
     color: #dadada;
     letter-spacing: 0.2px;
     line-height: 1.5;
+
+    &--red {
+      background-color: #ff586e;
+      display: inline-block;
+      padding: 0px 3px;
+      color: white;
+      font-weight: bold;
+      font-style: normal;
+      line-height: 1.2;
+    }
 
     a {
       color: white;
@@ -188,6 +225,14 @@
     width: 80%;
     align-self: center;
 
+    &--left {
+      padding: 0.5rem 24px 0.5rem 24px;
+      align-self: flex-start;
+      font-size: 18px;
+      width: 100%;
+      text-transform: lowercase;
+    }
+
     &--button {
       font-size: 14px;
       background-color: #3e94c5;
@@ -213,7 +258,7 @@
 
   &__settings-name {
     color: #949494;
-    padding: 1em 1em 0 24px;
+    padding: 1em 0.5em 0 24px;
     font-family: 'Source Sans Pro', 'Roboto', 'Helvetica', 'Arial', sans-serif;
     font-size: 12px;
     font-weight: 500;

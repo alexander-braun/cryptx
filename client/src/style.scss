@@ -139,6 +139,7 @@ textarea {
   margin-top: 0;
   margin-bottom: 0;
   box-shadow: inset 0px 5px 5px -5px #000000c5;
+  resize: none;
 
   &:focus {
     outline-color: transparent;
@@ -940,63 +941,6 @@ select {
   flex-wrap: wrap;
   width: 100%;
   height: fit-content;
-}
-
-#ring_container {
-  width: 100%;
-  height: auto;
-  -webkit-perspective: 2000; /* For compatibility with iPhone 3.0, we leave off the units here */
-  perspective: 2000px;
-  -webkit-perspective-origin: 50% 225px;
-  perspective-origin: 50% 225px;
-  padding: 24px;
-}
-
-.shape {
-  position: relative;
-  margin: 0 auto;
-  height: 25px;
-  width: 27px;
-  -webkit-transform-style: preserve-3d;
-  transform-style: preserve-3d;
-}
-
-.plane {
-  position: absolute;
-  height: 27px;
-  width: 30px;
-
-  border: 1px solid $controller_background;
-  border-width: 2px;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  text-align: center;
-  font-family: Times, serif;
-  font-size: 10pt;
-  color: black;
-  background-color: rgb(27, 136, 199);
-  color: white;
-  font-size: 13pt;
-  font-weight: 400;
-  font-family: $font;
-  -webkit-transition: -webkit-transform 500ms, opacity 500ms;
-  transition: -webkit-transform 500ms, opacity 500ms;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-}
-
-#turntable {
-  position: relative;
-  margin: 0 auto;
-  height: auto;
-  width: 100px;
-  transform-style: preserve-3d;
-  -webkit-animation: spin 20s infinite linear;
-  animation: spin 20s infinite linear;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 
 @-webkit-keyframes spin {

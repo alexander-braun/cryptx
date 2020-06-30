@@ -3,9 +3,12 @@ import { connect } from 'react-redux';
 import { setRinglength } from '../../../actions/setRingLength';
 
 const RingLength = (props) => {
+  /**
+   * Calculate and set ring-length
+   */
   const setRings = (evt) => {
-    let id = evt.target.id;
-    if (id === 'minus_ring') {
+    let value = evt.target.dataset.value;
+    if (value === '-') {
       if (props.ringLength < 4) {
         props.setRings(20);
       } else {
@@ -19,33 +22,32 @@ const RingLength = (props) => {
       }
     }
   };
-
   return (
-    <div className='controller'>
-      <div className='settings_name'>RING SEGMENTS</div>
-      <div className='settings_operators'>
-        <div
-          value='-'
-          className='settings_operator'
-          id='minus_ring'
-          onClick={(evt) => {
-            setRings(evt);
-          }}
-        >
-          -
-        </div>
-        <div className='settings_operator' id='caesar_shift_value'>
-          {props.ringLength}
-        </div>
-        <div
-          value='+'
-          id='plus_ring'
-          className='settings_operator'
-          onClick={(evt) => {
-            setRings(evt);
-          }}
-        >
-          +
+    <div className='contentbox'>
+      <div className='content-element'>
+        <div className='content-element__settings-name'>RING SEGMENTS</div>
+        <div className='content-element__settings-operators'>
+          <div
+            data-value='-'
+            className='content-element__adjust-plus-minus'
+            onClick={(evt) => {
+              setRings(evt);
+            }}
+          >
+            -
+          </div>
+          <div className='content-element__adjust-plus-minus'>
+            {props.ringLength}
+          </div>
+          <div
+            data-value='+'
+            className='content-element__adjust-plus-minus'
+            onClick={(evt) => {
+              setRings(evt);
+            }}
+          >
+            +
+          </div>
         </div>
       </div>
     </div>
