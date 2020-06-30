@@ -7,78 +7,91 @@ import {
 } from '../../../actions/setTrifid';
 
 const TrifidSettings = (props) => {
+  /**
+   * Calculate and set the group size for redux
+   */
   const handleGroupSizeChange = (e) => {
     if (e === '+') {
-      props.setTrifidGroupSize(props.trifidGroupSize + 1);
+      if (props.trifidGroupSize <= 15) {
+        props.setTrifidGroupSize(props.trifidGroupSize + 1);
+      }
     } else if (e === '-') {
       if (props.trifidGroupSize >= 3) {
         props.setTrifidGroupSize(props.trifidGroupSize - 1);
       }
-    } else {
-      if (e.target.value >= 2) {
-        props.setTrifidGroupSize(e.target.value);
-      } else props.setTrifidGroupSize(2);
     }
   };
 
+  /**
+   * Update the keyword - send to redux
+   */
   const handleKeywordChange = (e) => {
     props.setTrifidKey(e.target.value);
   };
 
+  /**
+   * Update 27th letter and send to redux
+   */
   const handleLetterChange = (e) => {
-    let value = e.target.value[0];
+    let value = e.target.value;
     if (value.length === 0) value = '+';
     props.setTrifid27thLetter(value);
   };
 
   return (
     <React.Fragment>
-      <div className='controller'>
-        <div className='settings_name'>Trifid Keyword</div>
-        <div className='settings_operators'>
-          <textarea
-            defaultValue={'FELIX MARIE DELASTELLE'}
-            onChange={(e) => handleKeywordChange(e)}
-            style={{ boxShadow: 'none' }}
-            id='trifid_key'
-          />
-        </div>
-      </div>
-      <div className='controller'>
-        <div className='settings_name'>Trifid Group Size</div>
-        <div className='settings_operators'>
-          <div
-            value='-'
-            id='minus_caesar'
-            className='settings_operator'
-            onClick={() => handleGroupSizeChange('-')}
-          >
-            -
-          </div>
-          <input
-            className='trifid_input'
-            value={props.trifidGroupSize}
-            onChange={(e) => handleGroupSizeChange(e)}
-          ></input>
-          <div
-            value='+'
-            id='plus_caesar'
-            className='settings_operator'
-            onClick={() => handleGroupSizeChange('+')}
-          >
-            +
+      <div className='contentbox'>
+        <div className='content-element'>
+          <div className='content-element__settings-name'>Trifid Keyword</div>
+          <div className='content-element__settings-operators'>
+            <textarea
+              defaultValue={'FELIX MARIE DELASTELLE'}
+              onChange={(e) => handleKeywordChange(e)}
+              className='content-element__textarea'
+            />
           </div>
         </div>
       </div>
-      <div className='controller'>
-        <div className='settings_name'>Trifid 27th Letter</div>
-        <div className='settings_operators'>
-          <textarea
-            defaultValue={'+'}
-            onChange={(e) => handleLetterChange(e)}
-            style={{ boxShadow: 'none' }}
-            id='trifid_27th_letter'
-          />
+
+      <div className='contentbox'>
+        <div className='content-element'>
+          <div className='content-element__settings-name'>
+            Trifid Group Size
+          </div>
+          <div className='content-element__settings-operators'>
+            <div
+              value='-'
+              className='content-element__adjust-plus-minus'
+              onClick={() => handleGroupSizeChange('-')}
+            >
+              -
+            </div>
+            <div className='content-element__adjust-plus-minus'>
+              {props.trifidGroupSize}
+            </div>
+            <div
+              value='+'
+              className='content-element__adjust-plus-minus'
+              onClick={() => handleGroupSizeChange('+')}
+            >
+              +
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className='contentbox'>
+        <div className='content-element'>
+          <div className='content-element__settings-name'>
+            Trifid 27th Letter
+          </div>
+          <div className='content-element__settings-operators'>
+            <textarea
+              defaultValue={'+'}
+              onChange={(e) => handleLetterChange(e)}
+              className='content-element__textarea content-element__textarea--single-big'
+              maxLength='1'
+            />
+          </div>
         </div>
       </div>
     </React.Fragment>

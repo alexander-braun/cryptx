@@ -4,17 +4,18 @@ import setKeywordVigenere from '../../../actions/setKeywordVigenere';
 
 const KeywordVigenere = ({ keywordVigenere, setKeywordVigenere }) => {
   return (
-    <div className='controller'>
-      <div className='settings_name'>Keyword</div>
-      <div className='settings_operators'>
-        <textarea
-          style={{ boxShadow: 'none' }}
-          id='alphabet'
-          defaultValue={keywordVigenere}
-          onChange={(evt) => {
-            setKeywordVigenere(evt.target.value.toLowerCase());
-          }}
-        />
+    <div className='contentbox'>
+      <div className='content-element'>
+        <div className='content-element__settings-name'>Keyword</div>
+        <div className='content-element__settings-operators'>
+          <textarea
+            className='content-element__textarea'
+            defaultValue={keywordVigenere}
+            onChange={(evt) => {
+              setKeywordVigenere(evt.target.value.toLowerCase());
+            }}
+          />
+        </div>
       </div>
     </div>
   );

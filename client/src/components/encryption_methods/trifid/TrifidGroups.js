@@ -1,8 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
+import './trifid.scss';
 
 const TrifidGroups = (props) => {
+  /**
+   * Get rid of non-alphabet characters or characters that are
+   * not the 27th trifid letter the user chooses.
+   */
   const cleanInput = [];
   const cleanInputLength = () => {
     let cleanInputLength = 0;
@@ -17,72 +22,96 @@ const TrifidGroups = (props) => {
     }
     return cleanInputLength;
   };
-
   return (
-    <div className='controller'>
-      <div className='settings_name'>Trifid Groups</div>
-      <div className='settings_operators trifid_group'>
-        {[
-          ...Array(
-            Math.ceil(cleanInputLength() / Number(props.trifidGroupSize))
-          ).keys(),
-        ].map((element) => {
-          return (
-            <table key={uuidv4()} id='trifid_square' className='trifid_groups'>
-              <tbody style={{ color: 'white' }}>
-                <tr>
-                  {cleanInput
-                    .slice(
-                      element * props.trifidGroupSize,
-                      element * props.trifidGroupSize + props.trifidGroupSize
-                    )
-                    .map((letter) => (
-                      <th className='trifid_groups_tablehead' key={uuidv4()}>
-                        {letter}
-                      </th>
-                    ))}
-                </tr>
-                {[0, 1, 2].map((number) => {
-                  return (
-                    <tr key={uuidv4()}>
-                      {props.trifidGroups
+    <div className='contentbox'>
+      <div className='content-element'>
+        <div className='content-element__settings-name'>Trifid Groups</div>
+        <div className='content-element__settings-operators'>
+          <div className='trifid-group'>
+            {[
+              ...Array(
+                Math.ceil(cleanInputLength() / Number(props.trifidGroupSize))
+              ).keys(),
+            ].map((element) => {
+              return (
+                /**
+                 * Generate each one table element for all the trifid groups.
+                 *
+                 * The first Mapping in <tr> return the head table row.
+                 *
+                 * The second Mapping returns 3 rows with the characters mapped
+                 * to the corresponding layer elements/rows/cols.
+                 *
+                 * The last Mapping returns the bottom of the table with the
+                 * encrypted characters.
+                 *
+                 */
+                <table key={uuidv4()} className='trifid-square'>
+                  <tbody className='trifid-square__table-body'>
+                    <tr>
+                      {cleanInput
                         .slice(
                           element * props.trifidGroupSize,
                           element * props.trifidGroupSize +
                             props.trifidGroupSize
                         )
-                        .map((element) => {
+                        .map((letter) => (
+                          <th
+                            className='trifid-square__tablehead'
+                            key={uuidv4()}
+                          >
+                            {letter}
+                          </th>
+                        ))}
+                    </tr>
+                    {[0, 1, 2].map((number) => {
+                      return (
+                        <tr key={uuidv4()} className='trifid-square__tablerow'>
+                          {props.trifidGroups
+                            .slice(
+                              element * props.trifidGroupSize,
+                              element * props.trifidGroupSize +
+                                props.trifidGroupSize
+                            )
+                            .map((element) => {
+                              return (
+                                <td
+                                  key={uuidv4()}
+                                  className='trifid-square__number'
+                                >
+                                  {element[number] + 1}
+                                </td>
+                              );
+                            })}
+                        </tr>
+                      );
+                    })}
+                    <tr>
+                      {props.output
+                        .split('')
+                        .slice(
+                          element * props.trifidGroupSize,
+                          element * props.trifidGroupSize +
+                            props.trifidGroupSize
+                        )
+                        .map((letter) => {
                           return (
-                            <td className='trifid_groups_number' key={uuidv4()}>
-                              {element[number] + 1}
+                            <td
+                              className='trifid-square__encrypted'
+                              key={uuidv4()}
+                            >
+                              {letter}
                             </td>
                           );
                         })}
                     </tr>
-                  );
-                })}
-                <tr>
-                  {props.output
-                    .split('')
-                    .slice(
-                      element * props.trifidGroupSize,
-                      element * props.trifidGroupSize + props.trifidGroupSize
-                    )
-                    .map((letter) => {
-                      return (
-                        <td className='trifid_groups_encrypted' key={uuidv4()}>
-                          {letter}
-                        </td>
-                      );
-                    })}
-                </tr>
-              </tbody>
-            </table>
-          );
-        })}
-      </div>
-      <div id='trifid_explanatory_text'>
-        <p className='feature_text' style={{ paddingTop: '0' }}>
+                  </tbody>
+                </table>
+              );
+            })}
+          </div>
+        </div>
+        <p className='content-element__feature_text'>
           The tablehead represents the letters of your input text. Numbers
           written under the letters are a representation of the encoded letter.
           F.e.: With the standart 'Felix Marie...' - keyword, the letter "A"

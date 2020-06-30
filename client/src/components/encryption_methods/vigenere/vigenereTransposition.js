@@ -4,12 +4,18 @@ import { v4 as uuidv4 } from 'uuid';
 
 class VigenereTransposition extends React.PureComponent {
   genAlphabet = () => {
-    //Generate Inputstream
+    /**
+     * Gets the userinput and shortens it if neccesary to alphabet
+     * length
+     */
     let input = this.props.input.split(' ').join('').split('');
     input = input.length >= 27 ? input.slice(0, 26) : input;
-    let keywordVigenere = this.props.keywordVigenere;
 
-    //Generate Keystream
+    /**
+     * Gets the ciphertext and extends it to the length of the
+     * previously generated input
+     */
+    let keywordVigenere = this.props.keywordVigenere;
     let key = new Array(input.length);
     for (let j = 0; j < Math.ceil(input.length / keywordVigenere.length); j++) {
       for (let i = 0; i < keywordVigenere.length; i++) {
@@ -17,29 +23,33 @@ class VigenereTransposition extends React.PureComponent {
       }
     }
 
-    //Generate Outputstream
+    /**
+     * Slices the encrypted text to alphabet length
+     */
     let out = this.props.output.split(' ').join('').split('');
     out = out.length >= 27 ? out.slice(0, 26) : out;
 
-    //Generate Visualisation with all elements
+    /**
+     * Generates all the columns for the transposition element.
+     */
     let output = [];
     let counter = 0;
     for (let element of input) {
       output.push(
-        <div className='alphabet_transpos' key={uuidv4()}>
-          <div>{element}</div>
+        <div className='alphabet-row__character' key={uuidv4()}>
+          <div className='alphabet-row__character--white'>{element}</div>
           <div className='arrow'>&</div>
           <div
-            style={
+            className={
               counter < keywordVigenere.length
-                ? { fontWeight: '900' }
-                : { color: 'rgba(255, 255, 255, 0.43)', fontWeight: '200' }
+                ? 'alphabet-row__character--white'
+                : 'alphabet-row__character'
             }
           >
             {key[counter]}
           </div>
           <div className='arrow'>=</div>
-          <div>{out[counter]}</div>
+          <div className='alphabet-row__character--white'>{out[counter]}</div>
         </div>
       );
       counter++;
@@ -49,15 +59,17 @@ class VigenereTransposition extends React.PureComponent {
 
   render() {
     return (
-      <div className='controller'>
-        <div className='settings_name'>Vigenère Cipher Transposition</div>
-        <div id='caesar_transposition'>
-          <div className='alphabet_row_collect'>
-            <div id='alphabet_standart'>{this.genAlphabet()}</div>
+      <div className='contentbox'>
+        <div className='content-element'>
+          <div className='content-element__settings-name'>
+            Vigenère Cipher Transposition
           </div>
-        </div>
-        <div id='caesar_explanatory_text'>
-          <p className='feature_text'>
+          <div className='content-element__content content-element__content--alphabet-transposition'>
+            <div className='alphabet-row'>
+              <div className='alphabet-row__standard'>{this.genAlphabet()}</div>
+            </div>
+          </div>
+          <p className='content-element__feature_text'>
             Visualization of the character mapping for input, keyword and
             output.
           </p>

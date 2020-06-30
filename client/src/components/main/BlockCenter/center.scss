@@ -51,6 +51,15 @@
     box-sizing: border-box;
     font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
 
+    &--single-big {
+      text-align: center;
+      max-height: 2.5em;
+      font-size: 30px;
+      font-weight: 700;
+      border: none;
+      padding: 1rem 0.5rem 0 0.5rem;
+    }
+
     &--window-light {
       box-shadow: rgba(0, 0, 0, 0.24) 0px 0px 6px inset;
       resize: none;
@@ -188,6 +197,12 @@
     justify-content: space-between;
     color: #dadada;
     letter-spacing: 0.1em;
+
+    &--multiple-elements {
+      padding: 24px;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+    }
 
     &--vertical-center-flex {
       display: flex;

@@ -1,40 +1,64 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
+import './trifid.scss';
 
 const TrifidLayers = (props) => {
+  /**
+   * This generates the Trifid-Layers:
+   * The first mapping returns 3 tables.
+   * The second returns the tablehead elements with the layer naming (L1...)
+   * The last two return the number of the row and the alphabet mapping
+   * for the characters.
+   */
   return (
-    <div className='controller'>
-      <div className='settings_name'>Trifid Layers</div>
-      <div className='settings_operators trifid_layer'>
-        {[0, 1, 2].map((element) => {
-          return (
-            <table key={uuidv4()} id='trifid_square'>
-              <tbody style={{ color: 'white' }}>
-                <tr>
-                  {[`L${element + 1}`, '1', '2', '3'].map((number) => (
-                    <th key={uuidv4()}>{number}</th>
-                  ))}
-                </tr>
-                {['1', '2', '3'].map((number) => {
-                  return (
-                    <tr key={uuidv4()}>
-                      <td>{number}</td>
-                      {props.trifidLayers[element][Number(number) - 1].map(
-                        (num) => {
-                          return <td key={uuidv4()}>{num}</td>;
-                        }
-                      )}
+    <div className='contentbox'>
+      <div className='content-element'>
+        <div className='content-element__settings-name'>Trifid Layers</div>
+        <div className='content-element__settings-operators'>
+          <div className='trifid-group'>
+            {[0, 1, 2].map((element) => {
+              return (
+                <table key={uuidv4()} className='trifid-square'>
+                  <tbody className='trifid-square__table-body'>
+                    <tr className='trifid-square__tablerow'>
+                      {[`L${element + 1}`, '1', '2', '3'].map((number) => (
+                        <th
+                          key={uuidv4()}
+                          className='trifid-square__number trifid-square__number--big'
+                        >
+                          {number}
+                        </th>
+                      ))}
                     </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          );
-        })}
-      </div>
-      <div id='trifid_explanatory_text'>
-        <p className='feature_text' style={{ paddingTop: '0' }}>
+                    {['1', '2', '3'].map((number) => {
+                      return (
+                        <tr key={uuidv4()} className='trifid-square__tablerow'>
+                          <td className='trifid-square__number trifid-square__number--big'>
+                            {number}
+                          </td>
+                          {props.trifidLayers[element][Number(number) - 1].map(
+                            (num) => {
+                              return (
+                                <td
+                                  key={uuidv4()}
+                                  className='trifid-square__number trifid-square__number--big'
+                                >
+                                  {num}
+                                </td>
+                              );
+                            }
+                          )}
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              );
+            })}
+          </div>
+        </div>
+        <p className='content-element__feature_text'>
           The Layers are generated from the standart english alphabet, the 27th
           character and the provided keyword.
         </p>
