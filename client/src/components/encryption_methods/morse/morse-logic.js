@@ -1,14 +1,7 @@
 const morse = (() => {
   //Setup all variables
 
-  let userInput, direction;
-  const setUserInput = (input) => {
-    userInput = String(input);
-  };
-
-  const setDirection = (input) => {
-    direction = input;
-  };
+  let userInput;
 
   const characters = {
     a: '.-',
@@ -73,7 +66,6 @@ const morse = (() => {
 
   const encrypt = (inputArray) => {
     const outputArray = [];
-
     for (let char of inputArray) {
       let lowerChar = char.toLowerCase();
       if (characters[lowerChar]) {
@@ -90,7 +82,6 @@ const morse = (() => {
   const decrypt = (inputArray) => {
     const outputArray = [];
     const values = Object.values(characters);
-
     for (let i = 0; i < inputArray.length; i++) {
       const char = inputArray[i];
       if (char === '/') {
@@ -105,12 +96,11 @@ const morse = (() => {
         }
       }
     }
-
     return outputArray;
   };
 
   const transformText = (input, direction) => {
-    setAll(input, direction);
+    userInput = input;
     let inputArray;
 
     if (direction === 'encrypt') {
@@ -122,13 +112,7 @@ const morse = (() => {
     }
   };
 
-  const setAll = (input, direction) => {
-    setUserInput(input);
-    setDirection(direction);
-  };
-
   return {
-    setAll: setAll,
     encrypt: transformText,
   };
 })();

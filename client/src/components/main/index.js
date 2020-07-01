@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 import { connect } from 'react-redux';
-
+import encryptionProps from './encryption-props';
 //SCSS
 import './main.scss';
 
@@ -91,178 +91,76 @@ class Main extends React.PureComponent {
   }
 
   encrypt() {
-    let input = this.props.input;
-    let alphabet = this.props.alphabet;
-    let caseFormat = this.props.caseformat;
-    let foreignChars = this.props.includeChars;
-    let method = this.props.method;
-    let direction = this.props.direction;
-
-    if (direction === 'crack') {
-      if (method === 'caesar' || method === 'rot13') {
-        Caesar.setAll(
-          this.props.wordbook,
-          input,
-          alphabet,
-          method === 'rot13' ? 13 : this.props.cShift,
-          direction,
-          caseFormat,
-          foreignChars
-        );
-        return this.props.setOutput(Caesar.encrypt());
-      } else if (method === 'atbash') {
-        Atbash.setAll(input, caseFormat, foreignChars);
-        return this.props.setOutput(Atbash.encrypt());
-      } else {
-        return this.props.setOutput('');
-      }
-    }
+    const { method } = this.props;
 
     let encrypted;
     switch (method) {
       case 'trifid':
-        encrypted = Trifid.encrypt(
-          input,
-          this.props.trifidKey,
-          this.props.trifidGroupSize,
-          this.props.trifid27thLetter,
-          alphabet,
-          direction
-        );
+        encrypted = Trifid.encrypt(...encryptionProps(this.props));
         this.props.setOutput(encrypted[0]);
         this.props.setTrifidLayers(encrypted[1]);
         this.props.setTrifidGroups(encrypted[2]);
         break;
       case 'substitution':
-        encrypted = Substitute.encrypt(
-          input,
-          this.props.substitutionAlphabet,
-          direction
-        );
+        encrypted = Substitute.encrypt(...encryptionProps(this.props));
         this.props.setOutput(encrypted);
         break;
       case 'rot13':
-        encrypted = Caesar.encrypt(
-          null,
-          input,
-          alphabet,
-          13,
-          direction,
-          caseFormat,
-          foreignChars
-        );
+        encrypted = Caesar.encrypt(...encryptionProps(this.props));
         this.props.setOutput(encrypted);
         break;
       case 'caesar':
-        encrypted = Caesar.encrypt(
-          null,
-          input,
-          alphabet,
-          this.props.cShift,
-          direction,
-          caseFormat,
-          foreignChars
-        );
+        encrypted = Caesar.encrypt(...encryptionProps(this.props));
         this.props.setOutput(encrypted);
         break;
       case 'rsa':
-        encrypted = Rsa.calc(
-          input,
-          this.props.prime1,
-          this.props.prime2,
-          this.props.e,
-          direction
-        );
-        const output = encrypted;
-        if (output === undefined || output[0] === undefined) return '';
-        if (this.props.timeToCalculate !== output[1]) {
-          this.props.setTimeToCalculate(output[1]);
-        }
-        this.props.setOutput(output[0]);
-        this.props.setRsaPhi(output[2]);
-        this.props.setRsaD(output[3]);
-        this.props.setRsaN(output[4]);
-
+        encrypted = Rsa.calc(...encryptionProps(this.props));
+        if (encrypted === undefined || encrypted[0] === undefined) return '';
+        this.props.setTimeToCalculate(encrypted[1]);
+        this.props.setOutput(encrypted[0]);
+        this.props.setRsaPhi(encrypted[2]);
+        this.props.setRsaD(encrypted[3]);
+        this.props.setRsaN(encrypted[4]);
         break;
       case 'otp':
-        encrypted = Otp.encrypt(
-          input,
-          caseFormat,
-          foreignChars,
-          direction,
-          this.props.otpKey,
-          alphabet
-        );
+        encrypted = Otp.encrypt(...encryptionProps(this.props));
         this.props.setOutput(encrypted);
         break;
       case 'reverse':
-        encrypted = Reverse.encrypt(input, caseFormat, foreignChars, alphabet);
+        encrypted = Reverse.encrypt(...encryptionProps(this.props));
         this.props.setOutput(encrypted);
         break;
       case 'casetransform':
-        encrypted = CaseTransform.encrypt(
-          input,
-          this.props.caseTransformChoice
-        );
+        encrypted = CaseTransform.encrypt(...encryptionProps(this.props));
         this.props.setOutput(encrypted);
         break;
       case 'atbash':
-        encrypted = Atbash.encrypt(input, caseFormat, foreignChars);
+        encrypted = Atbash.encrypt(...encryptionProps(this.props));
         this.props.setOutput(encrypted);
         break;
       case 'affine':
-        encrypted = Affine.encrypt(
-          alphabet,
-          input,
-          this.props.affine_alpha,
-          this.props.affine_beta,
-          direction,
-          foreignChars,
-          caseFormat
-        );
+        encrypted = Affine.encrypt(...encryptionProps(this.props));
         this.props.setOutput(encrypted);
         break;
       case 'vigenere':
-        encrypted = Vigenere.encrypt(
-          input,
-          alphabet,
-          direction,
-          foreignChars,
-          caseFormat,
-          this.props.keywordVigenere
-        );
+        encrypted = Vigenere.encrypt(...encryptionProps(this.props));
         this.props.setOutput(encrypted);
         break;
       case 'playfair':
-        encrypted = Playfair.encrypt(
-          input,
-          alphabet,
-          direction,
-          this.props.keywordPlayfair
-        );
+        encrypted = Playfair.encrypt(...encryptionProps(this.props));
         this.props.setOutput(encrypted[0]);
         this.props.setPlaysquare(encrypted[1]);
         break;
       case 'morse':
-        encrypted = Morse.encrypt(input, direction);
+        encrypted = Morse.encrypt(...encryptionProps(this.props));
         this.props.setOutput(encrypted);
         break;
       case 'replace':
-        encrypted = Replace.encrypt(
-          input,
-          this.props.toReplaceLetter,
-          this.props.replaceLetter
-        );
+        encrypted = Replace.encrypt(...encryptionProps(this.props));
         this.props.setOutput(encrypted);
         break;
       case 'nihilist':
-        encrypted = Nihilist.encrypt(
-          input,
-          alphabet,
-          direction,
-          this.props.keyNihilist,
-          this.props.cipherNihilist
-        );
+        encrypted = Nihilist.encrypt(...encryptionProps(this.props));
         if (encrypted[0] === '') return;
         this.props.setOutput(encrypted[0]);
         this.props.setNihilistSquare(encrypted[1]);
@@ -270,13 +168,7 @@ class Main extends React.PureComponent {
         this.props.setNihilistPlainNumbers(encrypted[3]);
         break;
       case 'skytale':
-        encrypted = Skytale.encrypt(
-          direction,
-          caseFormat,
-          input,
-          this.props.ringLength,
-          foreignChars
-        );
+        encrypted = Skytale.encrypt(...encryptionProps(this.props));
         this.props.setSkytaleProjectedValue(encrypted[2]);
         this.props.setOutput(encrypted[0]);
         this.props.setSkytaleLength(encrypted[1]);

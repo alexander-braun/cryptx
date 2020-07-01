@@ -1,9 +1,8 @@
 import React from 'react';
-import showFooter from '../hideOnScroll/showFooter';
 import GitHubIcon from '@material-ui/icons/GitHub';
 
 const Footer = () => {
-  return !showFooter() ? (
+  return (
     <div className='site_footer'>
       <div id='footer_links'>
         <a
@@ -17,7 +16,7 @@ const Footer = () => {
         &copy; 2020 Alexander Braun
       </div>
     </div>
-  ) : null;
+  );
 };
 
 export default Footer;

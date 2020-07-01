@@ -1,7 +1,7 @@
 const Nihilist = (() => {
   //Setup all variables
 
-  let userInput, alphabet, direction, nihilistRunningKey, nihilistPlainNumbers;
+  let userInput, alphabet, nihilistRunningKey, nihilistPlainNumbers;
 
   const setUserInput = (input) => {
     userInput = String(input);
@@ -9,10 +9,6 @@ const Nihilist = (() => {
 
   const setAlphabet = (input) => {
     alphabet = input;
-  };
-
-  const setDirection = (input) => {
-    direction = input;
   };
 
   let keyphrase;
@@ -176,7 +172,7 @@ const Nihilist = (() => {
   };
 
   const transformText = (input, alphabet, direction, keyword, cipherWord) => {
-    setAll(input, alphabet, direction, keyword, cipherWord);
+    setAll(input, alphabet, keyword, cipherWord);
     if (cipherWord.length === 0) return 'Please enter a Keyphrase';
     for (let i = 0; i < alphabet.length; i++) {
       if (isNaN(Number(userInput[i])) && direction === 'decrypt') {
@@ -186,10 +182,9 @@ const Nihilist = (() => {
     return direction === 'encrypt' ? encrypt() : decrypt();
   };
 
-  const setAll = (input, alphabet, direction, keyword, cipherWord) => {
+  const setAll = (input, alphabet, keyword, cipherWord) => {
     setUserInput(input);
     setAlphabet(alphabet);
-    setDirection(direction);
     setKeyPhrase(keyword);
     setCipherWord(cipherWord);
   };

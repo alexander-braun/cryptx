@@ -3,7 +3,6 @@ $blockco: #101010;
 $font: 'Roboto', 'Helvetica', 'Arial', sans-serif;
 
 .modal {
-
   position: absolute;
   width: 100vw;
   height: 100%;
@@ -19,7 +18,7 @@ $font: 'Roboto', 'Helvetica', 'Arial', sans-serif;
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  
+
   .inner_modal {
     background-color: #303031;
     border-radius: 0px;
@@ -31,7 +30,6 @@ $font: 'Roboto', 'Helvetica', 'Arial', sans-serif;
     }
   }
 
-
   .modal_header {
     width: auto;
     height: auto;
@@ -39,19 +37,19 @@ $font: 'Roboto', 'Helvetica', 'Arial', sans-serif;
     color: white;
     font-size: 18pt;
     font-weight: 500;
-    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
     padding: 24px;
     text-align: left;
-    letter-spacing: .2rem;
+    letter-spacing: 0.2rem;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     filter: drop-shadow(0px -5px 5px #000000c5);
 
-    button{
+    button {
       color: '#b0b3b8';
-      &:hover{
+      &:hover {
         color: white !important;
       }
     }
@@ -62,17 +60,16 @@ $font: 'Roboto', 'Helvetica', 'Arial', sans-serif;
       cursor: pointer;
     }
   }
-  
+
   .modal_body {
     padding: 24px;
     background-color: #2d2d2d;
   }
 }
-  
+
 .modal_open {
   overflow: hidden;
 }
-
 
 .method_category {
   color: #cacaca;
@@ -80,7 +77,7 @@ $font: 'Roboto', 'Helvetica', 'Arial', sans-serif;
   font-weight: 400;
   font-family: $font;
   margin-top: 0sem;
-  letter-spacing: .1rem;
+  letter-spacing: 0.1rem;
 
   span {
     padding-left: 0.25em;
@@ -102,7 +99,7 @@ $font: 'Roboto', 'Helvetica', 'Arial', sans-serif;
     width: 100%;
     text-align: center;
     color: white;
-    letter-spacing: .1rem;
+    letter-spacing: 0.1rem;
     font-weight: 200;
 
     button {
@@ -122,24 +119,25 @@ $font: 'Roboto', 'Helvetica', 'Arial', sans-serif;
     width: -moz-fit-content;
     width: fit-content;
     padding: 10px;
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1), 0 1px 3px 1px rgba(0, 0, 0, 0.08), 0 1px 2px 0 rgba(0, 0, 0, 0.16);
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1),
+      0 1px 3px 1px rgba(0, 0, 0, 0.08), 0 1px 2px 0 rgba(0, 0, 0, 0.16);
     border-radius: 50px;
     background: #fff;
     transition-duration: 200ms;
     background: #424344;
     color: white;
-    letter-spacing: .05rem;
-    font-size: .8rem;
+    letter-spacing: 0.05rem;
+    font-size: 0.8rem;
     font-weight: 200;
     &:hover {
-      box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.1), 0 2px 4px 2px rgba(0, 0, 0, 0.08), 0 2px 4px 0 rgba(0, 0, 0, 0.16);
+      box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.1),
+        0 2px 4px 2px rgba(0, 0, 0, 0.08), 0 2px 4px 0 rgba(0, 0, 0, 0.16);
     }
   }
 }
 
-
 .method_category ul {
-  margin-top: .5em;
+  margin-top: 0.5em;
   margin-bottom: 1em;
 }
 
@@ -188,23 +186,25 @@ $font: 'Roboto', 'Helvetica', 'Arial', sans-serif;
   align-items: center;
   justify-content: center;
 
-  button, a {
+  button,
+  a {
     background-color: #3a3b3c;
     text-decoration: none;
     border: none;
     padding: 1em 2em;
     color: #b0b3b8;
-    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-    letter-spacing: .1rem;
+    font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+    letter-spacing: 0.1rem;
     font-size: 1em;
     line-height: 1.5;
     cursor: pointer;
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1), 0 1px 3px 1px rgba(0, 0, 0, 0.08), 0 1px 2px 0 rgba(0, 0, 0, 0.16);
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1),
+      0 1px 3px 1px rgba(0, 0, 0, 0.08), 0 1px 2px 0 rgba(0, 0, 0, 0.16);
     &:hover {
       background-color: rgb(127, 129, 133) !important;
       color: white;
-      box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.1), 0 2px 4px 2px rgba(0, 0, 0, 0.08), 0 2px 4px 0 rgba(0, 0, 0, 0.16);
-
+      box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.1),
+        0 2px 4px 2px rgba(0, 0, 0, 0.08), 0 2px 4px 0 rgba(0, 0, 0, 0.16);
     }
   }
 }
@@ -242,13 +242,12 @@ $font: 'Roboto', 'Helvetica', 'Arial', sans-serif;
   font-weight: 700;
   float: left;
   margin-right: 5px;
-
 }
 
-.modal_explanation_wrapper{
+.modal_explanation_wrapper {
   color: rgba(255, 255, 255, 0.884);
   margin-right: auto;
-  letter-spacing: .1rem;
+  letter-spacing: 0.1rem;
   font-weight: 400;
   font-size: 12px;
   margin-top: 5px;
@@ -259,9 +258,8 @@ $font: 'Roboto', 'Helvetica', 'Arial', sans-serif;
 }
 
 .timeline_feature_name {
-  display: inline-block
+  display: inline-block;
 }
-
 
 @media only screen and (max-width: 700px) {
   #methodSelectModal .inner_modal {

@@ -2,7 +2,7 @@ import math from '../../math/Math';
 
 const otp = (() => {
   math.restoreForeignChars();
-  let userInput, direction, caseFormat, includeChars, key, alphabet;
+  let userInput, direction, includeChars, key, alphabet;
 
   const setUserInput = (input) => {
     userInput = String(input);
@@ -14,10 +14,6 @@ const otp = (() => {
 
   const setAlphabet = (input) => {
     alphabet = input;
-  };
-
-  const setCase = (input) => {
-    caseFormat = input;
   };
 
   const setDirection = (input) => {
@@ -67,7 +63,7 @@ const otp = (() => {
     otpKey,
     alphabet
   ) => {
-    setAll(input, caseFormat, foreignChars, direction, otpKey, alphabet);
+    setAll(input, foreignChars, direction, otpKey, alphabet);
     if (direction !== 'crack') {
       if (userInput.length <= 0) return '';
       let rawOutput = transformText();
@@ -80,16 +76,8 @@ const otp = (() => {
     }
   };
 
-  const setAll = (
-    input,
-    caseFormat,
-    foreignChars,
-    direction,
-    otpKey,
-    alphabet
-  ) => {
+  const setAll = (input, foreignChars, direction, otpKey, alphabet) => {
     setUserInput(input);
-    setCase(caseFormat);
     setForeignChars(foreignChars);
     setDirection(direction);
     setKey(otpKey);

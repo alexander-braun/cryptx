@@ -1,7 +1,7 @@
 const Rsa = (() => {
   const bigInt = require('big-integer');
 
-  let prime_one, prime_two, e, phi, userInput, n, d, direction;
+  let prime_one, prime_two, e, phi, userInput, n, d;
 
   const setPrimeOne = (val) => {
     prime_one = val;
@@ -17,10 +17,6 @@ const Rsa = (() => {
 
   const setUserInput = (val) => {
     userInput = val;
-  };
-
-  const setDirection = (val) => {
-    direction = val;
   };
 
   const encrypt = () => {
@@ -160,12 +156,11 @@ const Rsa = (() => {
     return true;
   };
 
-  const setAll = (input, prime1, prime2, e, direction) => {
+  const setAll = (input, prime1, prime2, e) => {
     setUserInput(input);
     setPrimeOne(prime1);
     setPrimeTwo(prime2);
     setE(e);
-    setDirection(direction);
     if (
       !numberChecker(prime_one) ||
       !numberChecker(prime_two) ||
@@ -179,7 +174,7 @@ const Rsa = (() => {
   };
 
   const calc = (input, prime1, prime2, e, direction) => {
-    setAll(input, prime1, prime2, e, direction);
+    setAll(input, prime1, prime2, e);
     if (typeof calcD() === 'object')
       return [
         '!!! φ(n) and e are not coprime - gcd of φ(n) and e is ' +

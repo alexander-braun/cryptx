@@ -1,28 +1,9 @@
 const Reverse = (() => {
-  let userInput, caseFormat, foreignChars, alphabet;
-
-  const setUserInput = (value) => {
-    userInput = value;
-  };
-
-  const setCaseFormat = (value) => {
-    caseFormat = value;
-  };
-
-  const setForeignChars = (value) => {
-    foreignChars = value;
-  };
-
-  const setAlphabet = (value) => {
-    alphabet = value;
-  };
-
   const encrypt = (input, caseFormat, foreignChars, alphabet) => {
-    setAll(input, caseFormat, foreignChars, alphabet);
     //Calc
     let output = [];
-    for (let i = userInput.length - 1; i >= 0; i--) {
-      output.push(userInput[i]);
+    for (let i = input.length - 1; i >= 0; i--) {
+      output.push(input[i]);
     }
 
     //Format
@@ -43,16 +24,8 @@ const Reverse = (() => {
     return formattedOutput;
   };
 
-  const setAll = (input, caseFormat, foreignChars, alphabet) => {
-    setUserInput(input);
-    setCaseFormat(caseFormat);
-    setForeignChars(foreignChars);
-    setAlphabet(alphabet);
-  };
-
   return {
     encrypt: encrypt,
-    setAll: setAll,
   };
 })();
 

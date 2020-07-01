@@ -1,5 +1,5 @@
 const Trifid = (() => {
-  let userInput, trifidKey, groupSize, twentySeventhLetter, alphabet, direction;
+  let userInput, trifidKey, groupSize, twentySeventhLetter, alphabet;
 
   const setUserInput = (value) => {
     userInput = value;
@@ -7,10 +7,6 @@ const Trifid = (() => {
 
   const setAlphabet = (value) => {
     alphabet = value;
-  };
-
-  const setDirection = (value) => {
-    direction = value;
   };
 
   const setTrifidKey = (value) => {
@@ -301,15 +297,13 @@ const Trifid = (() => {
     trifidKey,
     groupSize,
     twentySeventhLetter,
-    alphabet,
-    direction
+    alphabet
   ) => {
     setUserInput(input);
     setTrifidKey(trifidKey);
     setGroupSize(groupSize);
     setTwentySeventhLetterLetter(twentySeventhLetter);
     setAlphabet(alphabet);
-    setDirection(direction);
   };
 
   return {

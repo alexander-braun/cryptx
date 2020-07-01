@@ -1,24 +1,13 @@
 const CaseTransform = (() => {
-  let userInput, caseTransformChoice;
-
-  const setUserInput = (value) => {
-    userInput = value;
-  };
-
-  const setCaseTransformChoice = (value) => {
-    caseTransformChoice = value;
-  };
-
   const encrypt = (input, caseTransformChoice) => {
-    setAll(input, caseTransformChoice);
-    if (!userInput) return '';
-    userInput.trim();
+    if (!input) return '';
+    input.trim();
     if (caseTransformChoice === 'lower') {
-      return userInput.toLowerCase();
+      return input.toLowerCase();
     } else if (caseTransformChoice === 'upper') {
-      return userInput.toUpperCase();
+      return input.toUpperCase();
     } else if (caseTransformChoice === 'capitalize') {
-      let words = userInput.split(' ');
+      let words = input.split(' ');
       let wordsUpper = [];
       for (let word of words) {
         let transformed = word.toLowerCase().split('');
@@ -32,31 +21,25 @@ const CaseTransform = (() => {
       return wordsUpper.join('');
     } else if (caseTransformChoice === 'alternating') {
       let wordsAlternate = [];
-      for (let i = 0; i < userInput.length; i++) {
+      for (let i = 0; i < input.length; i++) {
         i % 2 === 0
-          ? wordsAlternate.push(userInput[i].toLowerCase())
-          : wordsAlternate.push(userInput[i].toUpperCase());
+          ? wordsAlternate.push(input[i].toLowerCase())
+          : wordsAlternate.push(input[i].toUpperCase());
       }
       return wordsAlternate.join('');
     } else if (caseTransformChoice === 'inverse') {
       let wordsInverse = [];
-      for (let i = 0; i < userInput.length; i++) {
-        userInput[i].toLowerCase() === userInput[i]
-          ? wordsInverse.push(userInput[i].toUpperCase())
-          : wordsInverse.push(userInput[i].toLowerCase());
+      for (let i = 0; i < input.length; i++) {
+        input[i].toLowerCase() === input[i]
+          ? wordsInverse.push(input[i].toUpperCase())
+          : wordsInverse.push(input[i].toLowerCase());
       }
       return wordsInverse.join('');
     }
   };
 
-  const setAll = (input, caseTransformChoice) => {
-    setUserInput(input);
-    setCaseTransformChoice(caseTransformChoice);
-  };
-
   return {
     encrypt: encrypt,
-    setAll: setAll,
   };
 })();
 

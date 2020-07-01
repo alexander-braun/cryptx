@@ -28,16 +28,10 @@ const AnalysisModal = ({
   chi_input,
   isAuthenticated,
 }) => {
-  const toggleModal = (e) => {
-    if (!(e.target.className !== 'modal')) {
-      toggleAnalysisModal();
-    }
-  };
-
   return (
     <Fragment>
       {analysisModal ? (
-        <div className='modal' onClick={(e) => toggleModal(e)}>
+        <div className='modal' onClick={() => toggleAnalysisModal()}>
           <div className='inner_modal'>
             <div className='block_top_decoration'></div>
             <div className='modal_header'>Add a method of cryptoanalysis</div>
@@ -111,28 +105,21 @@ const AnalysisModal = ({
 
 const mapStateToProps = (state) => ({
   analysisModal: state.analysisModal,
-
   fq_input: state.analysisMethod.fq_input,
   fq_output: state.analysisMethod.fq_output,
-
   ic_input: state.analysisMethod.ic_input,
   ic_output: state.analysisMethod.ic_output,
-
   chi_input: state.analysisMethod.chi_input,
   chi_output: state.analysisMethod.chi_output,
-
   isAuthenticated: state.auth.isAuthenticated,
 });
 
 const mapActionsToProps = {
   toggleAnalysisModal: toggleAnalysisModal,
-
   toggleAnalysisMethodFQInput: toggleAnalysisMethodFQInput,
   toggleAnalysisMethodFQOutput: toggleAnalysisMethodFQOutput,
-
   toggleAnalysisMethodICInput: toggleAnalysisMethodICInput,
   toggleAnalysisMethodICOutput: toggleAnalysisMethodICOutput,
-
   toggleAnalysisMethodCHIOutput: toggleAnalysisMethodCHIOutput,
   toggleAnalysisMethodCHIInput: toggleAnalysisMethodCHIInput,
 };

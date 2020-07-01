@@ -1,51 +1,27 @@
 const Substitute = (() => {
-  let userInput, substitutionAlphabet, direction;
-
-  const setUserInput = (value) => {
-    userInput = value;
-  };
-
-  const setSubstitutionAlphabet = (value) => {
-    substitutionAlphabet = value;
-  };
-
-  const setDirection = (value) => {
-    direction = value;
-  };
-
   const encrypt = (input, substitutionAlphabet, direction) => {
-    setAll(input, substitutionAlphabet, direction);
     let output = [];
     if (direction === 'encrypt') {
-      for (let i = 0; i < userInput.length; i++) {
-        output.push(
-          substitutionAlphabet[userInput[i].toLowerCase()] || userInput[i]
-        );
+      for (let i = 0; i < input.length; i++) {
+        output.push(substitutionAlphabet[input[i].toLowerCase()] || input[i]);
       }
     }
     if (direction === 'decrypt') {
       let sAlphabet = substitutionAlphabet;
-      let uInput = userInput;
+      let uInput = input;
       let keys = Object.keys(sAlphabet);
-      for (let i = 0; i < userInput.length; i++) {
+      for (let i = 0; i < input.length; i++) {
         output.push(
           keys.find((key) => sAlphabet[key] === uInput[i].toLowerCase()) ||
-            userInput[i]
+            input[i]
         );
       }
     }
     return output.join('');
   };
 
-  const setAll = (input, substitutionAlphabet, direction) => {
-    setUserInput(input);
-    setSubstitutionAlphabet(substitutionAlphabet);
-    setDirection(direction);
-  };
-
   return {
     encrypt: encrypt,
-    setAll: setAll,
   };
 })();
 

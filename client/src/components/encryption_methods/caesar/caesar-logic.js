@@ -8,8 +8,8 @@ const caesar = (() => {
     alphabet,
     direction,
     wordbook,
-    caseFormat,
-    includeChars;
+    includeChars,
+    caseFormat;
 
   const setUserInput = (input) => {
     userInput = String(input);
@@ -19,16 +19,16 @@ const caesar = (() => {
     saltInput = Number(input);
   };
 
+  const setCaseFormat = (input) => {
+    caseFormat = input;
+  };
+
   const setAlphabet = (input) => {
     alphabet = input.split('');
   };
 
   const setForeignChars = (input) => {
     includeChars = input;
-  };
-
-  const setCase = (input) => {
-    caseFormat = input;
   };
 
   const setDirection = (input) => {
@@ -139,7 +139,6 @@ const caesar = (() => {
       }
       counter++;
     }
-
     // Find the option with the most words fitting and return them
 
     let keys = Object.keys(possibleCombinations);
@@ -158,7 +157,16 @@ const caesar = (() => {
       return `Weird text you got there! This tool can only crack english texts that are encrypted with the caesar cipher! Your input: "${userInput}"`;
     direction = 'decrypt';
     setSaltInput(shiftV);
-    result = encrypt();
+
+    result = encrypt(
+      null,
+      userInput,
+      alphabet.join(''),
+      shiftV,
+      'decrypt',
+      caseFormat,
+      includeChars
+    );
     return result;
   };
 
@@ -188,8 +196,8 @@ const caesar = (() => {
       alphabet,
       cShift,
       direction,
-      caseFormat,
-      foreignChars
+      foreignChars,
+      caseFormat
     );
     if (direction !== 'crack') {
       let rawOutput = readChar();
@@ -214,16 +222,16 @@ const caesar = (() => {
     alphabet,
     cShift,
     direction,
-    caseFormat,
-    foreignChars
+    foreignChars,
+    caseFormat
   ) => {
     setWordbook(wordbook);
     setUserInput(input);
     setAlphabet(alphabet);
     setSaltInput(cShift);
     setDirection(direction);
-    setCase(caseFormat);
     setForeignChars(foreignChars);
+    setCaseFormat(caseFormat);
   };
 
   return {

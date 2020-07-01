@@ -2,22 +2,10 @@ import math from '../../math/Math';
 
 const atbash = (() => {
   //Setup all variables
-  let userInput, caseFormat, includeChars;
+  let userInput;
 
   let alphabet = 'abcdefghijklmnopqrstuvwxyz';
   alphabet = alphabet.split('');
-
-  const setUserInput = (input) => {
-    userInput = String(input);
-  };
-
-  const setForeignChars = (input) => {
-    includeChars = input;
-  };
-
-  const setCase = (input) => {
-    caseFormat = input;
-  };
 
   //Encryption Method
   const readChar = () => {
@@ -43,26 +31,20 @@ const atbash = (() => {
   //Crack or other ? Return the according method
 
   const encrypt = (input, caseFormat, foreignChars) => {
-    setAll(input, caseFormat, foreignChars);
+    input = String(input);
+    userInput = input;
     let rawOutput = readChar();
     if (checkIfSigns()) {
       return math.transformCaseAndChars(
         userInput,
         rawOutput,
         caseFormat,
-        includeChars
+        foreignChars
       );
     } else return rawOutput;
   };
 
-  const setAll = (input, caseFormat, foreignChars) => {
-    setUserInput(input);
-    setCase(caseFormat);
-    setForeignChars(foreignChars);
-  };
-
   return {
-    setAll: setAll,
     encrypt: encrypt,
   };
 })();

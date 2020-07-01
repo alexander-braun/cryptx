@@ -3,14 +3,7 @@ import math from '../../math/Math';
 const affine = (() => {
   //Setup all variables
 
-  let userInput,
-    alphabet,
-    direction,
-    caseFormat,
-    includeChars,
-    alpha,
-    beta,
-    correctedInput;
+  let userInput, alphabet, includeChars, alpha, beta, correctedInput;
 
   const setUserInput = (input) => {
     userInput = String(input);
@@ -37,14 +30,6 @@ const affine = (() => {
 
   const setForeignChars = (input) => {
     includeChars = input;
-  };
-
-  const setCase = (input) => {
-    caseFormat = input;
-  };
-
-  const setDirection = (input) => {
-    direction = input;
   };
 
   //Affine Method
@@ -116,15 +101,7 @@ const affine = (() => {
     foreignChars,
     caseFormat
   ) => {
-    setAll(
-      alphabet,
-      input,
-      affineAlpha,
-      affineBeta,
-      direction,
-      foreignChars,
-      caseFormat
-    );
+    setAll(alphabet, input, affineAlpha, affineBeta, foreignChars);
     let rawOutput;
     direction === 'encrypt'
       ? (rawOutput = encrypt(correctedInput, alpha, beta))
@@ -137,22 +114,12 @@ const affine = (() => {
     );
   };
 
-  const setAll = (
-    alphabet,
-    input,
-    affineAlpha,
-    affineBeta,
-    direction,
-    foreignChars,
-    caseFormat
-  ) => {
+  const setAll = (alphabet, input, affineAlpha, affineBeta, foreignChars) => {
     setAlphabet(alphabet);
     setUserInput(input);
     setAlpha(affineAlpha);
     setBeta(affineBeta);
-    setDirection(direction);
     setForeignChars(foreignChars);
-    setCase(caseFormat);
   };
 
   return {

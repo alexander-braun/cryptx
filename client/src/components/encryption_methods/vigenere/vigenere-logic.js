@@ -1,7 +1,7 @@
 const vigenere = (() => {
   //Setup all variables
 
-  let userInput, alphabet, direction, caseFormat, includeChars, keywordVigenere;
+  let userInput, alphabet, direction, includeChars, keywordVigenere;
 
   const setUserInput = (input) => {
     userInput = String(input);
@@ -15,10 +15,6 @@ const vigenere = (() => {
 
   const setForeignChars = (input) => {
     includeChars = input;
-  };
-
-  const setCase = (input) => {
-    caseFormat = input;
   };
 
   const setDirection = (input) => {
@@ -75,7 +71,7 @@ const vigenere = (() => {
     caseFormat,
     keyword
   ) => {
-    setAll(input, alphabet, direction, foreignChars, caseFormat, keyword);
+    setAll(input, alphabet, direction, foreignChars, keyword);
     const textinputCleaned = removeSigns(userInput.toLowerCase(), false);
     let textoutput = readChar(textinputCleaned, keywordVigenere);
 
@@ -158,19 +154,11 @@ const vigenere = (() => {
     return text;
   };
 
-  const setAll = (
-    input,
-    alphabet,
-    direction,
-    foreignChars,
-    caseFormat,
-    keyword
-  ) => {
+  const setAll = (input, alphabet, direction, foreignChars, keyword) => {
     setUserInput(input);
     setAlphabet(alphabet);
     setDirection(direction);
     setForeignChars(foreignChars);
-    setCase(caseFormat);
     setKeyWord(keyword);
   };
 

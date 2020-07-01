@@ -1,19 +1,5 @@
 const replace = (() => {
-  let userInput, toReplaceLetter, replaceLetter;
-
-  const setUserInput = (value) => {
-    userInput = value;
-  };
-
-  const setToReplaceLetter = (value) => {
-    toReplaceLetter = value;
-  };
-
-  const setReplaceLetter = (value) => {
-    replaceLetter = value;
-  };
-
-  const replaceAll = (str1, str2, ignore) => {
+  const replaceAll = (str1, str2, ignore, userInput) => {
     return userInput.replace(
       new RegExp(
         str1.replace(/([/,!\\^${}[\]().*+?|<>\-&])/g, '\\$&'),
@@ -24,19 +10,11 @@ const replace = (() => {
   };
 
   const encrypt = (input, toReplaceLetter, replaceLetter) => {
-    setAll(input, toReplaceLetter, replaceLetter);
-    return replaceAll(toReplaceLetter, replaceLetter, true);
-  };
-
-  const setAll = (input, toReplaceLetter, replaceLetter) => {
-    setUserInput(input);
-    setToReplaceLetter(toReplaceLetter);
-    setReplaceLetter(replaceLetter);
+    return replaceAll(toReplaceLetter, replaceLetter, true, input);
   };
 
   return {
     encrypt: encrypt,
-    setAll: setAll,
   };
 })();
 
