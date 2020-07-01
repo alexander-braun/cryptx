@@ -1,55 +1,39 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import math from '../helper/Math';
 import { connect } from 'react-redux';
-import { updateInput } from '../../../actions/updateInput';
 import BlockheadButtons from './HeadButtons';
 import AnalysisMethods from './analysis_methods_dropdowns';
 
-class BlockElementOutput extends React.PureComponent {
-  componentDidUpdate(prevProps) {
-    if (prevProps.output !== this.props.output) {
-      let textareaOutput = document.getElementById('output');
-      math.autoresize(textareaOutput);
-    }
-  }
+const Output = ({ updateInput, output }) => {
+  const textareaRef = useRef();
+  useEffect(() => {
+    math.autoresize(textareaRef.current);
+  });
 
-  componentDidMount() {
-    let textareaOutput = document.getElementById('output');
-    math.autoresize(textareaOutput);
-  }
-
-  render() {
-    return (
-      <div className='block'>
-        <div className='block_head'>
-          <div className='block_head_text'>Output</div>
-          <BlockheadButtons />
-        </div>
-        <div className='block_body'>
-          <div className='block_body_output'>
-            <textarea
-              name='output'
-              id='output'
-              value={this.props.output ? this.props.output : ''}
-              onChange={(evt) => {
-                this.value = this.props.output;
-                math.autoresize(evt);
-              }}
-            ></textarea>
-          </div>
-        </div>
-        <AnalysisMethods menue={'output'} output={this.props.output} />
+  return (
+    <div className='block'>
+      <div className='block__head'>
+        <div className='block__title'>Output</div>
+        <BlockheadButtons />
       </div>
-    );
-  }
-}
+      <div className='block__output-wrapper'>
+        <textarea
+          ref={textareaRef}
+          className='block__output'
+          name='output'
+          value={output ? output : ''}
+          onChange={(evt) => {
+            math.autoresize(evt);
+          }}
+        ></textarea>
+      </div>
+      <AnalysisMethods menue={'output'} output={output} />
+    </div>
+  );
+};
 
 const mapStateToProps = (state) => ({
   output: state.output,
 });
 
-const mapActionsToProps = {
-  updateInput: updateInput,
-};
-
-export default connect(mapStateToProps, mapActionsToProps)(BlockElementOutput);
+export default connect(mapStateToProps)(Output);

@@ -15,11 +15,11 @@ const BlockHeadCenter = (props) => {
   };
 
   return (
-    <div className='block-head'>
-      <button className='block-head__text' onClick={toggleModal}>
+    <div className='block-settings__head'>
+      <button className='block-settings__head-text' onClick={toggleModal}>
         {MethodNames[props.method]} <Caret className='caret' />
       </button>
-      <div className='block-head__options'>
+      <div className='block-settings__head-options'>
         <button
           value='encrypt'
           onClick={(evt) => {
@@ -27,8 +27,8 @@ const BlockHeadCenter = (props) => {
           }}
           className={`block-head__option ${
             props.direction === 'encrypt'
-              ? 'block-head__option block-head__option--selected'
-              : 'block-head__option'
+              ? 'block-settings__head-option block-settings__head-option--selected'
+              : 'block-settings__head-option'
           }`}
         >
           Encrypt
@@ -40,8 +40,8 @@ const BlockHeadCenter = (props) => {
           }}
           className={
             props.direction === 'decrypt'
-              ? 'block-head__option block-head__option--selected'
-              : 'block-head__option'
+              ? 'block-settings__head-option block-settings__head-option--selected'
+              : 'block-settings__head-option'
           }
         >
           Decrypt
@@ -54,8 +54,8 @@ const BlockHeadCenter = (props) => {
             }}
             className={
               props.direction === 'crack'
-                ? 'block-head__option block-head__option--selected'
-                : 'block-head__option'
+                ? 'block-settings__head-option block-settings__head-option--selected'
+                : 'block-settings__head-option'
             }
           >
             Crack

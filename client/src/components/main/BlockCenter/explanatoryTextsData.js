@@ -8,6 +8,13 @@ const explenatory = {
     linksrc: `https://en.wikipedia.org/wiki/Atbash`,
     linkname: `Atbash Cipher Wikipedia`,
   },
+  rot13: {
+    normal: `Rot 13 is a very simple substitution cipher. It is a special case of the Caesar Cipher 
+            using a shift value of 13. It originated from the net.jokes newsgroup in the early 1980s.`,
+    crack: `No Crack function yet  :(`,
+    linksrc: `https://en.wikipedia.org/wiki/ROT13`,
+    linkname: `Rot 13 Wikipedia`,
+  },
   caesar: {
     normal: `The Caesar cipher is a substitution cypher wich was used by Julius Caesar to encrypt
         his correspondences. The classic shift of 3 maps every character 3 places before its original 

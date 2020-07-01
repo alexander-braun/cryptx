@@ -8,11 +8,9 @@ const BlockCenter = () => {
   return (
     <div className='block-settings'>
       <BlockHeadCenter />
-      <div className='block-settings__body block_body'>
-        <div className='block-settings_input'>
-          <Settings />
-          <ExplanatoryText />
-        </div>
+      <div className='block-settings__body'>
+        <Settings />
+        <ExplanatoryText />
       </div>
     </div>
   );

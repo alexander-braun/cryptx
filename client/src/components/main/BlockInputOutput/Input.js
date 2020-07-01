@@ -1,14 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import math from '../helper/Math';
 import { connect } from 'react-redux';
 import { updateInput } from '../../../actions/updateInput';
 import BlockheadButtons from './HeadButtons';
 import AnalysisMethods from './analysis_methods_dropdowns';
 
-const BlockInput = ({ updateInput, iocInput, input }) => {
+const Input = ({ updateInput, input }) => {
+  const textareaRef = useRef();
   useEffect(() => {
-    let textareaOutput = document.getElementById('userinput');
-    math.autoresize(textareaOutput);
+    math.autoresize(textareaRef.current);
   });
 
   const update = (evt) => {
@@ -20,27 +20,26 @@ const BlockInput = ({ updateInput, iocInput, input }) => {
   };
 
   return (
-    <div className='block' id='user_input'>
-      <div className='block_head'>
-        <div className='block_head_text'>Input</div>
+    <div className='block'>
+      <div className='block__head'>
+        <div className='block__title'>Input</div>
         <BlockheadButtons />
       </div>
-      <div className='block_body'>
-        <div className='block_body_input'>
-          <textarea
-            name='userinput'
-            id='userinput'
-            value={input}
-            onClick={(evt) => {
-              update(evt);
-              math.autoresize(evt);
-            }}
-            onChange={(evt) => {
-              update(evt);
-              math.autoresize(evt);
-            }}
-          />
-        </div>
+      <div className='block__input-wrapper'>
+        <textarea
+          ref={textareaRef}
+          name='userinput'
+          className='block__input'
+          value={input}
+          onClick={(evt) => {
+            update(evt);
+            math.autoresize(evt);
+          }}
+          onChange={(evt) => {
+            update(evt);
+            math.autoresize(evt);
+          }}
+        />
       </div>
       <AnalysisMethods menue={'input'} input={input} />
     </div>
@@ -55,4 +54,4 @@ const mapActionsToProps = {
   updateInput: updateInput,
 };
 
-export default connect(mapStateToProps, mapActionsToProps)(BlockInput);
+export default connect(mapStateToProps, mapActionsToProps)(Input);

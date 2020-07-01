@@ -12,7 +12,6 @@ import IcTooltipAddAnalysisMethod from './IcTooltipAddAnalysisMethod';
 const BlockheadButtons = ({
   togglePresetsModal,
   toggleDirection,
-  input,
   output,
   direction,
   updateInput,

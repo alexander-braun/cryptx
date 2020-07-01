@@ -34,53 +34,41 @@ const BlockBodyInput = (props) => {
     switch (props.method) {
       case 'trifid':
         bodyInput = (
-          <div className='block_body_input'>
+          <Fragment>
             <TrifidSettings />
             <TrifidLayers />
             <TrifidGroups />
-          </div>
+          </Fragment>
         );
         break;
       case 'substitution':
-        bodyInput = (
-          <div className='block_body_input'>
-            <SubstitutionTable />
-          </div>
-        );
+        bodyInput = <SubstitutionTable />;
         break;
       case 'casetransform':
-        bodyInput = (
-          <div className='block_body_input'>
-            <CaseTransform />
-          </div>
-        );
+        bodyInput = <CaseTransform />;
         break;
       case 'reverse':
-        bodyInput = (
-          <div className='block_body_input'>
-            <CaseChars />
-          </div>
-        );
+        bodyInput = <CaseChars />;
         break;
       case 'nihilist':
         bodyInput = (
-          <div className='block_body_input'>
+          <Fragment>
             <KeywordsNihilist />
             <NihilistSquare />
             <NihilistTransposition />
-          </div>
+          </Fragment>
         );
         break;
       case 'atbash':
         bodyInput = (
-          <div className='block_body_input'>
+          <Fragment>
             <AtbashTransposition alphabet={props.alphabet} />
             <Alphabet
               alphabet={props.alphabet}
               alphabetActive={props.alphabetActive}
             />
             <CaseChars />
-          </div>
+          </Fragment>
         );
         break;
       case 'rsa':
@@ -88,18 +76,18 @@ const BlockBodyInput = (props) => {
         break;
       case 'rot13':
         bodyInput = (
-          <div className='block_body_input'>
+          <Fragment>
             <Alphabet
               alphabet={props.alphabet}
               alphabetActive={props.alphabetActive}
             />
             <CaseChars />
-          </div>
+          </Fragment>
         );
         break;
       case 'caesar':
         bodyInput = (
-          <div className='block_body_input'>
+          <Fragment>
             <CaesarShift />
             <CaesarTransposition alphabet={props.alphabet} />
             <Alphabet
@@ -107,24 +95,24 @@ const BlockBodyInput = (props) => {
               alphabetActive={props.alphabetActive}
             />
             <CaseChars />
-          </div>
+          </Fragment>
         );
         break;
       case 'affine':
         bodyInput = (
-          <div className='block_body_input'>
+          <Fragment>
             <AlphaBetaSelectors />
             <Alphabet
               alphabet={props.alphabet}
               alphabetActive={props.alphabetActive}
             />
             <CaseChars />
-          </div>
+          </Fragment>
         );
         break;
       case 'vigenere':
         bodyInput = (
-          <div className='block_body_input'>
+          <Fragment>
             <KeywordVigenere />
             <VigenereTransposition alphabet={props.alphabet} />
             <Alphabet
@@ -132,12 +120,12 @@ const BlockBodyInput = (props) => {
               alphabetActive={props.alphabetActive}
             />
             <CaseChars />
-          </div>
+          </Fragment>
         );
         break;
       case 'playfair':
         bodyInput = (
-          <div className='block_body_input'>
+          <Fragment>
             <CharOptions />
             <KeywordPlayfair />
             <PlayfairSquare />
@@ -146,7 +134,7 @@ const BlockBodyInput = (props) => {
               alphabetActive={props.alphabetActive}
             />
             <CaseChars />
-          </div>
+          </Fragment>
         );
         break;
       case 'morse':
@@ -157,7 +145,7 @@ const BlockBodyInput = (props) => {
         break;
       case 'skytale':
         bodyInput = (
-          <div>
+          <Fragment>
             <RingLength />
             <Rings />
             <Alphabet
@@ -165,19 +153,19 @@ const BlockBodyInput = (props) => {
               alphabetActive={props.alphabetActive}
             />
             <CaseChars />
-          </div>
+          </Fragment>
         );
         break;
       case 'otp':
         bodyInput = (
-          <div>
+          <Fragment>
             <OtpGenerate />
             <Alphabet
               alphabet={props.alphabet}
               alphabetActive={props.alphabetActive}
             />
             <CaseChars />
-          </div>
+          </Fragment>
         );
         break;
       default:

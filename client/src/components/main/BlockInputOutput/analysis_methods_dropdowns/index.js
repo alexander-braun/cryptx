@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import ChartImporter from './freqencyAnalysis/ChartImporter';
 import IndexOfCoincidence from './indexOfCoincidence/IndexOfCoincidence';
-import ChiSquared from './chi_squared/chisquared';
+import ChiSquared from './chi_squared/ChiSquared';
 
 const AnalysisMethods = (props) => {
   /**
@@ -20,11 +20,11 @@ const AnalysisMethods = (props) => {
 
   const indexOfCoincidenceMenue =
     props.menue === 'output' && props.ic_output ? (
-      <div className='chartcontainer'>
+      <div className='analysis__dropdown'>
         <IndexOfCoincidence menue={props.menue} />
       </div>
     ) : props.menue === 'input' && props.ic_input ? (
-      <div className='chartcontainer'>
+      <div className='analysis__dropdown'>
         <IndexOfCoincidence menue={props.menue} />
       </div>
     ) : null;
@@ -35,31 +35,27 @@ const AnalysisMethods = (props) => {
    */
   const frequencyAnalysisMenue =
     props.menue === 'output' && props.fq_output ? (
-      <div className='chartcontainer'>
-        <div className='clickSurface'>
-          <ChartImporter menue={props.menue} inputValue={props.output} />
-        </div>
+      <div className='analysis__dropdown'>
+        <ChartImporter menue={props.menue} inputValue={props.output} />
       </div>
     ) : props.menue === 'input' && props.fq_input ? (
-      <div className='chartcontainer'>
-        <div className='clickSurface'>
-          <ChartImporter menue={props.menue} inputValue={props.input} />
-        </div>
+      <div className='analysis__dropdown'>
+        <ChartImporter menue={props.menue} inputValue={props.input} />
       </div>
     ) : null;
 
   const chiSquaredMenue =
     props.menue === 'output' && props.chi_output ? (
-      <div className='chartcontainer'>
+      <div className='analysis__dropdown'>
         <ChiSquared menue={props.menue} />
       </div>
     ) : props.menue === 'input' && props.chi_input ? (
-      <div className='chartcontainer'>
+      <div className='analysis__dropdown'>
         <ChiSquared menue={props.menue} />
       </div>
     ) : null;
   return (
-    <div>
+    <div className='analysis'>
       {frequencyAnalysisMenue}
       {indexOfCoincidenceMenue}
       {chiSquaredMenue}

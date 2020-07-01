@@ -1,11 +1,13 @@
 import React, { Suspense } from 'react';
 import { connect } from 'react-redux';
 
+//SCSS
+import './main.scss';
+
 //Components
-import BlockInput from './BlockInputOutput/Input';
-import BlockOutput from './BlockInputOutput/Output';
-import BlockConnectorEquals from './BlockOther/ConnectorEquals';
-import BlockConnectorPlus from './BlockOther/ConnectorPlus';
+import Input from './BlockInputOutput/Input';
+import Output from './BlockInputOutput/Output';
+import BlockConnector from './BlockOther/BlockConnector';
 import BlockSettings from './BlockCenter';
 import Timeline from '../timeline/Timeline';
 
@@ -28,11 +30,8 @@ import Otp from '../encryption_methods/onetimepad/otp-logic';
 
 // Actions
 import setWordbook from '../../actions/wordbook';
-import toggleChars from '../../actions/toggleIncludeChars';
 import setOutput from '../../actions/setOutput';
-import toggleCase from '../../actions/toggleCase';
 import updateAlphabet from '../../actions/updateAlphabet';
-import setOtpKey from '../../actions/setOtpKey';
 import setPlaysquare from '../../actions/setPlaysquare';
 import setSkytaleLength from '../../actions/setSkytaleLength';
 import setSkytaleProjectedValue from '../../actions/setSkytaleProjectedValue';
@@ -296,14 +295,14 @@ class Main extends React.PureComponent {
 
   render() {
     return (
-      <div id='converter'>
+      <div className='main'>
         <Timeline />
-        <div id='block_container'>
-          <BlockInput />
-          <BlockConnectorPlus />
+        <div className='block-container'>
+          <Input />
+          <BlockConnector sign={'+'} />
           <BlockSettings />
-          <BlockConnectorEquals />
-          <BlockOutput />
+          <BlockConnector sign={'='} />
+          <Output />
         </div>
         <Suspense fallback={<div>...Loading</div>}>
           <Modal />
@@ -355,11 +354,8 @@ const mapStateToProps = (state) => ({
 
 const mapActionsToProps = {
   setWordbook,
-  toggleChars,
   setOutput,
-  toggleCase,
   updateAlphabet,
-  setOtpKey,
   setPlaysquare,
   setSkytaleLength,
   setSkytaleProjectedValue,
