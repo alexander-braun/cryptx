@@ -17,7 +17,6 @@ import otpKey from './otpKey';
 import playsquare from './playsquare';
 import skytale from './skytale';
 import rsa from './rsa';
-import ioc from './ioc';
 import alert from './alert';
 import auth from './auth';
 import presetsModal from './presetsModal';
@@ -55,7 +54,6 @@ export default combineReducers({
   playsquare,
   skytale,
   rsa,
-  ioc,
   alert,
   auth,
   presetsModal,

@@ -8,6 +8,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import IcTooltipExplanatory from '../../IcTooltipExplanatory';
 import IcTooltipRemoveAnalysisMethod from '../../IcTooltipRemoveAnalysisMethod';
 import './ioc.scss';
+import { calcIndexOfCoincidence, calcLanguageProbability } from './ioc-logic';
+import { connect } from 'react-redux';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,33 +24,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-let probabilities = {
-  English: 1.73,
-  French: 2.02,
-  German: 2.05,
-  Italian: 1.94,
-  Portugese: 1.94,
-  Russian: 1.76,
-  Spanish: 1.94,
-};
-
-function IndexOfCoincidence({ ioc, menue }) {
+function IndexOfCoincidence({ menue, input, output }) {
   const [expandedStatus, changeExpandedStatus] = useState(false);
   const classes = useStyles();
 
-  const languageProbability = () => {
-    let adjustedIOC = ioc * 26;
-    let tempProbability = Infinity;
-    let language = '';
-    for (let probability of Object.keys(probabilities)) {
-      let diff = probabilities[probability] - adjustedIOC;
-      if (Math.abs(diff) < tempProbability) {
-        tempProbability = Math.abs(diff);
-        language = probability;
-      }
-    }
-    return language;
-  };
+  const ioc =
+    menue === 'input'
+      ? calcIndexOfCoincidence(input)
+      : calcIndexOfCoincidence(output);
+
+  const languageProbability = calcLanguageProbability(ioc);
 
   const iocInformations = () => {
     if (!ioc && ioc !== 0) return 'no input';
@@ -65,7 +50,7 @@ function IndexOfCoincidence({ ioc, menue }) {
           </div>
           <div className='ioc-information__category'>
             <span className='ioc-information__text'>Text IC closest to</span>
-            &nbsp;{languageProbability()}
+            &nbsp;{languageProbability}
           </div>
         </div>
       );
@@ -99,4 +84,9 @@ function IndexOfCoincidence({ ioc, menue }) {
   );
 }
 
-export default IndexOfCoincidence;
+const mapStateToProps = (state) => ({
+  input: state.input,
+  output: state.output,
+});
+
+export default connect(mapStateToProps)(IndexOfCoincidence);

@@ -10,21 +10,21 @@ import BlockSettings from './BlockCenter';
 import Timeline from '../timeline/Timeline';
 
 //Logic
-import Caesar from '../encryption_methods/caesar/CaesarLogic';
-import Affine from '../encryption_methods/affine/AffineLogic';
-import Nihilist from '../encryption_methods/nihilist/nihilistLogic';
-import Vigenere from '../encryption_methods/vigenere/VigenereLogic';
-import Playfair from '../encryption_methods/playfair/PlayfairLogic';
-import Morse from '../encryption_methods/morse/Morselogic';
-import Replace from '../encryption_methods/replace/ReplaceLogic';
-import Skytale from '../encryption_methods/skytale/SkytaleLogic';
-import Atbash from '../encryption_methods/atbash/AtbashLogic';
-import Rsa from '../encryption_methods/rsa/RSALogic';
-import Reverse from '../encryption_methods/reverse/reverseLogic';
-import CaseTransform from '../encryption_methods/caseTransform/caseTransformLogic';
-import Substitute from '../encryption_methods/substitutionAlphabet/substitutionLogic';
-import Trifid from '../encryption_methods/trifid/trifidLogic';
-import Otp from '../encryption_methods/onetimepad/otpLogic';
+import Caesar from '../encryption_methods/caesar/caesar-logic';
+import Affine from '../encryption_methods/affine/affine-logic';
+import Nihilist from '../encryption_methods/nihilist/nihilist-logic';
+import Vigenere from '../encryption_methods/vigenere/vigenere-logic';
+import Playfair from '../encryption_methods/playfair/playfair-logic';
+import Morse from '../encryption_methods/morse/morse-logic';
+import Replace from '../encryption_methods/replace/replace-logic';
+import Skytale from '../encryption_methods/skytale/skytale-logic';
+import Atbash from '../encryption_methods/atbash/atbash-logic';
+import Rsa from '../encryption_methods/rsa/rsa-logic';
+import Reverse from '../encryption_methods/reverse/reverse-logic';
+import CaseTransform from '../encryption_methods/caseTransform/case-transform-logic';
+import Substitute from '../encryption_methods/substitutionAlphabet/substitution-logic';
+import Trifid from '../encryption_methods/trifid/trifid-logic';
+import Otp from '../encryption_methods/onetimepad/otp-logic';
 
 // Actions
 import setWordbook from '../../actions/wordbook';
@@ -36,8 +36,6 @@ import setOtpKey from '../../actions/setOtpKey';
 import setPlaysquare from '../../actions/setPlaysquare';
 import setSkytaleLength from '../../actions/setSkytaleLength';
 import setSkytaleProjectedValue from '../../actions/setSkytaleProjectedValue';
-import setIocInput from '../../actions/setIocInput';
-import setIocOutput from '../../actions/setIocOutput';
 import setTimeToCalculate from '../../actions/setTimeToCalculate';
 import setRsaPhi from '../../actions/setRsaPhi';
 import setRsaN from '../../actions/setRsaN';
@@ -78,21 +76,13 @@ class Main extends React.PureComponent {
      * updated. Prevents infinite re-renders.
      * Needs a better method on a seperate thread or
      * something.
+     * Time to calculate always changes wich is why the
+     * component updates. Maybe round the timeToCalculate
+     * to .5s invervals.
      */
     if (prevProps.timeToCalculate !== this.props.timeToCalculate) {
       return;
     } else this.encrypt();
-
-    /**
-     *
-     */
-    if (
-      prevProps.input !== this.props.input ||
-      prevProps.output !== this.props.output
-    ) {
-      this.props.setIocInput(this.calcIndexOfCoincidence(true));
-      this.props.setIocOutput(this.calcIndexOfCoincidence(false));
-    }
 
     /**
      * In some cases the alphabet is editable.
@@ -108,63 +98,6 @@ class Main extends React.PureComponent {
         this.props.setAlphabetActive(false);
       }
     }
-  }
-
-  /**
-   * Put this method extra
-   * Best would be to calculate all methods not
-   * in their respective core components but
-   * just to input the values into a function
-   * in a core component and let it calculate
-   * in a seperate function.
-   */
-  //ioc
-  calcIndexOfCoincidence(input) {
-    //Check if input or outputfield
-    let inputState = this.props.input;
-    let outputState = this.props.output;
-
-    if (input) {
-      if (!inputState || inputState.length === 0) return;
-    }
-    if (!input) {
-      if (!outputState || outputState.length === 0) return;
-    }
-
-    //calc for input or output -> true = input, false = output
-    let inputValue = input ? inputState.toString() : outputState.toString();
-
-    let alphabet = 'abcdefghijklmnopqrstuvwxyz';
-
-    //don't use foreign chars
-    let cleanedInput = inputValue.split('').filter((character) => {
-      return alphabet.indexOf(character.toLowerCase()) !== -1;
-    });
-
-    //Return if only signs
-    if (cleanedInput.length === 0) return;
-
-    // count all the occurences of every letter in the input
-    let arrCounts = new Array(26).fill(0);
-    for (let character of cleanedInput) {
-      let indexOfCharacter = alphabet.indexOf(character.toLowerCase());
-      arrCounts[indexOfCharacter]++;
-    }
-
-    // don't use letters that have a count of one as 1 * (1 - 1) === 0
-    let arrCountsCleaned = arrCounts.filter((element) => element > 1);
-
-    // calculate count ( count - 1 ) and sum all the results up
-    let countCi = arrCountsCleaned
-      .map((count) => {
-        return count * (count - 1);
-      })
-      .reduce((a, b) => a + b, 0);
-
-    //final calculation with countsum and inputlength
-    let ioc = countCi / (cleanedInput.length * (cleanedInput.length - 1));
-
-    return !isNaN(ioc) ? ioc : '0';
   }
 
   /**
@@ -406,8 +339,6 @@ const mapStateToProps = (state) => ({
   ringLength: state.skytale.ringLength,
   skytaleLength: state.skytale.length,
   skytaleProjectedValue: state.projectedValue,
-  iocInput: state.ioc.input,
-  iocOutput: state.ioc.output,
   timeToCalculate: state.rsa.timeToCalculate,
   phi: state.rsa.phi,
   n: state.rsa.n,
@@ -432,8 +363,6 @@ const mapActionsToProps = {
   setPlaysquare,
   setSkytaleLength,
   setSkytaleProjectedValue,
-  setIocInput,
-  setIocOutput,
   setTimeToCalculate,
   setRsaPhi,
   setRsaN,

@@ -38,11 +38,7 @@ class BlockElementOutput extends React.PureComponent {
             ></textarea>
           </div>
         </div>
-        <AnalysisMethods
-          menue={'output'}
-          output={this.props.output}
-          iocOutput={this.props.iocOutput}
-        />
+        <AnalysisMethods menue={'output'} output={this.props.output} />
       </div>
     );
   }
@@ -50,7 +46,6 @@ class BlockElementOutput extends React.PureComponent {
 
 const mapStateToProps = (state) => ({
   output: state.output,
-  iocOutput: state.ioc.output,
 });
 
 const mapActionsToProps = {

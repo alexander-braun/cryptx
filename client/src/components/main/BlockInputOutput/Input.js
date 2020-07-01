@@ -42,14 +42,13 @@ const BlockInput = ({ updateInput, iocInput, input }) => {
           />
         </div>
       </div>
-      <AnalysisMethods menue={'input'} input={input} iocInput={iocInput} />
+      <AnalysisMethods menue={'input'} input={input} />
     </div>
   );
 };
 
 const mapStateToProps = (state) => ({
   input: state.input,
-  iocInput: state.ioc.input,
 });
 
 const mapActionsToProps = {

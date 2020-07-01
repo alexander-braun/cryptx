@@ -21,11 +21,11 @@ const AnalysisMethods = (props) => {
   const indexOfCoincidenceMenue =
     props.menue === 'output' && props.ic_output ? (
       <div className='chartcontainer'>
-        <IndexOfCoincidence menue={props.menue} ioc={props.iocOutput} />
+        <IndexOfCoincidence menue={props.menue} />
       </div>
     ) : props.menue === 'input' && props.ic_input ? (
       <div className='chartcontainer'>
-        <IndexOfCoincidence menue={props.menue} ioc={props.iocInput} />
+        <IndexOfCoincidence menue={props.menue} />
       </div>
     ) : null;
 

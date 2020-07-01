@@ -2,6 +2,7 @@ import React, { useRef, useEffect } from 'react';
 import { select, axisBottom, axisLeft, scaleLinear, scaleBand } from 'd3';
 import * as d3 from 'd3';
 import useResizeObserver from '../../../../main/helper/Resizeobserver';
+import frequency from './frequency-analysis-logic.js';
 
 function BarChart({ data, alphabet, inputValue }) {
   const input = inputValue ? inputValue : ' ';
@@ -14,48 +15,20 @@ function BarChart({ data, alphabet, inputValue }) {
     if (!input) return undefined;
     if (!dimensions) return;
 
-    /**
-     * Calculates the lettercount
-     */
-    const letterCount = () => {
-      let map = new Array(26).fill(0);
-      for (let element of input.toString()) {
-        let index = alphabet.indexOf(element.toLowerCase());
-        if (index !== -1) map[index] += 1;
-      }
-      return map;
-    };
-
-    /**
-     * Gets the frequency for every letter
-     */
-    const frequency = () => {
-      let arr = letterCount();
-      let totalLetters = arr.reduce((a, b) => a + b, 0);
-      let freq = new Array(26).fill(0);
-
-      let index = 0;
-      for (let char of arr) {
-        if (char !== 0) freq[index] = (char / totalLetters) * 100;
-        index++;
-      }
-      return freq;
-    };
-
     // scales
     const xScale = scaleBand()
       .domain(alphabet.map((value, index) => value))
-      .range([0, dimensions.width]) // change
+      .range([0, dimensions.width])
       .padding(0.2);
 
     let frequencyMax;
-    d3.max(frequency()) > 15
-      ? (frequencyMax = d3.max(frequency()))
+    d3.max(frequency(input, alphabet)) > 15
+      ? (frequencyMax = d3.max(frequency(input, alphabet)))
       : (frequencyMax = 15);
 
     const yScale = scaleLinear()
-      .domain([0, frequencyMax]) // todo
-      .range([dimensions.height, 0]); // change
+      .domain([0, frequencyMax])
+      .range([dimensions.height, 0]);
 
     const colorScale = scaleLinear()
       .domain([0, 20])
@@ -103,7 +76,7 @@ function BarChart({ data, alphabet, inputValue }) {
       .attr('height', (value) => dimensions.height - yScale(value));
     svg
       .selectAll('.circle')
-      .data(frequency())
+      .data(frequency(input, alphabet))
       .join('circle')
       .attr('class', 'circle')
       .style('transform', 'scale(1, -1)')
