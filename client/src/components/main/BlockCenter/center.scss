@@ -81,7 +81,7 @@
       margin: 0;
       border-radius: 5px;
       height: 100px;
-      boxshadow: inset 0px 0px 6px #0000003d;
+      box-shadow: inset 0px 0px 6px #0000003d;
     }
 
     &--double {
@@ -448,6 +448,7 @@
     margin: 0;
     padding: 0;
     letter-spacing: 0.05em;
+    cursor: pointer;
   }
 
   .MuiSvgIcon-root {

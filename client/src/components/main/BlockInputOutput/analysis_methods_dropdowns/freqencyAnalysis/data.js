@@ -1,4 +1,4 @@
-export const freq = {
+export const frequencies_per_language = {
   english: [
     8.167,
     1.492,

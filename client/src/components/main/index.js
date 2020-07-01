@@ -54,29 +54,38 @@ import AnalysisModal from '../modals/add_analysis_method';
 
 const Modal = React.lazy(() => import('../modals/choose_encryption_method'));
 
-class EncryptionArea extends React.PureComponent {
+class Main extends React.PureComponent {
   constructor(props) {
     super(props);
     this.encrypt = this.encrypt.bind(this);
   }
 
+  /**
+   * Encrypt directly when the component is renderd.
+   * Get the english dictionary from github.
+   */
   componentDidMount() {
     this.encrypt();
-  }
-
-  componentDidUpdate(prevProps) {
     if (this.props.wordbook === null) {
       this.props.setWordbook();
     }
+  }
 
-    if (prevProps !== this.props) {
-      //Time to Calculate is always a bit different, leading into maximum update depth nirvana
-      //Only encrypt when something else then ttc has changed
-      if (prevProps.timeToCalculate !== this.props.timeToCalculate) {
-        return;
-      } else this.encrypt();
-    }
+  componentDidUpdate(prevProps) {
+    /**
+     * Encrypt when the component updates BUT
+     * don't encrypt if just the time-to-calculate
+     * updated. Prevents infinite re-renders.
+     * Needs a better method on a seperate thread or
+     * something.
+     */
+    if (prevProps.timeToCalculate !== this.props.timeToCalculate) {
+      return;
+    } else this.encrypt();
 
+    /**
+     *
+     */
     if (
       prevProps.input !== this.props.input ||
       prevProps.output !== this.props.output
@@ -85,6 +94,12 @@ class EncryptionArea extends React.PureComponent {
       this.props.setIocOutput(this.calcIndexOfCoincidence(false));
     }
 
+    /**
+     * In some cases the alphabet is editable.
+     * It needs to be reset for the other methods
+     * to work. Also sets the status of the alphabet
+     * editability.
+     */
     if (prevProps.method !== this.props.method) {
       this.props.updateAlphabet('abcdefghijklmnopqrstuvwxyz');
       if (this.props.method === 'caesar' || this.props.method === 'rot13') {
@@ -95,6 +110,14 @@ class EncryptionArea extends React.PureComponent {
     }
   }
 
+  /**
+   * Put this method extra
+   * Best would be to calculate all methods not
+   * in their respective core components but
+   * just to input the values into a function
+   * in a core component and let it calculate
+   * in a seperate function.
+   */
   //ioc
   calcIndexOfCoincidence(input) {
     //Check if input or outputfield
@@ -144,6 +167,9 @@ class EncryptionArea extends React.PureComponent {
     return !isNaN(ioc) ? ioc : '0';
   }
 
+  /**
+   * Reduce this
+   */
   setRsaOutputs = (output) => {
     if (this.props.output !== output[0]) {
       this.props.setOutput(output[0]);
@@ -420,4 +446,4 @@ const mapActionsToProps = {
   setTrifidGroups,
 };
 
-export default connect(mapStateToProps, mapActionsToProps)(EncryptionArea);
+export default connect(mapStateToProps, mapActionsToProps)(Main);

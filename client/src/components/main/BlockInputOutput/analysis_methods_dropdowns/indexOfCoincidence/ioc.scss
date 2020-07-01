@@ -1,0 +1,20 @@
+.ioc-information {
+  width: fit-content;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+  align-self: center;
+  font-size: 16px;
+
+  &__category {
+    letter-spacing: 0.05rem;
+    font-weight: 500;
+    color: #d63a4e;
+    margin-bottom: 1vh;
+    margin-top: 1vh;
+  }
+
+  &__text {
+    color: rgb(218, 218, 218);
+  }
+}

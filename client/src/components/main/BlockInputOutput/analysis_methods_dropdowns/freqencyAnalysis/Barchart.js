@@ -8,11 +8,16 @@ function BarChart({ data, alphabet, inputValue }) {
   const svgRef = useRef();
   const wrapperRef = useRef();
   const dimensions = useResizeObserver(wrapperRef);
-  // will be called initially and on every data change
+  const svg = select(svgRef.current);
+
   useEffect(() => {
     if (!input) return undefined;
-    //if(container[0].clientHeight <= 46) return undefined
-    const letterFrequency = () => {
+    if (!dimensions) return;
+
+    /**
+     * Calculates the lettercount
+     */
+    const letterCount = () => {
       let map = new Array(26).fill(0);
       for (let element of input.toString()) {
         let index = alphabet.indexOf(element.toLowerCase());
@@ -21,8 +26,11 @@ function BarChart({ data, alphabet, inputValue }) {
       return map;
     };
 
+    /**
+     * Gets the frequency for every letter
+     */
     const frequency = () => {
-      let arr = letterFrequency();
+      let arr = letterCount();
       let totalLetters = arr.reduce((a, b) => a + b, 0);
       let freq = new Array(26).fill(0);
 
@@ -33,12 +41,6 @@ function BarChart({ data, alphabet, inputValue }) {
       }
       return freq;
     };
-
-    frequency();
-
-    const svg = select(svgRef.current);
-
-    if (!dimensions) return;
 
     // scales
     const xScale = scaleBand()
@@ -130,7 +132,7 @@ function BarChart({ data, alphabet, inputValue }) {
           .attr('opacity', 1)
           .attr('fill', 'white');
       });
-  }, [data, dimensions, alphabet, input]);
+  }, [data, dimensions, alphabet, input, svg]);
 
   return (
     <div

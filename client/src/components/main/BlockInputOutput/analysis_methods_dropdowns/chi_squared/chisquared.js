@@ -4,28 +4,11 @@ import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import { withStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
-import Tooltip from '@material-ui/core/Tooltip';
-import InfoIcon from '@material-ui/icons/Info';
 import { makeStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
 import languages from './letterFrequency';
-import HighlightOffIcon from '@material-ui/icons/HighlightOff';
-import {
-  toggleAnalysisMethodCHIInput,
-  toggleAnalysisMethodCHIOutput,
-} from '../../../../../actions/toggleAnalysisMethod';
-
-const StyledTooltip = withStyles((theme) => ({
-  tooltip: {
-    backgroundColor: '#f5f5f9',
-    color: 'rgba(0, 0, 0, 0.87)',
-    maxWidth: 420,
-    fontSize: theme.typography.pxToRem(12),
-    border: '1px solid #dadde9',
-  },
-}))(Tooltip);
+import IcTooltipExplanatory from '../../IcTooltipExplanatory';
+import IcTooltipRemoveAnalysisMethod from '../../IcTooltipRemoveAnalysisMethod';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -67,44 +50,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-let icTooltip = (
-  <StyledTooltip
-    title={
-      <React.Fragment>
-        <Typography color='inherit'>Chi Squared (χ2)</Typography>
-        The Chi Squared Test is used to compare the distribution of plaintext
-        and ciphertext. The lower the value, the higher the chance that the used
-        setting decrypted the text.
-      </React.Fragment>
-    }
-  >
-    <Button>
-      <InfoIcon></InfoIcon>
-    </Button>
-  </StyledTooltip>
-);
-
 function ChiSquared(props) {
-  let icTooltipRemove = (
-    <StyledTooltip
-      onClick={() =>
-        props.menue === 'input'
-          ? props.toggleAnalysisMethodCHIInput()
-          : props.toggleAnalysisMethodCHIOutput()
-      }
-      title={
-        <React.Fragment>
-          <Typography color='inherit'>Remove Analysis Method</Typography>
-          Removes this element from the menue. You can always get it back by
-          clicking the PLUS icon in the top right corner.
-        </React.Fragment>
-      }
-    >
-      <Button>
-        <HighlightOffIcon></HighlightOffIcon>
-      </Button>
-    </StyledTooltip>
-  );
   const [expandedStatus, changeExpandedStatus] = useState(false);
   const [selectedElement, updateSelected] = useState('English');
   const classes = useStyles();
@@ -182,9 +128,7 @@ function ChiSquared(props) {
   return (
     <ExpansionPanel
       square={true}
-      onChange={function (event, expanded) {
-        changeExpandedStatus(!expandedStatus);
-      }}
+      onChange={() => changeExpandedStatus(!expandedStatus)}
     >
       <ExpansionPanelSummary
         expandIcon={<ExpandMoreIcon />}
@@ -192,8 +136,11 @@ function ChiSquared(props) {
         id='panel2a-header'
       >
         <Typography className={classes.heading}>Chi Squared χ2</Typography>
-        {icTooltip}
-        {icTooltipRemove}
+        <IcTooltipExplanatory method={'chi-squared'} menue={props.menue} />
+        <IcTooltipRemoveAnalysisMethod
+          menue={props.menue}
+          method={'chi-squared'}
+        />
       </ExpansionPanelSummary>
       <ExpansionPanelDetails
         className={classes.body}
@@ -248,9 +195,4 @@ const mapStateToProps = (state) => ({
   output: state.output,
 });
 
-const mapActionToProps = {
-  toggleAnalysisMethodCHIInput: toggleAnalysisMethodCHIInput,
-  toggleAnalysisMethodCHIOutput: toggleAnalysisMethodCHIOutput,
-};
-
-export default connect(mapStateToProps, mapActionToProps)(ChiSquared);
+export default connect(mapStateToProps)(ChiSquared);

@@ -40,8 +40,8 @@ class BlockElementOutput extends React.PureComponent {
         </div>
         <AnalysisMethods
           menue={'output'}
-          input={this.props.output}
-          iocInput={this.props.iocOutput}
+          output={this.props.output}
+          iocOutput={this.props.iocOutput}
         />
       </div>
     );
