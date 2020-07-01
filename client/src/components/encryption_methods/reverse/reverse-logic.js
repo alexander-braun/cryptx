@@ -17,7 +17,8 @@ const Reverse = (() => {
     alphabet = value;
   };
 
-  const transformText = () => {
+  const encrypt = (input, caseFormat, foreignChars, alphabet) => {
+    setAll(input, caseFormat, foreignChars, alphabet);
     //Calc
     let output = [];
     for (let i = userInput.length - 1; i >= 0; i--) {
@@ -50,7 +51,7 @@ const Reverse = (() => {
   };
 
   return {
-    encrypt: transformText,
+    encrypt: encrypt,
     setAll: setAll,
   };
 })();

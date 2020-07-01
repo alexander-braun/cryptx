@@ -109,7 +109,8 @@ const morse = (() => {
     return outputArray;
   };
 
-  const transformText = () => {
+  const transformText = (input, direction) => {
+    setAll(input, direction);
     let inputArray;
 
     if (direction === 'encrypt') {

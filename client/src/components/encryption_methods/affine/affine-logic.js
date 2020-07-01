@@ -107,7 +107,24 @@ const affine = (() => {
     return arr.join('');
   };
 
-  const transformText = () => {
+  const transformText = (
+    alphabet,
+    input,
+    affineAlpha,
+    affineBeta,
+    direction,
+    foreignChars,
+    caseFormat
+  ) => {
+    setAll(
+      alphabet,
+      input,
+      affineAlpha,
+      affineBeta,
+      direction,
+      foreignChars,
+      caseFormat
+    );
     let rawOutput;
     direction === 'encrypt'
       ? (rawOutput = encrypt(correctedInput, alpha, beta))

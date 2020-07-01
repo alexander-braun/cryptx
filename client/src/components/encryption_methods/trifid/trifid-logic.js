@@ -267,7 +267,22 @@ const Trifid = (() => {
     return decrypted.join('');
   };
 
-  const encrypt = () => {
+  const encrypt = (
+    input,
+    trifidKey,
+    groupSize,
+    twentySeventhLetter,
+    alphabet,
+    direction
+  ) => {
+    setAll(
+      input,
+      trifidKey,
+      groupSize,
+      twentySeventhLetter,
+      alphabet,
+      direction
+    );
     if (!userInput || userInput.length === 0)
       return [null, generateAllLayers(), null];
     if (direction === 'encrypt') {

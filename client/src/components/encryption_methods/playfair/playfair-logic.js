@@ -204,22 +204,23 @@ const Playfair = (() => {
     return output.join('');
   };
 
-  const transformText = () => {
+  const transformText = (input, alphabet, direction, keyword) => {
+    setAll(input, alphabet, direction, keyword);
     // Get the pairs to encrypt
     const cleanInput = removeSigns();
     const pairs = transformInput(cleanInput);
-    const alphabet = alphabetFromCharacter();
+    const newAlphabet = alphabetFromCharacter();
 
     // Feed the pairs to the methodfinder
     const encrypted = [];
 
     for (let element of pairs) {
-      encrypted.push(methodFinder(alphabet, element));
+      encrypted.push(methodFinder(newAlphabet, element));
     }
 
     let unformatted = encrypted.join('').split(',').join('');
     //let formatted = spaceTransform(unformatted)
-    return unformatted;
+    return [unformatted, getSquare()];
   };
 
   const setAll = (input, alphabet, direction, keyword) => {

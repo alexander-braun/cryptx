@@ -116,7 +116,12 @@ const Nihilist = (() => {
       out.push(Number(numberArray[0][i]) + Number(cleanKeyArr[i]));
     }
 
-    return out.join(' ');
+    return [
+      out.join(' '),
+      polybiusSquare(),
+      getNihilistRunningKey(),
+      getNihilistPlainNumbers(),
+    ];
   };
 
   const subtractKeyFromPlaintext = (inputArray, cleanKeyArr) => {
@@ -162,10 +167,16 @@ const Nihilist = (() => {
     let plainNumbers = subtractKeyFromPlaintext(inputArray, cleanKeyArr);
     let outputClearText = transformNumbersToText(plainNumbers);
 
-    return outputClearText.join('');
+    return [
+      outputClearText.join(''),
+      polybiusSquare(),
+      getNihilistRunningKey(),
+      getNihilistPlainNumbers(),
+    ];
   };
 
-  const transformText = () => {
+  const transformText = (input, alphabet, direction, keyword, cipherWord) => {
+    setAll(input, alphabet, direction, keyword, cipherWord);
     if (cipherWord.length === 0) return 'Please enter a Keyphrase';
     for (let i = 0; i < alphabet.length; i++) {
       if (isNaN(Number(userInput[i])) && direction === 'decrypt') {
@@ -185,7 +196,7 @@ const Nihilist = (() => {
 
   return {
     setAll: setAll,
-    transformText: transformText,
+    encrypt: transformText,
     getSquare: polybiusSquare,
     getNihilistRunningKey,
     getNihilistPlainNumbers,

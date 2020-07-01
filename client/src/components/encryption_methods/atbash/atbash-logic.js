@@ -42,7 +42,8 @@ const atbash = (() => {
 
   //Crack or other ? Return the according method
 
-  const encrypt = () => {
+  const encrypt = (input, caseFormat, foreignChars) => {
+    setAll(input, caseFormat, foreignChars);
     let rawOutput = readChar();
     if (checkIfSigns()) {
       return math.transformCaseAndChars(

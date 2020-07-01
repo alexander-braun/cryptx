@@ -173,7 +173,24 @@ const caesar = (() => {
 
   //Crack or other ? Return the according method
 
-  const encrypt = () => {
+  const encrypt = (
+    wordbook,
+    input,
+    alphabet,
+    cShift,
+    direction,
+    caseFormat,
+    foreignChars
+  ) => {
+    setAll(
+      wordbook,
+      input,
+      alphabet,
+      cShift,
+      direction,
+      caseFormat,
+      foreignChars
+    );
     if (direction !== 'crack') {
       let rawOutput = readChar();
       if (checkIfSigns()) {

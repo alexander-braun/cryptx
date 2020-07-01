@@ -13,7 +13,8 @@ const Substitute = (() => {
     direction = value;
   };
 
-  const transformText = () => {
+  const encrypt = (input, substitutionAlphabet, direction) => {
+    setAll(input, substitutionAlphabet, direction);
     let output = [];
     if (direction === 'encrypt') {
       for (let i = 0; i < userInput.length; i++) {
@@ -43,7 +44,7 @@ const Substitute = (() => {
   };
 
   return {
-    encrypt: transformText,
+    encrypt: encrypt,
     setAll: setAll,
   };
 })();

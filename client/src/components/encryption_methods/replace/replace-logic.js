@@ -23,7 +23,8 @@ const replace = (() => {
     );
   };
 
-  const transformText = () => {
+  const encrypt = (input, toReplaceLetter, replaceLetter) => {
+    setAll(input, toReplaceLetter, replaceLetter);
     return replaceAll(toReplaceLetter, replaceLetter, true);
   };
 
@@ -34,7 +35,7 @@ const replace = (() => {
   };
 
   return {
-    encrypt: transformText,
+    encrypt: encrypt,
     setAll: setAll,
   };
 })();

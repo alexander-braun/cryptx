@@ -9,7 +9,8 @@ const CaseTransform = (() => {
     caseTransformChoice = value;
   };
 
-  const transformText = () => {
+  const encrypt = (input, caseTransformChoice) => {
+    setAll(input, caseTransformChoice);
     if (!userInput) return '';
     userInput.trim();
     if (caseTransformChoice === 'lower') {
@@ -54,7 +55,7 @@ const CaseTransform = (() => {
   };
 
   return {
-    encrypt: transformText,
+    encrypt: encrypt,
     setAll: setAll,
   };
 })();

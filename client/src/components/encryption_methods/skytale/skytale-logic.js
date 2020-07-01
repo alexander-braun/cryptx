@@ -126,15 +126,9 @@ const skytale = (() => {
     }
   };
 
-  //Cracking functionality
-
-  const generateOutputs = () => {
-    direction = 'decrypt';
-    let outputs = [];
-    for (let i = 3; i <= 20; i++) {
-      ringLength = i;
-      outputs.push(transformText(), i);
-    }
+  const encrypt = (direction, caseFormat, input, ringLength, foreignChars) => {
+    setAll(direction, caseFormat, input, ringLength, foreignChars);
+    return [...transformText(), getProjectedValue()];
   };
 
   const setAll = (direction, caseFormat, input, ringLength, foreignChars) => {
@@ -146,10 +140,9 @@ const skytale = (() => {
   };
 
   return {
-    encrypt: transformText,
+    encrypt: encrypt,
     setAll: setAll,
     getProjectedValue: getProjectedValue,
-    generateOutputs: generateOutputs,
   };
 })();
 

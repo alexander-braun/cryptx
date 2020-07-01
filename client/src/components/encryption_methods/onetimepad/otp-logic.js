@@ -59,7 +59,15 @@ const otp = (() => {
     return output.join('');
   };
 
-  const encrypt = () => {
+  const encrypt = (
+    input,
+    caseFormat,
+    foreignChars,
+    direction,
+    otpKey,
+    alphabet
+  ) => {
+    setAll(input, caseFormat, foreignChars, direction, otpKey, alphabet);
     if (direction !== 'crack') {
       if (userInput.length <= 0) return '';
       let rawOutput = transformText();

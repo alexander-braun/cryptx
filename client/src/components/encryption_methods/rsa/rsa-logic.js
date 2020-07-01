@@ -1,7 +1,7 @@
 const Rsa = (() => {
   const bigInt = require('big-integer');
 
-  let prime_one, prime_two, e, phi, userInput, n, d;
+  let prime_one, prime_two, e, phi, userInput, n, d, direction;
 
   const setPrimeOne = (val) => {
     prime_one = val;
@@ -17,6 +17,10 @@ const Rsa = (() => {
 
   const setUserInput = (val) => {
     userInput = val;
+  };
+
+  const setDirection = (val) => {
+    direction = val;
   };
 
   const encrypt = () => {
@@ -51,7 +55,7 @@ const Rsa = (() => {
       return ['Bad Input', ''];
     return [
       encryptedDEZ.toString(),
-      ((t1 - t0) / 1000).toString() + 's',
+      Math.round((t1 - t0) / 1000).toString() + 's',
       calcPhi(),
       calcD(),
       calcN(),
@@ -116,7 +120,7 @@ const Rsa = (() => {
 
     return [
       decryptedLetters.join(''),
-      ((t1 - t0) / 1000).toString() + 's',
+      Math.round((t1 - t0) / 1000).toString() + 's',
       calcPhi(),
       calcD(),
       calcN(),
@@ -156,11 +160,12 @@ const Rsa = (() => {
     return true;
   };
 
-  const setAll = (input, prime1, prime2, e) => {
+  const setAll = (input, prime1, prime2, e, direction) => {
     setUserInput(input);
     setPrimeOne(prime1);
     setPrimeTwo(prime2);
     setE(e);
+    setDirection(direction);
     if (
       !numberChecker(prime_one) ||
       !numberChecker(prime_two) ||
@@ -173,7 +178,8 @@ const Rsa = (() => {
     n = calcN();
   };
 
-  const calc = (direction) => {
+  const calc = (input, prime1, prime2, e, direction) => {
+    setAll(input, prime1, prime2, e, direction);
     if (typeof calcD() === 'object')
       return [
         '!!! φ(n) and e are not coprime - gcd of φ(n) and e is ' +

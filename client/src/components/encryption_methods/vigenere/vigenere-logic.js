@@ -67,7 +67,15 @@ const vigenere = (() => {
     return alphabet[vigalphabet.indexOf(char)];
   };
 
-  const transformText = () => {
+  const transformText = (
+    input,
+    alphabet,
+    direction,
+    foreignChars,
+    caseFormat,
+    keyword
+  ) => {
+    setAll(input, alphabet, direction, foreignChars, caseFormat, keyword);
     const textinputCleaned = removeSigns(userInput.toLowerCase(), false);
     let textoutput = readChar(textinputCleaned, keywordVigenere);
 

@@ -70,20 +70,6 @@ class Main extends React.PureComponent {
 
   componentDidUpdate(prevProps) {
     /**
-     * Encrypt when the component updates BUT
-     * don't encrypt if just the time-to-calculate
-     * updated. Prevents infinite re-renders.
-     * Needs a better method on a seperate thread or
-     * something.
-     * Time to calculate always changes wich is why the
-     * component updates. Maybe round the timeToCalculate
-     * to .5s invervals.
-     */
-    if (prevProps.timeToCalculate !== this.props.timeToCalculate) {
-      return;
-    } else this.encrypt();
-
-    /**
      * In some cases the alphabet is editable.
      * It needs to be reset for the other methods
      * to work. Also sets the status of the alphabet
@@ -97,25 +83,12 @@ class Main extends React.PureComponent {
         this.props.setAlphabetActive(false);
       }
     }
-  }
 
-  /**
-   * Reduce this
-   */
-  setRsaOutputs = (output) => {
-    if (this.props.output !== output[0]) {
-      this.props.setOutput(output[0]);
-    }
-    if (this.props.phi !== output[2]) {
-      this.props.setRsaPhi(output[2]);
-    }
-    if (this.props.d !== output[3]) {
-      this.props.setRsaD(output[3]);
-    }
-    if (this.props.n !== output[4]) {
-      this.props.setRsaN(output[4]);
-    }
-  };
+    /**
+     * If props update recalculate.
+     */
+    this.encrypt();
+  }
 
   encrypt() {
     let input = this.props.input;
@@ -145,9 +118,10 @@ class Main extends React.PureComponent {
       }
     }
 
+    let encrypted;
     switch (method) {
       case 'trifid':
-        Trifid.setAll(
+        encrypted = Trifid.encrypt(
           input,
           this.props.trifidKey,
           this.props.trifidGroupSize,
@@ -155,17 +129,20 @@ class Main extends React.PureComponent {
           alphabet,
           direction
         );
-        const encrypted = Trifid.encrypt();
         this.props.setOutput(encrypted[0]);
         this.props.setTrifidLayers(encrypted[1]);
         this.props.setTrifidGroups(encrypted[2]);
         break;
       case 'substitution':
-        Substitute.setAll(input, this.props.substitutionAlphabet, direction);
-        this.props.setOutput(Substitute.encrypt());
+        encrypted = Substitute.encrypt(
+          input,
+          this.props.substitutionAlphabet,
+          direction
+        );
+        this.props.setOutput(encrypted);
         break;
       case 'rot13':
-        Caesar.setAll(
+        encrypted = Caesar.encrypt(
           null,
           input,
           alphabet,
@@ -174,10 +151,10 @@ class Main extends React.PureComponent {
           caseFormat,
           foreignChars
         );
-        this.props.setOutput(Caesar.encrypt());
+        this.props.setOutput(encrypted);
         break;
       case 'caesar':
-        Caesar.setAll(
+        encrypted = Caesar.encrypt(
           null,
           input,
           alphabet,
@@ -186,17 +163,29 @@ class Main extends React.PureComponent {
           caseFormat,
           foreignChars
         );
-        this.props.setOutput(Caesar.encrypt());
+        this.props.setOutput(encrypted);
         break;
       case 'rsa':
-        Rsa.setAll(input, this.props.prime1, this.props.prime2, this.props.e);
-        const output = Rsa.calc(direction);
+        encrypted = Rsa.calc(
+          input,
+          this.props.prime1,
+          this.props.prime2,
+          this.props.e,
+          direction
+        );
+        const output = encrypted;
         if (output === undefined || output[0] === undefined) return '';
-        this.props.setTimeToCalculate(output[1]);
-        this.setRsaOutputs(output);
+        if (this.props.timeToCalculate !== output[1]) {
+          this.props.setTimeToCalculate(output[1]);
+        }
+        this.props.setOutput(output[0]);
+        this.props.setRsaPhi(output[2]);
+        this.props.setRsaD(output[3]);
+        this.props.setRsaN(output[4]);
+
         break;
       case 'otp':
-        Otp.setAll(
+        encrypted = Otp.encrypt(
           input,
           caseFormat,
           foreignChars,
@@ -204,22 +193,25 @@ class Main extends React.PureComponent {
           this.props.otpKey,
           alphabet
         );
-        this.props.setOutput(Otp.encrypt());
+        this.props.setOutput(encrypted);
         break;
       case 'reverse':
-        Reverse.setAll(input, caseFormat, foreignChars, alphabet);
-        this.props.setOutput(Reverse.encrypt());
+        encrypted = Reverse.encrypt(input, caseFormat, foreignChars, alphabet);
+        this.props.setOutput(encrypted);
         break;
       case 'casetransform':
-        CaseTransform.setAll(input, this.props.caseTransformChoice);
-        this.props.setOutput(CaseTransform.encrypt());
+        encrypted = CaseTransform.encrypt(
+          input,
+          this.props.caseTransformChoice
+        );
+        this.props.setOutput(encrypted);
         break;
       case 'atbash':
-        Atbash.setAll(input, caseFormat, foreignChars);
-        this.props.setOutput(Atbash.encrypt());
+        encrypted = Atbash.encrypt(input, caseFormat, foreignChars);
+        this.props.setOutput(encrypted);
         break;
       case 'affine':
-        Affine.setAll(
+        encrypted = Affine.encrypt(
           alphabet,
           input,
           this.props.affine_alpha,
@@ -228,10 +220,10 @@ class Main extends React.PureComponent {
           foreignChars,
           caseFormat
         );
-        this.props.setOutput(Affine.encrypt());
+        this.props.setOutput(encrypted);
         break;
       case 'vigenere':
-        Vigenere.setAll(
+        encrypted = Vigenere.encrypt(
           input,
           alphabet,
           direction,
@@ -239,54 +231,55 @@ class Main extends React.PureComponent {
           caseFormat,
           this.props.keywordVigenere
         );
-        this.props.setOutput(Vigenere.encrypt());
+        this.props.setOutput(encrypted);
         break;
       case 'playfair':
-        Playfair.setAll(input, alphabet, direction, this.props.keywordPlayfair);
-        this.props.setOutput(Playfair.encrypt());
-        this.props.setPlaysquare(Playfair.getSquare());
+        encrypted = Playfair.encrypt(
+          input,
+          alphabet,
+          direction,
+          this.props.keywordPlayfair
+        );
+        this.props.setOutput(encrypted[0]);
+        this.props.setPlaysquare(encrypted[1]);
         break;
       case 'morse':
-        Morse.setAll(input, direction);
-        this.props.setOutput(Morse.encrypt());
+        encrypted = Morse.encrypt(input, direction);
+        this.props.setOutput(encrypted);
         break;
       case 'replace':
-        Replace.setAll(
+        encrypted = Replace.encrypt(
           input,
           this.props.toReplaceLetter,
           this.props.replaceLetter
         );
-        this.props.setOutput(Replace.encrypt());
+        this.props.setOutput(encrypted);
         break;
       case 'nihilist':
-        Nihilist.setAll(
+        encrypted = Nihilist.encrypt(
           input,
           alphabet,
           direction,
           this.props.keyNihilist,
           this.props.cipherNihilist
         );
-        const outputNihilist = Nihilist.transformText();
-        if (outputNihilist === '') return;
-        this.props.setOutput(outputNihilist);
-        this.props.setNihilistSquare(Nihilist.getSquare());
-        this.props.setNihilistRunningKey(Nihilist.getNihilistRunningKey());
-        this.props.setNihilistPlainNumbers(Nihilist.getNihilistPlainNumbers());
+        if (encrypted[0] === '') return;
+        this.props.setOutput(encrypted[0]);
+        this.props.setNihilistSquare(encrypted[1]);
+        this.props.setNihilistRunningKey(encrypted[2]);
+        this.props.setNihilistPlainNumbers(encrypted[3]);
         break;
       case 'skytale':
-        Skytale.setAll(
+        encrypted = Skytale.encrypt(
           direction,
           caseFormat,
           input,
           this.props.ringLength,
           foreignChars
         );
-        let skytale = Skytale.encrypt();
-        let projected = Skytale.getProjectedValue();
-        this.props.setSkytaleProjectedValue(projected);
-        this.props.setOutput(skytale[0]);
-        this.props.setSkytaleLength(skytale[1]);
-        Skytale.generateOutputs();
+        this.props.setSkytaleProjectedValue(encrypted[2]);
+        this.props.setOutput(encrypted[0]);
+        this.props.setSkytaleLength(encrypted[1]);
         break;
       default:
         return null;
