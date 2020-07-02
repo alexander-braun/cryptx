@@ -31,19 +31,33 @@ const AnalysisModal = ({
   return (
     <Fragment>
       {analysisModal ? (
-        <div className='modal' onClick={() => toggleAnalysisModal()}>
-          <div className='inner_modal'>
-            <div className='block_top_decoration'></div>
-            <div className='modal_header'>Add a method of cryptoanalysis</div>
-            <div className='modal_body'>
-              <div className='method_category'>
+        <div className='modal-wrapper' onClick={() => toggleAnalysisModal()}>
+          <div className='modal'>
+            <div className='modal__header'>Add a method of cryptoanalysis</div>
+            <div className='modal__body'>
+              <div className='modal__content'>
                 <ul>
+                  {ic_input &&
+                  ic_output &&
+                  fq_input &&
+                  fq_output &&
+                  chi_output &&
+                  chi_input ? (
+                    <li className='modal__list-item modal__list-item--cta'>
+                      All available methods already in use...
+                    </li>
+                  ) : null}
+                  {!isAuthenticated ? (
+                    <li className='modal__list-item modal__list-item--red modal__list-item--cta'>
+                      Login or signup to get more analysis tools!
+                    </li>
+                  ) : null}
                   {!fq_input || !fq_output ? (
-                    <li>
+                    <li className='modal__list-item'>
                       <button
-                        className='modal_category_method'
+                        className='modal__encryption-method'
                         value='atbash'
-                        onClick={(evt) => {
+                        onClick={() => {
                           !fq_input && toggleAnalysisMethodFQInput();
                           !fq_output && toggleAnalysisMethodFQOutput();
                         }}
@@ -53,11 +67,11 @@ const AnalysisModal = ({
                     </li>
                   ) : null}
                   {!ic_input || !ic_output ? (
-                    <li>
+                    <li className='modal__list-item'>
                       <button
-                        className='modal_category_method'
+                        className='modal__encryption-method'
                         value='atbash'
-                        onClick={(evt) => {
+                        onClick={() => {
                           !ic_input && toggleAnalysisMethodICInput();
                           !ic_output && toggleAnalysisMethodICOutput();
                         }}
@@ -67,30 +81,17 @@ const AnalysisModal = ({
                     </li>
                   ) : null}
                   {!chi_input || !chi_output ? (
-                    <li>
+                    <li className='modal__list-item'>
                       <button
-                        className='modal_category_method'
+                        className='modal__encryption-method'
                         value='atbash'
-                        onClick={(evt) => {
+                        onClick={() => {
                           !chi_input && toggleAnalysisMethodCHIInput();
                           !chi_output && toggleAnalysisMethodCHIOutput();
                         }}
                       >
                         Chi Squared
                       </button>
-                    </li>
-                  ) : null}
-                  {ic_input &&
-                  ic_output &&
-                  fq_input &&
-                  fq_output &&
-                  chi_output &&
-                  chi_input ? (
-                    <li>All available methods already in use...</li>
-                  ) : null}
-                  {!isAuthenticated ? (
-                    <li style={{ color: 'rgb(255, 88, 110)' }}>
-                      Login or signup to get more analysis tools!
                     </li>
                   ) : null}
                 </ul>

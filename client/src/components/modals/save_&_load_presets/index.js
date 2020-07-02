@@ -49,31 +49,27 @@ class PresetsModal extends React.Component {
       presetTable.push(
         <tr key={preset._id}>
           {this.state.width >= 700
-            ? preset.date !== undefined && <td>{preset.date}</td>
+            ? preset.date !== undefined && (
+                <td className='modal__presets-table-cell'>{preset.date}</td>
+              )
             : null}
-          <td>{preset.name}</td>
-          <td>{methodNamesAll[method]}</td>
-          {this.state.width >= 700 ? <td>{preset.description}</td> : null}
+          <td className='modal__presets-table-cell'>{preset.name}</td>
+          <td className='modal__presets-table-cell'>
+            {methodNamesAll[method]}
+          </td>
+          {this.state.width >= 700 ? (
+            <td className='modal__presets-table-cell'>{preset.description}</td>
+          ) : null}
           <td
-            style={{
-              color: 'rgb(62, 148, 197)',
-              fontSize: '24px',
-              textAlign: 'center',
-            }}
             id={preset._id}
             onClick={(e) => this.handleLoadPreset(preset._id)}
-            className='presetBtn loadIcon'
+            className='modal__presets-table-cell modal__presets-table-cell--btn-blue'
           >
             <GetAppIcon />
           </td>
           <td
             onClick={(e) => this.props.deletePreset(preset._id)}
-            style={{
-              color: 'rgb(230, 50, 73)',
-              fontSize: '24px',
-              textAlign: 'center',
-            }}
-            className='presetBtn deleteIcon'
+            className='modal__presets-table-cell modal__presets-table-cell--btn-red'
           >
             <DeleteForeverIcon />
           </td>
@@ -185,7 +181,7 @@ class PresetsModal extends React.Component {
   };
 
   toggleModal = (e) => {
-    if (!(e.target.className !== 'modal')) {
+    if (e.target.className === 'modal-wrapper') {
       this.props.togglePresetsModal();
     }
   };
@@ -204,124 +200,127 @@ class PresetsModal extends React.Component {
   render() {
     if (this.props.isAuthenticated && this.props.presetsModal) {
       return (
-        <div className='modal' onClick={(e) => this.toggleModal(e)}>
-          <div className='inner_modal presetcontainer'>
+        <div className='modal-wrapper' onClick={(e) => this.toggleModal(e)}>
+          <div className='modal'>
             {this.props.target === 'load' ? (
               <Fragment>
-                <div className='modal_header'>
+                <div className='modal__header modal__header--space-between'>
                   Load a Preset
-                  <button style={{ color: '#b0b3b8' }}>
+                  <button className='modal__close-btn'>
                     <HighlightOffIcon onClick={this.props.togglePresetsModal} />
                   </button>
                 </div>
-                <div
-                  className='modal_body'
-                  style={{ padding: '0', width: '100%;' }}
-                >
-                  <div
-                    className='tablecontainer_presets'
-                    style={{ padding: '1em' }}
+                <div className='modal__body'>
+                  <table className='modal__preset-table'>
+                    <tbody>
+                      <tr>
+                        {this.state.width <= 700 ? null : (
+                          <th className='modal__preset-table-head'>Date</th>
+                        )}
+                        <th className='modal__preset-table-head'>
+                          Preset Name
+                        </th>
+                        <th className='modal__preset-table-head'>Method</th>
+                        {this.state.width <= 700 ? null : (
+                          <th className='modal__preset-table-head'>
+                            Description
+                          </th>
+                        )}
+                        <th className='modal__preset-table-head modal__preset-table-head--center'>
+                          Load
+                        </th>
+                        <th className='modal__preset-table-head modal__preset-table-head--center'>
+                          Delete
+                        </th>
+                      </tr>
+                      {this.genTable().map((row) => row)}
+                    </tbody>
+                  </table>
+                </div>
+                <div className='modal__bottom-wrapper modal__bottom-wrapper--no-border-top'>
+                  <button
+                    className='modal__close modal__close--right'
+                    onClick={this.props.togglePresetsModal}
                   >
-                    <table id='presets'>
-                      <tbody style={{ color: 'white' }}>
-                        <tr>
-                          {this.state.width <= 700 ? null : <th>Date</th>}
-                          <th>Preset Name</th>
-                          <th>Method</th>
-                          {this.state.width <= 700 ? null : (
-                            <th>Description</th>
-                          )}
-                          <th style={{ textAlign: 'center' }}>Load</th>
-                          <th style={{ textAlign: 'center' }}>Delete</th>
-                        </tr>
-                        {this.genTable().map((row) => row)}
-                      </tbody>
-                    </table>
-                  </div>
-                  <div
-                    className='loadpreset_explanatory'
-                    style={{ marginLeft: 'auto' }}
-                  >
-                    <button onClick={this.props.togglePresetsModal}>
-                      Close
-                    </button>
-                  </div>
+                    Close
+                  </button>
                 </div>
               </Fragment>
             ) : (
               <Fragment>
-                <div className='modal_header'>
+                <div className='modal__header modal__header--space-between'>
                   Save as Preset
-                  <button style={{ color: '#b0b3b8' }}>
+                  <button className='modal__close-btn'>
                     <HighlightOffIcon onClick={this.props.togglePresetsModal} />
                   </button>
                 </div>
-                <div
-                  className='modal_body'
-                  style={{ padding: '0', width: 'fit-content' }}
-                >
-                  <div className='right' style={{ padding: '1em' }}>
-                    <form
-                      onSubmit={(e) => {
-                        e.preventDefault();
-                        this.handleSavePreset(e);
-                      }}
-                    >
-                      <table id='presets'>
-                        <tbody style={{ color: 'white' }}>
-                          <tr>
-                            <th>Preset Name</th>
-                            <th>Description</th>
-                            <th style={{ textAlign: 'center' }}>Save</th>
-                          </tr>
-                          <tr>
-                            <td>
-                              <input
-                                required
-                                value={this.props.presetName}
-                                onChange={(e) =>
-                                  this.props.setPresetName(e.target.value)
-                                }
-                                type='text'
-                                name='name'
-                                placeholder='Preset Name'
-                              />
-                            </td>
-                            <td>
-                              <input
-                                required
-                                value={this.props.presetDescription}
-                                onChange={(e) =>
-                                  this.props.setPresetDescription(
-                                    e.target.value
-                                  )
-                                }
-                                type='text'
-                                name='description'
-                                placeholder='Description'
-                              />
-                            </td>
-                            <td
-                              className='presetBtn'
-                              style={{ textAlign: 'center' }}
-                            >
-                              <button className='loadIcon' type='submit'>
-                                <GetAppIcon />
-                              </button>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </form>
-                  </div>
-                  <div
-                    className='loadpreset_explanatory'
-                    style={{ marginLeft: 'auto' }}
+                <div className='modal__body'>
+                  <form
+                    onSubmit={(e) => {
+                      e.preventDefault();
+                      this.handleSavePreset(e);
+                    }}
                   >
-                    <button onClick={this.props.togglePresetsModal}>
-                      Close
-                    </button>
-                  </div>
+                    <table className='modal__preset-table'>
+                      <tbody>
+                        <tr>
+                          <th className='modal__preset-table-head'>
+                            Preset Name
+                          </th>
+                          <th className='modal__preset-table-head'>
+                            Description
+                          </th>
+                          <th className='modal__preset-table-head modal__preset-table-head--center'>
+                            Save
+                          </th>
+                        </tr>
+                        <tr>
+                          <td className='modal__presets-table-cell'>
+                            <input
+                              className='modal__preset-table-input'
+                              required
+                              value={this.props.presetName}
+                              onChange={(e) =>
+                                this.props.setPresetName(e.target.value)
+                              }
+                              type='text'
+                              name='name'
+                              placeholder='Preset Name'
+                            />
+                          </td>
+                          <td className='modal__presets-table-cell'>
+                            <input
+                              className='modal__preset-table-input'
+                              required
+                              value={this.props.presetDescription}
+                              onChange={(e) =>
+                                this.props.setPresetDescription(e.target.value)
+                              }
+                              type='text'
+                              name='description'
+                              placeholder='Description'
+                            />
+                          </td>
+                          <td className='modal__presets-table-cell modal__presets-table-cell--center'>
+                            <button
+                              className='modal__button modal__button--blue'
+                              type='submit'
+                            >
+                              <GetAppIcon />
+                            </button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </form>
+                </div>
+                <div className='modal__bottom-wrapper modal__bottom-wrapper--no-border-top'>
+                  <button
+                    className='modal__close modal__close--right'
+                    onClick={this.props.togglePresetsModal}
+                  >
+                    Close
+                  </button>
                 </div>
               </Fragment>
             )}
@@ -330,41 +329,35 @@ class PresetsModal extends React.Component {
       );
     } else if (this.props.presetsModal) {
       return (
-        <div className='modal' onClick={(e) => this.toggleModal(e)}>
-          <div className='inner_modal'>
-            <div className='modal_header'>
+        <div className='modal-wrapper' onClick={(e) => this.toggleModal(e)}>
+          <div className='modal'>
+            <div className='modal__header modal__header--space-between'>
               {this.props.target === 'load' ? 'Load a Preset' : 'Save a Preset'}
-              <button style={{ color: '#b0b3b8' }}>
+              <button className='modal__close-btn'>
                 <HighlightOffIcon onClick={this.props.togglePresetsModal} />
               </button>
             </div>
-            <div
-              className='message'
-              style={{
-                fontWeight: '200',
-                padding: '2em',
-                width: '100%',
-                textAlign: 'center',
-                color: 'white',
-              }}
-            >
-              <SentimentVeryDissatisfiedIcon style={{ fontSize: '15em' }} />
-              <h2>Please Login or Signup to use this feature!</h2>
+            <div className='modal__content modal__content--message'>
+              <SentimentVeryDissatisfiedIcon style={{ fontSize: '12rem' }} />
+              <h2 className='modal__message'>
+                Please Login or Signup to use this feature!
+              </h2>
             </div>
-            <div
-              className='modal_body no_auth_buttons_modal'
-              style={{ padding: '0' }}
-            >
-              <div className='loadpreset_explanatory'>
-                <Link onClick={this.props.togglePresetsModal} to='/Login'>
-                  Login
-                </Link>
-              </div>
-              <div className='loadpreset_explanatory'>
-                <Link onClick={this.props.togglePresetsModal} to='/Signup'>
-                  Signup
-                </Link>
-              </div>
+            <div className='modal__bottom-wrapper modal__bottom-wrapper--split-buttons'>
+              <Link
+                className='modal__link'
+                onClick={this.props.togglePresetsModal}
+                to='/Login'
+              >
+                Login
+              </Link>
+              <Link
+                className='modal__link'
+                onClick={this.props.togglePresetsModal}
+                to='/Signup'
+              >
+                Signup
+              </Link>
             </div>
           </div>
         </div>

@@ -13,9 +13,6 @@ import IcTooltipExplanatory from '../../IcTooltipExplanatory';
 import './frequency-analysis.scss';
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    width: '100%',
-  },
   heading: {
     fontSize: theme.typography.pxToRem(15),
     fontWeight: theme.typography.fontWeightRegular,
@@ -63,9 +60,7 @@ function ChartImporter({ inputValue, menue }) {
         <div className='frequency-analysis-language'>
           {panelStatus ? (
             <Fragment>
-              <label htmlFor='fq-lang-select' className={classes.label}>
-                Language to compare to:
-              </label>
+              <label htmlFor='fq-lang-select'>Language to compare to:</label>
               <select
                 id='fq-lang-select'
                 className='frequency-analysis-language__select'
@@ -85,14 +80,7 @@ function ChartImporter({ inputValue, menue }) {
               </select>
             </Fragment>
           ) : null}
-        </div>
-      </ExpansionPanelDetails>
-      <ExpansionPanelDetails>
-        <Typography className={classes.body}>
-          The blue <b>dots</b> represent your input. The red <b>bars </b>
-          represent the standart distributon of letters in the{' '}
-          {selectedLanguage} language.
-        </Typography>
+        </div>{' '}
       </ExpansionPanelDetails>
     </ExpansionPanel>
   );

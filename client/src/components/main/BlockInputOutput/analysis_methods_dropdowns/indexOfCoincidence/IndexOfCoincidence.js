@@ -12,9 +12,6 @@ import { calcIndexOfCoincidence, calcLanguageProbability } from './ioc-logic';
 import { connect } from 'react-redux';
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    width: '100%',
-  },
   heading: {
     fontSize: theme.typography.pxToRem(15),
     fontWeight: theme.typography.fontWeightRegular,
