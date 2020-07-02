@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import ChartImporter from './freqencyAnalysis/ChartImporter';
 import IndexOfCoincidence from './indexOfCoincidence/IndexOfCoincidence';
-import ChiSquared from './chi_squared/ChiSquared';
+import ChiSquared from './chi_squared/ChiSquared.js';
 
 const AnalysisMethods = (props) => {
   /**

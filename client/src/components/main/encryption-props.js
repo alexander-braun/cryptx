@@ -121,7 +121,6 @@ const encryptionProps = (props) => {
       ];
     default:
       return [];
-      break;
   }
 };
 
