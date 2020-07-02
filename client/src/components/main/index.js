@@ -92,6 +92,10 @@ class Main extends React.PureComponent {
     else this.encrypt();
   }
 
+  /**
+   * The method uses pre-defined encryption props wich
+   * return the right props for the belonging method.
+   */
   encrypt() {
     const { method } = this.props;
 
