@@ -69,7 +69,7 @@ const encryptionProps = (props) => {
         props.includeChars,
         props.alphabet,
       ];
-    case 'caseTransform':
+    case 'casetransform':
       return [props.input, props.caseTransformChoice];
     case 'atbash':
       return [props.input, props.caseformat, props.includeChars];

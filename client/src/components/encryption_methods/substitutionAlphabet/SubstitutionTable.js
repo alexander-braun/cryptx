@@ -12,7 +12,9 @@ const SubstitutionAlphabet = (props) => {
     const parent = e.target.dataset.parent;
     const value = e.target.value;
     if (props.alphabet.indexOf(value.toLowerCase()) !== -1) {
-      props.setSubstitutionAlphabet(parent, value);
+      let temp = props.substitutionAlphabet;
+      temp[parent] = value;
+      props.setSubstitutionAlphabet(temp);
     }
   };
 
@@ -21,12 +23,12 @@ const SubstitutionAlphabet = (props) => {
    * Mark them with a blue color.
    */
   useEffect(() => {
-    let substitutionAlphabet = Object.values(props.substitutionAlphabet);
+    let substitutionAlphabetValues = Object.values(props.substitutionAlphabet);
     let double = [];
-    for (let character of substitutionAlphabet) {
+    for (let character of substitutionAlphabetValues) {
       if (
-        substitutionAlphabet.indexOf(character) !==
-        substitutionAlphabet.lastIndexOf(character)
+        substitutionAlphabetValues.indexOf(character) !==
+        substitutionAlphabetValues.lastIndexOf(character)
       ) {
         double.indexOf(character) === -1 && double.push(character);
       }
@@ -50,19 +52,18 @@ const SubstitutionAlphabet = (props) => {
           {props.alphabet.split('').map((character) => {
             return (
               <div className='substitution' key={uuidv4()}>
-                <div className='substitution__character'>
-                  {character.toUpperCase()}
-                </div>
+                <div className='substitution__character'>{character}</div>
                 <div className='arrow'>↓</div>
                 <div className='substitution__input-wrapper'>
                   <input
                     className='substitution__input'
                     onChange={(e) => handleAlphabetChange(e)}
                     data-parent={character}
-                    value={props.substitutionAlphabet[character]}
+                    data-value={props.substitutionAlphabet[character]}
+                    defaultValue={props.substitutionAlphabet[character]}
                     maxLength='1'
                     size='1'
-                  ></input>
+                  />
                 </div>
               </div>
             );

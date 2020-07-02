@@ -30,13 +30,9 @@ let initialState = {
 };
 
 const substitutionAlphabet = (state = initialState, action) => {
-  let parent = action.substParent;
-  let value = action.substValue;
-
   switch (action.type) {
     case SET_SUBSTITUTION_ALPHABET:
-      const newState = { ...state };
-      newState[parent] = value;
+      const newState = { ...action.substitutionAlphabet };
       return newState;
     default:
       return state;

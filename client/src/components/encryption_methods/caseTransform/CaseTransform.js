@@ -33,12 +33,14 @@ const CaseTransform = (props) => {
           </div>
           <select
             className='content-element__split content-element__split--button'
-            onClick={(e) => setCaseTransform(e)}
+            onChange={(e) => setCaseTransform(e)}
+            value={props.caseTransformChoice}
           >
             {options.map((option) => {
               return (
                 <option
                   key={uuidv4()}
+                  value={option.split(' ')[0].toLowerCase()}
                   className='content-element__split--option'
                 >
                   {option}
@@ -52,8 +54,12 @@ const CaseTransform = (props) => {
   );
 };
 
+const mapStateToProps = (state) => ({
+  caseTransformChoice: state.caseTransformChoice,
+});
+
 const mapActionsToProps = {
   setCaseTransformChoice,
 };
 
-export default connect(null, mapActionsToProps)(CaseTransform);
+export default connect(mapStateToProps, mapActionsToProps)(CaseTransform);

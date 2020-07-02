@@ -45,7 +45,7 @@ const TrifidSettings = (props) => {
           <div className='content-element__settings-name'>Trifid Keyword</div>
           <div className='content-element__settings-operators'>
             <textarea
-              defaultValue={'FELIX MARIE DELASTELLE'}
+              value={props.trifidKey}
               onChange={(e) => handleKeywordChange(e)}
               className='content-element__textarea'
             />
@@ -86,7 +86,7 @@ const TrifidSettings = (props) => {
           </div>
           <div className='content-element__settings-operators'>
             <textarea
-              defaultValue={'+'}
+              value={props.trifid27thLetter}
               onChange={(e) => handleLetterChange(e)}
               className='content-element__textarea content-element__textarea--single-big'
               maxLength='1'

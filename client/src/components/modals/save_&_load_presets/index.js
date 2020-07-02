@@ -16,7 +16,6 @@ import { changeMethod } from '../../../actions/changeMethod';
 import { toggleDirection } from '../../../actions/toggleDirection';
 import setPrime1 from '../../../actions/setPrime1';
 import setPrime2 from '../../../actions/setprime2';
-import setRsaE from '../../../actions/setRsaE';
 import setKeywordVigenere from '../../../actions/setKeywordVigenere';
 import setKeywordPlayfair from '../../../actions/setKeywordPlayfair';
 import setOtpKey from '../../../actions/setOtpKey';
@@ -29,6 +28,16 @@ import setAffineBeta from '../../../actions/setAffineBeta';
 import SentimentVeryDissatisfiedIcon from '@material-ui/icons/SentimentVeryDissatisfied';
 import methodNamesAll from '../../main/BlockCenter/EncryptionMethodNames';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
+import setRsaE from '../../../actions/setRsaE';
+import setSubstitutionAlphabet from '../../../actions/setSubstitutionAlphabet';
+import setKeyNihilist from '../../../actions/setKeyNihilist';
+import setCipherNihilist from '../../../actions/setCipherNihilist';
+import {
+  setTrifidGroupSize,
+  setTrifidKey,
+  setTrifid27thLetter,
+} from '../../../actions/setTrifid';
+import { setCaseTransformChoice } from '../../../actions/setCaseTransformChoice';
 
 class PresetsModal extends React.Component {
   constructor(props) {
@@ -115,29 +124,68 @@ class PresetsModal extends React.Component {
       toReplaceLetter,
       affine_alpha,
       affine_beta,
+      keyNihilist,
+      cipherNihilist,
+      substitutionAlphabet,
+      trifidKey,
+      trifid27thLetter,
+      trifidGroupSize,
+      caseTransformChoice,
     } = selected.preset;
 
     method !== undefined && this.props.changeMethod(method);
     input !== undefined && this.props.updateInput(input);
     alphabet !== undefined && this.props.updateAlphabet(alphabet);
-    cShift !== undefined && this.props.setCshift(cShift);
+    method === 'caesar' && cShift !== undefined && this.props.setCshift(cShift);
     direction !== undefined && this.props.toggleDirection(direction);
     caseFormat !== undefined && this.props.toggleCase(caseFormat);
     foreignChars !== undefined && this.props.toggleChars(foreignChars);
-    prime1 !== undefined && this.props.setPrime1(prime1);
-    prime2 !== undefined && this.props.setPrime2(prime2);
-    RsaE !== undefined && this.props.setRsaE(RsaE);
-    keywordVigenere !== undefined &&
+    method === 'rsa' && prime1 !== undefined && this.props.setPrime1(prime1);
+    method === 'rsa' && prime2 !== undefined && this.props.setPrime2(prime2);
+    method === 'rsa' && RsaE !== undefined && this.props.setRsaE(RsaE);
+    method === 'casetransform' &&
+      caseTransformChoice !== undefined &&
+      this.props.setCaseTransformChoice(caseTransformChoice);
+    method === 'vigenere' &&
+      keywordVigenere !== undefined &&
       this.props.setKeywordVigenere(keywordVigenere);
-    keywordPlayfair !== undefined &&
+    method === 'playfair' &&
+      keywordPlayfair !== undefined &&
       this.props.setKeywordPlayfair(keywordPlayfair);
-    otpKey !== undefined && this.props.setOtpKey(otpKey);
-    ringLength !== undefined && this.props.setRinglength(ringLength);
-    replaceLetter !== undefined && this.props.setReplaceLetter(replaceLetter);
-    toReplaceLetter !== undefined &&
+    method === 'otp' && otpKey !== undefined && this.props.setOtpKey(otpKey);
+    method === 'skytale' &&
+      ringLength !== undefined &&
+      this.props.setRinglength(ringLength);
+    method === 'replace' &&
+      replaceLetter !== undefined &&
+      this.props.setReplaceLetter(replaceLetter);
+    method === 'replace' &&
+      toReplaceLetter !== undefined &&
       this.props.setToReplaceLetter(toReplaceLetter);
-    affine_alpha !== undefined && this.props.setAffineAlpha(affine_alpha);
-    affine_beta !== undefined && this.props.setAffineBeta(affine_beta);
+    method === 'affine' &&
+      affine_alpha !== undefined &&
+      this.props.setAffineAlpha(affine_alpha);
+    method === 'affine' &&
+      affine_beta !== undefined &&
+      this.props.setAffineBeta(affine_beta);
+    method === 'nihilist' &&
+      keyNihilist !== undefined &&
+      this.props.setKeyNihilist(keyNihilist);
+    method === 'nihilist' &&
+      cipherNihilist !== undefined &&
+      this.props.setCipherNihilist(cipherNihilist);
+    method === 'substitution' &&
+      substitutionAlphabet !== undefined &&
+      this.props.setSubstitutionAlphabet(substitutionAlphabet);
+    method === 'trifid' &&
+      trifid27thLetter !== undefined &&
+      this.props.setTrifid27thLetter(trifid27thLetter);
+    method === 'trifid' &&
+      trifidGroupSize !== undefined &&
+      this.props.setTrifidGroupSize(trifidGroupSize);
+    method === 'trifid' &&
+      trifidKey !== undefined &&
+      this.props.setTrifidKey(trifidKey);
 
     this.props.togglePresetsModal();
   };
@@ -146,28 +194,86 @@ class PresetsModal extends React.Component {
     let presetSettings = {
       method: this.props.method !== undefined && this.props.method,
       input: this.props.input !== undefined && this.props.input,
-      toReplaceLetter:
-        this.props.toReplaceLetter !== undefined && this.props.toReplaceLetter,
-      replaceLetter:
-        this.props.replaceLetter !== undefined && this.props.replaceLetter,
-      cShift: this.props.cShift !== undefined && this.props.cShift,
       direction: this.props.direction !== undefined && this.props.direction,
       includeChars:
         this.props.includeChars !== undefined && this.props.includeChars,
       caseformat: this.props.caseformat !== undefined && this.props.caseformat,
       alphabet: this.props.alphabet !== undefined && this.props.alphabet,
-      prime1: this.props.prime1 !== undefined && this.props.prime1,
-      prime2: this.props.prime2 !== undefined && this.props.prime2,
-      keywordVigenere:
-        this.props.keywordVigenere !== undefined && this.props.keywordVigenere,
-      keywordPlayfair:
-        this.props.keywordPlayfair !== undefined && this.props.keywordPlayfair,
-      affine_alpha:
-        this.props.affine_alpha !== undefined && this.propsaffine_alpha,
-      affine_beta: this.props.affine_beta !== undefined && this.affine_beta,
-      otpKey: this.props.otpKey !== undefined && this.otpKey,
-      ringLength: this.props.ringLength !== undefined && this.ringLength,
     };
+
+    switch (this.props.method) {
+      case 'caesar':
+        presetSettings.cShift =
+          this.props.cShift !== undefined && this.props.cShift;
+        break;
+      case 'casetransform':
+        presetSettings.caseTransformChoice =
+          this.props.caseTransformChoice !== undefined &&
+          this.props.caseTransformChoice;
+        break;
+      case 'replace':
+        presetSettings.toReplaceLetter =
+          this.props.toReplaceLetter !== undefined &&
+          this.props.toReplaceLetter;
+        presetSettings.replaceLetter =
+          this.props.replaceLetter !== undefined && this.props.replaceLetter;
+        break;
+      case 'rsa':
+        presetSettings.prime1 =
+          this.props.prime1 !== undefined && this.props.prime1;
+        presetSettings.prime2 =
+          this.props.prime2 !== undefined && this.props.prime2;
+        presetSettings.RsaE = this.props.e !== undefined && this.props.e;
+        break;
+      case 'trifid':
+        presetSettings.trifidKey =
+          this.props.trifidKey !== undefined && this.props.trifidKey;
+        presetSettings.trifid27thLetter =
+          this.props.trifid27thLetter !== undefined &&
+          this.props.trifid27thLetter;
+        presetSettings.trifidGroupSize =
+          this.props.trifid27thLetter !== undefined &&
+          this.props.trifidGroupSize;
+        break;
+      case 'substitution':
+        presetSettings.substitutionAlphabet =
+          this.props.substitutionAlphabet !== undefined &&
+          this.props.substitutionAlphabet;
+        break;
+      case 'nihilist':
+        presetSettings.keyNihilist =
+          this.props.keyNihilist !== undefined && this.props.keyNihilist;
+        presetSettings.cipherNihilist =
+          this.props.cipherNihilist !== undefined && this.props.cipherNihilist;
+        break;
+      case 'skytale':
+        presetSettings.ringLength =
+          this.props.ringLength !== undefined && this.props.ringLength;
+        break;
+      case 'otp':
+        presetSettings.otpKey =
+          this.props.otpKey !== undefined && this.props.otpKey;
+        break;
+      case 'affine':
+        presetSettings.affine_alpha =
+          this.props.affine_alpha !== undefined && this.props.affine_alpha;
+        presetSettings.affine_beta =
+          this.props.affine_beta !== undefined && this.props.affine_beta;
+        break;
+      case 'vigenere':
+        presetSettings.keywordVigenere =
+          this.props.keywordVigenere !== undefined &&
+          this.props.keywordVigenere;
+        break;
+      case 'playfair':
+        presetSettings.keywordPlayfair =
+          this.props.keywordPlayfair !== undefined &&
+          this.props.keywordPlayfair;
+        break;
+      default:
+        break;
+    }
+
     this.props.addPreset({
       name: this.props.presetName,
       description: this.props.presetDescription,
@@ -392,6 +498,15 @@ const mapStateToProps = (state) => ({
   playSquare: state.playSquare,
   ringLength: state.skytale.ringLength,
   isAuthenticated: state.auth.isAuthenticated,
+
+  keyNihilist: state.keyNihilist,
+  cipherNihilist: state.cipherNihilist,
+  substitutionAlphabet: state.substitutionAlphabet,
+  trifidKey: state.trifid.trifidKey,
+  trifid27thLetter: state.trifid.trifid27thLetter,
+  trifidGroupSize: state.trifid.trifidGroupSize,
+  e: state.rsa.e,
+  caseTransformChoice: state.caseTransformChoice,
 });
 
 const mapActionsToProps = {
@@ -419,6 +534,13 @@ const mapActionsToProps = {
   setAffineAlpha,
   setAffineBeta,
   deletePreset,
+  setCipherNihilist,
+  setKeyNihilist,
+  setSubstitutionAlphabet,
+  setTrifidGroupSize,
+  setTrifidKey,
+  setTrifid27thLetter,
+  setCaseTransformChoice,
 };
 
 PresetsModal.propTypes = {

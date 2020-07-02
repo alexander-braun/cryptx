@@ -191,9 +191,9 @@ const mapStateToProps = (state) => ({
 });
 
 const mapActionsToProps = {
-  setPrime1: setPrime1,
-  setPrime2: setPrime2,
-  setRsaE: setRsaE,
+  setPrime1,
+  setPrime2,
+  setRsaE,
 };
 
 export default React.memo(connect(mapStateToProps, mapActionsToProps)(Primes));

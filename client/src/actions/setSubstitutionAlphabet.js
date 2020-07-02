@@ -1,9 +1,8 @@
 import { SET_SUBSTITUTION_ALPHABET } from './constants';
 
-const setSubstitutionAlphabet = (substParent, substValue) => ({
+const setSubstitutionAlphabet = (substitutionAlphabet) => ({
   type: SET_SUBSTITUTION_ALPHABET,
-  substParent,
-  substValue,
+  substitutionAlphabet,
 });
 
 export default setSubstitutionAlphabet;
