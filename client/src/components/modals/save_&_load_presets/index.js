@@ -95,6 +95,8 @@ class PresetsModal extends React.Component {
     ) {
       this.genTable();
     }
+
+    window.addEventListener('resize', this.getDeviceWidth);
   }
 
   handleLoadPreset = (id) => {
@@ -313,7 +315,9 @@ class PresetsModal extends React.Component {
                 <div className='modal__header modal__header--space-between'>
                   Load a Preset
                   <button className='modal__close-btn'>
-                    <HighlightOffIcon onClick={this.props.togglePresetsModal} />
+                    <HighlightOffIcon
+                      onClick={() => this.props.togglePresetsModal()}
+                    />
                   </button>
                 </div>
                 <div className='modal__body'>
@@ -346,7 +350,7 @@ class PresetsModal extends React.Component {
                 <div className='modal__bottom-wrapper modal__bottom-wrapper--no-border-top'>
                   <button
                     className='modal__close modal__close--right'
-                    onClick={this.props.togglePresetsModal}
+                    onClick={() => this.props.togglePresetsModal()}
                   >
                     Close
                   </button>
@@ -357,7 +361,9 @@ class PresetsModal extends React.Component {
                 <div className='modal__header modal__header--space-between'>
                   Save as Preset
                   <button className='modal__close-btn'>
-                    <HighlightOffIcon onClick={this.props.togglePresetsModal} />
+                    <HighlightOffIcon
+                      onClick={() => this.props.togglePresetsModal()}
+                    />
                   </button>
                 </div>
                 <div className='modal__body'>
@@ -423,7 +429,7 @@ class PresetsModal extends React.Component {
                 <div className='modal__bottom-wrapper modal__bottom-wrapper--no-border-top'>
                   <button
                     className='modal__close modal__close--right'
-                    onClick={this.props.togglePresetsModal}
+                    onClick={() => this.props.togglePresetsModal()}
                   >
                     Close
                   </button>
@@ -440,7 +446,9 @@ class PresetsModal extends React.Component {
             <div className='modal__header modal__header--space-between'>
               {this.props.target === 'load' ? 'Load a Preset' : 'Save a Preset'}
               <button className='modal__close-btn'>
-                <HighlightOffIcon onClick={this.props.togglePresetsModal} />
+                <HighlightOffIcon
+                  onClick={() => this.props.togglePresetsModal()}
+                />
               </button>
             </div>
             <div className='modal__content modal__content--message'>
@@ -452,14 +460,14 @@ class PresetsModal extends React.Component {
             <div className='modal__bottom-wrapper modal__bottom-wrapper--split-buttons'>
               <Link
                 className='modal__link'
-                onClick={this.props.togglePresetsModal}
+                onClick={() => this.props.togglePresetsModal()}
                 to='/Login'
               >
                 Login
               </Link>
               <Link
                 className='modal__link'
-                onClick={this.props.togglePresetsModal}
+                onClick={() => this.props.togglePresetsModal()}
                 to='/Signup'
               >
                 Signup

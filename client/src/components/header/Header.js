@@ -325,7 +325,13 @@ const Header = (props) => {
   };
 
   return (
-    <div className={!HideElementOnScroll() ? 'navNormal' : 'navHidden'}>
+    <div
+      className={
+        !HideElementOnScroll() && !props.presetsModal && !props.analysisModal
+          ? 'navNormal'
+          : 'navHidden'
+      }
+    >
       <div
         id='header_margin'
         style={{ height: `${height}px`, position: 'relative' }}
@@ -407,6 +413,8 @@ const Header = (props) => {
 
 const mapStateToProps = (state) => ({
   auth: state.auth,
+  presetsModal: state.presetsModal.modalOpen,
+  analysisModal: state.analysisModal,
 });
 
 const mapActionsToProps = {
