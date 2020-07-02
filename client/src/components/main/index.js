@@ -87,7 +87,9 @@ class Main extends React.PureComponent {
     /**
      * If props update recalculate.
      */
-    this.encrypt();
+
+    if (this.props.timeToCalculate !== prevProps.timeToCalculate) return;
+    else this.encrypt();
   }
 
   encrypt() {
