@@ -10,10 +10,16 @@ class NihilistSquare extends React.PureComponent {
    * square.
    */
   createVisualMatrix = () => {
+    /**
+     * If the user comes from a different method with decryption
+     * enabled, the lengthcheck prevents the app from crashing
+     * if there are no numbers in the input to decrypt.
+     */
+    if (this.props.nihilistSquare.length < 5) return;
     if (!this.props.nihilistSquare || this.props.nihilistSquare.length === 0)
       return;
     let table = (
-      <table id='nihilistSquare'>
+      <table className='nihilistSquare'>
         <tbody>
           <tr>
             {['#', '1', '2', '3', '4', '5'].map((number) => (

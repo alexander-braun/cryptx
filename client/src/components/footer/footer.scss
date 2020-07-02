@@ -1,0 +1,31 @@
+.site-footer {
+  background-color: #161616;
+  width: 100vw;
+  color: white;
+  height: 50px;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  position: fixed;
+  display: flex;
+  bottom: 0;
+  z-index: 2;
+
+  &__links {
+    margin-left: auto;
+    margin-left: 13vw;
+    font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 200;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.596);
+  }
+
+  &__icon {
+    margin-right: 2rem;
+    font-size: 2rem;
+  }
+}

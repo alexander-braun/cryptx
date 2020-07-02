@@ -39,6 +39,7 @@ const useStyles = makeStyles((theme) => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
+    position: 'fixed',
     backgroundColor: 'rgba(26, 134, 195, 1)',
   },
   menuButton: {
@@ -79,6 +80,26 @@ const useStyles = makeStyles((theme) => ({
     }),
     marginLeft: 0,
   },
+  itemWrapper: {
+    fontSize: '1rem',
+    marginRight: '1.5rem',
+  },
+  itemWrapperRight: {
+    fontSize: '1rem',
+    marginRight: '5vw',
+  },
+  itemMobile: {
+    color: 'black',
+    textDecoration: 'none',
+  },
+  link: {
+    letterSpacing: '0.075rem',
+    color: 'white',
+    textDecoration: 'none',
+  },
+  titleWrapper: {
+    marginRight: 'auto',
+  },
 }));
 
 const Header = (props) => {
@@ -98,61 +119,19 @@ const Header = (props) => {
   };
 
   const authLinksDesktop = (
-    <div
-      style={{
-        marginLeft: 'auto',
-        display: 'flex',
-        flexDirection: 'row',
-        justifyItems: 'center',
-        alignItems: 'center',
-      }}
-    >
-      <Typography
-        variant='body1'
-        noWrap
-        style={{ fontSize: '1rem', marginRight: '1.5rem' }}
-      >
-        <Link
-          style={{
-            letterSpacing: '0.075rem',
-            color: 'white',
-            textDecoration: 'none',
-          }}
-          to='#!'
-          onClick={props.logout}
-        >
+    <div className='menue-items'>
+      <Typography variant='body1' noWrap className={classes.itemWrapper}>
+        <Link className={classes.link} to='#!' onClick={props.logout}>
           Logout
         </Link>
       </Typography>
-      <Typography
-        variant='body1'
-        noWrap
-        style={{ fontSize: '1rem', marginRight: '1.5rem' }}
-      >
-        <Link
-          style={{
-            letterSpacing: '0.075rem',
-            color: 'white',
-            textDecoration: 'none',
-          }}
-          to='/Profile'
-        >
+      <Typography variant='body1' noWrap className={classes.itemWrapper}>
+        <Link className={classes.link} to='/Profile'>
           Profile
         </Link>
       </Typography>
-      <Typography
-        variant='body1'
-        noWrap
-        style={{ fontSize: '1rem', marginRight: '5vw' }}
-      >
-        <Link
-          style={{
-            letterSpacing: '0.075rem',
-            color: 'white',
-            textDecoration: 'none',
-          }}
-          to='/About'
-        >
+      <Typography variant='body1' noWrap className={classes.itemWrapperRight}>
+        <Link className={classes.link} to='/About'>
           About
         </Link>
       </Typography>
@@ -160,60 +139,19 @@ const Header = (props) => {
   );
 
   const guestLinksDesktop = (
-    <div
-      style={{
-        marginLeft: 'auto',
-        display: 'flex',
-        flexDirection: 'row',
-        justifyItems: 'center',
-        alignItems: 'center',
-      }}
-    >
-      <Typography
-        variant='body1'
-        noWrap
-        style={{ fontSize: '1rem', marginRight: '1.5rem' }}
-      >
-        <Link
-          style={{
-            letterSpacing: '0.075rem',
-            color: 'white',
-            textDecoration: 'none',
-          }}
-          to='/Login'
-        >
+    <div className='menue-items'>
+      <Typography variant='body1' noWrap className={classes.itemWrapper}>
+        <Link className={classes.link} to='/Login'>
           Login
         </Link>
       </Typography>
-      <Typography
-        variant='body1'
-        noWrap
-        style={{ fontSize: '1rem', marginRight: '1.5rem' }}
-      >
-        <Link
-          style={{
-            letterSpacing: '0.075rem',
-            color: 'white',
-            textDecoration: 'none',
-          }}
-          to='/Signup'
-        >
+      <Typography variant='body1' noWrap className={classes.itemWrapper}>
+        <Link className={classes.link} to='/Signup'>
           Signup
         </Link>
       </Typography>
-      <Typography
-        variant='body1'
-        noWrap
-        style={{ fontSize: '1rem', marginRight: '5vw' }}
-      >
-        <Link
-          style={{
-            letterSpacing: '0.075rem',
-            color: 'white',
-            textDecoration: 'none',
-          }}
-          to='/About'
-        >
+      <Typography variant='body1' noWrap className={classes.itemWrapperRight}>
+        <Link className={classes.link} to='/About'>
           About
         </Link>
       </Typography>
@@ -224,7 +162,7 @@ const Header = (props) => {
     <Fragment>
       <List onClick={handleDrawerClose}>
         <Link to='/'>
-          <ListItem button style={{ color: 'black', textDecoration: 'none' }}>
+          <ListItem button className={classes.itemMobile}>
             <ListItemIcon>
               <HomeIcon />
             </ListItemIcon>
@@ -232,7 +170,7 @@ const Header = (props) => {
           </ListItem>
         </Link>
         <Link to='#!' onClick={props.logout}>
-          <ListItem button style={{ color: 'black', textDecoration: 'none' }}>
+          <ListItem button className={classes.itemMobile}>
             <ListItemIcon>
               <ExitToAppIcon />
             </ListItemIcon>
@@ -240,7 +178,7 @@ const Header = (props) => {
           </ListItem>
         </Link>
         <Link to='/Profile'>
-          <ListItem button style={{ color: 'black', textDecoration: 'none' }}>
+          <ListItem button className={classes.itemMobile}>
             <ListItemIcon>
               <PersonIcon />
             </ListItemIcon>
@@ -248,7 +186,7 @@ const Header = (props) => {
           </ListItem>
         </Link>
         <Link to='/About'>
-          <ListItem button style={{ color: 'black', textDecoration: 'none' }}>
+          <ListItem button className={classes.itemMobile}>
             <ListItemIcon>
               <InfoIcon />
             </ListItemIcon>
@@ -263,7 +201,7 @@ const Header = (props) => {
     <Fragment>
       <List onClick={handleDrawerClose}>
         <Link to='/'>
-          <ListItem button style={{ color: 'black', textDecoration: 'none' }}>
+          <ListItem button className={classes.itemMobile}>
             <ListItemIcon>
               <HomeIcon />
             </ListItemIcon>
@@ -271,7 +209,7 @@ const Header = (props) => {
           </ListItem>
         </Link>
         <Link to='/Login'>
-          <ListItem button style={{ color: 'black', textDecoration: 'none' }}>
+          <ListItem button className={classes.itemMobile}>
             <ListItemIcon>
               <ExitToAppIcon />
             </ListItemIcon>
@@ -279,7 +217,7 @@ const Header = (props) => {
           </ListItem>
         </Link>
         <Link to='/Signup'>
-          <ListItem button style={{ color: 'black', textDecoration: 'none' }}>
+          <ListItem button className={classes.itemMobile}>
             <ListItemIcon>
               <PersonIcon />
             </ListItemIcon>
@@ -287,7 +225,7 @@ const Header = (props) => {
           </ListItem>
         </Link>
         <Link to='/About'>
-          <ListItem button style={{ color: 'black', textDecoration: 'none' }}>
+          <ListItem button className={classes.itemMobile}>
             <ListItemIcon>
               <InfoIcon />
             </ListItemIcon>
@@ -327,19 +265,18 @@ const Header = (props) => {
   return (
     <div
       className={
-        !HideElementOnScroll() && !props.presetsModal && !props.analysisModal
-          ? 'navNormal'
-          : 'navHidden'
+        !HideElementOnScroll() &&
+        !props.presetsModal &&
+        !props.analysisModal &&
+        !props.modalOpen
+          ? 'nav-normal'
+          : 'nav-hidden'
       }
     >
-      <div
-        id='header_margin'
-        style={{ height: `${height}px`, position: 'relative' }}
-        className='site_header'
-      ></div>
+      <div className='header-margin' style={{ height: `${height}px` }}></div>
       <div className={classes.root}>
         <CssBaseline />
-        <AppBar id='navbar' position='fixed' className={classes.appBar}>
+        <AppBar className={classes.appBar}>
           <ResizeObserver
             onResize={(rect) => {
               updateHeight(rect.height);
@@ -347,28 +284,13 @@ const Header = (props) => {
             }}
           />
           <Toolbar>
-            <Typography variant='h6' noWrap style={{ marginRight: 'auto' }}>
-              <div className='site_title'>
+            <Typography className={classes.titleWrapper} variant='h6' noWrap>
+              <div className='site-title'>
+                <Link to={'/'}>cryptx</Link>
                 <Link to={'/'}>
-                  <p>cryptx</p>
-                </Link>
-                <Link
-                  style={{
-                    display: 'flex',
-                    flexDirection: 'row',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                  }}
-                  to={'/'}
-                >
                   <img
-                    style={{
-                      margin: '0',
-                      marginTop: '.2em',
-                      marginLeft: '.2em',
-                    }}
                     src={logo}
-                    id='keyimage'
+                    className='site-title__image'
                     alt='logo'
                   ></img>
                 </Link>
@@ -415,6 +337,7 @@ const mapStateToProps = (state) => ({
   auth: state.auth,
   presetsModal: state.presetsModal.modalOpen,
   analysisModal: state.analysisModal,
+  modalOpen: state.modal,
 });
 
 const mapActionsToProps = {

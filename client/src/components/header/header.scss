@@ -1,66 +1,73 @@
 $font: 'Roboto', 'Helvetica', 'Arial', sans-serif;
 $transitionMain: 100ms;
 
-#header_margin {
-    background-color: transparent;
-    width: 100vw;
-}
-  
-.site_title {
-    display: flex;
-    flex-direction: row;
-    justify-items: center;
-    align-items: center;
-    a {
-        text-decoration: none;
-        p {
-            color: white;
-        }
-    }
+.nav {
+  &-normal {
+    transition-duration: 200ms;
+    opacity: 1;
+  }
 
-    img {
-        margin-left: 10px;
-    }
-    p {
-        transition-duration: $transitionMain;
-        font-size: 30pt;
-        margin-top: 0;
-        margin-bottom: 0;
-        line-height: 1;
-        outline: none;
-    }
+  &-hidden {
+    transition-duration: 200ms;
+    opacity: 0;
+  }
 }
-  
-#keyimage {
-    width: 2.08em;
+
+.menue-items {
+  margin-left: auto;
+  display: flex;
+  flex-direction: row;
+  justify-items: center;
+  align-items: center;
+}
+
+.header-margin {
+  background-color: transparent;
+  width: 100vw;
+  position: relative;
+}
+
+.site-title {
+  display: flex;
+  flex-direction: row;
+  justify-items: center;
+  align-items: center;
+
+  &__image {
+    margin-left: 10px;
     align-self: center;
     justify-self: flex-start;
     margin-top: 5px;
+
+    width: 2.5rem;
+    align-self: center;
+    justify-self: flex-start;
+  }
+
+  a {
+    text-decoration: none;
+    color: white;
+    font-size: 40px;
+
+    &:last-child {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+  p {
+    transition-duration: $transitionMain;
+    font-size: 30pt;
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 1;
+    outline: none;
+  }
 }
 
 .MuiToolbar-root {
-    h6 {
-        margin-left: 5vw;
-    }
-}
-
-.navNormal {
-    transition-duration: 200ms;
-    opacity: 1;
-}
-
-.navHidden {
-    transition-duration: 200ms;
-    opacity: 0;
-}
-
-.slideup {
-    transform: translateY(-200px);
-}
-
-@media (min-width: 600px){
-    .MuiToolbar-gutters {
-        padding-left: 0px !important;
-        padding-right: 0px !important;
-    }
+  h6 {
+    margin-left: 5vw;
+  }
 }

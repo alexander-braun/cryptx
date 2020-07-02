@@ -8,6 +8,19 @@ import './timeline.scss';
 import { connect } from 'react-redux';
 import { changeMethod } from '../../actions/changeMethod';
 
+const listMethods = [
+  'atbash',
+  'skytale',
+  'caesar',
+  'vigenere',
+  'morse',
+  'playfair',
+  'nihilist',
+  'otp',
+  'trifid',
+  'rsa',
+];
+
 class Timeline extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -32,23 +45,6 @@ class Timeline extends React.PureComponent {
     this.slider.slickPrev();
   }
 
-  findNextSlide(evt) {
-    let elem1 =
-      evt.target.parentElement.parentElement.parentElement.parentElement;
-    let elem2 = evt.target.parentElement.parentElement.parentElement;
-    let goToIndex;
-    if (
-      elem1.classList.contains('slick-current') ||
-      elem2.classList.contains('slick-current')
-    ) {
-      let dataIndex1 = elem1.getAttribute('data-index');
-      let dataIndex2 = elem2.getAttribute('data-index');
-      goToIndex = dataIndex1 || dataIndex2;
-    }
-
-    return goToIndex;
-  }
-
   viewportWidth = () => {
     if (this.vw < 1100) {
       return 1;
@@ -56,22 +52,11 @@ class Timeline extends React.PureComponent {
   };
 
   componentDidUpdate(prevProps, prevState) {
-    const listMethods = [
-      'atbash',
-      'skytale',
-      'caesar',
-      'vigenere',
-      'morse',
-      'playfair',
-      'nihilist',
-      'otp',
-      'trifid',
-      'rsa',
-    ];
-
-    // If user chooses to go to method that is not in the timeline and back to the same method
-    // Hide the method and year and then switch back
-
+    /**
+     * If user chooses to go to method that is not in
+     * the timeline and back to the same method,
+     * hide the method and year and then switch back.
+     */
     let hasHideClass = document.getElementsByClassName('hideOnTimeline')[0];
     if (
       hasHideClass &&
@@ -135,10 +120,15 @@ class Timeline extends React.PureComponent {
               this.slider.slickGoTo(0);
             }}
           >
-            <div value={element} className='history_element'>
-              <h3 value={element}>{EncryptionMethodYears[element]}</h3>
-              <div value={element} className='dot'></div>
-              <div value={element} className='timeline_description'>
+            <div value={element} className='history-element'>
+              <h3 value={element} className='history-element__time'>
+                {EncryptionMethodYears[element]}
+              </h3>
+              <div value={element} className='history-element__dot'></div>
+              <div
+                value={element}
+                className='history-element__encryption-method-name'
+              >
                 {EncryptionMethodNames[element]}
               </div>
             </div>
@@ -149,8 +139,8 @@ class Timeline extends React.PureComponent {
       return timelineElements.map((item) => item);
     };
     return (
-      <div id='timeline'>
-        <div className='timeline_border'></div>
+      <div className='timeline'>
+        <div className='timeline__border'></div>
 
         <Slider ref={(c) => (this.slider = c)} {...settings}>
           {generateTimelineElements()}
