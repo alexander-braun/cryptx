@@ -2,24 +2,10 @@ import React from 'react';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Slider from 'react-slick';
-import EncryptionMethodNames from '../main/BlockCenter/EncryptionMethodNames';
-import EncryptionMethodYears from '../main/BlockCenter/EncryptionMethodYears';
 import './timeline.scss';
 import { connect } from 'react-redux';
 import { changeMethod } from '../../actions/changeMethod';
-
-const listMethods = [
-  'atbash',
-  'skytale',
-  'caesar',
-  'vigenere',
-  'morse',
-  'playfair',
-  'nihilist',
-  'otp',
-  'trifid',
-  'rsa',
-];
+import { EncryptionMethodsDetails } from '../main/BlockCenter/EncryptionMethodsDetails';
 
 class Timeline extends React.PureComponent {
   constructor(props) {
@@ -29,7 +15,6 @@ class Timeline extends React.PureComponent {
     this.state = {
       oldSlide: 0,
       activeSlide: 1,
-      activeSlide2: 0,
     };
     this.vw = Math.max(
       document.documentElement.clientWidth,
@@ -67,30 +52,28 @@ class Timeline extends React.PureComponent {
     }
 
     if (prevProps.method !== this.props.method) {
-      let changed = false;
-      for (let listMethod of listMethods) {
-        if (this.props.method === listMethod) {
-          changed = true;
-          return this.slider.slickGoTo(listMethods.indexOf(listMethod));
-        }
-      }
-      if (!changed) {
+      let idx = EncryptionMethodsDetails[this.props.method].timelineIdx;
+      if (idx >= 0) {
+        return this.slider.slickGoTo(idx);
+      } else {
         let current = document.getElementsByClassName('slick-current')[0];
-        if (current) {
-          current.classList.add('hideOnTimeline');
-        }
+        current.classList.add('hideOnTimeline');
       }
     }
 
     if (prevState.activeSlide !== this.state.activeSlide) {
-      return this.props.changeMethod(listMethods[this.state.activeSlide]);
+      for (const element of Object.values(EncryptionMethodsDetails)) {
+        if (element.timelineIdx === this.state.activeSlide) {
+          return this.props.changeMethod(element.name);
+        }
+      }
     }
   }
 
   render() {
     const settings = {
       infinite: true,
-      speed: 500,
+      speed: 800,
       slidesToShow: this.viewportWidth(),
       slidesToScroll: 1,
       arrows: true,
@@ -100,16 +83,12 @@ class Timeline extends React.PureComponent {
           oldSlide: current,
           activeSlide: next,
         }),
-      afterChange: (current) =>
-        this.setState({
-          activeSlide2: current,
-        }),
     };
 
     const generateTimelineElements = () => {
       let timelineElements = [];
-      for (let element in EncryptionMethodNames) {
-        if (!EncryptionMethodYears[element]) continue;
+      for (let element in EncryptionMethodsDetails) {
+        if (EncryptionMethodsDetails[element].year === false) continue;
         let key = 0;
         timelineElements.push(
           <div
@@ -122,14 +101,14 @@ class Timeline extends React.PureComponent {
           >
             <div value={element} className='history-element'>
               <h3 value={element} className='history-element__time'>
-                {EncryptionMethodYears[element]}
+                {EncryptionMethodsDetails[element].year}
               </h3>
               <div value={element} className='history-element__dot'></div>
               <div
                 value={element}
                 className='history-element__encryption-method-name'
               >
-                {EncryptionMethodNames[element]}
+                {EncryptionMethodsDetails[element].display}
               </div>
             </div>
           </div>

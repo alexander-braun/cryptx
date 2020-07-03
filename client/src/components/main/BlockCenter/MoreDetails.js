@@ -6,7 +6,7 @@ import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { connect } from 'react-redux';
-import explanatoryTextsObj from './explanatoryTextsData';
+import EncryptionMethodsTexts from './EncryptionMethodsTexts';
 import './center.scss';
 
 const useStyles = makeStyles((theme) => ({
@@ -26,9 +26,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ExplanatoryText = (props) => {
+const MoreDetails = (props) => {
   const classes = useStyles();
-  if (!explanatoryTextsObj[props.method]) return null;
+  if (!EncryptionMethodsTexts[props.method]) return null;
   let expText =
     props.direction !== 'crack' ? (
       <ExpansionPanel>
@@ -41,14 +41,14 @@ const ExplanatoryText = (props) => {
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           <Typography className={classes.body}>
-            {explanatoryTextsObj[props.method]['normal']}
+            {EncryptionMethodsTexts[props.method]['normal']}
           </Typography>
           <Typography className={classes.link}>
             <a
-              href={explanatoryTextsObj[props.method]['linksrc']}
+              href={EncryptionMethodsTexts[props.method]['linksrc']}
               target='blank'
             >
-              {explanatoryTextsObj[props.method]['linkname']}
+              {EncryptionMethodsTexts[props.method]['linkname']}
             </a>
           </Typography>
         </ExpansionPanelDetails>
@@ -56,14 +56,14 @@ const ExplanatoryText = (props) => {
     ) : (
       <div className='contentbox explanation'>
         <p className='explanation__paragraph'>
-          {explanatoryTextsObj[props.method]['crack']}
+          {EncryptionMethodsTexts[props.method]['crack']}
         </p>
         <a
           className='explanation__link'
-          href={explanatoryTextsObj[props.method]['linksrc']}
+          href={EncryptionMethodsTexts[props.method]['linksrc']}
           target='blank'
         >
-          {explanatoryTextsObj[props.method]['linkname']}
+          {EncryptionMethodsTexts[props.method]['linkname']}
         </a>
       </div>
     );
@@ -75,4 +75,4 @@ const mapStateToProps = (state) => ({
   method: state.method,
 });
 
-export default connect(mapStateToProps)(ExplanatoryText);
+export default connect(mapStateToProps)(MoreDetails);

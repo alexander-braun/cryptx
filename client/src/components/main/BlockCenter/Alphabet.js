@@ -12,12 +12,11 @@ const Alphabet = ({ alphabet, alphabetActive, updateAlphabet }) => {
         <div className='content-element__settings-name'>Alphabet</div>
         <div className='content-element__settings-operators'>
           <textarea
-            className={
-              'content-element__textarea ' +
-              (alphabetActive
+            className={`content-element__textarea ${
+              alphabetActive
                 ? 'content-element__textarea--active'
-                : 'content-element__textarea--deactivated')
-            }
+                : 'content-element__textarea--deactivated'
+            }`}
             value={alphabet}
             readOnly={!alphabetActive}
             onChange={(evt) => {

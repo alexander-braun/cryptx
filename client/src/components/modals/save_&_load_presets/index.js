@@ -26,7 +26,7 @@ import { toReplaceLetter, replaceLetter } from '../../../actions/replace';
 import setAffineAlpha from '../../../actions/setAffineAlpha';
 import setAffineBeta from '../../../actions/setAffineBeta';
 import SentimentVeryDissatisfiedIcon from '@material-ui/icons/SentimentVeryDissatisfied';
-import methodNamesAll from '../../main/BlockCenter/EncryptionMethodNames';
+import { EncryptionMethodsDetails } from '../../main/BlockCenter/EncryptionMethodsDetails';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import setRsaE from '../../../actions/setRsaE';
 import setSubstitutionAlphabet from '../../../actions/setSubstitutionAlphabet';
@@ -64,7 +64,7 @@ class PresetsModal extends React.Component {
             : null}
           <td className='modal__presets-table-cell'>{preset.name}</td>
           <td className='modal__presets-table-cell'>
-            {methodNamesAll[method]}
+            {EncryptionMethodsDetails[method].display}
           </td>
           {this.state.width >= 700 ? (
             <td className='modal__presets-table-cell'>{preset.description}</td>

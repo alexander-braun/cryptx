@@ -28,8 +28,8 @@ import TrifidLayers from '../../encryption_methods/trifid/TrifidLayers';
 import TrifidGroups from '../../encryption_methods/trifid/TrifidGroups';
 
 const BlockBodyInput = (props) => {
-  let bodyInput;
   const switchBodyInput = () => {
+    let bodyInput;
     if (props.direction === 'crack') return null;
     switch (props.method) {
       case 'trifid':

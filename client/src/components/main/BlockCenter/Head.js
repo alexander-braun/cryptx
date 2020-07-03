@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 
 //Assets
 import { ReactComponent as Caret } from './img/caret.svg';
-import MethodNames from './EncryptionMethodNames';
-import MethodCrackAvailability from './EncryptionMethodCrackAvailability';
+
+import { EncryptionMethodsDetails } from './EncryptionMethodsDetails';
 
 //Actions
 import { toggleModal } from '../../../actions/toggleModal';
@@ -22,7 +22,7 @@ const Head = (props) => {
   return (
     <div className='block-settings__head'>
       <button className='block-settings__head-caret' onClick={toggleModal}>
-        {MethodNames[props.method]}
+        {EncryptionMethodsDetails[props.method].display}
         <Caret className='caret' />
       </button>
       <div className='block-settings__head-options'>
@@ -50,7 +50,7 @@ const Head = (props) => {
         >
           Decrypt
         </button>
-        {MethodCrackAvailability[props.method] ? (
+        {EncryptionMethodsDetails[props.method].crack ? (
           <button
             value='crack'
             onClick={(evt) => {

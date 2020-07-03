@@ -1,7 +1,7 @@
 import React from 'react';
-import ExplanatoryText from './ExplanatoryText';
+import MoreDetails from './MoreDetails';
 import Head from './Head';
-import Settings from './EncryptionMethodSettings';
+import Settings from './Settings';
 import './center.scss';
 
 const BlockCenter = () => {
@@ -10,7 +10,7 @@ const BlockCenter = () => {
       <Head />
       <div className='block-settings__body'>
         <Settings />
-        <ExplanatoryText />
+        <MoreDetails />
       </div>
     </div>
   );
