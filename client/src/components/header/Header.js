@@ -1,9 +1,23 @@
 import React, { Fragment, useState } from 'react';
-import logo from './img/key.png';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import ResizeObserver from 'react-resize-observer';
-import clsx from 'clsx';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+
+// Assets
+import './header.scss';
+import logo from './img/key.png';
+
+// Components
+import { HeaderStyles } from './HeaderStyles';
+import PropTypes from 'prop-types';
+
+//Actions
+import { logout } from '../../actions/authenticate';
+
+//Helper
+import HideElementOnScroll from '../hideOnScroll';
+
+//MUI
 import Drawer from '@material-ui/core/Drawer';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
@@ -14,7 +28,6 @@ import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -22,101 +35,20 @@ import PersonIcon from '@material-ui/icons/Person';
 import InfoIcon from '@material-ui/icons/Info';
 import HomeIcon from '@material-ui/icons/Home';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import './header.scss';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import { logout } from '../../actions/authenticate';
-import HideElementOnScroll from '../hideOnScroll';
-
-const drawerWidth = 240;
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex',
-  },
-  appBar: {
-    transition: theme.transitions.create(['margin', 'width'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-    position: 'fixed',
-    backgroundColor: 'rgba(26, 134, 195, 1)',
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-    fontSize: '4em',
-  },
-  hide: {
-    display: 'none',
-  },
-  drawer: {
-    width: drawerWidth,
-    flexShrink: 0,
-  },
-  drawerPaper: {
-    width: drawerWidth,
-  },
-  drawerHeader: {
-    display: 'flex',
-    alignItems: 'center',
-    padding: theme.spacing(0, 1),
-    // necessary for content to be below app bar
-    ...theme.mixins.toolbar,
-    justifyContent: 'flex-end',
-  },
-  content: {
-    flexGrow: 1,
-    padding: theme.spacing(3),
-    transition: theme.transitions.create('margin', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-    marginLeft: -drawerWidth,
-  },
-  contentShift: {
-    transition: theme.transitions.create('margin', {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-    marginLeft: 0,
-  },
-  itemWrapper: {
-    fontSize: '1rem',
-    marginRight: '1.5rem',
-  },
-  itemWrapperRight: {
-    fontSize: '1rem',
-    marginRight: '5vw',
-  },
-  itemMobile: {
-    color: 'black',
-    textDecoration: 'none',
-  },
-  link: {
-    letterSpacing: '0.075rem',
-    color: 'white',
-    textDecoration: 'none',
-  },
-  titleWrapper: {
-    marginRight: 'auto',
-  },
-}));
 
 const Header = (props) => {
   let [height, updateHeight] = useState();
   let [width, updateWidth] = useState();
-  const [open, setOpen] = useState(false);
+  const [drawerOpen, setDrawer] = useState(false);
 
-  const classes = useStyles();
-  const theme = useTheme();
-
-  const handleDrawerOpen = () => {
-    setOpen(true);
+  /**
+   * Toggles the mobile menue on the app-bar.
+   */
+  const toggleDrawer = () => {
+    setDrawer(!drawerOpen);
   };
 
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
+  const classes = HeaderStyles();
 
   const authLinksDesktop = (
     <div className='menue-items'>
@@ -160,7 +92,7 @@ const Header = (props) => {
 
   const authLinksMobile = (
     <Fragment>
-      <List onClick={handleDrawerClose}>
+      <List onClick={toggleDrawer}>
         <Link to='/'>
           <ListItem button className={classes.itemMobile}>
             <ListItemIcon>
@@ -199,7 +131,7 @@ const Header = (props) => {
 
   const guestLinksMobile = (
     <Fragment>
-      <List onClick={handleDrawerClose}>
+      <List onClick={toggleDrawer}>
         <Link to='/'>
           <ListItem button className={classes.itemMobile}>
             <ListItemIcon>
@@ -240,11 +172,11 @@ const Header = (props) => {
     <IconButton
       color='inherit'
       aria-label='open drawer'
-      onClick={handleDrawerOpen}
+      onClick={toggleDrawer}
       edge='start'
-      className={clsx(classes.menuButton, open && classes.hide)}
+      className={`${classes.menuButton} ${drawerOpen && classes.hide}`}
     >
-      <MenuIcon style={{ fontSize: '.7em' }} />
+      <MenuIcon className={classes.MenuIcon} />
     </IconButton>
   );
 
@@ -303,22 +235,18 @@ const Header = (props) => {
           className={classes.drawer}
           variant='persistent'
           anchor='right'
-          open={open}
+          open={drawerOpen}
           classes={{
             paper: classes.drawerPaper,
           }}
         >
           <div className={classes.drawerHeader}>
-            <IconButton onClick={handleDrawerClose}>
-              {theme.direction === 'ltr' ? (
-                <ChevronLeftIcon />
-              ) : (
-                <ChevronRightIcon />
-              )}
+            <IconButton onClick={toggleDrawer}>
+              <ChevronLeftIcon />
             </IconButton>
           </div>
           <Divider />
-          <List onClick={handleDrawerClose}>
+          <List onClick={toggleDrawer}>
             {!props.auth.loading && (
               <Fragment>
                 {props.auth.isAuthenticated

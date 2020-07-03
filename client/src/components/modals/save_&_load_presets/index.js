@@ -9,7 +9,7 @@ import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import PropTypes from 'prop-types';
 import { setCshift } from '../../../actions/setCShift';
 import { updateInput } from '../../../actions/updateInput';
-import toggleChars from '../../../actions/toggleIncludeChars';
+import toggleForeignChars from '../../../actions/toggleForeignChars';
 import toggleCase from '../../../actions/toggleCase';
 import updateAlphabet from '../../../actions/updateAlphabet';
 import { changeMethod } from '../../../actions/changeMethod';
@@ -141,7 +141,7 @@ class PresetsModal extends React.Component {
     method === 'caesar' && cShift !== undefined && this.props.setCshift(cShift);
     direction !== undefined && this.props.toggleDirection(direction);
     caseFormat !== undefined && this.props.toggleCase(caseFormat);
-    foreignChars !== undefined && this.props.toggleChars(foreignChars);
+    foreignChars !== undefined && this.props.toggleForeignChars(foreignChars);
     method === 'rsa' && prime1 !== undefined && this.props.setPrime1(prime1);
     method === 'rsa' && prime2 !== undefined && this.props.setPrime2(prime2);
     method === 'rsa' && RsaE !== undefined && this.props.setRsaE(RsaE);
@@ -197,8 +197,8 @@ class PresetsModal extends React.Component {
       method: this.props.method !== undefined && this.props.method,
       input: this.props.input !== undefined && this.props.input,
       direction: this.props.direction !== undefined && this.props.direction,
-      includeChars:
-        this.props.includeChars !== undefined && this.props.includeChars,
+      foreignChars:
+        this.props.foreignChars !== undefined && this.props.foreignChars,
       caseformat: this.props.caseformat !== undefined && this.props.caseformat,
       alphabet: this.props.alphabet !== undefined && this.props.alphabet,
     };
@@ -492,7 +492,7 @@ const mapStateToProps = (state) => ({
   direction: state.direction,
   input: state.input,
   method: state.method,
-  includeChars: state.includeChars,
+  foreignChars: state.foreignChars,
   caseformat: state.caseformat,
   alphabet: state.alphabet.alphabet,
   output: state.output,
@@ -506,7 +506,6 @@ const mapStateToProps = (state) => ({
   playSquare: state.playSquare,
   ringLength: state.skytale.ringLength,
   isAuthenticated: state.auth.isAuthenticated,
-
   keyNihilist: state.keyNihilist,
   cipherNihilist: state.cipherNihilist,
   substitutionAlphabet: state.substitutionAlphabet,
@@ -524,7 +523,7 @@ const mapActionsToProps = {
   setCshift,
   updateInput,
   toggleCase,
-  toggleChars,
+  toggleForeignChars,
   updateAlphabet,
   changeMethod,
   toggleDirection,

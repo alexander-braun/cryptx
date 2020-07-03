@@ -10,18 +10,24 @@
 .about-content {
   text-align: center;
 
-  h1 {
+  &__link {
+    color: rgb(26, 134, 195);
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 1rem;
+    display: inline-block;
+  }
+
+  &__app-title {
     margin-bottom: 4vh;
     font-size: 4rem;
   }
 
-  &__paragraph:last-child {
+  &__paragraph {
+    margin-bottom: 12px;
     font-size: 1rem;
-
-    a {
-      color: rgb(26, 134, 195);
-      font-weight: 600;
-      text-decoration: none;
+    &--inline {
+      display: inline-block;
     }
   }
 }

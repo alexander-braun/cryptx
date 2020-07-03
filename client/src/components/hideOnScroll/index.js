@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react';
 
-const HideElementOnScroll = (props) => {
+const HideElementOnScroll = () => {
   const [hide, setHide] = useState(false);
 
   const handleScroll = () => {
-    //checkscroll
     const top = window.pageYOffset || document.documentElement.scrollTop;
     setHide(top >= 80);
   };

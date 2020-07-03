@@ -1,13 +1,13 @@
 import React from 'react';
 import ExplanatoryText from './ExplanatoryText';
-import BlockHeadCenter from './BlockHeadCenter';
+import Head from './Head';
 import Settings from './EncryptionMethodSettings';
 import './center.scss';
 
 const BlockCenter = () => {
   return (
     <div className='block-settings'>
-      <BlockHeadCenter />
+      <Head />
       <div className='block-settings__body'>
         <Settings />
         <ExplanatoryText />

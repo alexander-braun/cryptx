@@ -12,7 +12,6 @@
   z-index: 2;
 
   &__links {
-    margin-left: auto;
     margin-left: 13vw;
     font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
     font-size: 0.8rem;
@@ -21,11 +20,12 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    color: rgba(255, 255, 255, 0.596);
+    color: rgba(255, 255, 255, 0.6);
   }
 
   &__icon {
     margin-right: 2rem;
     font-size: 2rem;
+    color: white;
   }
 }

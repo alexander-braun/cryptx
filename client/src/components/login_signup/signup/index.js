@@ -1,4 +1,22 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+
+//Assets
+import '../login_signup.scss';
+import { SignupStyles } from './SignupStyles';
+
+//Components
+import { setAlert } from '../../../actions/alert';
+import Alert from '../../alert';
+import { Copyright } from '../Copyright';
+import { SvgBottom } from '../SvgBottom';
+import { SvgTop } from '../SvgTop';
+
+//Actions
+import { register } from '../../../actions/authenticate';
+
+//MUI
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -10,104 +28,53 @@ import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import '../login_signup.scss';
-import { connect } from 'react-redux';
-import { setAlert } from '../../../actions/alert';
-import PropTypes from 'prop-types';
-import Alert from '../../alert';
-import { register } from '../../../actions/authenticate';
-
-function Copyright() {
-  return (
-    <Typography variant='body2' color='textSecondary' align='center'>
-      {'Copyright © '}
-      <Link
-        style={{ color: '#4ab2eec0' }}
-        to='https://alexander-braun.github.io/strngcrypt/'
-      >
-        CryptX
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
-
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    marginTop: theme.spacing(8),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    color: '#e1e1e1',
-    borderColor: 'white',
-  },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
-    color: '#e1e1e1',
-    borderColor: 'white',
-  },
-  form: {
-    width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing(1),
-    color: '#e1e1e1',
-    borderColor: 'white',
-  },
-  submit: {
-    margin: theme.spacing(3, 0, 2),
-    color: '#e1e1e1',
-    borderColor: 'white',
-  },
-}));
 
 const SignIn = (props) => {
-  const classes = useStyles();
+  /**
+   * Exported styles for MUI
+   */
+  const classes = SignupStyles();
+
+  /**
+   * Signup Data
+   */
   const [formData, updateFormdata] = useState({
     name: '',
     email: '',
     password: '',
   });
+
   const { name, email, password } = formData;
+
+  /**
+   * Set name, email, password in state
+   */
   const onChange = (e) =>
     updateFormdata({ ...formData, [e.target.name]: e.target.value });
+
+  /**
+   * Try signup action
+   */
   const onSubmit = async (e) => {
     e.preventDefault();
     props.register({ name, email, password });
   };
 
+  /**
+   * Send user to landing page after
+   * authentification
+   */
   if (props.isAuthenticated) {
     window.location.href = '/';
   }
 
   return (
-    <div id='signup_section'>
-      <svg
-        fill='rgb(23, 114, 167)'
-        id='curveDownColor'
-        xmlns='http://www.w3.org/2000/svg'
-        version='1.1'
-        width='100%'
-        viewBox='0 0 100 100'
-        preserveAspectRatio='none'
-      >
-        <linearGradient id='grad2' x1='0%' y1='0%' x2='100%' y2='0%'>
-          <stop
-            offset='0%'
-            style={{ stopColor: 'rgb(13, 78, 115)', stopOpacity: '1' }}
-          />
-          <stop
-            offset='100%'
-            style={{ stopColor: 'rgb(23, 114, 167)', stopOpacity: '1' }}
-          />
-        </linearGradient>
-        <path d='M0 0 C 50 100 80 100 100 0 Z' fill='url(#grad2)'></path>
-      </svg>
+    <div className='signup-section'>
+      <SvgTop />
       <Alert />
-      <div id='signup_form'>
-        <Container id='signup_mainpage' component='main' maxWidth='xs'>
+      <div className='signup-section__form'>
+        <Container component='main' maxWidth='xs'>
           <CssBaseline />
           <div className={classes.paper}>
             <Avatar className={classes.avatar}>
@@ -123,7 +90,6 @@ const SignIn = (props) => {
                     variant='outlined'
                     required
                     fullWidth
-                    id='name'
                     label='Name'
                     name='name'
                     autoComplete='name'
@@ -136,7 +102,6 @@ const SignIn = (props) => {
                     variant='outlined'
                     required
                     fullWidth
-                    id='email'
                     label='Email Address'
                     name='email'
                     autoComplete='email'
@@ -152,7 +117,6 @@ const SignIn = (props) => {
                     name='password'
                     label='Password'
                     type='password'
-                    id='password'
                     autoComplete='current-password'
                     value={password}
                     onChange={(e) => onChange(e)}
@@ -180,7 +144,7 @@ const SignIn = (props) => {
                 <Grid item>
                   <Link
                     to={process.env.PUBLIC_URL + '/login'}
-                    style={{ color: '#4ab2eec0', textDecoration: 'none' }}
+                    className={classes.link}
                     variant='body2'
                   >
                     Already have an account? Sign in
@@ -194,28 +158,7 @@ const SignIn = (props) => {
           </Box>
         </Container>
       </div>
-      <svg
-        id='curveUpColor'
-        xmlns='http://www.w3.org/2000/svg'
-        version='1.1'
-        width='100%'
-        viewBox='0 0 100 100'
-        preserveAspectRatio='none'
-      >
-        <defs>
-          <linearGradient id='grad1' x1='0%' y1='0%' x2='100%' y2='0%'>
-            <stop
-              offset='0%'
-              style={{ stopColor: 'rgb(13, 78, 115)', stopOpacity: '1' }}
-            />
-            <stop
-              offset='100%'
-              style={{ stopColor: 'rgb(23, 114, 167)', stopOpacity: '1' }}
-            />
-          </linearGradient>
-        </defs>
-        <path d='M0 100 C 20 0 50 0 100 100 Z' fill='url(#grad1)'></path>
-      </svg>
+      <SvgBottom />
     </div>
   );
 };

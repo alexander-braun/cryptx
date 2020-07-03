@@ -6,7 +6,7 @@ import cShift from './cShift';
 import direction from './direction';
 import input from './input';
 import method from './method';
-import includeChars from './includechars';
+import foreignChars from './foreignChars';
 import output from './output';
 import caseformat from './caseformat';
 import alphabet from './alphabet';
@@ -43,7 +43,7 @@ export default combineReducers({
   direction,
   input,
   method,
-  includeChars,
+  foreignChars,
   output,
   caseformat,
   alphabet,

@@ -1,5 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+
+//Actions
 import updateAlphabet from '../../../actions/updateAlphabet';
 
 const Alphabet = ({ alphabet, alphabetActive, updateAlphabet }) => {
@@ -9,10 +12,14 @@ const Alphabet = ({ alphabet, alphabetActive, updateAlphabet }) => {
         <div className='content-element__settings-name'>Alphabet</div>
         <div className='content-element__settings-operators'>
           <textarea
-            className='content-element__textarea'
+            className={
+              'content-element__textarea ' +
+              (alphabetActive
+                ? 'content-element__textarea--active'
+                : 'content-element__textarea--deactivated')
+            }
             value={alphabet}
             readOnly={!alphabetActive}
-            style={alphabetActive ? { color: '#dadada' } : { color: 'grey' }}
             onChange={(evt) => {
               updateAlphabet(evt.target.value);
             }}
@@ -30,6 +37,12 @@ const mapStateToProps = (state) => ({
 
 const mapActionsToProps = {
   updateAlphabet: updateAlphabet,
+};
+
+Alphabet.propTypes = {
+  alphabet: PropTypes.string.isRequired,
+  alphabetActive: PropTypes.bool.isRequired,
+  updateAlphabet: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapActionsToProps)(Alphabet);

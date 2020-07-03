@@ -15,16 +15,18 @@ const Profile = (props) => {
     <Spinner />
   ) : (
     <Fragment>
-      <div id='profile_wrapper'>
-        <div style={{ color: 'white' }} id='userprofile_container'>
-          <div className='left'>
-            <h1>Welcome {props.auth.user && props.auth.user.name}!</h1>
-            <img
-              alt='userimage'
-              src={!props.auth.loading ? props.auth.user.avatar : null}
-            ></img>
-            <h2>You have full access to all features of cryptX !</h2>
-          </div>
+      <div className='profile-wrapper'>
+        <div className='profile-wrapper__card'>
+          <h1>Welcome {props.auth.user && props.auth.user.name}!</h1>
+          <img
+            alt='userimage'
+            src={!props.auth.loading ? props.auth.user.avatar : null}
+            className='profile-wrapper__user-img'
+          ></img>
+          <h2 className='profile-wrapper__access-text'>
+            You have full access <br></br> to all features of cryptx.<br></br>
+            Thank you for registering!
+          </h2>
         </div>
       </div>
     </Fragment>

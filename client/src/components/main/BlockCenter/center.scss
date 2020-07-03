@@ -55,6 +55,14 @@
     box-sizing: border-box;
     font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
 
+    &--active {
+      color: #dadada;
+    }
+
+    &--deactivated {
+      color: grey;
+    }
+
     &--single-big {
       text-align: center;
       max-height: 2.5em;
@@ -432,7 +440,7 @@
     }
   }
 
-  &__head-text {
+  &__head-caret {
     font: 500 20px 'Roboto', 'Helvetica', 'Arial', sans-serif !important;
     display: flex;
     align-items: center;

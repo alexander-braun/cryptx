@@ -1,14 +1,19 @@
 import React from 'react';
-import { ReactComponent as Caret } from './img/caret.svg';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { toggleModal } from '../../../actions/toggleModal';
-import { toggleDirection } from '../../../actions/toggleDirection';
+
+//Assets
+import { ReactComponent as Caret } from './img/caret.svg';
 import MethodNames from './EncryptionMethodNames';
 import MethodCrackAvailability from './EncryptionMethodCrackAvailability';
 
-const BlockHeadCenter = (props) => {
+//Actions
+import { toggleModal } from '../../../actions/toggleModal';
+import { toggleDirection } from '../../../actions/toggleDirection';
+
+const Head = (props) => {
   /**
-   * Switch Method Modal toggle
+   * Toggle encryption methods modal
    */
   const toggleModal = () => {
     props.onModalToggle();
@@ -16,8 +21,9 @@ const BlockHeadCenter = (props) => {
 
   return (
     <div className='block-settings__head'>
-      <button className='block-settings__head-text' onClick={toggleModal}>
-        {MethodNames[props.method]} <Caret className='caret' />
+      <button className='block-settings__head-caret' onClick={toggleModal}>
+        {MethodNames[props.method]}
+        <Caret className='caret' />
       </button>
       <div className='block-settings__head-options'>
         <button
@@ -25,10 +31,9 @@ const BlockHeadCenter = (props) => {
           onClick={(evt) => {
             props.toggleDirection(evt.target.value);
           }}
-          className={`block-head__option ${
-            props.direction === 'encrypt'
-              ? 'block-settings__head-option block-settings__head-option--selected'
-              : 'block-settings__head-option'
+          className={`block-settings__head-option ${
+            props.direction === 'encrypt' &&
+            'block-settings__head-option--selected'
           }`}
         >
           Encrypt
@@ -38,11 +43,10 @@ const BlockHeadCenter = (props) => {
           onClick={(evt) => {
             props.toggleDirection(evt.target.value);
           }}
-          className={
-            props.direction === 'decrypt'
-              ? 'block-settings__head-option block-settings__head-option--selected'
-              : 'block-settings__head-option'
-          }
+          className={`block-settings__head-option ${
+            props.direction === 'decrypt' &&
+            'block-settings__head-option--selected'
+          }`}
         >
           Decrypt
         </button>
@@ -52,11 +56,10 @@ const BlockHeadCenter = (props) => {
             onClick={(evt) => {
               props.toggleDirection(evt.target.value);
             }}
-            className={
-              props.direction === 'crack'
-                ? 'block-settings__head-option block-settings__head-option--selected'
-                : 'block-settings__head-option'
-            }
+            className={`block-settings__head-option ${
+              props.direction === 'crack' &&
+              'block-settings__head-option--selected'
+            }`}
           >
             Crack
           </button>
@@ -77,7 +80,12 @@ const mapActionsToProps = {
   toggleDirection: toggleDirection,
 };
 
-export default connect(
-  mapStateToProps,
-  mapActionsToProps
-)(React.memo(BlockHeadCenter));
+Head.propTypes = {
+  modalOpen: PropTypes.bool.isRequired,
+  direction: PropTypes.string.isRequired,
+  method: PropTypes.string.isRequired,
+  onModalToggle: PropTypes.func.isRequired,
+  toggleDirection: PropTypes.func.isRequired,
+};
+
+export default connect(mapStateToProps, mapActionsToProps)(React.memo(Head));

@@ -213,7 +213,7 @@ const mapStateToProps = (state) => ({
   direction: state.direction,
   input: state.input,
   method: state.method,
-  includeChars: state.includeChars,
+  foreignChars: state.foreignChars,
   caseformat: state.caseformat,
   alphabet: state.alphabet.alphabet,
   output: state.output,

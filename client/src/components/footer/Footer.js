@@ -9,7 +9,6 @@ const Footer = () => {
         <a
           href='https://github.com/alexander-braun/cryptx'
           target='blank'
-          style={{ color: 'white' }}
           className='site-footer__icon'
         >
           <GitHubIcon />

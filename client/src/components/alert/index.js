@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import './alert.scss';
 
 const Alert = (props) =>
-  props.alerts !== null &&
   props.alerts.length > 0 &&
   props.alerts.map((alert) => (
     <div key={alert.id} className={`alert alert-${alert.alertType}`}>

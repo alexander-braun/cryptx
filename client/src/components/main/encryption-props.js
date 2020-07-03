@@ -21,7 +21,7 @@ const encryptionProps = (props) => {
         13,
         props.direction,
         props.caseformat,
-        props.includeChars,
+        props.foreignChars,
       ];
     case 'caesar':
       if (props.direction === 'crack') {
@@ -32,7 +32,7 @@ const encryptionProps = (props) => {
           props.cShift,
           props.direction,
           props.caseformat,
-          props.includeChars,
+          props.foreignChars,
         ];
       } else
         return [
@@ -42,7 +42,7 @@ const encryptionProps = (props) => {
           props.cShift,
           props.direction,
           props.caseformat,
-          props.includeChars,
+          props.foreignChars,
         ];
     case 'rsa':
       return [
@@ -56,7 +56,7 @@ const encryptionProps = (props) => {
       return [
         props.input,
         props.caseformat,
-        props.includeChars,
+        props.foreignChars,
         props.direction,
         props.otpKey,
         props.alphabet,
@@ -66,13 +66,13 @@ const encryptionProps = (props) => {
       return [
         props.input,
         props.caseformat,
-        props.includeChars,
+        props.foreignChars,
         props.alphabet,
       ];
     case 'casetransform':
       return [props.input, props.caseTransformChoice];
     case 'atbash':
-      return [props.input, props.caseformat, props.includeChars];
+      return [props.input, props.caseformat, props.foreignChars];
     case 'affine':
       return [
         props.alphabet,
@@ -80,7 +80,7 @@ const encryptionProps = (props) => {
         props.affine_alpha,
         props.affine_beta,
         props.direction,
-        props.includeChars,
+        props.foreignChars,
         props.caseformat,
       ];
     case 'vigenere':
@@ -88,7 +88,7 @@ const encryptionProps = (props) => {
         props.input,
         props.alphabet,
         props.direction,
-        props.includeChars,
+        props.foreignChars,
         props.caseformat,
         props.keywordVigenere,
       ];
@@ -117,7 +117,7 @@ const encryptionProps = (props) => {
         props.caseformat,
         props.input,
         props.ringLength,
-        props.includeChars,
+        props.foreignChars,
       ];
     default:
       return [];

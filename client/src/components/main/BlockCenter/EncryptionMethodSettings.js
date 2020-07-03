@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 
 import Alphabet from './Alphabet';
-import CaseChars from './CaseChars';
+import ForeignChars from './ForeignChars';
 import CaesarShift from '../../encryption_methods/caesar/CaesarShift';
 import CaesarTransposition from '../../encryption_methods/caesar/CaesarTransposition';
 import AlphaBetaSelectors from '../../encryption_methods/affine/AlphaBetaSelectors';
@@ -48,7 +48,7 @@ const BlockBodyInput = (props) => {
         bodyInput = <CaseTransform />;
         break;
       case 'reverse':
-        bodyInput = <CaseChars />;
+        bodyInput = <ForeignChars />;
         break;
       case 'nihilist':
         bodyInput = (
@@ -67,7 +67,7 @@ const BlockBodyInput = (props) => {
               alphabet={props.alphabet}
               alphabetActive={props.alphabetActive}
             />
-            <CaseChars />
+            <ForeignChars />
           </Fragment>
         );
         break;
@@ -81,7 +81,7 @@ const BlockBodyInput = (props) => {
               alphabet={props.alphabet}
               alphabetActive={props.alphabetActive}
             />
-            <CaseChars />
+            <ForeignChars />
           </Fragment>
         );
         break;
@@ -94,7 +94,7 @@ const BlockBodyInput = (props) => {
               alphabet={props.alphabet}
               alphabetActive={props.alphabetActive}
             />
-            <CaseChars />
+            <ForeignChars />
           </Fragment>
         );
         break;
@@ -106,7 +106,7 @@ const BlockBodyInput = (props) => {
               alphabet={props.alphabet}
               alphabetActive={props.alphabetActive}
             />
-            <CaseChars />
+            <ForeignChars />
           </Fragment>
         );
         break;
@@ -119,7 +119,7 @@ const BlockBodyInput = (props) => {
               alphabet={props.alphabet}
               alphabetActive={props.alphabetActive}
             />
-            <CaseChars />
+            <ForeignChars />
           </Fragment>
         );
         break;
@@ -133,7 +133,7 @@ const BlockBodyInput = (props) => {
               alphabet={props.alphabet}
               alphabetActive={props.alphabetActive}
             />
-            <CaseChars />
+            <ForeignChars />
           </Fragment>
         );
         break;
@@ -152,7 +152,7 @@ const BlockBodyInput = (props) => {
               alphabet={props.alphabet}
               alphabetActive={props.alphabetActive}
             />
-            <CaseChars />
+            <ForeignChars />
           </Fragment>
         );
         break;
@@ -164,7 +164,7 @@ const BlockBodyInput = (props) => {
               alphabet={props.alphabet}
               alphabetActive={props.alphabetActive}
             />
-            <CaseChars />
+            <ForeignChars />
           </Fragment>
         );
         break;
