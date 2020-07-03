@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+
+//MUI
 import { withStyles } from '@material-ui/core/styles';
 import Tooltip from '@material-ui/core/Tooltip';
-import PublishIcon from '@material-ui/icons/Publish';
+import GetAppIcon from '@material-ui/icons/GetApp';
 
 const StyledTooltip = withStyles((theme) => ({
   tooltip: {
@@ -13,15 +15,12 @@ const StyledTooltip = withStyles((theme) => ({
   },
 }))(Tooltip);
 
-const IcTooltipLoadPreset = () => {
+const LoadPresetTooltip = () => {
   return (
-    <StyledTooltip title={<React.Fragment>Save as Preset</React.Fragment>}>
-      <PublishIcon
-        className='headBtn'
-        style={{ color: '#3e94c5', fontSize: '24px' }}
-      />
+    <StyledTooltip title={<Fragment>Load a preset</Fragment>}>
+      <GetAppIcon className='block__head-button-svg' />
     </StyledTooltip>
   );
 };
 
-export default IcTooltipLoadPreset;
+export default LoadPresetTooltip;

@@ -1,7 +1,12 @@
 import React, { useRef, useEffect } from 'react';
 import { select, axisBottom, axisLeft, scaleLinear, scaleBand } from 'd3';
 import * as d3 from 'd3';
+import PropTypes from 'prop-types';
+
+//Helper
 import useResizeObserver from '../../../../main/helper/Resizeobserver';
+
+//Assets
 import frequency from './frequency-analysis-logic.js';
 
 function BarChart({ data, alphabet, inputValue }) {
@@ -120,5 +125,11 @@ function BarChart({ data, alphabet, inputValue }) {
     </div>
   );
 }
+
+BarChart.propTypes = {
+  data: PropTypes.arrayOf(PropTypes.number).isRequired,
+  alphabet: PropTypes.arrayOf(PropTypes.string).isRequired,
+  inputValue: PropTypes.string.isRequired,
+};
 
 export default BarChart;

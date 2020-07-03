@@ -1,15 +1,20 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+
+//Actions
 import { togglePresetsModal } from '../../../actions/togglePresetsModal';
 import { toggleDirection } from '../../../actions/toggleDirection';
 import { updateInput } from '../../../actions/updateInput';
 import { toggleAnalysisModal } from '../../../actions/toggleAnalysisModal';
-import IcTooltipSwapInput from './IcTooltipSwapInputs';
-import IcTooltipLoadPreset from './IcTooltipLoadPreset';
-import IcTooltipSavePreset from './IcTooltipSavePreset';
-import IcTooltipAddAnalysisMethod from './IcTooltipAddAnalysisMethod';
 
-const BlockheadButtons = ({
+//Components
+import SwapInputsTooltip from './Tooltips/SwapInputsTooltip';
+import LoadPresetTooltip from './Tooltips/LoadPresetTooltip';
+import SavePresetTooltip from './Tooltips/SavePresetTooltip';
+import AddAnalysisMethodTooltip from './Tooltips/AddAnalysisMethodTooltip';
+
+const MenueButtons = ({
   togglePresetsModal,
   toggleDirection,
   output,
@@ -17,70 +22,55 @@ const BlockheadButtons = ({
   updateInput,
   toggleAnalysisModal,
 }) => {
+  /**
+   * Puts the encrypted output into the input field
+   * and toggles the direction so the encrypted input
+   * gets decrypted.
+   */
   const swapInputOutput = () => {
-    updateInput(output);
     const newDirection =
       direction === 'encrypt'
         ? 'decrypt'
         : direction === 'crack'
         ? 'crack'
         : 'encrypt';
+    updateInput(output);
     toggleDirection(newDirection);
   };
+
   return (
     <Fragment>
       <button
-        onClick={(e) => {
-          e.preventDefault();
+        className='block__head-button'
+        onClick={() => {
           swapInputOutput();
         }}
-        style={{
-          marginLeft: 'auto',
-          backgroundColor: 'transparent',
-          border: 'none',
-          cursor: 'pointer',
-        }}
       >
-        <IcTooltipSwapInput />
+        <SwapInputsTooltip />
       </button>
       <button
-        style={{
-          backgroundColor: 'transparent',
-          border: 'none',
-          cursor: 'pointer',
-        }}
-        onClick={(e) => {
-          e.preventDefault();
+        className='block__head-button'
+        onClick={() => {
           togglePresetsModal('load');
         }}
       >
-        <IcTooltipLoadPreset />
+        <LoadPresetTooltip />
       </button>
       <button
-        style={{
-          backgroundColor: 'transparent',
-          border: 'none',
-          cursor: 'pointer',
-        }}
-        onClick={(e) => {
-          e.preventDefault();
+        className='block__head-button'
+        onClick={() => {
           togglePresetsModal('save');
         }}
       >
-        <IcTooltipSavePreset />
+        <SavePresetTooltip />
       </button>
       <button
-        style={{
-          backgroundColor: 'transparent',
-          border: 'none',
-          cursor: 'pointer',
-        }}
-        onClick={(e) => {
-          e.preventDefault();
+        className='block__head-button'
+        onClick={() => {
           toggleAnalysisModal();
         }}
       >
-        <IcTooltipAddAnalysisMethod />
+        <AddAnalysisMethodTooltip />
       </button>
     </Fragment>
   );
@@ -98,4 +88,13 @@ const mapActionsToProps = {
   updateInput: updateInput,
 };
 
-export default connect(mapStateToProps, mapActionsToProps)(BlockheadButtons);
+MenueButtons.propTypes = {
+  output: PropTypes.string.isRequired,
+  direction: PropTypes.string.isRequired,
+  togglePresetsModal: PropTypes.func.isRequired,
+  toggleDirection: PropTypes.func.isRequired,
+  toggleAnalysisModal: PropTypes.func.isRequired,
+  updateInput: PropTypes.func.isRequired,
+};
+
+export default connect(mapStateToProps, mapActionsToProps)(MenueButtons);

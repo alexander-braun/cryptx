@@ -43,6 +43,22 @@
     }
   }
 
+  &__head-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 1px 6px;
+
+    &:nth-child(2) {
+      margin-left: auto;
+    }
+  }
+
+  &__head-button-svg {
+    color: #3e94c5;
+    font-size: 24px;
+  }
+
   &__title {
     display: inline-block;
     align-self: center;

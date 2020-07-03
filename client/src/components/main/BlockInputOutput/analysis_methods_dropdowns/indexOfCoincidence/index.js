@@ -1,29 +1,28 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+
+//MUI
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import { makeStyles } from '@material-ui/core/styles';
-import IcTooltipExplanatory from '../../IcTooltipExplanatory';
-import IcTooltipRemoveAnalysisMethod from '../../IcTooltipRemoveAnalysisMethod';
-import './ioc.scss';
-import { calcIndexOfCoincidence, calcLanguageProbability } from './ioc-logic';
-import { connect } from 'react-redux';
 
-const useStyles = makeStyles((theme) => ({
-  heading: {
-    fontSize: theme.typography.pxToRem(15),
-    fontWeight: theme.typography.fontWeightRegular,
-  },
-  body: {
-    fontSize: theme.typography.pxToRem(18),
-  },
-}));
+//Components
+import AnalysisMethodsExplanationTooltip from '../../Tooltips/AnalysisMethodsExplanationTooltip';
+import RemoveAnalysisMethodButton from '../RemoveAnalysisMethodButton';
+
+//Assets
+import './ioc.scss';
+import { IndexOfCoincidenceStyles } from './IndexOfCoincidenceStyles';
+
+//Helpers
+import { calcIndexOfCoincidence, calcLanguageProbability } from './ioc-logic';
 
 function IndexOfCoincidence({ menue, input, output }) {
   const [expandedStatus, changeExpandedStatus] = useState(false);
-  const classes = useStyles();
+  const classes = IndexOfCoincidenceStyles();
 
   const ioc =
     menue === 'input'
@@ -32,7 +31,7 @@ function IndexOfCoincidence({ menue, input, output }) {
 
   const languageProbability = calcLanguageProbability(ioc);
 
-  const iocInformations = () => {
+  const IocBody = () => {
     if (!ioc && ioc !== 0) return 'no input';
     else
       return (
@@ -42,7 +41,7 @@ function IndexOfCoincidence({ menue, input, output }) {
             &nbsp;{parseFloat(ioc).toFixed(4)}
           </div>
           <div className='ioc-information__category'>
-            <span className='ioc-information__text'>Σ IC's =</span>
+            <span className='ioc-information__text'>Text-IC =</span>
             &nbsp;{parseFloat(ioc * 26).toFixed(4)}
           </div>
           <div className='ioc-information__category'>
@@ -66,16 +65,16 @@ function IndexOfCoincidence({ menue, input, output }) {
         id='panel2a-header'
       >
         <Typography className={classes.heading}>
-          Index Of Coincidence (IC)
+          Index Of Coincidence IC
         </Typography>
-        <IcTooltipExplanatory method={'index-of-coincidence'} />
-        <IcTooltipRemoveAnalysisMethod
+        <AnalysisMethodsExplanationTooltip method={'index-of-coincidence'} />
+        <RemoveAnalysisMethodButton
           menue={menue}
           method={'index-of-coincidence'}
         />
       </ExpansionPanelSummary>
       <ExpansionPanelDetails className={classes.body}>
-        {expandedStatus ? iocInformations() : ''}
+        {expandedStatus ? IocBody() : ''}
       </ExpansionPanelDetails>
     </ExpansionPanel>
   );
@@ -85,5 +84,10 @@ const mapStateToProps = (state) => ({
   input: state.input,
   output: state.output,
 });
+
+IndexOfCoincidence.propTypes = {
+  input: PropTypes.string.isRequired,
+  output: PropTypes.string.isRequired,
+};
 
 export default connect(mapStateToProps)(IndexOfCoincidence);

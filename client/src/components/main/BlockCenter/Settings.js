@@ -1,6 +1,8 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
+//Components
 import Alphabet from './Alphabet';
 import ForeignChars from './ForeignChars';
 import CaesarShift from '../../encryption_methods/caesar/CaesarShift';
@@ -16,7 +18,6 @@ import Rings from '../../encryption_methods/skytale/Rings';
 import AtbashTransposition from '../../encryption_methods/atbash/AtbashTransposition';
 import OtpGenerate from '../../encryption_methods/onetimepad/otpGenerate';
 import Primes from '../../encryption_methods/rsa/Primes';
-
 import VigenereTransposition from '../../encryption_methods/vigenere/vigenereTransposition';
 import CaseTransform from '../../encryption_methods/caseTransform/CaseTransform';
 import KeywordsNihilist from '../../encryption_methods/nihilist/KeywordNihilist';
@@ -27,40 +28,34 @@ import TrifidSettings from '../../encryption_methods/trifid/TrifidSettings';
 import TrifidLayers from '../../encryption_methods/trifid/TrifidLayers';
 import TrifidGroups from '../../encryption_methods/trifid/TrifidGroups';
 
-const BlockBodyInput = (props) => {
-  const switchBodyInput = () => {
-    let bodyInput;
+const Settings = (props) => {
+  const switchSettings = () => {
     if (props.direction === 'crack') return null;
     switch (props.method) {
       case 'trifid':
-        bodyInput = (
+        return (
           <Fragment>
             <TrifidSettings />
             <TrifidLayers />
             <TrifidGroups />
           </Fragment>
         );
-        break;
       case 'substitution':
-        bodyInput = <SubstitutionTable />;
-        break;
+        return <SubstitutionTable />;
       case 'casetransform':
-        bodyInput = <CaseTransform />;
-        break;
+        return <CaseTransform />;
       case 'reverse':
-        bodyInput = <ForeignChars />;
-        break;
+        return <ForeignChars />;
       case 'nihilist':
-        bodyInput = (
+        return (
           <Fragment>
             <KeywordsNihilist />
             <NihilistSquare />
             <NihilistTransposition />
           </Fragment>
         );
-        break;
       case 'atbash':
-        bodyInput = (
+        return (
           <Fragment>
             <AtbashTransposition alphabet={props.alphabet} />
             <Alphabet
@@ -70,12 +65,10 @@ const BlockBodyInput = (props) => {
             <ForeignChars />
           </Fragment>
         );
-        break;
       case 'rsa':
-        bodyInput = <Primes />;
-        break;
+        return <Primes />;
       case 'rot13':
-        bodyInput = (
+        return (
           <Fragment>
             <Alphabet
               alphabet={props.alphabet}
@@ -84,9 +77,8 @@ const BlockBodyInput = (props) => {
             <ForeignChars />
           </Fragment>
         );
-        break;
       case 'caesar':
-        bodyInput = (
+        return (
           <Fragment>
             <CaesarShift />
             <CaesarTransposition alphabet={props.alphabet} />
@@ -97,9 +89,8 @@ const BlockBodyInput = (props) => {
             <ForeignChars />
           </Fragment>
         );
-        break;
       case 'affine':
-        bodyInput = (
+        return (
           <Fragment>
             <AlphaBetaSelectors />
             <Alphabet
@@ -109,9 +100,8 @@ const BlockBodyInput = (props) => {
             <ForeignChars />
           </Fragment>
         );
-        break;
       case 'vigenere':
-        bodyInput = (
+        return (
           <Fragment>
             <KeywordVigenere />
             <VigenereTransposition alphabet={props.alphabet} />
@@ -122,9 +112,8 @@ const BlockBodyInput = (props) => {
             <ForeignChars />
           </Fragment>
         );
-        break;
       case 'playfair':
-        bodyInput = (
+        return (
           <Fragment>
             <CharOptions />
             <KeywordPlayfair />
@@ -136,15 +125,12 @@ const BlockBodyInput = (props) => {
             <ForeignChars />
           </Fragment>
         );
-        break;
       case 'morse':
-        bodyInput = null;
-        break;
+        return null;
       case 'replace':
-        bodyInput = <ReplaceKeys />;
-        break;
+        return <ReplaceKeys />;
       case 'skytale':
-        bodyInput = (
+        return (
           <Fragment>
             <RingLength />
             <Rings />
@@ -155,9 +141,8 @@ const BlockBodyInput = (props) => {
             <ForeignChars />
           </Fragment>
         );
-        break;
       case 'otp':
-        bodyInput = (
+        return (
           <Fragment>
             <OtpGenerate />
             <Alphabet
@@ -167,14 +152,12 @@ const BlockBodyInput = (props) => {
             <ForeignChars />
           </Fragment>
         );
-        break;
       default:
         return null;
     }
-    return bodyInput;
   };
 
-  return <Fragment>{switchBodyInput()}</Fragment>;
+  return <Fragment>{switchSettings()}</Fragment>;
 };
 
 const mapStateToProps = (state) => ({
@@ -184,4 +167,11 @@ const mapStateToProps = (state) => ({
   alphabetActive: state.alphabet.active,
 });
 
-export default connect(mapStateToProps)(BlockBodyInput);
+Settings.propTypes = {
+  direction: PropTypes.string.isRequired,
+  method: PropTypes.string.isRequired,
+  alphabet: PropTypes.string.isRequired,
+  alphabetActive: PropTypes.bool.isRequired,
+};
+
+export default connect(mapStateToProps)(Settings);

@@ -1,6 +1,9 @@
-import Typography from '@material-ui/core/Typography';
-import React from 'react';
+import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
+
+//MUI
 import { withStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
 import Tooltip from '@material-ui/core/Tooltip';
 import Button from '@material-ui/core/Button';
 import InfoIcon from '@material-ui/icons/Info';
@@ -15,21 +18,21 @@ const StyledTooltip = withStyles((theme) => ({
   },
 }))(Tooltip);
 
-function IcTooltipExplanatory({ method }) {
+function AnalysisMethodsExplanationTooltip({ method }) {
   return (
     <StyledTooltip
       title={
         method === 'frequency-analysis' ? (
-          <React.Fragment>
+          <Fragment>
             <Typography color='inherit'>Frequency Analysis</Typography>
             Studies the distribution and frequency of letters in a text. Every
             language has a unique pattern of letter distribution and is
             identifiable by that pattern on a chart. Different encryption
             methods show distinguished pattern changes in the graph and make the
             frequency analysis a good tool to solve classic ciphertexts.
-          </React.Fragment>
+          </Fragment>
         ) : method === 'index-of-coincidence' ? (
-          <React.Fragment>
+          <Fragment>
             <Typography color='inherit'>Index Of Coincidence (IC)</Typography>
             Is an indicator for the frequency of wich letters appears in a text.
             Different languages and encryption algorithms have distinguishable
@@ -39,14 +42,14 @@ function IcTooltipExplanatory({ method }) {
             algorithm is equalizing the distribution of letters and has an equal
             chance for every given letter to appear. The IC will be 0.037 -
             0.038 (1/26).
-          </React.Fragment>
+          </Fragment>
         ) : (
-          <React.Fragment>
+          <Fragment>
             <Typography color='inherit'>Chi Squared (χ2)</Typography>
             The Chi Squared Test is used to compare the distribution of
             plaintext and ciphertext. The lower the value, the higher the chance
             that the used setting decrypted the text.
-          </React.Fragment>
+          </Fragment>
         )
       }
     >
@@ -57,4 +60,8 @@ function IcTooltipExplanatory({ method }) {
   );
 }
 
-export default IcTooltipExplanatory;
+AnalysisMethodsExplanationTooltip.propTypes = {
+  method: PropTypes.string.isRequired,
+};
+
+export default AnalysisMethodsExplanationTooltip;

@@ -12,16 +12,12 @@ import { toggleModal } from '../../../actions/toggleModal';
 import { toggleDirection } from '../../../actions/toggleDirection';
 
 const Head = (props) => {
-  /**
-   * Toggle encryption methods modal
-   */
-  const toggleModal = () => {
-    props.onModalToggle();
-  };
-
   return (
     <div className='block-settings__head'>
-      <button className='block-settings__head-caret' onClick={toggleModal}>
+      <button
+        className='block-settings__head-caret'
+        onClick={() => props.onModalToggle()}
+      >
         {EncryptionMethodsDetails[props.method].display}
         <Caret className='caret' />
       </button>

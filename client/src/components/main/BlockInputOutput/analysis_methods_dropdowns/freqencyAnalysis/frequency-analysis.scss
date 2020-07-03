@@ -1,4 +1,4 @@
-.barchart {
+.frequency-analysis-barchart {
   //width: 100%;
   height: auto;
   display: flex;
@@ -21,6 +21,10 @@
 
 .frequency-analysis-language {
   margin-top: 2em;
+
+  &__choice-wrapper {
+    margin-top: 2rem;
+  }
 
   &__select {
     color: white;

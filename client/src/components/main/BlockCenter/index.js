@@ -1,7 +1,11 @@
 import React from 'react';
-import MoreDetails from './MoreDetails';
+
+//Components
 import Head from './Head';
 import Settings from './Settings';
+import MoreDetails from './MoreDetails';
+
+//Assets
 import './center.scss';
 
 const BlockCenter = () => {

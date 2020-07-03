@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+
+//MUI
 import SwapHorizIcon from '@material-ui/icons/SwapHoriz';
 import { withStyles } from '@material-ui/core/styles';
 import Tooltip from '@material-ui/core/Tooltip';
@@ -13,21 +15,14 @@ const StyledTooltip = withStyles((theme) => ({
   },
 }))(Tooltip);
 
-const IcTooltipSwapInput = () => {
+const SwapInputsTooltip = () => {
   return (
     <StyledTooltip
-      title={
-        <React.Fragment>
-          Swap Input, Output and encryption direction.
-        </React.Fragment>
-      }
+      title={<Fragment>Swap Input, Output and encryption direction.</Fragment>}
     >
-      <SwapHorizIcon
-        className='headBtn'
-        style={{ color: '#3e94c5', fontSize: '24px' }}
-      />
+      <SwapHorizIcon className='block__head-button-svg' />
     </StyledTooltip>
   );
 };
 
-export default IcTooltipSwapInput;
+export default SwapInputsTooltip;

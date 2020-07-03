@@ -1,23 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import ChartImporter from './freqencyAnalysis/ChartImporter';
-import IndexOfCoincidence from './indexOfCoincidence/IndexOfCoincidence';
-import ChiSquared from './chi-squared/ChiSquared';
+import PropTypes from 'prop-types';
+
+//Components
+import FrequencyAnalysis from './freqencyAnalysis';
+import IndexOfCoincidence from './indexOfCoincidence';
+import ChiSquared from './chi-squared';
 
 const AnalysisMethods = (props) => {
   /**
-   * Input and Output component each send ioc-input /ioc-output
-   * data through props.
-   *
-   * Every analysis method in both input/output has a boolean value
-   * for whether it is visible or not. Those are f.e. ic_output, fq_output etc.
-   * This should be renamed for clarity, it's hard to differentiate
-   * between iocOutput and ic_output :/
-   *
-   * Also importing the iocOutput/iocInput value directly in IndexOfCoincidence.js
-   * would be smart.
+   * ic_output: index-of-coincidence visible in output block?
+   * ic_input: index-of-coincidence visible in input block?
    */
-
   const indexOfCoincidenceMenue =
     props.menue === 'output' && props.ic_output ? (
       <div className='analysis__dropdown'>
@@ -30,20 +24,24 @@ const AnalysisMethods = (props) => {
     ) : null;
 
   /**
-   * Same problem here. Importing inputs and outputs directly in the file
-   * would be smarter.
+   * fq_output: frequency-analysis visible in output block?
+   * fq_input: frequency-analysis visible in input block?
    */
   const frequencyAnalysisMenue =
     props.menue === 'output' && props.fq_output ? (
       <div className='analysis__dropdown'>
-        <ChartImporter menue={props.menue} inputValue={props.output} />
+        <FrequencyAnalysis menue={props.menue} inputValue={props.output} />
       </div>
     ) : props.menue === 'input' && props.fq_input ? (
       <div className='analysis__dropdown'>
-        <ChartImporter menue={props.menue} inputValue={props.input} />
+        <FrequencyAnalysis menue={props.menue} inputValue={props.input} />
       </div>
     ) : null;
 
+  /**
+   * chi_output: chi-squared-analysis visible in output block?
+   * chi_input: chi-squared-analysis visible in input block?
+   */
   const chiSquaredMenue =
     props.menue === 'output' && props.chi_output ? (
       <div className='analysis__dropdown'>
@@ -54,6 +52,7 @@ const AnalysisMethods = (props) => {
         <ChiSquared menue={props.menue} />
       </div>
     ) : null;
+
   return (
     <div className='analysis'>
       {frequencyAnalysisMenue}
@@ -71,5 +70,15 @@ const mapStateToProps = (state) => ({
   chi_input: state.analysisMethod.chi_input,
   chi_output: state.analysisMethod.chi_output,
 });
+
+AnalysisMethods.propTypes = {
+  ic_input: PropTypes.bool.isRequired,
+  ic_output: PropTypes.bool.isRequired,
+  fq_input: PropTypes.bool.isRequired,
+  fq_output: PropTypes.bool.isRequired,
+  chi_input: PropTypes.bool.isRequired,
+  chi_output: PropTypes.bool.isRequired,
+  menue: PropTypes.string.isRequired,
+};
 
 export default connect(mapStateToProps)(AnalysisMethods);

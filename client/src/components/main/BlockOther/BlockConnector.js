@@ -1,3 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-export default ({ sign }) => <div className='block-connector'>{sign}</div>;
+const BlockConnector = ({ sign }) => (
+  <div className='block-connector'>{sign}</div>
+);
+
+BlockConnector.propTypes = {
+  sign: PropTypes.string.isRequired,
+};
+
+export default BlockConnector;

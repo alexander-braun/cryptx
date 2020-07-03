@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+
+//MUI
 import { withStyles } from '@material-ui/core/styles';
 import Tooltip from '@material-ui/core/Tooltip';
-import GetAppIcon from '@material-ui/icons/GetApp';
+import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 
 const StyledTooltip = withStyles((theme) => ({
   tooltip: {
@@ -13,15 +15,12 @@ const StyledTooltip = withStyles((theme) => ({
   },
 }))(Tooltip);
 
-const IcTooltipLoadPreset = () => {
+const AddAnalysisMethodTooltip = () => {
   return (
-    <StyledTooltip title={<React.Fragment>Load a preset</React.Fragment>}>
-      <GetAppIcon
-        className='headBtn'
-        style={{ color: '#3e94c5', fontSize: '24px' }}
-      />
+    <StyledTooltip title={<Fragment>Add a analysis method</Fragment>}>
+      <AddCircleOutlineIcon className='block__head-button-svg' />
     </StyledTooltip>
   );
 };
 
-export default IcTooltipLoadPreset;
+export default AddAnalysisMethodTooltip;

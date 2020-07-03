@@ -10,17 +10,6 @@ import toggleCase from '../../../actions/toggleCase';
 import './case-chars.scss';
 
 const ForeignChars = (props) => {
-  /**
-   * Set the foreign characters to in- or exclude
-   */
-  const selectChars = (evt) => {
-    if (evt.target.value === 'include') {
-      props.toggleForeignChars('include');
-    } else {
-      props.toggleForeignChars('ignore');
-    }
-  };
-
   return (
     <div className='contentbox contentbox--double'>
       <div className='content-element content-element--double'>
@@ -52,7 +41,7 @@ const ForeignChars = (props) => {
                 : 'foreign-chars'
             }
             onClick={(evt) => {
-              selectChars(evt);
+              props.toggleForeignChars(evt.target.value);
             }}
             value='include'
           >
@@ -65,7 +54,7 @@ const ForeignChars = (props) => {
                 : 'foreign-chars foreign-chars--active'
             }
             onClick={(evt) => {
-              selectChars(evt);
+              props.toggleForeignChars(evt.target.value);
             }}
             value='ignore'
           >

@@ -1,11 +1,23 @@
 import React, { useRef, useEffect } from 'react';
-import math from '../helper/Math';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import BlockheadButtons from './HeadButtons';
+
+//Helper
+import math from '../helper/Math';
+
+//Components
+import MenueButtons from './MenueButtons';
 import AnalysisMethods from './analysis_methods_dropdowns';
 
-const Output = ({ updateInput, output }) => {
+const Output = ({ output }) => {
+  /**
+   * Ref for the output-field.
+   */
   const textareaRef = useRef();
+
+  /**
+   * Initial output-field resize.
+   */
   useEffect(() => {
     math.autoresize(textareaRef.current);
   });
@@ -14,7 +26,7 @@ const Output = ({ updateInput, output }) => {
     <div className='block'>
       <div className='block__head'>
         <div className='block__title'>Output</div>
-        <BlockheadButtons />
+        <MenueButtons />
       </div>
       <div className='block__output-wrapper'>
         <textarea
@@ -35,5 +47,9 @@ const Output = ({ updateInput, output }) => {
 const mapStateToProps = (state) => ({
   output: state.output,
 });
+
+Output.propTypes = {
+  output: PropTypes.string.isRequired,
+};
 
 export default connect(mapStateToProps)(Output);

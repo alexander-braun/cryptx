@@ -1,32 +1,30 @@
 import React, { useState, Fragment } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import PropTypes from 'prop-types';
+
+//MUI
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+
+//Components
 import Barchart from './Barchart';
+import RemoveAnalysisMethodButton from '../RemoveAnalysisMethodButton';
+import AnalysisMethodsExplanationTooltip from '../../Tooltips/AnalysisMethodsExplanationTooltip';
+
+//Assets
 import { frequencies_per_language } from './data';
 import { languages } from './data';
-import IcTooltipRemoveAnalysisMethod from '../../IcTooltipRemoveAnalysisMethod';
-import IcTooltipExplanatory from '../../IcTooltipExplanatory';
 import './frequency-analysis.scss';
+import { FrequencyAnalysisStyles } from './FrequencyAnalysisStyles';
 
-const useStyles = makeStyles((theme) => ({
-  heading: {
-    fontSize: theme.typography.pxToRem(15),
-    fontWeight: theme.typography.fontWeightRegular,
-  },
-  body: {
-    fontSize: '14px',
-  },
-}));
-
-function ChartImporter({ inputValue, menue }) {
+function FrequencyAnalysis({ inputValue, menue }) {
   const [selectedLanguage, setSelectedLanguage] = useState('English');
-  const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
-  const classes = useStyles();
   const [panelStatus, changePanelStatus] = useState(false);
+
+  const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
+  const classes = FrequencyAnalysisStyles();
 
   return (
     <ExpansionPanel
@@ -39,14 +37,14 @@ function ChartImporter({ inputValue, menue }) {
         id='panel2a-header'
       >
         <Typography className={classes.heading}>Frequency Analysis</Typography>
-        <IcTooltipExplanatory method={'frequency-analysis'} />
-        <IcTooltipRemoveAnalysisMethod
+        <AnalysisMethodsExplanationTooltip method={'frequency-analysis'} />
+        <RemoveAnalysisMethodButton
           menue={menue}
           method={'frequency-analysis'}
         />
       </ExpansionPanelSummary>
       <ExpansionPanelDetails>
-        <div className='barchart'>
+        <div className='frequency-analysis-barchart'>
           {panelStatus ? (
             <Barchart
               data={[
@@ -57,7 +55,7 @@ function ChartImporter({ inputValue, menue }) {
             />
           ) : null}
         </div>
-        <div className='frequency-analysis-language'>
+        <div className='frequency-analysis-language__choice-wrapper'>
           {panelStatus ? (
             <Fragment>
               <label htmlFor='fq-lang-select'>Language to compare to:</label>
@@ -86,4 +84,9 @@ function ChartImporter({ inputValue, menue }) {
   );
 }
 
-export default ChartImporter;
+FrequencyAnalysis.propTypes = {
+  inputValue: PropTypes.string.isRequired,
+  menue: PropTypes.string.isRequired,
+};
+
+export default FrequencyAnalysis;

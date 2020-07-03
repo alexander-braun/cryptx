@@ -73,7 +73,7 @@ class Timeline extends React.PureComponent {
   render() {
     const settings = {
       infinite: true,
-      speed: 800,
+      speed: 500,
       slidesToShow: this.viewportWidth(),
       slidesToScroll: 1,
       arrows: true,

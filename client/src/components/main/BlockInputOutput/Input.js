@@ -1,16 +1,35 @@
 import React, { useEffect, useRef } from 'react';
-import math from '../helper/Math';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+
+//Helper
+import math from '../helper/Math';
+
+//Actions
 import { updateInput } from '../../../actions/updateInput';
-import BlockheadButtons from './HeadButtons';
+
+//Components
+import MenueButtons from './MenueButtons';
 import AnalysisMethods from './analysis_methods_dropdowns';
 
 const Input = ({ updateInput, input }) => {
+  /**
+   * Ref for the input field
+   */
   const textareaRef = useRef();
+
+  /**
+   * Initial input-field resize.
+   */
   useEffect(() => {
     math.autoresize(textareaRef.current);
   });
 
+  /**
+   * If the value on click is still 'The quick...' then
+   * just delete the input for ease of use. Else remove
+   * all types of linebreaks.
+   */
   const update = (evt) => {
     if (evt.target.value === 'The quick brown fox jumps over the lazy dog.') {
       updateInput('');
@@ -23,7 +42,7 @@ const Input = ({ updateInput, input }) => {
     <div className='block'>
       <div className='block__head'>
         <div className='block__title'>Input</div>
-        <BlockheadButtons />
+        <MenueButtons />
       </div>
       <div className='block__input-wrapper'>
         <textarea
@@ -52,6 +71,11 @@ const mapStateToProps = (state) => ({
 
 const mapActionsToProps = {
   updateInput: updateInput,
+};
+
+Input.propTypes = {
+  updateInput: PropTypes.func.isRequired,
+  input: PropTypes.string.isRequired,
 };
 
 export default connect(mapStateToProps, mapActionsToProps)(Input);
