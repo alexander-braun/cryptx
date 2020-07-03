@@ -1,7 +1,9 @@
 import React, { Suspense } from 'react';
 import { connect } from 'react-redux';
 import encryptionProps from './encryption-props';
-//SCSS
+import PropTypes from 'prop-types';
+
+//Assets
 import './main.scss';
 
 //Components
@@ -100,6 +102,7 @@ class Main extends React.PureComponent {
     const { method } = this.props;
 
     let encrypted;
+
     switch (method) {
       case 'trifid':
         encrypted = Trifid.encrypt(...encryptionProps(this.props));
@@ -260,6 +263,60 @@ const mapActionsToProps = {
   setNihilistPlainNumbers,
   setTrifidLayers,
   setTrifidGroups,
+};
+
+Main.propTypes = {
+  setWordbook: PropTypes.func.isRequired,
+  setOutput: PropTypes.func.isRequired,
+  updateAlphabet: PropTypes.func.isRequired,
+  setPlaysquare: PropTypes.func.isRequired,
+  setSkytaleLength: PropTypes.func.isRequired,
+  setSkytaleProjectedValue: PropTypes.func.isRequired,
+  setTimeToCalculate: PropTypes.func.isRequired,
+  setRsaPhi: PropTypes.func.isRequired,
+  setRsaN: PropTypes.func.isRequired,
+  setRsaD: PropTypes.func.isRequired,
+  setAlphabetActive: PropTypes.func.isRequired,
+  setNihilistSquare: PropTypes.func.isRequired,
+  setNihilistRunningKey: PropTypes.func.isRequired,
+  setNihilistPlainNumbers: PropTypes.func.isRequired,
+  setTrifidLayers: PropTypes.func.isRequired,
+  setTrifidGroups: PropTypes.func.isRequired,
+  toReplaceLetter: PropTypes.string.isRequired,
+  replaceLetter: PropTypes.string.isRequired,
+  wordbook: PropTypes.object,
+  cShift: PropTypes.number.isRequired,
+  direction: PropTypes.string.isRequired,
+  input: PropTypes.string.isRequired,
+  method: PropTypes.string.isRequired,
+  foreignChars: PropTypes.string.isRequired,
+  caseformat: PropTypes.string.isRequired,
+  alphabet: PropTypes.string.isRequired,
+  output: PropTypes.string.isRequired,
+  prime1: PropTypes.string.isRequired,
+  prime2: PropTypes.string.isRequired,
+  alphabetActive: PropTypes.bool.isRequired,
+  keywordVigenere: PropTypes.string.isRequired,
+  keywordPlayfair: PropTypes.string.isRequired,
+  affine_alpha: PropTypes.number.isRequired,
+  affine_beta: PropTypes.number.isRequired,
+  otpKey: PropTypes.string.isRequired,
+  playSquare: PropTypes.arrayOf(PropTypes.string),
+  ringLength: PropTypes.number.isRequired,
+  skytaleLength: PropTypes.number.isRequired,
+  skytaleProjectedValue: PropTypes.string,
+  timeToCalculate: PropTypes.string,
+  phi: PropTypes.number.isRequired,
+  n: PropTypes.number.isRequired,
+  d: PropTypes.number.isRequired,
+  e: PropTypes.number.isRequired,
+  caseTransformChoice: PropTypes.string.isRequired,
+  keyNihilist: PropTypes.string.isRequired,
+  cipherNihilist: PropTypes.string.isRequired,
+  substitutionAlphabet: PropTypes.object.isRequired,
+  trifidKey: PropTypes.string.isRequired,
+  trifid27thLetter: PropTypes.string.isRequired,
+  trifidGroupSize: PropTypes.number.isRequired,
 };
 
 export default connect(mapStateToProps, mapActionsToProps)(Main);
