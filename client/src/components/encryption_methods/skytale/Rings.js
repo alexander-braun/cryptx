@@ -62,14 +62,13 @@ class Rings extends React.PureComponent {
   generateAllRingElements(ringNumber) {
     let parent = [];
     for (let i = 0; i < this.props.ringLength; i++) {
-      // Loops throug the encrypted output and puts the generated ring element into the parent
-      // The ring number accounts for the output[i] value used so every ring has the right letters
+      // Loops throug the encrypted input and puts the generated ring element into the parent
+      // The ring number accounts for the input[i] value used so every ring has the right letters
+      let input = this.props.input.split(' ').join('');
       parent.push(
         this.generateOneRingElement(
           i,
-          this.props.skytaleProjectedValue[
-            i + ringNumber * this.props.ringLength
-          ],
+          input[i + ringNumber * this.props.ringLength],
           ringNumber
         )
       );
@@ -124,7 +123,7 @@ class Rings extends React.PureComponent {
 const mapStateToProps = (state) => ({
   ringLength: state.skytale.ringLength,
   skytaleLength: state.skytale.length,
-  skytaleProjectedValue: state.skytale.projectedValue,
+  input: state.input,
 });
 
 export default connect(mapStateToProps)(Rings);
