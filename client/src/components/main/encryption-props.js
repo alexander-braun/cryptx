@@ -108,7 +108,7 @@ const encryptionProps = (props) => {
         props.input,
         props.alphabet,
         props.direction,
-        props.keyNihilist,
+        props.keywordNihilist,
         props.cipherNihilist,
       ];
     case 'skytale':

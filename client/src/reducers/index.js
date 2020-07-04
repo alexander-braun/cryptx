@@ -25,14 +25,10 @@ import presets from './presets';
 import presetDescription from './presetDescription';
 import presetName from './presetName';
 import caseTransformChoice from './caseTransformChoice';
-import keyNihilist from './keyNihilist';
-import cipherNihilist from './cipherNihilist';
-import nihilistSquare from './nihilistSquare';
-import nihilistRunningKey from './nihilistRunningKey';
-import nihilistPlainNumbers from './nihilistPlainNumbers';
 import substitutionAlphabet from './substitutionAlphabet';
 import trifid from './trifid';
 import playfair from './playfair';
+import nihilist from './nihilist';
 
 export default combineReducers({
   modal,
@@ -61,11 +57,7 @@ export default combineReducers({
   presetDescription,
   presetName,
   caseTransformChoice,
-  keyNihilist,
-  cipherNihilist,
-  nihilistSquare,
-  nihilistRunningKey,
-  nihilistPlainNumbers,
+  nihilist,
   substitutionAlphabet,
   trifid,
   playfair,

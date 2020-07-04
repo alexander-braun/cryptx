@@ -15,7 +15,7 @@ const KeywordsNihilist = (props) => {
           </div>
           <div className='content-element__settings-operators'>
             <textarea
-              defaultValue={props.keyNihilist}
+              defaultValue={props.keywordNihilist}
               className='content-element__textarea'
               onChange={(evt) => {
                 props.setKeywordNihilist(evt.target.value.toLowerCase());
@@ -41,8 +41,8 @@ const KeywordsNihilist = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  keyNihilist: state.keyNihilist,
-  cipherNihilist: state.cipherNihilist,
+  keywordNihilist: state.nihilist.keywordNihilist,
+  cipherNihilist: state.nihilist.cipherNihilist,
 });
 
 const mapActionsToProps = {

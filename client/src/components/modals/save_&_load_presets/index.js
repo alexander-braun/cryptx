@@ -14,8 +14,7 @@ import toggleCase from '../../../actions/toggleCase';
 import { updateAlphabet } from '../../../actions/alphabet';
 import { changeMethod } from '../../../actions/changeMethod';
 import { toggleDirection } from '../../../actions/toggleDirection';
-import setPrime1 from '../../../actions/setPrime1';
-import setPrime2 from '../../../actions/setprime2';
+import { setPrime1, setPrime2, setRsaE } from '../../../actions/rsa';
 import setKeywordVigenere from '../../../actions/setKeywordVigenere';
 import { setKeywordPlayfair } from '../../../actions/playfair';
 import setOtpKey from '../../../actions/setOtpKey';
@@ -27,7 +26,6 @@ import { setAffineAlpha, setAffineBeta } from '../../../actions/affine';
 import SentimentVeryDissatisfiedIcon from '@material-ui/icons/SentimentVeryDissatisfied';
 import { EncryptionMethodsDetails } from '../../main/BlockCenter/EncryptionMethodsDetails';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
-import setRsaE from '../../../actions/setRsaE';
 import setSubstitutionAlphabet from '../../../actions/setSubstitutionAlphabet';
 import {
   setKeywordNihilist,
@@ -37,7 +35,7 @@ import {
   setTrifidGroupSize,
   setTrifidKey,
   setTrifid27thLetter,
-} from '../../../actions/setTrifid';
+} from '../../../actions/trifid';
 import { setCaseTransformChoice } from '../../../actions/setCaseTransformChoice';
 
 class PresetsModal extends React.Component {
@@ -127,7 +125,7 @@ class PresetsModal extends React.Component {
       toReplaceLetter,
       affine_alpha,
       affine_beta,
-      keyNihilist,
+      keywordNihilist,
       cipherNihilist,
       substitutionAlphabet,
       trifidKey,
@@ -172,8 +170,8 @@ class PresetsModal extends React.Component {
       affine_beta !== undefined &&
       this.props.setAffineBeta(affine_beta);
     method === 'nihilist' &&
-      keyNihilist !== undefined &&
-      this.props.setKeywordNihilist(keyNihilist);
+      keywordNihilist !== undefined &&
+      this.props.setKeywordNihilist(keywordNihilist);
     method === 'nihilist' &&
       cipherNihilist !== undefined &&
       this.props.setCipherNihilist(cipherNihilist);
@@ -244,8 +242,9 @@ class PresetsModal extends React.Component {
           this.props.substitutionAlphabet;
         break;
       case 'nihilist':
-        presetSettings.keyNihilist =
-          this.props.keyNihilist !== undefined && this.props.keyNihilist;
+        presetSettings.keywordNihilist =
+          this.props.keywordNihilist !== undefined &&
+          this.props.keywordNihilist;
         presetSettings.cipherNihilist =
           this.props.cipherNihilist !== undefined && this.props.cipherNihilist;
         break;
@@ -507,7 +506,7 @@ const mapStateToProps = (state) => ({
   playSquare: state.playSquare,
   ringLength: state.skytale.ringLength,
   isAuthenticated: state.auth.isAuthenticated,
-  keyNihilist: state.keyNihilist,
+  keywordNihilist: state.keywordNihilist,
   cipherNihilist: state.cipherNihilist,
   substitutionAlphabet: state.substitutionAlphabet,
   trifidKey: state.trifid.trifidKey,

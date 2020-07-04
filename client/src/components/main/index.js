@@ -36,16 +36,18 @@ import setOutput from '../../actions/setOutput';
 import { updateAlphabet, setAlphabetActive } from '../../actions/alphabet';
 import { setPlaysquare } from '../../actions/playfair';
 import setSkytaleLength from '../../actions/setSkytaleLength';
-import setTimeToCalculate from '../../actions/setTimeToCalculate';
-import setRsaPhi from '../../actions/setRsaPhi';
-import setRsaN from '../../actions/setRsaN';
-import setRsaD from '../../actions/setRsaD';
+import {
+  setRsaPhi,
+  setRsaN,
+  setRsaD,
+  setTimeToCalculate,
+} from '../../actions/rsa';
 import {
   setNihilistSquare,
   setNihilistRunningKey,
   setNihilistPlainNumbers,
 } from '../../actions/nihilist';
-import { setTrifidLayers, setTrifidGroups } from '../../actions/setTrifid';
+import { setTrifidLayers, setTrifidGroups } from '../../actions/trifid';
 
 // Modals
 import PresetsModal from '../modals/save_&_load_presets';
@@ -224,6 +226,10 @@ const mapStateToProps = (state) => ({
   output: state.output,
   prime1: state.rsa.prime1,
   prime2: state.rsa.prime2,
+  phi: state.rsa.phi,
+  n: state.rsa.n,
+  d: state.rsa.d,
+  e: state.rsa.e,
   alphabetActive: state.alphabet.active,
   keywordVigenere: state.keywordVigenere,
   keywordPlayfair: state.playfair.keywordPlayfair,
@@ -234,13 +240,9 @@ const mapStateToProps = (state) => ({
   ringLength: state.skytale.ringLength,
   skytaleLength: state.skytale.length,
   timeToCalculate: state.rsa.timeToCalculate,
-  phi: state.rsa.phi,
-  n: state.rsa.n,
-  d: state.rsa.d,
-  e: state.rsa.e,
   caseTransformChoice: state.caseTransformChoice,
-  keyNihilist: state.keyNihilist,
-  cipherNihilist: state.cipherNihilist,
+  keywordNihilist: state.nihilist.keywordNihilist,
+  cipherNihilist: state.nihilist.cipherNihilist,
   substitutionAlphabet: state.substitutionAlphabet,
   trifidKey: state.trifid.trifidKey,
   trifid27thLetter: state.trifid.trifid27thLetter,
@@ -309,7 +311,7 @@ Main.propTypes = {
   d: PropTypes.number.isRequired,
   e: PropTypes.number.isRequired,
   caseTransformChoice: PropTypes.string.isRequired,
-  keyNihilist: PropTypes.string.isRequired,
+  keywordNihilist: PropTypes.string.isRequired,
   cipherNihilist: PropTypes.string.isRequired,
   substitutionAlphabet: PropTypes.object.isRequired,
   trifidKey: PropTypes.string.isRequired,

@@ -124,9 +124,9 @@ class NihilistTransposition extends React.PureComponent {
 }
 
 const mapStateToProps = (state) => ({
-  nihilistRunningKey: state.nihilistRunningKey,
-  nihilistPlainNumbers: state.nihilistPlainNumbers,
-  cipherNihilist: state.cipherNihilist,
+  nihilistRunningKey: state.nihilist.nihilistRunningKey,
+  nihilistPlainNumbers: state.nihilist.nihilistPlainNumbers,
+  cipherNihilist: state.nihilist.cipherNihilist,
   input: state.input,
   output: state.output,
   direction: state.direction,

@@ -64,7 +64,7 @@ class NihilistSquare extends React.PureComponent {
 }
 
 const mapStateToProps = (state) => ({
-  nihilistSquare: state.nihilistSquare,
+  nihilistSquare: state.nihilist.nihilistSquare,
 });
 
 export default connect(mapStateToProps)(NihilistSquare);
