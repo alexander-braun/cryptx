@@ -16,6 +16,7 @@ class VigenereTransposition extends React.PureComponent {
      * previously generated input
      */
     let keywordVigenere = this.props.keywordVigenere;
+    if (keywordVigenere.length === 0) return null;
     let key = new Array(input.length);
     for (let j = 0; j < Math.ceil(input.length / keywordVigenere.length); j++) {
       for (let i = 0; i < keywordVigenere.length; i++) {

@@ -71,6 +71,10 @@ const vigenere = (() => {
     caseFormat,
     keyword
   ) => {
+    if (keyword.length === 0) {
+      return 'Please enter a keyword';
+    }
+
     setAll(input, alphabet, direction, foreignChars, keyword);
     const textinputCleaned = removeSigns(userInput.toLowerCase(), false);
     let textoutput = readChar(textinputCleaned, keywordVigenere);

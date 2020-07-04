@@ -170,7 +170,10 @@ class Main extends React.PureComponent {
         break;
       case 'nihilist':
         encrypted = Nihilist.encrypt(...encryptionProps(this.props));
-        if (encrypted[0] === '') return;
+        if (typeof encrypted === 'string') {
+          this.props.setOutput(encrypted);
+          return;
+        }
         this.props.setOutput(encrypted[0]);
         this.props.setNihilistSquare(encrypted[1]);
         this.props.setNihilistRunningKey(encrypted[2]);
