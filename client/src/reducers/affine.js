@@ -10,12 +10,12 @@ const affine = (state = initialState, action) => {
     case SET_AFFINE_ALPHA:
       return {
         ...state,
-        affine_alpha: action.affine_alpha,
+        affine_alpha: Number(action.affine_alpha),
       };
     case SET_AFFINE_BETA:
       return {
         ...state,
-        affine_beta: action.affine_beta,
+        affine_beta: Number(action.affine_beta),
       };
     default:
       return state;

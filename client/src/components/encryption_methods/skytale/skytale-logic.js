@@ -26,23 +26,6 @@ const skytale = (() => {
     return Math.ceil(userInput.length / ringLength);
   };
 
-  const getProjectedValue = () => {
-    let projectedValue = '';
-
-    if (direction === 'encrypt') {
-      setDirection('decrypt');
-      projectedValue = transformText(false)[0];
-      return projectedValue;
-    } else if (direction === 'decrypt') {
-      let tempVal = transformText(false)[0];
-      setUserInput(tempVal);
-      setDirection('decrypt');
-      projectedValue = transformText(false)[0];
-      return projectedValue;
-    }
-    return projectedValue;
-  };
-
   const transformText = () => {
     let input = userInput;
     if (foreignChars === 'ignore') {
@@ -128,7 +111,7 @@ const skytale = (() => {
 
   const encrypt = (direction, caseFormat, input, ringLength, foreignChars) => {
     setAll(direction, caseFormat, input, ringLength, foreignChars);
-    return [...transformText(), getProjectedValue()];
+    return transformText();
   };
 
   const setAll = (direction, caseFormat, input, ringLength, foreignChars) => {
@@ -142,7 +125,6 @@ const skytale = (() => {
   return {
     encrypt: encrypt,
     setAll: setAll,
-    getProjectedValue: getProjectedValue,
   };
 })();
 

@@ -23,15 +23,16 @@ import { setRinglength } from '../../../actions/setRingLength';
 import setPresetDescription from '../../../actions/setPresetDescription';
 import setPresetName from '../../../actions/setPresetName';
 import { toReplaceLetter, replaceLetter } from '../../../actions/replace';
-import setAffineAlpha from '../../../actions/setAffineAlpha';
-import setAffineBeta from '../../../actions/setAffineBeta';
+import { setAffineAlpha, setAffineBeta } from '../../../actions/affine';
 import SentimentVeryDissatisfiedIcon from '@material-ui/icons/SentimentVeryDissatisfied';
 import { EncryptionMethodsDetails } from '../../main/BlockCenter/EncryptionMethodsDetails';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import setRsaE from '../../../actions/setRsaE';
 import setSubstitutionAlphabet from '../../../actions/setSubstitutionAlphabet';
-import setKeyNihilist from '../../../actions/setKeyNihilist';
-import setCipherNihilist from '../../../actions/setCipherNihilist';
+import {
+  setKeywordNihilist,
+  setCipherNihilist,
+} from '../../../actions/nihilist';
 import {
   setTrifidGroupSize,
   setTrifidKey,
@@ -172,7 +173,7 @@ class PresetsModal extends React.Component {
       this.props.setAffineBeta(affine_beta);
     method === 'nihilist' &&
       keyNihilist !== undefined &&
-      this.props.setKeyNihilist(keyNihilist);
+      this.props.setKeywordNihilist(keyNihilist);
     method === 'nihilist' &&
       cipherNihilist !== undefined &&
       this.props.setCipherNihilist(cipherNihilist);
@@ -542,7 +543,7 @@ const mapActionsToProps = {
   setAffineBeta,
   deletePreset,
   setCipherNihilist,
-  setKeyNihilist,
+  setKeywordNihilist,
   setSubstitutionAlphabet,
   setTrifidGroupSize,
   setTrifidKey,

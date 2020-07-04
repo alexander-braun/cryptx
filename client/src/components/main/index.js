@@ -36,15 +36,16 @@ import setOutput from '../../actions/setOutput';
 import updateAlphabet from '../../actions/updateAlphabet';
 import setPlaysquare from '../../actions/setPlaysquare';
 import setSkytaleLength from '../../actions/setSkytaleLength';
-import setSkytaleProjectedValue from '../../actions/setSkytaleProjectedValue';
 import setTimeToCalculate from '../../actions/setTimeToCalculate';
 import setRsaPhi from '../../actions/setRsaPhi';
 import setRsaN from '../../actions/setRsaN';
 import setRsaD from '../../actions/setRsaD';
 import setAlphabetActive from '../../actions/setAlphabetActive';
-import setNihilistSquare from '../../actions/setNihilistSquare';
-import setNihilistRunningKey from '../../actions/setNihilistRunningKey';
-import setNihilistPlainNumbers from '../../actions/setNihilistPlainNumbers';
+import {
+  setNihilistSquare,
+  setNihilistRunningKey,
+  setNihilistPlainNumbers,
+} from '../../actions/nihilist';
 import { setTrifidLayers, setTrifidGroups } from '../../actions/setTrifid';
 
 // Modals
@@ -181,7 +182,6 @@ class Main extends React.PureComponent {
         break;
       case 'skytale':
         encrypted = Skytale.encrypt(...encryptionProps(this.props));
-        this.props.setSkytaleProjectedValue(encrypted[2]);
         this.props.setOutput(encrypted[0]);
         this.props.setSkytaleLength(encrypted[1]);
         break;
@@ -234,7 +234,6 @@ const mapStateToProps = (state) => ({
   playSquare: state.playSquare,
   ringLength: state.skytale.ringLength,
   skytaleLength: state.skytale.length,
-  skytaleProjectedValue: state.projectedValue,
   timeToCalculate: state.rsa.timeToCalculate,
   phi: state.rsa.phi,
   n: state.rsa.n,
@@ -255,7 +254,6 @@ const mapActionsToProps = {
   updateAlphabet,
   setPlaysquare,
   setSkytaleLength,
-  setSkytaleProjectedValue,
   setTimeToCalculate,
   setRsaPhi,
   setRsaN,
@@ -274,7 +272,6 @@ Main.propTypes = {
   updateAlphabet: PropTypes.func.isRequired,
   setPlaysquare: PropTypes.func.isRequired,
   setSkytaleLength: PropTypes.func.isRequired,
-  setSkytaleProjectedValue: PropTypes.func.isRequired,
   setTimeToCalculate: PropTypes.func.isRequired,
   setRsaPhi: PropTypes.func.isRequired,
   setRsaN: PropTypes.func.isRequired,
@@ -307,7 +304,6 @@ Main.propTypes = {
   playSquare: PropTypes.arrayOf(PropTypes.string),
   ringLength: PropTypes.number.isRequired,
   skytaleLength: PropTypes.number.isRequired,
-  skytaleProjectedValue: PropTypes.string,
   timeToCalculate: PropTypes.string,
   phi: PropTypes.number.isRequired,
   n: PropTypes.number.isRequired,

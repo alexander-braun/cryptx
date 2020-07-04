@@ -1,7 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import setKeyNihilist from '../../../actions/setKeyNihilist';
-import setCipherNihilist from '../../../actions/setCipherNihilist';
+import {
+  setKeywordNihilist,
+  setCipherNihilist,
+} from '../../../actions/nihilist';
 
 const KeywordsNihilist = (props) => {
   return (
@@ -16,7 +18,7 @@ const KeywordsNihilist = (props) => {
               defaultValue={props.keyNihilist}
               className='content-element__textarea'
               onChange={(evt) => {
-                props.setKeyNihilist(evt.target.value.toLowerCase());
+                props.setKeywordNihilist(evt.target.value.toLowerCase());
               }}
             />
           </div>
@@ -45,7 +47,7 @@ const mapStateToProps = (state) => ({
 
 const mapActionsToProps = {
   setCipherNihilist,
-  setKeyNihilist,
+  setKeywordNihilist,
 };
 
 export default connect(mapStateToProps, mapActionsToProps)(KeywordsNihilist);
