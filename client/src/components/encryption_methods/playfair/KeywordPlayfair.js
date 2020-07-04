@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import setKeywordPlayfair from '../../../actions/setKeywordPlayfair';
+import { setKeywordPlayfair } from '../../../actions/playfair';
 
 const KeywordPlayfair = ({ keywordPlayfair, setKeywordPlayfair }) => {
   return (
@@ -23,7 +23,7 @@ const KeywordPlayfair = ({ keywordPlayfair, setKeywordPlayfair }) => {
 };
 
 const mapStateToProps = (state) => ({
-  keywordPlayfair: state.keywordPlayfair,
+  keywordPlayfair: state.playfair.keywordPlayfair,
 });
 
 const mapActionsToProps = {

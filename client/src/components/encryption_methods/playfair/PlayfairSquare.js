@@ -45,7 +45,7 @@ class PlayfaireSquare extends React.PureComponent {
 }
 
 const mapStateToProps = (state) => ({
-  playsquare: state.playsquare,
+  playsquare: state.playfair.playsquare,
 });
 
 export default connect(mapStateToProps)(PlayfaireSquare);

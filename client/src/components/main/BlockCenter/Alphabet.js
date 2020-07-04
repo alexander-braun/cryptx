@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 //Actions
-import updateAlphabet from '../../../actions/updateAlphabet';
+import { updateAlphabet } from '../../../actions/alphabet';
 
 const Alphabet = ({ alphabet, alphabetActive, updateAlphabet }) => {
   return (

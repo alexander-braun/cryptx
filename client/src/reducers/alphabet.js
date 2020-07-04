@@ -1,5 +1,4 @@
-import { UPDATE_ALPHABET } from '../actions/constants';
-import { SET_ALPHABET_ACTIVE } from '../actions/constants';
+import { UPDATE_ALPHABET, SET_ALPHABET_ACTIVE } from '../actions/constants';
 
 const initialState = {
   alphabet: 'abcdefghijklmnopqrstuvwxyz',

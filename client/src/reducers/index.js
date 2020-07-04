@@ -11,10 +11,8 @@ import output from './output';
 import caseformat from './caseformat';
 import alphabet from './alphabet';
 import keywordVigenere from './keywordVigenere';
-import keywordPlayfair from './keywordPlayfair';
 import affine from './affine';
 import otpKey from './otpKey';
-import playsquare from './playsquare';
 import skytale from './skytale';
 import rsa from './rsa';
 import alert from './alert';
@@ -34,6 +32,7 @@ import nihilistRunningKey from './nihilistRunningKey';
 import nihilistPlainNumbers from './nihilistPlainNumbers';
 import substitutionAlphabet from './substitutionAlphabet';
 import trifid from './trifid';
+import playfair from './playfair';
 
 export default combineReducers({
   modal,
@@ -48,10 +47,8 @@ export default combineReducers({
   caseformat,
   alphabet,
   keywordVigenere,
-  keywordPlayfair,
   affine,
   otpKey,
-  playsquare,
   skytale,
   rsa,
   alert,
@@ -71,4 +68,5 @@ export default combineReducers({
   nihilistPlainNumbers,
   substitutionAlphabet,
   trifid,
+  playfair,
 });

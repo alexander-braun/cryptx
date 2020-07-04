@@ -11,13 +11,13 @@ import { setCshift } from '../../../actions/setCShift';
 import { updateInput } from '../../../actions/updateInput';
 import toggleForeignChars from '../../../actions/toggleForeignChars';
 import toggleCase from '../../../actions/toggleCase';
-import updateAlphabet from '../../../actions/updateAlphabet';
+import { updateAlphabet } from '../../../actions/alphabet';
 import { changeMethod } from '../../../actions/changeMethod';
 import { toggleDirection } from '../../../actions/toggleDirection';
 import setPrime1 from '../../../actions/setPrime1';
 import setPrime2 from '../../../actions/setprime2';
 import setKeywordVigenere from '../../../actions/setKeywordVigenere';
-import setKeywordPlayfair from '../../../actions/setKeywordPlayfair';
+import { setKeywordPlayfair } from '../../../actions/playfair';
 import setOtpKey from '../../../actions/setOtpKey';
 import { setRinglength } from '../../../actions/setRingLength';
 import setPresetDescription from '../../../actions/setPresetDescription';
@@ -500,7 +500,7 @@ const mapStateToProps = (state) => ({
   prime1: state.rsa.prime1,
   prime2: state.rsa.prime2,
   keywordVigenere: state.keywordVigenere,
-  keywordPlayfair: state.keywordPlayfair,
+  keywordPlayfair: state.playfair.keywordPlayfair,
   affine_alpha: state.affine.affine_alpha,
   affine_beta: state.affine.affine_beta,
   otpKey: state.otpKey,

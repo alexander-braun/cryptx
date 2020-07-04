@@ -33,14 +33,13 @@ import Otp from '../encryption_methods/onetimepad/otp-logic';
 // Actions
 import setWordbook from '../../actions/wordbook';
 import setOutput from '../../actions/setOutput';
-import updateAlphabet from '../../actions/updateAlphabet';
-import setPlaysquare from '../../actions/setPlaysquare';
+import { updateAlphabet, setAlphabetActive } from '../../actions/alphabet';
+import { setPlaysquare } from '../../actions/playfair';
 import setSkytaleLength from '../../actions/setSkytaleLength';
 import setTimeToCalculate from '../../actions/setTimeToCalculate';
 import setRsaPhi from '../../actions/setRsaPhi';
 import setRsaN from '../../actions/setRsaN';
 import setRsaD from '../../actions/setRsaD';
-import setAlphabetActive from '../../actions/setAlphabetActive';
 import {
   setNihilistSquare,
   setNihilistRunningKey,
@@ -227,7 +226,7 @@ const mapStateToProps = (state) => ({
   prime2: state.rsa.prime2,
   alphabetActive: state.alphabet.active,
   keywordVigenere: state.keywordVigenere,
-  keywordPlayfair: state.keywordPlayfair,
+  keywordPlayfair: state.playfair.keywordPlayfair,
   affine_alpha: state.affine.affine_alpha,
   affine_beta: state.affine.affine_beta,
   otpKey: state.otpKey,
