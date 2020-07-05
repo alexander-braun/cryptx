@@ -1,6 +1,7 @@
 import React from 'react';
 import { setCshift } from '../../../actions/setCShift';
 import { connect } from 'react-redux';
+import PropsTypes from 'prop-types';
 
 const CaesarShift = (props) => {
   /**
@@ -61,6 +62,10 @@ const mapStateToProps = (state) => ({
 
 const mapActionsToProps = {
   setCshift: setCshift,
+};
+
+CaesarShift.propTypes = {
+  cShift: PropsTypes.number.isRequired,
 };
 
 export default React.memo(

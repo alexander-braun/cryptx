@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import './playfair-square.scss';
+import PropsTypes from 'prop-types';
 
 class PlayfaireSquare extends React.PureComponent {
   createVisualMatrix = () => {
@@ -47,5 +48,9 @@ class PlayfaireSquare extends React.PureComponent {
 const mapStateToProps = (state) => ({
   playsquare: state.playfair.playsquare,
 });
+
+PlayfaireSquare.propTypes = {
+  playsquare: PropsTypes.array.isRequired,
+};
 
 export default connect(mapStateToProps)(PlayfaireSquare);

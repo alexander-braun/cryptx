@@ -35,7 +35,7 @@ import setWordbook from '../../actions/wordbook';
 import setOutput from '../../actions/setOutput';
 import { updateAlphabet, setAlphabetActive } from '../../actions/alphabet';
 import { setPlaysquare } from '../../actions/playfair';
-import setSkytaleLength from '../../actions/setSkytaleLength';
+import { setSkytaleLength } from '../../actions/skytale';
 import {
   setRsaPhi,
   setRsaN,

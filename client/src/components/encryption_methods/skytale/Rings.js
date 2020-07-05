@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import './rings.scss';
+import PropsTypes from 'prop-types';
 
 const skewValue = {
   3: 16,
@@ -150,5 +151,11 @@ const mapStateToProps = (state) => ({
   skytaleLength: state.skytale.length,
   input: state.input,
 });
+
+Rings.propTypes = {
+  ringLength: PropsTypes.number.isRequired,
+  skytaleLength: PropsTypes.number.isRequired,
+  input: PropsTypes.string.isRequired,
+};
 
 export default connect(mapStateToProps)(Rings);

@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
+import PropsTypes from 'prop-types';
 
 class CaesarTransposition extends React.PureComponent {
   /**
@@ -90,5 +91,9 @@ class CaesarTransposition extends React.PureComponent {
 const mapStateToProps = (state) => ({
   cShift: state.cShift,
 });
+
+CaesarTransposition.propTypes = {
+  cShift: PropsTypes.number.isRequired,
+};
 
 export default connect(mapStateToProps)(CaesarTransposition);

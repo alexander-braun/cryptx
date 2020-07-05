@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { setCaseTransformChoice } from '../../../actions/setCaseTransformChoice';
 import { v4 as uuidv4 } from 'uuid';
+import PropsTypes from 'prop-types';
 
 /**
  * Abailable Case-Options
@@ -60,6 +61,11 @@ const mapStateToProps = (state) => ({
 
 const mapActionsToProps = {
   setCaseTransformChoice,
+};
+
+CaseTransform.propTypes = {
+  caseTransformChoice: PropsTypes.string.isRequired,
+  setCaseTransformChoice: PropsTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapActionsToProps)(CaseTransform);

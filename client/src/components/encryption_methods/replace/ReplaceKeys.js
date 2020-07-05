@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { toReplaceLetter, replaceLetter } from '../../../actions/replace';
+import PropsTypes from 'prop-types';
 
 const Replace = (props) => {
   return (
@@ -45,6 +46,11 @@ const mapStateToProps = (state) => ({
 const mapActionsToProps = {
   onSetReplaceLetter: replaceLetter,
   onSetToReplaceLetter: toReplaceLetter,
+};
+
+Replace.propTypes = {
+  toReplaceLetter: PropsTypes.string.isRequired,
+  replaceLetter: PropsTypes.string.isRequired,
 };
 
 export default connect(mapStateToProps, mapActionsToProps)(Replace);

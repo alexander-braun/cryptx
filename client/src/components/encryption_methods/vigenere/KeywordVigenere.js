@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import setKeywordVigenere from '../../../actions/setKeywordVigenere';
+import PropsTypes from 'prop-types';
 
 const KeywordVigenere = ({ keywordVigenere, setKeywordVigenere }) => {
   return (
@@ -27,6 +28,11 @@ const mapStateToProps = (state) => ({
 
 const mapActionsToProps = {
   setKeywordVigenere: setKeywordVigenere,
+};
+
+KeywordVigenere.propTypes = {
+  keywordVigenere: PropsTypes.string.isRequired,
+  setKeywordVigenere: PropsTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapActionsToProps)(KeywordVigenere);

@@ -18,7 +18,7 @@ import { setPrime1, setPrime2, setRsaE } from '../../../actions/rsa';
 import setKeywordVigenere from '../../../actions/setKeywordVigenere';
 import { setKeywordPlayfair } from '../../../actions/playfair';
 import setOtpKey from '../../../actions/setOtpKey';
-import { setRinglength } from '../../../actions/setRingLength';
+import { setRinglength } from '../../../actions/skytale';
 import setPresetDescription from '../../../actions/setPresetDescription';
 import setPresetName from '../../../actions/setPresetName';
 import { toReplaceLetter, replaceLetter } from '../../../actions/replace';

@@ -1,24 +1,25 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setRinglength } from '../../../actions/setRingLength';
+import { setRinglength } from '../../../actions/skytale';
+import PropsTypes from 'prop-types';
 
 const RingLength = (props) => {
   /**
    * Calculate and set ring-length
    */
-  const setRings = (evt) => {
+  const handleRingLengthChange = (evt) => {
     let value = evt.target.dataset.value;
     if (value === '-') {
       if (props.ringLength < 4) {
-        props.setRings(20);
+        props.setRinglength(20);
       } else {
-        props.setRings(props.ringLength - 1);
+        props.setRinglength(props.ringLength - 1);
       }
     } else {
       if (props.ringLength > 19) {
-        props.setRings(3);
+        props.setRinglength(3);
       } else {
-        props.setRings(props.ringLength + 1);
+        props.setRinglength(props.ringLength + 1);
       }
     }
   };
@@ -31,7 +32,7 @@ const RingLength = (props) => {
             data-value='-'
             className='content-element__adjust-plus-minus'
             onClick={(evt) => {
-              setRings(evt);
+              handleRingLengthChange(evt);
             }}
           >
             -
@@ -43,7 +44,7 @@ const RingLength = (props) => {
             data-value='+'
             className='content-element__adjust-plus-minus'
             onClick={(evt) => {
-              setRings(evt);
+              handleRingLengthChange(evt);
             }}
           >
             +
@@ -59,7 +60,12 @@ const mapStateToProps = (state) => ({
 });
 
 const mapActionsToProps = {
-  setRings: setRinglength,
+  setRinglength: setRinglength,
+};
+
+RingLength.propTypes = {
+  ringLength: PropsTypes.number.isRequired,
+  setRinglength: PropsTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapActionsToProps)(RingLength);

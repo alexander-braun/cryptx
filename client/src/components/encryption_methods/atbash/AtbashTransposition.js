@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
+import PropsTypes from 'prop-types';
 
 class AtbashTransposition extends React.Component {
   /**
@@ -74,5 +75,9 @@ class AtbashTransposition extends React.Component {
     );
   }
 }
+
+AtbashTransposition.propTypes = {
+  alphabet: PropsTypes.string.isRequired,
+};
 
 export default connect()(AtbashTransposition);

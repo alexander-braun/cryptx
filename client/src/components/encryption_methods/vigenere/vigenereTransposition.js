@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
+import PropsTypes from 'prop-types';
 
 class VigenereTransposition extends React.PureComponent {
   genAlphabet = () => {
@@ -86,5 +87,12 @@ const mapStateToProps = (state) => ({
   input: state.input,
   direction: state.direction,
 });
+
+VigenereTransposition.propTypes = {
+  keywordVigenere: PropsTypes.string.isRequired,
+  output: PropsTypes.string.isRequired,
+  input: PropsTypes.string.isRequired,
+  direction: PropsTypes.string.isRequired,
+};
 
 export default connect(mapStateToProps)(VigenereTransposition);
