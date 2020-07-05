@@ -3,6 +3,27 @@ import { connect } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import './rings.scss';
 
+const skewValue = {
+  3: 16,
+  4: 12,
+  5: 10,
+  6: 8,
+  7: 7,
+  8: 6.5,
+  9: 6,
+  10: 5,
+  11: 5,
+  12: 4,
+  13: 3.5,
+  14: 3,
+  15: 3,
+  16: 3,
+  17: 3,
+  18: 3,
+  19: 3,
+  20: 3,
+};
+
 class Rings extends React.PureComponent {
   /**
    * Generates the style of a plane.
@@ -11,6 +32,7 @@ class Rings extends React.PureComponent {
    * If an element has no character it is made
    * transparent.
    */
+
   generatePlaneStyle(planeNumber, character, ringNumber) {
     let firstCharacterStyle = '';
     if (planeNumber === 0 && ringNumber === 0) {
@@ -24,7 +46,7 @@ class Rings extends React.PureComponent {
      * Calculates the arc radius with one piece width = 30px
      * Could scale but didn't make sense yet
      */
-    let d = 30 / Math.PI / (360 / this.props.ringLength / 360) / 2 - 5;
+    let d = 30 / Math.PI / (360 / this.props.ringLength / 360) / 2 - 6;
 
     //rotateValue according to the piece of plane
     let rotateValue =
@@ -32,8 +54,11 @@ class Rings extends React.PureComponent {
       (planeNumber * 360) / this.props.ringLength -
       360 / this.props.ringLength;
 
+    let heightChange = (25 / this.props.ringLength) * planeNumber;
     let ringStyles = {
-      WebkitTransform: `rotateY(${rotateValue}deg) translateZ(${d}px)`,
+      WebkitTransform: `rotateY(${rotateValue}deg) translateZ(${d}px) translateY(${heightChange}px) skewY(${
+        skewValue[this.props.ringLength]
+      }deg)`,
       backgroundColor:
         firstCharacterStyle !== '' ? firstCharacterStyle : transparencyValue,
     };
