@@ -1,12 +1,15 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { togglePresetsModal } from '../../../actions/togglePresetsModal';
-import '../modal.scss';
-import { loadPresets, addPreset, deletePreset } from '../../../actions/presets';
+import PropTypes from 'prop-types';
+
+//MUI
+import HighlightOffIcon from '@material-ui/icons/HighlightOff';
+import SentimentVeryDissatisfiedIcon from '@material-ui/icons/SentimentVeryDissatisfied';
 import GetAppIcon from '@material-ui/icons/GetApp';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
-import PropTypes from 'prop-types';
+
+//Actions
 import { setCshift } from '../../../actions/setCShift';
 import { updateInput } from '../../../actions/updateInput';
 import toggleForeignChars from '../../../actions/toggleForeignChars';
@@ -23,10 +26,9 @@ import setPresetDescription from '../../../actions/setPresetDescription';
 import setPresetName from '../../../actions/setPresetName';
 import { toReplaceLetter, replaceLetter } from '../../../actions/replace';
 import { setAffineAlpha, setAffineBeta } from '../../../actions/affine';
-import SentimentVeryDissatisfiedIcon from '@material-ui/icons/SentimentVeryDissatisfied';
-import { EncryptionMethodsDetails } from '../../main/BlockCenter/EncryptionMethodsDetails';
-import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import setSubstitutionAlphabet from '../../../actions/setSubstitutionAlphabet';
+import { togglePresetsModal } from '../../../actions/togglePresetsModal';
+import { loadPresets, addPreset, deletePreset } from '../../../actions/presets';
 import {
   setKeywordNihilist,
   setCipherNihilist,
@@ -37,6 +39,10 @@ import {
   setTrifid27thLetter,
 } from '../../../actions/trifid';
 import { setCaseTransformChoice } from '../../../actions/setCaseTransformChoice';
+
+//Assets
+import '../modal.scss';
+import { EncryptionMethodsDetails } from '../../main/BlockCenter/EncryptionMethodsDetails';
 
 class PresetsModal extends React.Component {
   constructor(props) {
@@ -283,6 +289,7 @@ class PresetsModal extends React.Component {
         ...presetSettings,
       },
     });
+
     this.props.setPresetName('');
     this.props.setPresetDescription('');
     this.props.togglePresetsModal();

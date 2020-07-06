@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 //Actions
 import { changeMethod } from '../../../actions/changeMethod';
@@ -34,6 +35,14 @@ const MethodChoiceButton = (props) => {
 const mapActionsToProps = {
   changeMethod: changeMethod,
   toggleModal: toggleModal,
+};
+
+MethodChoiceButton.propTypes = {
+  changeMethod: PropTypes.func.isRequired,
+  toggleModal: PropTypes.func.isRequired,
+  featured: PropTypes.bool.isRequired,
+  name: PropTypes.string.isRequired,
+  fullName: PropTypes.string.isRequired,
 };
 
 export default connect(null, mapActionsToProps)(MethodChoiceButton);

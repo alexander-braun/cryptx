@@ -92,6 +92,9 @@
     font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
     font-size: 12pt;
     font-weight: 300;
+    background: #3a3b3c;
+    color: #dadada;
+    box-shadow: inset 0 5px 5px -5px rgba(0, 0, 0, 0.77);
   }
 }
 
@@ -133,7 +136,7 @@
 }
 
 .main {
-  margin-top: 5rem;
+  padding-top: 5rem;
   min-height: calc(100vh - 60px);
   padding-bottom: 50px;
   display: flex;

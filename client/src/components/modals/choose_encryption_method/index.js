@@ -1,28 +1,37 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { toggleModal } from '../../../actions/toggleModal';
-import '../modal.scss';
-import { changeMethod } from '../../../actions/changeMethod';
-import HighlightOffIcon from '@material-ui/icons/HighlightOff';
-import MethodChoiceButton from './MethodChoiceButton';
-import { EncryptionMethodsDetails } from '../../main/BlockCenter/EncryptionMethodsDetails';
 import { v4 as uuidv4 } from 'uuid';
 
-class Modal extends React.Component {
-  constructor(props) {
-    super(props);
-    this.toggleModalOuterClick = this.toggleModalOuterClick.bind(this);
-    this.generateEncryptionMethods = this.generateEncryptionMethods.bind(this);
-  }
+//Assets
+import '../modal.scss';
+import { EncryptionMethodsDetails } from '../../main/BlockCenter/EncryptionMethodsDetails';
 
-  toggleModalOuterClick = (e) => {
+//Actions
+import { toggleModal } from '../../../actions/toggleModal';
+import { changeMethod } from '../../../actions/changeMethod';
+
+//Components
+import HighlightOffIcon from '@material-ui/icons/HighlightOff';
+import MethodChoiceButton from './MethodChoiceButton';
+
+const Modal = (props) => {
+  /**
+   * Method to toggle the modal when the modal
+   * body is not clicked but the outside wrapper.
+   */
+  const toggleModalOuterClick = (e) => {
     e.preventDefault();
     if (e.target.className === 'modal-wrapper') {
-      this.props.toggleModal();
+      props.toggleModal();
     }
   };
 
-  options = [
+  /**
+   * All available categories of encryption
+   * methods
+   */
+  const options = [
     'Ciphers',
     'Alphabets',
     'Polybius Square Ciphers',
@@ -31,8 +40,12 @@ class Modal extends React.Component {
     'Text Transformations',
   ];
 
-  generateEncryptionMethods = () =>
-    this.options.map((option) => {
+  /**
+   * Generates the body of the modal with
+   * all the options.
+   */
+  const generateEncryptionMethods = () =>
+    options.map((option) => {
       return (
         <div className='modal__content' key={uuidv4()}>
           <span className='modal__category-title'>{option}</span>
@@ -54,47 +67,40 @@ class Modal extends React.Component {
       );
     });
 
-  render() {
-    if (this.props.modalOpen) {
-      return (
-        <div
-          className='modal-wrapper'
-          onClick={(e) => this.toggleModalOuterClick(e)}
-        >
-          <div className='modal'>
-            <div className='modal__header modal__header--space-between'>
-              Encryption Methods
-              <button className='modal__close-btn'>
-                <HighlightOffIcon onClick={() => this.props.toggleModal()} />
-              </button>
-            </div>
-            <div className='modal__body'>
-              {this.generateEncryptionMethods()}
-            </div>
-            <div className='modal__bottom-wrapper'>
-              <div className='modal__legend'>
-                <div className='modal__explanation-wrapper'>
-                  <div className='modal__featured-sign'>F</div> Featured in
-                  Timeline
-                </div>
-                <div className='modal__explanation-wrapper'>
-                  <div className='modal__unfeatured-sign'>N</div> Not featured
-                  in Timeline
-                </div>
+  if (props.modalOpen) {
+    return (
+      <div className='modal-wrapper' onClick={(e) => toggleModalOuterClick(e)}>
+        <div className='modal'>
+          <div className='modal__header modal__header--space-between'>
+            Encryption Methods
+            <button className='modal__close-btn'>
+              <HighlightOffIcon onClick={() => props.toggleModal()} />
+            </button>
+          </div>
+          <div className='modal__body'>{generateEncryptionMethods()}</div>
+          <div className='modal__bottom-wrapper'>
+            <div className='modal__legend'>
+              <div className='modal__explanation-wrapper'>
+                <div className='modal__featured-sign'>F</div> Featured in
+                Timeline
               </div>
-              <button
-                className='modal__close'
-                onClick={() => this.props.toggleModal()}
-              >
-                Close
-              </button>
+              <div className='modal__explanation-wrapper'>
+                <div className='modal__unfeatured-sign'>N</div> Not featured in
+                Timeline
+              </div>
             </div>
+            <button
+              className='modal__close'
+              onClick={() => props.toggleModal()}
+            >
+              Close
+            </button>
           </div>
         </div>
-      );
-    } else return null;
-  }
-}
+      </div>
+    );
+  } else return null;
+};
 
 const mapStateToProps = (state) => ({
   modalOpen: state.modal,
@@ -104,6 +110,13 @@ const mapStateToProps = (state) => ({
 const mapActionsToProps = {
   toggleModal: toggleModal,
   changeMethod: changeMethod,
+};
+
+Modal.propTypes = {
+  modalOpen: PropTypes.bool.isRequired,
+  method: PropTypes.string.isRequired,
+  toggleModal: PropTypes.func.isRequired,
+  changeMethod: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapActionsToProps)(Modal);
