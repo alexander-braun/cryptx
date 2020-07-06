@@ -12,6 +12,8 @@ import Output from './BlockInputOutput/Output';
 import BlockConnector from './BlockOther/BlockConnector';
 import BlockSettings from './BlockCenter';
 import Timeline from '../timeline/Timeline';
+import LoadPreset from '../modals/save_&_load_presets/LoadPreset';
+import SavePreset from '../modals/save_&_load_presets/SavePreset';
 
 //Logic
 import Caesar from '../encryption_methods/caesar/caesar-logic';
@@ -50,7 +52,6 @@ import {
 import { setTrifidLayers, setTrifidGroups } from '../../actions/trifid';
 
 // Modals
-import PresetsModal from '../modals/save_&_load_presets';
 import AnalysisModal from '../modals/add_analysis_method';
 
 const Modal = React.lazy(() => import('../modals/choose_encryption_method'));
@@ -205,7 +206,8 @@ class Main extends React.PureComponent {
         <Suspense fallback={<div>...Loading</div>}>
           <Modal />
         </Suspense>
-        <PresetsModal />
+        <LoadPreset />
+        <SavePreset />
         <AnalysisModal />
       </div>
     );

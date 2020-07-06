@@ -81,7 +81,8 @@ const Header = (props) => {
     <div
       className={
         !HideElementOnScroll() &&
-        !props.presetsModal &&
+        !props.savePresetModal &&
+        !props.loadPresetModal &&
         !props.analysisModal &&
         !props.modalOpen
           ? 'nav-normal'
@@ -148,7 +149,8 @@ const Header = (props) => {
 
 const mapStateToProps = (state) => ({
   auth: state.auth,
-  presetsModal: state.presetsModal.modalOpen,
+  savePresetModal: state.savePresetModal,
+  loadPresetModal: state.loadPresetModal,
   analysisModal: state.analysisModal,
   modalOpen: state.modal,
 });

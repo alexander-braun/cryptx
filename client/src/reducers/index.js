@@ -29,6 +29,8 @@ import substitutionAlphabet from './substitutionAlphabet';
 import trifid from './trifid';
 import playfair from './playfair';
 import nihilist from './nihilist';
+import loadPresetModal from './loadPresetModal';
+import savePresetModal from './savePresetModal';
 
 export default combineReducers({
   modal,
@@ -61,4 +63,6 @@ export default combineReducers({
   substitutionAlphabet,
   trifid,
   playfair,
+  loadPresetModal,
+  savePresetModal,
 });

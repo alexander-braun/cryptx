@@ -3,10 +3,11 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 //Actions
-import { togglePresetsModal } from '../../../actions/togglePresetsModal';
 import { toggleDirection } from '../../../actions/toggleDirection';
 import { updateInput } from '../../../actions/updateInput';
 import { toggleAnalysisModal } from '../../../actions/toggleAnalysisModal';
+import { toggleLoadPresetModal } from '../../../actions/toggleLoadPresetModal';
+import { toggleSavePresetModal } from '../../../actions/toggleSavePresetModal';
 
 //Components
 import SwapInputsTooltip from './Tooltips/SwapInputsTooltip';
@@ -15,7 +16,8 @@ import SavePresetTooltip from './Tooltips/SavePresetTooltip';
 import AddAnalysisMethodTooltip from './Tooltips/AddAnalysisMethodTooltip';
 
 const MenueButtons = ({
-  togglePresetsModal,
+  toggleSavePresetModal,
+  toggleLoadPresetModal,
   toggleDirection,
   output,
   direction,
@@ -51,7 +53,7 @@ const MenueButtons = ({
       <button
         className='block__head-button'
         onClick={() => {
-          togglePresetsModal('load');
+          toggleLoadPresetModal();
         }}
       >
         <LoadPresetTooltip />
@@ -59,7 +61,7 @@ const MenueButtons = ({
       <button
         className='block__head-button'
         onClick={() => {
-          togglePresetsModal('save');
+          toggleSavePresetModal('save');
         }}
       >
         <SavePresetTooltip />
@@ -82,16 +84,16 @@ const mapStateToProps = (state) => ({
 });
 
 const mapActionsToProps = {
-  togglePresetsModal: togglePresetsModal,
   toggleDirection: toggleDirection,
   toggleAnalysisModal: toggleAnalysisModal,
   updateInput: updateInput,
+  toggleLoadPresetModal,
+  toggleSavePresetModal,
 };
 
 MenueButtons.propTypes = {
   output: PropTypes.string.isRequired,
   direction: PropTypes.string.isRequired,
-  togglePresetsModal: PropTypes.func.isRequired,
   toggleDirection: PropTypes.func.isRequired,
   toggleAnalysisModal: PropTypes.func.isRequired,
   updateInput: PropTypes.func.isRequired,
