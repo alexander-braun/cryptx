@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import './substitution.scss';
 import setSubstitutionAlphabet from '../../../actions/setSubstitutionAlphabet';
-import PropsTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 const SubstitutionAlphabet = (props) => {
   /**
@@ -85,8 +85,8 @@ const mapActionsToProps = {
 };
 
 SubstitutionAlphabet.propTypes = {
-  alphabet: PropsTypes.string.isRequired,
-  substitutionAlphabet: PropsTypes.object.isRequired,
+  alphabet: PropTypes.string.isRequired,
+  substitutionAlphabet: PropTypes.object.isRequired,
 };
 
 export default connect(

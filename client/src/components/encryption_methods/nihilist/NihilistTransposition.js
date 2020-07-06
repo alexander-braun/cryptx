@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
-import PropsTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 class NihilistTransposition extends React.PureComponent {
   genAlphabet = () => {
@@ -134,12 +134,12 @@ const mapStateToProps = (state) => ({
 });
 
 NihilistTransposition.propTypes = {
-  nihilistRunningKey: PropsTypes.array.isRequired,
-  nihilistPlainNumbers: PropsTypes.array.isRequired,
-  cipherNihilist: PropsTypes.string.isRequired,
-  input: PropsTypes.string.isRequired,
-  output: PropsTypes.string.isRequired,
-  direction: PropsTypes.string.isRequired,
+  nihilistRunningKey: PropTypes.array.isRequired,
+  nihilistPlainNumbers: PropTypes.array.isRequired,
+  cipherNihilist: PropTypes.string.isRequired,
+  input: PropTypes.string.isRequired,
+  output: PropTypes.string.isRequired,
+  direction: PropTypes.string.isRequired,
 };
 
 export default connect(mapStateToProps)(NihilistTransposition);

@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import './trifid.scss';
-import PropsTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 const TrifidLayers = (props) => {
   /**
@@ -73,7 +73,7 @@ const mapStateToProps = (state) => ({
 });
 
 TrifidLayers.propTypes = {
-  trifidLayers: PropsTypes.array.isRequired,
+  trifidLayers: PropTypes.array.isRequired,
 };
 
 export default connect(mapStateToProps)(TrifidLayers);

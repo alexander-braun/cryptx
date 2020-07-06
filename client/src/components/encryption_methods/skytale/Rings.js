@@ -63,6 +63,7 @@ class Rings extends React.PureComponent {
       backgroundColor:
         firstCharacterStyle !== '' ? firstCharacterStyle : transparencyValue,
     };
+    this.planeNum++;
     return ringStyles;
   }
 

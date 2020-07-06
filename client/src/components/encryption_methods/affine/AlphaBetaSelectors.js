@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { setAffineAlpha, setAffineBeta } from '../../../actions/affine';
-import PropsTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 const AlphaBetaSelectors = (props) => {
   /**
@@ -83,10 +83,10 @@ const mapActionsToProps = {
 };
 
 AlphaBetaSelectors.propTypes = {
-  affine_alpha: PropsTypes.number.isRequired,
-  affine_beta: PropsTypes.number.isRequired,
-  setAffineAlpha: PropsTypes.func.isRequired,
-  setAffineBeta: PropsTypes.func.isRequired,
+  affine_alpha: PropTypes.number.isRequired,
+  affine_beta: PropTypes.number.isRequired,
+  setAffineAlpha: PropTypes.func.isRequired,
+  setAffineBeta: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapActionsToProps)(AlphaBetaSelectors);

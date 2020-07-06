@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import './trifid.scss';
-import PropsTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 const TrifidGroups = (props) => {
   /**
@@ -135,12 +135,12 @@ const mapStateToProps = (state) => ({
 });
 
 TrifidGroups.propTypes = {
-  trifidGroups: PropsTypes.array.isRequired,
-  trifidGroupSize: PropsTypes.number.isRequired,
-  trifid27thLetter: PropsTypes.string.isRequired,
-  input: PropsTypes.string.isRequired,
-  alphabet: PropsTypes.string.isRequired,
-  output: PropsTypes.string.isRequired,
+  trifidGroups: PropTypes.array.isRequired,
+  trifidGroupSize: PropTypes.number.isRequired,
+  trifid27thLetter: PropTypes.string.isRequired,
+  input: PropTypes.string.isRequired,
+  alphabet: PropTypes.string.isRequired,
+  output: PropTypes.string.isRequired,
 };
 
 export default connect(mapStateToProps)(TrifidGroups);

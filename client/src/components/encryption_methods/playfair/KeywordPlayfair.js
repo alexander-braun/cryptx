@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { setKeywordPlayfair } from '../../../actions/playfair';
-import PropsTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 const KeywordPlayfair = ({ keywordPlayfair, setKeywordPlayfair }) => {
   return (
@@ -32,8 +32,8 @@ const mapActionsToProps = {
 };
 
 KeywordPlayfair.propTypes = {
-  keywordPlayfair: PropsTypes.string.isRequired,
-  setKeywordPlayfair: PropsTypes.func.isRequired,
+  keywordPlayfair: PropTypes.string.isRequired,
+  setKeywordPlayfair: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapActionsToProps)(KeywordPlayfair);

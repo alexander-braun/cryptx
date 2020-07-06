@@ -5,7 +5,7 @@ import {
   setTrifidKey,
   setTrifid27thLetter,
 } from '../../../actions/trifid';
-import PropsTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 const TrifidSettings = (props) => {
   /**
@@ -112,12 +112,12 @@ const mapActionsToProps = {
 };
 
 TrifidSettings.propTypes = {
-  trifidKey: PropsTypes.string.isRequired,
-  trifid27thLetter: PropsTypes.string.isRequired,
-  trifidGroupSize: PropsTypes.number.isRequired,
-  setTrifidGroupSize: PropsTypes.func.isRequired,
-  setTrifidKey: PropsTypes.func.isRequired,
-  setTrifid27thLetter: PropsTypes.func.isRequired,
+  trifidKey: PropTypes.string.isRequired,
+  trifid27thLetter: PropTypes.string.isRequired,
+  trifidGroupSize: PropTypes.number.isRequired,
+  setTrifidGroupSize: PropTypes.func.isRequired,
+  setTrifidKey: PropTypes.func.isRequired,
+  setTrifid27thLetter: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapActionsToProps)(TrifidSettings);

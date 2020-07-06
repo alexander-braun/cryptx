@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { setRinglength } from '../../../actions/skytale';
-import PropsTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 const RingLength = (props) => {
   /**
@@ -64,8 +64,8 @@ const mapActionsToProps = {
 };
 
 RingLength.propTypes = {
-  ringLength: PropsTypes.number.isRequired,
-  setRinglength: PropsTypes.func.isRequired,
+  ringLength: PropTypes.number.isRequired,
+  setRinglength: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapActionsToProps)(RingLength);

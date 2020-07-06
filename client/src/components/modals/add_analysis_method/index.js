@@ -1,5 +1,8 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+
+//Actions
 import { toggleAnalysisModal } from '../../../actions/toggleAnalysisModal';
 import {
   toggleAnalysisMethodFQInput,
@@ -9,6 +12,8 @@ import {
   toggleAnalysisMethodCHIOutput,
   toggleAnalysisMethodCHIInput,
 } from '../../../actions/toggleAnalysisMethod';
+
+//Assets
 import '../modal.scss';
 
 const AnalysisModal = ({
@@ -56,7 +61,6 @@ const AnalysisModal = ({
                     <li className='modal__list-item'>
                       <button
                         className='modal__encryption-method'
-                        value='atbash'
                         onClick={() => {
                           !fq_input && toggleAnalysisMethodFQInput();
                           !fq_output && toggleAnalysisMethodFQOutput();
@@ -70,7 +74,6 @@ const AnalysisModal = ({
                     <li className='modal__list-item'>
                       <button
                         className='modal__encryption-method'
-                        value='atbash'
                         onClick={() => {
                           !ic_input && toggleAnalysisMethodICInput();
                           !ic_output && toggleAnalysisMethodICOutput();
@@ -84,7 +87,6 @@ const AnalysisModal = ({
                     <li className='modal__list-item'>
                       <button
                         className='modal__encryption-method'
-                        value='atbash'
                         onClick={() => {
                           !chi_input && toggleAnalysisMethodCHIInput();
                           !chi_output && toggleAnalysisMethodCHIOutput();
@@ -123,6 +125,24 @@ const mapActionsToProps = {
   toggleAnalysisMethodICOutput: toggleAnalysisMethodICOutput,
   toggleAnalysisMethodCHIOutput: toggleAnalysisMethodCHIOutput,
   toggleAnalysisMethodCHIInput: toggleAnalysisMethodCHIInput,
+};
+
+AnalysisModal.propTypes = {
+  analysisModal: PropTypes.bool.isRequired,
+  fq_input: PropTypes.bool.isRequired,
+  fq_output: PropTypes.bool.isRequired,
+  ic_input: PropTypes.bool.isRequired,
+  ic_output: PropTypes.bool.isRequired,
+  chi_input: PropTypes.bool.isRequired,
+  chi_output: PropTypes.bool.isRequired,
+  isAuthenticated: PropTypes.bool,
+  toggleAnalysisModal: PropTypes.func.isRequired,
+  toggleAnalysisMethodFQInput: PropTypes.func.isRequired,
+  toggleAnalysisMethodFQOutput: PropTypes.func.isRequired,
+  toggleAnalysisMethodICInput: PropTypes.func.isRequired,
+  toggleAnalysisMethodICOutput: PropTypes.func.isRequired,
+  toggleAnalysisMethodCHIOutput: PropTypes.func.isRequired,
+  toggleAnalysisMethodCHIInput: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapActionsToProps)(AnalysisModal);

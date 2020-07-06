@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import './nihilistSquare.scss';
 import { v4 as uuidv4 } from 'uuid';
-import PropsTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 class NihilistSquare extends React.PureComponent {
   /**
@@ -69,7 +69,7 @@ const mapStateToProps = (state) => ({
 });
 
 NihilistSquare.propTypes = {
-  nihilistSquare: PropsTypes.array.isRequired,
+  nihilistSquare: PropTypes.array.isRequired,
 };
 
 export default connect(mapStateToProps)(NihilistSquare);

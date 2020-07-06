@@ -4,7 +4,7 @@ import {
   setKeywordNihilist,
   setCipherNihilist,
 } from '../../../actions/nihilist';
-import PropsTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 const KeywordsNihilist = (props) => {
   return (
@@ -52,10 +52,10 @@ const mapActionsToProps = {
 };
 
 KeywordsNihilist.propTypes = {
-  keywordNihilist: PropsTypes.string.isRequired,
-  cipherNihilist: PropsTypes.string.isRequired,
-  setCipherNihilist: PropsTypes.func.isRequired,
-  setKeywordNihilist: PropsTypes.func.isRequired,
+  keywordNihilist: PropTypes.string.isRequired,
+  cipherNihilist: PropTypes.string.isRequired,
+  setCipherNihilist: PropTypes.func.isRequired,
+  setKeywordNihilist: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapActionsToProps)(KeywordsNihilist);

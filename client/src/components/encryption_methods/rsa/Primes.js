@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { setPrime1, setPrime2, setRsaE } from '../../../actions/rsa';
-import PropsTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 const Primes = (props) => {
   /**
@@ -196,16 +196,16 @@ const mapActionsToProps = {
 };
 
 Primes.propTypes = {
-  prime1: PropsTypes.string.isRequired,
-  prime2: PropsTypes.string.isRequired,
-  timeToCalculate: PropsTypes.string.isRequired,
-  d: PropsTypes.string,
-  phi: PropsTypes.string,
-  n: PropsTypes.string,
-  e: PropsTypes.string.isRequired,
-  setPrime1: PropsTypes.func.isRequired,
-  setPrime2: PropsTypes.func.isRequired,
-  setRsaE: PropsTypes.func.isRequired,
+  prime1: PropTypes.string.isRequired,
+  prime2: PropTypes.string.isRequired,
+  timeToCalculate: PropTypes.string.isRequired,
+  d: PropTypes.string,
+  phi: PropTypes.string,
+  n: PropTypes.string,
+  e: PropTypes.string.isRequired,
+  setPrime1: PropTypes.func.isRequired,
+  setPrime2: PropTypes.func.isRequired,
+  setRsaE: PropTypes.func.isRequired,
 };
 
 export default React.memo(connect(mapStateToProps, mapActionsToProps)(Primes));

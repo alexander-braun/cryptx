@@ -1,5 +1,5 @@
 import React from 'react';
-import PropsTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import './alert.scss';
 
@@ -16,7 +16,7 @@ const mapStateToProps = (state) => ({
 });
 
 Alert.propTypes = {
-  alerts: PropsTypes.array.isRequired,
+  alerts: PropTypes.array.isRequired,
 };
 
 export default connect(mapStateToProps)(Alert);

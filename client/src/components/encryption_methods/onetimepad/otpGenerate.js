@@ -2,7 +2,7 @@ import React from 'react';
 import './otp.scss';
 import { connect } from 'react-redux';
 import setOtpKey from '../../../actions/setOtpKey';
-import PropsTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 class Otp extends React.PureComponent {
   constructor(props) {
@@ -80,10 +80,10 @@ const mapActionsToProps = {
 };
 
 Otp.propTypes = {
-  otpKey: PropsTypes.string.isRequired,
-  alphabet: PropsTypes.string.isRequired,
-  input: PropsTypes.string.isRequired,
-  setOtpKey: PropsTypes.func.isRequired,
+  otpKey: PropTypes.string.isRequired,
+  alphabet: PropTypes.string.isRequired,
+  input: PropTypes.string.isRequired,
+  setOtpKey: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapActionsToProps)(Otp);
