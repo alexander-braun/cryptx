@@ -1,4 +1,8 @@
-import { GET_PROFILE, PROFILE_ERROR } from '../actions/constants';
+import {
+  GET_PROFILE,
+  PROFILE_ERROR,
+  DELETE_PROFILE,
+} from '../actions/constants';
 
 const initialState = {
   profile: null,
@@ -9,6 +13,12 @@ const initialState = {
 
 export default function (state = initialState, action) {
   switch (action.type) {
+    case DELETE_PROFILE:
+      return {
+        ...state,
+        profile: null,
+        loading: false,
+      };
     case GET_PROFILE:
       return {
         ...state,

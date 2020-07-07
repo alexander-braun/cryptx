@@ -1,7 +1,7 @@
 export const EncryptionMethodsDetails = {
   atbash: {
     year: '600 B.C.',
-    crack: true,
+    crack: false,
     timeline: true,
     timelineIdx: 0,
     display: 'Atbash',
