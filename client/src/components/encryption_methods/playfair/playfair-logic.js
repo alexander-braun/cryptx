@@ -238,35 +238,3 @@ const Playfair = (() => {
 })();
 
 export default Playfair;
-
-/*
-
-playfaireSquare() {
-    //generate table with letters for playfair
-    const visualMatrix = document.createElement('div');
-    visualMatrix.id = 'visualMatrix';
-
-    let indTable = 0;
-    for(let i = 0; i < 5; i++){
-        for(let j = 0; j < 5; j++){
-            const playfairTableElement = document.createElement('div');
-            playfairTableElement.setAttribute('id', 'table' + indTable);
-            playfairTableElement.setAttribute('class', 'playfairTable')
-            visualMatrix.appendChild(playfairTableElement);
-            indTable++;
-        }
-    }
-    return visualMatrix;
-},
-
-removeMatrix() {
-    if(document.getElementById('visualMatrix')) {
-        const visualMatrix = document.getElementById('visualMatrix');
-        visualMatrix.remove();
-    }
-},
-
-
-
-
-*/

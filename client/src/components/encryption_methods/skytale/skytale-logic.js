@@ -110,6 +110,7 @@ const skytale = (() => {
   };
 
   const encrypt = (direction, caseFormat, input, ringLength, foreignChars) => {
+    if (direction === 'crack') return ['', 0];
     setAll(direction, caseFormat, input, ringLength, foreignChars);
     return transformText();
   };
@@ -124,7 +125,6 @@ const skytale = (() => {
 
   return {
     encrypt: encrypt,
-    setAll: setAll,
   };
 })();
 

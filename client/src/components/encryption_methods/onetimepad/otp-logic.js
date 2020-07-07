@@ -1,7 +1,6 @@
 import math from '../../math/Math';
 
 const otp = (() => {
-  math.restoreForeignChars();
   let userInput, direction, includeChars, key, alphabet;
 
   const setUserInput = (input) => {
@@ -29,8 +28,8 @@ const otp = (() => {
   };
 
   const transformText = () => {
-    let ind = 0;
-    let input = [];
+    let index = 0;
+    const input = [];
     for (let i = 0; i < userInput.length; i++) {
       if (alphabet.indexOf(userInput[i].toLowerCase()) !== -1) {
         input.push(userInput[i].toLowerCase());
@@ -39,16 +38,16 @@ const otp = (() => {
 
     let output = input.map((char) => {
       let encryptedKey;
-      if (key[ind] && input && alphabet && alphabet.indexOf(char) !== -1) {
-        let indexChar = alphabet.indexOf(char);
-        let indexKey = alphabet.indexOf(key[ind].toLowerCase());
-        let resultIndex =
+      if (key[index] && input && alphabet && alphabet.indexOf(char) !== -1) {
+        const indexChar = alphabet.indexOf(char);
+        const indexKey = alphabet.indexOf(key[index].toLowerCase());
+        const resultIndex =
           direction === 'encrypt' ? indexChar + indexKey : indexChar - indexKey;
         encryptedKey =
           direction === 'encrypt'
             ? alphabet[resultIndex % 26]
             : alphabet[modulo(indexChar - indexKey, 26)];
-        ind++;
+        index++;
       }
       return encryptedKey;
     });
@@ -73,7 +72,7 @@ const otp = (() => {
         caseFormat,
         includeChars
       );
-    }
+    } else return '';
   };
 
   const setAll = (input, foreignChars, direction, otpKey, alphabet) => {

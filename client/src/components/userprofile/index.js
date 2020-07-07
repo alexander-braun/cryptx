@@ -25,7 +25,6 @@ const Profile = (props) => {
           ></img>
           <h2 className='profile-wrapper__access-text'>
             You have full access <br></br> to all features of cryptx.<br></br>
-            Thank you for registering!
           </h2>
         </div>
       </div>

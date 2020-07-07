@@ -326,7 +326,7 @@
   }
 
   .arrow {
-    color: rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 0.5);
   }
 
   &__vertically {
@@ -347,13 +347,13 @@
   }
 
   &__character {
-    border-left: 1px dashed rgba(255, 255, 255, 0.24);
+    border-left: 1px dashed rgba(255, 255, 255, 0.5);
     width: 10px;
     flex-grow: 2;
     font-weight: 400;
     text-align: center;
     text-transform: lowercase;
-    color: rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 0.5);
     padding: 0;
     margin: 0;
     display: flex;

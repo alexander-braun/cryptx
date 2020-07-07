@@ -5,8 +5,7 @@ const Substitute = (() => {
       for (let i = 0; i < input.length; i++) {
         output.push(substitutionAlphabet[input[i].toLowerCase()] || input[i]);
       }
-    }
-    if (direction === 'decrypt') {
+    } else if (direction === 'decrypt') {
       let sAlphabet = substitutionAlphabet;
       let uInput = input;
       let keys = Object.keys(sAlphabet);
