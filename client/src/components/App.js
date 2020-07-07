@@ -1,18 +1,24 @@
 import React, { useEffect } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Provider } from 'react-redux';
+
+//Redux store
+import store from '../store';
+
+//Components
 import Main from './main';
 import Header from './header/Header';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Footer from './footer/Footer';
 import Signup from './login_signup/signup';
 import Login from './login_signup/login';
-import store from '../store';
-import { Provider } from 'react-redux';
-import { loadUser } from '../actions/authenticate';
-import { loadPresets } from '../actions/presets';
-import setAuthToken from '../utils/setAuthToken';
 import About from './about';
 import Profile from './userprofile';
 import PrivateRoute from './routing/PrivateRoute';
+
+//Actions
+import { loadUser } from '../actions/authenticate';
+import { loadPresets } from '../actions/presets';
+import setAuthToken from '../utils/setAuthToken';
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);

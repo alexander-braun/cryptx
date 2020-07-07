@@ -1,7 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setKeywordPlayfair } from '../../../actions/playfair';
 import PropTypes from 'prop-types';
+
+//Actions
+import { setKeywordPlayfair } from '../../../actions/playfair';
 
 const KeywordPlayfair = ({ keywordPlayfair, setKeywordPlayfair }) => {
   return (

@@ -1,8 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
-import './trifid.scss';
 import PropTypes from 'prop-types';
+
+//Assets
+import './trifid.scss';
 
 const TrifidLayers = (props) => {
   /**

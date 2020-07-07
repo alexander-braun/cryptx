@@ -1,8 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
-import './rings.scss';
 import PropsTypes from 'prop-types';
+
+//Assets
+import './rings.scss';
 
 const skewValue = {
   3: 16,

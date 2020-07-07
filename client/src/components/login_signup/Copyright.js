@@ -1,6 +1,8 @@
 import React from 'react';
-import Typography from '@material-ui/core/Typography';
 import { Link } from 'react-router-dom';
+
+//MUI
+import Typography from '@material-ui/core/Typography';
 
 export const Copyright = () => {
   return (

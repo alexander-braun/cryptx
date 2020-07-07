@@ -1,5 +1,9 @@
 import React from 'react';
+
+//MUI
 import GitHubIcon from '@material-ui/icons/GitHub';
+
+//Assets
 import './footer.scss';
 
 const Footer = () => {

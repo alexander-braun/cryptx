@@ -1,4 +1,6 @@
 import React from 'react';
+
+//Assets
 import './about.scss';
 
 const About = () => {

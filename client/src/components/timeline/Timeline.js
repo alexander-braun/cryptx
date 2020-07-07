@@ -1,11 +1,17 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import Slider from 'react-slick';
+
+//Actions
+import { changeMethod } from '../../actions/changeMethod';
+
+//Components
+import { EncryptionMethodsDetails } from '../main/BlockCenter/EncryptionMethodsDetails';
+
+//Assets
+import './timeline.scss';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import Slider from 'react-slick';
-import './timeline.scss';
-import { connect } from 'react-redux';
-import { changeMethod } from '../../actions/changeMethod';
-import { EncryptionMethodsDetails } from '../main/BlockCenter/EncryptionMethodsDetails';
 
 class Timeline extends React.PureComponent {
   constructor(props) {

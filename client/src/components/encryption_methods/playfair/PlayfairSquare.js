@@ -1,8 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
-import './playfair-square.scss';
 import PropTypes from 'prop-types';
+
+//Assets
+import './playfair-square.scss';
 
 class PlayfaireSquare extends React.PureComponent {
   createVisualMatrix = () => {

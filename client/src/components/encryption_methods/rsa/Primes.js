@@ -1,7 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setPrime1, setPrime2, setRsaE } from '../../../actions/rsa';
 import PropTypes from 'prop-types';
+
+//Actions
+import { setPrime1, setPrime2, setRsaE } from '../../../actions/rsa';
 
 const Primes = (props) => {
   /**

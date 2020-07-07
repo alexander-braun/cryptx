@@ -1,14 +1,18 @@
 import React, { useEffect, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import './userprofile.scss';
-import { getCurrentProfile } from '../../actions/profiles';
+
+//Components
 import Spinner from '../spinner/Spinner';
-import { addPreset } from '../../actions/presets';
-import { deleteCurrentProfile } from '../../actions/profiles';
+
+//Assets
+import './userprofile.scss';
 
 //Actions
 import { logout } from '../../actions/authenticate';
+import { addPreset } from '../../actions/presets';
+import { deleteCurrentProfile } from '../../actions/profiles';
+import { getCurrentProfile } from '../../actions/profiles';
 
 const Profile = (props) => {
   useEffect(() => {

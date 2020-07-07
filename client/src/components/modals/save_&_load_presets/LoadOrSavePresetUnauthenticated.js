@@ -1,10 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+
+//Actions
 import { toggleLoadPresetModal } from '../../../actions/toggleLoadPresetModal';
 import { toggleSavePresetModal } from '../../../actions/toggleSavePresetModal';
+
+//MUI
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import SentimentVeryDissatisfiedIcon from '@material-ui/icons/SentimentVeryDissatisfied';
-import { Link } from 'react-router-dom';
 
 const LoadOrSavePresetUnauthenticated = (props) => {
   const toggleModalOnWrapperClick = (e) => {

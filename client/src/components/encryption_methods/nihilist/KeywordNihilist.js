@@ -1,10 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+
+//Actions
 import {
   setKeywordNihilist,
   setCipherNihilist,
 } from '../../../actions/nihilist';
-import PropTypes from 'prop-types';
 
 const KeywordsNihilist = (props) => {
   return (

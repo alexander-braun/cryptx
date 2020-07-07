@@ -1,9 +1,13 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
-import './substitution.scss';
-import setSubstitutionAlphabet from '../../../actions/setSubstitutionAlphabet';
 import PropTypes from 'prop-types';
+
+//Actions
+import setSubstitutionAlphabet from '../../../actions/setSubstitutionAlphabet';
+
+//Assets
+import './substitution.scss';
 
 const SubstitutionAlphabet = (props) => {
   /**

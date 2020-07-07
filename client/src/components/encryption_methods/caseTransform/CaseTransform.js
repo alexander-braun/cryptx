@@ -1,8 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setCaseTransformChoice } from '../../../actions/setCaseTransformChoice';
 import { v4 as uuidv4 } from 'uuid';
 import PropTypes from 'prop-types';
+
+//Actions
+import { setCaseTransformChoice } from '../../../actions/setCaseTransformChoice';
 
 /**
  * Abailable Case-Options

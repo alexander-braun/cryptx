@@ -1,9 +1,12 @@
 .alert {
-    color: white;
-    background-color: rgba(255, 88, 110, 0.753);
-    text-align: center;
-    width: fit-content;
-    font-size: 1.1rem;
-    padding: 1rem;
-    margin: 0 auto;
+  color: white;
+  background-color: rgba(255, 88, 110, 0.753);
+  text-align: center;
+  width: fit-content;
+  font-size: 1.1rem;
+  padding: 1rem 2rem;
+  margin: 0 auto;
+  font-weight: 400;
+  letter-spacing: 0.1rem;
+  border-radius: 100px;
 }

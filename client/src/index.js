@@ -4,10 +4,14 @@ import 'core-js/stable';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './style.scss';
 import * as serviceWorker from './serviceWorker';
-import App from './components/App';
 import { BrowserRouter as Router } from 'react-router-dom';
+
+//Assets
+import './style.scss';
+
+//Components
+import App from './components/App';
 
 if (process.env.NODE_ENV !== 'production') {
   const { whyDidYouUpdate } = require('why-did-you-update');

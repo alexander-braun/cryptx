@@ -1,7 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setAffineAlpha, setAffineBeta } from '../../../actions/affine';
 import PropTypes from 'prop-types';
+
+//Actions
+import { setAffineAlpha, setAffineBeta } from '../../../actions/affine';
 
 const AlphaBetaSelectors = (props) => {
   /**

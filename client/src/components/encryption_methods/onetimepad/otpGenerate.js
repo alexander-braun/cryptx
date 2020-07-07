@@ -1,8 +1,12 @@
 import React from 'react';
-import './otp.scss';
 import { connect } from 'react-redux';
-import setOtpKey from '../../../actions/setOtpKey';
 import PropTypes from 'prop-types';
+
+//Actions
+import setOtpKey from '../../../actions/setOtpKey';
+
+//Assets
+import './otp.scss';
 
 class Otp extends React.PureComponent {
   constructor(props) {

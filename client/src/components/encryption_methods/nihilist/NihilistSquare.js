@@ -1,8 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import './nihilistSquare.scss';
 import { v4 as uuidv4 } from 'uuid';
 import PropTypes from 'prop-types';
+
+//Assets
+import './nihilistSquare.scss';
 
 class NihilistSquare extends React.PureComponent {
   /**

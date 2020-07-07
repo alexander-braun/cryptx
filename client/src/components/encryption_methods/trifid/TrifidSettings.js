@@ -1,11 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+
+//Actions
 import {
   setTrifidGroupSize,
   setTrifidKey,
   setTrifid27thLetter,
 } from '../../../actions/trifid';
-import PropTypes from 'prop-types';
 
 const TrifidSettings = (props) => {
   /**
