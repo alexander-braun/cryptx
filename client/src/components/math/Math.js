@@ -12,7 +12,18 @@ const math = (() => {
     }
   };
 
+  const transformToLowerCaseChars = (input) => {
+    input = input.toString();
+    if (!input || input.length === 0) return '';
+    const inputArr = input.toLowerCase().split('');
+    const cleanOutput = inputArr.filter(
+      (char) => alphabet.indexOf(char) !== -1
+    );
+    return cleanOutput;
+  };
+
   const cleanInput = (input, blankSpaces, caseSensitive, alphab) => {
+    input = input.toString();
     if (!input || input.length === 0) return null;
     const inputArr = input.toLowerCase().split('');
 
@@ -27,17 +38,17 @@ const math = (() => {
           .filter(
             (char) => alphab.indexOf(char.toLowerCase()) !== -1 || char === ' '
           );
-      } else if (caseSensitive === false) {
+      } else if (!caseSensitive) {
         cleanOutput = inputArr.filter(
           (char) => alphab.indexOf(char) !== -1 || char === ' '
         );
       }
-    } else if (blankSpaces === false) {
+    } else if (!blankSpaces) {
       if (caseSensitive) {
         cleanOutput = input
           .split('')
           .filter((char) => alphab.indexOf(char.toLowerCase()) !== -1);
-      } else if (caseSensitive === false) {
+      } else if (!caseSensitive) {
         cleanOutput = inputArr.filter((char) => alphab.indexOf(char) !== -1);
       }
     }
@@ -126,6 +137,7 @@ const math = (() => {
     restoreCase: restoreCase,
     restoreForeignChars: restoreForeignChars,
     modInverse: modInverse,
+    transformToLowerCaseChars: transformToLowerCaseChars,
   };
 })();
 

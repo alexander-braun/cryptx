@@ -2,7 +2,6 @@ import math from '../../math/Math';
 
 const caesar = (() => {
   //Setup all variables
-  math.restoreForeignChars();
   let userInput,
     saltInput,
     alphabet,
@@ -35,8 +34,31 @@ const caesar = (() => {
     direction = input;
   };
 
-  //Standart Caesar Method
+  const setWordbook = (words) => {
+    wordbook = words;
+  };
 
+  const setAll = (
+    wordbook,
+    input,
+    alphabet,
+    cShift,
+    direction,
+    foreignChars,
+    caseFormat
+  ) => {
+    setWordbook(wordbook);
+    setUserInput(input);
+    setAlphabet(alphabet);
+    setSaltInput(cShift);
+    setDirection(direction);
+    setForeignChars(foreignChars);
+    setCaseFormat(caseFormat);
+  };
+
+  /**
+   * Standart Caesar encryption
+   */
   const charIndex = (char) => {
     const index = alphabet.indexOf(char);
     let alLength = alphabet.length;
@@ -72,16 +94,13 @@ const caesar = (() => {
     return decryptedChars.join('');
   };
 
-  //Crack functionality
-
-  const setWordbook = (words) => {
-    wordbook = words;
-  };
-
+  /**
+   * Cracking Functionality
+   */
   const readCharCrack = (textinput, salt) => {
     const decryptedChars = [];
-    for (let char of textinput) {
-      let charLower = char.toLowerCase();
+    for (const char of textinput) {
+      const charLower = char.toLowerCase();
       if (alphabet.includes(charLower)) {
         const position = charIndexCrack(charLower, salt);
         if (charLower === char) {
@@ -103,62 +122,22 @@ const caesar = (() => {
     }
   };
 
-  const removeSignsKeepSpaces = (textinput) => {
-    let output = [];
-    for (let char of textinput) {
-      if (alphabet.indexOf(char) !== -1 || char === ' ') {
-        output.push(char);
-      }
-    }
-    return output.join('');
-  };
-
   const createAllOutputs = () => {
     let arr = [];
-    const textinput = removeSignsKeepSpaces(userInput.toLowerCase());
-    for (let i = 1; i < 26; i++) {
+    const textInput = math.cleanInput(userInput, true, false);
+    for (let i = 0; i < 26; i++) {
       let salt = i;
-      const textoutput = readCharCrack(textinput, salt);
+      const textoutput = readCharCrack(textInput, salt);
       arr.push([textoutput.split(' '), i]);
     }
     return arr;
   };
 
-  const findWords = (words) => {
-    let allOutputs = createAllOutputs();
-    let possibleCombinations = {};
-    let counter = 0;
-    // Brute Force lookup all possibilities against the english dictionary
-    for (let output of allOutputs) {
-      possibleCombinations[counter] = [];
-      for (let word of output[0]) {
-        possibleCombinations[counter].shiftV = output[1];
-        if (words[word] === 1) {
-          possibleCombinations[counter].push(word);
-        }
-      }
-      counter++;
-    }
-    // Find the option with the most words fitting and return them
-
-    let keys = Object.keys(possibleCombinations);
-    let length = 0;
-    let result;
-    let shiftV;
-
-    for (let key of keys) {
-      if (possibleCombinations[key].length > length) {
-        length = possibleCombinations[key].length;
-        result = possibleCombinations[key];
-        shiftV = 26 - possibleCombinations[key].shiftV;
-      }
-    }
-    if (length === 0)
+  const handleCracked = (highest, shiftV) => {
+    if (highest === 0)
       return `Weird text you got there! This tool can only crack english texts that are encrypted with the caesar cipher! Your input: "${userInput}"`;
-    direction = 'decrypt';
-    setSaltInput(shiftV);
 
-    result = encrypt(
+    return encrypt(
       null,
       userInput,
       alphabet.join(''),
@@ -167,19 +146,45 @@ const caesar = (() => {
       caseFormat,
       includeChars
     );
-    return result;
   };
 
-  const loadWordbook = () => {
+  const countCombinations = (possibleCombinations) => {
+    const keys = Object.keys(possibleCombinations);
+    let highest = 0;
+    let shiftV;
+    for (const key of keys) {
+      if (possibleCombinations[key].count > highest) {
+        highest = possibleCombinations[key].count;
+        shiftV = 26 - possibleCombinations[key].shiftV;
+      }
+    }
+
+    return handleCracked(highest, shiftV);
+  };
+
+  const findCombinations = () => {
     if (!userInput) return;
-    else return findWords(wordbook);
+    let allOutputs = createAllOutputs();
+    let possibleCombinations = {};
+    let counter = 0;
+    // Brute Force lookup all possibilities against the english dictionary
+    for (let output of allOutputs) {
+      possibleCombinations[counter] = [];
+      possibleCombinations[counter].count = 0;
+      for (let word of output[0]) {
+        possibleCombinations[counter].shiftV = output[1];
+        if (wordbook[word]) {
+          possibleCombinations[counter].count++;
+        }
+      }
+      counter++;
+    }
+    return countCombinations(possibleCombinations);
   };
 
   const checkIfSigns = () => {
     return alphabet.length > 26 ? false : true;
   };
-
-  //Crack or other ? Return the according method
 
   const encrypt = (
     wordbook,
@@ -200,7 +205,7 @@ const caesar = (() => {
       caseFormat
     );
     if (direction !== 'crack') {
-      let rawOutput = readChar();
+      const rawOutput = readChar();
       if (checkIfSigns()) {
         return math.transformCaseAndChars(
           userInput,
@@ -211,31 +216,12 @@ const caesar = (() => {
       } else return rawOutput;
     } else {
       if (wordbook !== 'FAIL') {
-        return loadWordbook();
+        return findCombinations();
       } else return `WORDBOOK COULDN'T LOAD`;
     }
   };
 
-  const setAll = (
-    wordbook,
-    input,
-    alphabet,
-    cShift,
-    direction,
-    foreignChars,
-    caseFormat
-  ) => {
-    setWordbook(wordbook);
-    setUserInput(input);
-    setAlphabet(alphabet);
-    setSaltInput(cShift);
-    setDirection(direction);
-    setForeignChars(foreignChars);
-    setCaseFormat(caseFormat);
-  };
-
   return {
-    setAll: setAll,
     encrypt: encrypt,
   };
 })();

@@ -22,7 +22,7 @@ class AtbashTransposition extends React.Component {
       let colorArrow =
         element.toLowerCase() === 'a' || element.toLowerCase() === 'z'
           ? 'white'
-          : 'rgba(255, 255, 255, 0.199)';
+          : 'rgba(255, 255, 255, 0.5)';
 
       output.push(
         <div
@@ -31,7 +31,7 @@ class AtbashTransposition extends React.Component {
           style={
             element.toLowerCase() === 'a' || element.toLowerCase() === 'z'
               ? style
-              : { color: '#ffffffa0' }
+              : { color: 'rgba(255, 255, 255, 0.5' }
           }
         >
           <div className={reverse ? 'arrow' : ''} style={{ color: colorArrow }}>

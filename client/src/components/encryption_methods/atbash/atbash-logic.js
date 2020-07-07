@@ -1,51 +1,38 @@
 import math from '../../math/Math';
 
 const atbash = (() => {
-  //Setup all variables
-  let userInput;
+  const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
 
-  let alphabet = 'abcdefghijklmnopqrstuvwxyz';
-  alphabet = alphabet.split('');
+  const encrypt = (input) => {
+    const userInput = input.toString();
+    const cleanInput = math.transformToLowerCaseChars(userInput);
 
-  //Encryption Method
-  const readChar = () => {
-    let cleanInput = math.cleanInput(userInput, false, false, alphabet);
-    if (cleanInput === null) return null;
+    if (!cleanInput.length) return '';
 
-    let alphabetReverse = [...alphabet].reverse();
+    const alphabetReverse = [...alphabet].reverse();
+    const output = [];
 
-    let output = [];
-
-    for (let char of cleanInput) {
-      let charIndex = alphabet.indexOf(char);
-      output.push(alphabetReverse[charIndex]);
+    for (const character of cleanInput) {
+      const characterIndex = alphabet.indexOf(character);
+      output.push(alphabetReverse[characterIndex]);
     }
 
     return output.join('');
   };
 
-  const checkIfSigns = () => {
-    return alphabet.length > 26 ? false : true;
-  };
+  const transform = (input, caseFormat, foreignChars) => {
+    const rawOutput = encrypt(input);
 
-  //Crack or other ? Return the according method
-
-  const encrypt = (input, caseFormat, foreignChars) => {
-    input = String(input);
-    userInput = input;
-    let rawOutput = readChar();
-    if (checkIfSigns()) {
-      return math.transformCaseAndChars(
-        userInput,
-        rawOutput,
-        caseFormat,
-        foreignChars
-      );
-    } else return rawOutput;
+    return math.transformCaseAndChars(
+      input,
+      rawOutput,
+      caseFormat,
+      foreignChars
+    );
   };
 
   return {
-    encrypt: encrypt,
+    encrypt: transform,
   };
 })();
 

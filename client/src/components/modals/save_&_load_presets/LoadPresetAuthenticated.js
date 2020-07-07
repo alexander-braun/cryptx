@@ -1,8 +1,9 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+
+//Actions
 import { deletePreset } from '../../../actions/presets';
 import { toggleLoadPresetModal } from '../../../actions/toggleLoadPresetModal';
-
 import { setCshift } from '../../../actions/setCShift';
 import { updateInput } from '../../../actions/updateInput';
 import toggleForeignChars from '../../../actions/toggleForeignChars';
@@ -93,44 +94,57 @@ const LoadPresetAuthenticated = (props) => {
     props.changeMethod(method);
     props.updateInput(input);
     props.updateAlphabet(alphabet);
-    method === 'caesar' && props.setCshift(cShift);
     props.toggleDirection(direction);
     props.toggleCase(caseFormat || 'maintain');
     props.toggleForeignChars(foreignChars || 'include');
 
-    method === 'rsa' && props.setPrime1(prime1);
-    method === 'rsa' && props.setPrime2(prime2);
-    method === 'rsa' && props.setRsaE(RsaE);
-
-    method === 'casetransform' &&
-      props.setCaseTransformChoice(caseTransformChoice);
-
-    method === 'vigenere' && props.setKeywordVigenere(keywordVigenere);
-
-    method === 'playfair' && props.setKeywordPlayfair(keywordPlayfair);
-
-    method === 'otp' && props.setOtpKey(otpKey);
-
-    method === 'skytale' && props.setRinglength(ringLength);
-
-    method === 'replace' && props.setReplaceLetter(replaceLetter);
-    method === 'replace' && props.setToReplaceLetter(toReplaceLetter);
-
-    method === 'affine' && props.setAffineAlpha(affine_alpha);
-    method === 'affine' && props.setAffineBeta(affine_beta);
-
-    method === 'nihilist' && props.setKeywordNihilist(keywordNihilist);
-    method === 'nihilist' && props.setCipherNihilist(cipherNihilist);
-
-    method === 'substitution' &&
-      props.setSubstitutionAlphabet(substitutionAlphabet);
-
-    method === 'trifid' && props.setTrifid27thLetter(trifid27thLetter);
-
-    method === 'trifid' && props.setTrifidGroupSize(trifidGroupSize);
-
-    method === 'trifid' && props.setTrifidKey(trifidKey);
-
+    switch (method) {
+      case 'caesar':
+        props.setCshift(cShift);
+        break;
+      case 'rsa':
+        props.setPrime1(prime1);
+        props.setPrime2(prime2);
+        props.setRsaE(RsaE);
+        break;
+      case 'casetransform':
+        props.setCaseTransformChoice(caseTransformChoice);
+        break;
+      case 'vigenere':
+        props.setKeywordVigenere(keywordVigenere);
+        break;
+      case 'playfair':
+        props.setKeywordPlayfair(keywordPlayfair);
+        break;
+      case 'otp':
+        props.setOtpKey(otpKey);
+        break;
+      case 'skytale':
+        props.setRinglength(ringLength);
+        break;
+      case 'replace':
+        props.setReplaceLetter(replaceLetter);
+        props.setToReplaceLetter(toReplaceLetter);
+        break;
+      case 'affine':
+        props.setAffineAlpha(affine_alpha);
+        props.setAffineBeta(affine_beta);
+        break;
+      case 'nihilist':
+        props.setKeywordNihilist(keywordNihilist);
+        props.setCipherNihilist(cipherNihilist);
+        break;
+      case 'substitution':
+        props.setSubstitutionAlphabet(substitutionAlphabet);
+        break;
+      case 'trifid':
+        props.setTrifid27thLetter(trifid27thLetter);
+        props.setTrifidGroupSize(trifidGroupSize);
+        props.setTrifidKey(trifidKey);
+        break;
+      default:
+        break;
+    }
     props.toggleLoadPresetModal();
   };
 

@@ -66,8 +66,8 @@ const morse = (() => {
 
   const encrypt = (inputArray) => {
     const outputArray = [];
-    for (let char of inputArray) {
-      let lowerChar = char.toLowerCase();
+    for (const char of inputArray) {
+      const lowerChar = char.toLowerCase();
       if (characters[lowerChar]) {
         outputArray.push(characters[lowerChar] + ' ');
       } else if (char === ' ') {
@@ -90,10 +90,8 @@ const morse = (() => {
         outputArray.push(
           Object.keys(characters).find((key) => characters[key] === char)
         );
-      } else {
-        if (char) {
-          return ['Invalid Characters or not valid Morse Code'];
-        }
+      } else if (char) {
+        return ['Invalid Characters or not valid Morse Code'];
       }
     }
     return outputArray;
@@ -101,13 +99,12 @@ const morse = (() => {
 
   const transformText = (input, direction) => {
     userInput = input;
-    let inputArray;
 
     if (direction === 'encrypt') {
-      inputArray = [...userInput];
+      const inputArray = [...userInput];
       return encrypt(inputArray).join(' ');
     } else {
-      inputArray = userInput.trim().split(' ');
+      const inputArray = userInput.trim().split(' ');
       return decrypt(inputArray).join('');
     }
   };
