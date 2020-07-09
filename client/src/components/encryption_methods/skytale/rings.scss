@@ -3,10 +3,10 @@
 .ring-container {
   width: 100%;
   height: auto;
-  //-webkit-perspective: 2000; /* For compatibility with iPhone 3.0, we leave off the units here */
-  //perspective: 2000px;
-  //-webkit-perspective-origin: 50% 225px;
-  //perspective-origin: 50% 225px;
+  -webkit-perspective: 200000;
+  perspective: 200000px;
+  -webkit-perspective-origin: 50% 125px;
+  perspective-origin: 50% 125px;
   padding: 24px;
 
   &__turntable {
