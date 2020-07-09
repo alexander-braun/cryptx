@@ -3,15 +3,11 @@
     <a href="https://crypt-x.herokuapp.com/">
         cryptx  
     </a> 
-    <br> 
-    cryptx 
-    <br> 
 </h1>
 
 <p align="center">
   <a href="#key-features">Key Features</a> •
-  <a href="#featured-methods">How To Use</a> •
-  <a href="#how-to-use">How To Use</a> •
+  <a href="#featured-methods">Featured Methods</a> •
 </p>
 
 ![screenshot](https://raw.githubusercontent.com/alexander-braun/cryptx/master/preview_images/gif2.gif)
@@ -45,21 +41,3 @@
 - Replace
 - Reverse
 - Case Transforms
-
-## How To Use
-
-To clone and run this application, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. From your command line:
-
-```bash
-# Clone this repository
-$ git clone https://github.com/alexander-braun/cryptx
-
-# Go into the repository
-$ cd cryptx
-
-# Install dependencies
-$ npm install
-
-# Run the app
-$ npm run dev
-```
