@@ -1,13 +1,15 @@
-<h1 align="center"> 
-    <br> 
-    <a href="https://crypt-x.herokuapp.com/">
-        cryptx  
-    </a> 
+a<h1 align="center">
+<br>
+<a href="https://crypt-x.herokuapp.com/">
+cryptx  
+ </a>
+
 </h1>
 
 <p align="center">
   <a href="#key-features">Key Features</a> •
   <a href="#featured-methods">Featured Methods</a> •
+  <a href="#saving-a-setting">Saving a setting</a> •
 </p>
 
 ![screenshot](https://raw.githubusercontent.com/alexander-braun/cryptx/master/preview_images/gif2.gif)
@@ -41,3 +43,11 @@
 - Replace
 - Reverse
 - Case Transforms
+
+## Saving a setting
+
+- You need to be signed in to save presets
+- You can later acces them from any browser/phone
+- Presets with input texts are stored in a database
+
+![screenshot](https://raw.githubusercontent.com/alexander-braun/cryptx/master/preview_images/gif3.gif)

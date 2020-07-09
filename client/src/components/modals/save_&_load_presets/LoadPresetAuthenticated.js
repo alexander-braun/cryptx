@@ -73,7 +73,7 @@ const LoadPresetAuthenticated = (props) => {
       foreignChars,
       prime1,
       prime2,
-      RsaE,
+      e,
       keywordVigenere,
       keywordPlayfair,
       otpKey,
@@ -91,6 +91,8 @@ const LoadPresetAuthenticated = (props) => {
       caseTransformChoice,
     } = selected.preset;
 
+    console.log(selected.preset);
+
     props.changeMethod(method);
     props.updateInput(input);
     props.updateAlphabet(alphabet);
@@ -105,7 +107,7 @@ const LoadPresetAuthenticated = (props) => {
       case 'rsa':
         props.setPrime1(prime1);
         props.setPrime2(prime2);
-        props.setRsaE(RsaE);
+        props.setRsaE(e);
         break;
       case 'casetransform':
         props.setCaseTransformChoice(caseTransformChoice);
