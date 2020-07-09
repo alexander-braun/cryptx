@@ -3,7 +3,7 @@ import { SET_RINGLENGTH } from '../actions/constants';
 
 const initialState = {
   length: 1,
-  ringLength: 8,
+  ringLength: 12,
 };
 
 const skytale = (state = initialState, action) => {

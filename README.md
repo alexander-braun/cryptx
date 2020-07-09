@@ -1,35 +1,65 @@
-Hello!
+<h1 align="center"> 
+    <br> 
+    <a href="https://crypt-x.herokuapp.com/">
+        cryptx  
+    </a> 
+    <br> 
+    cryptx 
+    <br> 
+</h1>
 
-This app is a sideproject to learn about cryptography and javascript. It's meant to be a fun introduction into the field of cryptography for myself and potential users.
+<p align="center">
+  <a href="#key-features">Key Features</a> •
+  <a href="#featured-methods">How To Use</a> •
+  <a href="#how-to-use">How To Use</a> •
+</p>
 
-Please visit here: https://crypt-x.herokuapp.com/
+![screenshot](https://raw.githubusercontent.com/alexander-braun/cryptx/master/preview_images/gif2.gif)
 
-<b>Available methods:</b><br>
--Atbash Cipher<br>
--Caesars Cipher<br>
--Skytale<br>
--Affine Cipher<br>
--Playfair Cipher<br>
--One Time Pad<br>
--Trifid Cipher<br>
--ROT13<br>
--Alphabetic Substitution Cipher<br>
--Morse Code<br>
--Nihilist Cipher<br>
--Vigenere Cipher<br>
--RSA<br>
--Replace, Reverse and Case-Transform<br>
+## Key Features
 
-<b>Tools available:</b><br>
--Frequency analysis with language comparsion choice<br>
--Index of Coincidence with language detection feature<br>
--Chi Squared Analysis with languages to compare to<br>
--Caesar Cipher cracking function<br>
+- Encryption, Decryption
+- Save and Load Presets
+- Frequency Analysis for different languages
+- Index of Coincidence Analysis with language detection
+- Chi Squared Analysis for different languages
+- Fast and conveniend cracking function for the Caesar Cipher
+- Timeline lets you scroll through the history of cryptography
+- Simple Visualisations of the algorithms with explanations
 
-<b>Other Feature:</b><br>
--User Login<br>
--Save Presets<br>
--Load Presets<br>
+## Featured Methods
 
-<img src="./preview_images/prev2.PNG">
-<img src="./preview_images/prev3.PNG">
+- Atbash Cipher
+- Skytale
+- Caesars Cipher
+- Playfair Cipher
+- One Time Pad
+- Affine Cipher
+- Rot 13
+- Substitution Cipher
+- Morse Code
+- Nihilist Cipher
+- Trifid Cipher
+- Vigenère Cipher
+- RSA
+- Replace
+- Reverse
+- Case Transforms
+
+## How To Use
+
+To clone and run this application, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. From your command line:
+
+```bash
+# Clone this repository
+$ git clone https://github.com/alexander-braun/cryptx
+
+# Go into the repository
+$ cd cryptx
+
+# Install dependencies
+$ npm install
+
+# Run the app
+$ npm run dev
+```
