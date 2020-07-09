@@ -50,4 +50,4 @@ cryptx
 - You can later acces them from any browser/phone
 - Presets with input texts are stored in a database
 
-![screenshot](https://raw.githubusercontent.com/alexander-braun/cryptx/master/preview_images/gif3.gif)
+![screenshot](https://raw.githubusercontent.com/alexander-braun/cryptx/master/preview_images/gif-cryptx2.gif)
