@@ -12,7 +12,7 @@ cryptx
   <a href="#saving-a-setting">Saving a setting</a> •
 </p>
 
-![screenshot](https://raw.githubusercontent.com/alexander-braun/cryptx/master/preview_images/gif2.gif)
+![screenshot](https://raw.githubusercontent.com/alexander-braun/cryptx/master/preview_images/gif-cryptx.gif)
 
 ## Key Features
 
