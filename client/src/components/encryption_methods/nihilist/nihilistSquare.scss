@@ -1,3 +1,5 @@
+@import '../../../style.scss';
+
 .nihilistSquare {
   text-align: center;
   color: #dadada;
@@ -16,7 +18,7 @@
     width: 100%;
   }
   th {
-    background-color: #3e94c5;
+    background-color: $Blue-Main;
     height: 45px;
     min-width: 45px;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
@@ -24,7 +26,7 @@
     margin: 2px;
   }
   td {
-    background-color: #3e94c5;
+    background-color: $Blue-Main;
     height: 45px;
     min-width: 45px;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),

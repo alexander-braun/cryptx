@@ -122,7 +122,6 @@ const Settings = (props) => {
               alphabet={props.alphabet}
               alphabetActive={props.alphabetActive}
             />
-            <ForeignChars />
           </Fragment>
         );
       case 'morse':

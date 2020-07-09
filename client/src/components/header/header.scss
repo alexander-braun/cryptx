@@ -1,5 +1,4 @@
-$font: 'Roboto', 'Helvetica', 'Arial', sans-serif;
-$transitionMain: 100ms;
+@import '../../style.scss';
 
 .nav {
   &-normal {
@@ -34,7 +33,7 @@ $transitionMain: 100ms;
   align-items: center;
 
   &__image {
-    margin-left: 10px;
+    margin-left: 5px;
     align-self: center;
     justify-self: flex-start;
     margin-top: 5px;
@@ -57,7 +56,7 @@ $transitionMain: 100ms;
     }
   }
   p {
-    transition-duration: $transitionMain;
+    transition-duration: $Transition-Short;
     font-size: 30pt;
     margin-top: 0;
     margin-bottom: 0;

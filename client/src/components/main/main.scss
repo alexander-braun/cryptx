@@ -1,3 +1,5 @@
+@import '../../style.scss';
+
 .block-container {
   display: flex;
   transition-duration: 100ms;
@@ -37,8 +39,9 @@
     padding: 16px 24px;
 
     .MuiSvgIcon-root {
+      color: $Blue-Font;
       &:hover {
-        color: #58c2ff !important;
+        color: $Blue-Font-Hover !important;
       }
     }
   }
@@ -55,7 +58,7 @@
   }
 
   &__head-button-svg {
-    color: #3e94c5;
+    color: $Blue-Font;
     font-size: 24px;
   }
 
@@ -89,7 +92,7 @@
     height: 200px;
     padding: 24px 24px;
     line-height: 1.5;
-    font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+    font-family: $Main-Font;
     font-size: 12pt;
     font-weight: 300;
     background: #3a3b3c;
@@ -107,7 +110,7 @@
   flex-grow: 0;
   min-width: 50px;
   position: relative;
-  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  font-family: $Main-Font;
   font-size: 20pt;
   font-weight: 400;
   display: flex;
@@ -252,7 +255,7 @@
 
   .block-connector {
     width: auto;
-    background-color: #3e94c5;
+    background-color: $Blue-Main;
     top: 5px;
   }
 }

@@ -1,3 +1,5 @@
+@import '../../../../../style.scss';
+
 .ioc-information {
   width: fit-content;
   height: 100%;
@@ -9,7 +11,7 @@
   &__category {
     letter-spacing: 0.05rem;
     font-weight: 500;
-    color: #d63a4e;
+    color: $Reddish-Main;
     margin-bottom: 1vh;
     margin-top: 1vh;
     text-align: left;

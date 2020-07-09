@@ -13,7 +13,7 @@ export const HeaderStyles = makeStyles((theme) => ({
       duration: theme.transitions.duration.leavingScreen,
     }),
     position: 'fixed',
-    backgroundColor: 'rgb(26, 134, 195) !important',
+    backgroundColor: '#398adb !important',
   },
   menuButton: {
     marginRight: theme.spacing(2),

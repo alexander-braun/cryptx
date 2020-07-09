@@ -1,3 +1,5 @@
+@import '../../../style.scss';
+
 .trifid-group {
   display: flex;
   flex-direction: row;
@@ -37,7 +39,7 @@
     }
 
     &__number {
-      background-color: #3e94c5;
+      background-color: $Blue-Main;
       height: 18px;
       min-width: 18px;
       margin: 2px;

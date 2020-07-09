@@ -1,3 +1,5 @@
+@import '../../../style.scss';
+
 #visualMatrix.controller {
   border: none;
 }
@@ -25,7 +27,7 @@
     color: #dadada;
     text-decoration: none;
     font-size: 30px;
-    background-color: rgba(62, 148, 197, 1);
+    background-color: $Blue-Main;
     padding: 5px;
     font-weight: 900;
     cursor: default;

@@ -1,10 +1,12 @@
+@import '../../../style.scss';
+
 .ring-container {
   width: 100%;
   height: auto;
-  -webkit-perspective: 2000; /* For compatibility with iPhone 3.0, we leave off the units here */
-  perspective: 2000px;
-  -webkit-perspective-origin: 50% 225px;
-  perspective-origin: 50% 225px;
+  //-webkit-perspective: 2000; /* For compatibility with iPhone 3.0, we leave off the units here */
+  //perspective: 2000px;
+  //-webkit-perspective-origin: 50% 225px;
+  //perspective-origin: 50% 225px;
   padding: 24px;
 
   &__turntable {
@@ -40,7 +42,7 @@
     font-family: Times, serif;
     font-size: 10pt;
     color: black;
-    background-color: rgb(27, 136, 199);
+    background-color: $Blue-Main;
     color: white;
     font-size: 13pt;
     font-weight: 400;

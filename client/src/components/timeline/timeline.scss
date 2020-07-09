@@ -1,6 +1,4 @@
-$font: 'Roboto', 'Helvetica', 'Arial', sans-serif;
-$yellowish: #f76c6c;
-$timeline_font_color: white;
+@import '../../style.scss';
 
 @-moz-document url-prefix() {
   .history-element {
@@ -12,7 +10,7 @@ $timeline_font_color: white;
 
 .history-element {
   font-weight: 400;
-  font-family: $font;
+  font-family: $Main-Font;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -31,7 +29,7 @@ $timeline_font_color: white;
     background-color: white;
     padding: 0;
     border-radius: 50%;
-    border: 2px solid rgba(62, 148, 197, 1);
+    border: 2px solid $Timeline;
     margin-top: 4px;
   }
 
@@ -71,10 +69,10 @@ $timeline_font_color: white;
 
 .slick-current {
   .history-element__dot {
-    background-color: $yellowish;
+    background-color: $Reddish-Main;
     width: 20px;
     height: 20px;
-    border: 4px solid rgba(62, 148, 197, 1);
+    border: 4px solid $Timeline;
     background-color: white;
     margin-top: 3px;
     transition-duration: 0.2s;
@@ -100,7 +98,7 @@ $timeline_font_color: white;
 }
 
 .timeline {
-  color: $timeline_font_color;
+  color: $White-Main;
   padding: 35px;
   margin: 0 auto;
   min-width: 330px;
@@ -115,7 +113,7 @@ $timeline_font_color: white;
     height: 0px;
     position: relative;
     top: 37px;
-    border-bottom: 4px solid rgba(62, 148, 197, 1);
+    border-bottom: 4px solid $Timeline;
   }
 
   .slick-next {
