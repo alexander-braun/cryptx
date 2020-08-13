@@ -45,7 +45,7 @@ class VigenereTransposition extends React.PureComponent {
             className={
               counter < keywordVigenere.length
                 ? 'alphabet-row__character--white'
-                : 'alphabet-row__character'
+                : 'alphabet-row__arrow'
             }
           >
             {key[counter]}

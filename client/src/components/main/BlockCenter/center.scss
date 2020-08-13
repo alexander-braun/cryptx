@@ -127,7 +127,7 @@
     }
   }
   &__feature_text {
-    font-size: 14px;
+    font-size: 12px;
     padding: 16px 24px 16px 24px;
     font-weight: 400;
     margin: 0;
@@ -354,7 +354,7 @@
   }
 
   &__character {
-    border-left: 1px dashed rgba(255, 255, 255, 0.5);
+    border-left: 1px dashed rgba(255, 255, 255, 0.3);
     width: 10px;
     flex-grow: 2;
     font-weight: 400;
