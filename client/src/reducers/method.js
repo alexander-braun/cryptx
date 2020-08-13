@@ -1,6 +1,6 @@
 import { CHANGE_METHOD } from '../actions/constants';
 
-const method = (state = 'atbash', action) => {
+const method = (state = 'rsa', action) => {
   switch (action.type) {
     case CHANGE_METHOD:
       return action.method;
