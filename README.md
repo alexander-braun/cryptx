@@ -21,7 +21,6 @@ Live Demo: cryptx
 - Frequency Analysis for different languages
 - Index of Coincidence Analysis with language detection
 - Chi Squared Analysis for different languages
-- Fast and conveniend cracking function for the Caesar Cipher
 - Timeline lets you scroll through the history of cryptography
 - Simple Visualisations of the algorithms with explanations
 

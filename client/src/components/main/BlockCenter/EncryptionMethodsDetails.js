@@ -21,7 +21,7 @@ export const EncryptionMethodsDetails = {
   },
   caesar: {
     year: '100 B.C. - 44 B.C.',
-    crack: true,
+    crack: false,
     timeline: true,
     timelineIdx: 2,
     display: "Caesar's",

@@ -33,7 +33,6 @@ import Trifid from '../encryption_methods/trifid/trifid-logic';
 import Otp from '../encryption_methods/onetimepad/otp-logic';
 
 // Actions
-import setWordbook from '../../actions/wordbook';
 import setOutput from '../../actions/setOutput';
 import { updateAlphabet, setAlphabetActive } from '../../actions/alphabet';
 import { setPlaysquare } from '../../actions/playfair';
@@ -69,11 +68,6 @@ class Main extends React.PureComponent {
 
   componentDidMount() {
     this.encrypt();
-    /*
-    if (this.props.wordbook === null) {
-      this.props.setWordbook();
-    }
-    */
   }
 
   componentDidUpdate(prevProps) {
@@ -220,7 +214,6 @@ class Main extends React.PureComponent {
 const mapStateToProps = (state) => ({
   toReplaceLetter: state.replace.toReplaceLetter,
   replaceLetter: state.replace.replaceLetter,
-  wordbook: state.wordbook,
   cShift: state.cShift,
   direction: state.direction,
   input: state.input,
@@ -255,7 +248,6 @@ const mapStateToProps = (state) => ({
 });
 
 const mapActionsToProps = {
-  setWordbook,
   setOutput,
   updateAlphabet,
   setPlaysquare,
@@ -273,7 +265,6 @@ const mapActionsToProps = {
 };
 
 Main.propTypes = {
-  setWordbook: PropTypes.func.isRequired,
   setOutput: PropTypes.func.isRequired,
   updateAlphabet: PropTypes.func.isRequired,
   setPlaysquare: PropTypes.func.isRequired,
@@ -290,7 +281,6 @@ Main.propTypes = {
   setTrifidGroups: PropTypes.func.isRequired,
   toReplaceLetter: PropTypes.string.isRequired,
   replaceLetter: PropTypes.string.isRequired,
-  wordbook: PropTypes.object,
   cShift: PropTypes.number.isRequired,
   direction: PropTypes.string.isRequired,
   input: PropTypes.string.isRequired,
