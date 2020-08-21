@@ -24,26 +24,14 @@ const encryptionProps = (props) => {
         props.foreignChars,
       ];
     case 'caesar':
-      if (props.direction === 'crack') {
-        return [
-          props.wordbook,
-          props.input,
-          props.alphabet,
-          props.cShift,
-          props.direction,
-          props.caseformat,
-          props.foreignChars,
-        ];
-      } else
-        return [
-          null,
-          props.input,
-          props.alphabet,
-          props.cShift,
-          props.direction,
-          props.caseformat,
-          props.foreignChars,
-        ];
+      return [
+        props.input,
+        props.alphabet,
+        props.cShift,
+        props.direction,
+        props.caseformat,
+        props.foreignChars,
+      ];
     case 'rsa':
       return [
         props.input,

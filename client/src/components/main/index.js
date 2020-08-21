@@ -66,11 +66,14 @@ class Main extends React.PureComponent {
    * Encrypt directly when the component is renderd.
    * Get the english dictionary from github.
    */
+
   componentDidMount() {
     this.encrypt();
+    /*
     if (this.props.wordbook === null) {
       this.props.setWordbook();
     }
+    */
   }
 
   componentDidUpdate(prevProps) {

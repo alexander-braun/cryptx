@@ -1,14 +1,11 @@
 import math from '../../math/Math';
+import * as book from '../../../data/words_dictionary.json';
 
 const caesar = (() => {
+  const wordbook = JSON.parse(JSON.stringify(book)).default;
+
   //Setup all variables
-  let userInput,
-    saltInput,
-    alphabet,
-    direction,
-    wordbook,
-    includeChars,
-    caseFormat;
+  let userInput, saltInput, alphabet, direction, includeChars, caseFormat;
 
   const setUserInput = (input) => {
     userInput = String(input);
@@ -34,12 +31,7 @@ const caesar = (() => {
     direction = input;
   };
 
-  const setWordbook = (words) => {
-    wordbook = words;
-  };
-
   const setAll = (
-    wordbook,
     input,
     alphabet,
     cShift,
@@ -47,7 +39,6 @@ const caesar = (() => {
     foreignChars,
     caseFormat
   ) => {
-    setWordbook(wordbook);
     setUserInput(input);
     setAlphabet(alphabet);
     setSaltInput(cShift);
@@ -138,7 +129,6 @@ const caesar = (() => {
       return `Weird text you got there! This tool can only crack english texts that are encrypted with the caesar cipher! Your input: "${userInput}"`;
 
     return encrypt(
-      null,
       userInput,
       alphabet.join(''),
       shiftV,
@@ -187,7 +177,6 @@ const caesar = (() => {
   };
 
   const encrypt = (
-    wordbook,
     input,
     alphabet,
     cShift,
@@ -195,15 +184,7 @@ const caesar = (() => {
     caseFormat,
     foreignChars
   ) => {
-    setAll(
-      wordbook,
-      input,
-      alphabet,
-      cShift,
-      direction,
-      foreignChars,
-      caseFormat
-    );
+    setAll(input, alphabet, cShift, direction, foreignChars, caseFormat);
     if (direction !== 'crack') {
       const rawOutput = readChar();
       if (checkIfSigns()) {
@@ -215,7 +196,7 @@ const caesar = (() => {
         );
       } else return rawOutput;
     } else {
-      if (wordbook !== 'FAIL') {
+      if (wordbook) {
         return findCombinations();
       } else return `WORDBOOK COULDN'T LOAD`;
     }
