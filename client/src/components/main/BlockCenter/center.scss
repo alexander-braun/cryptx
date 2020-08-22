@@ -517,3 +517,11 @@
     width: auto;
   }
 }
+
+.block-settings__body {
+  .MuiExpansionPanelDetails-root {
+    display: flex;
+    flex-direction: column;
+    padding: 24px 24px;
+  }
+}
