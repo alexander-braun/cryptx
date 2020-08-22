@@ -10,7 +10,7 @@ import Typography from '@material-ui/core/Typography';
 const GuestLinksDesktop = (props) => {
   const classes = HeaderStyles();
   return (
-    <div className='menue-items'>
+    <nav className='menue-items'>
       <Typography variant='body1' noWrap className={classes.itemWrapper}>
         <Link className={classes.link} to='/Login'>
           Login
@@ -26,7 +26,7 @@ const GuestLinksDesktop = (props) => {
           About
         </Link>
       </Typography>
-    </div>
+    </nav>
   );
 };
 

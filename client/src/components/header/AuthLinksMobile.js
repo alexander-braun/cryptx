@@ -29,8 +29,8 @@ const AuthLinksMobile = (props) => {
   };
 
   return (
-    <Fragment>
-      <List onClick={toggleDrawer}>
+    <>
+      <nav onClick={toggleDrawer}>
         <Link to='/'>
           <ListItem button className={classes.itemMobile}>
             <ListItemIcon>
@@ -63,8 +63,8 @@ const AuthLinksMobile = (props) => {
             <ListItemText primary='About' />
           </ListItem>
         </Link>
-      </List>
-    </Fragment>
+      </nav>
+    </>
   );
 };
 

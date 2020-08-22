@@ -15,7 +15,7 @@ import Typography from '@material-ui/core/Typography';
 const AuthLinksDesktop = (props) => {
   const classes = HeaderStyles();
   return (
-    <div className='menue-items'>
+    <nav className='menue-items'>
       <Typography variant='body1' noWrap className={classes.itemWrapper}>
         <Link className={classes.link} to='#!' onClick={props.logout}>
           Logout
@@ -31,7 +31,7 @@ const AuthLinksDesktop = (props) => {
           About
         </Link>
       </Typography>
-    </div>
+    </nav>
   );
 };
 
