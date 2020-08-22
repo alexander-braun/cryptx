@@ -29,7 +29,6 @@ router.post(
       return res.status(400).json({ errors: errors.array() });
     }
     const { name, email, password } = req.body;
-
     try {
       //Does user exist ?
       let user = await User.findOne({ email });
@@ -51,6 +50,7 @@ router.post(
         avatar,
         password,
       });
+
       //Encrypt password
       const salt = await bcrypt.genSalt(10);
       user.password = await bcrypt.hash(password, salt);
@@ -63,7 +63,7 @@ router.post(
       };
       jwt.sign(
         payload,
-        process.env.wtSecret,
+        process.env.jwtSecret,
         { expiresIn: 3600000 },
         (err, token) => {
           if (err) throw err;
