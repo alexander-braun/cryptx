@@ -4,7 +4,7 @@
   width: fit-content;
   height: 100%;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   align-self: flex-start;
   font-size: 16px;
 
@@ -12,9 +12,17 @@
     letter-spacing: 0.05rem;
     font-weight: 500;
     color: $Reddish-Main;
-    margin-bottom: 1vh;
-    margin-top: 1vh;
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
     text-align: left;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &:first-child {
+      margin-top: 0;
+    }
   }
 
   &__text {

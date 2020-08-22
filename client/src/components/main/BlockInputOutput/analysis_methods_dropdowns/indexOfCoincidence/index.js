@@ -21,7 +21,12 @@ import { IndexOfCoincidenceStyles } from './IndexOfCoincidenceStyles';
 import { calcIndexOfCoincidence, calcLanguageProbability } from './ioc-logic';
 
 function IndexOfCoincidence({ menue, input, output }) {
-  const [expandedStatus, changeExpandedStatus] = useState(false);
+  /**
+   * The panel for ioc is by default expanded in the input
+   */
+  const [expandedStatus, changeExpandedStatus] = useState(
+    menue === 'input' ? true : false
+  );
   const classes = IndexOfCoincidenceStyles();
 
   const ioc =
@@ -58,6 +63,7 @@ function IndexOfCoincidence({ menue, input, output }) {
       onChange={() => {
         changeExpandedStatus(!expandedStatus);
       }}
+      expanded={expandedStatus}
     >
       <ExpansionPanelSummary
         expandIcon={<ExpandMoreIcon />}

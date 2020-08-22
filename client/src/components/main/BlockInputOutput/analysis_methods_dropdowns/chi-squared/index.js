@@ -21,7 +21,12 @@ import AnalysisMethodsExplanationTooltip from '../../Tooltips/AnalysisMethodsExp
 import RemoveAnalysisMethodButton from '../RemoveAnalysisMethodButton';
 
 function ChiSquared(props) {
-  const [expandedStatus, changeExpandedStatus] = useState(false);
+  /**
+   * The panel for chi-squared is by default expanded in the input
+   */
+  const [expandedStatus, changeExpandedStatus] = useState(
+    props.menue === 'input' ? true : false
+  );
   const [language, setLanguage] = useState('English');
   const classes = ChiSquaredStyles();
   /**
@@ -33,6 +38,7 @@ function ChiSquared(props) {
     <ExpansionPanel
       square={true}
       onChange={() => changeExpandedStatus(!expandedStatus)}
+      expanded={expandedStatus}
     >
       <ExpansionPanelSummary
         expandIcon={<ExpandMoreIcon />}

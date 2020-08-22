@@ -21,7 +21,13 @@ import { FrequencyAnalysisStyles } from './FrequencyAnalysisStyles';
 
 function FrequencyAnalysis({ inputValue, menue }) {
   const [selectedLanguage, setSelectedLanguage] = useState('English');
-  const [panelStatus, changePanelStatus] = useState(false);
+
+  /**
+   * The output panel is by default expanded on pageload
+   */
+  const [panelStatus, changePanelStatus] = useState(
+    menue === 'output' ? true : false
+  );
 
   const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
   const classes = FrequencyAnalysisStyles();
@@ -30,6 +36,7 @@ function FrequencyAnalysis({ inputValue, menue }) {
     <ExpansionPanel
       square={true}
       onChange={() => changePanelStatus(!panelStatus)}
+      expanded={panelStatus}
     >
       <ExpansionPanelSummary
         expandIcon={<ExpandMoreIcon />}
