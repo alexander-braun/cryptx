@@ -19,8 +19,8 @@ class Timeline extends React.PureComponent {
     this.next = this.next.bind(this);
     this.previous = this.previous.bind(this);
     this.state = {
-      oldSlide: 9,
-      activeSlide: 9,
+      oldSlide: 0,
+      activeSlide: 0,
     };
     this.vw = Math.max(
       document.documentElement.clientWidth,
@@ -83,7 +83,7 @@ class Timeline extends React.PureComponent {
       slidesToShow: this.viewportWidth(),
       slidesToScroll: 1,
       arrows: true,
-      initialSlide: 9,
+      initialSlide: 0,
       beforeChange: (current, next) =>
         this.setState({
           oldSlide: current,
