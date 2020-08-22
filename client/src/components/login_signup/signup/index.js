@@ -122,14 +122,6 @@ const SignIn = (props) => {
                     onChange={(e) => onChange(e)}
                   />
                 </Grid>
-                <Grid item xs={12}>
-                  <FormControlLabel
-                    control={
-                      <Checkbox value='allowExtraEmails' color='primary' />
-                    }
-                    label='Tell me, when new encryption algorithms or cryptoanalysis tools available!'
-                  />
-                </Grid>
               </Grid>
               <Button
                 type='submit'

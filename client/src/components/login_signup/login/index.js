@@ -106,10 +106,6 @@ const Login = (props) => {
                 value={password}
                 onChange={(e) => onChange(e)}
               />
-              <FormControlLabel
-                control={<Checkbox value='remember' color='primary' />}
-                label='Remember me'
-              />
               <Button
                 type='submit'
                 fullWidth
@@ -120,11 +116,11 @@ const Login = (props) => {
                 Sign In
               </Button>
               <Grid container>
-                <Grid item xs>
+                {/*                <Grid item xs>
                   <Link to='#' variant='body2' className={classes.link}>
                     Forgot password?
                   </Link>
-                </Grid>
+</Grid>*/}
                 <Grid item>
                   <Link
                     to={process.env.PUBLIC_URL + '/signup'}
