@@ -117,15 +117,18 @@ const explanatory = {
     linkname: `One Time Pad`,
   },
   rsa: {
-    normal: `RSA (Rivest–Shamir–Adleman) is one of the first public-key cryptosystems and 
-    is widely used for secure data transmission. In such a cryptosystem, the encryption key 
-    is public and distinct from the decryption key which is kept secret (private). In RSA, 
-    this asymmetry is based on the practical difficulty of factoring the product of two large 
-    prime numbers, the "factoring problem". The acronym RSA is the initial letters of the surnames 
-    of Ron Rivest, Adi Shamir, and Leonard Adleman, who publicly described the algorithm in 1977. 
-    Clifford Cocks, an English mathematician working for the British intelligence agency Government 
-    Communications Headquarters (GCHQ), had developed an equivalent system in 1973, which was not 
-    declassified until 1997.`,
+    normal: `To encrypt longer messages, use longer prime numbers. (spaces are automatically beeing 
+    removed from the input when you copy-paste). This site is using a pure version of RSA. First every 
+    character is encoded to it's character-code equivalent. Then all character codes are joined
+    together into a big number and the actual encryption takes place.
+    For the decryption process the encrypted message is first decoded and is then ready to be converted back 
+    to it's character codes and original characters. A regular RSA algorithm is usually only used as a way to encrypt keys
+    for symmetric encrytion algorithms like AES - it's a misconception,
+    that the actual message is encrypted using RSA. There is also a
+    padding scheme (OAEP) involved to obscure potentially insecure
+    messages and make them harder to break. RSA is incredibly slow when
+    used with longer messages/bigger prime numbers. The longer the message that you want to encrypt, the more digits
+    your prime numbers needs to have for the algorithm to work.`,
     crack: `No Crack function yet  :(`,
     linksrc: `https://en.wikipedia.org/wiki/One-time_pad`,
     linkname: `One Time Pad`,

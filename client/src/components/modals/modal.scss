@@ -1,14 +1,12 @@
 @import '../../style.scss';
 
 .modal-wrapper {
-  position: absolute;
   width: 100vw;
   height: 100%;
   position: fixed;
   z-index: 3;
   left: 0;
   top: 0;
-  background-color: rgb(0, 0, 0);
   background-color: rgba(0, 0, 0, 0.8);
   display: flex;
   flex-direction: column;
@@ -18,7 +16,7 @@
 
 .modal {
   background-color: #303031;
-  border-radius: 0px;
+  border-radius: 0;
   overflow-y: auto;
 
   &__body {
@@ -264,7 +262,6 @@
   &__encryption-method {
     border: 0;
     font-weight: 200;
-    color: black;
     width: fit-content;
     padding: 7px 10px;
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1),
@@ -295,7 +292,7 @@
     padding: 24px;
     text-align: center;
     letter-spacing: 0.1rem;
-    filter: drop-shadow(0px -5px 5px #000000c5);
+    filter: drop-shadow(0 -5px 5px #000000c5);
 
     &--space-between {
       display: flex;

@@ -39,9 +39,6 @@
     border: 2px solid #3a3b3c;
     box-sizing: border-box;
     text-align: center;
-    font-family: Times, serif;
-    font-size: 10pt;
-    color: black;
     background-color: $Feature-Grey;
     color: white;
     font-size: 13pt;
@@ -49,9 +46,6 @@
     font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
     transition: -webkit-transform 500ms, opacity 500ms;
     backface-visibility: hidden;
-  }
-
-  &__character {
   }
 }
 

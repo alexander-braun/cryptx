@@ -138,45 +138,6 @@ const Primes = (props) => {
           </div>
         </div>
       </div>
-      <div className='content-element__feature_text'>
-        <p>
-          To encrypt longer messages, use longer prime numbers from this
-          site:&nbsp;
-          <a
-            href='https://primes.utm.edu/curios/page.php?number_id=3818'
-            target='blank'
-          >
-            primes.utm.edu
-          </a>
-          <br></br>
-          (spaces are automatically beeing removed from the input when you
-          copy-paste). If your computer feels stuck for some seconds, that's
-          because it's calculating.
-        </p>
-        <p>
-          This site is using a <strong className='underline'>pure</strong>{' '}
-          version of RSA. First every character is encoded to it's
-          character-code equivalent. Then all character codes are joined
-          together into a big number and the actual encryption takes place.
-        </p>
-        <p>
-          For the decryption process the encrypted message is first decoded and
-          is then ready to be converted back to it's character codes and
-          original characters.
-        </p>
-        <p>
-          A regular RSA algorithm is usually only used as a way to encrypt keys
-          for symmetric encrytion algorithms like AES - it's a misconception,
-          that the actual message is encrypted using RSA. There is also a
-          padding scheme (OAEP) involved to obscure potentially insecure
-          messages and make them harder to break. RSA is incredibly slow when
-          used with longer messages/bigger prime numbers.{' '}
-          <strong className='underline'>
-            The longer the message that you want to encrypt, the more digits
-            your prime numbers needs to have for the algorithm to work.
-          </strong>
-        </p>
-      </div>
     </React.Fragment>
   );
 };

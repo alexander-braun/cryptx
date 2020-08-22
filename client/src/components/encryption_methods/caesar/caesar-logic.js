@@ -2,7 +2,7 @@ import math from '../../math/Math';
 
 const caesar = (() => {
   //Setup all variables
-  let userInput, saltInput, alphabet, direction, includeChars, caseFormat;
+  let userInput, saltInput, alphabet, direction, includeChars;
 
   const setUserInput = (input) => {
     userInput = String(input);
@@ -10,10 +10,6 @@ const caesar = (() => {
 
   const setSaltInput = (input) => {
     saltInput = Number(input);
-  };
-
-  const setCaseFormat = (input) => {
-    caseFormat = input;
   };
 
   const setAlphabet = (input) => {
@@ -41,7 +37,6 @@ const caesar = (() => {
     setSaltInput(cShift);
     setDirection(direction);
     setForeignChars(foreignChars);
-    setCaseFormat(caseFormat);
   };
 
   /**
@@ -94,7 +89,7 @@ const caesar = (() => {
     caseFormat,
     foreignChars
   ) => {
-    setAll(input, alphabet, cShift, direction, foreignChars, caseFormat);
+    setAll(input, alphabet, cShift, direction, foreignChars);
     if (direction !== 'crack') {
       const rawOutput = readChar();
       if (checkIfSigns()) {
