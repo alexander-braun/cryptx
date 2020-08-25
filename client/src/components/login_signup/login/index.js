@@ -116,11 +116,6 @@ const Login = (props) => {
                 Sign In
               </Button>
               <Grid container>
-                {/*                <Grid item xs>
-                  <Link to='#' variant='body2' className={classes.link}>
-                    Forgot password?
-                  </Link>
-</Grid>*/}
                 <Grid item>
                   <Link
                     to={process.env.PUBLIC_URL + '/signup'}
