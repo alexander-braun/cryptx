@@ -15,7 +15,6 @@ const encryptionProps = (props) => {
       return [props.input, props.substitutionAlphabet, props.direction];
     case 'rot13':
       return [
-        props.direction === 'crack' ? props.wordbook : null,
         props.input,
         props.alphabet,
         13,
