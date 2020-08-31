@@ -46,7 +46,7 @@ const explanatory = {
     from the new alphabet. Without the key, this cipher is very hard to crack.`,
     crack: `No Crack function yet  :(`,
     linksrc: `https://en.wikipedia.org/wiki/Substitution_cipher`,
-    linkname: `Alphabetic Substitution Cipher`,
+    linkname: `Alphabetic Substitution Cipher Wikipedia`,
   },
   trifid: {
     normal: `The trifid cipher uses a table to fractionate each plaintext letter into a trigram, 
@@ -54,7 +54,7 @@ const explanatory = {
     mixed trigrams into ciphertext letters. Delastelle notes that the most practical system uses 
     three symbols for the trigrams.`,
     linksrc: `https://en.wikipedia.org/wiki/Trifid_cipher`,
-    linkname: `Trifid Cipher`,
+    linkname: `Trifid Cipher Wikipedia`,
   },
   casetransform: {
     normal: `Transforms your input text into the selected case-format.`,
@@ -114,7 +114,7 @@ const explanatory = {
     The key has to be shared to decrypt messages.`,
     crack: `No Crack function yet  :(`,
     linksrc: `https://en.wikipedia.org/wiki/One-time_pad`,
-    linkname: `One Time Pad`,
+    linkname: `One Time Pad Wikipedia`,
   },
   rsa: {
     normal: `To encrypt longer messages, use longer prime numbers. (spaces are automatically beeing 
@@ -130,8 +130,8 @@ const explanatory = {
     used with longer messages/bigger prime numbers. The longer the message that you want to encrypt, the more digits
     your prime numbers needs to have for the algorithm to work.`,
     crack: `No Crack function yet  :(`,
-    linksrc: `https://en.wikipedia.org/wiki/One-time_pad`,
-    linkname: `One Time Pad`,
+    linksrc: `https://en.wikipedia.org/wiki/RSA_(cryptosystem)`,
+    linkname: `RSA Wikipedia`,
   },
 };
 
