@@ -7,8 +7,12 @@ const affine = (() => {
 
   const setUserInput = (input) => {
     userInput = input.toString();
-    const cleanInput = math.transformToLowerCaseChars(userInput);
-    correctedInput = cleanInput.join('');
+    if (userInput.length) {
+      const cleanInput = math.transformToLowerCaseChars(userInput);
+      correctedInput = cleanInput.join('');
+    } else {
+      correctedInput = '';
+    }
   };
 
   const setAlpha = (input) => {
