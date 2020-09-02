@@ -1,6 +1,6 @@
 <h1 align="center">
 <br>
-<a href="https://cryp-tx.herokuapp.com/">
+<a href="https://crypt-x.herokuapp.com/">
 Live Demo: cryptx  
  </a>
 
